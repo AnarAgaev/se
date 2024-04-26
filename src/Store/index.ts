@@ -1,3 +1,2 @@
-import useBackground from './background'
-
-export { useBackground }
+import useBoundStore from './boundStore'
+export { useBoundStore }
