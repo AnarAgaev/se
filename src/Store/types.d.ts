@@ -11,7 +11,16 @@ interface BackgroundsStore {
     setInitBackgroundsData: (data: z.infer<typeof BackgroundsType>) => void
 }
 
+type CalcTabs = 'borders' | 'mechanics' | 'backgrounds'
+type ScreenTabs = 'configurator' | 'collections' | 'project' | 'hub'
+
 interface AppStore {
     loading: boolean
     error: Error | unknown
+
+    activeCalcTab: CalcTabs
+    setActiveCalcTab: (tab: CalcTabs) => void
+
+    activeScreenTab: ScreenTabs
+    setActiveScreenTab: (tab: ScreenTabs) => void
 }

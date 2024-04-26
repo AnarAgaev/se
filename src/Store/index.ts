@@ -1,2 +1,2 @@
-import useBoundStore from './boundStore'
-export { useBoundStore }
+import useStore from './createBoundStore'
+export default useStore

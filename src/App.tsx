@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
-import { useBoundStore } from './Store'
+import { Calculator, Screen } from './Components'
+import useStore from './Store'
 import './App.sass'
 
-
 const App = () => {
-
-	const requestInitData = useBoundStore(state => state.requestInitData)
+	const requestInitData = useStore(state => state.requestInitData)
 
 	useEffect(() => {
 		requestInitData()
@@ -13,8 +12,11 @@ const App = () => {
 
 	return (
 		<section className="se-app">
-			Hello
-			<img src="" alt="" className="image" style={{height: '200px', width: '200px'}}/>
+			<h1 className='se-app__caption'>Конфигуратор</h1>
+			<div className='se-app__body'>
+				<Calculator />
+				<Screen />
+			</div>
 		</section>
 	)
 }

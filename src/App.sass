@@ -8,33 +8,57 @@
     // --synth-transition: all 1s cubic-bezier(0.16, 1, 0.3, 1)
     // --synth-timing-func: cubic-bezier(0.16, 1, 0.3, 1)
 
+    --font-prime: "Roboto", sans-serif
+
     --color-prime: #000
+
+    --color-border-prime: #999
+
+    --color-back-init: #fff
+    --color-back-prime: #262626
     --color-back-secondary: #f5f5f5
+
 
 
     display: flex
     flex-direction: column
     justify-content: space-between
+    gap: 20px
     margin: 0
     padding: 0
     overflow-x: hidden
+    box-sizing: border-box
 
-    font-family: "Roboto", sans-serif
+    font-family: var(--font-prime)
     font-size: medium
     font-style: normal
-    font-weight: normal
+    font-weight: 400
     color: var(--color-prime)
     letter-spacing: normal
 
 
-    *,
-    *::befor,
-    *::after
-        font-family: "Roboto", sans-serif
-        font-size: medium
+    @media (min-width: $lg)
+        gap: 30px
+
+
+    *
+        box-sizing: border-box
+        font-family: var(--font-prime)
         font-style: normal
-        font-weight: normal
-        color: var(--color-prime)
+
+    *::before
+        box-sizing: border-box
+        font-family: var(--font-prime)
+        font-style: normal
+
+    *::after
+        box-sizing: border-box
+        font-family: var(--font-prime)
+        font-style: normal
+
+
+    ul, li
+        list-style: none
 
     img
         @include image
@@ -106,3 +130,24 @@
             .inner
                 opacity: 1
                 top: 0
+
+
+    &__caption
+        display: block
+        margin: 0
+        padding: 0
+        color: var(--color-prime)
+        font-size: 26px
+        line-height: 111.687% /* 35.74px */
+
+        @media (min-width: $lg)
+            font-size: 32px
+
+
+    &__body
+        display: flex
+        flex-direction: column
+        gap: 20px
+
+        @media (min-width: $lg)
+            flex-direction: row

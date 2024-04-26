@@ -4,7 +4,7 @@ import { InitDataContractType } from './zod-data-contract'
 import createAppSlice from './createAppSlice'
 import createBackgroundSlice from './createBackgroundSlice'
 
-const useBoundStore = create<BackgroundsStore & AppStore & BoundStore>()(
+const useStore = create<BackgroundsStore & AppStore & BoundStore>()(
     devtools(
         (set, get, ...args) => ({
             ...createAppSlice(set, get, ...args),
@@ -42,4 +42,4 @@ const useBoundStore = create<BackgroundsStore & AppStore & BoundStore>()(
     )
 )
 
-export default useBoundStore
+export default useStore

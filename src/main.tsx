@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import ErrorBoundary from './Components/ErrorBoundary'
+import { ErrorBoundary } from './Components'
 import App from './App.tsx'
 
 ReactDOM.createRoot(document.getElementById('seApp')!).render(
