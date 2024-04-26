@@ -1,2 +1,2 @@
-import useStore from './createBoundStore'
+import useStore from './createBoundSlice'
 export default useStore
