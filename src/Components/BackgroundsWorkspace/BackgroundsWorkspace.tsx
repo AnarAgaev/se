@@ -1,8 +1,14 @@
+import { BackgroundPicker } from '../../Components'
+import style from './BackgroundsWorkspace.module.sass'
+
+const { backgroundsWorkspace } = style
+
 const BackgroundsWorkspace = () => {
+
     return (
-        <>
-            Backgrounds
-        </>
+        <div className={backgroundsWorkspace}>
+            <BackgroundPicker />
+        </div>
     )
 }
 

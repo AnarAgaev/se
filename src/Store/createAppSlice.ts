@@ -4,7 +4,7 @@ const createAppSlice: StateCreator<AppStore> = (set) => ({
     loading: false,
     error: null,
 
-    activeCalcTab: 'borders',
+    activeCalcTab: 'backgrounds',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
     activeScreenTab: 'configurator',

@@ -11,12 +11,22 @@
     --font-prime: "Roboto", sans-serif
 
     --color-prime: #000
+    --color-error: #ff0000
 
     --color-border-prime: #999
 
     --color-back-init: #fff
     --color-back-prime: #262626
     --color-back-secondary: #f5f5f5
+
+    --color-button-prime: #262626
+    --color-button-sec: #fff
+    --color-button-font-dark: #000
+    --color-button-font-lite: #fff
+    --color-button-font-disabled: #999
+
+    --color-button-hover: #757575
+    --color-button-disabled: #eee
 
 
 
@@ -130,6 +140,57 @@
             .inner
                 opacity: 1
                 top: 0
+
+
+    .button
+        display: inline-flex
+        align-items: center
+        justify-content: center
+        width: auto
+        height: 40px
+        padding: 0 20px
+        cursor: pointer
+        user-select: none
+        transition: var(--base-transition)
+        transition-property: background, border-color, color
+
+        text-align: center
+        text-decoration: none
+        font-size: 14px
+        letter-spacing: 0.14px
+        border-radius: 2px
+        border: 2px solid var(--color-button-prime)
+
+        @media (min-width: $lg)
+            height: 50px
+
+        &_block
+            width: 100%
+
+        &_dark
+            background-color: var(--color-button-prime)
+            color: var(--color-button-font-lite)
+
+            @media (hover: hover) and (pointer: fine)
+                &:hover
+                    background: var(--color-button-hover)
+                    border-color: var(--color-button-hover)
+                    color: var(--color-button-font-lite)
+
+        &_lite
+            background-color: var(--color-button-sec)
+            color: var(--color-button-font-dark)
+
+            @media (hover: hover) and (pointer: fine)
+                &:hover
+                    background-color: var(--color-button-prime)
+                    color: var(--color-button-font-lite)
+
+        &.disabled
+            pointer-events: none
+            background: var(--color-button-disabled)
+            border-color: var(--color-button-disabled)
+            color: var(--color-button-font-disabled)
 
 
     &__caption

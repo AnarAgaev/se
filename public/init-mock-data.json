@@ -8,8 +8,8 @@
       "name": "Графит",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/4690389180675_werkel.png",
-      "preview": "images/borders/4690389180675_werkel.png"
+      "image": "https://aws.massive.ru/sew/img/borders/4690389180675_werkel.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/4690389180675_werkel.png"
     },
     {
       "id": "2",
@@ -19,8 +19,8 @@
       "name": "Aйвори",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-elite-ivory.png",
-      "preview": "images/borders/f-elite-ivory.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-elite-ivory.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-elite-ivory.png"
     },
     {
       "id": "3",
@@ -30,8 +30,8 @@
       "name": "Дымчатый",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-elite-smoke.png",
-      "preview": "images/borders/f-elite-smoke.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-elite-smoke.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-elite-smoke.png"
     },
     {
       "id": "4",
@@ -41,8 +41,8 @@
       "name": "Молочный",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-favorit-molochnyy.png",
-      "preview": "images/borders/f-favorit-molochnyy.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-favorit-molochnyy.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-favorit-molochnyy.png"
     },
     {
       "id": "5",
@@ -52,8 +52,8 @@
       "name": "Латте",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-favorit-latte.png",
-      "preview": "images/borders/f-favorit-latte.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-favorit-latte.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-favorit-latte.png"
     },
     {
       "id": "6",
@@ -63,8 +63,8 @@
       "name": "Белый",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-favorit-white.png",
-      "preview": "images/borders/f-favorit-white.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-favorit-white.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-favorit-white.png"
     },
     {
       "id": "7",
@@ -74,8 +74,8 @@
       "name": "Белый матовый",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-favorit-white-matt.png",
-      "preview": "images/borders/f-favorit-white-matt.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-favorit-white-matt.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-favorit-white-matt.png"
     },
     {
       "id": "8",
@@ -85,8 +85,8 @@
       "name": "Бронзовый",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-favorit-bronze.png",
-      "preview": "images/borders/f-favorit-bronze.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-favorit-bronze.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-favorit-bronze.png"
     },
     {
       "id": "9",
@@ -96,8 +96,8 @@
       "name": "Дымчатый",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-favorit-smoke.png",
-      "preview": "images/borders/f-favorit-smoke.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-favorit-smoke.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-favorit-smoke.png"
     },
     {
       "id": "10",
@@ -107,8 +107,8 @@
       "name": "Шампань",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-favorit-champain.png",
-      "preview": "images/borders/f-favorit-champain.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-favorit-champain.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-favorit-champain.png"
     },
     {
       "id": "11",
@@ -118,8 +118,8 @@
       "name": "Мокко",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-favorit-mokko.png",
-      "preview": "images/borders/f-favorit-mokko.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-favorit-mokko.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-favorit-mokko.png"
     },
     {
       "id": "12",
@@ -129,8 +129,8 @@
       "name": "Натуральное стекло",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-favorit-natural-glass.png",
-      "preview": "images/borders/f-favorit-natural-glass.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-favorit-natural-glass.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-favorit-natural-glass.png"
     },
     {
       "id": "13",
@@ -140,8 +140,8 @@
       "name": "Серый",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-favorit-gray.png",
-      "preview": "images/borders/f-favorit-gray.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-favorit-gray.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-favorit-gray.png"
     },
     {
       "id": "14",
@@ -151,8 +151,8 @@
       "name": "Черный",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-favorit-black.png",
-      "preview": "images/borders/f-favorit-black.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-favorit-black.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-favorit-black.png"
     },
     {
       "id": "15",
@@ -162,8 +162,8 @@
       "name": "Черный",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-diamant-black.png",
-      "preview": "images/borders/f-diamant-black.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-diamant-black.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-diamant-black.png"
     },
     {
       "id": "16",
@@ -173,8 +173,8 @@
       "name": "Белый",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-acrylic-white.png",
-      "preview": "images/borders/f-acrylic-white.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-acrylic-white.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-acrylic-white.png"
     },
     {
       "id": "17",
@@ -184,8 +184,8 @@
       "name": "Черный",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-acrylic-black.png",
-      "preview": "images/borders/f-acrylic-black.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-acrylic-black.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-acrylic-black.png"
     },
     {
       "id": "18",
@@ -195,8 +195,8 @@
       "name": "Графит",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-acrylic-graphite.png",
-      "preview": "images/borders/f-acrylic-graphite.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-acrylic-graphite.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-acrylic-graphite.png"
     },
     {
       "id": "19",
@@ -206,8 +206,8 @@
       "name": "Айвори",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-acrylic-ivory.png",
-      "preview": "images/borders/f-acrylic-ivory.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-acrylic-ivory.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-acrylic-ivory.png"
     },
     {
       "id": "20",
@@ -217,8 +217,8 @@
       "name": "Алюминий",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-platinum-alyuminiy.png",
-      "preview": "images/borders/f-platinum-alyuminiy.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-platinum-alyuminiy.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-platinum-alyuminiy.png"
     },
     {
       "id": "21",
@@ -228,8 +228,8 @@
       "name": "Шампань",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-platinum-shampan.png",
-      "preview": "images/borders/f-platinum-shampan.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-platinum-shampan.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-platinum-shampan.png"
     },
     {
       "id": "22",
@@ -239,8 +239,8 @@
       "name": "Черный алюминий",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-platinum-chernyy-alyuminiy.png",
-      "preview": "images/borders/f-platinum-chernyy-alyuminiy.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-platinum-chernyy-alyuminiy.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-platinum-chernyy-alyuminiy.png"
     },
     {
       "id": "23",
@@ -250,8 +250,8 @@
       "name": "Алюминий",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-aluminium-silver.png",
-      "preview": "images/borders/f-aluminium-silver.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-aluminium-silver.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-aluminium-silver.png"
     },
     {
       "id": "24",
@@ -261,8 +261,8 @@
       "name": "Шампань алюминий",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-aluminium-shampan.png",
-      "preview": "images/borders/f-aluminium-shampan.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-aluminium-shampan.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-aluminium-shampan.png"
     },
     {
       "id": "25",
@@ -272,8 +272,8 @@
       "name": "Коричневый алюминий",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-aluminium-brown.png",
-      "preview": "images/borders/f-aluminium-brown.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-aluminium-brown.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-aluminium-brown.png"
     },
     {
       "id": "26",
@@ -283,8 +283,8 @@
       "name": "Черный алюминий",
       "code": "1234567",
       "price": "100.00",
-      "image": "images/borders/f-aluminium-black.png",
-      "preview": "images/borders/f-aluminium-black.png"
+      "image": "https://aws.massive.ru/sew/img/borders/f-aluminium-black.png",
+      "preview": "https://aws.massive.ru/sew/img/borders/f-aluminium-black.png"
     }
   ],
   "devices": [
@@ -296,8 +296,8 @@
       "name": "Белый одноклавишный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_white_switcher_sensor_1_sup.png",
-      "preview": "images/devices/previews/mechanism_white_switcher_sensor_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_white_switcher_sensor_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_white_switcher_sensor_1.png"
     },
     {
       "id": "2",
@@ -307,8 +307,8 @@
       "name": "Белый двуклавишный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_white_switcher_sensor_2_sup.png",
-      "preview": "images/devices/previews/mechanism_white_switcher_sensor_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_white_switcher_sensor_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_white_switcher_sensor_2.png"
     },
     {
       "id": "3",
@@ -318,8 +318,8 @@
       "name": "Черный одноклавишный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_black_switcher_sensor_1_sup.png",
-      "preview": "images/devices/previews/mechanism_black_switcher_sensor_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_black_switcher_sensor_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_black_switcher_sensor_1.png"
     },
     {
       "id": "4",
@@ -329,8 +329,8 @@
       "name": "Черный двуклавишный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_black_switcher_sensor_2_sup.png",
-      "preview": "images/devices/previews/mechanism_black_switcher_sensor_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_black_switcher_sensor_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_black_switcher_sensor_2.png"
     },
     {
       "id": "5",
@@ -340,8 +340,8 @@
       "name": "Серебряный одноклавишный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_silver_switcher_sensor_1_sup.png",
-      "preview": "images/devices/previews/mechanism_silver_switcher_sensor_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_silver_switcher_sensor_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_silver_switcher_sensor_1.png"
     },
     {
       "id": "6",
@@ -351,8 +351,8 @@
       "name": "Серебряный двуклавишный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_silver_switcher_sensor_2_sup.png",
-      "preview": "images/devices/previews/mechanism_silver_switcher_sensor_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_silver_switcher_sensor_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_silver_switcher_sensor_2.png"
     },
     {
       "id": "7",
@@ -362,8 +362,8 @@
       "name": "Шампань одноклавишный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_champain_switcher_sensor_1_sup.png",
-      "preview": "images/devices/previews/mechanism_champain_switcher_sensor_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_champain_switcher_sensor_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_champain_switcher_sensor_1.png"
     },
     {
       "id": "8",
@@ -373,8 +373,8 @@
       "name": "Шампань двуклавишный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_champain_switcher_sensor_2_sup.png",
-      "preview": "images/devices/previews/mechanism_champain_switcher_sensor_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_champain_switcher_sensor_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_champain_switcher_sensor_2.png"
     },
     {
       "id": "9",
@@ -384,8 +384,8 @@
       "name": "Hammer белый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_hammer-white_switcher_1_sup.png",
-      "preview": "images/devices/previews/mechanism_hammer-white_switcher_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_hammer-white_switcher_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_hammer-white_switcher_1.png"
     },
     {
       "id": "10",
@@ -395,8 +395,8 @@
       "name": "Hammer черный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_hammer-black_switcher_1_sup.png",
-      "preview": "images/devices/previews/mechanism_hammer-black_switcher_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_hammer-black_switcher_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_hammer-black_switcher_1.png"
     },
     {
       "id": "11",
@@ -406,8 +406,8 @@
       "name": "Hammer серебряный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_hammer-silver_switcher_1_sup.png",
-      "preview": "images/devices/previews/mechanism_hammer-silver_switcher_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_hammer-silver_switcher_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_hammer-silver_switcher_1.png"
     },
     {
       "id": "12",
@@ -417,8 +417,8 @@
       "name": "Белый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_white_switcher_1_sup.png",
-      "preview": "images/devices/previews/mechanism_white_switcher_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_white_switcher_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_white_switcher_1.png"
     },
     {
       "id": "13",
@@ -428,8 +428,8 @@
       "name": "Слоновая кость",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_ivory_switcher_1_sup.png",
-      "preview": "images/devices/previews/mechanism_ivory_switcher_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_ivory_switcher_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_ivory_switcher_1.png"
     },
     {
       "id": "14",
@@ -439,8 +439,8 @@
       "name": "Серебряный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_silver_switcher_1_sup.png",
-      "preview": "images/devices/previews/mechanism_silver_switcher_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_silver_switcher_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_silver_switcher_1.png"
     },
     {
       "id": "15",
@@ -450,8 +450,8 @@
       "name": "Глянцевый никель",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_metallic_switcher_1_sup.png",
-      "preview": "images/devices/previews/mechanism_metallic_switcher_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_metallic_switcher_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_metallic_switcher_1.png"
     },
     {
       "id": "16",
@@ -461,8 +461,8 @@
       "name": "Бронза",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_bronze_switcher_1_sup.png",
-      "preview": "images/devices/previews/mechanism_bronze_switcher_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_bronze_switcher_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_bronze_switcher_1.png"
     },
     {
       "id": "17",
@@ -472,8 +472,8 @@
       "name": "Серебряный рифленый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/Mechanism_Switcher_ribbed_silver_sup.png",
-      "preview": "images/devices/previews/Mechanism_Switcher_ribbed_silver.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/Mechanism_Switcher_ribbed_silver_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/Mechanism_Switcher_ribbed_silver.png"
     },
     {
       "id": "18",
@@ -483,8 +483,8 @@
       "name": "Шампань рифленый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/champain-r-1-button_sup.png",
-      "preview": "images/devices/previews/champain-r-1-button.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/champain-r-1-button_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/champain-r-1-button.png"
     },
     {
       "id": "19",
@@ -494,8 +494,8 @@
       "name": "Серо-коричневый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_grey_brown_switcher_1_sup.png",
-      "preview": "images/devices/previews/mechanism_grey_brown_switcher_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_grey_brown_switcher_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_grey_brown_switcher_1.png"
     },
     {
       "id": "20",
@@ -505,8 +505,8 @@
       "name": "Черный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_black_switcher_1_sup.png",
-      "preview": "images/devices/previews/mechanism_champ_switcher_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_black_switcher_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_champ_switcher_1.png"
     },
     {
       "id": "21",
@@ -516,8 +516,8 @@
       "name": "Перламутровый рифленый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_pearl_switcher_1_sup.png",
-      "preview": "images/devices/previews/mechanism_pearl_switcher_1.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_pearl_switcher_1_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_pearl_switcher_1.png"
     },
     {
       "id": "22",
@@ -527,8 +527,8 @@
       "name": "Графит рифленый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/Mechanism_Switcher_ribbed_graphit_sup.png",
-      "preview": "images/devices/previews/Mechanism_Switcher_ribbed_graphit.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/Mechanism_Switcher_ribbed_graphit_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/Mechanism_Switcher_ribbed_graphit.png"
     },
     {
       "id": "23",
@@ -538,8 +538,8 @@
       "name": "Hammer белый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_hammer-white_switcher_2_sup.png",
-      "preview": "images/devices/previews/mechanism_hammer-white_switcher_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_hammer-white_switcher_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_hammer-white_switcher_2.png"
     },
     {
       "id": "24",
@@ -549,8 +549,8 @@
       "name": "Hammer черный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_hammer-black_switcher_2_sup.png",
-      "preview": "images/devices/previews/mechanism_hammer-black_switcher_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_hammer-black_switcher_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_hammer-black_switcher_2.png"
     },
     {
       "id": "25",
@@ -560,8 +560,8 @@
       "name": "Hammer серебряный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_hammer-silver_switcher_2_sup.png",
-      "preview": "images/devices/previews/mechanism_hammer-silver_switcher_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_hammer-silver_switcher_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_hammer-silver_switcher_2.png"
     },
     {
       "id": "26",
@@ -571,8 +571,8 @@
       "name": "Белый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_white_switcher_2_sup.png",
-      "preview": "images/devices/previews/mechanism_white_switcher_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_white_switcher_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_white_switcher_2.png"
     },
     {
       "id": "27",
@@ -582,8 +582,8 @@
       "name": "Слоновая кость",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_ivory_switcher_2_sup.png",
-      "preview": "images/devices/previews/mechanism_ivory_switcher_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_ivory_switcher_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_ivory_switcher_2.png"
     },
     {
       "id": "28",
@@ -593,8 +593,8 @@
       "name": "Серебряный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_silver_switcher_2_sup.png",
-      "preview": "images/devices/previews/mechanism_silver_switcher_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_silver_switcher_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_silver_switcher_2.png"
     },
     {
       "id": "29",
@@ -604,8 +604,8 @@
       "name": "Глянцевый никель",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_metallic_switcher_2_sup.png",
-      "preview": "images/devices/previews/mechanism_metallic_switcher_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_metallic_switcher_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_metallic_switcher_2.png"
     },
     {
       "id": "30",
@@ -615,8 +615,8 @@
       "name": "Бронза",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/bronze-2-button_sup.png",
-      "preview": "images/devices/previews/bronze-2-button.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/bronze-2-button_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/bronze-2-button.png"
     },
     {
       "id": "31",
@@ -626,8 +626,8 @@
       "name": "Серебряный рифленый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/Mechanism_Switcher_ribbed_silver_2_btn_sup.png",
-      "preview": "images/devices/previews/Mechanism_Switcher_ribbed_silver_2_btn.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/Mechanism_Switcher_ribbed_silver_2_btn_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/Mechanism_Switcher_ribbed_silver_2_btn.png"
     },
     {
       "id": "32",
@@ -637,8 +637,8 @@
       "name": "Шампань рифленый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/Mechanism_Switcher_ribbed_champain_2_btn_sup.png",
-      "preview": "images/devices/previews/Mechanism_Switcher_ribbed_champain_2_btn.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/Mechanism_Switcher_ribbed_champain_2_btn_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/Mechanism_Switcher_ribbed_champain_2_btn.png"
     },
     {
       "id": "33",
@@ -648,8 +648,8 @@
       "name": "Серо-коричневый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_grey_brown_switcher_2_sup.png",
-      "preview": "images/devices/previews/mechanism_grey_brown_switcher_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_grey_brown_switcher_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_grey_brown_switcher_2.png"
     },
     {
       "id": "34",
@@ -659,8 +659,8 @@
       "name": "Черный",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_black_switcher_2_sup.png",
-      "preview": "images/devices/previews/mechanism_black_switcher_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_black_switcher_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_black_switcher_2.png"
     },
     {
       "id": "35",
@@ -670,8 +670,8 @@
       "name": "Шампань",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_champ_switcher_2_sup.png",
-      "preview": "images/devices/previews/mechanism_champ_switcher_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_champ_switcher_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_champ_switcher_2.png"
     },
     {
       "id": "36",
@@ -681,8 +681,8 @@
       "name": "Перламутровый рифленый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/mechanism_pearl_switcher_2_sup.png",
-      "preview": "images/devices/previews/mechanism_pearl_switcher_2.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/mechanism_pearl_switcher_2_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/mechanism_pearl_switcher_2.png"
     },
     {
       "id": "37",
@@ -692,196 +692,196 @@
       "name": "Графит рифленый",
       "code": "1234567",
       "price": "000.00",
-      "image": "images/devices/pictures/Mechanism_Switcher_ribbed_graphit_2_btn_sup.png",
-      "preview": "images/devices/previews/Mechanism_Switcher_ribbed_graphit_2_btn.png"
+      "image": "https://aws.massive.ru/sew/img/devices/pictures/Mechanism_Switcher_ribbed_graphit_2_btn_sup.png",
+      "preview": "https://aws.massive.ru/sew/img/devices/previews/Mechanism_Switcher_ribbed_graphit_2_btn.png"
     }
   ],
   "backgrounds": [
     {
       "id": "1",
       "active": false,
-      "image": "images/backgrounds/bg-12.jpg",
-      "preview": "images/backgrounds/bg-12.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-12.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-12.jpg"
     },
     {
       "id": "2",
       "active": false,
-      "image": "images/backgrounds/bg-13.jpg",
-      "preview": "images/backgrounds/bg-13.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-13.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-13.jpg"
     },
     {
       "id": "3",
       "active": false,
-      "image": "images/backgrounds/bg-14.jpg",
-      "preview": "images/backgrounds/bg-14.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-14.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-14.jpg"
     },
     {
       "id": "4",
       "active": false,
-      "image": "images/backgrounds/bg-15.jpg",
-      "preview": "images/backgrounds/bg-15.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-15.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-15.jpg"
     },
     {
       "id": "5",
       "active": false,
-      "image": "images/backgrounds/bg-16.jpg",
-      "preview": "images/backgrounds/bg-16.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-16.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-16.jpg"
     },
     {
       "id": "6",
       "active": false,
-      "image": "images/backgrounds/bg-17.jpg",
-      "preview": "images/backgrounds/bg-17.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-17.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-17.jpg"
     },
     {
       "id": "7",
       "active": false,
-      "image": "images/backgrounds/bg-19.jpg",
-      "preview": "images/backgrounds/bg-19.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-19.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-19.jpg"
     },
     {
       "id": "8",
       "active": false,
-      "image": "images/backgrounds/bg-21.jpg",
-      "preview": "images/backgrounds/bg-21.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-21.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-21.jpg"
     },
     {
       "id": "9",
       "active": false,
-      "image": "images/backgrounds/bg-23.jpg",
-      "preview": "images/backgrounds/bg-23.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-23.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-23.jpg"
     },
     {
       "id": "10",
       "active": false,
-      "image": "images/backgrounds/bg-25.jpg",
-      "preview": "images/backgrounds/bg-25.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-25.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-25.jpg"
     },
     {
       "id": "11",
       "active": false,
-      "image": "images/backgrounds/bg-27.jpg",
-      "preview": "images/backgrounds/bg-27.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-27.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-27.jpg"
     },
     {
       "id": "13",
       "active": false,
-      "image": "images/backgrounds/bg-31.jpg",
-      "preview": "images/backgrounds/bg-31.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-31.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-31.jpg"
     },
     {
       "id": "14",
       "active": false,
-      "image": "images/backgrounds/bg-32.jpg",
-      "preview": "images/backgrounds/bg-32.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-32.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-32.jpg"
     },
     {
       "id": "15",
       "active": false,
-      "image": "images/backgrounds/bg-34.jpg",
-      "preview": "images/backgrounds/bg-34.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-34.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-34.jpg"
     },
     {
       "id": "16",
       "active": false,
-      "image": "images/backgrounds/bg-35.jpg",
-      "preview": "images/backgrounds/bg-35.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-35.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-35.jpg"
     },
     {
       "id": "17",
       "active": false,
-      "image": "images/backgrounds/bg-36.jpg",
-      "preview": "images/backgrounds/bg-36.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-36.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-36.jpg"
     },
     {
       "id": "18",
       "active": false,
-      "image": "images/backgrounds/bg-37.jpg",
-      "preview": "images/backgrounds/bg-37.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-37.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-37.jpg"
     },
     {
       "id": "19",
       "active": false,
-      "image": "images/backgrounds/bg-39.jpg",
-      "preview": "images/backgrounds/bg-39.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-39.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-39.jpg"
     },
     {
       "id": "20",
       "active": false,
-      "image": "images/backgrounds/bg-40.jpg",
-      "preview": "images/backgrounds/bg-40.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-40.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-40.jpg"
     },
     {
       "id": "21",
       "active": false,
-      "image": "images/backgrounds/bg-41.jpg",
-      "preview": "images/backgrounds/bg-41.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-41.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-41.jpg"
     },
     {
       "id": "22",
       "active": false,
-      "image": "images/backgrounds/bg-42.jpg",
-      "preview": "images/backgrounds/bg-42.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-42.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-42.jpg"
     },
     {
       "id": "23",
       "active": false,
-      "image": "images/backgrounds/bg-43.jpg",
-      "preview": "images/backgrounds/bg-43.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-43.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-43.jpg"
     },
     {
       "id": "24",
       "active": false,
-      "image": "images/backgrounds/bg-44.jpg",
-      "preview": "images/backgrounds/bg-44.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-44.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-44.jpg"
     },
     {
       "id": "25",
       "active": false,
-      "image": "images/backgrounds/bg-45.jpg",
-      "preview": "images/backgrounds/bg-45.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-45.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-45.jpg"
     },
     {
       "id": "26",
       "active": false,
-      "image": "images/backgrounds/bg-46.jpg",
-      "preview": "images/backgrounds/bg-46.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-46.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-46.jpg"
     },
     {
       "id": "27",
       "active": false,
-      "image": "images/backgrounds/bg-47.jpg",
-      "preview": "images/backgrounds/bg-47.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-47.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-47.jpg"
     },
     {
       "id": "28",
       "active": false,
-      "image": "images/backgrounds/bg-48.jpg",
-      "preview": "images/backgrounds/bg-48.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-48.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-48.jpg"
     },
     {
       "id": "29",
       "active": false,
-      "image": "images/backgrounds/bg-49.jpg",
-      "preview": "images/backgrounds/bg-49.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-49.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-49.jpg"
     },
     {
       "id": "30",
       "active": false,
-      "image": "images/backgrounds/bg-50.jpg",
-      "preview": "images/backgrounds/bg-50.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-50.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-50.jpg"
     },
     {
       "id": "31",
       "active": false,
-      "image": "images/backgrounds/bg-51.jpg",
-      "preview": "images/backgrounds/bg-51.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-51.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-51.jpg"
     },
     {
       "id": "32",
       "active": false,
-      "image": "images/backgrounds/bg-52.jpg",
-      "preview": "images/backgrounds/bg-52.jpg"
+      "image": "https://aws.massive.ru/sew/img/backgrounds/bg-52.jpg",
+      "preview": "https://aws.massive.ru/sew/img/backgrounds/bg-52.jpg"
     }
   ]
 }

@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-import { InitDataContractType } from './zod-data-contract'
+import { InitDataContractType } from './zod-data-contracts'
 import createAppSlice from './createAppSlice'
 import createBackgroundSlice from './createBackgroundSlice'
 
