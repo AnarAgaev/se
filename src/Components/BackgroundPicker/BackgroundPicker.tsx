@@ -92,7 +92,7 @@ const BackgroundPicker = () => {
     return (
         <div className={picker}>
             <input className="invisible" type="file" ref={pickerRef} onChange={handlePickerInputChange}
-                accept="image/*, image/jpeg, image/jpg, image/png, image/gif, image/webp" />
+                capture="user" accept="image/*, image/jpeg, image/jpg, image/png, image/gif, image/webp" />
 
             <span className={pickerMessage}>
                 { uploadingMessage }

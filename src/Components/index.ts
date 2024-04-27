@@ -9,6 +9,7 @@ import CollectionsWorkspace from './CollectionsWorkspace/CollectionsWorkspace'
 import ProjectWorkspace from './ProjectWorkspace/ProjectWorkspace'
 import HubWorkspace from './HubWorkspace/HubWorkspace'
 import BackgroundPicker from './BackgroundPicker/BackgroundPicker'
+import BackgroundList from './BackgroundList/BackgroundList'
 
 export {
     ErrorBoundary,
@@ -21,5 +22,6 @@ export {
     CollectionsWorkspace,
     ProjectWorkspace,
     HubWorkspace,
-    BackgroundPicker
+    BackgroundPicker,
+    BackgroundList
 }

@@ -1,0 +1,44 @@
+@import '../../Sass/_variables'
+
+.backgroundList
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+.caption
+    display: block
+    position: relative
+    width: 100%
+    height: auto
+    margin: 0
+    padding: 0
+
+    color: var(--font-prime)
+    font-size: 16px
+    font-weight: 700
+    line-height: 111.687% /* 17.87px */
+
+
+.list
+    display: flex
+    flex-wrap: wrap
+    gap: 10px
+    margin: 0
+    padding: 0
+
+
+.item
+    display: block
+    position: relative
+    width: calc((100% - 20px) / 3)
+    height: auto
+    aspect-ratio: 1
+
+    background: tomato
+
+    @media (min-width: $sm)
+        width: calc((100% - 30px) / 4)
+
+    @media (min-width: $md)
+        width: calc((100% - 40px) / 5)
+
