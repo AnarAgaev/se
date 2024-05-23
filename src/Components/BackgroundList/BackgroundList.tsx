@@ -1,4 +1,4 @@
-import { useId, useRef } from 'react'
+import { useId, useEffect, useState, useMemo } from 'react'
 import { z } from 'zod'
 import { BackgroundsType } from '../../Store/zod-data-contracts'
 import useStore from '../../Store'
@@ -12,18 +12,16 @@ interface Props {
 }
 
 const Picture: React.FC<Props> = (props) => {
-    const picRef = useRef(null)
+    const [clazz, setClazz] = useState('')
 
-    const setLoaded = () => {
-        if (picRef && picRef.current) {
-            const img: HTMLImageElement = picRef.current
-            img.classList.add(`${picLoaded}`)
-        }
-    }
+    useEffect(() => {
+        const img = new Image()
+        img.src = props.source
+        img.onload = () => setClazz(picLoaded)
+    }, [])
 
-    return ( <img ref={picRef}
+    return ( <img className={clazz}
         src={`${props.source}`}
-        onLoad={setLoaded}
         alt='' loading='lazy' />
     )
 }
@@ -45,11 +43,15 @@ const BackgroundList = () => {
     const backgrounds = useStore(state => state.backgrounds)
     const id = useId()
 
+    const elements = useMemo(() => {
+        return itemList(backgrounds, id)
+    }, [backgrounds, id])
+
     return (
         <div className={backgroundList}>
             <h2 className={caption}>Выберите фон:</h2>
             <ul className={list}>
-                { itemList(backgrounds, id) }
+                { elements }
             </ul>
         </div>
     )
