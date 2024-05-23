@@ -33,6 +33,7 @@ const useStore = create<BackgroundsStore & AppStore & BoundStore>()(
 
                     set({ error: null })
                 } catch (error: Error | unknown) {
+                    console.error(error)
                     set({error: error})
                 } finally {
                     set({ loading: false })

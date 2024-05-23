@@ -1,5 +1,5 @@
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
-import Calculator from './Calculator/Calculator'
+import Factory from './Factory/Factory'
 import Screen from './Screen/Screen'
 import BackgroundsWorkspace from './BackgroundsWorkspace/BackgroundsWorkspace'
 import BordersWorkspace from './BordersWorkspace/BordersWorkspace'
@@ -13,7 +13,7 @@ import BackgroundList from './BackgroundList/BackgroundList'
 
 export {
     ErrorBoundary,
-    Calculator,
+    Factory,
     Screen,
     BordersWorkspace,
     MechanicsWorkspace,

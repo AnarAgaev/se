@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Calculator, Screen } from './Components'
+import { Factory, Screen } from './Components'
 import useStore from './Store'
 import './App.sass'
 
@@ -14,7 +14,7 @@ const App = () => {
 		<section className="se-app">
 			<h1 className='se-app__caption'>Конфигуратор</h1>
 			<div className='se-app__body'>
-				<Calculator />
+				<Factory />
 				<Screen />
 			</div>
 		</section>

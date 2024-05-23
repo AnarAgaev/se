@@ -1,8 +1,5 @@
 @mixin image
     display: block
-    position: relative
-    width: auto
-    height: auto
     max-width: 100%
 
     &::before
@@ -15,3 +12,12 @@
         height: 100%
         background: var(--color-back-secondary) center no-repeat
         background-size: cover
+
+@mixin backgroundLoading()
+    background: linear-gradient(110deg, #f9f9f9 10%, #fff 20%, #f9f9f9 30%)
+    background-size: 200% 100%
+    animation: shine 1.5s linear infinite
+
+@keyframes shine
+    100%
+        background-position-x: -200%
