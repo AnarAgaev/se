@@ -1,4 +1,4 @@
-import { ReactNode, useId, useRef, FC } from 'react'
+import { useId, useRef } from 'react'
 import { z } from 'zod'
 import { BackgroundsType } from '../../Store/zod-data-contracts'
 import useStore from '../../Store'
@@ -6,9 +6,13 @@ import style from './BackgroundList.module.sass'
 
 const { backgroundList, caption, list, item, item_active, picLoaded } = style
 
-const Picture: FC = (props) => {
-    const picRef = useRef(null)
+interface Props {
+    source: string
+    active: boolean
+}
 
+const Picture: React.FC<Props> = (props) => {
+    const picRef = useRef(null)
 
     const setLoaded = () => {
         if (picRef && picRef.current) {
@@ -24,7 +28,7 @@ const Picture: FC = (props) => {
     )
 }
 
-const itemList = (backgrounds: z.infer<typeof BackgroundsType>, id: string): ReactNode[] => {
+const itemList = (backgrounds: z.infer<typeof BackgroundsType>, id: string): JSX.Element[] => {
     return backgrounds.map((el) => {
 
         const clazz = el.active
