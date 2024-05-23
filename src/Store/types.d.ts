@@ -13,7 +13,7 @@ interface BackgroundsStore {
 }
 
 type CalcTabs = 'borders' | 'mechanics' | 'backgrounds'
-type ScreenTabs = 'configurator' | 'collections' | 'project' | 'hub'
+type ViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
 
 interface AppStore {
     loading: boolean
@@ -22,6 +22,6 @@ interface AppStore {
     activeCalcTab: CalcTabs
     setActiveCalcTab: (tab: CalcTabs) => void
 
-    activeScreenTab: ScreenTabs
-    setActiveScreenTab: (tab: ScreenTabs) => void
+    activeViewportTab: ViewportTabs
+    setActiveViewportTab: (tab: ViewportTabs) => void
 }

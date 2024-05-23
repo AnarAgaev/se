@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { ErrorBoundary } from './Components'
-import App from './App.tsx'
+import { App, ErrorBoundary } from './Components'
 
 ReactDOM.createRoot(document.getElementById('seApp')!).render(
 	<React.StrictMode>

@@ -1,6 +1,7 @@
+import App from './App/App'
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 import Factory from './Factory/Factory'
-import Screen from './Screen/Screen'
+import Viewport from './Viewport/Viewport'
 import BackgroundsWorkspace from './BackgroundsWorkspace/BackgroundsWorkspace'
 import BordersWorkspace from './BordersWorkspace/BordersWorkspace'
 import MechanicsWorkspace from './MechanicsWorkspace/MechanicsWorkspace'
@@ -12,9 +13,10 @@ import BackgroundPicker from './BackgroundPicker/BackgroundPicker'
 import BackgroundList from './BackgroundList/BackgroundList'
 
 export {
+    App,
     ErrorBoundary,
     Factory,
-    Screen,
+    Viewport,
     BordersWorkspace,
     MechanicsWorkspace,
     BackgroundsWorkspace,

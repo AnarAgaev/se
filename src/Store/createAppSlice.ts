@@ -7,8 +7,8 @@ const createAppSlice: StateCreator<AppStore> = (set) => ({
     activeCalcTab: 'backgrounds',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
-    activeScreenTab: 'configurator',
-    setActiveScreenTab: (tab) => set({activeScreenTab: tab}),
+    activeViewportTab: 'configurator',
+    setActiveViewportTab: (tab) => set({activeViewportTab: tab}),
 })
 
 export default createAppSlice
