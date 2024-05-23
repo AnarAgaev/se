@@ -13,8 +13,10 @@ const App = () => {
 		requestInitData()
 	}, [requestInitData])
 
+	const clazz = `se-app ${app}`
+
 	return (
-		<section className={`se-app ${{app}}`}>
+		<section className={clazz}>
 			<h1 className={caption}>
 				Конфигуратор
 			</h1>

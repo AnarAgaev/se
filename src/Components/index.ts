@@ -11,6 +11,7 @@ import ProjectWorkspace from './ProjectWorkspace/ProjectWorkspace'
 import HubWorkspace from './HubWorkspace/HubWorkspace'
 import BackgroundPicker from './BackgroundPicker/BackgroundPicker'
 import BackgroundList from './BackgroundList/BackgroundList'
+import BackgroundItemPicture from './BackgroundItemPicture/BackgroundItemPicture'
 
 export {
     App,
@@ -25,5 +26,6 @@ export {
     ProjectWorkspace,
     HubWorkspace,
     BackgroundPicker,
-    BackgroundList
+    BackgroundList,
+    BackgroundItemPicture
 }
