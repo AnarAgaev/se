@@ -1,17 +1,20 @@
 import { useRef, useState, ChangeEvent } from 'react'
+import useStore from '../../Store'
+import { BackgroundsType } from '../../Store/zod-data-contracts'
 import style from './BackgroundPicker.module.sass'
 import loader from './loader.svg'
 
 const { picker, pickerMessage, pickerButton, pickerErrorMessage, pickerLoading } = style
 
 const BackgroundPicker = () => {
+    const addUploadedBackground = useStore(state => state.addUploadedBackground)
 
     const [uploadMessage, setUploadMessage] = useState<null | undefined>(null);
     const [selectedFile, setSelectedFile] = useState<null | File>(null)
 
     const pickerRef = useRef<HTMLInputElement>(null)
 
-    const validTypes = [ 'image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp' ]
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp']
 
     const handlePickerInputChange = async (event: ChangeEvent<HTMLInputElement>) => {
 
@@ -46,23 +49,16 @@ const BackgroundPicker = () => {
             if (!res.ok) console.error('Failed to upload background image to', uploadLink)
 
             // const data = await res.json()
-            const data = InitDataContractType.parse(await res.json())
-
-            console.log(data);
+            const data = BackgroundsType.parse(await res.json())
 
             // Push data background store list
-            // get().setInitBackgroundsData(data.backgrounds)
-
-            // // Ответ от сервера json объект
-            // {
-            //     fileName: 'имя_загруженного файла'
-            //     filePath: 'путь_по_которому_загрузили_файл'
-            // }
+            addUploadedBackground(data)
 
         } catch (error: Error | unknown) {
-            // setUploadMessage(undefined)
+            console.error(error);
+            setUploadMessage(undefined)
         } finally {
-            // setSelectedFile(null)
+            setSelectedFile(null)
         }
     }
 

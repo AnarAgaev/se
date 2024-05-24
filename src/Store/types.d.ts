@@ -8,8 +8,9 @@ interface BoundStore {
 }
 
 interface BackgroundsStore {
-    backgrounds: z.infer<typeof BackgroundsType>
-    setInitBackgroundsData: (data: z.infer<typeof BackgroundsType>) => void
+    backgrounds: z.infer<typeof BackgroundsTypeList>
+    setInitBackgroundsData: (data: z.infer<typeof BackgroundsTypeList>) => void
+    addUploadedBackground: (background: z.infer<typeof BackgroundsType>) => void
 }
 
 type CalcTabs = 'borders' | 'mechanics' | 'backgrounds'
