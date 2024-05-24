@@ -16,9 +16,8 @@ const itemList = (
             : `${item}`
 
         return <li key={`${id}-${el.id}`} className={`${clazz}`}>
-                    <BackgroundItemPicture
-                        source={el.preview}
-                        active={el.active} />
+                    <BackgroundItemPicture source={el.preview}
+                        id={el.id} active={el.active} />
                 </li>
     })
 

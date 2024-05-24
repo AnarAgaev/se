@@ -12,6 +12,8 @@ import HubWorkspace from './HubWorkspace/HubWorkspace'
 import BackgroundPicker from './BackgroundPicker/BackgroundPicker'
 import BackgroundList from './BackgroundList/BackgroundList'
 import BackgroundItemPicture from './BackgroundItemPicture/BackgroundItemPicture'
+import Sketch from './Sketch/Sketch'
+import SketchBackground from './SketchBackground/SketchBackground'
 
 export {
     App,
@@ -27,5 +29,7 @@ export {
     HubWorkspace,
     BackgroundPicker,
     BackgroundList,
-    BackgroundItemPicture
+    BackgroundItemPicture,
+    Sketch,
+    SketchBackground
 }

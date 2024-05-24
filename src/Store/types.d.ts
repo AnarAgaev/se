@@ -11,6 +11,7 @@ interface BackgroundsStore {
     backgrounds: z.infer<typeof BackgroundsTypeList>
     setInitBackgroundsData: (data: z.infer<typeof BackgroundsTypeList>) => void
     addUploadedBackground: (background: z.infer<typeof BackgroundsType>) => void
+    setActiveBackground: (backgroundId: string | number) => void
 }
 
 type CalcTabs = 'borders' | 'mechanics' | 'backgrounds'

@@ -1,8 +1,11 @@
+import { Sketch } from '../../Components'
+import style from './ConfiguratorWorkspace.module.sass'
+
 const ConfiguratorWorkspace = () => {
     return (
-        <>
-            Configurator
-        </>
+        <div className={style.configuratorWorkspace}>
+            <Sketch />
+        </div>
     )
 }
 

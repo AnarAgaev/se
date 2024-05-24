@@ -16,6 +16,12 @@ const createBackgroundSlice: StateCreator<BackgroundsStore> = (set, get) => ({
 
         backgrounds.unshift(background)
         set({ backgrounds: backgrounds })
+    },
+
+    setActiveBackground: (backgroundId) => {
+        const backgrounds = [...get().backgrounds]
+        backgrounds.forEach(el => el.active = el.id === backgroundId)
+        set({ backgrounds: backgrounds })
     }
 })
 

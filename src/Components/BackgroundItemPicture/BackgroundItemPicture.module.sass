@@ -10,7 +10,10 @@
     object-fit: cover
     opacity: 0
     transition: var(--base-transition)
+    user-select: all
 
+    &_active
+        pointer-events: none
 
-.loaded
-    opacity: 1
+    &_loaded
+        opacity: 1

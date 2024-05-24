@@ -13,4 +13,8 @@ const InitDataContractType = z.object({
     backgrounds: BackgroundsTypeList
 })
 
-export { BackgroundsType, BackgroundsTypeList, InitDataContractType }
+export {
+    BackgroundsType,
+    BackgroundsTypeList,
+    InitDataContractType
+}
