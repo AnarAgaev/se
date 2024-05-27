@@ -14,6 +14,7 @@ import BackgroundList from './BackgroundList/BackgroundList'
 import BackgroundItemPicture from './BackgroundItemPicture/BackgroundItemPicture'
 import Sketch from './Sketch/Sketch'
 import SketchBackground from './SketchBackground/SketchBackground'
+import ColorSelector from './ColorSelector/ColorSelector'
 
 export {
     App,
@@ -31,5 +32,6 @@ export {
     BackgroundList,
     BackgroundItemPicture,
     Sketch,
-    SketchBackground
+    SketchBackground,
+    ColorSelector
 }

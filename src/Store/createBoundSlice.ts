@@ -3,12 +3,14 @@ import { devtools } from 'zustand/middleware'
 import { InitDataContractType } from './zod-data-contracts'
 import createAppSlice from './createAppSlice'
 import createBackgroundSlice from './createBackgroundSlice'
+import createBordersSlice from './createBordersSlice'
 
-const useStore = create<BackgroundsStore & AppStore & BoundStore>()(
+const useStore = create<BordersStore & BackgroundsStore & AppStore & BoundStore>()(
     devtools(
         (set, get, ...args) => ({
             ...createAppSlice(set, get, ...args),
             ...createBackgroundSlice(set, get, ...args),
+            ...createBordersSlice(set, get, ...args),
 
             requestInitData: async () => {
 
@@ -28,8 +30,14 @@ const useStore = create<BackgroundsStore & AppStore & BoundStore>()(
 
                     const data = InitDataContractType.parse(await res.json())
 
+                    console.log(data);
+
+
                     // Push data to appropriate stores
                     get().setInitBackgroundsData(data.backgrounds)
+                    get().setAppColors(data.colors)
+                    get().setInitBordersData(data.borders)
+
 
                     set({ error: null })
                 } catch (error: Error | unknown) {
