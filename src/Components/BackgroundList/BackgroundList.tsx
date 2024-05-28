@@ -25,9 +25,10 @@ const BackgroundList = () => {
     const backgrounds = useStore(state => state.backgrounds)
     const id = useId()
 
-    const elements = useMemo(() => {
-        return itemList(backgrounds, id)
-    }, [backgrounds, id])
+    const elements = useMemo(
+        () => itemList(backgrounds, id),
+        [backgrounds, id]
+    )
 
     return (
         <div className={backgroundList}>

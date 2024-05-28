@@ -10,7 +10,12 @@ const BackgroundsType = z.object({
 const BackgroundsTypeList = z.array(BackgroundsType)
 
 const BorderType = z.object({
-    color: z.string()
+    id: z.union([z.string(), z.number()]),
+    name: z.string(),
+    price: z.union([z.string(), z.number()]),
+    color: z.string(),
+    image: z.string(),
+    preview: z.string(),
 })
 
 const BordersTypeList = z.array(BorderType)
