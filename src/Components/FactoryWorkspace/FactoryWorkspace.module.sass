@@ -1,0 +1,52 @@
+@import '../../Sass/_variables'
+@import '../../Sass/_mixins'
+
+.body
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+    @media (min-width: 768px)
+        flex-direction: row
+        height: 100%
+
+
+.actions
+    display: flex
+    flex-direction: column
+    gap: 20px
+    width: 100%
+
+    @media (min-width: 768px)
+        width: calc(50% - 10px)
+
+
+.list
+    display: flex
+    flex-direction: column
+    gap: 20px
+    width: 100%
+
+    @media (min-width: 768px)
+        width: calc(50% - 10px)
+
+
+.title
+    display: block
+    position: relative
+    width: 100%
+    height: auto
+    margin: 0
+    padding: 0
+
+    color: var(--color-prime)
+    font-size: 16px
+    font-style: normal
+    font-weight: 700
+    line-height: 111.687% /* 17.87px */
+
+
+.selectors
+    display: flex
+    flex-direction: column
+    gap: 10px

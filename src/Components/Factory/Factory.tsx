@@ -1,5 +1,5 @@
 import useStore from '../../Store'
-import { BordersWorkspace, MechanicsWorkspace, BackgroundsWorkspace } from '../../Components'
+import { BordersWorkspace, DevicesWorkspace, BackgroundsWorkspace } from '../../Components'
 import style from './Factory.module.sass'
 
 const { factoryBody, tabsList, tabsItem, tabsItem_active } = style
@@ -21,8 +21,8 @@ const Factory = () => {
                     onClick={() => setActiveTab('borders')}>
                         Рамки
                 </li>
-                <li className={getTabClassName('mechanics', activeTab)}
-                    onClick={() => setActiveTab('mechanics')}>
+                <li className={getTabClassName('devices', activeTab)}
+                    onClick={() => setActiveTab('devices')}>
                         Механизмы
                 </li>
                 <li className={getTabClassName('backgrounds', activeTab)}
@@ -31,7 +31,7 @@ const Factory = () => {
                 </li>
             </ul>
             { activeTab === 'borders' && <BordersWorkspace /> }
-            { activeTab === 'mechanics' && <MechanicsWorkspace /> }
+            { activeTab === 'devices' && <DevicesWorkspace /> }
             { activeTab === 'backgrounds' && <BackgroundsWorkspace /> }
         </div>
     )

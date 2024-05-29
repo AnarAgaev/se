@@ -1,10 +1,11 @@
 import App from './App/App'
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 import Factory from './Factory/Factory'
+import FactoryWorkspace from './FactoryWorkspace/FactoryWorkspace'
 import Viewport from './Viewport/Viewport'
 import BackgroundsWorkspace from './BackgroundsWorkspace/BackgroundsWorkspace'
 import BordersWorkspace from './BordersWorkspace/BordersWorkspace'
-import MechanicsWorkspace from './MechanicsWorkspace/MechanicsWorkspace'
+import DevicesWorkspace from './DevicesWorkspace/DevicesWorkspace'
 import ConfiguratorWorkspace from './ConfiguratorWorkspace/ConfiguratorWorkspace'
 import CollectionsWorkspace from './CollectionsWorkspace/CollectionsWorkspace'
 import ProjectWorkspace from './ProjectWorkspace/ProjectWorkspace'
@@ -16,14 +17,17 @@ import Sketch from './Sketch/Sketch'
 import SketchBackground from './SketchBackground/SketchBackground'
 import ColorSelector from './ColorSelector/ColorSelector'
 import ItemsList from './ItemsList/ItemsList'
+import Select from './Select/Select'
 
 export {
     App,
     ErrorBoundary,
+    Select,
     Factory,
+    FactoryWorkspace,
     Viewport,
     BordersWorkspace,
-    MechanicsWorkspace,
+    DevicesWorkspace,
     BackgroundsWorkspace,
     ConfiguratorWorkspace,
     CollectionsWorkspace,

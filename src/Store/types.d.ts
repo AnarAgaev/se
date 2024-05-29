@@ -27,6 +27,15 @@ interface BordersStore {
 }
 
 
+// Types for Devices
+interface DevicesStore {
+    devices: z.infer<typeof DevicesTypeList>
+    setInitDevicesData: (data: z.infer<typeof DevicesTypeList>) => void
+    getDevicesColorsList: () => Array<string>
+    getDevicesList: () => Array<z.infer<typeof DeviceType>>
+}
+
+
 // Types for all app
 interface AppStore {
     loading: boolean
@@ -43,5 +52,5 @@ interface AppStore {
 }
 
 
-type CalcTabs = 'borders' | 'mechanics' | 'backgrounds'
+type CalcTabs = 'borders' | 'devices' | 'backgrounds'
 type ViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'

@@ -4,13 +4,15 @@ import { InitDataContractType } from './zod-data-contracts'
 import createAppSlice from './createAppSlice'
 import createBackgroundSlice from './createBackgroundSlice'
 import createBordersSlice from './createBordersSlice'
+import createDevicesSlice from './createDevicesSlice'
 
-const useStore = create<BordersStore & BackgroundsStore & AppStore & BoundStore>()(
+const useStore = create<DevicesStore & BordersStore & BackgroundsStore & AppStore & BoundStore>()(
     devtools(
         (set, get, ...args) => ({
             ...createAppSlice(set, get, ...args),
             ...createBackgroundSlice(set, get, ...args),
             ...createBordersSlice(set, get, ...args),
+            ...createDevicesSlice(set, get, ...args),
 
             requestInitData: async () => {
 
@@ -30,6 +32,8 @@ const useStore = create<BordersStore & BackgroundsStore & AppStore & BoundStore>
 
                     const data = InitDataContractType.parse(await res.json())
 
+
+                    // const data = await res.json()
                     console.log(data);
 
 
@@ -37,6 +41,7 @@ const useStore = create<BordersStore & BackgroundsStore & AppStore & BoundStore>
                     get().setInitBackgroundsData(data.backgrounds)
                     get().setAppColors(data.colors)
                     get().setInitBordersData(data.borders)
+                    get().setInitDevicesData(data.devices)
 
 
                     set({ error: null })
