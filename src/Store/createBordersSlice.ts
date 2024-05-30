@@ -14,6 +14,10 @@ const createBordersSlice: StateCreator<BordersStore> = (set, get) => ({
         const borders = [...get().borders]
         return borders
     },
+
+    getBordersBrandsList: () => {
+
+    },
 })
 
 export default createBordersSlice

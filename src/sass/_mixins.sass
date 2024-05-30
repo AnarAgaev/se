@@ -13,10 +13,24 @@
         background: var(--color-back-secondary) center no-repeat
         background-size: cover
 
-@mixin backgroundLoading()
+
+@mixin verticalCustomScrollbar($border-radius)
+    &::-webkit-scrollbar
+        background: var(--color-scroll-track)
+        height: 4px
+        width: 4px
+        border-radius: $border-radius
+
+    &::-webkit-scrollbar-thumb
+        background: var(--color-scroll-thumb)
+        border-radius: $border-radius
+
+
+@mixin backgroundLoading
     background: linear-gradient(110deg, #f9f9f9 10%, #fff 20%, #f9f9f9 30%)
     background-size: 200% 100%
     animation: shine 1.5s linear infinite
+
 
 @keyframes shine
     100%

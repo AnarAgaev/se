@@ -11,7 +11,7 @@ const createAppSlice: StateCreator<AppStore> = (set) => ({
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
     activeViewportTab: 'configurator',
-    setActiveViewportTab: (tab) => set({activeViewportTab: tab}),
+    setActiveViewportTab: (tab) => set({activeViewportTab: tab})
 })
 
 export default createAppSlice

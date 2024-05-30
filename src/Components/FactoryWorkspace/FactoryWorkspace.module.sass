@@ -50,3 +50,8 @@
     display: flex
     flex-direction: column
     gap: 10px
+
+    & > div
+        @for $i from 10 through 1
+            &:nth-child(#{$i})
+                z-index: calc(10 - $i)

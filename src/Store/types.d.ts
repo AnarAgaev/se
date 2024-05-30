@@ -24,6 +24,7 @@ interface BordersStore {
     setInitBordersData: (data: z.infer<typeof BordersTypeList>) => void
     getBordersColorsList: () => Array<string>
     getBordersList: () => Array<z.infer<typeof BorderType>>
+    getBordersBrandsList: () => void
 }
 
 

@@ -5,9 +5,8 @@ interface Props {
     title: string
 }
 
-const { select, select_dropped, body, caption, arrow } = style
+const { select, select_dropped, value, caption, arrow, body, collapse, inner } = style
 
-// Select Component
 const Select: React.FC<Props> = ({title}) => {
     const [dropped, toggleDropped] = useState(false)
 
@@ -33,13 +32,21 @@ const Select: React.FC<Props> = ({title}) => {
             'click', selectClickHandler)
     }, [])
 
-
     return (
         <div ref={selectRef} className={clazz}>
-            <p className={body} onClick={() => toggleDropped(!dropped)}>
+            <p className={value} onClick={() => toggleDropped(!dropped)}>
                 <span className={caption}>{title}</span>
                 <i className={arrow}></i>
             </p>
+            <div className={body}>
+                <div className={collapse}>
+                    <ul className={inner}>
+                        <li>Item</li>
+                        <li>Item</li>
+                        <li>Item</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     )
 }
