@@ -24,7 +24,7 @@ interface BordersStore {
     setInitBordersData: (data: z.infer<typeof BordersTypeList>) => void
     getBordersColorsList: () => Array<string>
     getBordersList: () => Array<z.infer<typeof BorderType>>
-    getBordersBrandsList: () => void
+    getBordersBrandsList: () => string[]
 }
 
 
@@ -50,6 +50,9 @@ interface AppStore {
 
     activeViewportTab: ViewportTabs
     setActiveViewportTab: (tab: ViewportTabs) => void
+
+    vendors: Record<string, z.infer<typeof VendorType>>
+    setAppVendors: (vendors: Record<string, z.infer<typeof VendorType>>) => void
 }
 
 

@@ -5,18 +5,19 @@ const createBordersSlice: StateCreator<BordersStore> = (set, get) => ({
 
     setInitBordersData: (data) => set({ borders: data }),
 
-    getBordersColorsList: () => {
-        const borders = [...get().borders]
-        return [...new Set(borders.map(border => border.color))]
-    },
-
     getBordersList: () => {
         const borders = [...get().borders]
         return borders
     },
 
-    getBordersBrandsList: () => {
+    getBordersColorsList: () => {
+        const borders = [...get().borders]
+        return [...new Set(borders.map(border => border.color))]
+    },
 
+    getBordersBrandsList: () => {
+        const borders = [...get().borders]
+        return [...new Set(borders.map(border => border.vendor))]
     },
 })
 

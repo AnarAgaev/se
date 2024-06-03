@@ -18,6 +18,7 @@ import SketchBackground from './SketchBackground/SketchBackground'
 import ColorSelector from './ColorSelector/ColorSelector'
 import ItemsList from './ItemsList/ItemsList'
 import Select from './Select/Select'
+import OptionBrand from './OptionBrand/OptionBrand'
 
 export {
     App,
@@ -40,4 +41,5 @@ export {
     SketchBackground,
     ColorSelector,
     ItemsList,
+    OptionBrand,
 }

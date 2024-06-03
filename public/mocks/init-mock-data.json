@@ -24,7 +24,7 @@
       "image": "img/borders/f-elite-ivory.png",
       "preview": "img/borders/f-elite-ivory.png",
       "color": "gray",
-      "vendor": "Systeme Electric"
+      "vendor": "era"
     },
     {
       "id": "3",
@@ -76,7 +76,7 @@
       "image": "img/borders/f-favorit-white.png",
       "preview": "img/borders/f-favorit-white.png",
       "color": "silver",
-      "vendor": "Systeme Electric"
+      "vendor": "Legrand"
     },
     {
       "id": "7",
@@ -89,7 +89,7 @@
       "image": "img/borders/f-favorit-white-matt.png",
       "preview": "img/borders/f-favorit-white-matt.png",
       "color": "gold",
-      "vendor": "Systeme Electric"
+      "vendor": "Legrand"
     },
     {
       "id": "8",
@@ -180,7 +180,7 @@
       "image": "img/borders/f-favorit-black.png",
       "preview": "img/borders/f-favorit-black.png",
       "color": "gray",
-      "vendor": "Systeme Electric"
+      "vendor": "era"
     },
     {
       "id": "15",
@@ -219,7 +219,7 @@
       "image": "img/borders/f-acrylic-black.png",
       "preview": "img/borders/f-acrylic-black.png",
       "color": "black",
-      "vendor": "Systeme Electric"
+      "vendor": "Legrand"
     },
     {
       "id": "18",
@@ -271,7 +271,7 @@
       "image": "img/borders/f-platinum-shampan.png",
       "preview": "img/borders/f-platinum-shampan.png",
       "color": "white",
-      "vendor": "Systeme Electric"
+      "vendor": "Legrand"
     },
     {
       "id": "22",
@@ -310,7 +310,7 @@
       "image": "img/borders/f-aluminium-shampan.png",
       "preview": "img/borders/f-aluminium-shampan.png",
       "color": "silver",
-      "vendor": "Systeme Electric"
+      "vendor": "era"
     },
     {
       "id": "25",
@@ -336,7 +336,7 @@
       "image": "img/borders/f-aluminium-black.png",
       "preview": "img/borders/f-aluminium-black.png",
       "color": "gray",
-      "vendor": "Systeme Electric"
+      "vendor": "Legrand"
     }
   ],
   "devices": [
@@ -1028,7 +1028,17 @@
     "Systeme Electric": {
       "name": "Systeme Electric",
       "title": "Systeme Electric",
-      "image": "img/logos/systeme-electric.svg"
+      "image": "img/logos/system-electric.svg"
+    },
+    "era": {
+      "name": "era",
+      "title": "ЭРА",
+      "image": "img/logos/logo_era.svg"
+    },
+    "Legrand": {
+      "name": "Legrand",
+      "title": "Legrand",
+      "image": "img/logos/legrand-logo.png"
     }
   }
 }

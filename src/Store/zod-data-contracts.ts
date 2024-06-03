@@ -20,6 +20,7 @@ const BorderType = z.object({
     color: z.string(),
     image: z.string(),
     preview: z.string(),
+    vendor: z.string(),
 })
 
 const BordersTypeList = z.array(BorderType)
@@ -38,6 +39,19 @@ const DeviceType = z.object({
 const DevicesTypeList = z.array(DeviceType)
 
 
+// Vendors
+const VendorType = z.object({
+    name: z.string(),
+    title: z.string(),
+    image: z.string()
+})
+
+const VendorTypeList = z.record(
+    z.string(),
+    VendorType
+)
+
+
 // Initial data
 const InitDataContractType = z.object({
     borders: BordersTypeList,
@@ -46,7 +60,9 @@ const InitDataContractType = z.object({
 
     devices: DevicesTypeList,
 
-    colors: z.record(z.string(), z.string())
+    colors: z.record(z.string(), z.string()),
+
+    vendors: VendorTypeList
 })
 
 
@@ -60,5 +76,7 @@ export {
     DeviceType,
     DevicesTypeList,
 
-    InitDataContractType
+    InitDataContractType,
+
+    VendorTypeList
 }

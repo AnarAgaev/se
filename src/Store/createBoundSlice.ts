@@ -42,6 +42,7 @@ const useStore = create<DevicesStore & BordersStore & BackgroundsStore & AppStor
                     get().setAppColors(data.colors)
                     get().setInitBordersData(data.borders)
                     get().setInitDevicesData(data.devices)
+                    get().setAppVendors(data.vendors)
 
 
                     set({ error: null })

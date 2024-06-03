@@ -48,7 +48,9 @@ const BackgroundPicker = () => {
 
             if (!res.ok) console.error('Failed to upload background image to', uploadLink)
 
-            // const data = await res.json()
+            // const data = await res.text()
+            // console.table(data);
+
             const data = BackgroundsType.parse(await res.json())
 
             // Push data background store list

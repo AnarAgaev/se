@@ -1,13 +1,14 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, ReactNode } from 'react'
 import style from './Select.module.sass'
 
 interface Props {
     title: string
+    children: ReactNode
 }
 
 const { select, select_dropped, value, caption, arrow, body, collapse, inner } = style
 
-const Select: React.FC<Props> = ({title}) => {
+const Select: React.FC<Props> = ({title, children}) => {
     const [dropped, toggleDropped] = useState(false)
 
     const selectRef = useRef<HTMLDivElement | null>(null)
@@ -22,8 +23,10 @@ const Select: React.FC<Props> = ({title}) => {
 
             const isChild = selectRef.current
                 && selectRef.current.contains(target)
-
             if (!isChild) toggleDropped(false)
+
+            const isOption = target.nodeName === 'LI'
+            if (isOption) toggleDropped(false)
         }
 
         document.addEventListener('click', selectClickHandler)
@@ -41,9 +44,7 @@ const Select: React.FC<Props> = ({title}) => {
             <div className={body}>
                 <div className={collapse}>
                     <ul className={inner}>
-                        <li>Item</li>
-                        <li>Item</li>
-                        <li>Item</li>
+                        { children }
                     </ul>
                 </div>
             </div>
