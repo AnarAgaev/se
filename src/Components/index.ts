@@ -19,6 +19,8 @@ import ColorSelector from './ColorSelector/ColorSelector'
 import ItemsList from './ItemsList/ItemsList'
 import Select from './Select/Select'
 import OptionBrand from './OptionBrand/OptionBrand'
+import OptionCollection from './OptionCollection/OptionCollection'
+import OptionMaterial from './OptionMaterial/OptionMaterial'
 
 export {
     App,
@@ -42,4 +44,6 @@ export {
     ColorSelector,
     ItemsList,
     OptionBrand,
+    OptionCollection,
+    OptionMaterial
 }

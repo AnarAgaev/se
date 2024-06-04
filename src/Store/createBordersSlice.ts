@@ -17,8 +17,19 @@ const createBordersSlice: StateCreator<BordersStore> = (set, get) => ({
 
     getBordersBrandsList: () => {
         const borders = [...get().borders]
-        return [...new Set(borders.map(border => border.vendor))]
+        return [...new Set(borders.map(border => border.vendor))].sort()
     },
+
+    getBordersCollectionsList: () => {
+        const borders = [...get().borders]
+        const collections = [...new Set(borders.map(border => border.collection))].sort()
+        return collections.filter(collection => !!collection)
+    },
+
+    getBordersMaterialsList: () => {
+        const borders = [...get().borders]
+        return [...new Set(borders.map(border => border.material))].sort()
+    }
 })
 
 export default createBordersSlice

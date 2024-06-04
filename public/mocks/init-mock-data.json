@@ -4,339 +4,365 @@
       "id": "1",
       "active": false,
       "type": "Стеклянные рамки",
-      "collection": "Elite",
+      "collection": "AtlasDesign",
       "name": "Графит",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/4690389180675_werkel.png",
       "preview": "img/borders/4690389180675_werkel.png",
       "color": "gold",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Дерево"
     },
     {
       "id": "2",
       "active": false,
       "type": "Стеклянные рамки",
-      "collection": "Elite",
-      "name": "Aйвори",
+      "collection": "Elegance",
+      "name": "",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-elite-ivory.png",
       "preview": "img/borders/f-elite-ivory.png",
       "color": "gray",
-      "vendor": "era"
+      "vendor": "era",
+      "material": "Дерево"
     },
     {
       "id": "3",
       "active": false,
       "type": "Стеклянные рамки",
-      "collection": "Elite",
+      "collection": "AtlasDesign",
       "name": "Дымчатый",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-elite-smoke.png",
       "preview": "img/borders/f-elite-smoke.png",
       "color": "white",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Камень"
     },
     {
       "id": "4",
       "active": false,
       "type": "Стеклянные рамки",
-      "collection": "Favorit",
+      "collection": "СЕРИЯ 12",
       "name": "Молочный",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-favorit-molochnyy.png",
       "preview": "img/borders/f-favorit-molochnyy.png",
       "color": "copper",
-      "vendor": "Systeme Electric"
+      "vendor": "era",
+      "material": "Пластик"
     },
     {
       "id": "5",
       "active": false,
       "type": "Стеклянные рамки",
-      "collection": "Favorit",
+      "collection": "Glossa",
       "name": "Латте",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-favorit-latte.png",
       "preview": "img/borders/f-favorit-latte.png",
       "color": "black",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "6",
       "active": false,
       "type": "Стеклянные рамки",
-      "collection": "Favorit",
+      "collection": "Inspiria",
       "name": "Белый",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-favorit-white.png",
       "preview": "img/borders/f-favorit-white.png",
       "color": "silver",
-      "vendor": "Legrand"
+      "vendor": "Legrand",
+      "material": "Пластик"
     },
     {
       "id": "7",
       "active": false,
       "type": "Стеклянные рамки",
-      "collection": "Favorit",
+      "collection": "Inspiria",
       "name": "Белый матовый",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-favorit-white-matt.png",
       "preview": "img/borders/f-favorit-white-matt.png",
       "color": "gold",
-      "vendor": "Legrand"
+      "vendor": "Legrand",
+      "material": "Пластик"
     },
     {
       "id": "8",
       "active": false,
-      "type": "Стеклянные рамки",
-      "collection": "Favorit",
+      "type": "AtlasDesign",
+      "collection": "Wessen",
       "name": "Бронзовый",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-favorit-bronze.png",
       "preview": "img/borders/f-favorit-bronze.png",
       "color": "gray",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Металл"
     },
     {
       "id": "9",
       "active": false,
-      "type": "Стеклянные рамки",
-      "collection": "Favorit",
+      "type": "AtlasDesign",
+      "collection": "Wessen",
       "name": "Дымчатый",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-favorit-smoke.png",
       "preview": "img/borders/f-favorit-smoke.png",
       "color": "white",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "10",
       "active": false,
-      "type": "Стеклянные рамки",
-      "collection": "Favorit",
+      "type": "AtlasDesign",
+      "collection": "Elegance",
       "name": "Шампань",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-favorit-champain.png",
       "preview": "img/borders/f-favorit-champain.png",
       "color": "copper",
-      "vendor": "Systeme Electric"
+      "vendor": "era",
+      "material": "Металл"
     },
     {
       "id": "11",
       "active": false,
       "type": "Стеклянные рамки",
-      "collection": "Favorit",
+      "collection": "Wessen",
       "name": "Мокко",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-favorit-mokko.png",
       "preview": "img/borders/f-favorit-mokko.png",
       "color": "black",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "12",
       "active": false,
       "type": "Стеклянные рамки",
-      "collection": "Favorit",
+      "collection": "СЕРИЯ 12",
       "name": "Натуральное стекло",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-favorit-natural-glass.png",
       "preview": "img/borders/f-favorit-natural-glass.png",
       "color": "silver",
-      "vendor": "Systeme Electric"
+      "vendor": "era",
+      "material": "Пластик"
     },
     {
       "id": "13",
       "active": false,
       "type": "Стеклянные рамки",
-      "collection": "Favorit",
+      "collection": "Wessen",
       "name": "Серый",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-favorit-gray.png",
       "preview": "img/borders/f-favorit-gray.png",
       "color": "gold",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "14",
       "active": false,
       "type": "Стеклянные рамки",
-      "collection": "Favorit",
+      "collection": "СЕРИЯ 12",
       "name": "Черный",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-favorit-black.png",
       "preview": "img/borders/f-favorit-black.png",
       "color": "gray",
-      "vendor": "era"
+      "vendor": "era",
+      "material": "Пластик"
     },
     {
       "id": "15",
       "active": false,
-      "type": "Стеклянные рамки",
-      "collection": "Diamant",
+      "type": "AtlasDesign",
+      "collection": "Wessen",
       "name": "Черный",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-diamant-black.png",
       "preview": "img/borders/f-diamant-black.png",
       "color": "white",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Стекло"
     },
     {
       "id": "16",
       "active": false,
       "type": "Акриловые рамки",
-      "collection": "Acrylic",
+      "collection": "Wessen",
       "name": "Белый",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-acrylic-white.png",
       "preview": "img/borders/f-acrylic-white.png",
       "color": "copper",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "17",
       "active": false,
       "type": "Акриловые рамки",
-      "collection": "Acrylic",
+      "collection": "Etika",
       "name": "Черный",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-acrylic-black.png",
       "preview": "img/borders/f-acrylic-black.png",
       "color": "black",
-      "vendor": "Legrand"
+      "vendor": "Legrand",
+      "material": "Пластик"
     },
     {
       "id": "18",
       "active": false,
       "type": "Акриловые рамки",
-      "collection": "Acrylic",
+      "collection": "AtlasDesign",
       "name": "Графит",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-acrylic-graphite.png",
       "preview": "img/borders/f-acrylic-graphite.png",
       "color": "silver",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Дерево"
     },
     {
       "id": "19",
       "active": false,
       "type": "Акриловые рамки",
-      "collection": "Acrylic",
+      "collection": "Elegance",
       "name": "Айвори",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-acrylic-ivory.png",
       "preview": "img/borders/f-acrylic-ivory.png",
       "color": "gold",
-      "vendor": "Systeme Electric"
+      "vendor": "era",
+      "material": "Пластик"
     },
     {
       "id": "20",
       "active": false,
       "type": "Металлические рамки",
-      "collection": "Platinum",
+      "collection": "AtlasDesign",
       "name": "Алюминий",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-platinum-alyuminiy.png",
       "preview": "img/borders/f-platinum-alyuminiy.png",
       "color": "gray",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Камень"
     },
     {
       "id": "21",
       "active": false,
       "type": "Металлические рамки",
-      "collection": "Platinum",
+      "collection": "Quteo",
       "name": "Шампань",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-platinum-shampan.png",
       "preview": "img/borders/f-platinum-shampan.png",
       "color": "white",
-      "vendor": "Legrand"
+      "vendor": "Legrand",
+      "material": "Пластик"
     },
     {
       "id": "22",
       "active": false,
       "type": "Металлические рамки",
-      "collection": "Platinum",
+      "collection": "СЕРИЯ 12",
       "name": "Черный алюминий",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-platinum-chernyy-alyuminiy.png",
       "preview": "img/borders/f-platinum-chernyy-alyuminiy.png",
       "color": "copper",
-      "vendor": "Systeme Electric"
+      "vendor": "era",
+      "material": "Пластик"
     },
     {
       "id": "23",
       "active": false,
       "type": "Металлические рамки",
-      "collection": "Аluminium",
+      "collection": "Wessen",
       "name": "Алюминий",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-aluminium-silver.png",
       "preview": "img/borders/f-aluminium-silver.png",
       "color": "black",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "24",
       "active": false,
       "type": "Металлические рамки",
-      "collection": "Аluminium",
+      "collection": "Elegance",
       "name": "Шампань алюминий",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-aluminium-shampan.png",
       "preview": "img/borders/f-aluminium-shampan.png",
       "color": "silver",
-      "vendor": "era"
+      "vendor": "era",
+      "material": "Стекло"
     },
     {
       "id": "25",
       "active": false,
       "type": "Металлические рамки",
-      "collection": "Аluminium",
+      "collection": "AtlasDesign",
       "name": "Коричневый алюминий",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-aluminium-brown.png",
       "preview": "img/borders/f-aluminium-brown.png",
       "color": "gold",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Металл"
     },
     {
       "id": "26",
       "active": false,
       "type": "Металлические рамки",
-      "collection": "Аluminium",
+      "collection": "Inspiria",
       "name": "Черный алюминий",
       "code": "1234567",
       "price": "100.00",
       "image": "img/borders/f-aluminium-black.png",
       "preview": "img/borders/f-aluminium-black.png",
       "color": "gray",
-      "vendor": "Legrand"
+      "vendor": "Legrand",
+      "material": "Пластик"
     }
   ],
   "devices": [
@@ -344,482 +370,519 @@
       "id": "1",
       "active": false,
       "type": "Выключатели сенсорные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Белый одноклавишный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_white_switcher_sensor_1_sup.png",
       "preview": "img/devices/previews/mechanism_white_switcher_sensor_1.png",
       "color": "white",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "2",
       "active": false,
       "type": "Выключатели сенсорные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Белый двуклавишный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_white_switcher_sensor_2_sup.png",
       "preview": "img/devices/previews/mechanism_white_switcher_sensor_2.png",
       "color": "copper",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "3",
       "active": false,
       "type": "Выключатели сенсорные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Черный одноклавишный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_black_switcher_sensor_1_sup.png",
       "preview": "img/devices/previews/mechanism_black_switcher_sensor_1.png",
       "color": "black",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "4",
       "active": false,
       "type": "Выключатели сенсорные",
-      "collection": "",
+      "collection": "Glossa",
       "name": "Черный двуклавишный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_black_switcher_sensor_2_sup.png",
       "preview": "img/devices/previews/mechanism_black_switcher_sensor_2.png",
       "color": "silver",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "5",
       "active": false,
       "type": "Выключатели сенсорные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Серебряный одноклавишный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_silver_switcher_sensor_1_sup.png",
       "preview": "img/devices/previews/mechanism_silver_switcher_sensor_1.png",
       "color": "gold",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "6",
       "active": false,
       "type": "Выключатели сенсорные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Серебряный двуклавишный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_silver_switcher_sensor_2_sup.png",
       "preview": "img/devices/previews/mechanism_silver_switcher_sensor_2.png",
       "color": "gray",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "7",
       "active": false,
       "type": "Выключатели сенсорные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Шампань одноклавишный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_champain_switcher_sensor_1_sup.png",
       "preview": "img/devices/previews/mechanism_champain_switcher_sensor_1.png",
       "color": "white",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "8",
       "active": false,
       "type": "Выключатели сенсорные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Шампань двуклавишный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_champain_switcher_sensor_2_sup.png",
       "preview": "img/devices/previews/mechanism_champain_switcher_sensor_2.png",
       "color": "copper",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "9",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Hammer белый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-white_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-white_switcher_1.png",
       "color": "black",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "10",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Hammer черный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-black_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-black_switcher_1.png",
       "color": "silver",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Стекло"
     },
     {
       "id": "11",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "Glossa",
       "name": "Hammer серебряный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-silver_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-silver_switcher_1.png",
       "color": "copper",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "12",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "Glossa",
       "name": "Белый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_white_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_white_switcher_1.png",
       "color": "gold",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "13",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Слоновая кость",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_ivory_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_ivory_switcher_1.png",
       "color": "gray",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Дерево"
     },
     {
       "id": "14",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Серебряный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_silver_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_silver_switcher_1.png",
       "color": "white",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "15",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Глянцевый никель",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_metallic_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_metallic_switcher_1.png",
       "color": "copper",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Камень"
     },
     {
       "id": "16",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Бронза",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_bronze_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_bronze_switcher_1.png",
       "color": "black",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Металл"
     },
     {
       "id": "17",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Серебряный рифленый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/Mechanism_Switcher_ribbed_silver_sup.png",
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_silver.png",
       "color": "silver",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "18",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "Glossa",
       "name": "Шампань рифленый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/champain-r-1-button_sup.png",
       "preview": "img/devices/previews/champain-r-1-button.png",
       "color": "gold",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "19",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Серо-коричневый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_grey_brown_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_grey_brown_switcher_1.png",
       "color": "gray",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "20",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Черный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_black_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_champ_switcher_1.png",
       "color": "white",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "21",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "Glossa",
       "name": "Перламутровый рифленый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_pearl_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_pearl_switcher_1.png",
       "color": "copper",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "22",
       "active": false,
       "type": "Выключатели одноклавишные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Графит рифленый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/Mechanism_Switcher_ribbed_graphit_sup.png",
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_graphit.png",
       "color": "black",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "23",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Hammer белый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-white_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-white_switcher_2.png",
       "color": "silver",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Стекло"
     },
     {
       "id": "24",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Hammer черный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-black_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-black_switcher_2.png",
       "color": "gold",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Дерево"
     },
     {
       "id": "25",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "Glossa",
       "name": "Hammer серебряный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-silver_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-silver_switcher_2.png",
       "color": "gray",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "26",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Белый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_white_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_white_switcher_2.png",
       "color": "white",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Камень"
     },
     {
       "id": "27",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Слоновая кость",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_ivory_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_ivory_switcher_2.png",
       "color": "copper",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Металл"
     },
     {
       "id": "28",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Серебряный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_silver_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_silver_switcher_2.png",
       "color": "black",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "29",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Глянцевый никель",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_metallic_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_metallic_switcher_2.png",
       "color": "silver",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Стекло"
     },
     {
       "id": "30",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Бронза",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/bronze-2-button_sup.png",
       "preview": "img/devices/previews/bronze-2-button.png",
       "color": "gold",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "31",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "Glossa",
       "name": "Серебряный рифленый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/Mechanism_Switcher_ribbed_silver_2_btn_sup.png",
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_silver_2_btn.png",
       "color": "gray",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "32",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Шампань рифленый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/Mechanism_Switcher_ribbed_champain_2_btn_sup.png",
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_champain_2_btn.png",
       "color": "white",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Дерево"
     },
     {
       "id": "33",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Серо-коричневый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_grey_brown_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_grey_brown_switcher_2.png",
       "color": "gray",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Камень"
     },
     {
       "id": "34",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "Glossa",
       "name": "Черный",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_black_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_black_switcher_2.png",
       "color": "copper",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "35",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Шампань",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_champ_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_champ_switcher_2.png",
       "color": "black",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Металл"
     },
     {
       "id": "36",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "Wessen",
       "name": "Перламутровый рифленый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_pearl_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_pearl_switcher_2.png",
       "color": "silver",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     },
     {
       "id": "37",
       "active": false,
       "type": "Выключатели двухклавишные",
-      "collection": "",
+      "collection": "AtlasDesign",
       "name": "Графит рифленый",
       "code": "1234567",
       "price": "000.00",
       "image": "img/devices/pictures/Mechanism_Switcher_ribbed_graphit_2_btn_sup.png",
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_graphit_2_btn.png",
       "color": "gold",
-      "vendor": "Systeme Electric"
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
     }
   ],
   "backgrounds": [
@@ -1028,17 +1091,31 @@
     "Systeme Electric": {
       "name": "Systeme Electric",
       "title": "Systeme Electric",
-      "image": "img/logos/system-electric.svg"
+      "image": "img/logos/system-electric.svg",
+      "collections": {
+        "AtlasDesign": ["Дерево", "Камень", "Металл", "Пластик", "Стекло"],
+        "Glossa": ["Пластик"],
+        "Wessen": ["Металл", "Пластик", "Стекло"]
+      }
     },
     "era": {
       "name": "era",
       "title": "ЭРА",
-      "image": "img/logos/logo_era.svg"
+      "image": "img/logos/logo_era.svg",
+      "collections": {
+        "Elegance": ["Дерево", "Металл", "Пластик", "Стекло"],
+        "СЕРИЯ 12": ["Пластик"]
+      }
     },
     "Legrand": {
       "name": "Legrand",
       "title": "Legrand",
-      "image": "img/logos/legrand-logo.png"
+      "image": "img/logos/legrand-logo.png",
+      "collections": {
+        "Inspiria": ["Пластик"],
+        "Etika": ["Пластик"],
+        "Quteo": ["Пластик"]
+      }
     }
   }
 }

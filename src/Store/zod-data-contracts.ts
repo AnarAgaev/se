@@ -21,6 +21,8 @@ const BorderType = z.object({
     image: z.string(),
     preview: z.string(),
     vendor: z.string(),
+    collection: z.string(),
+    material: z.string()
 })
 
 const BordersTypeList = z.array(BorderType)
@@ -34,16 +36,28 @@ const DeviceType = z.object({
     color: z.string(),
     image: z.string(),
     preview: z.string(),
+    vendor: z.string(),
+    collection: z.string(),
+    material: z.string()
 })
 
 const DevicesTypeList = z.array(DeviceType)
 
 
 // Vendors
+const CollectionType = z.union([
+    z.null(),
+    z.record(
+        z.string(),
+        z.array(z.string())
+    )
+])
+
 const VendorType = z.object({
     name: z.string(),
     title: z.string(),
-    image: z.string()
+    image: z.string(),
+    collections: CollectionType
 })
 
 const VendorTypeList = z.record(
