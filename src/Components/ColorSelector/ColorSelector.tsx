@@ -34,7 +34,7 @@ const getColorsList = (
         list.push(
             <li key={`${id}-${clr}`} className={item}>
                 <label className={clazz} title={colorsDic[clr]}>
-                    <input className="invisible" type="radio" value={clr} name="color" />
+                    <input className="invisible" type="radio" name={`color-${id}`} />
                 </label>
             </li>
         )

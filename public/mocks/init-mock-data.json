@@ -378,7 +378,8 @@
       "preview": "img/devices/previews/mechanism_white_switcher_sensor_1.png",
       "color": "white",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Выключатели"
     },
     {
       "id": "2",
@@ -392,7 +393,8 @@
       "preview": "img/devices/previews/mechanism_white_switcher_sensor_2.png",
       "color": "copper",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Силовые розетки"
     },
     {
       "id": "3",
@@ -406,7 +408,8 @@
       "preview": "img/devices/previews/mechanism_black_switcher_sensor_1.png",
       "color": "black",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "4",
@@ -420,7 +423,8 @@
       "preview": "img/devices/previews/mechanism_black_switcher_sensor_2.png",
       "color": "silver",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Силовые розетки"
     },
     {
       "id": "5",
@@ -434,7 +438,8 @@
       "preview": "img/devices/previews/mechanism_silver_switcher_sensor_1.png",
       "color": "gold",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Выключатели"
     },
     {
       "id": "6",
@@ -448,7 +453,8 @@
       "preview": "img/devices/previews/mechanism_silver_switcher_sensor_2.png",
       "color": "gray",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "7",
@@ -462,7 +468,8 @@
       "preview": "img/devices/previews/mechanism_champain_switcher_sensor_1.png",
       "color": "white",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Силовые розетки"
     },
     {
       "id": "8",
@@ -476,7 +483,8 @@
       "preview": "img/devices/previews/mechanism_champain_switcher_sensor_2.png",
       "color": "copper",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Выключатели"
     },
     {
       "id": "9",
@@ -490,7 +498,8 @@
       "preview": "img/devices/previews/mechanism_hammer-white_switcher_1.png",
       "color": "black",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Выключатели спец назначения"
     },
     {
       "id": "10",
@@ -504,7 +513,8 @@
       "preview": "img/devices/previews/mechanism_hammer-black_switcher_1.png",
       "color": "silver",
       "vendor": "Systeme Electric",
-      "material": "Стекло"
+      "material": "Стекло",
+      "function": "Выключатели"
     },
     {
       "id": "11",
@@ -518,7 +528,8 @@
       "preview": "img/devices/previews/mechanism_hammer-silver_switcher_1.png",
       "color": "copper",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Силовые розетки"
     },
     {
       "id": "12",
@@ -532,7 +543,8 @@
       "preview": "img/devices/previews/mechanism_white_switcher_1.png",
       "color": "gold",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Диммеры, датчики, терморегуляторы"
     },
     {
       "id": "13",
@@ -546,7 +558,8 @@
       "preview": "img/devices/previews/mechanism_ivory_switcher_1.png",
       "color": "gray",
       "vendor": "Systeme Electric",
-      "material": "Дерево"
+      "material": "Дерево",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "14",
@@ -560,7 +573,8 @@
       "preview": "img/devices/previews/mechanism_silver_switcher_1.png",
       "color": "white",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Силовые розетки"
     },
     {
       "id": "15",
@@ -574,7 +588,8 @@
       "preview": "img/devices/previews/mechanism_metallic_switcher_1.png",
       "color": "copper",
       "vendor": "Systeme Electric",
-      "material": "Камень"
+      "material": "Камень",
+      "function": "Выключатели спец назначения"
     },
     {
       "id": "16",
@@ -588,7 +603,8 @@
       "preview": "img/devices/previews/mechanism_bronze_switcher_1.png",
       "color": "black",
       "vendor": "Systeme Electric",
-      "material": "Металл"
+      "material": "Металл",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "17",
@@ -602,7 +618,8 @@
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_silver.png",
       "color": "silver",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Силовые розетки"
     },
     {
       "id": "18",
@@ -616,7 +633,8 @@
       "preview": "img/devices/previews/champain-r-1-button.png",
       "color": "gold",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Выключатели"
     },
     {
       "id": "19",
@@ -630,7 +648,8 @@
       "preview": "img/devices/previews/mechanism_grey_brown_switcher_1.png",
       "color": "gray",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "20",
@@ -644,7 +663,8 @@
       "preview": "img/devices/previews/mechanism_champ_switcher_1.png",
       "color": "white",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "21",
@@ -658,7 +678,8 @@
       "preview": "img/devices/previews/mechanism_pearl_switcher_1.png",
       "color": "copper",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Силовые розетки"
     },
     {
       "id": "22",
@@ -672,7 +693,8 @@
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_graphit.png",
       "color": "black",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "23",
@@ -686,7 +708,8 @@
       "preview": "img/devices/previews/mechanism_hammer-white_switcher_2.png",
       "color": "silver",
       "vendor": "Systeme Electric",
-      "material": "Стекло"
+      "material": "Стекло",
+      "function": "Силовые розетки"
     },
     {
       "id": "24",
@@ -700,7 +723,8 @@
       "preview": "img/devices/previews/mechanism_hammer-black_switcher_2.png",
       "color": "gold",
       "vendor": "Systeme Electric",
-      "material": "Дерево"
+      "material": "Дерево",
+      "function": "Выключатели"
     },
     {
       "id": "25",
@@ -714,7 +738,8 @@
       "preview": "img/devices/previews/mechanism_hammer-silver_switcher_2.png",
       "color": "gray",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Выключатели спец назначения"
     },
     {
       "id": "26",
@@ -728,7 +753,8 @@
       "preview": "img/devices/previews/mechanism_white_switcher_2.png",
       "color": "white",
       "vendor": "Systeme Electric",
-      "material": "Камень"
+      "material": "Камень",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "27",
@@ -742,7 +768,8 @@
       "preview": "img/devices/previews/mechanism_ivory_switcher_2.png",
       "color": "copper",
       "vendor": "Systeme Electric",
-      "material": "Металл"
+      "material": "Металл",
+      "function": "Силовые розетки"
     },
     {
       "id": "28",
@@ -756,7 +783,8 @@
       "preview": "img/devices/previews/mechanism_silver_switcher_2.png",
       "color": "black",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "29",
@@ -770,7 +798,8 @@
       "preview": "img/devices/previews/mechanism_metallic_switcher_2.png",
       "color": "silver",
       "vendor": "Systeme Electric",
-      "material": "Стекло"
+      "material": "Стекло",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "30",
@@ -784,7 +813,8 @@
       "preview": "img/devices/previews/bronze-2-button.png",
       "color": "gold",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Силовые розетки"
     },
     {
       "id": "31",
@@ -798,7 +828,8 @@
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_silver_2_btn.png",
       "color": "gray",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Диммеры, датчики, терморегуляторы"
     },
     {
       "id": "32",
@@ -812,7 +843,8 @@
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_champain_2_btn.png",
       "color": "white",
       "vendor": "Systeme Electric",
-      "material": "Дерево"
+      "material": "Дерево",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "33",
@@ -826,7 +858,8 @@
       "preview": "img/devices/previews/mechanism_grey_brown_switcher_2.png",
       "color": "gray",
       "vendor": "Systeme Electric",
-      "material": "Камень"
+      "material": "Камень",
+      "function": "Выключатели спец назначения"
     },
     {
       "id": "34",
@@ -840,7 +873,8 @@
       "preview": "img/devices/previews/mechanism_black_switcher_2.png",
       "color": "copper",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Силовые розетки"
     },
     {
       "id": "35",
@@ -854,7 +888,8 @@
       "preview": "img/devices/previews/mechanism_champ_switcher_2.png",
       "color": "black",
       "vendor": "Systeme Electric",
-      "material": "Металл"
+      "material": "Металл",
+      "function": "Диммеры, датчики, терморегуляторы"
     },
     {
       "id": "36",
@@ -868,7 +903,8 @@
       "preview": "img/devices/previews/mechanism_pearl_switcher_2.png",
       "color": "silver",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB"
     },
     {
       "id": "37",
@@ -882,7 +918,8 @@
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_graphit_2_btn.png",
       "color": "gold",
       "vendor": "Systeme Electric",
-      "material": "Пластик"
+      "material": "Пластик",
+      "function": "Выключатели спец назначения"
     }
   ],
   "backgrounds": [

@@ -1,16 +1,33 @@
+import { useState, FC } from 'react'
 import style from './OptionBrand.module.sass'
 
-const { option, picture, text} = style
+interface Props {
+    img: string
+    caption: string
+    name: string
+}
 
-const OptionBrand = (props: {img: string, caption: string}) => {
+const { option, picture, text } = style
+
+const OptionBrand: FC<Props> = ({ img, caption, name}) => {
+    const [isChecked, setChecked] = useState(false)
+    const handleChange = () => setChecked(true)
+
     return (
-        <li>
-            <div className={option}>
-                <span className={picture}>
-                    <img src={props.img} alt={props.caption} />
-                </span>
-                <mark className={text}>{props.caption}</mark>
-            </div>
+        <li className='closing'>
+            <label className={option}>
+                <input
+                    className='invisible'
+                    type='radio'
+                    name={name}
+                    checked={isChecked}
+                    onChange={handleChange} />
+                <span></span>
+                <em className={picture}>
+                    <img src={img} alt={caption} />
+                </em>
+                <mark className={text}>{caption}</mark>
+            </label>
         </li>
     )
 }

@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import style from './OptionMaterial.module.sass'
+import style from './OptionFunction.module.sass'
 
 const { option, text } = style
 
-const OptionMaterial = (props: {caption: string}) => {
+const OptionFunction = (props: {caption: string}) => {
     const [isChecked, setChecked] = useState(false)
     const handleChange = () => setChecked(isChecked ? false : true)
 
@@ -11,8 +11,8 @@ const OptionMaterial = (props: {caption: string}) => {
         <li>
             <label className={option}>
                 <input
-                    type='checkbox'
                     className='invisible'
+                    type='checkbox'
                     checked={isChecked}
                     onChange={handleChange} />
                 <span></span>
@@ -22,4 +22,4 @@ const OptionMaterial = (props: {caption: string}) => {
     )
 }
 
-export default OptionMaterial
+export default OptionFunction

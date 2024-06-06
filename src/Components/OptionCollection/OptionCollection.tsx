@@ -1,13 +1,29 @@
+import { useState, FC } from 'react'
 import style from './OptionCollection.module.sass'
 
-const { option, text} = style
+interface Props {
+    caption: string
+    name: string
+}
 
-const OptionCollection = (props: {caption: string}) => {
+const { option, text } = style
+
+const OptionCollection: FC<Props> = ({ caption, name }) => {
+    const [isChecked, setChecked] = useState(false)
+    const handleChange = () => setChecked(true)
+
     return (
-        <li>
-            <div className={option}>
-                <mark className={text}>{props.caption}</mark>
-            </div>
+        <li className='closing'>
+            <label className={option}>
+                <input
+                    className='invisible'
+                    type='radio'
+                    name={name}
+                    checked={isChecked}
+                    onChange={handleChange} />
+                <span></span>
+                <mark className={text}>{caption}</mark>
+            </label>
         </li>
     )
 }

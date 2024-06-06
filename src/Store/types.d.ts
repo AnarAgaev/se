@@ -37,6 +37,11 @@ interface DevicesStore {
     setInitDevicesData: (data: z.infer<typeof DevicesTypeList>) => void
     getDevicesColorsList: () => Array<string>
     getDevicesList: () => Array<z.infer<typeof DeviceType>>
+
+    getDevicesBrandsList: () => string[]
+    getDevicesCollectionsList: () => string[]
+    getDevicesMaterialsList: () => string[]
+    getDevicesFunctionsList: () => string[]
 }
 
 

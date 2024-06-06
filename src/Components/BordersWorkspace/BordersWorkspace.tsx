@@ -1,4 +1,4 @@
-import { useMemo, useId } from 'react'
+import { useMemo, useId, FC } from 'react'
 import { z } from 'zod'
 import useStore from '../../Store'
 import { VendorTypeList } from '../../Store/zod-data-contracts'
@@ -6,91 +6,97 @@ import { VendorTypeList } from '../../Store/zod-data-contracts'
 import { FactoryWorkspace, ColorSelector, Select,
     OptionBrand, OptionCollection, OptionMaterial } from '../../Components'
 
-const getBrandOptionsList = (
+const getBrandsOptionsList = (
     brandsList: string[],
     vendors: z.infer<typeof VendorTypeList>,
-    key: string): JSX.Element[] => {
+    key: string
+): JSX.Element[] => {
 
-        const elementsList: JSX.Element[] = []
+    const elementsList: JSX.Element[] = []
 
-        brandsList.forEach(brand => {
-            for (let prop in vendors) {
-                if (prop.toLocaleLowerCase() === brand.toLocaleLowerCase()) {
-                    elementsList.push(
-                        <OptionBrand
-                            key={`${key}-${vendors[prop].name}`}
-                            img={vendors[prop].image}
-                            caption={vendors[prop].title} />
-                    )
-                }
+    brandsList.forEach(brand => {
+        for (let prop in vendors) {
+            if (prop.toLocaleLowerCase() === brand.toLocaleLowerCase()) {
+                elementsList.push(
+                    <OptionBrand
+                        key={`${key}-${vendors[prop].name}`}
+                        name={`brand-${key}`}
+                        img={vendors[prop].image}
+                        caption={vendors[prop].title} />
+                )
             }
-        })
+        }
+    })
 
     return elementsList
 }
 
 const getCollectionsOptionsList = (
     collectionsList: string[],
-    key: string): JSX.Element[] => {
+    key: string
+): JSX.Element[] => {
 
-        const elementsList: JSX.Element[] = []
+    const elementsList: JSX.Element[] = []
 
-        collectionsList.forEach(collectionName => {
-            elementsList.push(
-                <OptionCollection
-                    key={`${key}-${collectionName}`}
-                    caption={collectionName} />
-            )
-        })
+    collectionsList.forEach(collectionName => {
+        elementsList.push(
+            <OptionCollection
+                key={`${key}-${collectionName}`}
+                name={`collection-${key}`}
+                caption={collectionName} />
+        )
+    })
 
     return elementsList
 }
 
 const getMaterialsOptionsList = (
-    collectionsList: string[],
-    key: string): JSX.Element[] => {
+    materialsList: string[],
+    key: string
+): JSX.Element[] => {
 
-        const elementsList: JSX.Element[] = []
+    const elementsList: JSX.Element[] = []
 
-        collectionsList.forEach(collectionName => {
-            elementsList.push(
-                <OptionMaterial
-                    key={`${key}-${collectionName}`}
-                    caption={collectionName} />
-            )
-        })
+    materialsList.forEach(materialName => {
+        elementsList.push(
+            <OptionMaterial
+                key={`${key}-${materialName}`}
+                caption={materialName} />
+        )
+    })
 
     return elementsList
 }
 
-const BordersWorkspace = () => {
+const BordersWorkspace: FC = () => {
+    const key = useId()
+    const vendors = useStore(state => state.vendors)
+
     const colorsList = useStore(state => state.getBordersColorsList())
     const brandsList = useStore(state => state.getBordersBrandsList())
     const collectionsList = useStore(state => state.getBordersCollectionsList())
     const materialsList = useStore(state => state.getBordersMaterialsList())
-    const vendors = useStore(state => state.vendors)
-    const key = useId()
 
-    const brandsOptions = useMemo(
-        () => getBrandOptionsList(brandsList, vendors, key),
+    const bordersBrandsOptions = useMemo(
+        () => getBrandsOptionsList(brandsList, vendors, key),
         [brandsList, vendors, key]
     )
 
-    const collectionsOptions = useMemo(
+    const bordersCollectionsOptions = useMemo(
         () => getCollectionsOptionsList(collectionsList, key),
         [collectionsList, key]
     )
 
-    const materialsOptions = useMemo(
+    const bordersMaterialsOptions = useMemo(
         () => getMaterialsOptionsList(materialsList, key),
         [materialsList, key]
     )
 
     return (
         <FactoryWorkspace>
-            <Select title="Бренд">{brandsOptions}</Select>
-            <Select title="Коллекцию">{collectionsOptions}</Select>
-            <Select title="Материал рамки">{materialsOptions}</Select>
+            <Select title="Бренд">{bordersBrandsOptions}</Select>
+            <Select title="Коллекцию">{bordersCollectionsOptions}</Select>
+            <Select title="Материал рамки">{bordersMaterialsOptions}</Select>
             <ColorSelector caption="Цвет рамки" colors={colorsList} />
         </FactoryWorkspace>
     )

@@ -21,6 +21,7 @@ import Select from './Select/Select'
 import OptionBrand from './OptionBrand/OptionBrand'
 import OptionCollection from './OptionCollection/OptionCollection'
 import OptionMaterial from './OptionMaterial/OptionMaterial'
+import OptionFunction from './OptionFunction/OptionFunction'
 
 export {
     App,
@@ -45,5 +46,6 @@ export {
     ItemsList,
     OptionBrand,
     OptionCollection,
-    OptionMaterial
+    OptionMaterial,
+    OptionFunction
 }

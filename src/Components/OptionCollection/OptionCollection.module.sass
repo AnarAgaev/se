@@ -1,7 +1,6 @@
 @import '../../Sass/_variables'
 @import '../../Sass/_mixins'
 
-
 .option
     display: flex
     gap: 10px
@@ -9,7 +8,26 @@
     position: relative
     width: 100%
     height: 100%
-    pointer-events: none
+    cursor: pointer
+
+    &:has(:checked)
+        cursor: default
+
+    input
+        &:checked + span
+            opacity: 1
+
+    span
+        display: block
+        position: absolute
+        z-index: -1
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: var(--color-element-hover)
+        transition: var(--base-transition)
+        opacity: 0
 
 
 .text

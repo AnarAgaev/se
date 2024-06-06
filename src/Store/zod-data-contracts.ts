@@ -38,7 +38,8 @@ const DeviceType = z.object({
     preview: z.string(),
     vendor: z.string(),
     collection: z.string(),
-    material: z.string()
+    material: z.string(),
+    function: z.string()
 })
 
 const DevicesTypeList = z.array(DeviceType)

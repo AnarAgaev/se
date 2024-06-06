@@ -3,11 +3,10 @@ import { StateCreator  } from 'zustand'
 const createBordersSlice: StateCreator<BordersStore> = (set, get) => ({
     borders: [],
 
-    setInitBordersData: (data) => set({ borders: data }),
+    setInitBordersData: (payload) => set({ borders: payload }),
 
     getBordersList: () => {
-        const borders = [...get().borders]
-        return borders
+        return [...get().borders]
     },
 
     getBordersColorsList: () => {
