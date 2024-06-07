@@ -4,7 +4,7 @@ import useStore from '../../Store'
 import { VendorTypeList } from '../../Store/zod-data-contracts'
 
 import { FactoryWorkspace, ColorSelector, Select, OptionFunction,
-    OptionBrand, OptionCollection, OptionMaterial } from '../../Components'
+    OptionBrand, OptionCollection, OptionMaterial, FunctionalitySelectsList } from '../../Components'
 
 const getBrandOptionsList = (
     brandsList: string[],
@@ -79,6 +79,7 @@ const getFunctionsOptionsList = (
         elementsList.push(
             <OptionFunction
                 key={`${key}-${functionName}`}
+                name={`function-${key}`}
                 caption={functionName} />
         )
     })
@@ -122,6 +123,7 @@ const DevicesWorkspace = () => {
             <Select title="Коллекцию">{devicesCollectionsOptions}</Select>
             <Select title="Материал рамки">{devicesMaterialsOptions}</Select>
             <Select title="Тип функции">{devicesFunctionsOptions}</Select>
+            <FunctionalitySelectsList />
             <ColorSelector caption="Цвет изделия" colors={colorsList} />
         </FactoryWorkspace>
     )

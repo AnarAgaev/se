@@ -374,18 +374,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_white_switcher_sensor_1_sup.png",
       "preview": "img/devices/previews/mechanism_white_switcher_sensor_1.png",
-      "color": "white",
-      "material": "Пластик",
-      "function": "Выключатели",
+
+      "type": "Выключатели сенсорные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели сенсорные",
+      "material": "Пластик",
+      "function": "Выключатели",
+      "color": "white",
 
-      "device-type": "Выключатель",
-      "number-of-keys": 1,
-      "backlight": "Да",
-      "with-moisture-protection": "IP44-46"
+      "deviceType": "переключатель",
+      "keysCount": 4,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "2",
@@ -395,13 +401,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_white_switcher_sensor_2_sup.png",
       "preview": "img/devices/previews/mechanism_white_switcher_sensor_2.png",
-      "color": "copper",
-      "material": "Пластик",
-      "function": "Силовые розетки",
+
+      "type": "Выключатели сенсорные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели сенсорные"
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "copper",
+
+      "deviceType": "выключатель кнопочный",
+      "keysCount": 5,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 2
     },
     {
       "id": "3",
@@ -411,13 +428,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_black_switcher_sensor_1_sup.png",
       "preview": "img/devices/previews/mechanism_black_switcher_sensor_1.png",
-      "color": "black",
-      "material": "Пластик",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели сенсорные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели сенсорные"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "black",
+
+      "deviceType": "диммер",
+      "keysCount": 1,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "4",
@@ -427,13 +455,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_black_switcher_sensor_2_sup.png",
       "preview": "img/devices/previews/mechanism_black_switcher_sensor_2.png",
-      "color": "silver",
-      "material": "Пластик",
-      "function": "Силовые розетки",
+
+      "type": "Выключатели сенсорные",
 
       "vendor": "Systeme Electric",
       "collection": "Glossa",
-      "type": "Выключатели сенсорные"
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "silver",
+
+      "deviceType": "переключатель",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "5",
@@ -443,13 +482,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_silver_switcher_sensor_1_sup.png",
       "preview": "img/devices/previews/mechanism_silver_switcher_sensor_1.png",
-      "color": "gold",
-      "material": "Пластик",
-      "function": "Выключатели",
+
+      "type": "Выключатели сенсорные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели сенсорные"
+      "material": "Пластик",
+      "function": "Выключатели",
+      "color": "gold",
+
+      "deviceType": "выключатель",
+      "keysCount": 2,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "6",
@@ -459,13 +509,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_silver_switcher_sensor_2_sup.png",
       "preview": "img/devices/previews/mechanism_silver_switcher_sensor_2.png",
-      "color": "gray",
-      "material": "Пластик",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели сенсорные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели сенсорные"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "gray",
+
+      "deviceType": "переключатель",
+      "keysCount": 5,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 2
     },
     {
       "id": "7",
@@ -475,13 +536,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_champain_switcher_sensor_1_sup.png",
       "preview": "img/devices/previews/mechanism_champain_switcher_sensor_1.png",
-      "color": "white",
-      "material": "Пластик",
-      "function": "Силовые розетки",
+
+      "type": "Выключатели сенсорные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели сенсорные"
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "white",
+
+      "deviceType": "переключатель",
+      "keysCount": 3,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 2
     },
     {
       "id": "8",
@@ -491,13 +563,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_champain_switcher_sensor_2_sup.png",
       "preview": "img/devices/previews/mechanism_champain_switcher_sensor_2.png",
-      "color": "copper",
-      "material": "Пластик",
-      "function": "Выключатели",
+
+      "type": "Выключатели сенсорные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели сенсорные"
+      "material": "Пластик",
+      "function": "Выключатели",
+      "color": "copper",
+
+      "deviceType": "термостат",
+      "keysCount": 6,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "9",
@@ -507,13 +590,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-white_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-white_switcher_1.png",
-      "color": "black",
-      "material": "Пластик",
-      "function": "Выключатели спец назначения",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели одноклавишные"
+      "material": "Пластик",
+      "function": "Выключатели спец назначения",
+      "color": "black",
+
+      "deviceType": "термостат",
+      "keysCount": 2,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "10",
@@ -523,13 +617,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-black_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-black_switcher_1.png",
-      "color": "silver",
-      "material": "Стекло",
-      "function": "Выключатели",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели одноклавишные"
+      "material": "Стекло",
+      "function": "Выключатели",
+      "color": "silver",
+
+      "deviceType": "диммер",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "11",
@@ -539,13 +644,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-silver_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-silver_switcher_1.png",
-      "color": "copper",
-      "material": "Пластик",
-      "function": "Силовые розетки",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Glossa",
-      "type": "Выключатели одноклавишные"
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "copper",
+
+      "deviceType": "выключатель кнопочный",
+      "keysCount": 1,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "12",
@@ -555,13 +671,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_white_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_white_switcher_1.png",
-      "color": "gold",
-      "material": "Пластик",
-      "function": "Диммеры, датчики, терморегуляторы",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Glossa",
-      "type": "Выключатели одноклавишные"
+      "material": "Пластик",
+      "function": "Диммеры, датчики, терморегуляторы",
+      "color": "gold",
+
+      "deviceType": "радиоточка",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 2
     },
     {
       "id": "13",
@@ -571,13 +698,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_ivory_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_ivory_switcher_1.png",
-      "color": "gray",
-      "material": "Дерево",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели одноклавишные"
+      "material": "Дерево",
+      "function": "Зарядные устройства USB",
+      "color": "gray",
+
+      "deviceType": "для жалюзи",
+      "keysCount": 1,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 2
     },
     {
       "id": "14",
@@ -587,13 +725,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_silver_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_silver_switcher_1.png",
-      "color": "white",
-      "material": "Пластик",
-      "function": "Силовые розетки",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели одноклавишные"
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "white",
+
+      "deviceType": "радиоточка",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "15",
@@ -603,13 +752,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_metallic_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_metallic_switcher_1.png",
-      "color": "copper",
-      "material": "Камень",
-      "function": "Выключатели спец назначения",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели одноклавишные"
+      "material": "Камень",
+      "function": "Выключатели спец назначения",
+      "color": "copper",
+
+      "deviceType": "переключатель",
+      "keysCount": 2,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 2
     },
     {
       "id": "16",
@@ -619,13 +779,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_bronze_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_bronze_switcher_1.png",
-      "color": "black",
-      "material": "Металл",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели одноклавишные"
+      "material": "Металл",
+      "function": "Зарядные устройства USB",
+      "color": "black",
+
+      "deviceType": "для жалюзи",
+      "keysCount": 5,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "17",
@@ -635,13 +806,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/Mechanism_Switcher_ribbed_silver_sup.png",
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_silver.png",
-      "color": "silver",
-      "material": "Пластик",
-      "function": "Силовые розетки",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели одноклавишные"
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "silver",
+
+      "deviceType": "выключатель",
+      "keysCount": 6,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "18",
@@ -651,13 +833,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/champain-r-1-button_sup.png",
       "preview": "img/devices/previews/champain-r-1-button.png",
-      "color": "gold",
-      "material": "Пластик",
-      "function": "Выключатели",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Glossa",
-      "type": "Выключатели одноклавишные"
+      "material": "Пластик",
+      "function": "Выключатели",
+      "color": "gold",
+
+      "deviceType": "переключатель",
+      "keysCount": 5,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "19",
@@ -667,13 +860,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_grey_brown_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_grey_brown_switcher_1.png",
-      "color": "gray",
-      "material": "Пластик",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели одноклавишные"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "gray",
+
+      "deviceType": "термостат",
+      "keysCount": 3,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "20",
@@ -683,13 +887,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_black_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_champ_switcher_1.png",
-      "color": "white",
-      "material": "Пластик",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели одноклавишные"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "white",
+
+      "deviceType": "переключатель перекрёстный",
+      "keysCount": 6,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "21",
@@ -699,13 +914,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_pearl_switcher_1_sup.png",
       "preview": "img/devices/previews/mechanism_pearl_switcher_1.png",
-      "color": "copper",
-      "material": "Пластик",
-      "function": "Силовые розетки",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Glossa",
-      "type": "Выключатели одноклавишные"
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "copper",
+
+      "deviceType": "переключатель перекрёстный",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 2
     },
     {
       "id": "22",
@@ -715,13 +941,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/Mechanism_Switcher_ribbed_graphit_sup.png",
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_graphit.png",
-      "color": "black",
-      "material": "Пластик",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели одноклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели одноклавишные"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "black",
+
+      "deviceType": "переключатель",
+      "keysCount": 2,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 2
     },
     {
       "id": "23",
@@ -731,13 +968,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-white_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-white_switcher_2.png",
-      "color": "silver",
-      "material": "Стекло",
-      "function": "Силовые розетки",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели двухклавишные"
+      "material": "Стекло",
+      "function": "Силовые розетки",
+      "color": "silver",
+
+      "deviceType": "диммер",
+      "keysCount": 3,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 2
     },
     {
       "id": "24",
@@ -747,13 +995,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-black_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-black_switcher_2.png",
-      "color": "gold",
-      "material": "Дерево",
-      "function": "Выключатели",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели двухклавишные"
+      "material": "Дерево",
+      "function": "Выключатели",
+      "color": "gold",
+
+      "deviceType": "термостат",
+      "keysCount": 3,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "25",
@@ -763,13 +1022,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_hammer-silver_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_hammer-silver_switcher_2.png",
-      "color": "gray",
-      "material": "Пластик",
-      "function": "Выключатели спец назначения",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Glossa",
-      "type": "Выключатели двухклавишные"
+      "material": "Пластик",
+      "function": "Выключатели спец назначения",
+      "color": "gray",
+
+      "deviceType": "диммер",
+      "keysCount": 5,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "26",
@@ -779,13 +1049,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_white_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_white_switcher_2.png",
-      "color": "white",
-      "material": "Камень",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели двухклавишные"
+      "material": "Камень",
+      "function": "Зарядные устройства USB",
+      "color": "white",
+
+      "deviceType": "для жалюзи",
+      "keysCount": 5,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 2
     },
     {
       "id": "27",
@@ -795,13 +1076,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_ivory_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_ivory_switcher_2.png",
-      "color": "copper",
-      "material": "Металл",
-      "function": "Силовые розетки",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели двухклавишные"
+      "material": "Металл",
+      "function": "Силовые розетки",
+      "color": "copper",
+
+      "deviceType": "термостат",
+      "keysCount": 5,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "28",
@@ -811,13 +1103,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_silver_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_silver_switcher_2.png",
-      "color": "black",
-      "material": "Пластик",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели двухклавишные"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "black",
+
+      "deviceType": "радиоточка",
+      "keysCount": 1,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "29",
@@ -827,13 +1130,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_metallic_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_metallic_switcher_2.png",
-      "color": "silver",
-      "material": "Стекло",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели двухклавишные"
+      "material": "Стекло",
+      "function": "Зарядные устройства USB",
+      "color": "silver",
+
+      "deviceType": "радиоточка",
+      "keysCount": 6,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "30",
@@ -843,13 +1157,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/bronze-2-button_sup.png",
       "preview": "img/devices/previews/bronze-2-button.png",
-      "color": "gold",
-      "material": "Пластик",
-      "function": "Силовые розетки",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели двухклавишные"
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "gold",
+
+      "deviceType": "для жалюзи",
+      "keysCount": 2,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "31",
@@ -859,13 +1184,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/Mechanism_Switcher_ribbed_silver_2_btn_sup.png",
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_silver_2_btn.png",
-      "color": "gray",
-      "material": "Пластик",
-      "function": "Диммеры, датчики, терморегуляторы",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Glossa",
-      "type": "Выключатели двухклавишные"
+      "material": "Пластик",
+      "function": "Диммеры, датчики, терморегуляторы",
+      "color": "gray",
+
+      "deviceType": "радиоточка",
+      "keysCount": 4,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "32",
@@ -875,13 +1211,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/Mechanism_Switcher_ribbed_champain_2_btn_sup.png",
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_champain_2_btn.png",
-      "color": "white",
-      "material": "Дерево",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели двухклавишные"
+      "material": "Дерево",
+      "function": "Зарядные устройства USB",
+      "color": "white",
+
+      "deviceType": "диммер",
+      "keysCount": 5,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "33",
@@ -891,13 +1238,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_grey_brown_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_grey_brown_switcher_2.png",
-      "color": "gray",
-      "material": "Камень",
-      "function": "Выключатели спец назначения",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели двухклавишные"
+      "material": "Камень",
+      "function": "Выключатели спец назначения",
+      "color": "gray",
+
+      "deviceType": "термостат",
+      "keysCount": 3,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
     },
     {
       "id": "34",
@@ -907,13 +1265,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_black_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_black_switcher_2.png",
-      "color": "copper",
-      "material": "Пластик",
-      "function": "Силовые розетки",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Glossa",
-      "type": "Выключатели двухклавишные"
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "copper",
+
+      "deviceType": "переключатель перекрёстный",
+      "keysCount": 3,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
     },
     {
       "id": "35",
@@ -923,13 +1292,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_champ_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_champ_switcher_2.png",
-      "color": "black",
-      "material": "Металл",
-      "function": "Диммеры, датчики, терморегуляторы",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели двухклавишные"
+      "material": "Металл",
+      "function": "Диммеры, датчики, терморегуляторы",
+      "color": "black",
+
+      "deviceType": "термостат",
+      "keysCount": 2,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 2
     },
     {
       "id": "36",
@@ -939,13 +1319,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/mechanism_pearl_switcher_2_sup.png",
       "preview": "img/devices/previews/mechanism_pearl_switcher_2.png",
-      "color": "silver",
-      "material": "Пластик",
-      "function": "Зарядные устройства USB",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "Wessen",
-      "type": "Выключатели двухклавишные"
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "silver",
+
+      "deviceType": "переключатель перекрёстный",
+      "keysCount": 2,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 2
     },
     {
       "id": "37",
@@ -955,13 +1346,24 @@
       "price": "000.00",
       "image": "img/devices/pictures/Mechanism_Switcher_ribbed_graphit_2_btn_sup.png",
       "preview": "img/devices/previews/Mechanism_Switcher_ribbed_graphit_2_btn.png",
-      "color": "gold",
-      "material": "Пластик",
-      "function": "Выключатели спец назначения",
+
+      "type": "Выключатели двухклавишные",
 
       "vendor": "Systeme Electric",
       "collection": "AtlasDesign",
-      "type": "Выключатели двухклавишные"
+      "material": "Пластик",
+      "function": "Выключатели спец назначения",
+      "color": "gold",
+
+      "deviceType": "выключатель кнопочный",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 2
     }
   ],
   "backgrounds": [
@@ -1198,14 +1600,14 @@
     }
   },
   "functions": {
-    "device-type": "тип устройства",
-    "number-of-keys": "количество клавиш",
+    "deviceType": "тип устройства",
+    "keysCount": "количество клавиш",
     "backlight": "подсветка",
-    "with-grounding": "с заземлением",
-    "with-curtains": "со шторками",
-    "with-moisture-protection": "с влагозащитой",
-    "with-additional-functions": "с доп. функциями",
-    "connection-type": "Тип подключения",
-    "number-of-connectors": "кол-во разъемов"
+    "withGrounding": "с заземлением",
+    "withCurtains": "со шторками",
+    "withProtection": "с влагозащитой",
+    "withFunctions": "с доп. функциями",
+    "connectionType": "тип подключения",
+    "connectorsCount": "кол-во разъемов"
   }
 }

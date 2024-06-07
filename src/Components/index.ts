@@ -22,6 +22,9 @@ import OptionBrand from './OptionBrand/OptionBrand'
 import OptionCollection from './OptionCollection/OptionCollection'
 import OptionMaterial from './OptionMaterial/OptionMaterial'
 import OptionFunction from './OptionFunction/OptionFunction'
+import FunctionalitySelectsList from './FunctionalitySelectsList/FunctionalitySelectsList'
+import FunctionalitySelect from './FunctionalitySelect/FunctionalitySelect'
+import FunctionalityOption from './FunctionalityOption/FunctionalityOption'
 
 export {
     App,
@@ -47,5 +50,8 @@ export {
     OptionBrand,
     OptionCollection,
     OptionMaterial,
-    OptionFunction
+    OptionFunction,
+    FunctionalitySelectsList,
+    FunctionalitySelect,
+    FunctionalityOption,
 }

@@ -33,13 +33,26 @@ const DeviceType = z.object({
     id: z.union([z.string(), z.number()]),
     name: z.string(),
     price: z.union([z.string(), z.number()]),
-    color: z.string(),
     image: z.string(),
     preview: z.string(),
+
+    type: z.string(),
+
     vendor: z.string(),
     collection: z.string(),
     material: z.string(),
-    function: z.string()
+    function: z.string(),
+    color: z.string(),
+
+    deviceType: z.string(),
+    keysCount: z.number(),
+    backlight: z.string(),
+    withGrounding: z.string(),
+    withCurtains: z.string(),
+    withProtection: z.string(),
+    withFunctions: z.string(),
+    connectionType: z.string(),
+    connectorsCount: z.number(),
 })
 
 const DevicesTypeList = z.array(DeviceType)
@@ -77,7 +90,9 @@ const InitDataContractType = z.object({
 
     colors: z.record(z.string(), z.string()),
 
-    vendors: VendorTypeList
+    vendors: VendorTypeList,
+
+    functions: z.record(z.string(), z.string())
 })
 
 

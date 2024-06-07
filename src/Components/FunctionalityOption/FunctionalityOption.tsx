@@ -1,19 +1,19 @@
 import { useState, FC } from 'react'
-import style from './OptionFunction.module.sass'
+import style from './FunctionalityOption.module.sass'
 
 interface Props {
-    caption: string
     name: string
+    val: string
 }
 
-const { option, text } = style
+const { option } = style
 
-const OptionFunction: FC<Props> = ({ caption, name }) => {
+const FunctionalityOption: FC<Props> = ({ name, val }) => {
     const [isChecked, setChecked] = useState(false)
     const handleChange = () => setChecked(true)
 
     return (
-        <li className='closing'>
+        <li>
             <label className={option}>
                 <input
                     className='invisible'
@@ -21,11 +21,10 @@ const OptionFunction: FC<Props> = ({ caption, name }) => {
                     name={name}
                     checked={isChecked}
                     onChange={handleChange} />
-                <span></span>
-                <mark className={text}>{caption}</mark>
+                <span>{val}</span>
             </label>
         </li>
     )
 }
 
-export default OptionFunction
+export default FunctionalityOption

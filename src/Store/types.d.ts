@@ -42,6 +42,7 @@ interface DevicesStore {
     getDevicesCollectionsList: () => string[]
     getDevicesMaterialsList: () => string[]
     getDevicesFunctionsList: () => string[]
+    getDevicesFunctionsOptions: (deviceFuncProp: string) => string[]
 }
 
 
@@ -61,6 +62,10 @@ interface AppStore {
 
     vendors: Record<string, z.infer<typeof VendorType>>
     setAppVendors: (vendors: Record<string, z.infer<typeof VendorType>>) => void
+
+    functions: Record<string, string>
+    setAppFunctionsKinds: (functions: Record<string, string>) => void
+    getAppFunctionsKinds: () => Record<string, string>
 }
 
 

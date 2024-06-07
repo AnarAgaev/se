@@ -33,6 +33,11 @@ const createDevicesSlice: StateCreator<DevicesStore> = (set, get) => ({
     getDevicesFunctionsList: () => {
         const devices = [...get().devices]
         return [...new Set(devices.map(device => device.function))].sort()
+    },
+
+    getDevicesFunctionsOptions: (deviceFuncProp) => {
+        const devices = [...get().devices]
+        return [...new Set(devices.map(device => device[deviceFuncProp]))].sort()
     }
 })
 
