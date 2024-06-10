@@ -25,6 +25,9 @@ import OptionFunction from './OptionFunction/OptionFunction'
 import FunctionalitySelectsList from './FunctionalitySelectsList/FunctionalitySelectsList'
 import FunctionalitySelect from './FunctionalitySelect/FunctionalitySelect'
 import FunctionalityOption from './FunctionalityOption/FunctionalityOption'
+import Cart from './Cart/Cart'
+import Price from './Price/Price'
+import Set from './Set/Set'
 
 export {
     App,
@@ -54,4 +57,7 @@ export {
     FunctionalitySelectsList,
     FunctionalitySelect,
     FunctionalityOption,
+    Cart,
+    Price,
+    Set
 }

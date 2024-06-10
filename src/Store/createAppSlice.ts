@@ -10,7 +10,7 @@ const createAppSlice: StateCreator<AppStore> = (set, get) => ({
     vendors: {},
     setAppVendors: (vendors) => set({vendors: vendors}),
 
-    activeCalcTab: 'devices',
+    activeCalcTab: 'borders',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
     activeViewportTab: 'configurator',
