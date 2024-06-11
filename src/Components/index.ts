@@ -28,6 +28,9 @@ import FunctionalityOption from './FunctionalityOption/FunctionalityOption'
 import Cart from './Cart/Cart'
 import Price from './Price/Price'
 import Set from './Set/Set'
+import Locations from './Locations/Locations'
+import InputSelect from './InputSelect/InputSelect'
+import OptionLocation from './OptionLocation/OptionLocation'
 
 export {
     App,
@@ -59,5 +62,8 @@ export {
     FunctionalityOption,
     Cart,
     Price,
-    Set
+    Set,
+    Locations,
+    InputSelect,
+    OptionLocation,
 }

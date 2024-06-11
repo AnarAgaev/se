@@ -27,7 +27,13 @@ const createAppSlice: StateCreator<AppStore> = (set, get) => ({
 
         return functionsKinds
 
-    }
+    },
+
+    projects: {},
+    setAppProjects: (projects: Record<string, unknown>) => set({projects: projects}),
+
+    rooms: {},
+    setAppRooms: (rooms: Record<string, unknown>) => set({rooms: rooms})
 })
 
 export default createAppSlice

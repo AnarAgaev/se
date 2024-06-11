@@ -92,7 +92,11 @@ const InitDataContractType = z.object({
 
     vendors: VendorTypeList,
 
-    functions: z.record(z.string(), z.string())
+    functions: z.record(z.string(), z.string()),
+
+    projects: z.record(z.string(), z.record(z.string(), z.unknown())),
+
+    rooms: z.record(z.string(), z.record(z.string(), z.unknown()))
 })
 
 

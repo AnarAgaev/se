@@ -66,6 +66,12 @@ interface AppStore {
     functions: Record<string, string>
     setAppFunctionsKinds: (functions: Record<string, string>) => void
     getAppFunctionsKinds: () => Record<string, string>
+
+    projects: Record<string, unknown>
+    setAppProjects: (projects: Record<string, unknown>) => void
+
+    rooms: Record<string, unknown>
+    setAppRooms: (rooms: Record<string, unknown>) => void
 }
 
 

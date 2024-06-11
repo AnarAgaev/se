@@ -1,9 +1,24 @@
-import { useId, useMemo, useState  } from 'react'
+import { useId, useMemo, useState, useRef } from 'react'
 import style from './Set.module.sass'
 
 const { set, list, item, pic, content, head, body,
     caption, close, data, price, count, add, nav,
     nav_prev, nav_next, nav_inactive } = style
+
+
+const getShowNext = (
+    set: HTMLDivElement,
+    list: HTMLUListElement,
+    itemWidth: number
+): boolean => {
+
+    const viewportRight = set.getBoundingClientRect().right
+    const listWidth = list.getBoundingClientRect().width
+    const listLeft = list.getBoundingClientRect().left
+    const listRight = listLeft + listWidth + itemWidth
+
+    return !(listRight < viewportRight)
+}
 
 const getSetList = (id: string, length: number): JSX.Element[] => {
     const elList: JSX.Element[] = []
@@ -40,38 +55,59 @@ const getSetList = (id: string, length: number): JSX.Element[] => {
 const Set = () => {
     const id = useId()
     const [offset, setOffset] = useState(0)
+    const [showNext, setShowNext] = useState(true)
+    const setRef = useRef<HTMLDivElement>(null)
+    const listRef = useRef<HTMLUListElement>(null)
 
-    const LENGTH = 10
-    const ITEM_WIDTH = window.innerWidth < 576 ? (300 + 20) : (360 + 20) // gets this value from styles ./Set.module.sass
+    // Gets this param from the props data. Props.data.length
+    const LIST_LENGTH = 7
+
+    // Gets this value from styles ./Set.module.sass
+    // 360 is a block width and 20 is offset between blocks
+    const ITEM_WIDTH = 360 + 20
 
     const setList = useMemo(
-        () => getSetList(id, LENGTH),
+        () => getSetList(id, LIST_LENGTH),
         []
     )
 
-    const handleNextClick = () => {
-        const newOffset = offset - ITEM_WIDTH
-        setOffset(newOffset)
+    const handlePrevClick = () => {
+        const set = setRef.current
+        const list = listRef.current
+        const newOffset = offset + ITEM_WIDTH
+
+        if (set && list) {
+            setShowNext(getShowNext(set, list, ITEM_WIDTH))
+            setOffset(newOffset >= 0 ? 0 : newOffset)
+        }
     }
 
-    const handlePrevClick = () => {
-        const newOffset = offset + ITEM_WIDTH
-        setOffset(newOffset >= 0 ? 0 : newOffset)
+    const handleNextClick = () => {
+        const set = setRef.current
+        const list = listRef.current
+        const newOffset = offset - ITEM_WIDTH
+
+        if (set && list) {
+            setShowNext(getShowNext(set, list, -ITEM_WIDTH))
+            setOffset(newOffset)
+        }
     }
 
     const prevButtonClazz = offset >= 0
         ? `${nav} ${nav_prev} ${nav_inactive}`
         : `${nav} ${nav_prev}`
 
-    const nextButtonClazz = `${nav} ${nav_next}`
+    const nextButtonClazz = showNext
+        ? `${nav} ${nav_next}`
+        : `${nav} ${nav_next} ${nav_inactive}`
 
     const listTransformOffset = {
         transform: `translateX(${offset}px)`
     }
 
     return (
-        <div className={set}>
-            <ul className={list} style={listTransformOffset}>
+        <div ref={setRef} className={set}>
+            <ul ref={listRef} className={list} style={listTransformOffset}>
                 {setList}
             </ul>
             <button type="button" className={prevButtonClazz}

@@ -44,6 +44,8 @@ const useStore = create<DevicesStore & BordersStore & BackgroundsStore & AppStor
                     get().setInitDevicesData(data.devices)
                     get().setAppVendors(data.vendors)
                     get().setAppFunctionsKinds(data.functions)
+                    get().setAppProjects(data.projects)
+                    get().setAppRooms(data.rooms)
 
 
                     set({ error: null })
