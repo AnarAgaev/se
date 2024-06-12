@@ -46,7 +46,9 @@ const getRoomsOptionsList = (
 const Locations = () => {
     const key = useId()
     const projects = useStore(state => state.projects)
+    const addProject = useStore(state => state.addProject)
     const rooms = useStore(state => state.rooms)
+    const addRoom = useStore(state => state.addRoom)
 
     const projectsOptions = useMemo(
         () => getProjectsOptionsList(Object.keys(projects), key),
@@ -60,8 +62,18 @@ const Locations = () => {
 
     return (
         <div className={locations}>
-            <InputSelect title="Выбрать проект" placeholder="Создать проект">{projectsOptions}</InputSelect>
-            <InputSelect title="Выбрать помещение" placeholder="Создать помещение">{roomsOptions}</InputSelect>
+            <InputSelect
+                cbf={addProject}
+                title="Выбрать проект"
+                placeholder="Создать проект">
+                { projectsOptions }
+            </InputSelect>
+            <InputSelect
+                cbf={addRoom}
+                title="Выбрать помещение"
+                placeholder="Создать помещение">
+                { roomsOptions }
+            </InputSelect>
         </div>
     )
 }

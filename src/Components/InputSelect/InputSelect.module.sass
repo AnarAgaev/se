@@ -86,6 +86,12 @@
     border-bottom: 1px solid var(--color-border-prime)
     background: var(--color-back-init)
     padding: 0 0 0 20px
+    overflow: hidden
+
+    &_valid
+        button
+            opacity: 1 !important
+            pointer-events: auto !important
 
     @media (hover: hover) and (pointer: fine)
         &:hover
@@ -116,6 +122,11 @@
         margin: 0
         padding: 0
 
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+        box-sizing: border-box
+
         text-align: left
         color: var(--color-prime)
         font-size: 16px
@@ -135,6 +146,8 @@
         padding: 0
         cursor: pointer
         transition: var(--base-transition)
+        opacity: 0
+        pointer-events: non
 
         @media (hover: hover) and (pointer: fine)
             &:hover

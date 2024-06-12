@@ -22,8 +22,7 @@ const getFunctionalityOptionList = (
         <FunctionalityOption
             key={`${id}-${option}`}
             name={name}
-            val={option} />
-        ))
+            val={option} /> ))
 
     return elList
 }

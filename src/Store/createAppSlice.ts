@@ -31,9 +31,28 @@ const createAppSlice: StateCreator<AppStore> = (set, get) => ({
 
     projects: {},
     setAppProjects: (projects: Record<string, unknown>) => set({projects: projects}),
+    addProject: (project) => {
+        const newProjects: Record<string, unknown> = {}
+        newProjects[project] = {}
+
+        for (const key in get().projects)
+            newProjects[key] = get().projects[key]
+
+        set({ projects: newProjects })
+    },
 
     rooms: {},
-    setAppRooms: (rooms: Record<string, unknown>) => set({rooms: rooms})
+    setAppRooms: (rooms: Record<string, unknown>) => set({rooms: rooms}),
+    addRoom: (room) => {
+        const newRooms: Record<string, unknown> = {}
+        newRooms[room] = {}
+
+        for (const key in get().rooms)
+            newRooms[key] = get().rooms[key]
+
+        set({ rooms: newRooms })
+    }
+
 })
 
 export default createAppSlice

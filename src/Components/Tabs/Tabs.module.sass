@@ -1,0 +1,30 @@
+@import '../../Sass/_variables'
+@import '../../Sass/_mixins'
+
+.tabs
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+    @media (min-width: $lg)
+        flex-direction: row-reverse
+
+
+.configurator
+    display: block
+    position: relative
+    width: 100%
+    height: auto
+
+    @media (min-width: $lg)
+        width: calc( 50% - 10px )
+
+
+.pages
+    display: block
+    position: relative
+    width: 100%
+    height: auto
+
+    @media (min-width: $lg)
+        width: calc( 50% - 10px )

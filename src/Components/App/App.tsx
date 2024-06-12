@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Factory, Viewport } from '../'
+import { Tabs, Factory, Viewport } from '../../Components'
 import useStore from '../../Store'
 import style from './App.module.sass'
 import '../../Sass/main.sass'
@@ -20,6 +20,7 @@ const App = () => {
 			<h1 className={caption}>
 				Конфигуратор
 			</h1>
+			<Tabs />
 			<div className={body}>
 				<Factory />
 				<Viewport />

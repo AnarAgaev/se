@@ -1,11 +1,14 @@
-import { useState } from 'react'
+import { useState, FC } from 'react'
 import style from './OptionMaterial.module.sass'
 
 const { option, text } = style
 
-const OptionMaterial = (props: {caption: string}) => {
+interface Props {
+    caption: string
+}
+
+const OptionMaterial: FC<Props> = ({ caption }) => {
     const [isChecked, setChecked] = useState(false)
-    const handleChange = () => setChecked(isChecked ? false : true)
 
     return (
         <li>
@@ -14,9 +17,9 @@ const OptionMaterial = (props: {caption: string}) => {
                     type='checkbox'
                     className='invisible'
                     checked={isChecked}
-                    onChange={handleChange} />
+                    onChange={() => setChecked(!isChecked)} />
                 <span></span>
-                <mark className={text}>{props.caption}</mark>
+                <mark className={text}>{caption}</mark>
             </label>
         </li>
     )

@@ -69,9 +69,11 @@ interface AppStore {
 
     projects: Record<string, unknown>
     setAppProjects: (projects: Record<string, unknown>) => void
+    addProject: (project: string) => void
 
     rooms: Record<string, unknown>
     setAppRooms: (rooms: Record<string, unknown>) => void
+    addRoom: (project: string) => void
 }
 
 

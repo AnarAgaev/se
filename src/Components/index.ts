@@ -1,5 +1,8 @@
 import App from './App/App'
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+import Tabs from './Tabs/Tabs'
+import TabsPages from './TabsPages/TabsPages'
+import TabsCalc from './TabsCalc/TabsCalc'
 import Factory from './Factory/Factory'
 import FactoryWorkspace from './FactoryWorkspace/FactoryWorkspace'
 import Viewport from './Viewport/Viewport'
@@ -35,6 +38,9 @@ import OptionLocation from './OptionLocation/OptionLocation'
 export {
     App,
     ErrorBoundary,
+    Tabs,
+    TabsPages,
+    TabsCalc,
     Select,
     Factory,
     FactoryWorkspace,

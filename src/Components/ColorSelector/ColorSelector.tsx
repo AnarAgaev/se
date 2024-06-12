@@ -56,7 +56,7 @@ const ColorSelector: React.FC<Props> = ({caption, colors}) => {
         <div className={body}>
             <h3 className={title}>{caption}</h3>
             <ul className={list}>
-                {colorsList}
+                { colorsList }
             </ul>
         </div>
     )
