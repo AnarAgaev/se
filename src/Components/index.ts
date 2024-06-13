@@ -34,6 +34,7 @@ import Set from './Set/Set'
 import Locations from './Locations/Locations'
 import InputSelect from './InputSelect/InputSelect'
 import OptionLocation from './OptionLocation/OptionLocation'
+import InputAdd from './InputAdd/InputAdd'
 
 export {
     App,
@@ -72,4 +73,5 @@ export {
     Locations,
     InputSelect,
     OptionLocation,
+    InputAdd,
 }

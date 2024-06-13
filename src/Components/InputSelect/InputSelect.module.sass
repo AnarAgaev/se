@@ -76,82 +76,12 @@
     background: var(--color-back-init)
 
 
-.add // for content input
-    display: flex
-    align-items: center
-    justify-content: space-between
-    gap: 10px
+.add // for add new
+    display: block
     width: 100%
     height: 40px
     border-bottom: 1px solid var(--color-border-prime)
     background: var(--color-back-init)
-    padding: 0 0 0 20px
-    overflow: hidden
-
-    &_valid
-        button
-            opacity: 1 !important
-            pointer-events: auto !important
-
-    @media (hover: hover) and (pointer: fine)
-        &:hover
-            i
-                background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNSAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNCAxNC41VjIxLjVDMTQgMjEuNzY1MiAxMy44OTQ2IDIyLjAxOTYgMTMuNzA3MSAyMi4yMDcxQzEzLjUxOTYgMjIuMzk0NiAxMy4yNjUyIDIyLjUgMTMgMjIuNUMxMi43MzQ4IDIyLjUgMTIuNDgwNCAyMi4zOTQ2IDEyLjI5MjkgMjIuMjA3MUMxMi4xMDU0IDIyLjAxOTYgMTIgMjEuNzY1MiAxMiAyMS41VjE0LjVINUM0LjczNDc4IDE0LjUgNC40ODA0MyAxNC4zOTQ2IDQuMjkyODkgMTQuMjA3MUM0LjEwNTM2IDE0LjAxOTYgNCAxMy43NjUyIDQgMTMuNUM0IDEzLjIzNDggNC4xMDUzNiAxMi45ODA0IDQuMjkyODkgMTIuNzkyOUM0LjQ4MDQzIDEyLjYwNTQgNC43MzQ3OCAxMi41IDUgMTIuNUgxMlY1LjVDMTIgNS4yMzQ3OCAxMi4xMDU0IDQuOTgwNDMgMTIuMjkyOSA0Ljc5Mjg5QzEyLjQ4MDQgNC42MDUzNiAxMi43MzQ4IDQuNSAxMyA0LjVDMTMuMjY1MiA0LjUgMTMuNTE5NiA0LjYwNTM2IDEzLjcwNzEgNC43OTI4OUMxMy44OTQ2IDQuOTgwNDMgMTQgNS4yMzQ3OCAxNCA1LjVWMTIuNUgyMUMyMS4yNjUyIDEyLjUgMjEuNTE5NiAxMi42MDU0IDIxLjcwNzEgMTIuNzkyOUMyMS44OTQ2IDEyLjk4MDQgMjIgMTMuMjM0OCAyMiAxMy41QzIyIDEzLjc2NTIgMjEuODk0NiAxNC4wMTk2IDIxLjcwNzEgMTQuMjA3MUMyMS41MTk2IDE0LjM5NDYgMjEuMjY1MiAxNC41IDIxIDE0LjVIMTRaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K")
-
-    &:has(input:focus)
-        i
-            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNSAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNCAxNC41VjIxLjVDMTQgMjEuNzY1MiAxMy44OTQ2IDIyLjAxOTYgMTMuNzA3MSAyMi4yMDcxQzEzLjUxOTYgMjIuMzk0NiAxMy4yNjUyIDIyLjUgMTMgMjIuNUMxMi43MzQ4IDIyLjUgMTIuNDgwNCAyMi4zOTQ2IDEyLjI5MjkgMjIuMjA3MUMxMi4xMDU0IDIyLjAxOTYgMTIgMjEuNzY1MiAxMiAyMS41VjE0LjVINUM0LjczNDc4IDE0LjUgNC40ODA0MyAxNC4zOTQ2IDQuMjkyODkgMTQuMjA3MUM0LjEwNTM2IDE0LjAxOTYgNCAxMy43NjUyIDQgMTMuNUM0IDEzLjIzNDggNC4xMDUzNiAxMi45ODA0IDQuMjkyODkgMTIuNzkyOUM0LjQ4MDQzIDEyLjYwNTQgNC43MzQ3OCAxMi41IDUgMTIuNUgxMlY1LjVDMTIgNS4yMzQ3OCAxMi4xMDU0IDQuOTgwNDMgMTIuMjkyOSA0Ljc5Mjg5QzEyLjQ4MDQgNC42MDUzNiAxMi43MzQ4IDQuNSAxMyA0LjVDMTMuMjY1MiA0LjUgMTMuNTE5NiA0LjYwNTM2IDEzLjcwNzEgNC43OTI4OUMxMy44OTQ2IDQuOTgwNDMgMTQgNS4yMzQ3OCAxNCA1LjVWMTIuNUgyMUMyMS4yNjUyIDEyLjUgMjEuNTE5NiAxMi42MDU0IDIxLjcwNzEgMTIuNzkyOUMyMS44OTQ2IDEyLjk4MDQgMjIgMTMuMjM0OCAyMiAxMy41QzIyIDEzLjc2NTIgMjEuODk0NiAxNC4wMTk2IDIxLjcwNzEgMTQuMjA3MUMyMS41MTk2IDE0LjM5NDYgMjEuMjY1MiAxNC41IDIxIDE0LjVIMTRaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K")
-
-    i
-        flex-shrink: 0
-        display: block
-        position: relative
-        width: 25px
-        height: 25px
-        transition: var(--base-transition)
-        background: transparent no-repeat center
-        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNSAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNCAxNC41VjIxLjVDMTQgMjEuNzY1MiAxMy44OTQ2IDIyLjAxOTYgMTMuNzA3MSAyMi4yMDcxQzEzLjUxOTYgMjIuMzk0NiAxMy4yNjUyIDIyLjUgMTMgMjIuNUMxMi43MzQ4IDIyLjUgMTIuNDgwNCAyMi4zOTQ2IDEyLjI5MjkgMjIuMjA3MUMxMi4xMDU0IDIyLjAxOTYgMTIgMjEuNzY1MiAxMiAyMS41VjE0LjVINUM0LjczNDc4IDE0LjUgNC40ODA0MyAxNC4zOTQ2IDQuMjkyODkgMTQuMjA3MUM0LjEwNTM2IDE0LjAxOTYgNCAxMy43NjUyIDQgMTMuNUM0IDEzLjIzNDggNC4xMDUzNiAxMi45ODA0IDQuMjkyODkgMTIuNzkyOUM0LjQ4MDQzIDEyLjYwNTQgNC43MzQ3OCAxMi41IDUgMTIuNUgxMlY1LjVDMTIgNS4yMzQ3OCAxMi4xMDU0IDQuOTgwNDMgMTIuMjkyOSA0Ljc5Mjg5QzEyLjQ4MDQgNC42MDUzNiAxMi43MzQ4IDQuNSAxMyA0LjVDMTMuMjY1MiA0LjUgMTMuNTE5NiA0LjYwNTM2IDEzLjcwNzEgNC43OTI4OUMxMy44OTQ2IDQuOTgwNDMgMTQgNS4yMzQ3OCAxNCA1LjVWMTIuNUgyMUMyMS4yNjUyIDEyLjUgMjEuNTE5NiAxMi42MDU0IDIxLjcwNzEgMTIuNzkyOUMyMS44OTQ2IDEyLjk4MDQgMjIgMTMuMjM0OCAyMiAxMy41QzIyIDEzLjc2NTIgMjEuODk0NiAxNC4wMTk2IDIxLjcwNzEgMTQuMjA3MUMyMS41MTk2IDE0LjM5NDYgMjEuMjY1MiAxNC41IDIxIDE0LjVIMTRaIiBmaWxsPSIjQjFCMUIxIi8+Cjwvc3ZnPgo=")
-
-    input
-        display: flex
-        align-items: center
-        width: 100%
-        height: 100%
-        border: none
-        background: transparent
-        margin: 0
-        padding: 0
-
-        overflow: hidden
-        text-overflow: ellipsis
-        white-space: nowrap
-        box-sizing: border-box
-
-        text-align: left
-        color: var(--color-prime)
-        font-size: 16px
-        font-weight: 400
-        line-height: 120% /* 19.2px */
-
-    button
-        display: block
-        position: relative
-        width: auto
-        height: 100%
-        aspect-ratio: 1
-        background: var(--color-button-prime) no-repeat center
-        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNiAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUuNzA4NSAxNS4wODMzTDkuMDc2MiAxNy42MDk0QzkuMjkxMTYgMTcuNzcwNiA5LjU2MDA4IDE3Ljg0MjQgOS44MjY3OSAxNy44MUMxMC4wOTM1IDE3Ljc3NzYgMTAuMzM3NCAxNy42NDM0IDEwLjUwNzUgMTcuNDM1NEwxOS4yNTAyIDYuNzUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS42NjY2NyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=")
-        border: none
-        margin: 0
-        padding: 0
-        cursor: pointer
-        transition: var(--base-transition)
-        opacity: 0
-        pointer-events: non
-
-        @media (hover: hover) and (pointer: fine)
-            &:hover
-                background-color: var(--color-button-hover)
 
 
 .inner // for content list

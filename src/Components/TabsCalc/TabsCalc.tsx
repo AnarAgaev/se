@@ -10,11 +10,8 @@ const getTabClassName = (onTab: string, activeTab: string): string => {
 }
 
 const TabsCalc = () => {
-    const activeViewportTab = useStore(state => state.activeViewportTab)
     const activeCalcTab = useStore(state => state.activeCalcTab)
     const setActiveTab = useStore(state => state.setActiveCalcTab)
-
-    if (activeViewportTab !== 'configurator') return null
 
     return (
         <ul className={list}>

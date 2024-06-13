@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, ReactNode, FC, ChangeEvent } from 'react'
+import { useState, useEffect, useRef, ReactNode, FC } from 'react'
+import { InputAdd } from '../../Components'
 import style from './InputSelect.module.sass'
 
 interface Props {
@@ -9,13 +10,11 @@ interface Props {
 }
 
 const { select, select_dropped, value, caption,
-    arrow, body, collapse, inner, add, add_valid } = style
+    arrow, body, collapse, add, inner } = style
 
-const Select: FC<Props> = ({ title, placeholder, children, cbf }) => {
+const InputSelect: FC<Props> = ({ title, placeholder, children, cbf }) => {
     const [dropped, toggleDropped] = useState(false)
-    const [inputVal, setInputVal] = useState('')
     const selectRef = useRef<HTMLDivElement | null>(null)
-    const inputRef = useRef<HTMLInputElement | null>(null)
 
     const clazz = dropped
         ? `${select} ${select_dropped}`
@@ -39,22 +38,6 @@ const Select: FC<Props> = ({ title, placeholder, children, cbf }) => {
             'click', selectClickHandler)
     }, [])
 
-    const handleInputChange = (
-        event: ChangeEvent<HTMLInputElement>
-    ) => setInputVal(event.target.value)
-
-    const handleEnterPress = (
-        event: React.KeyboardEvent<HTMLInputElement>
-    ) => { if (event.key === 'Enter') addNewValue() }
-
-    const addNewValue = () => {
-        if (inputVal) {
-            cbf(inputVal)
-            setInputVal('')
-            inputRef.current?.blur()
-        }
-    }
-
     return (
         <div ref={selectRef} className={clazz}>
             <p className={value} onClick={() => toggleDropped(!dropped)}>
@@ -63,15 +46,8 @@ const Select: FC<Props> = ({ title, placeholder, children, cbf }) => {
             </p>
             <div className={body}>
                 <div className={collapse}>
-                    <div className={inputVal === '' ? add : `${add} ${add_valid}` }>
-                        <i></i>
-                        <input value={inputVal}
-                            ref={inputRef}
-                            type="text"
-                            onChange={handleInputChange}
-                            onKeyDown ={handleEnterPress}
-                            placeholder={placeholder} />
-                        <button onClick={addNewValue} type="button"></button>
+                    <div className={add}>
+                        <InputAdd placeholder={placeholder} cbf={cbf} />
                     </div>
                     <ul className={inner}>
                         { children }
@@ -82,4 +58,4 @@ const Select: FC<Props> = ({ title, placeholder, children, cbf }) => {
     )
 }
 
-export default Select
+export default InputSelect
