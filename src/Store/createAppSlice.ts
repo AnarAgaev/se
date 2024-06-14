@@ -13,7 +13,7 @@ const createAppSlice: StateCreator<AppStore> = (set, get) => ({
     activeCalcTab: 'borders',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
-    activeViewportTab: 'hub',
+    activeViewportTab: 'configurator',
     setActiveViewportTab: (tab) => set({activeViewportTab: tab}),
 
     functions: {},

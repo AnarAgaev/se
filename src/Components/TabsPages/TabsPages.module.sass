@@ -41,11 +41,16 @@
     padding: 0 0 15px 0
     cursor: pointer
     box-sizing: content-box !important
+    transition: var(--base-transition)
 
     color: var(--color-prime)
     font-size: 16px
     font-weight: 700
     line-height: 111.687% /* 17.87px */
+
+    @media (hover: hover) and (pointer: fine)
+        &:hover
+            color: var(--color-button-hover)
 
     @media (min-width: $lg)
         padding-bottom: 25px
