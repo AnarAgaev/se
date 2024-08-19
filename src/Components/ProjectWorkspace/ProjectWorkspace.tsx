@@ -1,6 +1,6 @@
 import style from './ProjectWorkspace.module.sass'
 
-const { wrap, caption, body, project, footer, actions,total } = style
+const { wrap, caption, body, footer, actions,total } = style
 
 const ProjectWorkspace = () => {
     return (
