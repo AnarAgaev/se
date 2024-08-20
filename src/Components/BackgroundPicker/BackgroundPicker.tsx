@@ -1,8 +1,28 @@
 import { useRef, useState, ChangeEvent } from 'react'
-import useStore from '../../Store'
 import { BackgroundsType } from '../../Store/zod-data-contracts'
+import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
+import useStore from '../../Store'
 import style from './BackgroundPicker.module.sass'
 import loader from './loader.svg'
+
+const zodErrorOptions: ErrorMessageOptions = {
+    delimiter: {
+        error: '\n',
+    },
+    path: {
+        enabled: true,
+        type: 'zodPathArray',
+        label: 'Zod Path: ',
+    },
+    code: {
+        enabled: true,
+    },
+    message: {
+        enabled: true,
+        label: '',
+    },
+    transform: ({ errorMessage, index }) => `🔥 \x1b[31m Zod Error #${index + 1}: \x1b[33m ${errorMessage}`,
+}
 
 const { picker, pickerMessage, pickerButton, pickerErrorMessage, pickerLoading } = style
 
@@ -39,7 +59,8 @@ const BackgroundPicker = () => {
                 'There is no link window.uploadBackgroundLink on the page to upload backgrounds.')
 
             const formData = new FormData()
-            formData.append('file', event.target.files[0])
+            formData.append('image', event.target.files[0])
+            formData.append('dir', 'backgrounds')
 
             const res = await fetch(uploadLink, {
                 method: 'POST',
@@ -48,13 +69,19 @@ const BackgroundPicker = () => {
 
             if (!res.ok) console.error('Failed to upload background image to', uploadLink)
 
-            // const data = await res.text()
-            // console.table(data);
+            const safeResponse = BackgroundsType.passthrough().safeParse(await res.json())
 
-            const data = BackgroundsType.parse(await res.json())
+            console.log('Uploading image response', safeResponse)
+
+            if (!safeResponse.success) {
+                const errorMessage = generateErrorMessage(safeResponse.error.issues, zodErrorOptions)
+                console.log(errorMessage)
+
+                return
+            }
 
             // Push data background store list
-            addUploadedBackground(data)
+            addUploadedBackground(safeResponse.data)
 
         } catch (error: Error | unknown) {
             console.error(error);
@@ -99,7 +126,7 @@ const BackgroundPicker = () => {
             <div className={pickerButton}>
                 <button type='button' className={clazz}
                     onClick={() => pickerRef.current && pickerRef.current.click()}>
-                        Загрузить файл
+                        Выбрать файл
                 </button>
             </div>
         </div>
