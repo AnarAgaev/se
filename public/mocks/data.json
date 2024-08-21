@@ -1,0 +1,462 @@
+{
+  "post": [],
+  "items": [],
+  "groups": {
+    "1": {
+      "id": 1,
+      "name": "Выключатели",
+      "props": {
+        "1": {
+          "id": 1,
+          "name": "Тип устройства",
+          "type": "c",
+          "purpose_type_id": 1,
+          "enums": [
+            {
+              "id": 1,
+              "name": "Выключатель",
+              "purpose_props_id": 1,
+              "default": 1
+            },
+            {
+              "id": 2,
+              "name": "Переключатель",
+              "purpose_props_id": 1,
+              "default": 0
+            },
+            {
+              "id": 3,
+              "name": "Переключатель перекрёстный",
+              "purpose_props_id": 1,
+              "default": 0
+            },
+            {
+              "id": 4,
+              "name": "Выключатель кнопочный",
+              "purpose_props_id": 1,
+              "default": 0
+            },
+            {
+              "id": 5,
+              "name": "Для жалюзи",
+              "purpose_props_id": 1,
+              "default": 0
+            }
+          ]
+        },
+        "2": {
+          "id": 2,
+          "name": "Кол-во клавиш",
+          "type": "c",
+          "purpose_type_id": 1,
+          "enums": [
+            {
+              "id": 6,
+              "name": "1",
+              "purpose_props_id": 2,
+              "default": 1
+            },
+            {
+              "id": 7,
+              "name": "2",
+              "purpose_props_id": 2,
+              "default": 0
+            },
+            {
+              "id": 8,
+              "name": "3",
+              "purpose_props_id": 2,
+              "default": 0
+            }
+          ]
+        },
+        "3": {
+          "id": 3,
+          "name": "Подсветка",
+          "type": "c",
+          "purpose_type_id": 1,
+          "enums": [
+            {
+              "id": 11,
+              "name": "Да",
+              "purpose_props_id": 3,
+              "default": 0
+            },
+            {
+              "id": 12,
+              "name": "Нет",
+              "purpose_props_id": 3,
+              "default": 1
+            }
+          ]
+        },
+        "4": {
+          "id": 4,
+          "name": "С влагозащитой",
+          "type": "c",
+          "purpose_type_id": 1,
+          "enums": [
+            {
+              "id": 13,
+              "name": "Нет",
+              "purpose_props_id": 4,
+              "default": 1
+            },
+            {
+              "id": 14,
+              "name": "IP44-46",
+              "purpose_props_id": 4,
+              "default": 0
+            }
+          ]
+        }
+      }
+    },
+    "2": {
+      "id": 2,
+      "name": "Выключатели специального назначения",
+      "props": {
+        "5": {
+          "id": 5,
+          "name": "Тип устройства",
+          "type": "c",
+          "purpose_type_id": 2,
+          "enums": [
+            {
+              "id": 20,
+              "name": "Карточный",
+              "purpose_props_id": 5,
+              "default": 0
+            },
+            {
+              "id": 21,
+              "name": "2х-полюсный",
+              "purpose_props_id": 5,
+              "default": 0
+            }
+          ]
+        }
+      }
+    },
+    "3": {
+      "id": 3,
+      "name": "Силовые розетки",
+      "props": {
+        "6": {
+          "id": 6,
+          "name": "С заземлением",
+          "type": "c",
+          "purpose_type_id": 3,
+          "enums": [
+            {
+              "id": 25,
+              "name": "Да",
+              "purpose_props_id": 6,
+              "default": 1
+            },
+            {
+              "id": 26,
+              "name": "Нет",
+              "purpose_props_id": 6,
+              "default": 0
+            }
+          ]
+        },
+        "7": {
+          "id": 7,
+          "name": "Со шторками",
+          "type": "c",
+          "purpose_type_id": 3,
+          "enums": [
+            {
+              "id": 27,
+              "name": "Да",
+              "purpose_props_id": 7,
+              "default": 0
+            },
+            {
+              "id": 28,
+              "name": "Нет",
+              "purpose_props_id": 7,
+              "default": 1
+            }
+          ]
+        },
+        "8": {
+          "id": 8,
+          "name": "С влагозащитой",
+          "type": "c",
+          "purpose_type_id": 3,
+          "enums": [
+            {
+              "id": 29,
+              "name": "Нет",
+              "purpose_props_id": 8,
+              "default": 1
+            },
+            {
+              "id": 30,
+              "name": "IP44-46",
+              "purpose_props_id": 8,
+              "default": 0
+            }
+          ]
+        },
+        "9": {
+          "id": 9,
+          "name": "С доп. функциями",
+          "type": "c",
+          "purpose_type_id": 3,
+          "enums": [
+            {
+              "id": 32,
+              "name": "с крышкой",
+              "purpose_props_id": 9,
+              "default": 0
+            },
+            {
+              "id": 95,
+              "name": "Нет",
+              "purpose_props_id": 9,
+              "default": 1
+            }
+          ]
+        }
+      }
+    },
+    "4": {
+      "id": 4,
+      "name": "Зарядные устройства USB",
+      "props": {
+        "11": {
+          "id": 11,
+          "name": "Тип устройства",
+          "type": "c",
+          "purpose_type_id": 4,
+          "enums": [
+            {
+              "id": 42,
+              "name": "Тип А",
+              "purpose_props_id": 11,
+              "default": 0
+            },
+            {
+              "id": 44,
+              "name": "Тип А+С",
+              "purpose_props_id": 11,
+              "default": 0
+            }
+          ]
+        }
+      }
+    },
+    "5": {
+      "id": 5,
+      "name": "Диммеры, датчики, терморегуляторы",
+      "props": {
+        "12": {
+          "id": 12,
+          "name": "Тип устройства",
+          "type": "c",
+          "purpose_type_id": 5,
+          "enums": [
+            {
+              "id": 45,
+              "name": "Датчик движения",
+              "purpose_props_id": 12,
+              "default": 0
+            },
+            {
+              "id": 48,
+              "name": "Диммер",
+              "purpose_props_id": 12,
+              "default": 0
+            },
+            {
+              "id": 49,
+              "name": "Термостат",
+              "purpose_props_id": 12,
+              "default": 0
+            }
+          ]
+        },
+        "21": {
+          "id": 21,
+          "name": "P max, Вт",
+          "type": "c",
+          "purpose_type_id": 5,
+          "enums": [
+            {
+              "id": 91,
+              "name": "до 400",
+              "purpose_props_id": 21,
+              "default": 0
+            },
+            {
+              "id": 93,
+              "name": "до 800",
+              "purpose_props_id": 21,
+              "default": 0
+            }
+          ]
+        }
+      }
+    },
+    "6": {
+      "id": 6,
+      "name": "TV-радио розетки",
+      "props": {
+        "14": {
+          "id": 14,
+          "name": "Тип подключения",
+          "type": "c",
+          "purpose_type_id": 6,
+          "enums": [
+            {
+              "id": 55,
+              "name": "Одиночная",
+              "purpose_props_id": 14,
+              "default": 0
+            },
+            {
+              "id": 56,
+              "name": "Оконечная",
+              "purpose_props_id": 14,
+              "default": 0
+            },
+            {
+              "id": 57,
+              "name": "Проходная",
+              "purpose_props_id": 14,
+              "default": 0
+            }
+          ]
+        }
+      }
+    },
+    "7": {
+      "id": 7,
+      "name": "АУДИО-ВИДЕО розетки",
+      "props": {
+        "16": {
+          "id": 16,
+          "name": "Кол-во разъемов",
+          "type": "c",
+          "purpose_type_id": 7,
+          "enums": [
+            {
+              "id": 64,
+              "name": "1",
+              "purpose_props_id": 16,
+              "default": 0
+            },
+            {
+              "id": 65,
+              "name": "2",
+              "purpose_props_id": 16,
+              "default": 0
+            }
+          ]
+        },
+        "17": {
+          "id": 17,
+          "name": "Тип устройства",
+          "type": "c",
+          "purpose_type_id": 7,
+          "enums": [
+            {
+              "id": 68,
+              "name": "Акустическая",
+              "purpose_props_id": 17,
+              "default": 0
+            },
+            {
+              "id": 69,
+              "name": "HDMI",
+              "purpose_props_id": 17,
+              "default": 0
+            }
+          ]
+        }
+      }
+    },
+    "8": {
+      "id": 8,
+      "name": "Телефонные и информационные розетки",
+      "props": {
+        "18": {
+          "id": 18,
+          "name": "Кол-во разъемов",
+          "type": "c",
+          "purpose_type_id": 8,
+          "enums": [
+            {
+              "id": 74,
+              "name": "1",
+              "purpose_props_id": 18,
+              "default": 0
+            },
+            {
+              "id": 75,
+              "name": "2",
+              "purpose_props_id": 18,
+              "default": 0
+            }
+          ]
+        },
+        "19": {
+          "id": 19,
+          "name": "Тип устройства",
+          "type": "c",
+          "purpose_type_id": 8,
+          "enums": [
+            {
+              "id": 78,
+              "name": "Тел.",
+              "purpose_props_id": 19,
+              "default": 0
+            },
+            {
+              "id": 79,
+              "name": "Комп.",
+              "purpose_props_id": 19,
+              "default": 0
+            }
+          ]
+        }
+      }
+    },
+    "9": {
+      "id": 9,
+      "name": "Другое",
+      "props": {
+        "20": {
+          "id": 20,
+          "name": "Тип устройства",
+          "type": "c",
+          "purpose_type_id": 9,
+          "enums": [
+            {
+              "id": 82,
+              "name": "Заглушка",
+              "purpose_props_id": 20,
+              "default": 0
+            },
+            {
+              "id": 83,
+              "name": "Вывод кабеля",
+              "purpose_props_id": 20,
+              "default": 0
+            },
+            {
+              "id": 89,
+              "name": "ЗИП",
+              "purpose_props_id": 20,
+              "default": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}

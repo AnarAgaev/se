@@ -1,7 +1,7 @@
 import { StateCreator } from 'zustand'
 
 const createAppSlice: StateCreator<AppStore> = (set, get) => ({
-    loading: false,
+    loading: true,
     error: null,
 
     colors: {},

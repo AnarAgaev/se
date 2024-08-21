@@ -1,0 +1,1729 @@
+{
+    "post": [
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "items": [
+        {
+            "id": 6006,
+            "name": "Выключатель 1-клавишный с подсветкой",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 276.6,
+            "price_format": "276.60 ₽",
+            "img_src": "/upload/images/resize/v2--200-71016d304d67a252bfd6e29576cfc9511638553914.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9947,
+                    "name": "SE AtlasDesign Бел Выключатель 1-клавишный с подсветкой, сх.1а, 10АХ, механизм",
+                    "price": "276.60",
+                    "vendor_code": "ATN000113"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6003,
+            "name": "Выключатель 1-клавишный",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 153,
+            "price_format": "153.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-eb2e7867a5da723867906954e353269c1647928628.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9945,
+                    "name": "SE AtlasDesign Бел Выключатель 1-клавишный сх.1, 10АХ, механизм",
+                    "price": "153.00",
+                    "vendor_code": "ATN000111"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6004,
+            "name": "Выключатель 2-клавишный",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 199.8,
+            "price_format": "199.80 ₽",
+            "img_src": "/upload/images/resize/v2--200-54193a40a7e7c83ec33e51cf7510eec01647928786.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9961,
+                    "name": "SE AtlasDesign Бел Выключатель 2-клавишный сх.5, 10АХ, механизм",
+                    "price": "199.80",
+                    "vendor_code": "ATN000151"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6005,
+            "name": "Выключатель 3-клавишный",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 322.2,
+            "price_format": "322.20 ₽",
+            "img_src": "/upload/images/resize/v2--200-fb04b3ee52e0368bac2160c7b30d0ac31647928866.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9953,
+                    "name": "SE AtlasDesign Бел Выключатель 3-клавишный сх.1+1+1, 10АХ, механизм",
+                    "price": "322.20",
+                    "vendor_code": "ATN000131"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6007,
+            "name": "Выключатель 2-клавишный с подсветкой",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 356.4,
+            "price_format": "356.40 ₽",
+            "img_src": "/upload/images/resize/v2--200-f5b0feecb29f50d8bf37e70a3a32822c1647928883.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9963,
+                    "name": "SE AtlasDesign Бел Выключатель 2-клавишный с подсветкой, сх.5а, 10АХ, механизм",
+                    "price": "356.40",
+                    "vendor_code": "ATN000153"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6008,
+            "name": "Переключатель 1-клавишный",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 255.6,
+            "price_format": "255.60 ₽",
+            "img_src": "/upload/images/resize/v2--200-b04dfad548c249fe86203830dde0727b1647928898.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9964,
+                    "name": "SE AtlasDesign Бел Переключатель 1-клавишный, сх.6, 10АХ, механизм",
+                    "price": "255.60",
+                    "vendor_code": "ATN000161"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6009,
+            "name": "Переключатель 2-клавишный",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 459.6,
+            "price_format": "459.60 ₽",
+            "img_src": "/upload/images/resize/v2--200-54193a40a7e7c83ec33e51cf7510eec01647928913.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9966,
+                    "name": "SE AtlasDesign Бел Переключатель 2-клавишный сх.6, 10АХ, механизм",
+                    "price": "459.60",
+                    "vendor_code": "ATN000165"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6010,
+            "name": "Переключатель 1-клавишный с подсветкой",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 379.8,
+            "price_format": "379.80 ₽",
+            "img_src": "/upload/images/resize/v2--200-13f80e0e3424821fe5fe1d0bfb6efd581647928925.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9965,
+                    "name": "SE AtlasDesign Бел Переключатель 1-клавишный с подсветкой, сх.6а, 10АХ, механизм",
+                    "price": "379.80",
+                    "vendor_code": "ATN000163"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6011,
+            "name": "Переключатель 1-клавишный  в комплекте с рамкой IP44",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 373.5,
+            "price_format": "373.50 ₽",
+            "img_src": "/upload/images/resize/v2--200-fefb461c8995d7dca2fef9399fa84ac31655729988.png",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9970,
+                    "name": "SE AtlasDesign Aqua Бел Переключатель 1-клавишный IP44, сх.6, 10АХ, механизм",
+                    "price": "289.80",
+                    "vendor_code": "ATN440161"
+                },
+                {
+                    "id": 10060,
+                    "name": "SE AtlasDesign Aqua Бел Рамка 1-ая IP44",
+                    "price": "83.70",
+                    "vendor_code": "ATN440101"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6012,
+            "name": "Переключатель перекрёстный 1-клавишный",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 459.6,
+            "price_format": "459.60 ₽",
+            "img_src": "/upload/images/resize/v2--200-c5905bf3d3136b40fec411b5bb8335d51647928938.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9967,
+                    "name": "SE AtlasDesign Бел Переключатель перекрестный сх.7, 10АХ, механизм",
+                    "price": "459.60",
+                    "vendor_code": "ATN000171"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6013,
+            "name": "Выключатель кнопочный 1-клавишный",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 267,
+            "price_format": "267.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-75d3913829abe246177bda2d8975ddec1647928952.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9948,
+                    "name": "SE AtlasDesign Бел Выключатель с самовозвратом, сх.1, 10АХ, механизм",
+                    "price": "267.00",
+                    "vendor_code": "ATN000115"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6014,
+            "name": "Выключатель 2-клавишный в комплекте с рамкой IP44",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 474.3,
+            "price_format": "474.30 ₽",
+            "img_src": "/upload/images/resize/v2--200-e5fd46d67f5ba239cb9e5ec3928d18d91655730023.png",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10496,
+                    "name": "ATLASDESIGN AQUA 2-клавишный ВЫКЛЮЧАТЕЛЬ, IP44, сх.5, 10АХ, механизм, БЕЛЫЙ",
+                    "price": "390.60",
+                    "vendor_code": "ATN440151"
+                },
+                {
+                    "id": 10060,
+                    "name": "SE AtlasDesign Aqua Бел Рамка 1-ая IP44",
+                    "price": "83.70",
+                    "vendor_code": "ATN440101"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 12275,
+            "name": "Выключатель 2-клавишный кнопочный",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 348,
+            "price_format": "348.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-54193a40a7e7c83ec33e51cf7510eec01686128252.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 15013,
+                    "name": "ATLASDESIGN 2-клавишный ВЫКЛЮЧАТЕЛЬ с самовозвратом, сх.5, 10АХ, механизм, БЕЛЫЙ",
+                    "price": "348.00",
+                    "vendor_code": "ATN000117"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 12276,
+            "name": "Выключатель жалюзи",
+            "type": "Выключатели",
+            "color_name": "Белый",
+            "price": 472.8,
+            "price_format": "472.80 ₽",
+            "img_src": "/upload/images/resize/v2--200-86a21f9d3d577f3d71c1c26f66a2047e1687246592.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 15017,
+                    "name": "ATLASDESIGN 2-клавишный ВЫКЛЮЧАТЕЛЬ ЖАЛЮЗИ, 10А, мех., БЕЛЫЙ",
+                    "price": "472.80",
+                    "vendor_code": "ATN000119"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6015,
+            "name": "Выключатель карточный",
+            "type": "Выключатели специального назначения",
+            "color_name": "Белый",
+            "price": 535.2,
+            "price_format": "535.20 ₽",
+            "img_src": "/upload/images/resize/v2--200-86a5fbf0fcba6b2606f93adbe0079dcd1650026667.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10067,
+                    "name": "SE AtlasDesign Бел Переключатель карточный с задержкой времени, механизм",
+                    "price": "535.20",
+                    "vendor_code": "ATN000167"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 12277,
+            "name": "Выключатель 1-клавишный 2х-полюсный",
+            "type": "Выключатели специального назначения",
+            "color_name": "Белый",
+            "price": 283.8,
+            "price_format": "283.80 ₽",
+            "img_src": "/upload/images/resize/v2--200-111d462b412a775550326184c922a9331686131606.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 15030,
+                    "name": "ATLASDESIGN 1-клавишный ВЫКЛЮЧАТЕЛЬ 2-полюсный, 10А, мех., БЕЛЫЙ",
+                    "price": "283.80",
+                    "vendor_code": "ATN000121"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6016,
+            "name": "Розетка без заземления без шторок",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 148.8,
+            "price_format": "148.80 ₽",
+            "img_src": "/upload/images/resize/v2--200-879a7f25bdd234f2f204e5da438bfea51650026699.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9955,
+                    "name": "SE AtlasDesign Бел Розетка б/з, 16А, механизм",
+                    "price": "148.80",
+                    "vendor_code": "ATN000141"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6017,
+            "name": "Розетка с заземлением без шторок",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 166.2,
+            "price_format": "166.20 ₽",
+            "img_src": "/upload/images/resize/v2--200-7150cc4fbca4df85da3cf1d3b815ea1b1650026729.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9956,
+                    "name": "SE AtlasDesign Бел Розетка с/з, 16А, механизм",
+                    "price": "166.20",
+                    "vendor_code": "ATN000143"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6018,
+            "name": "Розетка без заземления со шторками",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 172.2,
+            "price_format": "172.20 ₽",
+            "img_src": "/upload/images/resize/v2--200-b40e6af35f8cd095f739f8d21bf60fd71650026777.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9960,
+                    "name": "SE AtlasDesign Бел Розетка б/з  со шторками, 16А, механизм",
+                    "price": "172.20",
+                    "vendor_code": "ATN000149"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6019,
+            "name": "Розетка с заземлением со шторками",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 199.8,
+            "price_format": "199.80 ₽",
+            "img_src": "/upload/images/resize/v2--200-55ce51e2bbe49527a0227941ffa7367c1650026805.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9958,
+                    "name": "SE AtlasDesign Бел Розетка с/з со шторками, 16А, механизм",
+                    "price": "199.80",
+                    "vendor_code": "ATN000145"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6020,
+            "name": "Розетка с заземлением со шторками с крышкой",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 287.4,
+            "price_format": "287.40 ₽",
+            "img_src": "/upload/images/resize/v2--200-07479b17f68ccdfcd30450a801cecaf61650026900.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9959,
+                    "name": "SE AtlasDesign Бел Розетка с/з  со шторками с крышкой, 16А, IP20, механизм",
+                    "price": "287.40",
+                    "vendor_code": "ATN000146"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6021,
+            "name": "Розетка с заземлением со шторками с крышкой в комплекте с рамкой IP44",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 373.5,
+            "price_format": "373.50 ₽",
+            "img_src": "/upload/images/resize/v2--200-62d3c54834c4a596d1affcd6e8375ad21655730141.png",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9971,
+                    "name": "SE AtlasDesign Aqua Бел Розетка с/з  со шторками с крышкой, 16А, IP44, механизм",
+                    "price": "289.80",
+                    "vendor_code": "ATN440146"
+                },
+                {
+                    "id": 10060,
+                    "name": "SE AtlasDesign Aqua Бел Рамка 1-ая IP44",
+                    "price": "83.70",
+                    "vendor_code": "ATN440101"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6022,
+            "name": "Розетка с заземлением со шторками с выталкивателем",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 300,
+            "price_format": "300.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-5be6793fa8bbf51aa6a8cd143eae3ccb1650026991.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10088,
+                    "name": "SE AtlasDesign Бел Розетка с/з со шторками с выталк., 16А, механизм",
+                    "price": "300.00",
+                    "vendor_code": "ATN000147"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6023,
+            "name": "Розетка двойная с заземлением со шторками, со сдвижными крышками",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 570.6,
+            "price_format": "570.60 ₽",
+            "img_src": "/upload/images/resize/v2--200-153eba12e3e1589f9031bc48bbb7a0ea1650027014.png",
+            "is_assembled": true,
+            "is_installed_in_box": false,
+            "post": 4,
+            "products": [
+                {
+                    "id": 10081,
+                    "name": "SE AtlasDesign Бел Розетка с/з двойная, со шторками с крышкой, 16А, в сборе",
+                    "price": "570.60",
+                    "vendor_code": "ATN000128"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6024,
+            "name": "Розетка комбинированная со встроенным зарядным устройством 2хUSB Тип-А/Тип-А, 2.4А",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 4260,
+            "price_format": "4,260.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-08ee2642b479c969ff7204a63858cc0c1650027030.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10334,
+                    "name": "SE AtlasDesign Белый Розетка SO + USB A+A, 5В/2,4А, 2х5В/1,2А, механизм",
+                    "price": "4,260.00",
+                    "vendor_code": "ATN000130"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6025,
+            "name": "Розетка комбинированная со встроенным зарядным устройством 2хUSB Тип-А/Тип-C, 2.4 и 3.0А",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 5910,
+            "price_format": "5,910.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-b808ead121e0201e5cedc2a2de0595b61650275846.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10498,
+                    "name": "SE AtlasDesign Белый Розетка 16А с USB A+C (5В/2,4А/3 А, 2х5В/1,5А), мех",
+                    "price": "5,910.00",
+                    "vendor_code": "ATN000132"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 10401,
+            "name": "Розетка двойная без заземления",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 232.2,
+            "price_format": "232.20 ₽",
+            "img_src": "/upload/images/resize/v2--200-155ff30980dd06390b65ec4d38a695161639987434.jpg",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 4,
+            "products": [
+                {
+                    "id": 9949,
+                    "name": "SE AtlasDesign Бел Розетка б/з двойная, 16А, в сборе",
+                    "price": "232.20",
+                    "vendor_code": "ATN000120"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 10411,
+            "name": "Розетка двойная с заземлением",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 276.6,
+            "price_format": "276.60 ₽",
+            "img_src": "/upload/images/resize/v2--200-532d7ded2fa029ac9b1a0c13b85e6f231639988285.jpg",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 4,
+            "products": [
+                {
+                    "id": 9951,
+                    "name": "SE AtlasDesign Бел Розетка с/з двойная, 16А, в сборе",
+                    "price": "276.60",
+                    "vendor_code": "ATN000124"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 10421,
+            "name": "Розетка двойная без заземления со шторками",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 276.6,
+            "price_format": "276.60 ₽",
+            "img_src": "/upload/images/resize/v2--200-97669d7194d5d257dc7db356359e83e91639989143.jpg",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 4,
+            "products": [
+                {
+                    "id": 9950,
+                    "name": "SE AtlasDesign Бел Розетка б/з двойная, со шторками,16А, в сборе",
+                    "price": "276.60",
+                    "vendor_code": "ATN000122"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 10431,
+            "name": "Розетка двойная с заземлением со шторками",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 322.2,
+            "price_format": "322.20 ₽",
+            "img_src": "/upload/images/resize/v2--200-1756d0bdb053b8d8178c41362933b9331639984440.jpg",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 4,
+            "products": [
+                {
+                    "id": 9952,
+                    "name": "SE AtlasDesign Бел Розетка с/з двойная, со шторками, 16А, в сборе",
+                    "price": "322.20",
+                    "vendor_code": "ATN000126"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 10441,
+            "name": "Розетка с заземлением+2-клавишный выключатель в комплекте с рамкой IP44",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 836.4000000000001,
+            "price_format": "836.40 ₽",
+            "img_src": "/upload/images/resize/v2--200-f4b973d816e13b3dbb20648ad4cf22381655731509.png",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 4,
+            "products": [
+                {
+                    "id": 10061,
+                    "name": "SE AtlasDesign Aqua Бел Рамка 2-ая IP44",
+                    "price": "156.00",
+                    "vendor_code": "ATN440102"
+                },
+                {
+                    "id": 9971,
+                    "name": "SE AtlasDesign Aqua Бел Розетка с/з  со шторками с крышкой, 16А, IP44, механизм",
+                    "price": "289.80",
+                    "vendor_code": "ATN440146"
+                },
+                {
+                    "id": 10496,
+                    "name": "ATLASDESIGN AQUA 2-клавишный ВЫКЛЮЧАТЕЛЬ, IP44, сх.5, 10АХ, механизм, БЕЛЫЙ",
+                    "price": "390.60",
+                    "vendor_code": "ATN440151"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 10444,
+            "name": "Розетка с заземлением + 1-клавишный переключатель в комплекте с рамкой IP44",
+            "type": "Силовые розетки",
+            "color_name": "Белый",
+            "price": 735.6,
+            "price_format": "735.60 ₽",
+            "img_src": "/upload/images/resize/v2--200-3136d1387c22b6603864eae21f8c7a501655730126.png",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 4,
+            "products": [
+                {
+                    "id": 9970,
+                    "name": "SE AtlasDesign Aqua Бел Переключатель 1-клавишный IP44, сх.6, 10АХ, механизм",
+                    "price": "289.80",
+                    "vendor_code": "ATN440161"
+                },
+                {
+                    "id": 10061,
+                    "name": "SE AtlasDesign Aqua Бел Рамка 2-ая IP44",
+                    "price": "156.00",
+                    "vendor_code": "ATN440102"
+                },
+                {
+                    "id": 9971,
+                    "name": "SE AtlasDesign Aqua Бел Розетка с/з  со шторками с крышкой, 16А, IP44, механизм",
+                    "price": "289.80",
+                    "vendor_code": "ATN440146"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6026,
+            "name": "Зарядное устройство 2хUSB Тип-А/Тип-А, 5В/2,1 А, 2х5В/1,05 А",
+            "type": "Зарядные устройства USB",
+            "color_name": "Белый",
+            "price": 2766,
+            "price_format": "2,766.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-5399c19aa8ac0578f4857c1c71cad19a1650262162.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10077,
+                    "name": "SE AtlasDesign Бел USB, 5В, 1 порт x 2,1 А, 2 порта х 1,05 А, механизм",
+                    "price": "2,766.00",
+                    "vendor_code": "ATN000133"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6027,
+            "name": "Зарядное устройство 2хUSB Тип-А/Тип-С, 5В/2,4 А, 2х5В/1,2 А",
+            "type": "Зарядные устройства USB",
+            "color_name": "Белый",
+            "price": 3678,
+            "price_format": "3,678.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-dd2d7de1ccec878ce367fd6cda9fbf771650262175.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10465,
+                    "name": "SE AtlasDesign Белый USB A+С, 5В/2,4 А, 2х5В/1,2 А, механизм",
+                    "price": "3,678.00",
+                    "vendor_code": "ATN000139"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6028,
+            "name": "Розетка комбинированная со встроенным зарядным устройством 2хUSB Тип-А/Тип-А, 2.4А",
+            "type": "Зарядные устройства USB",
+            "color_name": "Белый",
+            "price": 4260,
+            "price_format": "4,260.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-08ee2642b479c969ff7204a63858cc0c1650262187.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10334,
+                    "name": "SE AtlasDesign Белый Розетка SO + USB A+A, 5В/2,4А, 2х5В/1,2А, механизм",
+                    "price": "4,260.00",
+                    "vendor_code": "ATN000130"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6029,
+            "name": "Розетка комбинированная со встроенным зарядным устройством 2хUSB Тип-А/Тип-C, 2.4 и 3.0А",
+            "type": "Зарядные устройства USB",
+            "color_name": "Белый",
+            "price": 5910,
+            "price_format": "5,910.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-b808ead121e0201e5cedc2a2de0595b61650262814.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10498,
+                    "name": "SE AtlasDesign Белый Розетка 16А с USB A+C (5В/2,4А/3 А, 2х5В/1,5А), мех",
+                    "price": "5,910.00",
+                    "vendor_code": "ATN000132"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6030,
+            "name": "Светорегулятор поворотно-нажимной, LED, RC, 20-315Вт",
+            "type": "Диммеры, датчики, терморегуляторы",
+            "color_name": "Белый",
+            "price": 2856,
+            "price_format": "2,856.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-5e8afc6a3a65713272495660052c8fb41650260201.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9995,
+                    "name": "SE AtlasDesign Бел Светорегулятор (диммер) поворотно-нажимной, 315Вт, мех.",
+                    "price": "2,856.00",
+                    "vendor_code": "ATN000134"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6031,
+            "name": "Светорегулятор поворотно-нажимной, LED, RC, 20-630Вт",
+            "type": "Диммеры, датчики, терморегуляторы",
+            "color_name": "Белый",
+            "price": 4800,
+            "price_format": "4,800.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-38a553beae0ac94b949855f1e52733061650260221.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 9996,
+                    "name": "SE AtlasDesign Бел Светорегулятор (диммер) поворотно-нажимной, 630Вт, мех.",
+                    "price": "4,800.00",
+                    "vendor_code": "ATN000136"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6032,
+            "name": "Датчик движения потолочный",
+            "type": "Диммеры, датчики, терморегуляторы",
+            "color_name": "Белый",
+            "price": 1944,
+            "price_format": "1,944.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-60729c3e2deeaeb72407e10ab662cc571650260258.png",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10065,
+                    "name": "SE AtlasDesign Бел Датчик движения потолочный, 2000 Вт, 360°",
+                    "price": "1,944.00",
+                    "vendor_code": "ATN000137"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6033,
+            "name": "Термостат комнатный/теплого пола с датчиком",
+            "type": "Диммеры, датчики, терморегуляторы",
+            "color_name": "Белый",
+            "price": 6540,
+            "price_format": "6,540.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-0eab0a7c027452286ede2170a24e95281650260268.png",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10090,
+                    "name": "SE AtlasDesign Бел Термостат электрон.теплого пола с датч.,от+5до+35°C,16A,в сб.",
+                    "price": "6,540.00",
+                    "vendor_code": "ATN000138"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6034,
+            "name": "Термостат электронный для теплого пола с внешним датчиком",
+            "type": "Диммеры, датчики, терморегуляторы",
+            "color_name": "Белый",
+            "price": 5328,
+            "price_format": "5,328.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-751265b1971425bf68dc97de9cd0f4c41650260283.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10484,
+                    "name": "ATLASDESIGN ТЕРМОСТАТ электрон. теплого пола с датчиком, 10A, механизм, БЕЛЫЙ",
+                    "price": "5,328.00",
+                    "vendor_code": "ATN000135"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6035,
+            "name": "Розетка TV одиночная",
+            "type": "TV-радио розетки",
+            "color_name": "Белый",
+            "price": 210,
+            "price_format": "210.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-6f922741a8dc157c3c7b142fad98d72d1650268124.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10062,
+                    "name": "SE AtlasDesign Бел Розетка антенная одиночная TV коннектор, механизм",
+                    "price": "210.00",
+                    "vendor_code": "ATN000193"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6036,
+            "name": "Розетка TV оконечная",
+            "type": "TV-радио розетки",
+            "color_name": "Белый",
+            "price": 483,
+            "price_format": "483.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-cdf028701b85a5a3e095ee977f1b78ed1650268133.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10075,
+                    "name": "SE AtlasDesign Бел Розетка TV оконечная 1DB, механизм",
+                    "price": "483.00",
+                    "vendor_code": "ATN000191"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6037,
+            "name": "Розетка TV проходная",
+            "type": "TV-радио розетки",
+            "color_name": "Белый",
+            "price": 529.2,
+            "price_format": "529.20 ₽",
+            "img_src": "/upload/images/resize/v2--200-43e821ae9f8c2380c47a17fe2320c9891650268144.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10076,
+                    "name": "SE AtlasDesign Бел Розетка TV проходная 4DB, механизм",
+                    "price": "529.20",
+                    "vendor_code": "ATN000192"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6038,
+            "name": "Розетка TV одиночная + компьютерная RJ45, кат.5e",
+            "type": "TV-радио розетки",
+            "color_name": "Белый",
+            "price": 838.8,
+            "price_format": "838.80 ₽",
+            "img_src": "/upload/images/resize/v2--200-74ec91d91d9d72b364653a35c5d4b2fb1650268156.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10079,
+                    "name": "SE AtlasDesign Бел Розетка двойная ТВ + компьютерная RJ45, кат. 5Е",
+                    "price": "838.80",
+                    "vendor_code": "ATN000189"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6039,
+            "name": "Розетка акустическая двойная",
+            "type": "АУДИО-ВИДЕО розетки",
+            "color_name": "Белый",
+            "price": 1195.8,
+            "price_format": "1,195.80 ₽",
+            "img_src": "/upload/images/resize/v2--200-606d6394cce555a408db153b2b5c9fb21650275944.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10063,
+                    "name": "SE AtlasDesign Бел Аудиорозетка двухместная",
+                    "price": "1,195.80",
+                    "vendor_code": "ATN000187"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 12278,
+            "name": "Розетка HDMI",
+            "type": "АУДИО-ВИДЕО розетки",
+            "color_name": "Белый",
+            "price": 1008,
+            "price_format": "1,008.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-d4b09a9b5bf0a7ce662968fa367f6c3c1687244123.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 14997,
+                    "name": "ATLASDESIGN РОЗЕТКА HDMI, механизм, БЕЛЫЙ",
+                    "price": "1,008.00",
+                    "vendor_code": "ATN000180"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 12279,
+            "name": "Розетка двойная HDMI+RJ45, кат.5Е",
+            "type": "АУДИО-ВИДЕО розетки",
+            "color_name": "Белый",
+            "price": 1512,
+            "price_format": "1,512.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-e86d61d4e139d4a92175e8d078f3061d1687244134.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 15000,
+                    "name": "ATLASDESIGN РОЗЕТКА двойная HDMI+RJ45, кат.5Е, механизм, БЕЛЫЙ",
+                    "price": "1,512.00",
+                    "vendor_code": "ATN000182"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6040,
+            "name": "Телефонная розетка RJ11, 4 контакта",
+            "type": "Телефонные и информационные розетки",
+            "color_name": "Белый",
+            "price": 345,
+            "price_format": "345.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-004a96722c3950469600ad92a992390f1650265095.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10089,
+                    "name": "SE AtlasDesign Бел Розетка телефонная RJ11, механизм",
+                    "price": "345.00",
+                    "vendor_code": "ATN000181"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6041,
+            "name": "Розетка компьютерная RJ45, кат.5e",
+            "type": "Телефонные и информационные розетки",
+            "color_name": "Белый",
+            "price": 647.4,
+            "price_format": "647.40 ₽",
+            "img_src": "/upload/images/resize/v2--200-163cef46b1600852b4bef4b5e6f1c31d1650265106.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10080,
+                    "name": "SE AtlasDesign Бел Розетка компьютерная RJ45, механизм",
+                    "price": "647.40",
+                    "vendor_code": "ATN000183"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6042,
+            "name": "Розетка компьютерная RJ45, кат.5e двойная",
+            "type": "Телефонные и информационные розетки",
+            "color_name": "Белый",
+            "price": 934.8,
+            "price_format": "934.80 ₽",
+            "img_src": "/upload/images/resize/v2--200-bd249a48b753befda8b76e28586c9f9b1650265117.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10078,
+                    "name": "SE AtlasDesign Бел Розетка двойная компьютерная RJ45+RJ45, кат.5E, механизм",
+                    "price": "934.80",
+                    "vendor_code": "ATN000185"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6043,
+            "name": "Розетка TV одиночная + компьютерная RJ45, кат.5e",
+            "type": "Телефонные и информационные розетки",
+            "color_name": "Белый",
+            "price": 838.8,
+            "price_format": "838.80 ₽",
+            "img_src": "/upload/images/resize/v2--200-74ec91d91d9d72b364653a35c5d4b2fb1650265131.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10079,
+                    "name": "SE AtlasDesign Бел Розетка двойная ТВ + компьютерная RJ45, кат. 5Е",
+                    "price": "838.80",
+                    "vendor_code": "ATN000189"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 12280,
+            "name": "Розетка двойная HDMI+RJ45, кат.5Е",
+            "type": "Телефонные и информационные розетки",
+            "color_name": "Белый",
+            "price": 1512,
+            "price_format": "1,512.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-e86d61d4e139d4a92175e8d078f3061d1687244142.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 15000,
+                    "name": "ATLASDESIGN РОЗЕТКА двойная HDMI+RJ45, кат.5Е, механизм, БЕЛЫЙ",
+                    "price": "1,512.00",
+                    "vendor_code": "ATN000182"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6044,
+            "name": "Вывод кабеля",
+            "type": "Другое",
+            "color_name": "Белый",
+            "price": 184.8,
+            "price_format": "184.80 ₽",
+            "img_src": "/upload/images/resize/v2--200-0bf553f794d1aff53ae09dd8de4be4481650270488.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10064,
+                    "name": "SE AtlasDesign Бел Вывод кабеля, механизм",
+                    "price": "184.80",
+                    "vendor_code": "ATN000199"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6045,
+            "name": "Заглушка",
+            "type": "Другое",
+            "color_name": "Белый",
+            "price": 85.14,
+            "price_format": "85.14 ₽",
+            "img_src": "/upload/images/resize/v2--200-111d462b412a775550326184c922a9331650026507.png",
+            "is_assembled": false,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10451,
+                    "name": "SE AtlasDesign Белый Заглушка",
+                    "price": "85.14",
+                    "vendor_code": "ATN000109"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6047,
+            "name": "Рамка 2-постовая IP44",
+            "type": "Другое",
+            "color_name": "Белый",
+            "price": 156,
+            "price_format": "156.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-54fae6962fe66fdb608eb915deb9d3511650270527.png",
+            "is_assembled": true,
+            "is_installed_in_box": false,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10061,
+                    "name": "SE AtlasDesign Aqua Бел Рамка 2-ая IP44",
+                    "price": "156.00",
+                    "vendor_code": "ATN440102"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6048,
+            "name": "Рамка 3-постовая IP44",
+            "type": "Другое",
+            "color_name": "Белый",
+            "price": 282,
+            "price_format": "282.00 ₽",
+            "img_src": "/upload/images/resize/v2--200-12f7bb6f2c54936c1a1e5801712538391650270536.png",
+            "is_assembled": true,
+            "is_installed_in_box": false,
+            "post": 3,
+            "products": [
+                {
+                    "id": 10494,
+                    "name": "ATLASDESIGN AQUA 3-постовая РАМКА, IP44, БЕЛЫЙ",
+                    "price": "282.00",
+                    "vendor_code": "ATN440103"
+                }
+            ],
+            "quantity": 0
+        },
+        {
+            "id": 6049,
+            "name": "Адаптер для механизмов 45x45 мм",
+            "type": "Другое",
+            "color_name": "Белый",
+            "price": 85.14,
+            "price_format": "85.14 ₽",
+            "img_src": "/upload/images/resize/v2--200-6299bc87d505ec9a60c2b52da29fb8121650270546.png",
+            "is_assembled": true,
+            "is_installed_in_box": true,
+            "post": 2,
+            "products": [
+                {
+                    "id": 10447,
+                    "name": "SE AtlasDesign Белый Адаптер 45",
+                    "price": "85.14",
+                    "vendor_code": "ATN000108"
+                }
+            ],
+            "quantity": 0
+        }
+    ],
+    "groups": {
+        "1": {
+            "id": 1,
+            "name": "Выключатели",
+            "props": {
+                "1": {
+                    "id": 1,
+                    "name": "Тип устройства",
+                    "type": "c",
+                    "purpose_type_id": 1,
+                    "enums": [
+                        {
+                            "id": 1,
+                            "name": "Выключатель",
+                            "purpose_props_id": 1,
+                            "default": 1
+                        },
+                        {
+                            "id": 2,
+                            "name": "Переключатель",
+                            "purpose_props_id": 1,
+                            "default": 0
+                        },
+                        {
+                            "id": 3,
+                            "name": "Переключатель перекрёстный",
+                            "purpose_props_id": 1,
+                            "default": 0
+                        },
+                        {
+                            "id": 4,
+                            "name": "Выключатель кнопочный",
+                            "purpose_props_id": 1,
+                            "default": 0
+                        },
+                        {
+                            "id": 5,
+                            "name": "Для жалюзи",
+                            "purpose_props_id": 1,
+                            "default": 0
+                        }
+                    ]
+                },
+                "2": {
+                    "id": 2,
+                    "name": "Кол-во клавиш",
+                    "type": "c",
+                    "purpose_type_id": 1,
+                    "enums": [
+                        {
+                            "id": 6,
+                            "name": "1",
+                            "purpose_props_id": 2,
+                            "default": 1
+                        },
+                        {
+                            "id": 7,
+                            "name": "2",
+                            "purpose_props_id": 2,
+                            "default": 0
+                        },
+                        {
+                            "id": 8,
+                            "name": "3",
+                            "purpose_props_id": 2,
+                            "default": 0
+                        }
+                    ]
+                },
+                "3": {
+                    "id": 3,
+                    "name": "Подсветка",
+                    "type": "c",
+                    "purpose_type_id": 1,
+                    "enums": [
+                        {
+                            "id": 11,
+                            "name": "Да",
+                            "purpose_props_id": 3,
+                            "default": 0
+                        },
+                        {
+                            "id": 12,
+                            "name": "Нет",
+                            "purpose_props_id": 3,
+                            "default": 1
+                        }
+                    ]
+                },
+                "4": {
+                    "id": 4,
+                    "name": "С влагозащитой",
+                    "type": "c",
+                    "purpose_type_id": 1,
+                    "enums": [
+                        {
+                            "id": 13,
+                            "name": "Нет",
+                            "purpose_props_id": 4,
+                            "default": 1
+                        },
+                        {
+                            "id": 14,
+                            "name": "IP44-46",
+                            "purpose_props_id": 4,
+                            "default": 0
+                        }
+                    ]
+                }
+            }
+        },
+        "2": {
+            "id": 2,
+            "name": "Выключатели специального назначения",
+            "props": {
+                "5": {
+                    "id": 5,
+                    "name": "Тип устройства",
+                    "type": "c",
+                    "purpose_type_id": 2,
+                    "enums": [
+                        {
+                            "id": 20,
+                            "name": "Карточный",
+                            "purpose_props_id": 5,
+                            "default": 0
+                        },
+                        {
+                            "id": 21,
+                            "name": "2х-полюсный",
+                            "purpose_props_id": 5,
+                            "default": 0
+                        }
+                    ]
+                }
+            }
+        },
+        "3": {
+            "id": 3,
+            "name": "Силовые розетки",
+            "props": {
+                "6": {
+                    "id": 6,
+                    "name": "С заземлением",
+                    "type": "c",
+                    "purpose_type_id": 3,
+                    "enums": [
+                        {
+                            "id": 25,
+                            "name": "Да",
+                            "purpose_props_id": 6,
+                            "default": 1
+                        },
+                        {
+                            "id": 26,
+                            "name": "Нет",
+                            "purpose_props_id": 6,
+                            "default": 0
+                        }
+                    ]
+                },
+                "7": {
+                    "id": 7,
+                    "name": "Со шторками",
+                    "type": "c",
+                    "purpose_type_id": 3,
+                    "enums": [
+                        {
+                            "id": 27,
+                            "name": "Да",
+                            "purpose_props_id": 7,
+                            "default": 0
+                        },
+                        {
+                            "id": 28,
+                            "name": "Нет",
+                            "purpose_props_id": 7,
+                            "default": 1
+                        }
+                    ]
+                },
+                "8": {
+                    "id": 8,
+                    "name": "С влагозащитой",
+                    "type": "c",
+                    "purpose_type_id": 3,
+                    "enums": [
+                        {
+                            "id": 29,
+                            "name": "Нет",
+                            "purpose_props_id": 8,
+                            "default": 1
+                        },
+                        {
+                            "id": 30,
+                            "name": "IP44-46",
+                            "purpose_props_id": 8,
+                            "default": 0
+                        }
+                    ]
+                },
+                "9": {
+                    "id": 9,
+                    "name": "С доп. функциями",
+                    "type": "c",
+                    "purpose_type_id": 3,
+                    "enums": [
+                        {
+                            "id": 32,
+                            "name": "с крышкой",
+                            "purpose_props_id": 9,
+                            "default": 0
+                        },
+                        {
+                            "id": 95,
+                            "name": "Нет",
+                            "purpose_props_id": 9,
+                            "default": 1
+                        }
+                    ]
+                }
+            }
+        },
+        "4": {
+            "id": 4,
+            "name": "Зарядные устройства USB",
+            "props": {
+                "11": {
+                    "id": 11,
+                    "name": "Тип устройства",
+                    "type": "c",
+                    "purpose_type_id": 4,
+                    "enums": [
+                        {
+                            "id": 42,
+                            "name": "Тип А",
+                            "purpose_props_id": 11,
+                            "default": 0
+                        },
+                        {
+                            "id": 44,
+                            "name": "Тип А+С",
+                            "purpose_props_id": 11,
+                            "default": 0
+                        }
+                    ]
+                }
+            }
+        },
+        "5": {
+            "id": 5,
+            "name": "Диммеры, датчики, терморегуляторы",
+            "props": {
+                "12": {
+                    "id": 12,
+                    "name": "Тип устройства",
+                    "type": "c",
+                    "purpose_type_id": 5,
+                    "enums": [
+                        {
+                            "id": 45,
+                            "name": "Датчик движения",
+                            "purpose_props_id": 12,
+                            "default": 0
+                        },
+                        {
+                            "id": 48,
+                            "name": "Диммер",
+                            "purpose_props_id": 12,
+                            "default": 0
+                        },
+                        {
+                            "id": 49,
+                            "name": "Термостат",
+                            "purpose_props_id": 12,
+                            "default": 0
+                        }
+                    ]
+                },
+                "21": {
+                    "id": 21,
+                    "name": "P max, Вт",
+                    "type": "c",
+                    "purpose_type_id": 5,
+                    "enums": [
+                        {
+                            "id": 91,
+                            "name": "до 400",
+                            "purpose_props_id": 21,
+                            "default": 0
+                        },
+                        {
+                            "id": 93,
+                            "name": "до 800",
+                            "purpose_props_id": 21,
+                            "default": 0
+                        }
+                    ]
+                }
+            }
+        },
+        "6": {
+            "id": 6,
+            "name": "TV-радио розетки",
+            "props": {
+                "14": {
+                    "id": 14,
+                    "name": "Тип подключения",
+                    "type": "c",
+                    "purpose_type_id": 6,
+                    "enums": [
+                        {
+                            "id": 55,
+                            "name": "Одиночная",
+                            "purpose_props_id": 14,
+                            "default": 0
+                        },
+                        {
+                            "id": 56,
+                            "name": "Оконечная",
+                            "purpose_props_id": 14,
+                            "default": 0
+                        },
+                        {
+                            "id": 57,
+                            "name": "Проходная",
+                            "purpose_props_id": 14,
+                            "default": 0
+                        }
+                    ]
+                }
+            }
+        },
+        "7": {
+            "id": 7,
+            "name": "АУДИО-ВИДЕО розетки",
+            "props": {
+                "16": {
+                    "id": 16,
+                    "name": "Кол-во разъемов",
+                    "type": "c",
+                    "purpose_type_id": 7,
+                    "enums": [
+                        {
+                            "id": 64,
+                            "name": "1",
+                            "purpose_props_id": 16,
+                            "default": 0
+                        },
+                        {
+                            "id": 65,
+                            "name": "2",
+                            "purpose_props_id": 16,
+                            "default": 0
+                        }
+                    ]
+                },
+                "17": {
+                    "id": 17,
+                    "name": "Тип устройства",
+                    "type": "c",
+                    "purpose_type_id": 7,
+                    "enums": [
+                        {
+                            "id": 68,
+                            "name": "Акустическая",
+                            "purpose_props_id": 17,
+                            "default": 0
+                        },
+                        {
+                            "id": 69,
+                            "name": "HDMI",
+                            "purpose_props_id": 17,
+                            "default": 0
+                        }
+                    ]
+                }
+            }
+        },
+        "8": {
+            "id": 8,
+            "name": "Телефонные и информационные розетки",
+            "props": {
+                "18": {
+                    "id": 18,
+                    "name": "Кол-во разъемов",
+                    "type": "c",
+                    "purpose_type_id": 8,
+                    "enums": [
+                        {
+                            "id": 74,
+                            "name": "1",
+                            "purpose_props_id": 18,
+                            "default": 0
+                        },
+                        {
+                            "id": 75,
+                            "name": "2",
+                            "purpose_props_id": 18,
+                            "default": 0
+                        }
+                    ]
+                },
+                "19": {
+                    "id": 19,
+                    "name": "Тип устройства",
+                    "type": "c",
+                    "purpose_type_id": 8,
+                    "enums": [
+                        {
+                            "id": 78,
+                            "name": "Тел.",
+                            "purpose_props_id": 19,
+                            "default": 0
+                        },
+                        {
+                            "id": 79,
+                            "name": "Комп.",
+                            "purpose_props_id": 19,
+                            "default": 0
+                        }
+                    ]
+                }
+            }
+        },
+        "9": {
+            "id": 9,
+            "name": "Другое",
+            "props": {
+                "20": {
+                    "id": 20,
+                    "name": "Тип устройства",
+                    "type": "c",
+                    "purpose_type_id": 9,
+                    "enums": [
+                        {
+                            "id": 82,
+                            "name": "Заглушка",
+                            "purpose_props_id": 20,
+                            "default": 0
+                        },
+                        {
+                            "id": 83,
+                            "name": "Вывод кабеля",
+                            "purpose_props_id": 20,
+                            "default": 0
+                        },
+                        {
+                            "id": 89,
+                            "name": "ЗИП",
+                            "purpose_props_id": 20,
+                            "default": 0
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

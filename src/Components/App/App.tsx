@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Tabs, Factory, Viewport } from '../../Components'
+import { Loader, Tabs, Factory, Viewport } from '../../Components'
 import useStore from '../../Store'
 import style from './App.module.sass'
 import '../../Sass/main.sass'
@@ -7,7 +7,15 @@ import '../../Sass/main.sass'
 const { app, caption, body } = style
 
 const App = () => {
-	const requestInitData = useStore(state => state.requestInitData)
+	const [ requestInitData, loading, error ] = useStore(state => [
+		state.requestInitData,
+		state.loading,
+		state.error
+	])
+
+	if (error !== null) {
+		throw new Error(`${error ? error : ''}`)
+	}
 
 	useEffect(() => {
 		requestInitData()
@@ -17,14 +25,19 @@ const App = () => {
 
 	return (
 		<section className={clazz}>
-			<h1 className={caption}>
-				Конфигуратор
-			</h1>
-			<Tabs />
-			<div className={body}>
-				<Factory />
-				<Viewport />
-			</div>
+			{ loading
+				? <Loader />
+				: <>
+					<h1 className={caption}>
+						Конфигуратор
+					</h1>
+					<Tabs />
+					<div className={body}>
+						<Factory />
+						<Viewport />
+					</div>
+				</>
+			}
 		</section>
 	)
 }

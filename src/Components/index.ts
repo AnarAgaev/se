@@ -1,4 +1,5 @@
 import App from './App/App'
+import Loader from './Loader/Loader'
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 import Tabs from './Tabs/Tabs'
 import TabsPages from './TabsPages/TabsPages'
@@ -38,6 +39,7 @@ import InputAdd from './InputAdd/InputAdd'
 
 export {
     App,
+    Loader,
     ErrorBoundary,
     Tabs,
     TabsPages,

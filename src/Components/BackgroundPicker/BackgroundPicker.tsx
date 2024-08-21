@@ -63,13 +63,14 @@ const BackgroundPicker = () => {
             formData.append('dir', 'backgrounds')
 
             const res = await fetch(uploadLink, {
-                method: 'POST',
-                body: formData
+                // method: 'POST',
+                // body: formData
             })
 
             if (!res.ok) console.error('Failed to upload background image to', uploadLink)
 
-            const safeResponse = BackgroundsType.passthrough().safeParse(await res.json())
+            const safeResponse = BackgroundsType
+                .passthrough().safeParse(await res.json())
 
             console.log('Uploading image response', safeResponse)
 
