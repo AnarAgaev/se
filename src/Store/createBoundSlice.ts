@@ -39,8 +39,6 @@ const useStore = create<DevicesStore & BordersStore & BackgroundsStore & AppStor
                 // This variable should be initialized on the page with the widget
                 const initSourceDataLink = window.initSourceDataLink
 
-                console.log('initSourceDataLink', initSourceDataLink);
-
                 set({ loading: true })
 
                 try {
@@ -61,13 +59,11 @@ const useStore = create<DevicesStore & BordersStore & BackgroundsStore & AppStor
                     const safeResponse = InitDataContractType
                         .passthrough().safeParse(await res.json())
 
-                    console.log('Initial data response', safeResponse)
-
                     if (!safeResponse.success) {
                         const errorMessage = generateErrorMessage(safeResponse.error.issues, zodErrorOptions)
                         console.log(errorMessage)
 
-                        set({ error: "There's no valid Zod contract!", loading: false })
+                        set({ error: "Zod contract is invalid!", loading: false })
 
                         return
                     }
@@ -75,12 +71,12 @@ const useStore = create<DevicesStore & BordersStore & BackgroundsStore & AppStor
                     // Pushing data to appropriate stores
                     get().setInitBackgroundsData(safeResponse.data.backgrounds)
                     get().setAppColors(safeResponse.data.colors)
-                    get().setInitBordersData(safeResponse.data.borders)
-                    get().setInitDevicesData(safeResponse.data.devices)
-                    get().setAppVendors(safeResponse.data.vendors)
-                    get().setAppFunctionsKinds(safeResponse.data.functions)
+                    // get().setInitBordersData(safeResponse.data.borders)
+                    // get().setInitDevicesData(safeResponse.data.devices)
+                    // get().setAppVendors(safeResponse.data.vendors)
+                    // get().setAppFunctionsKinds(safeResponse.data.functions)
                     get().setAppProjects(safeResponse.data.projects)
-                    get().setAppRooms(safeResponse.data.rooms)
+                    // get().setAppRooms(safeResponse.data.rooms)
 
                     set({ error: null, loading: false })
                 } catch (error: Error | unknown) {

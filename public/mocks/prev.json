@@ -1,0 +1,1626 @@
+{
+  "borders": [
+    {
+      "id": "1",
+      "active": false,
+      "type": "Стеклянные рамки",
+      "collection": "AtlasDesign",
+      "name": "Графит",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/4690389180675_werkel.png",
+      "preview": "img/borders/4690389180675_werkel.png",
+      "color": "gold",
+      "vendor": "Systeme Electric",
+      "material": "Дерево"
+    },
+    {
+      "id": "2",
+      "active": false,
+      "type": "Стеклянные рамки",
+      "collection": "Elegance",
+      "name": "",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-elite-ivory.png",
+      "preview": "img/borders/f-elite-ivory.png",
+      "color": "gray",
+      "vendor": "era",
+      "material": "Дерево"
+    },
+    {
+      "id": "3",
+      "active": false,
+      "type": "Стеклянные рамки",
+      "collection": "AtlasDesign",
+      "name": "Дымчатый",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-elite-smoke.png",
+      "preview": "img/borders/f-elite-smoke.png",
+      "color": "white",
+      "vendor": "Systeme Electric",
+      "material": "Камень"
+    },
+    {
+      "id": "4",
+      "active": false,
+      "type": "Стеклянные рамки",
+      "collection": "СЕРИЯ 12",
+      "name": "Молочный",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-favorit-molochnyy.png",
+      "preview": "img/borders/f-favorit-molochnyy.png",
+      "color": "copper",
+      "vendor": "era",
+      "material": "Пластик"
+    },
+    {
+      "id": "5",
+      "active": false,
+      "type": "Стеклянные рамки",
+      "collection": "Glossa",
+      "name": "Латте",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-favorit-latte.png",
+      "preview": "img/borders/f-favorit-latte.png",
+      "color": "black",
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
+    },
+    {
+      "id": "6",
+      "active": false,
+      "type": "Стеклянные рамки",
+      "collection": "Inspiria",
+      "name": "Белый",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-favorit-white.png",
+      "preview": "img/borders/f-favorit-white.png",
+      "color": "silver",
+      "vendor": "Legrand",
+      "material": "Пластик"
+    },
+    {
+      "id": "7",
+      "active": false,
+      "type": "Стеклянные рамки",
+      "collection": "Inspiria",
+      "name": "Белый матовый",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-favorit-white-matt.png",
+      "preview": "img/borders/f-favorit-white-matt.png",
+      "color": "gold",
+      "vendor": "Legrand",
+      "material": "Пластик"
+    },
+    {
+      "id": "8",
+      "active": false,
+      "type": "AtlasDesign",
+      "collection": "Wessen",
+      "name": "Бронзовый",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-favorit-bronze.png",
+      "preview": "img/borders/f-favorit-bronze.png",
+      "color": "gray",
+      "vendor": "Systeme Electric",
+      "material": "Металл"
+    },
+    {
+      "id": "9",
+      "active": false,
+      "type": "AtlasDesign",
+      "collection": "Wessen",
+      "name": "Дымчатый",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-favorit-smoke.png",
+      "preview": "img/borders/f-favorit-smoke.png",
+      "color": "white",
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
+    },
+    {
+      "id": "10",
+      "active": false,
+      "type": "AtlasDesign",
+      "collection": "Elegance",
+      "name": "Шампань",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-favorit-champain.png",
+      "preview": "img/borders/f-favorit-champain.png",
+      "color": "copper",
+      "vendor": "era",
+      "material": "Металл"
+    },
+    {
+      "id": "11",
+      "active": false,
+      "type": "Стеклянные рамки",
+      "collection": "Wessen",
+      "name": "Мокко",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-favorit-mokko.png",
+      "preview": "img/borders/f-favorit-mokko.png",
+      "color": "black",
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
+    },
+    {
+      "id": "12",
+      "active": false,
+      "type": "Стеклянные рамки",
+      "collection": "СЕРИЯ 12",
+      "name": "Натуральное стекло",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-favorit-natural-glass.png",
+      "preview": "img/borders/f-favorit-natural-glass.png",
+      "color": "silver",
+      "vendor": "era",
+      "material": "Пластик"
+    },
+    {
+      "id": "13",
+      "active": false,
+      "type": "Стеклянные рамки",
+      "collection": "Wessen",
+      "name": "Серый",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-favorit-gray.png",
+      "preview": "img/borders/f-favorit-gray.png",
+      "color": "gold",
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
+    },
+    {
+      "id": "14",
+      "active": false,
+      "type": "Стеклянные рамки",
+      "collection": "СЕРИЯ 12",
+      "name": "Черный",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-favorit-black.png",
+      "preview": "img/borders/f-favorit-black.png",
+      "color": "gray",
+      "vendor": "era",
+      "material": "Пластик"
+    },
+    {
+      "id": "15",
+      "active": false,
+      "type": "AtlasDesign",
+      "collection": "Wessen",
+      "name": "Черный",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-diamant-black.png",
+      "preview": "img/borders/f-diamant-black.png",
+      "color": "white",
+      "vendor": "Systeme Electric",
+      "material": "Стекло"
+    },
+    {
+      "id": "16",
+      "active": false,
+      "type": "Акриловые рамки",
+      "collection": "Wessen",
+      "name": "Белый",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-acrylic-white.png",
+      "preview": "img/borders/f-acrylic-white.png",
+      "color": "copper",
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
+    },
+    {
+      "id": "17",
+      "active": false,
+      "type": "Акриловые рамки",
+      "collection": "Etika",
+      "name": "Черный",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-acrylic-black.png",
+      "preview": "img/borders/f-acrylic-black.png",
+      "color": "black",
+      "vendor": "Legrand",
+      "material": "Пластик"
+    },
+    {
+      "id": "18",
+      "active": false,
+      "type": "Акриловые рамки",
+      "collection": "AtlasDesign",
+      "name": "Графит",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-acrylic-graphite.png",
+      "preview": "img/borders/f-acrylic-graphite.png",
+      "color": "silver",
+      "vendor": "Systeme Electric",
+      "material": "Дерево"
+    },
+    {
+      "id": "19",
+      "active": false,
+      "type": "Акриловые рамки",
+      "collection": "Elegance",
+      "name": "Айвори",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-acrylic-ivory.png",
+      "preview": "img/borders/f-acrylic-ivory.png",
+      "color": "gold",
+      "vendor": "era",
+      "material": "Пластик"
+    },
+    {
+      "id": "20",
+      "active": false,
+      "type": "Металлические рамки",
+      "collection": "AtlasDesign",
+      "name": "Алюминий",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-platinum-alyuminiy.png",
+      "preview": "img/borders/f-platinum-alyuminiy.png",
+      "color": "gray",
+      "vendor": "Systeme Electric",
+      "material": "Камень"
+    },
+    {
+      "id": "21",
+      "active": false,
+      "type": "Металлические рамки",
+      "collection": "Quteo",
+      "name": "Шампань",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-platinum-shampan.png",
+      "preview": "img/borders/f-platinum-shampan.png",
+      "color": "white",
+      "vendor": "Legrand",
+      "material": "Пластик"
+    },
+    {
+      "id": "22",
+      "active": false,
+      "type": "Металлические рамки",
+      "collection": "СЕРИЯ 12",
+      "name": "Черный алюминий",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-platinum-chernyy-alyuminiy.png",
+      "preview": "img/borders/f-platinum-chernyy-alyuminiy.png",
+      "color": "copper",
+      "vendor": "era",
+      "material": "Пластик"
+    },
+    {
+      "id": "23",
+      "active": false,
+      "type": "Металлические рамки",
+      "collection": "Wessen",
+      "name": "Алюминий",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-aluminium-silver.png",
+      "preview": "img/borders/f-aluminium-silver.png",
+      "color": "black",
+      "vendor": "Systeme Electric",
+      "material": "Пластик"
+    },
+    {
+      "id": "24",
+      "active": false,
+      "type": "Металлические рамки",
+      "collection": "Elegance",
+      "name": "Шампань алюминий",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-aluminium-shampan.png",
+      "preview": "img/borders/f-aluminium-shampan.png",
+      "color": "silver",
+      "vendor": "era",
+      "material": "Стекло"
+    },
+    {
+      "id": "25",
+      "active": false,
+      "type": "Металлические рамки",
+      "collection": "AtlasDesign",
+      "name": "Коричневый алюминий",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-aluminium-brown.png",
+      "preview": "img/borders/f-aluminium-brown.png",
+      "color": "gold",
+      "vendor": "Systeme Electric",
+      "material": "Металл"
+    },
+    {
+      "id": "26",
+      "active": false,
+      "type": "Металлические рамки",
+      "collection": "Inspiria",
+      "name": "Черный алюминий",
+      "code": "1234567",
+      "price": "100.00",
+      "image": "img/borders/f-aluminium-black.png",
+      "preview": "img/borders/f-aluminium-black.png",
+      "color": "gray",
+      "vendor": "Legrand",
+      "material": "Пластик"
+    }
+  ],
+  "devices": [
+    {
+      "id": "1",
+      "active": false,
+      "name": "Белый одноклавишный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_white_switcher_sensor_1_sup.png",
+      "preview": "img/devices/previews/mechanism_white_switcher_sensor_1.png",
+
+      "type": "Выключатели сенсорные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Выключатели",
+      "color": "white",
+
+      "deviceType": "переключатель",
+      "keysCount": 4,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "2",
+      "active": false,
+      "name": "Белый двуклавишный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_white_switcher_sensor_2_sup.png",
+      "preview": "img/devices/previews/mechanism_white_switcher_sensor_2.png",
+
+      "type": "Выключатели сенсорные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "copper",
+
+      "deviceType": "выключатель кнопочный",
+      "keysCount": 5,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "3",
+      "active": false,
+      "name": "Черный одноклавишный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_black_switcher_sensor_1_sup.png",
+      "preview": "img/devices/previews/mechanism_black_switcher_sensor_1.png",
+
+      "type": "Выключатели сенсорные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "black",
+
+      "deviceType": "диммер",
+      "keysCount": 1,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "4",
+      "active": false,
+      "name": "Черный двуклавишный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_black_switcher_sensor_2_sup.png",
+      "preview": "img/devices/previews/mechanism_black_switcher_sensor_2.png",
+
+      "type": "Выключатели сенсорные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Glossa",
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "silver",
+
+      "deviceType": "переключатель",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "5",
+      "active": false,
+      "name": "Серебряный одноклавишный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_silver_switcher_sensor_1_sup.png",
+      "preview": "img/devices/previews/mechanism_silver_switcher_sensor_1.png",
+
+      "type": "Выключатели сенсорные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Выключатели",
+      "color": "gold",
+
+      "deviceType": "выключатель",
+      "keysCount": 2,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "6",
+      "active": false,
+      "name": "Серебряный двуклавишный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_silver_switcher_sensor_2_sup.png",
+      "preview": "img/devices/previews/mechanism_silver_switcher_sensor_2.png",
+
+      "type": "Выключатели сенсорные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "gray",
+
+      "deviceType": "переключатель",
+      "keysCount": 5,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "7",
+      "active": false,
+      "name": "Шампань одноклавишный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_champain_switcher_sensor_1_sup.png",
+      "preview": "img/devices/previews/mechanism_champain_switcher_sensor_1.png",
+
+      "type": "Выключатели сенсорные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "white",
+
+      "deviceType": "переключатель",
+      "keysCount": 3,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "8",
+      "active": false,
+      "name": "Шампань двуклавишный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_champain_switcher_sensor_2_sup.png",
+      "preview": "img/devices/previews/mechanism_champain_switcher_sensor_2.png",
+
+      "type": "Выключатели сенсорные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Выключатели",
+      "color": "copper",
+
+      "deviceType": "термостат",
+      "keysCount": 6,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "9",
+      "active": false,
+      "name": "Hammer белый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_hammer-white_switcher_1_sup.png",
+      "preview": "img/devices/previews/mechanism_hammer-white_switcher_1.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Выключатели спец назначения",
+      "color": "black",
+
+      "deviceType": "термостат",
+      "keysCount": 2,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "10",
+      "active": false,
+      "name": "Hammer черный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_hammer-black_switcher_1_sup.png",
+      "preview": "img/devices/previews/mechanism_hammer-black_switcher_1.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Стекло",
+      "function": "Выключатели",
+      "color": "silver",
+
+      "deviceType": "диммер",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "11",
+      "active": false,
+      "name": "Hammer серебряный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_hammer-silver_switcher_1_sup.png",
+      "preview": "img/devices/previews/mechanism_hammer-silver_switcher_1.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Glossa",
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "copper",
+
+      "deviceType": "выключатель кнопочный",
+      "keysCount": 1,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "12",
+      "active": false,
+      "name": "Белый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_white_switcher_1_sup.png",
+      "preview": "img/devices/previews/mechanism_white_switcher_1.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Glossa",
+      "material": "Пластик",
+      "function": "Диммеры, датчики, терморегуляторы",
+      "color": "gold",
+
+      "deviceType": "радиоточка",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "13",
+      "active": false,
+      "name": "Слоновая кость",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_ivory_switcher_1_sup.png",
+      "preview": "img/devices/previews/mechanism_ivory_switcher_1.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Дерево",
+      "function": "Зарядные устройства USB",
+      "color": "gray",
+
+      "deviceType": "для жалюзи",
+      "keysCount": 1,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "14",
+      "active": false,
+      "name": "Серебряный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_silver_switcher_1_sup.png",
+      "preview": "img/devices/previews/mechanism_silver_switcher_1.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "white",
+
+      "deviceType": "радиоточка",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "15",
+      "active": false,
+      "name": "Глянцевый никель",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_metallic_switcher_1_sup.png",
+      "preview": "img/devices/previews/mechanism_metallic_switcher_1.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Камень",
+      "function": "Выключатели спец назначения",
+      "color": "copper",
+
+      "deviceType": "переключатель",
+      "keysCount": 2,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "16",
+      "active": false,
+      "name": "Бронза",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_bronze_switcher_1_sup.png",
+      "preview": "img/devices/previews/mechanism_bronze_switcher_1.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Металл",
+      "function": "Зарядные устройства USB",
+      "color": "black",
+
+      "deviceType": "для жалюзи",
+      "keysCount": 5,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "17",
+      "active": false,
+      "name": "Серебряный рифленый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/Mechanism_Switcher_ribbed_silver_sup.png",
+      "preview": "img/devices/previews/Mechanism_Switcher_ribbed_silver.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "silver",
+
+      "deviceType": "выключатель",
+      "keysCount": 6,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "18",
+      "active": false,
+      "name": "Шампань рифленый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/champain-r-1-button_sup.png",
+      "preview": "img/devices/previews/champain-r-1-button.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Glossa",
+      "material": "Пластик",
+      "function": "Выключатели",
+      "color": "gold",
+
+      "deviceType": "переключатель",
+      "keysCount": 5,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "19",
+      "active": false,
+      "name": "Серо-коричневый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_grey_brown_switcher_1_sup.png",
+      "preview": "img/devices/previews/mechanism_grey_brown_switcher_1.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "gray",
+
+      "deviceType": "термостат",
+      "keysCount": 3,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "20",
+      "active": false,
+      "name": "Черный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_black_switcher_1_sup.png",
+      "preview": "img/devices/previews/mechanism_champ_switcher_1.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "white",
+
+      "deviceType": "переключатель перекрёстный",
+      "keysCount": 6,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "21",
+      "active": false,
+      "name": "Перламутровый рифленый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_pearl_switcher_1_sup.png",
+      "preview": "img/devices/previews/mechanism_pearl_switcher_1.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Glossa",
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "copper",
+
+      "deviceType": "переключатель перекрёстный",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "22",
+      "active": false,
+      "name": "Графит рифленый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/Mechanism_Switcher_ribbed_graphit_sup.png",
+      "preview": "img/devices/previews/Mechanism_Switcher_ribbed_graphit.png",
+
+      "type": "Выключатели одноклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "black",
+
+      "deviceType": "переключатель",
+      "keysCount": 2,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "23",
+      "active": false,
+      "name": "Hammer белый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_hammer-white_switcher_2_sup.png",
+      "preview": "img/devices/previews/mechanism_hammer-white_switcher_2.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Стекло",
+      "function": "Силовые розетки",
+      "color": "silver",
+
+      "deviceType": "диммер",
+      "keysCount": 3,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "24",
+      "active": false,
+      "name": "Hammer черный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_hammer-black_switcher_2_sup.png",
+      "preview": "img/devices/previews/mechanism_hammer-black_switcher_2.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Дерево",
+      "function": "Выключатели",
+      "color": "gold",
+
+      "deviceType": "термостат",
+      "keysCount": 3,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "25",
+      "active": false,
+      "name": "Hammer серебряный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_hammer-silver_switcher_2_sup.png",
+      "preview": "img/devices/previews/mechanism_hammer-silver_switcher_2.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Glossa",
+      "material": "Пластик",
+      "function": "Выключатели спец назначения",
+      "color": "gray",
+
+      "deviceType": "диммер",
+      "keysCount": 5,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "26",
+      "active": false,
+      "name": "Белый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_white_switcher_2_sup.png",
+      "preview": "img/devices/previews/mechanism_white_switcher_2.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Камень",
+      "function": "Зарядные устройства USB",
+      "color": "white",
+
+      "deviceType": "для жалюзи",
+      "keysCount": 5,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "27",
+      "active": false,
+      "name": "Слоновая кость",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_ivory_switcher_2_sup.png",
+      "preview": "img/devices/previews/mechanism_ivory_switcher_2.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Металл",
+      "function": "Силовые розетки",
+      "color": "copper",
+
+      "deviceType": "термостат",
+      "keysCount": 5,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "28",
+      "active": false,
+      "name": "Серебряный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_silver_switcher_2_sup.png",
+      "preview": "img/devices/previews/mechanism_silver_switcher_2.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "black",
+
+      "deviceType": "радиоточка",
+      "keysCount": 1,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "29",
+      "active": false,
+      "name": "Глянцевый никель",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_metallic_switcher_2_sup.png",
+      "preview": "img/devices/previews/mechanism_metallic_switcher_2.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Стекло",
+      "function": "Зарядные устройства USB",
+      "color": "silver",
+
+      "deviceType": "радиоточка",
+      "keysCount": 6,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "30",
+      "active": false,
+      "name": "Бронза",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/bronze-2-button_sup.png",
+      "preview": "img/devices/previews/bronze-2-button.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "gold",
+
+      "deviceType": "для жалюзи",
+      "keysCount": 2,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "31",
+      "active": false,
+      "name": "Серебряный рифленый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/Mechanism_Switcher_ribbed_silver_2_btn_sup.png",
+      "preview": "img/devices/previews/Mechanism_Switcher_ribbed_silver_2_btn.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Glossa",
+      "material": "Пластик",
+      "function": "Диммеры, датчики, терморегуляторы",
+      "color": "gray",
+
+      "deviceType": "радиоточка",
+      "keysCount": 4,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "32",
+      "active": false,
+      "name": "Шампань рифленый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/Mechanism_Switcher_ribbed_champain_2_btn_sup.png",
+      "preview": "img/devices/previews/Mechanism_Switcher_ribbed_champain_2_btn.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Дерево",
+      "function": "Зарядные устройства USB",
+      "color": "white",
+
+      "deviceType": "диммер",
+      "keysCount": 5,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "33",
+      "active": false,
+      "name": "Серо-коричневый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_grey_brown_switcher_2_sup.png",
+      "preview": "img/devices/previews/mechanism_grey_brown_switcher_2.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Камень",
+      "function": "Выключатели спец назначения",
+      "color": "gray",
+
+      "deviceType": "термостат",
+      "keysCount": 3,
+      "backlight": "нет",
+      "withGrounding": "да",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "одиночная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "34",
+      "active": false,
+      "name": "Черный",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_black_switcher_2_sup.png",
+      "preview": "img/devices/previews/mechanism_black_switcher_2.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Glossa",
+      "material": "Пластик",
+      "function": "Силовые розетки",
+      "color": "copper",
+
+      "deviceType": "переключатель перекрёстный",
+      "keysCount": 3,
+      "backlight": "да",
+      "withGrounding": "нет",
+      "withCurtains": "нет",
+      "withProtection": "ip44-46",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 1
+    },
+    {
+      "id": "35",
+      "active": false,
+      "name": "Шампань",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_champ_switcher_2_sup.png",
+      "preview": "img/devices/previews/mechanism_champ_switcher_2.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Металл",
+      "function": "Диммеры, датчики, терморегуляторы",
+      "color": "black",
+
+      "deviceType": "термостат",
+      "keysCount": 2,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "ip44-46",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "36",
+      "active": false,
+      "name": "Перламутровый рифленый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/mechanism_pearl_switcher_2_sup.png",
+      "preview": "img/devices/previews/mechanism_pearl_switcher_2.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "Wessen",
+      "material": "Пластик",
+      "function": "Зарядные устройства USB",
+      "color": "silver",
+
+      "deviceType": "переключатель перекрёстный",
+      "keysCount": 2,
+      "backlight": "нет",
+      "withGrounding": "нет",
+      "withCurtains": "да",
+      "withProtection": "нет",
+      "withFunctions": "нет",
+      "connectionType": "проходная",
+      "connectorsCount": 2
+    },
+    {
+      "id": "37",
+      "active": false,
+      "name": "Графит рифленый",
+      "code": "1234567",
+      "price": "000.00",
+      "image": "img/devices/pictures/Mechanism_Switcher_ribbed_graphit_2_btn_sup.png",
+      "preview": "img/devices/previews/Mechanism_Switcher_ribbed_graphit_2_btn.png",
+
+      "type": "Выключатели двухклавишные",
+
+      "vendor": "Systeme Electric",
+      "collection": "AtlasDesign",
+      "material": "Пластик",
+      "function": "Выключатели спец назначения",
+      "color": "gold",
+
+      "deviceType": "выключатель кнопочный",
+      "keysCount": 4,
+      "backlight": "да",
+      "withGrounding": "да",
+      "withCurtains": "нет",
+      "withProtection": "нет",
+      "withFunctions": "с крышкой",
+      "connectionType": "проходная",
+      "connectorsCount": 2
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "1234",
+      "active": false,
+      "image": "img/backgrounds/bg-11.jpg",
+      "preview": "img/backgrounds/bg-11.jpg"
+    },
+    {
+      "id": "1",
+      "active": false,
+      "image": "img/backgrounds/bg-12.jpg",
+      "preview": "img/backgrounds/bg-12.jpg"
+    },
+    {
+      "id": "2",
+      "active": false,
+      "image": "img/backgrounds/bg-13.jpg",
+      "preview": "img/backgrounds/bg-13.jpg"
+    },
+    {
+      "id": "3",
+      "active": false,
+      "image": "img/backgrounds/bg-14.jpg",
+      "preview": "img/backgrounds/bg-14.jpg"
+    },
+    {
+      "id": "4",
+      "active": false,
+      "image": "img/backgrounds/bg-15.jpg",
+      "preview": "img/backgrounds/bg-15.jpg"
+    },
+    {
+      "id": "5",
+      "active": false,
+      "image": "img/backgrounds/bg-16.jpg",
+      "preview": "img/backgrounds/bg-16.jpg"
+    },
+    {
+      "id": "6",
+      "active": false,
+      "image": "img/backgrounds/bg-17.jpg",
+      "preview": "img/backgrounds/bg-17.jpg"
+    },
+    {
+      "id": "7",
+      "active": false,
+      "image": "img/backgrounds/bg-19.jpg",
+      "preview": "img/backgrounds/bg-19.jpg"
+    },
+    {
+      "id": "8",
+      "active": false,
+      "image": "img/backgrounds/bg-21.jpg",
+      "preview": "img/backgrounds/bg-21.jpg"
+    },
+    {
+      "id": "9",
+      "active": false,
+      "image": "img/backgrounds/bg-23.jpg",
+      "preview": "img/backgrounds/bg-23.jpg"
+    },
+    {
+      "id": "10",
+      "active": false,
+      "image": "img/backgrounds/bg-25.jpg",
+      "preview": "img/backgrounds/bg-25.jpg"
+    },
+    {
+      "id": "11",
+      "active": false,
+      "image": "img/backgrounds/bg-27.jpg",
+      "preview": "img/backgrounds/bg-27.jpg"
+    },
+    {
+      "id": "13",
+      "active": false,
+      "image": "img/backgrounds/bg-31.jpg",
+      "preview": "img/backgrounds/bg-31.jpg"
+    },
+    {
+      "id": "14",
+      "active": false,
+      "image": "img/backgrounds/bg-32.jpg",
+      "preview": "img/backgrounds/bg-32.jpg"
+    },
+    {
+      "id": "15",
+      "active": false,
+      "image": "img/backgrounds/bg-34.jpg",
+      "preview": "img/backgrounds/bg-34.jpg"
+    },
+    {
+      "id": "16",
+      "active": false,
+      "image": "img/backgrounds/bg-35.jpg",
+      "preview": "img/backgrounds/bg-35.jpg"
+    },
+    {
+      "id": "17",
+      "active": false,
+      "image": "img/backgrounds/bg-36.jpg",
+      "preview": "img/backgrounds/bg-36.jpg"
+    },
+    {
+      "id": "18",
+      "active": false,
+      "image": "img/backgrounds/bg-37.jpg",
+      "preview": "img/backgrounds/bg-37.jpg"
+    },
+    {
+      "id": "19",
+      "active": false,
+      "image": "img/backgrounds/bg-39.jpg",
+      "preview": "img/backgrounds/bg-39.jpg"
+    },
+    {
+      "id": "20",
+      "active": false,
+      "image": "img/backgrounds/bg-40.jpg",
+      "preview": "img/backgrounds/bg-40.jpg"
+    },
+    {
+      "id": "21",
+      "active": false,
+      "image": "img/backgrounds/bg-41.jpg",
+      "preview": "img/backgrounds/bg-41.jpg"
+    },
+    {
+      "id": "22",
+      "active": false,
+      "image": "img/backgrounds/bg-42.jpg",
+      "preview": "img/backgrounds/bg-42.jpg"
+    },
+    {
+      "id": "23",
+      "active": false,
+      "image": "img/backgrounds/bg-43.jpg",
+      "preview": "img/backgrounds/bg-43.jpg"
+    },
+    {
+      "id": "24",
+      "active": false,
+      "image": "img/backgrounds/bg-44.jpg",
+      "preview": "img/backgrounds/bg-44.jpg"
+    },
+    {
+      "id": "25",
+      "active": false,
+      "image": "img/backgrounds/bg-45.jpg",
+      "preview": "img/backgrounds/bg-45.jpg"
+    },
+    {
+      "id": "26",
+      "active": false,
+      "image": "img/backgrounds/bg-46.jpg",
+      "preview": "img/backgrounds/bg-46.jpg"
+    },
+    {
+      "id": "27",
+      "active": false,
+      "image": "img/backgrounds/bg-47.jpg",
+      "preview": "img/backgrounds/bg-47.jpg"
+    },
+    {
+      "id": "28",
+      "active": false,
+      "image": "img/backgrounds/bg-48.jpg",
+      "preview": "img/backgrounds/bg-48.jpg"
+    },
+    {
+      "id": "29",
+      "active": false,
+      "image": "img/backgrounds/bg-49.jpg",
+      "preview": "img/backgrounds/bg-49.jpg"
+    },
+    {
+      "id": "30",
+      "active": false,
+      "image": "img/backgrounds/bg-50.jpg",
+      "preview": "img/backgrounds/bg-50.jpg"
+    },
+    {
+      "id": "31",
+      "active": false,
+      "image": "img/backgrounds/bg-51.jpg",
+      "preview": "img/backgrounds/bg-51.jpg"
+    },
+    {
+      "id": "32",
+      "active": false,
+      "image": "img/backgrounds/bg-52.jpg",
+      "preview": "img/backgrounds/bg-52.jpg"
+    }
+  ],
+  "colors": {
+    "gold": "Золотой",
+    "gray": "Серый",
+    "white": "Белый",
+    "copper": "Медный",
+    "black": "Черный",
+    "silver": "Серебряный"
+  },
+  "vendors": {
+    "Systeme Electric": {
+      "name": "Systeme Electric",
+      "title": "Systeme Electric",
+      "image": "img/logos/system-electric.svg",
+      "collections": {
+        "AtlasDesign": ["Дерево", "Камень", "Металл", "Пластик", "Стекло"],
+        "Glossa": ["Пластик"],
+        "Wessen": ["Металл", "Пластик", "Стекло"]
+      }
+    },
+    "era": {
+      "name": "era",
+      "title": "ЭРА",
+      "image": "img/logos/logo_era.svg",
+      "collections": {
+        "Elegance": ["Дерево", "Металл", "Пластик", "Стекло"],
+        "СЕРИЯ 12": ["Пластик"]
+      }
+    },
+    "Legrand": {
+      "name": "Legrand",
+      "title": "Legrand",
+      "image": "img/logos/legrand-logo.png",
+      "collections": {
+        "Inspiria": ["Пластик"],
+        "Etika": ["Пластик"],
+        "Quteo": ["Пластик"]
+      }
+    }
+  },
+  "functions": {
+    "deviceType": "тип устройства",
+    "keysCount": "количество клавиш",
+    "backlight": "подсветка",
+    "withGrounding": "с заземлением",
+    "withCurtains": "со шторками",
+    "withProtection": "с влагозащитой",
+    "withFunctions": "с доп. функциями",
+    "connectionType": "тип подключения",
+    "connectorsCount": "кол-во разъемов"
+  },
+  "projects": {
+    "Патриарший переулок": {},
+    "Никольская улица": {},
+    "Арбат": {},
+    "Кузнецкий Мост": {},
+    "Столешников переулок": {}
+  },
+  "rooms": {
+    "Кухня": {},
+    "Столовая": {},
+    "Гостиная": {},
+    "Детская": {}
+  }
+}

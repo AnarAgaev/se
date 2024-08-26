@@ -9,11 +9,6 @@ const createDevicesSlice: StateCreator<DevicesStore> = (set, get) => ({
         return [...get().devices]
     },
 
-    getDevicesColorsList: () => {
-        const devices = [...get().devices]
-        return [...new Set(devices.map(device => device.color))]
-    },
-
     getDevicesBrandsList: () => {
         const devices = [...get().devices]
         return [...new Set(devices.map(device => device.vendor))].sort()

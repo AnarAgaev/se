@@ -91,7 +91,7 @@ const DevicesWorkspace = () => {
     const key = useId()
     const vendors = useStore(state => state.vendors)
 
-    const colorsList = useStore(state => state.getDevicesColorsList())
+    const colorsList = useStore(state => state.colors.devices)
     const devicesList = useStore(state => state.getDevicesBrandsList())
     const collectionsList = useStore(state => state.getDevicesCollectionsList())
     const materialsList = useStore(state => state.getDevicesMaterialsList())

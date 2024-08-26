@@ -1,3 +1,5 @@
+import { z } from 'zod'
+import { ColorsType, ProjectListType } from './zod-data-contracts'
 import { StateCreator } from 'zustand'
 
 const createAppSlice: StateCreator<AppStore> = (set, get) => ({
@@ -5,7 +7,7 @@ const createAppSlice: StateCreator<AppStore> = (set, get) => ({
     error: null,
 
     colors: {},
-    setAppColors: (colors: Record<string, string>) => set({colors: colors}),
+    setAppColors: (colors: z.infer<typeof ColorsType>) => set({ colors: colors }),
 
     vendors: {},
     setAppVendors: (vendors) => set({vendors: vendors}),
@@ -30,13 +32,18 @@ const createAppSlice: StateCreator<AppStore> = (set, get) => ({
     },
 
     projects: {},
-    setAppProjects: (projects: Record<string, unknown>) => set({projects: projects}),
+    setAppProjects: (projects: z.infer<typeof ProjectListType>) => set({ projects: projects }),
     addProject: (project) => {
-        const newProjects: Record<string, unknown> = {}
-        newProjects[project] = {}
 
-        for (const key in get().projects)
-            newProjects[key] = get().projects[key]
+        const newProjects: z.infer<typeof ProjectListType> = [...get().projects]
+
+        newProjects.forEach(project => project.selected = false)
+
+        newProjects.unshift({
+            id: Math.floor(Math.random() * Date.now()),
+            name: project,
+            selected: true
+        })
 
         set({ projects: newProjects })
     },

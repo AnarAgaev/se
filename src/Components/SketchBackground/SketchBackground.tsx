@@ -5,7 +5,7 @@ import style from './SketchBackground.module.sass'
 
 const SketchBackground = () => {
     const backgrounds = useStore(state => state.backgrounds)
-    const activeBackground = backgrounds.filter((background: z.infer<typeof BackgroundsType>) => background.active)
+    const activeBackground = backgrounds.filter((background: z.infer<typeof BackgroundsType>) => background.selected)
 
     return (
         <span className={style.sketchBackground}>

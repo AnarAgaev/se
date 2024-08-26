@@ -11,14 +11,16 @@ const itemList = (
     backgrounds: z.infer<typeof BackgroundsTypeList>,
     id: string
 ): JSX.Element[] => backgrounds.map((el) => {
-        const clazz = el.active
+        const clazz = el.selected
             ? `${item} ${item_active}`
             : `${item}`
 
-        return <li key={`${id}-${el.id}`} className={`${clazz}`}>
-                    <BackgroundItemPicture source={el.preview}
-                        id={el.id} active={el.active} />
-                </li>
+        return (
+            <li key={`${id}-${el.id}`} className={`${clazz}`}>
+                <BackgroundItemPicture source={el.preview}
+                    id={el.id} active={el.selected} />
+            </li>
+        )
     })
 
 const BackgroundList = () => {

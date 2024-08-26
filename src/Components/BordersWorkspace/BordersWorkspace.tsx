@@ -72,7 +72,7 @@ const BordersWorkspace: FC = () => {
     const key = useId()
     const vendors = useStore(state => state.vendors)
 
-    const colorsList = useStore(state => state.getBordersColorsList())
+    const colorsList = useStore(state => state.colors.borders)
     const brandsList = useStore(state => state.getBordersBrandsList())
     const collectionsList = useStore(state => state.getBordersCollectionsList())
     const materialsList = useStore(state => state.getBordersMaterialsList())

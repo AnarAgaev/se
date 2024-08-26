@@ -22,7 +22,6 @@ interface BackgroundsStore {
 interface BordersStore {
     borders: z.infer<typeof BordersTypeList>
     setInitBordersData: (data: z.infer<typeof BordersTypeList>) => void
-    getBordersColorsList: () => Array<string>
     getBordersList: () => Array<z.infer<typeof BorderType>>
 
     getBordersBrandsList: () => string[]
@@ -35,9 +34,7 @@ interface BordersStore {
 interface DevicesStore {
     devices: z.infer<typeof DevicesTypeList>
     setInitDevicesData: (data: z.infer<typeof DevicesTypeList>) => void
-    getDevicesColorsList: () => Array<string>
     getDevicesList: () => Array<z.infer<typeof DeviceType>>
-
     getDevicesBrandsList: () => string[]
     getDevicesCollectionsList: () => string[]
     getDevicesMaterialsList: () => string[]
@@ -45,14 +42,13 @@ interface DevicesStore {
     getDevicesFunctionsOptions: (deviceFuncProp: string) => string[]
 }
 
-
 // Types for all app
 interface AppStore {
     loading: boolean
     error: Error | unknown
 
-    colors: Record<string, string>
-    setAppColors: (colors: Record<string, string>) => void
+    colors: z.infer<typeof ColorsType>
+    setAppColors: (colors: z.infer<typeof ColorsType>) => void
 
     activeCalcTab: CalcTabs
     setActiveCalcTab: (tab: CalcTabs) => void
@@ -67,8 +63,8 @@ interface AppStore {
     setAppFunctionsKinds: (functions: Record<string, string>) => void
     getAppFunctionsKinds: () => Record<string, string>
 
-    projects: Record<string, unknown>
-    setAppProjects: (projects: Record<string, unknown>) => void
+    projects: z.infer<typeof ProjectListType>
+    setAppProjects: (projects: z.infer<typeof ProjectListType>) => void
     addProject: (project: string) => void
 
     rooms: Record<string, unknown>
