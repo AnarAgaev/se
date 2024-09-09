@@ -71,12 +71,12 @@ const useStore = create<DevicesStore & BordersStore & BackgroundsStore & AppStor
                     // Pushing data to appropriate stores
                     get().setInitBackgroundsData(safeResponse.data.backgrounds)
                     get().setAppColors(safeResponse.data.colors)
-                    // get().setInitBordersData(safeResponse.data.borders)
-                    // get().setInitDevicesData(safeResponse.data.devices)
-                    // get().setAppVendors(safeResponse.data.vendors)
-                    // get().setAppFunctionsKinds(safeResponse.data.functions)
+                    get().setInitBordersData(safeResponse.data.borders)
+                    get().setInitDevicesData(safeResponse.data.devices)
+                    get().setAppVendors(safeResponse.data.vendors)
                     get().setAppProjects(safeResponse.data.projects)
-                    // get().setAppRooms(safeResponse.data.rooms)
+                    get().setAppRooms(safeResponse.data.rooms)
+                    // get().setAppFunctionsKinds(safeResponse.data.functions)
 
                     set({ error: null, loading: false })
                 } catch (error: Error | unknown) {

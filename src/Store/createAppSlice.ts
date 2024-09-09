@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { ColorsType, ProjectListType } from './zod-data-contracts'
+import { ColorsType, ProjectsList, RoomsList } from './zod-data-contracts'
 import { StateCreator } from 'zustand'
 
 const createAppSlice: StateCreator<AppStore> = (set, get) => ({
@@ -31,11 +31,10 @@ const createAppSlice: StateCreator<AppStore> = (set, get) => ({
 
     },
 
-    projects: {},
-    setAppProjects: (projects: z.infer<typeof ProjectListType>) => set({ projects: projects }),
+    projects: [],
+    setAppProjects: (projects: z.infer<typeof ProjectsList>) => set({ projects: projects }),
     addProject: (project) => {
-
-        const newProjects: z.infer<typeof ProjectListType> = [...get().projects]
+        const newProjects: z.infer<typeof ProjectsList> = [...get().projects]
 
         newProjects.forEach(project => project.selected = false)
 
@@ -48,18 +47,21 @@ const createAppSlice: StateCreator<AppStore> = (set, get) => ({
         set({ projects: newProjects })
     },
 
-    rooms: {},
-    setAppRooms: (rooms: Record<string, unknown>) => set({rooms: rooms}),
+    rooms: [],
+    setAppRooms: (rooms: z.infer<typeof RoomsList>) => set({ rooms: rooms }),
     addRoom: (room) => {
-        const newRooms: Record<string, unknown> = {}
-        newRooms[room] = {}
+        const newRooms: z.infer<typeof RoomsList> = [...get().rooms]
 
-        for (const key in get().rooms)
-            newRooms[key] = get().rooms[key]
+        newRooms.forEach(room => room.selected = false)
+
+        newRooms.unshift({
+            id: Math.floor(Math.random() * Date.now()),
+            name: room,
+            selected: true
+        })
 
         set({ rooms: newRooms })
     }
-
 })
 
 export default createAppSlice

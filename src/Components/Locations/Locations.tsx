@@ -1,6 +1,6 @@
 import { useMemo, useId } from 'react'
 import { InputSelect, OptionLocation } from '../../Components'
-import { ProjectListType } from '../../Store/zod-data-contracts'
+import { ProjectsList, RoomsList } from '../../Store/zod-data-contracts'
 import { z } from 'zod'
 import useStore from '../../Store'
 import style from './Locations.module.sass'
@@ -8,7 +8,7 @@ import style from './Locations.module.sass'
 const { locations } = style
 
 const getProjectsOptionsList = (
-    projectsList: z.infer<typeof ProjectListType>,
+    projectsList: z.infer<typeof ProjectsList>,
     key: string
 ): JSX.Element[] => {
 
@@ -27,17 +27,17 @@ const getProjectsOptionsList = (
 }
 
 const getRoomsOptionsList = (
-    projectsList: string[],
+    roomsList: z.infer<typeof RoomsList>,
     key: string
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
 
-    projectsList.forEach(project => {
+    roomsList.forEach(room => {
         elementsList.push(
             <OptionLocation
-                key={`${key}-${project}`}
-                caption={project}
+                key={`${key}-${room.id}`}
+                caption={room.name}
                 name={'rooms'} />
         )
     })
@@ -58,7 +58,7 @@ const Locations = () => {
     )
 
     const roomsOptions = useMemo(
-        () => getRoomsOptionsList(Object.keys(rooms), key),
+        () => getRoomsOptionsList(rooms, key),
         [rooms, key]
     )
 

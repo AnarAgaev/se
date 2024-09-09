@@ -2,14 +2,14 @@ import { z } from 'zod'
 
 
 // Backgrounds
-const BackgroundsType = z.object({
+const BackgroundType = z.object({
     id: z.union([z.string(), z.number()]),
     selected: z.boolean(),
     image: z.string(),
     preview: z.string()
 })
 
-const BackgroundsTypeList = z.array(BackgroundsType)
+const BackgroundsList = z.array(BackgroundType)
 
 
 // Borders
@@ -22,10 +22,11 @@ const BorderType = z.object({
     preview: z.string(),
     vendor: z.string(),
     collection: z.string(),
-    armature_material: z.string()
+    number_of_posts: z.string().optional(),
+    armature_material: z.array(z.string()).optional() // У некоторых рамок не указан материал!!!
 })
 
-const BordersTypeList = z.array(BorderType)
+const BordersList = z.array(BorderType)
 
 
 // Devices
@@ -36,14 +37,13 @@ const DeviceType = z.object({
     image: z.string(),
     preview: z.string(),
 
-    // type: z.string(),
-
     vendor: z.string(),
     collection: z.string(),
-    armature_material: z.array(z.string()),
-    conf_product_group: z.string(),
+    armature_material: z.array(z.string()).optional(), // У некоторых девайсов не указан материал!!!
+    conf_product_group: z.string().optional(), // У некоторых девайсов не указан тип!!!
     color: z.string(),
 
+    // type: z.string(),
     // deviceType: z.string(),
     // keysCount: z.number(),
     // backlight: z.string(),
@@ -55,28 +55,24 @@ const DeviceType = z.object({
     // connectorsCount: z.number(),
 })
 
-const DevicesTypeList = z.array(DeviceType)
+const DevicesList = z.array(DeviceType)
 
 
 // Vendors
-const CollectionType = z.array(
-    z.object({
-        name: z.string(),
-        materials: z.array(z.string())
-    })
-)
+const CollectionType = z.object({
+    name: z.string(),
+    materials: z.array(z.string())
+})
+
+const CollectionsList = z.array(CollectionType)
 
 const VendorType = z.object({
     name: z.string(),
-    // title: z.string().optional(),
     image: z.string(),
-    collections: CollectionType
+    collections: CollectionsList
 })
 
-const VendorTypeList = z.record(
-    z.string(),
-    VendorType
-)
+const VendorsList = z.array(VendorType)
 
 // Projects
 const ProjectType = z.object({
@@ -85,7 +81,16 @@ const ProjectType = z.object({
     name: z.string()
 })
 
-const ProjectListType = z.array(ProjectType)
+const ProjectsList = z.array(ProjectType)
+
+// Rooms
+const RoomType = z.object({
+    id: z.union([z.number(), z.string()]),
+    selected: z.boolean(),
+    name: z.string()
+})
+
+const RoomsList = z.array(RoomType)
 
 // Initial data
 const ColorsType = z.object({
@@ -94,40 +99,46 @@ const ColorsType = z.object({
 })
 
 const InitDataContractType = z.object({
-    // borders: BordersTypeList,
+    borders: BordersList,
 
-    backgrounds: BackgroundsTypeList,
+    backgrounds: BackgroundsList,
 
-    // devices: DevicesTypeList,
+    devices: DevicesList,
 
     colors: ColorsType,
 
-    // vendors: VendorTypeList,
+    vendors: VendorsList,
 
     // functions: z.record(z.string(), z.string()), // переписать
 
-    projects: ProjectListType,
+    projects: ProjectsList,
 
-    // rooms: z.record(z.string(), z.record(z.string(), z.unknown()))
+    rooms: RoomsList
 })
 
 
 export {
-    BackgroundsType,
-    BackgroundsTypeList,
+    BackgroundType,
+    BackgroundsList,
 
     BorderType,
-    BordersTypeList,
+    BordersList,
 
     DeviceType,
-    DevicesTypeList,
+    DevicesList,
 
     InitDataContractType,
 
-    VendorTypeList,
+    VendorsList,
 
     ColorsType,
 
     ProjectType,
-    ProjectListType
+    ProjectsList,
+
+    RoomType,
+    RoomsList,
+
+    CollectionType,
+    CollectionsList
 }

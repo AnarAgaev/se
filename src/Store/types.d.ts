@@ -11,17 +11,17 @@ interface BoundStore {
 
 // Types for Backgrounds
 interface BackgroundsStore {
-    backgrounds: z.infer<typeof BackgroundsTypeList>
-    setInitBackgroundsData: (data: z.infer<typeof BackgroundsTypeList>) => void
-    addUploadedBackground: (background: z.infer<typeof BackgroundsType>) => void
+    backgrounds: z.infer<typeof BackgroundsList>
+    setInitBackgroundsData: (data: z.infer<typeof BackgroundsList>) => void
+    addUploadedBackground: (background: z.infer<typeof BackgroundType>) => void
     setActiveBackground: (backgroundId: string | number) => void
 }
 
 
 // Types for Borders
 interface BordersStore {
-    borders: z.infer<typeof BordersTypeList>
-    setInitBordersData: (data: z.infer<typeof BordersTypeList>) => void
+    borders: z.infer<typeof BordersList>
+    setInitBordersData: (data: z.infer<typeof BordersList>) => void
     getBordersList: () => Array<z.infer<typeof BorderType>>
 
     getBordersBrandsList: () => string[]
@@ -32,8 +32,8 @@ interface BordersStore {
 
 // Types for Devices
 interface DevicesStore {
-    devices: z.infer<typeof DevicesTypeList>
-    setInitDevicesData: (data: z.infer<typeof DevicesTypeList>) => void
+    devices: z.infer<typeof DevicesList>
+    setInitDevicesData: (data: z.infer<typeof DevicesList>) => void
     getDevicesList: () => Array<z.infer<typeof DeviceType>>
     getDevicesBrandsList: () => string[]
     getDevicesCollectionsList: () => string[]
@@ -63,13 +63,13 @@ interface AppStore {
     setAppFunctionsKinds: (functions: Record<string, string>) => void
     getAppFunctionsKinds: () => Record<string, string>
 
-    projects: z.infer<typeof ProjectListType>
-    setAppProjects: (projects: z.infer<typeof ProjectListType>) => void
+    projects: z.infer<typeof ProjectsList>
+    setAppProjects: (projects: z.infer<typeof ProjectsList>) => void
     addProject: (project: string) => void
 
-    rooms: Record<string, unknown>
-    setAppRooms: (rooms: Record<string, unknown>) => void
-    addRoom: (project: string) => void
+    rooms: z.infer<typeof RoomsList>
+    setAppRooms: (rooms: z.infer<typeof RoomsList>) => void
+    addRoom: (room: string) => void
 }
 
 
