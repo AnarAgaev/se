@@ -12,47 +12,29 @@ const BackgroundType = z.object({
 const BackgroundsList = z.array(BackgroundType)
 
 
-// Borders
-const BorderType = z.object({
+// Common properties for Border and Devices
+const ElementType = z.object({
     id: z.union([z.string(), z.number()]),
     name: z.string(),
     price: z.union([z.string(), z.number()]),
-    color: z.string(),
     image: z.string(),
+    color: z.string(),
     preview: z.string(),
     vendor: z.string(),
     collection: z.string(),
-    number_of_posts: z.string().optional(),
-    armature_material: z.array(z.string()).optional() // У некоторых рамок не указан материал!!!
+    armature_material: z.array(z.string()).optional(), // У некоторых рамок и девайсов не указан материал!!!
+})
+
+const BorderType = ElementType.extend({
+    number_of_posts: z.string().optional()
 })
 
 const BordersList = z.array(BorderType)
 
 
 // Devices
-const DeviceType = z.object({
-    id: z.union([z.string(), z.number()]),
-    name: z.string(),
-    price: z.union([z.string(), z.number()]),
-    image: z.string(),
-    preview: z.string(),
-
-    vendor: z.string(),
-    collection: z.string(),
-    armature_material: z.array(z.string()).optional(), // У некоторых девайсов не указан материал!!!
+const DeviceType = ElementType.extend({
     conf_product_group: z.string().optional(), // У некоторых девайсов не указан тип!!!
-    color: z.string(),
-
-    // type: z.string(),
-    // deviceType: z.string(),
-    // keysCount: z.number(),
-    // backlight: z.string(),
-    // withGrounding: z.string(),
-    // withCurtains: z.string(),
-    // withProtection: z.string(),
-    // withFunctions: z.string(),
-    // connectionType: z.string(),
-    // connectorsCount: z.number(),
 })
 
 const DevicesList = z.array(DeviceType)
@@ -118,6 +100,8 @@ const InitDataContractType = z.object({
 
 
 export {
+    ElementType,
+
     BackgroundType,
     BackgroundsList,
 
