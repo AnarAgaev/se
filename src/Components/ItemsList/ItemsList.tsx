@@ -26,7 +26,7 @@ const getElList = (
                 </span>
                 <p className={content}>
                     <span className={name}>{border.name}</span>
-                    <span className={price}>{border.price} ₽</span>
+                    <span className={price}>{border.price} р.</span>
                 </p>
             </li>
         )

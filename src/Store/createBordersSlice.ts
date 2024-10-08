@@ -6,7 +6,12 @@ const createBordersSlice: StateCreator<BordersStore> = (set, get) => ({
     setInitBordersData: (payload) => set({ borders: payload }),
 
     getBordersList: () => {
-        return [...get().borders]
+        const borders = [...get().borders]
+
+        // For displaying filter only one border items
+        return borders.filter(
+            border => parseInt(border.number_of_posts) === 1
+        )
     },
 
     getBordersBrandsList: () => {

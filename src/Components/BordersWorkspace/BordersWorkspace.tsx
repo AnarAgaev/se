@@ -15,7 +15,7 @@ const getBrandsOptionsList = (
     const elementsList: JSX.Element[] = []
 
     brandsList.forEach(brand => {
-        for (let prop in vendors) {
+        for (const prop in vendors) {
             if (prop.toLocaleLowerCase() === brand.toLocaleLowerCase()) {
                 elementsList.push(
                     <OptionBrand
