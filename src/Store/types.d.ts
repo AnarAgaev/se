@@ -1,7 +1,5 @@
-interface Window {
-    initSourceDataLink: string
-    uploadBackgroundLink: string
-}
+import { VendorsList, VendorType } from "./zod-data-contracts"
+
 
 // Types for bound of the all Stores
 interface BoundStore {
@@ -23,7 +21,6 @@ interface BordersStore {
     borders: z.infer<typeof BordersList>
     setInitBordersData: (data: z.infer<typeof BordersList>) => void
     getBordersList: () => Array<z.infer<typeof BorderType>>
-
     getBordersBrandsList: () => string[]
     getBordersCollectionsList: () => string[]
     getBordersMaterialsList: () => string[]
@@ -42,6 +39,7 @@ interface DevicesStore {
     getDevicesFunctionsOptions: (deviceFuncProp: string) => string[]
 }
 
+
 // Types for all app
 interface AppStore {
     loading: boolean
@@ -58,6 +56,7 @@ interface AppStore {
 
     vendors: z.infer<typeof VendorsList>
     setAppVendors: (vendors: z.infer<typeof VendorsList>) => void
+    getVendorByName: (brandName: string) => z.infer<typeof VendorType>
 
     functions: Record<string, string>
     setAppFunctionsKinds: (functions: Record<string, string>) => void
@@ -75,3 +74,13 @@ interface AppStore {
 
 type CalcTabs = 'borders' | 'devices' | 'backgrounds'
 type ViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
+
+
+export {
+    AppStore,
+    DevicesStore,
+    BordersStore,
+    BackgroundsStore,
+    BoundStore,
+    Window
+}

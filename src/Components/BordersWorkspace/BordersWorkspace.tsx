@@ -1,31 +1,29 @@
 import { useMemo, useId, FC } from 'react'
 import { z } from 'zod'
 import useStore from '../../Store'
-import { VendorsList } from '../../Store/zod-data-contracts'
+import { VendorType } from '../../Store/zod-data-contracts'
 
 import { FactoryWorkspace, ColorSelector, Select,
     OptionBrand, OptionCollection, OptionMaterial } from '../../Components'
 
 const getBrandsOptionsList = (
     brandsList: string[],
-    vendors: z.infer<typeof VendorsList>,
+    getVendorByName: (brandName: string) => z.infer<typeof VendorType>,
     key: string
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
 
-    brandsList.forEach(brand => {
-        for (const prop in vendors) {
-            if (prop.toLocaleLowerCase() === brand.toLocaleLowerCase()) {
-                elementsList.push(
-                    <OptionBrand
-                        key={`${key}-${vendors[prop].name}`}
-                        name={`brand-${key}`}
-                        img={vendors[prop].image}
-                        caption={vendors[prop].name} />
-                )
-            }
-        }
+    brandsList.forEach(brandName => {
+        const vendor = getVendorByName(brandName)
+
+        elementsList.push(
+            <OptionBrand
+                key={`${key}-${vendor.id}`}
+                name={`brand-${key}`}
+                img={vendor.image}
+                caption={vendor.name} />
+        )
     })
 
     return elementsList
@@ -70,16 +68,15 @@ const getMaterialsOptionsList = (
 
 const BordersWorkspace: FC = () => {
     const key = useId()
-    const vendors = useStore(state => state.vendors)
-
+    const getVendorByName = useStore(state => state.getVendorByName)
     const colorsList = useStore(state => state.colors.borders)
     const brandsList = useStore(state => state.getBordersBrandsList())
     const collectionsList = useStore(state => state.getBordersCollectionsList())
     const materialsList = useStore(state => state.getBordersMaterialsList())
 
     const bordersBrandsOptions = useMemo(
-        () => getBrandsOptionsList(brandsList, vendors, key),
-        [brandsList, vendors, key]
+        () => getBrandsOptionsList(brandsList, getVendorByName, key),
+        [brandsList, getVendorByName, key]
     )
 
     const bordersCollectionsOptions = useMemo(

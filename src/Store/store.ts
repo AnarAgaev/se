@@ -3,6 +3,7 @@ import { devtools } from 'zustand/middleware'
 import { InitDataContractType } from './zod-data-contracts'
 import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice } from './'
+import { AppStore, DevicesStore, BordersStore, BackgroundsStore, BoundStore } from './types'
 
 const zodErrorOptions: ErrorMessageOptions = {
     delimiter: {

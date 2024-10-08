@@ -1,6 +1,8 @@
 import { z } from 'zod'
-import { ColorsType, ProjectsList, RoomsList } from './zod-data-contracts'
+import { ColorsType, ProjectsList, RoomsList, VendorsList } from './zod-data-contracts'
 import { StateCreator } from 'zustand'
+import { AppStore } from './types'
+import { VendorType } from './zod-data-contracts'
 
 const appSlice: StateCreator<AppStore> = (set, get) => ({
     loading: true,
@@ -10,7 +12,15 @@ const appSlice: StateCreator<AppStore> = (set, get) => ({
     setAppColors: (colors: z.infer<typeof ColorsType>) => set({ colors: colors }),
 
     vendors: {},
-    setAppVendors: (vendors) => set({vendors: vendors}),
+    setAppVendors: (vendors: z.infer<typeof VendorsList>) => set({vendors: vendors}),
+    getVendorByName: (vendorName) => {
+        const vendors = [...get().vendors]
+
+        const vendor: z.infer<typeof VendorType> = vendors.find(vendor =>
+            vendor.name.toLowerCase() === vendorName.toLowerCase())
+
+        return vendor
+    },
 
     activeCalcTab: 'borders',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),

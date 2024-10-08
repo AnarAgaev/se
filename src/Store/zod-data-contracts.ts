@@ -1,6 +1,5 @@
 import { z } from 'zod'
 
-
 // Backgrounds
 const BackgroundType = z.object({
     id: z.union([z.string(), z.number()]),
@@ -49,6 +48,7 @@ const CollectionType = z.object({
 const CollectionsList = z.array(CollectionType)
 
 const VendorType = z.object({
+    id: z.union([z.string(), z.number()]),
     name: z.string(),
     image: z.string(),
     collections: CollectionsList

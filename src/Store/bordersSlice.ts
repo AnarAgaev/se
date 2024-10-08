@@ -1,4 +1,5 @@
 import { StateCreator  } from 'zustand'
+import { BordersStore } from './types'
 
 const bordersSlice: StateCreator<BordersStore> = (set, get) => ({
     borders: [],
