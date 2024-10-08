@@ -113,6 +113,7 @@ export {
 
     InitDataContractType,
 
+    VendorType,
     VendorsList,
 
     ColorsType,

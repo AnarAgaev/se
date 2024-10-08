@@ -1,6 +1,6 @@
 import { StateCreator  } from 'zustand'
 
-const createBackgroundSlice: StateCreator<BackgroundsStore> = (set, get) => ({
+const backgroundSlice: StateCreator<BackgroundsStore> = (set, get) => ({
     backgrounds: [],
 
     setInitBackgroundsData: (data) => set({ backgrounds: data }),
@@ -28,4 +28,4 @@ const createBackgroundSlice: StateCreator<BackgroundsStore> = (set, get) => ({
     }
 })
 
-export default createBackgroundSlice
+export default backgroundSlice

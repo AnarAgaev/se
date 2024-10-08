@@ -1,14 +1,14 @@
 import { useMemo, useId, FC } from 'react'
 import { z } from 'zod'
 import useStore from '../../Store'
-import { VendorTypeList } from '../../Store/zod-data-contracts'
+import { VendorsList } from '../../Store/zod-data-contracts'
 
 import { FactoryWorkspace, ColorSelector, Select,
     OptionBrand, OptionCollection, OptionMaterial } from '../../Components'
 
 const getBrandsOptionsList = (
     brandsList: string[],
-    vendors: z.infer<typeof VendorTypeList>,
+    vendors: z.infer<typeof VendorsList>,
     key: string
 ): JSX.Element[] => {
 
@@ -22,7 +22,7 @@ const getBrandsOptionsList = (
                         key={`${key}-${vendors[prop].name}`}
                         name={`brand-${key}`}
                         img={vendors[prop].image}
-                        caption={vendors[prop].title} />
+                        caption={vendors[prop].name} />
                 )
             }
         }

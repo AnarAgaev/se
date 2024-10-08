@@ -56,8 +56,8 @@ interface AppStore {
     activeViewportTab: ViewportTabs
     setActiveViewportTab: (tab: ViewportTabs) => void
 
-    vendors: Record<string, z.infer<typeof VendorType>>
-    setAppVendors: (vendors: Record<string, z.infer<typeof VendorType>>) => void
+    vendors: z.infer<typeof VendorsList>
+    setAppVendors: (vendors: z.infer<typeof VendorsList>) => void
 
     functions: Record<string, string>
     setAppFunctionsKinds: (functions: Record<string, string>) => void

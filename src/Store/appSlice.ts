@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { ColorsType, ProjectsList, RoomsList } from './zod-data-contracts'
 import { StateCreator } from 'zustand'
 
-const createAppSlice: StateCreator<AppStore> = (set, get) => ({
+const appSlice: StateCreator<AppStore> = (set, get) => ({
     loading: true,
     error: null,
 
@@ -64,4 +64,4 @@ const createAppSlice: StateCreator<AppStore> = (set, get) => ({
     }
 })
 
-export default createAppSlice
+export default appSlice

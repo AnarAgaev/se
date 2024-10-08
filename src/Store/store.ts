@@ -2,10 +2,7 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 import { InitDataContractType } from './zod-data-contracts'
 import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
-import createAppSlice from './createAppSlice'
-import createBackgroundSlice from './createBackgroundSlice'
-import createBordersSlice from './createBordersSlice'
-import createDevicesSlice from './createDevicesSlice'
+import { appSlice, bordersSlice, devicesSlice, backgroundSlice } from './'
 
 const zodErrorOptions: ErrorMessageOptions = {
     delimiter: {
@@ -29,10 +26,10 @@ const zodErrorOptions: ErrorMessageOptions = {
 const useStore = create<DevicesStore & BordersStore & BackgroundsStore & AppStore & BoundStore>()(
     devtools(
         (set, get, ...args) => ({
-            ...createAppSlice(set, get, ...args),
-            ...createBackgroundSlice(set, get, ...args),
-            ...createBordersSlice(set, get, ...args),
-            ...createDevicesSlice(set, get, ...args),
+            ...appSlice(set, get, ...args),
+            ...backgroundSlice(set, get, ...args),
+            ...bordersSlice(set, get, ...args),
+            ...devicesSlice(set, get, ...args),
 
             requestInitData: async () => {
 

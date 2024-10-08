@@ -1,6 +1,6 @@
 import { StateCreator  } from 'zustand'
 
-const createDevicesSlice: StateCreator<DevicesStore> = (set, get) => ({
+const devicesSlice: StateCreator<DevicesStore> = (set, get) => ({
     devices: [],
 
     setInitDevicesData: (payload) => set({ devices: payload }),
@@ -36,4 +36,4 @@ const createDevicesSlice: StateCreator<DevicesStore> = (set, get) => ({
     }
 })
 
-export default createDevicesSlice
+export default devicesSlice

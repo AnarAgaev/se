@@ -1,6 +1,6 @@
 import { StateCreator  } from 'zustand'
 
-const createBordersSlice: StateCreator<BordersStore> = (set, get) => ({
+const bordersSlice: StateCreator<BordersStore> = (set, get) => ({
     borders: [],
 
     setInitBordersData: (payload) => set({ borders: payload }),
@@ -31,4 +31,4 @@ const createBordersSlice: StateCreator<BordersStore> = (set, get) => ({
     }
 })
 
-export default createBordersSlice
+export default bordersSlice
