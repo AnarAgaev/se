@@ -74,26 +74,26 @@ const BordersWorkspace: FC = () => {
     const collectionsList = useStore(state => state.getBordersCollectionsList())
     const materialsList = useStore(state => state.getBordersMaterialsList())
 
-    const bordersBrandsOptions = useMemo(
+    const brandsOptions = useMemo(
         () => getBrandsOptionsList(brandsList, getVendorByName, key),
         [brandsList, getVendorByName, key]
     )
 
-    const bordersCollectionsOptions = useMemo(
+    const collectionsOptions = useMemo(
         () => getCollectionsOptionsList(collectionsList, key),
         [collectionsList, key]
     )
 
-    const bordersMaterialsOptions = useMemo(
+    const materialsOptions = useMemo(
         () => getMaterialsOptionsList(materialsList, key),
         [materialsList, key]
     )
 
     return (
         <FactoryWorkspace>
-            <Select title="Бренд">{bordersBrandsOptions}</Select>
-            <Select title="Коллекцию">{bordersCollectionsOptions}</Select>
-            <Select title="Материал рамки">{bordersMaterialsOptions}</Select>
+            <Select title="Бренд">{brandsOptions}</Select>
+            <Select title="Коллекцию">{collectionsOptions}</Select>
+            <Select title="Материал рамки">{materialsOptions}</Select>
             <ColorSelector caption="Цвет рамки" colors={colorsList} />
         </FactoryWorkspace>
     )

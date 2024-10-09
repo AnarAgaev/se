@@ -1,4 +1,7 @@
 import { StateCreator  } from 'zustand'
+import { DevicesStore } from './types'
+import { z } from 'zod'
+import { DevicesList } from './zod-data-contracts'
 
 const devicesSlice: StateCreator<DevicesStore> = (set, get) => ({
     devices: [],
@@ -21,8 +24,19 @@ const devicesSlice: StateCreator<DevicesStore> = (set, get) => ({
     },
 
     getDevicesMaterialsList: () => {
-        const devices = [...get().devices]
-        return [...new Set(devices.map(device => device.material))].sort()
+        const devices: z.infer<typeof DevicesList> = [...get().devices]
+        const materials: string[] = []
+
+        devices.forEach(device => {
+            if (!device.armature_material) {
+                // console.log('\x1b[31m%s\x1b[0m', `У устройства ID:${device['id']} не указан свойство Материал! [armature_material]`)
+                return
+            }
+
+            materials.push(device.armature_material.join('-'))
+        })
+
+        return [...new Set(materials)].sort()
     },
 
     getDevicesFunctionsList: () => {

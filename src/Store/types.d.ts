@@ -81,6 +81,5 @@ export {
     DevicesStore,
     BordersStore,
     BackgroundsStore,
-    BoundStore,
-    Window
+    BoundStore
 }

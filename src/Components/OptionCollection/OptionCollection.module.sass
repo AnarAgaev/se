@@ -43,8 +43,12 @@
     text-overflow: ellipsis
     white-space: nowrap
     box-sizing: border-box
+    text-transform: lowercase
 
     color: var(--color-prime)
     font-size: 16px
     font-weight: 400
     line-height: 120% /* 19.2px */
+
+    &::first-letter
+        text-transform: uppercase

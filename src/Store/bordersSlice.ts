@@ -1,5 +1,7 @@
 import { StateCreator  } from 'zustand'
 import { BordersStore } from './types'
+import { z } from 'zod'
+import { BordersList } from './zod-data-contracts'
 
 const bordersSlice: StateCreator<BordersStore> = (set, get) => ({
     borders: [],
@@ -8,6 +10,12 @@ const bordersSlice: StateCreator<BordersStore> = (set, get) => ({
 
     getBordersList: () => {
         const borders = [...get().borders]
+
+        // borders.forEach(border => {
+        //     if (!border.number_of_posts) {
+        //         console.log('\x1b[31m%s\x1b[0m', `У рамки ID:${border['id']} не указано свойство Количество постов! [number_of_posts]`)
+        //     }
+        // })
 
         // For displaying filter only one border items
         return borders.filter(
@@ -27,8 +35,19 @@ const bordersSlice: StateCreator<BordersStore> = (set, get) => ({
     },
 
     getBordersMaterialsList: () => {
-        const borders = [...get().borders]
-        return [...new Set(borders.map(border => border.material))].sort()
+        const borders: z.infer<typeof BordersList> = [...get().borders]
+        const materials: string[] = []
+
+        borders.forEach(border => {
+            if (!border.armature_material) {
+                // console.log('\x1b[31m%s\x1b[0m', `У рамки ID:${border['id']} не указан свойство Материал! [armature_material]`)
+                return
+            }
+
+            materials.push(border.armature_material.join('-'))
+        })
+
+        return [...new Set(materials)].sort()
     }
 })
 
