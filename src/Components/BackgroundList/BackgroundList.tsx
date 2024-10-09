@@ -1,6 +1,5 @@
 import { useId, useMemo } from 'react'
-import { z } from 'zod'
-import { BackgroundsList } from '../../Store/zod-data-contracts'
+import { TBackgroundList } from '../../zod'
 import { BackgroundItemPicture } from '..'
 import useStore from '../../Store'
 import style from './BackgroundList.module.sass'
@@ -8,7 +7,7 @@ import style from './BackgroundList.module.sass'
 const { backgroundList, caption, list, item, item_active } = style
 
 const itemList = (
-    backgrounds: z.infer<typeof BackgroundsList>,
+    backgrounds: TBackgroundList,
     id: string
 ): JSX.Element[] => backgrounds.map((el) => {
         const clazz = el.selected

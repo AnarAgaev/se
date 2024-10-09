@@ -1,37 +1,50 @@
-import { VendorsList, VendorType } from "./zod-data-contracts"
+import {
+    TBackground, TBackgroundList,
+    TBorder, TBorderList,
+    TDeviceList,
 
 
-// Types for bound of the all Stores
-interface BoundStore {
+
+
+    VendorsList, VendorType, TFunctions } from "./zod"
+
+export type CalcTabs = 'borders' | 'devices' | 'backgrounds'
+export type ViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
+
+/** Types for bound of the all Stores */
+export type TStore = {
     requestInitData: () => void
 }
 
 
-// Types for Backgrounds
-interface BackgroundsStore {
-    backgrounds: z.infer<typeof BackgroundsList>
-    setInitBackgroundsData: (data: z.infer<typeof BackgroundsList>) => void
-    addUploadedBackground: (background: z.infer<typeof BackgroundType>) => void
+
+/** Types for Backgrounds */
+export type TBackgroundsStore = {
+    backgrounds: TBackgroundList
+    setInitBackgroundsData: (payload: TBackgroundList) => void
+    addUploadedBackground: (background: TBackground) => void
     setActiveBackground: (backgroundId: string | number) => void
 }
 
 
-// Types for Borders
-interface BordersStore {
-    borders: z.infer<typeof BordersList>
-    setInitBordersData: (data: z.infer<typeof BordersList>) => void
-    getBordersList: () => Array<z.infer<typeof BorderType>>
+
+/** Types for Borders */
+export type TBordersStore = {
+    borders: TBorderList
+    setInitBordersData: (payload: TBorderList) => void
+    getBordersList: () => Array<TBorder>
     getBordersBrandsList: () => string[]
     getBordersCollectionsList: () => string[]
     getBordersMaterialsList: () => string[]
 }
 
 
-// Types for Devices
-interface DevicesStore {
-    devices: z.infer<typeof DevicesList>
-    setInitDevicesData: (data: z.infer<typeof DevicesList>) => void
-    getDevicesList: () => Array<z.infer<typeof DeviceType>>
+
+/** Types for Devices */
+export type TDevicesStore = {
+    devices: TDeviceList
+    setInitDevicesData: (payload: TDeviceList) => void
+    getDevicesList: () => TDeviceList
     getDevicesBrandsList: () => string[]
     getDevicesCollectionsList: () => string[]
     getDevicesMaterialsList: () => string[]
@@ -40,8 +53,9 @@ interface DevicesStore {
 }
 
 
-// Types for all app
-interface AppStore {
+
+/** Types for all app */
+export type TAppStore = {
     loading: boolean
     error: Error | unknown
 
@@ -58,9 +72,9 @@ interface AppStore {
     setAppVendors: (vendors: z.infer<typeof VendorsList>) => void
     getVendorByName: (brandName: string) => z.infer<typeof VendorType>
 
-    functions: Record<string, string>
-    setAppFunctionsKinds: (functions: Record<string, string>) => void
-    getAppFunctionsKinds: () => Record<string, string>
+    functions: TFunctions | null
+    setFunctions: (functions: TFunctions) => void
+    // getAppFunctionsKinds: () => Record<string, string>
 
     projects: z.infer<typeof ProjectsList>
     setAppProjects: (projects: z.infer<typeof ProjectsList>) => void
@@ -69,17 +83,4 @@ interface AppStore {
     rooms: z.infer<typeof RoomsList>
     setAppRooms: (rooms: z.infer<typeof RoomsList>) => void
     addRoom: (room: string) => void
-}
-
-
-type CalcTabs = 'borders' | 'devices' | 'backgrounds'
-type ViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
-
-
-export {
-    AppStore,
-    DevicesStore,
-    BordersStore,
-    BackgroundsStore,
-    BoundStore
 }

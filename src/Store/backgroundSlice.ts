@@ -1,6 +1,7 @@
 import { StateCreator  } from 'zustand'
+import { TBackgroundsStore } from '../types'
 
-const backgroundSlice: StateCreator<BackgroundsStore> = (set, get) => ({
+const backgroundSlice: StateCreator<TBackgroundsStore> = (set, get) => ({
     backgrounds: [],
 
     setInitBackgroundsData: (data) => set({ backgrounds: data }),

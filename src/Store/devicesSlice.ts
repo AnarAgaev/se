@@ -1,9 +1,9 @@
 import { StateCreator  } from 'zustand'
-import { DevicesStore } from './types'
+import { TDevicesStore } from '../types'
 import { z } from 'zod'
-import { DevicesList } from './zod-data-contracts'
+import { DevicesList } from '../zod'
 
-const devicesSlice: StateCreator<DevicesStore> = (set, get) => ({
+const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
     devices: [],
 
     setInitDevicesData: (payload) => set({ devices: payload }),

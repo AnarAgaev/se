@@ -1,9 +1,9 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-import { InitDataContractType } from './zod-data-contracts'
+import { InitDataContractType } from '../zod'
 import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice } from './'
-import { AppStore, DevicesStore, BordersStore, BackgroundsStore, BoundStore } from './types'
+import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TStore } from '../types'
 
 const zodErrorOptions: ErrorMessageOptions = {
     delimiter: {
@@ -24,7 +24,7 @@ const zodErrorOptions: ErrorMessageOptions = {
     transform: ({ errorMessage, index }) => `🔥 \x1b[31m Zod Error #${index + 1}: \x1b[33m ${errorMessage}`,
 }
 
-const useStore = create<DevicesStore & BordersStore & BackgroundsStore & AppStore & BoundStore>()(
+const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TAppStore & TStore>()(
     devtools(
         (set, get, ...args) => ({
             ...appSlice(set, get, ...args),
@@ -74,7 +74,7 @@ const useStore = create<DevicesStore & BordersStore & BackgroundsStore & AppStor
                     get().setAppVendors(safeResponse.data.vendors)
                     get().setAppProjects(safeResponse.data.projects)
                     get().setAppRooms(safeResponse.data.rooms)
-                    // get().setAppFunctionsKinds(safeResponse.data.functions)
+                    get().setFunctions(safeResponse.data.functions)
 
                     set({ error: null, loading: false })
                 } catch (error: Error | unknown) {

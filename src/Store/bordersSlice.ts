@@ -1,9 +1,9 @@
 import { StateCreator  } from 'zustand'
-import { BordersStore } from './types'
+import { TBordersStore } from '../types'
 import { z } from 'zod'
-import { BordersList } from './zod-data-contracts'
+import { BordersList } from '../zod'
 
-const bordersSlice: StateCreator<BordersStore> = (set, get) => ({
+const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
     borders: [],
 
     setInitBordersData: (payload) => set({ borders: payload }),

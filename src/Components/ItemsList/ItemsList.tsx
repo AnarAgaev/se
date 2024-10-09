@@ -1,20 +1,18 @@
 import { useId, useMemo } from 'react'
-import { z } from 'zod'
-import { ElementType } from '../../Store/zod-data-contracts'
+import { TElement } from '../../zod'
 import style from './ItemsList.module.sass'
 
 const { wrap, list, item, pic, content, name, price } = style
 
-type Element = z.infer<typeof ElementType>
-
+// type Element = TElement
 
 interface Props {
-    itemList: Array<Element>
+    itemList: Array<TElement>
 }
 
 const getElementsList = (
     id: string,
-    itemList: Array<Element>
+    itemList: Array<TElement>
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []

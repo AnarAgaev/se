@@ -21,19 +21,21 @@ const getFunctionalitiesList = (
 }
 
 const FunctionsSelectsList = () => {
-    const id = useId()
-    const functions = useStore(state => state.getAppFunctionsKinds())
+    // const id = useId()
+    // const functions = useStore(state => state.getAppFunctionsKinds())
 
-    const elements = useMemo(
-        () => getFunctionalitiesList(functions, id),
-        [functions, id]
-    )
+    // const elements = useMemo(
+    //     () => getFunctionalitiesList(functions, id),
+    //     [functions, id]
+    // )
 
-    return (
-        <div className={list}>
-            { elements }
-        </div>
-    )
+    // return (
+    //     <div className={list}>
+    //         { elements }
+    //     </div>
+    // )
+
+    return null
 }
 
 export default FunctionsSelectsList

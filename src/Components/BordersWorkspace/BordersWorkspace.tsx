@@ -1,7 +1,7 @@
 import { useMemo, useId, FC } from 'react'
 import { z } from 'zod'
 import useStore from '../../Store'
-import { VendorType } from '../../Store/zod-data-contracts'
+import { VendorType } from '../../zod'
 
 import { FactoryWorkspace, ColorSelector, Select,
     OptionBrand, OptionCollection, OptionMaterial } from '../../Components'

@@ -1,5 +1,5 @@
 import { useRef, useState, ChangeEvent } from 'react'
-import { BackgroundType } from '../../Store/zod-data-contracts'
+import { ZTBackground } from '../../zod'
 import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
 import useStore from '../../Store'
 import style from './BackgroundPicker.module.sass'
@@ -69,7 +69,7 @@ const BackgroundPicker = () => {
 
             if (!res.ok) console.error('Failed to upload background image to', uploadLink)
 
-            const safeResponse = BackgroundType
+            const safeResponse = ZTBackground
                 .passthrough().safeParse(await res.json())
             console.log('Uploading image response', safeResponse)
 

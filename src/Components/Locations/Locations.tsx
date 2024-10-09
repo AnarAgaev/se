@@ -1,6 +1,6 @@
 import { useMemo, useId } from 'react'
 import { InputSelect, OptionLocation } from '../../Components'
-import { ProjectsList, RoomsList } from '../../Store/zod-data-contracts'
+import { ProjectsList, RoomsList } from '../../zod'
 import { z } from 'zod'
 import useStore from '../../Store'
 import style from './Locations.module.sass'

@@ -1,10 +1,10 @@
 import { z } from 'zod'
-import { ColorsType, ProjectsList, RoomsList, VendorsList } from './zod-data-contracts'
 import { StateCreator } from 'zustand'
-import { AppStore } from './types'
-import { VendorType } from './zod-data-contracts'
+import { TAppStore } from '../types'
+import { VendorType } from '../zod'
+import { ColorsType, ProjectsList, RoomsList, VendorsList } from '../zod'
 
-const appSlice: StateCreator<AppStore> = (set, get) => ({
+const appSlice: StateCreator<TAppStore> = (set, get) => ({
     loading: true,
     error: null,
 
@@ -22,24 +22,24 @@ const appSlice: StateCreator<AppStore> = (set, get) => ({
         return vendor
     },
 
-    activeCalcTab: 'borders',
+    activeCalcTab: 'devices',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
     activeViewportTab: 'configurator',
     setActiveViewportTab: (tab) => set({activeViewportTab: tab}),
 
-    functions: {},
-    setAppFunctionsKinds: (functions) => set({functions: functions}),
-    getAppFunctionsKinds: () => {
-        const functionsKinds = { ...get().functions }
+    functions: null,
+    setFunctions: (functions) => set({functions: functions}),
+    // getAppFunctionsKinds: () => {
+    //     const functionsKinds = { ...get().functions }
 
-        // Здесь написать логику по отбору только нужных типов финкциональностей
-        // и отдавать только те, которые нужно выводить с учетом
-        // выбранных фильтров и выбранного параметра Function
+    //     // Здесь написать логику по отбору только нужных типов финкциональностей
+    //     // и отдавать только те, которые нужно выводить с учетом
+    //     // выбранных фильтров и выбранного параметра Function
 
-        return functionsKinds
+    //     return functionsKinds
 
-    },
+    // },
 
     projects: [],
     setAppProjects: (projects: z.infer<typeof ProjectsList>) => set({ projects: projects }),
