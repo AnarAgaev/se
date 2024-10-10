@@ -69,8 +69,7 @@ const BackgroundPicker = () => {
 
             if (!res.ok) console.error('Failed to upload background image to', uploadLink)
 
-            const safeResponse = Background
-                .passthrough().safeParse(await res.json())
+            const safeResponse = Background.passthrough().safeParse(await res.json())
             console.log('Uploading image response', safeResponse)
 
             if (!safeResponse.success) {

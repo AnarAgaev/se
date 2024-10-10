@@ -1,6 +1,5 @@
 import { StateCreator  } from 'zustand'
 import { TBordersStore } from '../types'
-import { TBorderList } from '../zod'
 
 const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
     borders: [],
@@ -40,7 +39,7 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
     },
 
     getBordersMaterialsList: () => {
-        const borders: TBorderList = [...get().borders]
+        const borders = [...get().borders]
         const materials: string[] = []
 
         borders.forEach(border => {

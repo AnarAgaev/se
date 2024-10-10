@@ -1,7 +1,7 @@
 import {
 
     TBackground, TBackgroundList,
-    TElement,
+    TElement, TElementList,
     TBorder, TBorderList,
     TDevice, TDeviceList,
     TCollection, TCollectionList,
@@ -101,7 +101,7 @@ export type TAppStore = {
 
 export {
     TBackground, TBackgroundList,
-    TElement,
+    TElement, TElementList,
     TBorder, TBorderList,
     TDevice, TDeviceList,
     TCollection, TCollectionList,

@@ -1,13 +1,13 @@
 import { useMemo, useId } from 'react'
 import { InputSelect, OptionLocation } from '../../Components'
-import { TProjectsList, TRoomList } from '../../zod'
+import { TProjectList, TRoomList } from '../../types'
 import useStore from '../../Store'
 import style from './Locations.module.sass'
 
 const { locations } = style
 
 const getProjectsOptionsList = (
-    projectsList: TProjectsList,
+    projectsList: TProjectList,
     key: string
 ): JSX.Element[] => {
 

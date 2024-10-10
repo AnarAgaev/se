@@ -1,6 +1,5 @@
 import { StateCreator  } from 'zustand'
 import { TDevicesStore } from '../types'
-import { TDeviceList } from '../zod'
 
 const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
     devices: [],
@@ -23,7 +22,7 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
     },
 
     getDevicesMaterialsList: () => {
-        const devices: TDeviceList = [...get().devices]
+        const devices = [...get().devices]
         const materials: string[] = []
 
         devices.forEach(device => {

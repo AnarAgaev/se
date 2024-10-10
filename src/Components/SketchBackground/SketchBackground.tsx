@@ -1,10 +1,9 @@
 import useStore from '../../Store'
-import { TBackground } from '../../zod'
 import style from './SketchBackground.module.sass'
 
 const SketchBackground = () => {
     const backgrounds = useStore(state => state.backgrounds)
-    const activeBackground = backgrounds.filter((background: TBackground) => background.selected)
+    const activeBackground = backgrounds.filter((background) => background.selected)
 
     return (
         <span className={style.sketchBackground}>

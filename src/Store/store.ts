@@ -54,8 +54,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TApp
                     if (!res.ok) console.error(
                         'Failed to fetch json initial data! URL link is', initSourceDataLink)
 
-                    const safeResponse = InitDataContract
-                        .passthrough().safeParse(await res.json())
+                    const safeResponse = InitDataContract.passthrough().safeParse(await res.json())
 
                     if (!safeResponse.success) {
                         const errorMessage = generateErrorMessage(safeResponse.error.issues, zodErrorOptions)

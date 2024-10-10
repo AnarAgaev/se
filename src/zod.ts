@@ -28,6 +28,9 @@ export const Element = z.object({
     armature_material: z.array(z.string()).optional(),
 })
 export type TElement = z.infer<typeof Element>
+
+export const ElementList = z.array(Element)
+export type TElementList = z.infer<typeof ElementList>
 // #endregion
 
 

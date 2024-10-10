@@ -1,18 +1,16 @@
 import { useId, useMemo } from 'react'
-import { TElement } from '../../zod'
+import { TElementList } from '../../types'
 import style from './ItemsList.module.sass'
 
 const { wrap, list, item, pic, content, name, price } = style
 
-// type Element = TElement
-
 interface Props {
-    itemList: Array<TElement>
+    itemList: TElementList
 }
 
 const getElementsList = (
     id: string,
-    itemList: Array<TElement>
+    itemList: TElementList
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []

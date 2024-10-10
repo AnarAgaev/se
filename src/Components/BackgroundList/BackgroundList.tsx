@@ -1,5 +1,5 @@
 import { useId, useMemo } from 'react'
-import { TBackgroundList } from '../../zod'
+import { TBackgroundList } from '../../types'
 import { BackgroundItemPicture } from '..'
 import useStore from '../../Store'
 import style from './BackgroundList.module.sass'
