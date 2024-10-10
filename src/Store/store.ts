@@ -1,9 +1,9 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-import { InitDataContractType } from '../zod'
 import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice } from './'
 import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TStore } from '../types'
+import { InitDataContract } from '../zod'
 
 const zodErrorOptions: ErrorMessageOptions = {
     delimiter: {
@@ -54,7 +54,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TApp
                     if (!res.ok) console.error(
                         'Failed to fetch json initial data! URL link is', initSourceDataLink)
 
-                    const safeResponse = InitDataContractType
+                    const safeResponse = InitDataContract
                         .passthrough().safeParse(await res.json())
 
                     if (!safeResponse.success) {

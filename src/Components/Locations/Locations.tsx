@@ -1,14 +1,13 @@
 import { useMemo, useId } from 'react'
 import { InputSelect, OptionLocation } from '../../Components'
-import { ProjectsList, RoomsList } from '../../zod'
-import { z } from 'zod'
+import { TProjectsList, TRoomList } from '../../zod'
 import useStore from '../../Store'
 import style from './Locations.module.sass'
 
 const { locations } = style
 
 const getProjectsOptionsList = (
-    projectsList: z.infer<typeof ProjectsList>,
+    projectsList: TProjectsList,
     key: string
 ): JSX.Element[] => {
 
@@ -27,7 +26,7 @@ const getProjectsOptionsList = (
 }
 
 const getRoomsOptionsList = (
-    roomsList: z.infer<typeof RoomsList>,
+    roomsList: TRoomList,
     key: string
 ): JSX.Element[] => {
 

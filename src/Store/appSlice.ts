@@ -1,22 +1,19 @@
-import { z } from 'zod'
 import { StateCreator } from 'zustand'
 import { TAppStore } from '../types'
-import { VendorType } from '../zod'
-import { ColorsType, ProjectsList, RoomsList, VendorsList } from '../zod'
 
 const appSlice: StateCreator<TAppStore> = (set, get) => ({
     loading: true,
     error: null,
 
-    colors: {},
-    setAppColors: (colors: z.infer<typeof ColorsType>) => set({ colors: colors }),
+    colors: undefined,
+    setAppColors: (colors) => set({ colors: colors }),
 
-    vendors: {},
-    setAppVendors: (vendors: z.infer<typeof VendorsList>) => set({vendors: vendors}),
+    vendors: undefined,
+    setAppVendors: (vendors) => set({vendors: vendors}),
     getVendorByName: (vendorName) => {
-        const vendors = [...get().vendors]
+        const vendors = get().vendors || []
 
-        const vendor: z.infer<typeof VendorType> = vendors.find(vendor =>
+        const vendor = vendors.find(vendor =>
             vendor.name.toLowerCase() === vendorName.toLowerCase())
 
         return vendor
@@ -42,9 +39,9 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // },
 
     projects: [],
-    setAppProjects: (projects: z.infer<typeof ProjectsList>) => set({ projects: projects }),
+    setAppProjects: (projects) => set({ projects: projects }),
     addProject: (project) => {
-        const newProjects: z.infer<typeof ProjectsList> = [...get().projects]
+        const newProjects = [...get().projects]
 
         newProjects.forEach(project => project.selected = false)
 
@@ -58,9 +55,9 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     },
 
     rooms: [],
-    setAppRooms: (rooms: z.infer<typeof RoomsList>) => set({ rooms: rooms }),
+    setAppRooms: (rooms) => set({ rooms: rooms }),
     addRoom: (room) => {
-        const newRooms: z.infer<typeof RoomsList> = [...get().rooms]
+        const newRooms = [...get().rooms]
 
         newRooms.forEach(room => room.selected = false)
 

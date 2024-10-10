@@ -1,34 +1,43 @@
 import {
+
     TBackground, TBackgroundList,
+    TElement,
     TBorder, TBorderList,
-    TDeviceList,
+    TDevice, TDeviceList,
+    TCollection, TCollectionList,
+    TVendor, TVendorList,
+    TProject, TProjectList,
+    TRoom, TRoomList,
+    TFunction, TFunctionList,
+    TColorList,
+    TDictionary,
+    InitDataContract,
 
-
-
-
-    VendorsList, VendorType, TFunctions } from "./zod"
+} from "./zod"
 
 export type CalcTabs = 'borders' | 'devices' | 'backgrounds'
 export type ViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
 
-/** Types for bound of the all Stores */
+// #region Bound of the all Stores
 export type TStore = {
     requestInitData: () => void
 }
+// #endregion
 
 
 
-/** Types for Backgrounds */
+// #region Backgrounds
 export type TBackgroundsStore = {
     backgrounds: TBackgroundList
     setInitBackgroundsData: (payload: TBackgroundList) => void
     addUploadedBackground: (background: TBackground) => void
     setActiveBackground: (backgroundId: string | number) => void
 }
+// #endregion
 
 
 
-/** Types for Borders */
+// #region Borders
 export type TBordersStore = {
     borders: TBorderList
     setInitBordersData: (payload: TBorderList) => void
@@ -37,10 +46,11 @@ export type TBordersStore = {
     getBordersCollectionsList: () => string[]
     getBordersMaterialsList: () => string[]
 }
+// #endregion
 
 
 
-/** Types for Devices */
+// #region Devices
 export type TDevicesStore = {
     devices: TDeviceList
     setInitDevicesData: (payload: TDeviceList) => void
@@ -51,16 +61,17 @@ export type TDevicesStore = {
     getDevicesFunctionsList: () => string[]
     getDevicesFunctionsOptions: (deviceFuncProp: string) => string[]
 }
+// #endregion
 
 
 
-/** Types for all app */
+// #region App
 export type TAppStore = {
     loading: boolean
     error: Error | unknown
 
-    colors: z.infer<typeof ColorsType>
-    setAppColors: (colors: z.infer<typeof ColorsType>) => void
+    colors: TColorList | undefined
+    setAppColors: (colors: TColorList) => void
 
     activeCalcTab: CalcTabs
     setActiveCalcTab: (tab: CalcTabs) => void
@@ -68,19 +79,37 @@ export type TAppStore = {
     activeViewportTab: ViewportTabs
     setActiveViewportTab: (tab: ViewportTabs) => void
 
-    vendors: z.infer<typeof VendorsList>
-    setAppVendors: (vendors: z.infer<typeof VendorsList>) => void
-    getVendorByName: (brandName: string) => z.infer<typeof VendorType>
+    vendors: TVendorList | undefined
+    setAppVendors: (vendors: TVendorList) => void
+    getVendorByName: (brandName: string) => TVendor | undefined
 
-    functions: TFunctions | null
-    setFunctions: (functions: TFunctions) => void
+    functions: TFunctionList | null
+    setFunctions: (functions: TFunctionList) => void
     // getAppFunctionsKinds: () => Record<string, string>
 
-    projects: z.infer<typeof ProjectsList>
-    setAppProjects: (projects: z.infer<typeof ProjectsList>) => void
+    projects: TProjectList
+    setAppProjects: (projects: TProjectList) => void
     addProject: (project: string) => void
 
-    rooms: z.infer<typeof RoomsList>
-    setAppRooms: (rooms: z.infer<typeof RoomsList>) => void
+    rooms: TRoomList
+    setAppRooms: (rooms: TRoomList) => void
     addRoom: (room: string) => void
+}
+// #endregion
+
+
+
+export {
+    TBackground, TBackgroundList,
+    TElement,
+    TBorder, TBorderList,
+    TDevice, TDeviceList,
+    TCollection, TCollectionList,
+    TVendor, TVendorList,
+    TProject, TProjectList,
+    TRoom, TRoomList,
+    TFunction, TFunctionList,
+    TColorList,
+    TDictionary,
+    InitDataContract
 }

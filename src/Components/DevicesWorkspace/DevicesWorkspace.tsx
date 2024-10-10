@@ -1,14 +1,13 @@
 import { useMemo, useId } from 'react'
-import { z } from 'zod'
 import useStore from '../../Store'
-import { VendorType } from '../../zod'
+import { TVendor } from '../../zod'
 
 import { FactoryWorkspace, ColorSelector, Select, OptionFunction,
     OptionBrand, OptionCollection, OptionMaterial, FunctionalitySelectsList } from '../../Components'
 
 const getBrandOptionsList = (
     brandsList: string[],
-    getVendorByName: (brandName: string) => z.infer<typeof VendorType>,
+    getVendorByName: (brandName: string) => TVendor,
     key: string
 ): JSX.Element[] => {
 

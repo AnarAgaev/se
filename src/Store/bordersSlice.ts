@@ -1,7 +1,6 @@
 import { StateCreator  } from 'zustand'
 import { TBordersStore } from '../types'
-import { z } from 'zod'
-import { BordersList } from '../zod'
+import { TBorderList } from '../zod'
 
 const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
     borders: [],
@@ -19,7 +18,13 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
 
         // For displaying filter only one border items
         return borders.filter(
-            border => parseInt(border.number_of_posts) === 1
+            border => {
+                const value = typeof border.number_of_posts === 'string'
+                    ? parseInt(border.number_of_posts)
+                    : NaN
+
+                return value === 1
+            }
         )
     },
 
@@ -35,7 +40,7 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
     },
 
     getBordersMaterialsList: () => {
-        const borders: z.infer<typeof BordersList> = [...get().borders]
+        const borders: TBorderList = [...get().borders]
         const materials: string[] = []
 
         borders.forEach(border => {
