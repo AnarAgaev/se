@@ -1,9 +1,10 @@
 import { useMemo, useId } from 'react'
+import { TVendor, TFunctionOptionList } from '../../types'
 import useStore from '../../Store'
-import { TVendor } from '../../types'
 
-import { FactoryWorkspace, ColorSelector, Select, OptionFunction,
-    OptionBrand, OptionCollection, OptionMaterial, FunctionalitySelectsList } from '../../Components'
+import { FactoryWorkspace, ColorSelector, Select,
+    OptionFunction, OptionBrand, OptionCollection,
+    OptionMaterial, FunctionalitySelectsList } from '../../Components'
 
 const getBrandOptionsList = (
     brandsList: string[],
@@ -70,18 +71,18 @@ const getMaterialsOptionsList = (
 }
 
 const getFunctionsOptionsList = (
-    functionsList: string[],
+    functionsList: TFunctionOptionList,
     key: string
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
 
-    functionsList.forEach(functionName => {
+    functionsList.forEach(f => {
         elementsList.push(
             <OptionFunction
-                key={`${key}-${functionName}`}
-                name={`function-${key}`}
-                caption={functionName} />
+                key={`${key}-${f.name}`}
+                name={f.name}
+                active={f.active} />
         )
     })
 
@@ -95,7 +96,7 @@ const DevicesWorkspace = () => {
     const brandsList = useStore(state => state.getDevicesBrandsList())
     const collectionsList = useStore(state => state.getDevicesCollectionsList())
     const materialsList = useStore(state => state.getDevicesMaterialsList())
-    const functionsList = useStore(state => state.getDevicesFunctionsList())
+    const functionsList = useStore(state => state.getFunctions())
 
     const brandsOptions = useMemo(
         () => getBrandOptionsList(brandsList, getVendorByName, key),

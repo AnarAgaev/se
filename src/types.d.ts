@@ -1,5 +1,4 @@
 import {
-
     TBackground, TBackgroundList,
     TElement, TElementList,
     TBorder, TBorderList,
@@ -12,11 +11,13 @@ import {
     TColorList,
     TDictionary,
     InitDataContract,
-
 } from "./zod"
 
-export type CalcTabs = 'borders' | 'devices' | 'backgrounds'
-export type ViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
+export type TCalcTabs = 'borders' | 'devices' | 'backgrounds'
+export type TViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
+
+export type TFunctionOption = { name: string, active?: boolean }
+export type TFunctionOptionList = TFunctionOption[]
 
 // #region Bound of the all Stores
 export type TStore = {
@@ -58,8 +59,12 @@ export type TDevicesStore = {
     getDevicesBrandsList: () => string[]
     getDevicesCollectionsList: () => string[]
     getDevicesMaterialsList: () => string[]
-    getDevicesFunctionsList: () => string[]
-    getDevicesFunctionsOptions: (deviceFuncProp: string) => string[]
+
+    functions: TFunctionList
+    setFunctions: (functions: TFunctionList) => void
+    getFunctions: () => TFunctionOptionList
+    updateActiveFunction: (functionName: string) => void
+    getFunctionsKinds: () => TFunction[]
 }
 // #endregion
 
@@ -73,19 +78,15 @@ export type TAppStore = {
     colors: TColorList | undefined
     setAppColors: (colors: TColorList) => void
 
-    activeCalcTab: CalcTabs
-    setActiveCalcTab: (tab: CalcTabs) => void
+    activeCalcTab: TCalcTabs
+    setActiveCalcTab: (tab: TCalcTabs) => void
 
-    activeViewportTab: ViewportTabs
-    setActiveViewportTab: (tab: ViewportTabs) => void
+    activeViewportTab: TViewportTabs
+    setActiveViewportTab: (tab: TViewportTabs) => void
 
     vendors: TVendorList | undefined
     setAppVendors: (vendors: TVendorList) => void
     getVendorByName: (brandName: string) => TVendor | undefined
-
-    functions: TFunctionList | null
-    setFunctions: (functions: TFunctionList) => void
-    // getAppFunctionsKinds: () => Record<string, string>
 
     projects: TProjectList
     setAppProjects: (projects: TProjectList) => void
@@ -94,6 +95,9 @@ export type TAppStore = {
     rooms: TRoomList
     setAppRooms: (rooms: TRoomList) => void
     addRoom: (room: string) => void
+
+    dictionary: TDictionary
+    setDictionary: (dictionary: TDictionary) => void
 }
 // #endregion
 

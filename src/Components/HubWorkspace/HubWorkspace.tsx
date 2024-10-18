@@ -1,5 +1,6 @@
 import { useId, useMemo, useState } from 'react'
 import { InputAdd } from '../../Components'
+import { TProjectList } from '../../types'
 import useStore from '../../Store'
 import style from './HubWorkspace.module.sass'
 
@@ -8,7 +9,7 @@ const { hub, form, add, upload, blocks, title, list, item, name, actions,
     modal, modal_show, close, content, caption, controllers } = style
 
 const getProjectsElms = (
-    projects: Record<string, unknown>,
+    projects: TProjectList,
     id: string
 ): JSX.Element[] => {
 

@@ -1,41 +1,45 @@
 import { useId, useMemo } from 'react'
-import useStore from '../../Store'
 import { FunctionalitySelect } from '../../Components'
+import { TFunction } from '../../types'
+import useStore from '../../Store'
 import style from './FunctionalitySelectsList.module.sass'
 
 const { list } = style
 
 const getFunctionalitiesList = (
-    functions: Record<string, string>,
+    functions: TFunction[],
     id: string
 ): JSX.Element[] => {
 
     const elList: JSX.Element[] = []
 
-    for (const key in functions) {
-        elList.push(<FunctionalitySelect key={`${id}-${key}`}
-            name={key} val={functions[key]} />)
-    }
+    functions.forEach((fn, idx) => {
+        elList.push(<FunctionalitySelect
+            key={`${id}-${idx}`}
+            name={fn.conf_product_group}
+            values={fn.values}
+        />)
+    })
 
     return elList
 }
 
 const FunctionsSelectsList = () => {
-    // const id = useId()
-    // const functions = useStore(state => state.getAppFunctionsKinds())
+    const id = useId()
+    const functions = useStore(state => state.getFunctionsKinds())
 
-    // const elements = useMemo(
-    //     () => getFunctionalitiesList(functions, id),
-    //     [functions, id]
-    // )
+    const elements = useMemo(
+        () => getFunctionalitiesList(functions, id),
+        [functions, id]
+    )
 
-    // return (
-    //     <div className={list}>
-    //         { elements }
-    //     </div>
-    // )
-
-    return null
+    return (
+        elements.length === 0
+        ? null
+        : <div className={list}>
+            { elements }
+        </div>
+    )
 }
 
 export default FunctionsSelectsList

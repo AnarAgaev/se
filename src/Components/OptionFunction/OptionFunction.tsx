@@ -1,23 +1,19 @@
 import { FC } from 'react'
+import { TFunctionOption } from '../../types'
+import useStore from '../../Store'
 import style from './OptionFunction.module.sass'
-
-interface Props {
-    caption: string
-    name: string
-}
 
 const { option, text } = style
 
-const OptionFunction: FC<Props> = ({ caption, name }) => {
+const OptionFunction: FC<TFunctionOption> = ({ name, active }) => {
+    const updateActiveFunction = useStore(state => state.updateActiveFunction)
     return (
         <li className='closing'>
             <label className={option}>
-                <input
-                    className='invisible'
-                    type='radio'
-                    name={name} />
+                <input className='invisible' type='checkbox' checked={active}
+                    onChange={() => updateActiveFunction(name)} />
                 <span></span>
-                <mark className={text}>{caption}</mark>
+                <mark className={text}>{name}</mark>
             </label>
         </li>
     )

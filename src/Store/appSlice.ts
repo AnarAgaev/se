@@ -25,19 +25,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     activeViewportTab: 'configurator',
     setActiveViewportTab: (tab) => set({activeViewportTab: tab}),
 
-    functions: null,
-    setFunctions: (functions) => set({functions: functions}),
-    // getAppFunctionsKinds: () => {
-    //     const functionsKinds = { ...get().functions }
-
-    //     // Здесь написать логику по отбору только нужных типов финкциональностей
-    //     // и отдавать только те, которые нужно выводить с учетом
-    //     // выбранных фильтров и выбранного параметра Function
-
-    //     return functionsKinds
-
-    // },
-
     projects: [],
     setAppProjects: (projects) => set({ projects: projects }),
     addProject: (project) => {
@@ -68,6 +55,13 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         })
 
         set({ rooms: newRooms })
+    },
+
+    dictionary: {
+        ru: {}
+    },
+    setDictionary: (dictionary) => {
+        set({ dictionary: dictionary})
     }
 })
 

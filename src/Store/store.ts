@@ -74,6 +74,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TApp
                     get().setAppProjects(safeResponse.data.projects)
                     get().setAppRooms(safeResponse.data.rooms)
                     get().setFunctions(safeResponse.data.functions)
+                    get().setDictionary(safeResponse.data.lang)
 
                     set({ error: null, loading: false })
                 } catch (error: Error | unknown) {

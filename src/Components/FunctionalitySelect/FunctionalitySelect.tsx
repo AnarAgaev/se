@@ -1,45 +1,51 @@
 import { useId, useMemo, FC } from 'react'
-import useStore from '../../Store'
 import { FunctionalityOption } from '../../Components'
+import useStore from '../../Store'
 import style from './FunctionalitySelect.module.sass'
 
+type TValues = (string | number)[]
 interface Props {
     name: string,
-    val: string
+    values: TValues
 }
 
 const { wrap, caption, list } = style
 
 const getFunctionalityOptionList = (
-    optionsList: string[],
-    name: string,
+    values: TValues,
     id: string
 ): JSX.Element[] => {
 
     const elList: JSX.Element[] = []
 
-    optionsList.forEach(option => elList.push(
+    values.forEach((option, idx) => elList.push(
         <FunctionalityOption
-            key={`${id}-${option}`}
-            name={name}
-            val={option} /> ))
+            key={`${id}-${idx}`}
+            value={option} /> ))
 
     return elList
 }
 
-const FunctionalitySelect: FC<Props> = ({name, val}) => {
+const FunctionalitySelect: FC<Props> = ({ name, values }) => {
     const id = useId()
-    const getDevicesFunctionsOptions = useStore(state => state.getDevicesFunctionsOptions)
+    const dict = useStore(state => state.dictionary.ru)
 
     const functionalityOptionList = useMemo(
-        () => getFunctionalityOptionList(
-            getDevicesFunctionsOptions(name), name, id),
-        [getDevicesFunctionsOptions, name, id]
+        () => getFunctionalityOptionList(values, id),
+        [values, id]
     )
+
+    const selectCaption = dict[name]
+
+    if (!selectCaption) {
+        console.log('\x1b[31m%s\x1b[0m', 'В словаре не указан перевод свойства!', name)
+    }
 
     return (
         <div className={wrap}>
-            <h3 className={caption}>{val}</h3>
+            <h3 className={caption} style={selectCaption ? {} : {color: 'red'}}>
+                {selectCaption ? selectCaption : name}
+            </h3>
             <ul className={list}>
                 { functionalityOptionList }
             </ul>

@@ -125,6 +125,7 @@ export type TFunction = z.infer<typeof Function>
 const FunctionList = z.array(z.object({
     "name": z.string(),
     "props": z.array(Function),
+    "active": z.boolean().optional()
 }))
 export type TFunctionList = z.infer<typeof FunctionList>
 // #endregion
@@ -159,6 +160,7 @@ export const InitDataContract = z.object({
     vendors: VendorList,
     functions: FunctionList,
     projects: ProjectList,
-    rooms: RoomList
+    rooms: RoomList,
+    lang: Dictionary
 })
 // #endregion

@@ -37,14 +37,43 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
         return [...new Set(materials)].sort()
     },
 
-    getDevicesFunctionsList: () => {
-        const devices = [...get().devices]
-        return [...new Set(devices.map(device => device.function))].sort()
+    functions: [],
+
+    setFunctions: (functions) => {
+        set({functions: [
+            {
+                name: 'Все функции',
+                props: [],
+                active: true
+            },
+            ...functions
+        ]})
     },
 
-    getDevicesFunctionsOptions: (deviceFuncProp) => {
-        const devices = [...get().devices]
-        return [...new Set(devices.map(device => device[deviceFuncProp]))].sort()
+    getFunctions: () => {
+        return [...get().functions].map(fn => ({
+            name: fn.name,
+            active: fn.active ? true : false
+        }))
+    },
+
+    updateActiveFunction: (functionName) => {
+        const newFuncs = [...get().functions].map(fn => ({
+            ...fn,
+            active: fn.name === functionName
+        }))
+
+        set({ functions: [ ...newFuncs ] })
+    },
+
+    getFunctionsKinds: () => {
+        const activeFunctions = [...get().functions.filter(
+            fn => fn.active
+        )]
+
+        return activeFunctions.length !== 0
+            ? activeFunctions[0].props
+            : []
     }
 })
 
