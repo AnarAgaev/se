@@ -19,7 +19,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         return vendor
     },
 
-    activeCalcTab: 'devices',
+    activeCalcTab: 'borders',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
     activeViewportTab: 'configurator',

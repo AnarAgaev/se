@@ -74,6 +74,19 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
         return activeFunctions.length !== 0
             ? activeFunctions[0].props
             : []
+    },
+
+    filtersDevices: {},
+
+    setDevicesFilterBrand: (brandName) => {
+        const newFilters = {...get().filtersDevices}
+        newFilters.brand = brandName
+        set({filtersDevices: newFilters})
+    },
+
+    checkDevicesBrandSelected: (brandName) => {
+        const selectedBrand = get().filtersDevices?.brand
+        return selectedBrand === brandName
     }
 })
 

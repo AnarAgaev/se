@@ -3,25 +3,28 @@ import style from './OptionBrand.module.sass'
 
 interface Props {
     img: string
-    caption: string
-    name: string
+    value: string
+    isChecked: boolean
+    eventHandler: () => void
 }
 
 const { option, picture, text } = style
 
-const OptionBrand: FC<Props> = ({ img, caption, name}) => {
+const OptionBrand: FC<Props> = ({ img, value, isChecked, eventHandler}) => {
     return (
         <li className='closing'>
             <label className={option}>
                 <input
                     className='invisible'
-                    type='radio'
-                    name={name} />
+                    type='checkbox'
+                    checked={isChecked}
+                    value={value}
+                    onChange={() => eventHandler()}/>
                 <span></span>
                 <em className={picture}>
-                    <img src={img} alt={caption} />
+                    <img src={img} alt={value} />
                 </em>
-                <mark className={text}>{caption}</mark>
+                <mark className={text}>{value}</mark>
             </label>
         </li>
     )

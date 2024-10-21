@@ -9,6 +9,9 @@ import { FactoryWorkspace, ColorSelector, Select,
 const getBrandOptionsList = (
     brandsList: string[],
     getVendorByName: (brandName: string) => TVendor | undefined ,
+    checkDevicesBrandSelected: (brandName: string) => boolean,
+    setDevicesFilterBrand: (brandName: string) => void,
+    setBordersFilterBrand: (brandName: string) => void,
     key: string
 ): JSX.Element[] => {
 
@@ -20,12 +23,20 @@ const getBrandOptionsList = (
 
             if (!vendor) return
 
+            const isChecked = checkDevicesBrandSelected(vendor.name)
+
+            const eventHandler = () => {
+                setDevicesFilterBrand(vendor.name)
+                setBordersFilterBrand(vendor.name)
+            }
+
             elementsList.push(
                 <OptionBrand
                     key={`${key}-${vendor.id}`}
-                    name={`brand-${key}`}
                     img={vendor.image}
-                    caption={vendor.name} />
+                    value={vendor.name}
+                    isChecked={isChecked}
+                    eventHandler={eventHandler} />
             )
         })
     }
@@ -92,6 +103,9 @@ const getFunctionsOptionsList = (
 const DevicesWorkspace = () => {
     const key = useId()
     const getVendorByName = useStore(state => state.getVendorByName)
+    const checkDevicesBrandSelected = useStore(state => state.checkDevicesBrandSelected)
+    const setDevicesFilterBrand = useStore(state => state.setDevicesFilterBrand)
+    const setBordersFilterBrand = useStore(state => state.setBordersFilterBrand)
     const colorsList = useStore(state => state.colors?.devices)
     const brandsList = useStore(state => state.getDevicesBrandsList())
     const collectionsList = useStore(state => state.getDevicesCollectionsList())
@@ -99,8 +113,8 @@ const DevicesWorkspace = () => {
     const functionsList = useStore(state => state.getFunctions())
 
     const brandsOptions = useMemo(
-        () => getBrandOptionsList(brandsList, getVendorByName, key),
-        [brandsList, getVendorByName, key]
+        () => getBrandOptionsList(brandsList, getVendorByName, checkDevicesBrandSelected, setDevicesFilterBrand, setBordersFilterBrand, key),
+        [brandsList, getVendorByName, checkDevicesBrandSelected, setDevicesFilterBrand, setBordersFilterBrand, key]
     )
 
     const collectionsOptions = useMemo(

@@ -19,6 +19,10 @@ export type TViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
 export type TFunctionOption = { name: string, active?: boolean }
 export type TFunctionOptionList = TFunctionOption[]
 
+type TFilters = {
+    brand?: string
+}
+
 // #region Bound of the all Stores
 export type TStore = {
     requestInitData: () => void
@@ -46,7 +50,13 @@ export type TBordersStore = {
     getBordersBrandsList: () => string[]
     getBordersCollectionsList: () => string[]
     getBordersMaterialsList: () => string[]
+
+    filtersBorders: TBordersFilters
+    setBordersFilterBrand: (brandName: string) => void
+    checkBordersBrandSelected: (brandName: string) => boolean
 }
+
+export type TBordersFilters = TFilters
 // #endregion
 
 
@@ -65,7 +75,13 @@ export type TDevicesStore = {
     getFunctions: () => TFunctionOptionList
     updateActiveFunction: (functionName: string) => void
     getFunctionsKinds: () => TFunction[]
+
+    filtersDevices: TDevicesFilters
+    setDevicesFilterBrand: (brandName: string) => void
+    checkDevicesBrandSelected: (brandName: string) => boolean
 }
+
+export type TDevicesFilters = TFilters
 // #endregion
 
 
