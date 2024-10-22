@@ -56,15 +56,21 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
 
     filtersBorders: {},
 
-    setBordersFilterBrand: (brandName) => {
+    setBordersFilter: (prop, value) => {
         const newFilters = {...get().filtersBorders}
-        newFilters.brand = brandName
+        newFilters[prop] = value.toString()
         set({filtersBorders: newFilters})
     },
 
-    checkBordersBrandSelected: (brandName) => {
-        const selectedBrand = get().filtersBorders?.brand
-        return selectedBrand === brandName
+    removeBordersFilter: (prop) => {
+        const newFilters = {...get().filtersBorders}
+        delete newFilters[prop]
+        set({filtersBorders: newFilters})
+    },
+
+    checkBordersFilter: (prop, value) => {
+        const selectedProp = get().filtersBorders[prop]
+        return selectedProp === value
     }
 })
 

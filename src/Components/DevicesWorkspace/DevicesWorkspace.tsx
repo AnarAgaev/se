@@ -1,5 +1,5 @@
 import { useMemo, useId } from 'react'
-import { TVendor, TFunctionOptionList } from '../../types'
+import { TVendor, TFunctionOptionList, TBordersStore, TDevicesStore } from '../../types'
 import useStore from '../../Store'
 
 import { FactoryWorkspace, ColorSelector, Select,
@@ -9,37 +9,35 @@ import { FactoryWorkspace, ColorSelector, Select,
 const getBrandOptionsList = (
     brandsList: string[],
     getVendorByName: (brandName: string) => TVendor | undefined ,
-    checkDevicesBrandSelected: (brandName: string) => boolean,
-    setDevicesFilterBrand: (brandName: string) => void,
-    setBordersFilterBrand: (brandName: string) => void,
+    checkBordersFilter: TBordersStore['checkBordersFilter'],
+    setBordersFilter: TBordersStore['setBordersFilter'],
+    setDevicesFilter: TDevicesStore['setDevicesFilter'],
     key: string
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
 
-    if (getVendorByName) {
-        brandsList.forEach(brandName => {
-            const vendor = getVendorByName(brandName)
+    brandsList.forEach(brandName => {
+        const vendor = getVendorByName(brandName)
 
-            if (!vendor) return
+        if (!vendor) return
 
-            const isChecked = checkDevicesBrandSelected(vendor.name)
+        const isChecked = checkBordersFilter('brand', vendor.name)
 
-            const eventHandler = () => {
-                setDevicesFilterBrand(vendor.name)
-                setBordersFilterBrand(vendor.name)
-            }
+        const eventHandler = () => {
+            setDevicesFilter('brand', vendor.name)
+            setBordersFilter('brand', vendor.name)
+        }
 
-            elementsList.push(
-                <OptionBrand
-                    key={`${key}-${vendor.id}`}
-                    img={vendor.image}
-                    value={vendor.name}
-                    isChecked={isChecked}
-                    eventHandler={eventHandler} />
-            )
-        })
-    }
+        elementsList.push(
+            <OptionBrand
+                key={`${key}-${vendor.id}`}
+                img={vendor.image}
+                value={vendor.name}
+                isChecked={isChecked}
+                eventHandler={eventHandler} />
+        )
+    })
 
     return elementsList
 }
@@ -103,9 +101,10 @@ const getFunctionsOptionsList = (
 const DevicesWorkspace = () => {
     const key = useId()
     const getVendorByName = useStore(state => state.getVendorByName)
-    const checkDevicesBrandSelected = useStore(state => state.checkDevicesBrandSelected)
-    const setDevicesFilterBrand = useStore(state => state.setDevicesFilterBrand)
-    const setBordersFilterBrand = useStore(state => state.setBordersFilterBrand)
+    const setDevicesFilter = useStore(state => state.setDevicesFilter)
+    const removeDevicesFilter = useStore(state => state.removeDevicesFilter)
+    const checkDevicesFilter = useStore(state => state.checkDevicesFilter)
+    const setBordersFilter = useStore(state => state.setBordersFilter)
     const colorsList = useStore(state => state.colors?.devices)
     const brandsList = useStore(state => state.getDevicesBrandsList())
     const collectionsList = useStore(state => state.getDevicesCollectionsList())
@@ -113,8 +112,8 @@ const DevicesWorkspace = () => {
     const functionsList = useStore(state => state.getFunctions())
 
     const brandsOptions = useMemo(
-        () => getBrandOptionsList(brandsList, getVendorByName, checkDevicesBrandSelected, setDevicesFilterBrand, setBordersFilterBrand, key),
-        [brandsList, getVendorByName, checkDevicesBrandSelected, setDevicesFilterBrand, setBordersFilterBrand, key]
+        () => getBrandOptionsList(brandsList, getVendorByName, checkDevicesFilter, setDevicesFilter, setBordersFilter, key),
+        [brandsList, getVendorByName, checkDevicesFilter, setDevicesFilter, setBordersFilter, key]
     )
 
     const collectionsOptions = useMemo(
@@ -139,7 +138,14 @@ const DevicesWorkspace = () => {
             <Select title="Материал устройства">{materialsOptions}</Select>
             <Select title="Тип функции">{functionsOptions}</Select>
             <FunctionalitySelectsList />
-            {colorsList && <ColorSelector caption="Цвет устройства" colors={colorsList} />}
+            {
+                colorsList && <ColorSelector
+                    caption="Цвет устройства"
+                    colors={colorsList}
+                    setColorFn={setDevicesFilter}
+                    removeColorFn={removeDevicesFilter}
+                    checkColorFn={checkDevicesFilter} />
+            }
         </FactoryWorkspace>
     )
 }

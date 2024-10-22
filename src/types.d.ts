@@ -21,6 +21,7 @@ export type TFunctionOptionList = TFunctionOption[]
 
 type TFilters = {
     brand?: string
+    color?: string
 }
 
 // #region Bound of the all Stores
@@ -52,8 +53,9 @@ export type TBordersStore = {
     getBordersMaterialsList: () => string[]
 
     filtersBorders: TBordersFilters
-    setBordersFilterBrand: (brandName: string) => void
-    checkBordersBrandSelected: (brandName: string) => boolean
+    setBordersFilter: (prop: keyof TBordersFilters, value: string | number) => void
+    removeBordersFilter: (prop: keyof TBordersFilters) => void
+    checkBordersFilter: (prop: keyof TBordersFilters, value: string | number) => boolean
 }
 
 export type TBordersFilters = TFilters
@@ -77,8 +79,9 @@ export type TDevicesStore = {
     getFunctionsKinds: () => TFunction[]
 
     filtersDevices: TDevicesFilters
-    setDevicesFilterBrand: (brandName: string) => void
-    checkDevicesBrandSelected: (brandName: string) => boolean
+    setDevicesFilter: (prop: keyof TDevicesFilters, value: string | number) => void
+    removeDevicesFilter: (prop: keyof TDevicesFilters) => void
+    checkDevicesFilter: (prop: keyof TDevicesFilters, value: string | number) => boolean
 }
 
 export type TDevicesFilters = TFilters

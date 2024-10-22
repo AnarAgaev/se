@@ -1,9 +1,13 @@
-import { useId, useMemo } from 'react'
+import { useId } from 'react'
+import { TBordersStore } from '../../types'
 import style from './ColorSelector.module.sass'
 
 interface Props {
     caption: string
     colors: Array<string>
+    setColorFn: TBordersStore['setBordersFilter']
+    checkColorFn: TBordersStore['checkBordersFilter']
+    removeColorFn: TBordersStore['removeBordersFilter']
 }
 
 const { body, title, list, item, color,
@@ -28,17 +32,36 @@ const colorClassDictionary: Record<string, string> = {
 
 const getColorsList = (
     colors: Array<string>,
+    setColorFn: TBordersStore['setBordersFilter'],
+    checkColorFn: TBordersStore['checkBordersFilter'],
+    removeColorFn: TBordersStore['removeBordersFilter'],
     id: string
 ): JSX.Element[] => {
 
     const list: (JSX.Element)[] = []
 
+    function handler(e: React.ChangeEvent<HTMLInputElement>, color: string) {
+        if (e.target.checked) {
+            setColorFn('color', color)
+            return
+        }
+
+        removeColorFn('color')
+    }
+
     colors.forEach(clr => {
         const clazz = `${color} ${colorClassDictionary[clr]}`
+        const isChecked = checkColorFn('color', clr)
+
         list.push(
             <li key={`${id}-${clr}`} className={item}>
                 <label className={clazz} title={clr}>
-                    <input className="invisible" type="radio" name={`color-${id}`} />
+                    <input
+                        className="invisible"
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={e => handler(e, clr)}
+                    />
                 </label>
             </li>
         )
@@ -47,13 +70,10 @@ const getColorsList = (
     return list
 }
 
-const ColorSelector: React.FC<Props> = ({caption, colors}) => {
+const ColorSelector: React.FC<Props> = ({caption, colors, setColorFn, checkColorFn, removeColorFn}) => {
     const id = useId()
 
-    const colorsList = useMemo(
-        () => getColorsList(colors, id),
-        [colors, id]
-    )
+    const colorsList = getColorsList(colors, setColorFn, checkColorFn, removeColorFn, id)
 
     return (
         <div className={body}>
