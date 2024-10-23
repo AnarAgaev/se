@@ -54,31 +54,33 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
         return [...new Set(materials)].sort()
     },
 
+    // #region Filters
     filtersBorders: {
         brand: '',
         colors: [],
         materials: []
     },
 
-    setBordersFilter: (prop, value) => {
+    setSingleBordersFilter: (prop, value) => {
         const newFilters = {...get().filtersBorders}
-        newFilters[prop] = value.toString()
+
+        if (prop === 'brand') {
+            newFilters[prop] = value.toString()
+        }
+
         set({filtersBorders: newFilters})
     },
 
-    removeBordersFilter: (prop) => {
+    removeSingleBordersFilter: (prop) => {
         const newFilters = {...get().filtersBorders}
         delete newFilters[prop]
         set({filtersBorders: newFilters})
     },
 
-    checkBordersFilter: (prop, value) => {
+    checkSingleBordersFilter: (prop, value) => {
         const selectedProp = get().filtersBorders[prop]
         return selectedProp === value
     },
-
-
-
 
     setPluralBordersFilter: (prop, value) => {
         const newFilters = {...get().filtersBorders}
@@ -110,14 +112,7 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
 
         return false
     },
-
-
-
-
-
-
-
-
+    // #endregion
 })
 
 export default bordersSlice

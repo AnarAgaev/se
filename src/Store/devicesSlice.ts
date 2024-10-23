@@ -76,32 +76,33 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
             : []
     },
 
+    // #region Filters
     filtersDevices: {
         brand: '',
         colors: [],
         materials: []
     },
 
-    setDevicesFilter: (prop, value) => {
+    setSingleDevicesFilter: (prop, value) => {
         const newFilters = {...get().filtersDevices}
-        newFilters[prop] = value.toString()
+
+        if (prop === 'brand') {
+            newFilters[prop] = value.toString()
+        }
+
         set({filtersDevices: newFilters})
     },
 
-    removeDevicesFilter: (prop) => {
+    removeSingleDevicesFilter: (prop) => {
         const newFilters = {...get().filtersDevices}
         delete newFilters[prop]
         set({filtersDevices: newFilters})
     },
 
-    checkDevicesFilter: (prop, value) => {
+    checkSingleDevicesFilter: (prop, value) => {
         const selectedProp = get().filtersDevices[prop]
         return selectedProp === value
     },
-
-
-
-
 
     setPluralDevicesFilter: (prop, value) => {
         const newFilters = {...get().filtersDevices}
@@ -133,6 +134,7 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
 
         return false
     },
+    // #endregion
 })
 
 export default devicesSlice

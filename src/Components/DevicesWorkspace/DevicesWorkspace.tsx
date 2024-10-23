@@ -1,10 +1,8 @@
 import { useMemo, useId } from 'react'
 import useStore from '../../Store'
 
-import { TVendor, TFunctionOptionList,
-    TSetFilter, TCheckFilter,
-    TSetPluralFilter, TRemovePluralFilter,
-    TCheckPluralFilter } from '../../types'
+import { TVendor, TFunctionOptionList, TSetSingleFilter, TCheckSingleFilter,
+    TSetPluralFilter, TRemovePluralFilter, TCheckPluralFilter } from '../../types'
 
 import { FactoryWorkspace, ColorSelector, Select,
     OptionFunction, OptionBrand, OptionCollection,
@@ -12,10 +10,10 @@ import { FactoryWorkspace, ColorSelector, Select,
 
 const getBrandOptionsList = (
     brandsList: string[],
-    getVendorByName: (brandName: string) => TVendor | undefined ,
-    checkBordersFilter: TCheckFilter,
-    setBordersFilter: TSetFilter,
-    setDevicesFilter: TSetFilter,
+    getVendorByName: (brandName: string) => TVendor | undefined,
+    setSingleDevicesFilter: TSetSingleFilter,
+    setSingleBordersFilter: TSetSingleFilter,
+    checkSingleDevicesFilter: TCheckSingleFilter,
     key: string
 ): JSX.Element[] => {
 
@@ -26,11 +24,11 @@ const getBrandOptionsList = (
 
         if (!vendor) return
 
-        const isChecked = checkBordersFilter('brand', vendor.name)
+        const isChecked = checkSingleDevicesFilter('brand', vendor.name)
 
         const eventHandler = () => {
-            setDevicesFilter('brand', vendor.name)
-            setBordersFilter('brand', vendor.name)
+            setSingleDevicesFilter('brand', vendor.name)
+            setSingleBordersFilter('brand', vendor.name)
         }
 
         elementsList.push(
@@ -112,28 +110,24 @@ const getFunctionsOptionsList = (
 const DevicesWorkspace = () => {
     const key = useId()
     const getVendorByName = useStore(state => state.getVendorByName)
-    const setDevicesFilter = useStore(state => state.setDevicesFilter)
-    // const removeDevicesFilter = useStore(state => state.removeDevicesFilter)
-    const checkDevicesFilter = useStore(state => state.checkDevicesFilter)
-    const setBordersFilter = useStore(state => state.setBordersFilter)
+
     const colorsList = useStore(state => state.colors?.devices)
     const brandsList = useStore(state => state.getDevicesBrandsList())
     const collectionsList = useStore(state => state.getDevicesCollectionsList())
     const materialList = useStore(state => state.getDevicesMaterialList())
     const functionsList = useStore(state => state.getFunctions())
 
-
-
-
-
+    const setSingleDevicesFilter = useStore(state => state.setSingleDevicesFilter)
+    const setSingleBordersFilter = useStore(state => state.setSingleBordersFilter)
+    const checkSingleDevicesFilter = useStore(state => state.checkSingleDevicesFilter)
 
     const setPluralDevicesFilter = useStore(state => state.setPluralDevicesFilter)
     const removePluralDevicesFilter = useStore(state => state.removePluralDevicesFilter)
     const checkPluralDevicesFilter = useStore(state => state.checkPluralDevicesFilter)
 
     const brandsOptions = useMemo(
-        () => getBrandOptionsList(brandsList, getVendorByName, checkDevicesFilter, setDevicesFilter, setBordersFilter, key),
-        [brandsList, getVendorByName, checkDevicesFilter, setDevicesFilter, setBordersFilter, key]
+        () => getBrandOptionsList(brandsList, getVendorByName, setSingleDevicesFilter, setSingleBordersFilter, checkSingleDevicesFilter, key),
+        [brandsList, getVendorByName, setSingleDevicesFilter, setSingleBordersFilter, checkSingleDevicesFilter, key]
     )
 
     const collectionsOptions = useMemo(

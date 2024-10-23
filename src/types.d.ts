@@ -19,12 +19,6 @@ export type TViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
 export type TFunctionOption = { name: string, active?: boolean }
 export type TFunctionOptionList = TFunctionOption[]
 
-type TFilters = {
-    brand: string
-    colors: string[]
-    materials: string[]
-}
-
 // #region Bound of the all Stores
 export type TStore = {
     requestInitData: () => void
@@ -53,24 +47,14 @@ export type TBordersStore = {
     getBordersCollectionsList: () => string[]
     getBordersMaterialList: () => string[]
 
+
     filtersBorders: TBordersFilters
-
-
-
-
-
-    setBordersFilter: TSetFilter
-    removeBordersFilter: TRemoveFilter
-    checkBordersFilter: TCheckFilter
-
-
-
-
-
+    setSingleBordersFilter: TSetSingleFilter
+    removeSingleBordersFilter: TRemoveSingleFilter
+    checkSingleBordersFilter: TCheckSingleFilter
     setPluralBordersFilter: TSetPluralFilter
     removePluralBordersFilter: TRemovePluralFilter
     checkPluralBordersFilter: TCheckPluralFilter
-
 }
 // #endregion
 
@@ -85,25 +69,18 @@ export type TDevicesStore = {
     getDevicesCollectionsList: () => string[]
     getDevicesMaterialList: () => string[]
 
+
     functions: TFunctionList
     setFunctions: (functions: TFunctionList) => void
     getFunctions: () => TFunctionOptionList
     updateActiveFunction: (functionName: string) => void
     getFunctionsKinds: () => TFunction[]
 
+
     filtersDevices: TDevicesFilters
-
-
-
-
-
-    setDevicesFilter: TSetFilter
-    removeDevicesFilter: TRemoveFilter
-    checkDevicesFilter: TCheckFilter
-
-
-
-
+    setSingleDevicesFilter: TSetSingleFilter
+    removeSingleDevicesFilter: TRemoveSingleFilter
+    checkSingleDevicesFilter: TCheckSingleFilter
     setPluralDevicesFilter: TSetPluralFilter
     removePluralDevicesFilter: TRemovePluralFilter
     checkPluralDevicesFilter: TCheckPluralFilter
@@ -113,12 +90,19 @@ export type TDevicesStore = {
 
 
 // #region Filter
+type TFilters = {
+    brand?: string
+    colors: string[]
+    materials: string[]
+}
+
 export type TBordersFilters = TFilters
 export type TDevicesFilters = TFilters // добавить типы для типов устройств
 export type TFilterPropNames = keyof TBordersFilters | keyof TDevicesFilters
-export type TSetFilter = (prop: TFilterPropNames, value: string | number) => void
-export type TRemoveFilter = (prop: TFilterPropNames) => void
-export type TCheckFilter = (prop: TFilterPropNames, value: string | number) => boolean
+
+export type TSetSingleFilter = (prop: TFilterPropNames, value: string | number) => void
+export type TRemoveSingleFilter = (prop: TFilterPropNames) => void
+export type TCheckSingleFilter = (prop: TFilterPropNames, value: string | number) => boolean
 
 export type TSetPluralFilter = (prop: TFilterPropNames, value: string | number) => void
 export type TRemovePluralFilter = (prop: TFilterPropNames, value: string | number) => void
