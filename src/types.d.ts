@@ -92,6 +92,7 @@ export type TDevicesStore = {
 // #region Filter
 type TFilters = {
     brand?: string
+    collection?: string
     colors: string[]
     materials: string[]
 }
@@ -99,6 +100,7 @@ type TFilters = {
 export type TBordersFilters = TFilters
 export type TDevicesFilters = TFilters // добавить типы для типов устройств
 export type TFilterPropNames = keyof TBordersFilters | keyof TDevicesFilters
+export type TGetBrandByCollection = (collectionName: string) => string
 
 export type TSetSingleFilter = (prop: TFilterPropNames, value: string | number) => void
 export type TRemoveSingleFilter = (prop: TFilterPropNames) => void
@@ -125,9 +127,10 @@ export type TAppStore = {
     activeViewportTab: TViewportTabs
     setActiveViewportTab: (tab: TViewportTabs) => void
 
-    vendors: TVendorList | undefined
+    vendors: TVendorList
     setAppVendors: (vendors: TVendorList) => void
     getVendorByName: (brandName: string) => TVendor | undefined
+    getBrandByCollection: TGetBrandByCollection
 
     projects: TProjectList
     setAppProjects: (projects: TProjectList) => void

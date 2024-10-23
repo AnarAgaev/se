@@ -57,6 +57,7 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
     // #region Filters
     filtersBorders: {
         brand: '',
+        collection: '',
         colors: [],
         materials: []
     },
@@ -64,7 +65,7 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
     setSingleBordersFilter: (prop, value) => {
         const newFilters = {...get().filtersBorders}
 
-        if (prop === 'brand') {
+        if (prop === 'brand' || prop === 'collection') {
             newFilters[prop] = value.toString()
         }
 

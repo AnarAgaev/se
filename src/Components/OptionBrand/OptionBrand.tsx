@@ -19,7 +19,8 @@ const OptionBrand: FC<Props> = ({ img, value, isChecked, eventHandler}) => {
                     type='checkbox'
                     checked={isChecked}
                     value={value}
-                    onChange={() => eventHandler()}/>
+                    onChange={eventHandler}
+                />
                 <span></span>
                 <em className={picture}>
                     <img src={img} alt={value} />

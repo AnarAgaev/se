@@ -1,7 +1,8 @@
 import { useMemo, useId } from 'react'
 import useStore from '../../Store'
 
-import { TVendor, TFunctionOptionList, TSetSingleFilter, TCheckSingleFilter,
+import { TVendor,TGetBrandByCollection, TFunctionOptionList,
+    TSetSingleFilter, TCheckSingleFilter, TRemoveSingleFilter,
     TSetPluralFilter, TRemovePluralFilter, TCheckPluralFilter } from '../../types'
 
 import { FactoryWorkspace, ColorSelector, Select,
@@ -14,6 +15,8 @@ const getBrandOptionsList = (
     setSingleDevicesFilter: TSetSingleFilter,
     setSingleBordersFilter: TSetSingleFilter,
     checkSingleDevicesFilter: TCheckSingleFilter,
+    removeSingleBordersFilter: TRemoveSingleFilter,
+    removeSingleDevicesFilter: TRemoveSingleFilter,
     key: string
 ): JSX.Element[] => {
 
@@ -27,8 +30,14 @@ const getBrandOptionsList = (
         const isChecked = checkSingleDevicesFilter('brand', vendor.name)
 
         const eventHandler = () => {
+
+            if (isChecked) return
+
             setSingleDevicesFilter('brand', vendor.name)
+            removeSingleDevicesFilter('collection')
+
             setSingleBordersFilter('brand', vendor.name)
+            removeSingleBordersFilter('collection')
         }
 
         elementsList.push(
@@ -46,17 +55,36 @@ const getBrandOptionsList = (
 
 const getCollectionsOptionsList = (
     collectionsList: string[],
+    setSingleDevicesFilter: TSetSingleFilter,
+    setSingleBordersFilter: TSetSingleFilter,
+    checkSingleDevicesFilter: TCheckSingleFilter,
+    getBrandByCollection: TGetBrandByCollection,
     key: string
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
 
     collectionsList.forEach(collectionName => {
+
+        const isChecked = checkSingleDevicesFilter('collection', collectionName)
+
+        const eventHandler = () => {
+            const brandName = getBrandByCollection(collectionName)
+
+            setSingleDevicesFilter('collection', collectionName)
+            setSingleDevicesFilter('brand', brandName)
+
+            setSingleBordersFilter('collection', collectionName)
+            setSingleBordersFilter('brand', brandName)
+        }
+
         elementsList.push(
             <OptionCollection
                 key={`${key}-${collectionName}`}
-                name={`collection-${key}`}
-                caption={collectionName} />
+                isChecked={isChecked}
+                value={collectionName}
+                eventHandler={eventHandler}
+            />
         )
     })
 
@@ -116,33 +144,86 @@ const DevicesWorkspace = () => {
     const collectionsList = useStore(state => state.getDevicesCollectionsList())
     const materialList = useStore(state => state.getDevicesMaterialList())
     const functionsList = useStore(state => state.getFunctions())
+    const getBrandByCollection = useStore(state => state.getBrandByCollection)
 
     const setSingleDevicesFilter = useStore(state => state.setSingleDevicesFilter)
     const setSingleBordersFilter = useStore(state => state.setSingleBordersFilter)
     const checkSingleDevicesFilter = useStore(state => state.checkSingleDevicesFilter)
+    const removeSingleBordersFilter = useStore(state => state.removeSingleBordersFilter)
+    const removeSingleDevicesFilter = useStore(state => state.removeSingleDevicesFilter)
 
     const setPluralDevicesFilter = useStore(state => state.setPluralDevicesFilter)
     const removePluralDevicesFilter = useStore(state => state.removePluralDevicesFilter)
     const checkPluralDevicesFilter = useStore(state => state.checkPluralDevicesFilter)
 
     const brandsOptions = useMemo(
-        () => getBrandOptionsList(brandsList, getVendorByName, setSingleDevicesFilter, setSingleBordersFilter, checkSingleDevicesFilter, key),
-        [brandsList, getVendorByName, setSingleDevicesFilter, setSingleBordersFilter, checkSingleDevicesFilter, key]
+        () => getBrandOptionsList(
+            brandsList,
+            getVendorByName,
+            setSingleDevicesFilter,
+            setSingleBordersFilter,
+            checkSingleDevicesFilter,
+            removeSingleBordersFilter,
+            removeSingleDevicesFilter,
+            key
+        ),
+        [
+            brandsList,
+            getVendorByName,
+            setSingleDevicesFilter,
+            setSingleBordersFilter,
+            checkSingleDevicesFilter,
+            removeSingleBordersFilter,
+            removeSingleDevicesFilter,
+            key
+        ]
     )
 
     const collectionsOptions = useMemo(
-        () => getCollectionsOptionsList(collectionsList, key),
-        [collectionsList, key]
+        () => getCollectionsOptionsList(
+            collectionsList,
+            setSingleDevicesFilter,
+            setSingleBordersFilter,
+            checkSingleDevicesFilter,
+            getBrandByCollection,
+            key
+        ),
+        [
+            collectionsList,
+            setSingleDevicesFilter,
+            setSingleBordersFilter,
+            checkSingleDevicesFilter,
+            getBrandByCollection,
+            key
+        ]
     )
 
     const materialsOptions = useMemo(
-        () => getMaterialsOptionsList(materialList, setPluralDevicesFilter, removePluralDevicesFilter, checkPluralDevicesFilter, key),
-        [materialList, setPluralDevicesFilter, removePluralDevicesFilter, checkPluralDevicesFilter, key]
+        () => getMaterialsOptionsList(
+            materialList,
+            setPluralDevicesFilter,
+            removePluralDevicesFilter,
+            checkPluralDevicesFilter,
+            key
+        ),
+        [
+            materialList,
+            setPluralDevicesFilter,
+            removePluralDevicesFilter,
+            checkPluralDevicesFilter,
+            key
+        ]
     )
 
     const functionsOptions = useMemo(
-        () => getFunctionsOptionsList(functionsList, key),
-        [functionsList, key]
+        () => getFunctionsOptionsList(
+            functionsList,
+            key
+        ),
+        [
+            functionsList,
+            key
+        ]
     )
 
     return (
@@ -158,7 +239,8 @@ const DevicesWorkspace = () => {
                     colors={colorsList}
                     setColorFn={setPluralDevicesFilter}
                     removeColorFn={removePluralDevicesFilter}
-                    checkColorFn={checkPluralDevicesFilter} />
+                    checkColorFn={checkPluralDevicesFilter}
+                />
             }
         </FactoryWorkspace>
     )

@@ -2,22 +2,25 @@ import { FC } from 'react'
 import style from './OptionCollection.module.sass'
 
 interface Props {
-    caption: string
-    name: string
+    value: string
+    isChecked: boolean
+    eventHandler: () => void
 }
 
 const { option, text } = style
 
-const OptionCollection: FC<Props> = ({ caption, name }) => {
+const OptionCollection: FC<Props> = ({ value, isChecked, eventHandler }) => {
     return (
         <li className='closing'>
             <label className={option}>
                 <input
                     className='invisible'
-                    type='radio'
-                    name={name} />
+                    type='checkbox'
+                    checked={isChecked}
+                    onChange={eventHandler}
+                />
                 <span></span>
-                <mark className={text}>{caption}</mark>
+                <mark className={text}>{value}</mark>
             </label>
         </li>
     )

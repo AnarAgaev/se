@@ -8,7 +8,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     colors: undefined,
     setAppColors: (colors) => set({ colors: colors }),
 
-    vendors: undefined,
+    vendors: [],
     setAppVendors: (vendors) => set({vendors: vendors}),
     getVendorByName: (vendorName) => {
         const vendors = get().vendors || []
@@ -17,6 +17,28 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             vendor.name.toLowerCase() === vendorName.toLowerCase())
 
         return vendor
+    },
+    getBrandByCollection: (collectionName) => {
+        const vendors = [...get().vendors]
+
+        const vendor = vendors.filter(v => {
+            let isMatch
+
+            for (const c of v.collections) {
+                if (c.name === collectionName) {
+                    isMatch = true
+                    break
+                }
+            }
+
+            return isMatch
+        })
+
+        if (vendor.length === 0) {
+            throw new Error(`Отсутствует бренд для коллекции ${collectionName}!`)
+        }
+
+        return vendor[0].name
     },
 
     activeCalcTab: 'borders',

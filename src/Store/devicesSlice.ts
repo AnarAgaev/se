@@ -79,6 +79,7 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
     // #region Filters
     filtersDevices: {
         brand: '',
+        collection: '',
         colors: [],
         materials: []
     },
@@ -86,7 +87,7 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
     setSingleDevicesFilter: (prop, value) => {
         const newFilters = {...get().filtersDevices}
 
-        if (prop === 'brand') {
+        if (prop === 'brand' || prop === 'collection') {
             newFilters[prop] = value.toString()
         }
 
