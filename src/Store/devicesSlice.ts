@@ -21,7 +21,7 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
         return collections.filter(collection => !!collection)
     },
 
-    getDevicesMaterialsList: () => {
+    getDevicesMaterialList: () => {
         const devices = [...get().devices]
         const materials: string[] = []
 
@@ -76,7 +76,11 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
             : []
     },
 
-    filtersDevices: {},
+    filtersDevices: {
+        brand: '',
+        colors: [],
+        materials: []
+    },
 
     setDevicesFilter: (prop, value) => {
         const newFilters = {...get().filtersDevices}
@@ -93,7 +97,42 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
     checkDevicesFilter: (prop, value) => {
         const selectedProp = get().filtersDevices[prop]
         return selectedProp === value
-    }
+    },
+
+
+
+
+
+    setPluralDevicesFilter: (prop, value) => {
+        const newFilters = {...get().filtersDevices}
+
+        if ((prop === 'colors' || prop === 'materials') && typeof value === 'string') {
+            newFilters[prop].push(value)
+            newFilters[prop] = [...new Set(newFilters[prop])]
+        }
+
+        set({filtersDevices: newFilters})
+    },
+
+    removePluralDevicesFilter: (prop, value) => {
+        const newFilters = {...get().filtersDevices}
+
+        if ((prop === 'colors' || prop === 'materials') && typeof value === 'string') {
+            newFilters[prop] = newFilters[prop].filter(v => v !== value)
+        }
+
+        set({filtersDevices: newFilters})
+    },
+
+    checkPluralDevicesFilter: (prop, value) => {
+        const filters = {...get().filtersDevices}
+
+        if ((prop === 'colors' || prop === 'materials') && typeof value === 'string') {
+            return !!filters[prop].find(v => v === value)
+        }
+
+        return false
+    },
 })
 
 export default devicesSlice

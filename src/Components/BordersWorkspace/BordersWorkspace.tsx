@@ -1,6 +1,9 @@
 import { useMemo, useId, FC } from 'react'
 import useStore from '../../Store'
-import { TVendor, TBordersStore, TDevicesStore } from '../../types'
+
+import { TVendor, TSetFilter, TCheckFilter,
+    TSetPluralFilter, TRemovePluralFilter,
+    TCheckPluralFilter } from '../../types'
 
 import { FactoryWorkspace, ColorSelector, Select,
     OptionBrand, OptionCollection, OptionMaterial } from '../../Components'
@@ -8,9 +11,9 @@ import { FactoryWorkspace, ColorSelector, Select,
 const getBrandsOptionsList = (
     brandsList: string[],
     getVendorByName: (brandName: string) => TVendor | undefined,
-    checkBordersFilter: TBordersStore['checkBordersFilter'],
-    setBordersFilter: TBordersStore['setBordersFilter'],
-    setDevicesFilter: TDevicesStore['setDevicesFilter'],
+    checkBordersFilter: TCheckFilter,
+    setBordersFilter: TSetFilter,
+    setDevicesFilter: TSetFilter,
     key: string
 ): JSX.Element[] => {
 
@@ -61,17 +64,24 @@ const getCollectionsOptionsList = (
 }
 
 const getMaterialsOptionsList = (
-    materialsList: string[],
+    materialList: string[],
+    setPluralBordersFilter: TSetPluralFilter,
+    removePluralBordersFilter: TRemovePluralFilter,
+    checkPluralBordersFilter: TCheckPluralFilter,
     key: string
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
 
-    materialsList.forEach(materialName => {
+    materialList.forEach(material => {
         elementsList.push(
             <OptionMaterial
-                key={`${key}-${materialName}`}
-                caption={materialName} />
+                key={`${key}-${material}`}
+                material={material}
+                setFilter={setPluralBordersFilter}
+                removeFilter={removePluralBordersFilter}
+                checkFilter={checkPluralBordersFilter}
+            />
         )
     })
 
@@ -81,14 +91,25 @@ const getMaterialsOptionsList = (
 const BordersWorkspace: FC = () => {
     const key = useId()
     const getVendorByName = useStore(state => state.getVendorByName)
+
+
     const setBordersFilter = useStore(state => state.setBordersFilter)
-    const removeBordersFilter = useStore(state => state.removeBordersFilter)
+    // const removeBordersFilter = useStore(state => state.removeBordersFilter)
     const checkBordersFilter = useStore(state => state.checkBordersFilter)
     const setDevicesFilter = useStore(state => state.setDevicesFilter)
+
+
     const colorsList = useStore(state => state.colors?.borders)
     const brandsList = useStore(state => state.getBordersBrandsList())
     const collectionsList = useStore(state => state.getBordersCollectionsList())
-    const materialsList = useStore(state => state.getBordersMaterialsList())
+    const materialList = useStore(state => state.getBordersMaterialList())
+
+
+
+
+    const setPluralBordersFilter = useStore(state => state.setPluralBordersFilter)
+    const removePluralBordersFilter = useStore(state => state.removePluralBordersFilter)
+    const checkPluralBordersFilter = useStore(state => state.checkPluralBordersFilter)
 
     const brandsOptions = useMemo(
         () => getBrandsOptionsList(brandsList, getVendorByName, checkBordersFilter, setBordersFilter, setDevicesFilter, key),
@@ -101,8 +122,8 @@ const BordersWorkspace: FC = () => {
     )
 
     const materialsOptions = useMemo(
-        () => getMaterialsOptionsList(materialsList, key),
-        [materialsList, key]
+        () => getMaterialsOptionsList(materialList, setPluralBordersFilter, removePluralBordersFilter, checkPluralBordersFilter, key),
+        [materialList, setPluralBordersFilter, removePluralBordersFilter, checkPluralBordersFilter, key]
     )
 
     return (
@@ -114,9 +135,9 @@ const BordersWorkspace: FC = () => {
                 colorsList && <ColorSelector
                     caption="Цвет рамки"
                     colors={colorsList}
-                    setColorFn={setBordersFilter}
-                    removeColorFn={removeBordersFilter}
-                    checkColorFn={checkBordersFilter} />
+                    setColorFn={setPluralBordersFilter}
+                    removeColorFn={removePluralBordersFilter}
+                    checkColorFn={checkPluralBordersFilter} />
             }
         </FactoryWorkspace>
     )

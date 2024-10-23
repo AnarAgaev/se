@@ -1,13 +1,13 @@
 import { useId } from 'react'
-import { TBordersStore } from '../../types'
+import { TSetPluralFilter, TRemovePluralFilter, TCheckPluralFilter } from '../../types'
 import style from './ColorSelector.module.sass'
 
 interface Props {
     caption: string
     colors: Array<string>
-    setColorFn: TBordersStore['setBordersFilter']
-    checkColorFn: TBordersStore['checkBordersFilter']
-    removeColorFn: TBordersStore['removeBordersFilter']
+    setColorFn: TSetPluralFilter
+    removeColorFn: TRemovePluralFilter
+    checkColorFn: TCheckPluralFilter
 }
 
 const { body, title, list, item, color,
@@ -32,9 +32,9 @@ const colorClassDictionary: Record<string, string> = {
 
 const getColorsList = (
     colors: Array<string>,
-    setColorFn: TBordersStore['setBordersFilter'],
-    checkColorFn: TBordersStore['checkBordersFilter'],
-    removeColorFn: TBordersStore['removeBordersFilter'],
+    setColorFn: TSetPluralFilter,
+    removeColorFn: TRemovePluralFilter,
+    checkColorFn: TCheckPluralFilter,
     id: string
 ): JSX.Element[] => {
 
@@ -42,16 +42,16 @@ const getColorsList = (
 
     function handler(e: React.ChangeEvent<HTMLInputElement>, color: string) {
         if (e.target.checked) {
-            setColorFn('color', color)
+            setColorFn('colors', color)
             return
         }
 
-        removeColorFn('color')
+        removeColorFn('colors', color)
     }
 
     colors.forEach(clr => {
         const clazz = `${color} ${colorClassDictionary[clr]}`
-        const isChecked = checkColorFn('color', clr)
+        const isChecked = checkColorFn('colors', clr)
 
         list.push(
             <li key={`${id}-${clr}`} className={item}>
@@ -70,10 +70,10 @@ const getColorsList = (
     return list
 }
 
-const ColorSelector: React.FC<Props> = ({caption, colors, setColorFn, checkColorFn, removeColorFn}) => {
+const ColorSelector: React.FC<Props> = ({caption, colors, setColorFn, removeColorFn, checkColorFn}) => {
     const id = useId()
 
-    const colorsList = getColorsList(colors, setColorFn, checkColorFn, removeColorFn, id)
+    const colorsList = getColorsList(colors, setColorFn, removeColorFn, checkColorFn, id)
 
     return (
         <div className={body}>

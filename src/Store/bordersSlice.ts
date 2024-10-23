@@ -38,7 +38,7 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
         return collections.filter(collection => !!collection)
     },
 
-    getBordersMaterialsList: () => {
+    getBordersMaterialList: () => {
         const borders = [...get().borders]
         const materials: string[] = []
 
@@ -54,7 +54,11 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
         return [...new Set(materials)].sort()
     },
 
-    filtersBorders: {},
+    filtersBorders: {
+        brand: '',
+        colors: [],
+        materials: []
+    },
 
     setBordersFilter: (prop, value) => {
         const newFilters = {...get().filtersBorders}
@@ -71,7 +75,49 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
     checkBordersFilter: (prop, value) => {
         const selectedProp = get().filtersBorders[prop]
         return selectedProp === value
-    }
+    },
+
+
+
+
+    setPluralBordersFilter: (prop, value) => {
+        const newFilters = {...get().filtersBorders}
+
+        if ((prop === 'colors' || prop === 'materials') && typeof value === 'string') {
+            newFilters[prop].push(value)
+            newFilters[prop] = [...new Set(newFilters[prop])]
+        }
+
+        set({filtersBorders: newFilters})
+    },
+
+    removePluralBordersFilter: (prop, value) => {
+        const newFilters = {...get().filtersBorders}
+
+        if ((prop === 'colors' || prop === 'materials') && typeof value === 'string') {
+            newFilters[prop] = newFilters[prop].filter(v => v !== value)
+        }
+
+        set({filtersBorders: newFilters})
+    },
+
+    checkPluralBordersFilter: (prop, value) => {
+        const filters = {...get().filtersBorders}
+
+        if ((prop === 'colors' || prop === 'materials') && typeof value === 'string') {
+            return !!filters[prop].find(v => v === value)
+        }
+
+        return false
+    },
+
+
+
+
+
+
+
+
 })
 
 export default bordersSlice

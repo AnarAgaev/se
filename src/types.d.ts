@@ -20,8 +20,9 @@ export type TFunctionOption = { name: string, active?: boolean }
 export type TFunctionOptionList = TFunctionOption[]
 
 type TFilters = {
-    brand?: string
-    color?: string
+    brand: string
+    colors: string[]
+    materials: string[]
 }
 
 // #region Bound of the all Stores
@@ -50,15 +51,27 @@ export type TBordersStore = {
     getBordersList: () => Array<TBorder>
     getBordersBrandsList: () => string[]
     getBordersCollectionsList: () => string[]
-    getBordersMaterialsList: () => string[]
+    getBordersMaterialList: () => string[]
 
     filtersBorders: TBordersFilters
-    setBordersFilter: (prop: keyof TBordersFilters, value: string | number) => void
-    removeBordersFilter: (prop: keyof TBordersFilters) => void
-    checkBordersFilter: (prop: keyof TBordersFilters, value: string | number) => boolean
-}
 
-export type TBordersFilters = TFilters
+
+
+
+
+    setBordersFilter: TSetFilter
+    removeBordersFilter: TRemoveFilter
+    checkBordersFilter: TCheckFilter
+
+
+
+
+
+    setPluralBordersFilter: TSetPluralFilter
+    removePluralBordersFilter: TRemovePluralFilter
+    checkPluralBordersFilter: TCheckPluralFilter
+
+}
 // #endregion
 
 
@@ -70,7 +83,7 @@ export type TDevicesStore = {
     getDevicesList: () => TDeviceList
     getDevicesBrandsList: () => string[]
     getDevicesCollectionsList: () => string[]
-    getDevicesMaterialsList: () => string[]
+    getDevicesMaterialList: () => string[]
 
     functions: TFunctionList
     setFunctions: (functions: TFunctionList) => void
@@ -79,12 +92,37 @@ export type TDevicesStore = {
     getFunctionsKinds: () => TFunction[]
 
     filtersDevices: TDevicesFilters
-    setDevicesFilter: (prop: keyof TDevicesFilters, value: string | number) => void
-    removeDevicesFilter: (prop: keyof TDevicesFilters) => void
-    checkDevicesFilter: (prop: keyof TDevicesFilters, value: string | number) => boolean
-}
 
-export type TDevicesFilters = TFilters
+
+
+
+
+    setDevicesFilter: TSetFilter
+    removeDevicesFilter: TRemoveFilter
+    checkDevicesFilter: TCheckFilter
+
+
+
+
+    setPluralDevicesFilter: TSetPluralFilter
+    removePluralDevicesFilter: TRemovePluralFilter
+    checkPluralDevicesFilter: TCheckPluralFilter
+}
+// #endregion
+
+
+
+// #region Filter
+export type TBordersFilters = TFilters
+export type TDevicesFilters = TFilters // добавить типы для типов устройств
+export type TFilterPropNames = keyof TBordersFilters | keyof TDevicesFilters
+export type TSetFilter = (prop: TFilterPropNames, value: string | number) => void
+export type TRemoveFilter = (prop: TFilterPropNames) => void
+export type TCheckFilter = (prop: TFilterPropNames, value: string | number) => boolean
+
+export type TSetPluralFilter = (prop: TFilterPropNames, value: string | number) => void
+export type TRemovePluralFilter = (prop: TFilterPropNames, value: string | number) => void
+export type TCheckPluralFilter = (prop: TFilterPropNames, value: string | number) => boolean
 // #endregion
 
 
