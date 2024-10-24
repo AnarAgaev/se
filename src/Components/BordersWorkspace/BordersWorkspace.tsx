@@ -125,6 +125,7 @@ const getMaterialsOptionsList = (
 }
 
 const BordersWorkspace: FC = () => {
+    // #region Variables
     const key = useId()
     const getVendorByName = useStore(state => state.getVendorByName)
 
@@ -145,6 +146,9 @@ const BordersWorkspace: FC = () => {
     const checkPluralBordersFilter = useStore(state => state.checkPluralBordersFilter)
 
     const selectedBrand = useStore(state => state.filtersBorders.brand)
+    const selectedCollection = useStore(state => state.filtersBorders.collection)
+    const selectedMaterials = useStore(state => state.filtersBorders.materials).sort().join(', ')
+    // #endregion
 
     const brandsOptions = useMemo(
         () => getBrandsOptionsList(
@@ -209,9 +213,15 @@ const BordersWorkspace: FC = () => {
 
     return (
         <FactoryWorkspace>
-            <Select title="Бренд">{brandsOptions}</Select>
-            <Select title="Коллекцию">{collectionsOptions}</Select>
-            <Select title="Материал рамки">{materialsOptions}</Select>
+            <Select title="Бренд" selectedValue={selectedBrand}>
+                {brandsOptions}
+            </Select>
+            <Select title="Коллекция" selectedValue={selectedCollection}>
+                {collectionsOptions}
+            </Select>
+            <Select title="Материал рамки" selectedValue={selectedMaterials}>
+                {materialsOptions}
+            </Select>
             {
                 colorsList && <ColorSelector
                     caption="Цвет рамки"

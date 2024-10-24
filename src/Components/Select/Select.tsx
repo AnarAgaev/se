@@ -4,12 +4,13 @@ import style from './Select.module.sass'
 interface Props {
     title: string
     children: ReactNode
+    selectedValue?: string
 }
 
 const { select, select_dropped, value, caption,
-    arrow, body, collapse, inner } = style
+    arrow, body, collapse, inner, text, match } = style
 
-const Select: FC<Props> = ({ title, children }) => {
+const Select: FC<Props> = ({ title, children, selectedValue }) => {
     const [dropped, toggleDropped] = useState(false)
 
     const selectRef = useRef<HTMLDivElement | null>(null)
@@ -38,10 +39,13 @@ const Select: FC<Props> = ({ title, children }) => {
 
     return (
         <div ref={selectRef} className={clazz}>
-            <p className={value} onClick={() => toggleDropped(!dropped)}>
-                <span className={caption}>{title}</span>
+            <div className={value} onClick={() => toggleDropped(!dropped)}>
+                <p className={caption}>
+                    <span className={text}>{title}</span>
+                    <span className={match}>{selectedValue}</span>
+                </p>
                 <i className={arrow}></i>
-            </p>
+            </div>
             <div className={body}>
                 <div className={collapse}>
                     <ul className={inner}>

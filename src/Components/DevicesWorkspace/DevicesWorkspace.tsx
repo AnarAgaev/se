@@ -53,18 +53,6 @@ const getBrandOptionsList = (
     return elementsList
 }
 
-
-
-// brandsList,
-// getVendorByName,
-// setSingleDevicesFilter,
-// setSingleBordersFilter,
-// checkSingleDevicesFilter,
-// removeSingleBordersFilter,
-// removeSingleDevicesFilter,
-// selectedBrand,
-// key
-
 const getCollectionsOptionsList = (
     collectionsList: string[],
     setSingleDevicesFilter: TSetSingleFilter,
@@ -156,6 +144,7 @@ const getFunctionsOptionsList = (
 }
 
 const DevicesWorkspace = () => {
+    // #region Variables
     const key = useId()
     const getVendorByName = useStore(state => state.getVendorByName)
 
@@ -176,7 +165,11 @@ const DevicesWorkspace = () => {
     const removePluralDevicesFilter = useStore(state => state.removePluralDevicesFilter)
     const checkPluralDevicesFilter = useStore(state => state.checkPluralDevicesFilter)
 
-    const selectedBrand = useStore(state => state.filtersBorders.brand)
+    const selectedBrand = useStore(state => state.filtersDevices.brand)
+    const selectedCollection = useStore(state => state.filtersDevices.collection)
+    const selectedMaterials = useStore(state => state.filtersDevices.materials).sort().join(', ')
+    const selectedFunction = functionsList.filter(fn => fn.active).map(fn => fn.name)[0]
+    // #endregion
 
     const brandsOptions = useMemo(
         () => getBrandOptionsList(
@@ -252,10 +245,18 @@ const DevicesWorkspace = () => {
 
     return (
         <FactoryWorkspace>
-            <Select title="Бренд">{brandsOptions}</Select>
-            <Select title="Коллекцию">{collectionsOptions}</Select>
-            <Select title="Материал устройства">{materialsOptions}</Select>
-            <Select title="Тип функции">{functionsOptions}</Select>
+            <Select title="Бренд" selectedValue={selectedBrand}>
+                {brandsOptions}
+            </Select>
+            <Select title="Коллекция" selectedValue={selectedCollection}>
+                {collectionsOptions}
+            </Select>
+            <Select title="Материал устройства" selectedValue={selectedMaterials}>
+                {materialsOptions}
+            </Select>
+            <Select title="Тип функции" selectedValue={selectedFunction !== 'Все функции' ? selectedFunction : undefined}>
+                {functionsOptions}
+            </Select>
             <FunctionalitySelectsList />
             {
                 colorsList && <ColorSelector
