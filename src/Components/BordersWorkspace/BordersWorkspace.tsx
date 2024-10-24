@@ -59,6 +59,7 @@ const getCollectionsOptionsList = (
     setSingleDevicesFilter: TSetSingleFilter,
     checkSingleBordersFilter: TCheckSingleFilter,
     getBrandByCollection: TGetBrandByCollection,
+    selectedBrand: string | undefined,
     key: string
 ): JSX.Element[] => {
 
@@ -67,10 +68,13 @@ const getCollectionsOptionsList = (
     collectionsList.forEach(collectionName => {
 
         const isChecked = checkSingleBordersFilter('collection', collectionName)
+        const brandName = getBrandByCollection(collectionName)
+
+        const selectable = !selectedBrand
+            ? true
+            : brandName === selectedBrand
 
         const eventHandler = () => {
-
-            const brandName = getBrandByCollection(collectionName)
 
             setSingleBordersFilter('collection', collectionName)
             setSingleBordersFilter('brand', brandName)
@@ -84,7 +88,10 @@ const getCollectionsOptionsList = (
                 key={`${key}-${collectionName}`}
                 isChecked={isChecked}
                 value={collectionName}
+                brand={brandName}
+                selectable={selectable}
                 eventHandler={eventHandler}
+                selectedBrand={!!selectedBrand}
             />
         )
     })
@@ -137,6 +144,8 @@ const BordersWorkspace: FC = () => {
     const removePluralBordersFilter = useStore(state => state.removePluralBordersFilter)
     const checkPluralBordersFilter = useStore(state => state.checkPluralBordersFilter)
 
+    const selectedBrand = useStore(state => state.filtersBorders.brand)
+
     const brandsOptions = useMemo(
         () => getBrandsOptionsList(
             brandsList,
@@ -167,6 +176,7 @@ const BordersWorkspace: FC = () => {
             setSingleDevicesFilter,
             checkSingleBordersFilter,
             getBrandByCollection,
+            selectedBrand,
             key
         ),
         [
@@ -175,6 +185,7 @@ const BordersWorkspace: FC = () => {
             setSingleDevicesFilter,
             checkSingleBordersFilter,
             getBrandByCollection,
+            selectedBrand,
             key
         ]
     )

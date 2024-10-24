@@ -13,11 +13,11 @@
     &:has(:checked)
         cursor: default
 
-    input
-        &:checked + span
+        &::before
             opacity: 1
 
-    span
+    &::before
+        content: ''
         display: block
         position: absolute
         z-index: -1
@@ -30,8 +30,38 @@
         opacity: 0
 
 
+.inactive
+    opacity: 0.5
+    transform: translateX(-3px)
+    transform-origin: left center
+    transition: var(--base-transition)
+
+    @media (hover: hover) and (pointer: fine)
+        &:hover
+            opacity: 1
+            transform: translateX(0)
+            transform-origin: left center
+
+
+.match
+    background: #fafafa
+
+
 .text
-    display: block
+    display: flex
+    align-items: baseline
+    gap: 5px
+    position: relative
+    width: auto
+    height: auto
+    background: transparent
+    margin: 0
+    padding: 0
+
+
+.name
+    flex-shrink: 0
+    display: inline-block
     position: relative
     width: auto
     height: auto
@@ -52,3 +82,22 @@
 
     &::first-letter
         text-transform: uppercase
+
+
+.comment
+    display: inline-block
+    position: relative
+    width: auto
+    height: auto
+    background: transparent
+    margin: 0
+    padding: 0
+
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    box-sizing: border-box
+
+    color: var(--color-scroll-thumb)
+    font-size: 12px
+    font-weight: 400

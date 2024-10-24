@@ -29,12 +29,12 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
 
     getBordersBrandsList: () => {
         const borders = [...get().borders]
-        return [...new Set(borders.map(border => border.vendor))].sort()
+        return [...new Set(borders.map(border => border.vendor))]
     },
 
     getBordersCollectionsList: () => {
         const borders = [...get().borders]
-        const collections = [...new Set(borders.map(border => border.collection))].sort()
+        const collections = [...new Set(borders.map(border => border.collection))]
         return collections.filter(collection => !!collection)
     },
 

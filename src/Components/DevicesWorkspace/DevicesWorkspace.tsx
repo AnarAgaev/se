@@ -53,12 +53,25 @@ const getBrandOptionsList = (
     return elementsList
 }
 
+
+
+// brandsList,
+// getVendorByName,
+// setSingleDevicesFilter,
+// setSingleBordersFilter,
+// checkSingleDevicesFilter,
+// removeSingleBordersFilter,
+// removeSingleDevicesFilter,
+// selectedBrand,
+// key
+
 const getCollectionsOptionsList = (
     collectionsList: string[],
     setSingleDevicesFilter: TSetSingleFilter,
     setSingleBordersFilter: TSetSingleFilter,
     checkSingleDevicesFilter: TCheckSingleFilter,
     getBrandByCollection: TGetBrandByCollection,
+    selectedBrand: string | undefined,
     key: string
 ): JSX.Element[] => {
 
@@ -67,9 +80,13 @@ const getCollectionsOptionsList = (
     collectionsList.forEach(collectionName => {
 
         const isChecked = checkSingleDevicesFilter('collection', collectionName)
+        const brandName = getBrandByCollection(collectionName)
+
+        const selectable = !selectedBrand
+            ? true
+            : brandName === selectedBrand
 
         const eventHandler = () => {
-            const brandName = getBrandByCollection(collectionName)
 
             setSingleDevicesFilter('collection', collectionName)
             setSingleDevicesFilter('brand', brandName)
@@ -83,6 +100,9 @@ const getCollectionsOptionsList = (
                 key={`${key}-${collectionName}`}
                 isChecked={isChecked}
                 value={collectionName}
+                brand={brandName}
+                selectedBrand={!!selectedBrand}
+                selectable={selectable}
                 eventHandler={eventHandler}
             />
         )
@@ -156,6 +176,8 @@ const DevicesWorkspace = () => {
     const removePluralDevicesFilter = useStore(state => state.removePluralDevicesFilter)
     const checkPluralDevicesFilter = useStore(state => state.checkPluralDevicesFilter)
 
+    const selectedBrand = useStore(state => state.filtersBorders.brand)
+
     const brandsOptions = useMemo(
         () => getBrandOptionsList(
             brandsList,
@@ -186,6 +208,7 @@ const DevicesWorkspace = () => {
             setSingleBordersFilter,
             checkSingleDevicesFilter,
             getBrandByCollection,
+            selectedBrand,
             key
         ),
         [
@@ -194,6 +217,7 @@ const DevicesWorkspace = () => {
             setSingleBordersFilter,
             checkSingleDevicesFilter,
             getBrandByCollection,
+            selectedBrand,
             key
         ]
     )
