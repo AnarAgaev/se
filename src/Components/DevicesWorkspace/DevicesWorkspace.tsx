@@ -1,8 +1,8 @@
 import { useMemo, useId } from 'react'
 import useStore from '../../Store'
 
-import { TVendor,TGetBrandByCollection, TFunctionOptionList,
-    TSetSingleFilter, TCheckSingleFilter, TRemoveSingleFilter,
+import { TDevicesFilters, TBordersFilters, TVendor, TGetBrandByCollection,
+    TFunctionOptionList, TSetSingleFilter, TCheckSingleFilter, TRemoveSingleFilter,
     TSetPluralFilter, TRemovePluralFilter, TCheckPluralFilter } from '../../types'
 
 import { FactoryWorkspace, ColorSelector, Select,
@@ -14,9 +14,9 @@ const getBrandOptionsList = (
     getVendorByName: (brandName: string) => TVendor | undefined,
     setSingleDevicesFilter: TSetSingleFilter,
     setSingleBordersFilter: TSetSingleFilter,
-    checkSingleDevicesFilter: TCheckSingleFilter,
-    removeSingleBordersFilter: TRemoveSingleFilter,
-    removeSingleDevicesFilter: TRemoveSingleFilter,
+    checkSingleDevicesFilter: TCheckSingleFilter<keyof TDevicesFilters>,
+    removeSingleBordersFilter: TRemoveSingleFilter<keyof TBordersFilters>,
+    removeSingleDevicesFilter: TRemoveSingleFilter<keyof TDevicesFilters>,
     key: string
 ): JSX.Element[] => {
 
@@ -57,7 +57,7 @@ const getCollectionsOptionsList = (
     collectionsList: string[],
     setSingleDevicesFilter: TSetSingleFilter,
     setSingleBordersFilter: TSetSingleFilter,
-    checkSingleDevicesFilter: TCheckSingleFilter,
+    checkSingleDevicesFilter: TCheckSingleFilter<keyof TDevicesFilters>,
     getBrandByCollection: TGetBrandByCollection,
     selectedBrand: string | undefined,
     key: string
@@ -144,6 +144,7 @@ const getFunctionsOptionsList = (
 }
 
 const DevicesWorkspace = () => {
+
     // #region Variables
     const key = useId()
     const getVendorByName = useStore(state => state.getVendorByName)
@@ -168,7 +169,9 @@ const DevicesWorkspace = () => {
     const selectedBrand = useStore(state => state.filtersDevices.brand)
     const selectedCollection = useStore(state => state.filtersDevices.collection)
     const selectedMaterials = useStore(state => state.filtersDevices.materials).sort().join(', ')
-    const selectedFunction = functionsList.filter(fn => fn.active).map(fn => fn.name)[0]
+
+    const filterFunctions = useStore(state => state.filtersDevices.functions)
+    const selectedFunction = filterFunctions.find(fn => fn.active)?.name
     // #endregion
 
     const brandsOptions = useMemo(

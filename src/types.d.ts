@@ -7,7 +7,7 @@ import {
     TVendor, TVendorList,
     TProject, TProjectList,
     TRoom, TRoomList,
-    TFunction, TFunctionList,
+    TFunction, TFunctionItem, TFunctionList,
     TColorList,
     TDictionary,
     InitDataContract,
@@ -50,8 +50,8 @@ export type TBordersStore = {
 
     filtersBorders: TBordersFilters
     setSingleBordersFilter: TSetSingleFilter
-    removeSingleBordersFilter: TRemoveSingleFilter
-    checkSingleBordersFilter: TCheckSingleFilter
+    removeSingleBordersFilter: TRemoveSingleFilter<keyof TBordersFilters>
+    checkSingleBordersFilter: TCheckSingleFilter<keyof TBordersFilters>
     setPluralBordersFilter: TSetPluralFilter
     removePluralBordersFilter: TRemovePluralFilter
     checkPluralBordersFilter: TCheckPluralFilter
@@ -74,41 +74,59 @@ export type TDevicesStore = {
     setFunctions: (functions: TFunctionList) => void
     getFunctions: () => TFunctionOptionList
     updateActiveFunction: (functionName: string) => void
-    getFunctionsKinds: () => TFunction[]
+    getFunctionsKinds: () => TFunctionItem | undefined
 
 
     filtersDevices: TDevicesFilters
     setSingleDevicesFilter: TSetSingleFilter
-    removeSingleDevicesFilter: TRemoveSingleFilter
-    checkSingleDevicesFilter: TCheckSingleFilter
+    removeSingleDevicesFilter: TRemoveSingleFilter<keyof TDevicesFilters>
+    checkSingleDevicesFilter: TCheckSingleFilter<keyof TDevicesFilters>
     setPluralDevicesFilter: TSetPluralFilter
     removePluralDevicesFilter: TRemovePluralFilter
     checkPluralDevicesFilter: TCheckPluralFilter
+
+    setFunctionProp: TSetFunctionProp
+    checkSelectedFunction: TCheckSelectedFunction
 }
 // #endregion
 
 
 
 // #region Filter
+export type TFunctionsProperty = {
+    name: string
+    value: string | number
+}
+
+export type TFunctions = {
+    active: boolean
+    name: string
+    props: Record<string, string | number>
+}
+
 type TFilters = {
     brand?: string
     collection?: string
     colors: string[]
     materials: string[]
+    functions: TFunctions[]
 }
 
-export type TBordersFilters = TFilters
-export type TDevicesFilters = TFilters // добавить типы для типов устройств
+export type TBordersFilters = Omit<TFilters, 'functions'>
+export type TDevicesFilters = TFilters
 export type TFilterPropNames = keyof TBordersFilters | keyof TDevicesFilters
 export type TGetBrandByCollection = (collectionName: string) => string
 
 export type TSetSingleFilter = (prop: TFilterPropNames, value: string | number) => void
-export type TRemoveSingleFilter = (prop: TFilterPropNames) => void
-export type TCheckSingleFilter = (prop: TFilterPropNames, value: string | number) => boolean
+export type TRemoveSingleFilter<T> = (prop: T) => void
+export type TCheckSingleFilter<T> = (prop: T, value: string | number) => boolean
 
 export type TSetPluralFilter = (prop: TFilterPropNames, value: string | number) => void
 export type TRemovePluralFilter = (prop: TFilterPropNames, value: string | number) => void
 export type TCheckPluralFilter = (prop: TFilterPropNames, value: string | number) => boolean
+
+export type TSetFunctionProp = (groupName: string, propName: string, value: string | number) => void
+export type TCheckSelectedFunction = (groupName: string, propName: string, value: string | number) => boolean
 // #endregion
 
 
@@ -156,7 +174,7 @@ export {
     TVendor, TVendorList,
     TProject, TProjectList,
     TRoom, TRoomList,
-    TFunction, TFunctionList,
+    TFunction, TFunctionItem, TFunctionList,
     TColorList,
     TDictionary,
     InitDataContract

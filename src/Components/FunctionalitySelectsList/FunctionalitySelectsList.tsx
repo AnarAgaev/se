@@ -1,22 +1,23 @@
 import { useId, useMemo } from 'react'
 import { FunctionalitySelect } from '../../Components'
-import { TFunction } from '../../types'
+import { TFunctionItem } from '../../types'
 import useStore from '../../Store'
 import style from './FunctionalitySelectsList.module.sass'
 
 const { list } = style
 
 const getFunctionalitiesList = (
-    functions: TFunction[],
+    functions: TFunctionItem | undefined,
     id: string
 ): JSX.Element[] => {
 
     const elList: JSX.Element[] = []
 
-    functions.forEach((fn, idx) => {
+    functions && functions.props.forEach((fn, idx) => {
         elList.push(<FunctionalitySelect
             key={`${id}-${idx}`}
-            name={fn.conf_product_group}
+            group={functions.name}
+            prop={fn.conf_product_group}
             values={fn.values}
         />)
     })
@@ -35,10 +36,10 @@ const FunctionsSelectsList = () => {
 
     return (
         elements.length === 0
-        ? null
-        : <div className={list}>
-            { elements }
-        </div>
+            ? null
+            : <div className={list}>
+                { elements }
+            </div>
     )
 }
 

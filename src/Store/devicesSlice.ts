@@ -40,40 +40,53 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
     functions: [],
 
     setFunctions: (functions) => {
-        set({functions: [
+        const filterFunctions = [
             {
+                active: true,
                 name: 'Все функции',
-                props: [],
-                active: true
+                props: {}
             },
-            ...functions
-        ]})
+            ...functions.map(fn => ({
+                active: false,
+                name: fn.name,
+                props: {}
+            }))
+        ]
+
+        set({
+            functions: functions,
+            filtersDevices: {
+                ...get().filtersDevices,
+                functions: filterFunctions
+            }
+        })
     },
 
     getFunctions: () => {
-        return [...get().functions].map(fn => ({
+        return [...get().filtersDevices.functions].map(fn => ({
             name: fn.name,
             active: fn.active ? true : false
         }))
     },
 
     updateActiveFunction: (functionName) => {
-        const newFuncs = [...get().functions].map(fn => ({
-            ...fn,
-            active: fn.name === functionName
-        }))
+        const newFilterDevices = { ...get().filtersDevices }
 
-        set({ functions: [ ...newFuncs ] })
+        newFilterDevices.functions.forEach(fn => {
+            fn.active = fn.name === functionName
+        })
+
+        set({ filtersDevices: newFilterDevices })
     },
 
     getFunctionsKinds: () => {
-        const activeFunctions = [...get().functions.filter(
-            fn => fn.active
-        )]
+        const activeFunctionality = [...get().filtersDevices.functions].find(el => el.active)
 
-        return activeFunctions.length !== 0
-            ? activeFunctions[0].props
-            : []
+        if (activeFunctionality?.name === 'Все функции') activeFunctionality
+
+        return [...get().functions.filter(
+            fn => fn.name === activeFunctionality?.name
+        )][0]
     },
 
     // #region Filters
@@ -81,7 +94,8 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
         brand: '',
         collection: '',
         colors: [],
-        materials: []
+        materials: [],
+        functions: []
     },
 
     setSingleDevicesFilter: (prop, value) => {
@@ -135,6 +149,28 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
 
         return false
     },
+
+    setFunctionProp: (groupName, propName, value) => {
+        const newFiltersDevices = { ...get().filtersDevices }
+
+        const activeFunctionIdx = newFiltersDevices
+            .functions.findIndex(fn => fn.name === groupName)
+
+        if (newFiltersDevices.functions[activeFunctionIdx].props[propName] !== value) {
+            newFiltersDevices.functions[activeFunctionIdx].props[propName] = value
+        } else {
+            delete newFiltersDevices.functions[activeFunctionIdx].props[propName]
+        }
+
+        set({filtersDevices: newFiltersDevices})
+    },
+
+    checkSelectedFunction: (groupName, propName, value) => {
+        const functionalityProps = { ...get().filtersDevices
+            .functions.find(fn => fn.name === groupName)?.props }
+
+        return functionalityProps[propName] === value
+    }
     // #endregion
 })
 

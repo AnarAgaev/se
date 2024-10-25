@@ -122,11 +122,15 @@ const Function = z.object({
 })
 export type TFunction = z.infer<typeof Function>
 
-const FunctionList = z.array(z.object({
+
+const FunctionItem = z.object({
     "name": z.string(),
     "props": z.array(Function),
     "active": z.boolean().optional()
-}))
+})
+export type TFunctionItem = z.infer<typeof FunctionItem>
+
+const FunctionList = z.array(FunctionItem)
 export type TFunctionList = z.infer<typeof FunctionList>
 // #endregion
 

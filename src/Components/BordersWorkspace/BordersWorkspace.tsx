@@ -1,9 +1,10 @@
 import { useMemo, useId, FC } from 'react'
 import useStore from '../../Store'
 
-import { TVendor, TGetBrandByCollection,
-    TSetSingleFilter, TCheckSingleFilter, TRemoveSingleFilter,
-    TSetPluralFilter, TRemovePluralFilter, TCheckPluralFilter } from '../../types'
+import {
+    TBordersFilters, TCheckSingleFilter, TRemoveSingleFilter, TDevicesFilters,
+    TVendor, TGetBrandByCollection, TSetSingleFilter, TSetPluralFilter,
+    TRemovePluralFilter, TCheckPluralFilter } from '../../types'
 
 import { FactoryWorkspace, ColorSelector, Select,
     OptionBrand, OptionCollection, OptionMaterial } from '../../Components'
@@ -13,9 +14,9 @@ const getBrandsOptionsList = (
     getVendorByName: (brandName: string) => TVendor | undefined,
     setSingleBordersFilter: TSetSingleFilter,
     setSingleDevicesFilter: TSetSingleFilter,
-    checkSingleBordersFilter: TCheckSingleFilter,
-    removeSingleBordersFilter: TRemoveSingleFilter,
-    removeSingleDevicesFilter: TRemoveSingleFilter,
+    checkSingleBordersFilter: TCheckSingleFilter<keyof TBordersFilters>,
+    removeSingleBordersFilter: TRemoveSingleFilter<keyof TBordersFilters>,
+    removeSingleDevicesFilter: TRemoveSingleFilter<keyof TDevicesFilters>,
     key: string
 ): JSX.Element[] => {
 
@@ -57,7 +58,7 @@ const getCollectionsOptionsList = (
     collectionsList: string[],
     setSingleBordersFilter: TSetSingleFilter,
     setSingleDevicesFilter: TSetSingleFilter,
-    checkSingleBordersFilter: TCheckSingleFilter,
+    checkSingleBordersFilter: TCheckSingleFilter<keyof TBordersFilters>,
     getBrandByCollection: TGetBrandByCollection,
     selectedBrand: string | undefined,
     key: string
@@ -125,6 +126,7 @@ const getMaterialsOptionsList = (
 }
 
 const BordersWorkspace: FC = () => {
+
     // #region Variables
     const key = useId()
     const getVendorByName = useStore(state => state.getVendorByName)
