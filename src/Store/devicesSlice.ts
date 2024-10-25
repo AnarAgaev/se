@@ -170,6 +170,25 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
             .functions.find(fn => fn.name === groupName)?.props }
 
         return functionalityProps[propName] === value
+    },
+
+    checkSelectedFuncGroup: (groupName) => {
+        const props = Object.keys({
+            ...get().filtersDevices
+                .functions
+                .find(fn => fn.name === groupName)?.props
+        })
+
+        return !!props.length
+    },
+
+    resetSelectedFuncGroup: (groupName) => {
+        const newFilterDevices = {...get().filtersDevices}
+        const currentGroupIdx = newFilterDevices.functions.findIndex(fn => fn.name === groupName)
+
+        newFilterDevices.functions[currentGroupIdx].props = {}
+
+        set({filtersDevices: newFilterDevices})
     }
     // #endregion
 })

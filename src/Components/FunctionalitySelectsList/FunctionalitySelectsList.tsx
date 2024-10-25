@@ -4,7 +4,7 @@ import { TFunctionItem } from '../../types'
 import useStore from '../../Store'
 import style from './FunctionalitySelectsList.module.sass'
 
-const { list } = style
+const { wrap, list } = style
 
 const getFunctionalitiesList = (
     functions: TFunctionItem | undefined,
@@ -28,17 +28,31 @@ const getFunctionalitiesList = (
 const FunctionsSelectsList = () => {
     const id = useId()
     const functions = useStore(state => state.getFunctionsKinds())
+    const checkGroup = useStore(state => state.checkSelectedFuncGroup)
+    const resetGroup = useStore(state => state.resetSelectedFuncGroup)
 
     const elements = useMemo(
         () => getFunctionalitiesList(functions, id),
         [functions, id]
     )
 
+    const isSelectedFiled = typeof functions?.name === 'string'
+        && checkGroup(functions?.name)
+
     return (
         elements.length === 0
             ? null
-            : <div className={list}>
-                { elements }
+            : <div className={wrap}>
+                <div className={list}>
+                    { elements }
+                </div>
+                { isSelectedFiled &&
+                    <button
+                        onClick={() => resetGroup(functions?.name)}
+                        className='button button_block button_dark'>
+                        Очистить функции
+                    </button>
+                }
             </div>
     )
 }

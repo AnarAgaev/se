@@ -87,6 +87,8 @@ export type TDevicesStore = {
 
     setFunctionProp: TSetFunctionProp
     checkSelectedFunction: TCheckSelectedFunction
+    checkSelectedFuncGroup: TCheckSelectedFuncGroup
+    resetSelectedFuncGroup: TResetSelectedFuncGroup
 }
 // #endregion
 
@@ -127,6 +129,8 @@ export type TCheckPluralFilter = (prop: TFilterPropNames, value: string | number
 
 export type TSetFunctionProp = (groupName: string, propName: string, value: string | number) => void
 export type TCheckSelectedFunction = (groupName: string, propName: string, value: string | number) => boolean
+export type TCheckSelectedFuncGroup = (groupName: string) => boolean
+export type TResetSelectedFuncGroup = (groupName: string) => void
 // #endregion
 
 
