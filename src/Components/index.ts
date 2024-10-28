@@ -36,6 +36,7 @@ import Locations from './Locations/Locations'
 import InputSelect from './InputSelect/InputSelect'
 import OptionLocation from './OptionLocation/OptionLocation'
 import InputAdd from './InputAdd/InputAdd'
+import ModalSelect from './ModalSelect/ModalSelect'
 
 export {
     App,
@@ -76,4 +77,5 @@ export {
     InputSelect,
     OptionLocation,
     InputAdd,
+    ModalSelect,
 }

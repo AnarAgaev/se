@@ -4,7 +4,7 @@ import useStore from '../../Store'
 import {
     TBordersFilters, TCheckSingleFilter, TRemoveSingleFilter, TDevicesFilters,
     TVendor, TGetBrandByCollection, TSetSingleFilter, TSetPluralFilter,
-    TRemovePluralFilter, TCheckPluralFilter } from '../../types'
+    TRemovePluralFilter, TCheckPluralFilter, TSetModalSelect } from '../../types'
 
 import { FactoryWorkspace, ColorSelector, Select,
     OptionBrand, OptionCollection, OptionMaterial } from '../../Components'
@@ -17,6 +17,8 @@ const getBrandsOptionsList = (
     checkSingleBordersFilter: TCheckSingleFilter<keyof TBordersFilters>,
     removeSingleBordersFilter: TRemoveSingleFilter<keyof TBordersFilters>,
     removeSingleDevicesFilter: TRemoveSingleFilter<keyof TDevicesFilters>,
+    selectedCollection: TBordersFilters['collection'],
+    setModalSelect: TSetModalSelect,
     key: string
 ): JSX.Element[] => {
 
@@ -31,13 +33,32 @@ const getBrandsOptionsList = (
 
         const eventHandler = () => {
 
+            const approveAction = () => {
+                setSingleBordersFilter('brand', vendor.name)
+                removeSingleBordersFilter('collection')
+
+                setSingleDevicesFilter('brand', vendor.name)
+                removeSingleDevicesFilter('collection')
+            }
+
             if (isChecked) return
 
-            setSingleBordersFilter('brand', vendor.name)
-            removeSingleBordersFilter('collection')
+            if (!selectedCollection) {
+                approveAction()
+                return
+            }
 
-            setSingleDevicesFilter('brand', vendor.name)
-            removeSingleDevicesFilter('collection')
+            // Если пытаемся изменить бренд, но при этом ранее выбрали коллекцию, предупреждаем пользователя
+            setModalSelect(
+                'При выборе бренда, будет сброшена выбранная ранее коллекция',
+                'Оставить бренд',
+                'Изменить бренд',
+                {
+                    from: 'brand',
+                    brandName: vendor.name,
+                    collectionName: selectedCollection
+                }
+            )
         }
 
         elementsList.push(
@@ -60,7 +81,8 @@ const getCollectionsOptionsList = (
     setSingleDevicesFilter: TSetSingleFilter,
     checkSingleBordersFilter: TCheckSingleFilter<keyof TBordersFilters>,
     getBrandByCollection: TGetBrandByCollection,
-    selectedBrand: string | undefined,
+    selectedBrand: TBordersFilters['brand'],
+    setModalSelect: TSetModalSelect,
     key: string
 ): JSX.Element[] => {
 
@@ -77,11 +99,33 @@ const getCollectionsOptionsList = (
 
         const eventHandler = () => {
 
-            setSingleBordersFilter('collection', collectionName)
-            setSingleBordersFilter('brand', brandName)
+            const approveAction = () => {
+                setSingleBordersFilter('collection', collectionName)
+                setSingleBordersFilter('brand', brandName)
 
-            setSingleDevicesFilter('collection', collectionName)
-            setSingleDevicesFilter('brand', brandName)
+                setSingleDevicesFilter('collection', collectionName)
+                setSingleDevicesFilter('brand', brandName)
+            }
+
+            if (isChecked) return
+
+            // Если не выбран бренд или Выбран бренд, но меням коллекцию в рамках одного бренда
+            if (!selectedBrand || (selectedBrand && selectable)) {
+                approveAction()
+                return
+            }
+
+            // Если пытаемся изменить коллекцию, но ранее уже выбирали коллекцию из другого бренда
+            setModalSelect(
+                'При выборе коллекции, будет сброшен выбранный ранее бренд',
+                'Оставить коллекцию',
+                'Изменить коллекцию',
+                {
+                    from: 'collection',
+                    brandName: brandName,
+                    collectionName: collectionName
+                }
+            )
         }
 
         elementsList.push(
@@ -150,6 +194,8 @@ const BordersWorkspace: FC = () => {
     const selectedBrand = useStore(state => state.filtersBorders.brand)
     const selectedCollection = useStore(state => state.filtersBorders.collection)
     const selectedMaterials = useStore(state => state.filtersBorders.materials).sort().join(', ')
+
+    const setModalSelect = useStore(state => state.setModalSelect)
     // #endregion
 
     const brandsOptions = useMemo(
@@ -161,6 +207,8 @@ const BordersWorkspace: FC = () => {
             checkSingleBordersFilter,
             removeSingleBordersFilter,
             removeSingleDevicesFilter,
+            selectedCollection,
+            setModalSelect,
             key
         ),
         [
@@ -171,6 +219,8 @@ const BordersWorkspace: FC = () => {
             checkSingleBordersFilter,
             removeSingleBordersFilter,
             removeSingleDevicesFilter,
+            selectedCollection,
+            setModalSelect,
             key
         ]
     )
@@ -183,6 +233,7 @@ const BordersWorkspace: FC = () => {
             checkSingleBordersFilter,
             getBrandByCollection,
             selectedBrand,
+            setModalSelect,
             key
         ),
         [
@@ -192,6 +243,7 @@ const BordersWorkspace: FC = () => {
             checkSingleBordersFilter,
             getBrandByCollection,
             selectedBrand,
+            setModalSelect,
             key
         ]
     )

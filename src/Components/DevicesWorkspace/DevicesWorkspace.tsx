@@ -3,7 +3,7 @@ import useStore from '../../Store'
 
 import { TDevicesFilters, TBordersFilters, TVendor, TGetBrandByCollection,
     TFunctionOptionList, TSetSingleFilter, TCheckSingleFilter, TRemoveSingleFilter,
-    TSetPluralFilter, TRemovePluralFilter, TCheckPluralFilter } from '../../types'
+    TSetPluralFilter, TRemovePluralFilter, TCheckPluralFilter, TSetModalSelect } from '../../types'
 
 import { FactoryWorkspace, ColorSelector, Select,
     OptionFunction, OptionBrand, OptionCollection,
@@ -17,6 +17,8 @@ const getBrandOptionsList = (
     checkSingleDevicesFilter: TCheckSingleFilter<keyof TDevicesFilters>,
     removeSingleBordersFilter: TRemoveSingleFilter<keyof TBordersFilters>,
     removeSingleDevicesFilter: TRemoveSingleFilter<keyof TDevicesFilters>,
+    selectedCollection: TBordersFilters['collection'],
+    setModalSelect: TSetModalSelect,
     key: string
 ): JSX.Element[] => {
 
@@ -31,13 +33,31 @@ const getBrandOptionsList = (
 
         const eventHandler = () => {
 
+            const approveAction = () => {
+                setSingleDevicesFilter('brand', vendor.name)
+                removeSingleDevicesFilter('collection')
+
+                setSingleBordersFilter('brand', vendor.name)
+                removeSingleBordersFilter('collection')
+            }
+
             if (isChecked) return
 
-            setSingleDevicesFilter('brand', vendor.name)
-            removeSingleDevicesFilter('collection')
+            if (!selectedCollection) {
+                approveAction()
+                return
+            }
 
-            setSingleBordersFilter('brand', vendor.name)
-            removeSingleBordersFilter('collection')
+            setModalSelect(
+                'При выборе бренда, будет сброшена выбранная ранее коллекция',
+                'Оставить бренд',
+                'Изменить бренд',
+                {
+                    from: 'brand',
+                    brandName: vendor.name,
+                    collectionName: null
+                }
+            )
         }
 
         elementsList.push(
@@ -59,7 +79,8 @@ const getCollectionsOptionsList = (
     setSingleBordersFilter: TSetSingleFilter,
     checkSingleDevicesFilter: TCheckSingleFilter<keyof TDevicesFilters>,
     getBrandByCollection: TGetBrandByCollection,
-    selectedBrand: string | undefined,
+    selectedBrand: TBordersFilters['brand'],
+    setModalSelect: TSetModalSelect,
     key: string
 ): JSX.Element[] => {
 
@@ -76,11 +97,33 @@ const getCollectionsOptionsList = (
 
         const eventHandler = () => {
 
-            setSingleDevicesFilter('collection', collectionName)
-            setSingleDevicesFilter('brand', brandName)
+            const approveAction = () => {
+                setSingleDevicesFilter('collection', collectionName)
+                setSingleDevicesFilter('brand', brandName)
 
-            setSingleBordersFilter('collection', collectionName)
-            setSingleBordersFilter('brand', brandName)
+                setSingleBordersFilter('collection', collectionName)
+                setSingleBordersFilter('brand', brandName)
+            }
+
+            if (isChecked) return
+
+            // Если не выбран бренд или Выбран бренд, но меням коллекцию в рамках одного бренда
+            if (!selectedBrand || (selectedBrand && selectable)) {
+                approveAction()
+                return
+            }
+
+            // Если пытаемся изменить коллекцию, но ранее уже выбирали коллекцию из другого бренда
+            setModalSelect(
+                'При выборе коллекции, будет сброшен выбранный ранее бренд',
+                'Оставить коллекцию',
+                'Изменить коллекцию',
+                {
+                    from: 'collection',
+                    brandName: brandName,
+                    collectionName: collectionName
+                }
+            )
         }
 
         elementsList.push(
@@ -172,6 +215,8 @@ const DevicesWorkspace = () => {
 
     const filterFunctions = useStore(state => state.filtersDevices.functions)
     const selectedFunction = filterFunctions.find(fn => fn.active)?.name
+
+    const setModalSelect = useStore(state => state.setModalSelect)
     // #endregion
 
     const brandsOptions = useMemo(
@@ -183,6 +228,8 @@ const DevicesWorkspace = () => {
             checkSingleDevicesFilter,
             removeSingleBordersFilter,
             removeSingleDevicesFilter,
+            selectedCollection,
+            setModalSelect,
             key
         ),
         [
@@ -193,6 +240,8 @@ const DevicesWorkspace = () => {
             checkSingleDevicesFilter,
             removeSingleBordersFilter,
             removeSingleDevicesFilter,
+            selectedCollection,
+            setModalSelect,
             key
         ]
     )
@@ -205,6 +254,7 @@ const DevicesWorkspace = () => {
             checkSingleDevicesFilter,
             getBrandByCollection,
             selectedBrand,
+            setModalSelect,
             key
         ),
         [
@@ -214,6 +264,7 @@ const DevicesWorkspace = () => {
             checkSingleDevicesFilter,
             getBrandByCollection,
             selectedBrand,
+            setModalSelect,
             key
         ]
     )

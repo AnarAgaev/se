@@ -136,6 +136,9 @@ export type TResetSelectedFuncGroup = (groupName: string) => void
 
 
 // #region App
+type TFunc = () => void
+export type TSetModalSelect = (caption: string, approveText: string, rejectText: string, payload: Record<string>) => void
+
 export type TAppStore = {
     loading: boolean
     error: Error | unknown
@@ -164,6 +167,18 @@ export type TAppStore = {
 
     dictionary: TDictionary
     setDictionary: (dictionary: TDictionary) => void
+
+    modalSelectVisible: boolean
+    modalSelectCaption: string
+    modalSelectButtonApproveText: string
+    modalSelectButtonRejectText: string
+    modalSelectPayload: {
+        from?: 'brand' | 'collection'
+        brandName: string
+        collectionName: string
+    }
+    resetModalSelect: TFunc
+    setModalSelect: TSetModalSelect
 }
 // #endregion
 

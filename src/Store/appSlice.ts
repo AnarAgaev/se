@@ -41,7 +41,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         return vendor[0].name
     },
 
-    activeCalcTab: 'devices',
+    activeCalcTab: 'borders',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
     activeViewportTab: 'configurator',
@@ -84,7 +84,41 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     },
     setDictionary: (dictionary) => {
         set({ dictionary: dictionary})
+    },
+
+    // #region ModalSelect
+    modalSelectVisible: false,
+    modalSelectCaption: '',
+    modalSelectButtonApproveText: '',
+    modalSelectButtonRejectText: '',
+    modalSelectPayload: {
+        brandName: '',
+        collectionName: ''
+    },
+
+    setModalSelect: (caption, approveText, rejectText, payload) => {
+        set({
+            modalSelectVisible: true,
+            modalSelectCaption: caption,
+            modalSelectButtonApproveText: approveText,
+            modalSelectButtonRejectText: rejectText,
+            modalSelectPayload: payload
+        })
+    },
+
+    resetModalSelect: () => {
+        set({
+            modalSelectVisible: false,
+            modalSelectCaption: '',
+            modalSelectButtonApproveText: '',
+            modalSelectButtonRejectText: '',
+            modalSelectPayload: {
+                brandName: '',
+                collectionName: ''
+            }
+        })
     }
+    // #endregion
 })
 
 export default appSlice

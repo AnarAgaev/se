@@ -17,7 +17,7 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
 
     getDevicesCollectionsList: () => {
         const devices = [...get().devices]
-        const collections = [...new Set(devices.map(device => device.collection))].sort()
+        const collections = [...new Set(devices.map(device => device.collection))]
         return collections.filter(collection => !!collection)
     },
 
