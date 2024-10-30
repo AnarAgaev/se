@@ -6,27 +6,6 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
 
     setInitBordersData: (payload) => set({ borders: payload }),
 
-    getBordersList: () => {
-        const borders = [...get().borders]
-
-        // borders.forEach(border => {
-        //     if (!border.number_of_posts) {
-        //         console.log('\x1b[31m%s\x1b[0m', `У рамки ID:${border['id']} не указано свойство Количество постов! [number_of_posts]`)
-        //     }
-        // })
-
-        // For displaying filter only one border items
-        return borders.filter(
-            border => {
-                const value = typeof border.number_of_posts === 'string'
-                    ? parseInt(border.number_of_posts)
-                    : NaN
-
-                return value === 1
-            }
-        )
-    },
-
     getBordersBrandsList: () => {
         const borders = [...get().borders]
         return [...new Set(borders.map(border => border.vendor))].sort()

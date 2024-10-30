@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice } from './'
-import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TStore } from '../types'
+import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TStore, TBorder, TDevice } from '../types'
 import { InitDataContract } from '../zod'
 
 const zodErrorOptions: ErrorMessageOptions = {
@@ -80,6 +80,113 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TApp
                 } catch (error: Error | unknown) {
                     set({ error: error, loading: false })
                 }
+            },
+
+            getFilteredItems: () => {
+                const activeTab = get().activeCalcTab
+
+                if (activeTab === 'backgrounds') return []
+
+                const {
+                    brand,
+                    collection,
+                    colors,
+                    materials
+                } = activeTab === 'borders'
+                    ? get().filtersBorders
+                    : get().filtersDevices
+
+                let items = activeTab === 'borders'
+                    ? get().borders
+                    : get().devices
+
+                // Type guards
+                function isDevice(item: TBorder | TDevice): item is TDevice {
+                    return (item as TBorder).number_of_posts === undefined
+                }
+
+                // One border count Only for borders
+                if (activeTab === 'borders') {
+                    items = items.filter(
+                        i => {
+                            if (isDevice(i)) return false
+
+                            const value = Array.isArray(i.number_of_posts)
+                                ? parseInt(i.number_of_posts[0])
+                                : NaN
+
+                            return value === 1
+                        }
+                    )
+                }
+
+                // Brand
+                if (brand && brand !== '') {
+                    items = items.filter(i =>
+                        i.vendor.toLocaleLowerCase() === brand.toLocaleLowerCase())
+
+                    // console.log('Brand', items);
+                }
+
+                // Collection
+                if (collection && collection !== '') {
+                    items = items.filter(i =>
+                        i.collection.toLocaleLowerCase() === collection.toLocaleLowerCase())
+
+                    // console.log('Collection', items);
+                }
+
+                // Colors
+                if (colors.length) {
+                    items = items.filter(i => {
+                        const idx = colors.findIndex(
+                            c => c.toLocaleLowerCase() === i.color.toLocaleLowerCase()
+                        )
+                        return idx !== -1
+                    })
+
+                    // console.log('Colors', items);
+                }
+
+                // Materials
+                if (materials.length) {
+                    items = items.filter(i => {
+                        const idx = materials.findIndex(
+                            m => m.toLocaleLowerCase() === i.armature_material?.join('-').toLocaleLowerCase()
+                        )
+                        return idx !== -1
+                    })
+
+                    // console.log('Materials', items);
+                }
+
+                // Functionality
+                if (activeTab === 'devices') {
+                    const filter = get().filtersDevices
+                        .functions.filter(fn => fn.active)[0].props
+
+                    if (!Object.keys(filter).length) return items
+
+                    console.log(filter);
+                    
+
+
+                    items = items.filter(
+                        i => {
+
+                            console.log(i);
+                            
+
+
+
+                            return true
+                        }
+                    )
+                }
+
+
+
+                return items
             }
         })
     )

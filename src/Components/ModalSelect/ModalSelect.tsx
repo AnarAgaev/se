@@ -1,7 +1,3 @@
-// При изменении бренда будет сброшен выбор коллекции.
-// Оставить бренд.
-// Изменить бренд.
-
 import useStore from '../../Store'
 import style from './ModalSelect.module.sass'
 

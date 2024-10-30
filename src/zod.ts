@@ -37,7 +37,7 @@ export type TElementList = z.infer<typeof ElementList>
 
 // #region Borders
 export const Border = Element.extend({
-    number_of_posts: z.string().optional()
+    number_of_posts: z.array(z.string()).optional()
 })
 export type TBorder = z.infer<typeof Border>
 

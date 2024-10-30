@@ -22,6 +22,7 @@ export type TFunctionOptionList = TFunctionOption[]
 // #region Bound of the all Stores
 export type TStore = {
     requestInitData: () => void
+    getFilteredItems: () => Array<TBorder> | Array<TDevice>
 }
 // #endregion
 
@@ -42,7 +43,6 @@ export type TBackgroundsStore = {
 export type TBordersStore = {
     borders: TBorderList
     setInitBordersData: (payload: TBorderList) => void
-    getBordersList: () => Array<TBorder>
     getBordersBrandsList: () => string[]
     getBordersCollectionsList: () => string[]
     getBordersMaterialList: () => string[]
@@ -94,7 +94,7 @@ export type TDevicesStore = {
 
 
 
-// #region Filter
+// #region Functions
 export type TFunctionsProperty = {
     name: string
     value: string | number

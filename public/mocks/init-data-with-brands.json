@@ -677,7 +677,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000101_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -696,7 +696,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000102_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -715,7 +715,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000103_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -734,7 +734,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000104_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Пластик"
             ]
@@ -753,7 +753,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000105_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5",
+            "number_of_posts": ["5"],
             "armature_material": [
                 "Пластик"
             ]
@@ -787,7 +787,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000201_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -806,7 +806,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000202_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -823,7 +823,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000203_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -840,7 +840,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000204_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Пластик"
             ]
@@ -859,7 +859,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000205_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5",
+            "number_of_posts": ["5"],
             "armature_material": [
                 "Пластик"
             ]
@@ -893,7 +893,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000301_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -912,7 +912,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000302_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -931,7 +931,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000303_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик",
                 "Алюминий"
@@ -951,7 +951,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000304_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Пластик"
             ]
@@ -968,7 +968,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000305_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "Inspiria",
-            "number_of_posts": "5",
+            "number_of_posts": ["5"],
             "armature_material": [
                 "Пластик"
             ]
@@ -987,7 +987,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000401_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "Etika",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1006,7 +1006,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000402_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1025,7 +1025,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000403_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "Quteo",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1044,7 +1044,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000404_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1063,7 +1063,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000405_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5",
+            "number_of_posts": ["5"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1080,7 +1080,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000501_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1099,7 +1099,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000502_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1118,7 +1118,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000503_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1137,7 +1137,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000504_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1154,7 +1154,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000505_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5",
+            "number_of_posts": ["5"],
             "armature_material": [
                 "Дерево",
                 "Алюминий"
@@ -1172,7 +1172,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000601_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1191,7 +1191,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000602_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1210,7 +1210,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000603_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1229,7 +1229,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000604_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1248,7 +1248,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000605_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5",
+            "number_of_posts": ["5"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1267,7 +1267,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000701_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1284,7 +1284,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000702_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1303,7 +1303,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000703_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1322,7 +1322,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000704_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1339,7 +1339,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000705_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5",
+            "number_of_posts": ["5"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1358,7 +1358,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000801_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1377,7 +1377,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000802_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1396,7 +1396,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000803_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1413,7 +1413,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000804_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1430,7 +1430,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000805_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5",
+            "number_of_posts": ["5"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1447,7 +1447,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000901_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1464,7 +1464,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000902_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1481,7 +1481,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000903_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1500,7 +1500,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000904_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1519,7 +1519,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000905_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5",
+            "number_of_posts": ["5"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1538,7 +1538,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001001_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1557,7 +1557,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001002_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1576,7 +1576,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001003_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1595,7 +1595,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001004_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1614,7 +1614,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001005_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5",
+            "number_of_posts": ["5"],
             "armature_material": [
                 "Пластик"
             ]
@@ -1631,7 +1631,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001101_SYSTEME_ELECTRIC.png",
             "color": "Синий",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1"
+            "number_of_posts": ["1"]
         },
         {
             "id": 401,
@@ -1645,7 +1645,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001102_SYSTEME_ELECTRIC.png",
             "color": "Синий",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2"
+            "number_of_posts": ["2"]
         },
         {
             "id": 402,
@@ -1661,7 +1661,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001103_SYSTEME_ELECTRIC.png",
             "color": "Синий",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3"
+            "number_of_posts": ["3"]
         },
         {
             "id": 403,
@@ -1675,7 +1675,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001104_SYSTEME_ELECTRIC.png",
             "color": "Синий",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4"
+            "number_of_posts": ["4"]
         },
         {
             "id": 404,
@@ -1691,7 +1691,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001105_SYSTEME_ELECTRIC.png",
             "color": "Синий",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 449,
@@ -1705,7 +1705,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001201_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1"
+            "number_of_posts": ["1"]
         },
         {
             "id": 450,
@@ -1721,7 +1721,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001202_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2"
+            "number_of_posts": ["2"]
         },
         {
             "id": 451,
@@ -1737,7 +1737,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001203_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3"
+            "number_of_posts": ["3"]
         },
         {
             "id": 452,
@@ -1751,7 +1751,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001204_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4"
+            "number_of_posts": ["4"]
         },
         {
             "id": 453,
@@ -1767,7 +1767,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001205_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 498,
@@ -1783,7 +1783,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312101_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1802,7 +1802,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312102_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1819,7 +1819,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312103_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1838,7 +1838,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312104_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1855,7 +1855,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312105_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 503,
@@ -1871,7 +1871,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312201_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1890,7 +1890,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312202_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1907,7 +1907,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312203_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1924,7 +1924,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312204_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1941,7 +1941,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312205_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 508,
@@ -1957,7 +1957,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312301_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1976,7 +1976,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312302_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1995,7 +1995,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312303_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -2014,7 +2014,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312304_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Алюминий"
             ]
@@ -2033,7 +2033,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312305_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 513,
@@ -2049,7 +2049,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320101_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2068,7 +2068,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320102_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2087,7 +2087,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320103_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2104,7 +2104,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320104_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2121,7 +2121,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320105_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 518,
@@ -2137,7 +2137,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320301_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2156,7 +2156,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320302_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2175,7 +2175,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320303_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2194,7 +2194,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320304_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2213,7 +2213,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320305_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 523,
@@ -2227,7 +2227,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320501_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2244,7 +2244,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320502_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2261,7 +2261,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320503_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2280,7 +2280,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320504_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2297,7 +2297,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320505_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 528,
@@ -2311,7 +2311,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320601_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2328,7 +2328,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320602_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2345,7 +2345,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320603_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2362,7 +2362,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320604_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2379,7 +2379,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320605_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 533,
@@ -2393,7 +2393,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN321001_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2412,7 +2412,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN321002_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2431,7 +2431,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN321003_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2450,7 +2450,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN321004_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Стекло"
             ]
@@ -2467,7 +2467,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN321005_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 538,
@@ -2481,7 +2481,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN330101_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1"
+            "number_of_posts": ["1"]
         },
         {
             "id": 539,
@@ -2497,7 +2497,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN330102_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2"
+            "number_of_posts": ["2"]
         },
         {
             "id": 540,
@@ -2513,7 +2513,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN330103_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3"
+            "number_of_posts": ["3"]
         },
         {
             "id": 541,
@@ -2527,7 +2527,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN330104_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4"
+            "number_of_posts": ["4"]
         },
         {
             "id": 542,
@@ -2543,7 +2543,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN330105_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 543,
@@ -2559,7 +2559,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN331001_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1"
+            "number_of_posts": ["1"]
         },
         {
             "id": 544,
@@ -2573,7 +2573,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN331002_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2"
+            "number_of_posts": ["2"]
         },
         {
             "id": 545,
@@ -2589,7 +2589,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN331003_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3"
+            "number_of_posts": ["3"]
         },
         {
             "id": 546,
@@ -2603,7 +2603,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN331004_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4"
+            "number_of_posts": ["4"]
         },
         {
             "id": 547,
@@ -2619,7 +2619,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN331005_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 548,
@@ -2633,7 +2633,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343101_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1"
+            "number_of_posts": ["1"]
         },
         {
             "id": 549,
@@ -2649,7 +2649,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343102_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2"
+            "number_of_posts": ["2"]
         },
         {
             "id": 550,
@@ -2663,7 +2663,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343103_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3"
+            "number_of_posts": ["3"]
         },
         {
             "id": 551,
@@ -2679,7 +2679,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343104_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4"
+            "number_of_posts": ["4"]
         },
         {
             "id": 552,
@@ -2693,7 +2693,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343105_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 553,
@@ -2707,7 +2707,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343205_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 554,
@@ -2721,7 +2721,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN353201_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Дерево"
             ]
@@ -2738,7 +2738,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN353202_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Дерево"
             ]
@@ -2757,7 +2757,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN353203_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Дерево"
             ]
@@ -2776,7 +2776,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN353204_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Дерево"
             ]
@@ -2793,7 +2793,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN353205_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "5"
+            "number_of_posts": ["5"]
         },
         {
             "id": 559,
@@ -2809,7 +2809,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360101_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1"
+            "number_of_posts": ["1"]
         },
         {
             "id": 560,
@@ -2825,7 +2825,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360102_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2"
+            "number_of_posts": ["2"]
         },
         {
             "id": 561,
@@ -2841,7 +2841,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360103_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3"
+            "number_of_posts": ["3"]
         },
         {
             "id": 562,
@@ -2857,7 +2857,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360104_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4"
+            "number_of_posts": ["4"]
         },
         {
             "id": 563,
@@ -2871,7 +2871,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360701_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1"
+            "number_of_posts": ["1"]
         },
         {
             "id": 564,
@@ -2885,7 +2885,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360702_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2"
+            "number_of_posts": ["2"]
         },
         {
             "id": 565,
@@ -2899,7 +2899,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360703_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3"
+            "number_of_posts": ["3"]
         },
         {
             "id": 566,
@@ -2915,7 +2915,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360704_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4"
+            "number_of_posts": ["4"]
         },
         {
             "id": 567,
@@ -2929,7 +2929,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN361001_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1"
+            "number_of_posts": ["1"]
         },
         {
             "id": 568,
@@ -2943,7 +2943,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN361002_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2"
+            "number_of_posts": ["2"]
         },
         {
             "id": 569,
@@ -2959,7 +2959,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN361003_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3"
+            "number_of_posts": ["3"]
         },
         {
             "id": 570,
@@ -2975,7 +2975,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN361004_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4"
+            "number_of_posts": ["4"]
         },
         {
             "id": 571,
@@ -2991,7 +2991,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440101_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -3008,7 +3008,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440102_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -3027,7 +3027,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440103_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "Elegance",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -3046,7 +3046,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440301_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1"
+            "number_of_posts": ["1"]
         },
         {
             "id": 577,
@@ -3062,7 +3062,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440302_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2"
+            "number_of_posts": ["2"]
         },
         {
             "id": 578,
@@ -3078,7 +3078,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440303_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3"
+            "number_of_posts": ["3"]
         },
         {
             "id": 580,
@@ -3094,7 +3094,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN441001_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "СЕРИЯ 12",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -3111,7 +3111,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN441002_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -3128,7 +3128,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN441003_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -3147,7 +3147,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001301_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "1",
+            "number_of_posts": ["1"],
             "armature_material": [
                 "Пластик"
             ]
@@ -3166,7 +3166,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001302_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "2",
+            "number_of_posts": ["2"],
             "armature_material": [
                 "Пластик"
             ]
@@ -3183,7 +3183,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001303_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "3",
+            "number_of_posts": ["3"],
             "armature_material": [
                 "Пластик"
             ]
@@ -3202,7 +3202,7 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001304_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": "4",
+            "number_of_posts": ["4"],
             "armature_material": [
                 "Пластик"
             ]
