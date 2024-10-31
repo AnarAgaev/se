@@ -100,16 +100,25 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TApp
                     ? get().borders
                     : get().devices
 
-                // Type guards
-                function isDevice(item: TBorder | TDevice): item is TDevice {
-                    return (item as TBorder).number_of_posts === undefined
+                // #region Type guards for Devices and Borders
+                function isBorder(item: TBorder | TDevice): item is TBorder {
+                    return (item as TBorder).number_of_posts !== undefined
                 }
 
-                // One border count Only for borders
+                function isDevice(item: TBorder | TDevice): item is TDevice {
+                    return (item as TDevice).conf_product_group !== undefined
+                }
+
+                function isDeviceArray(arr: TBorder[] | TDevice[]): arr is TDevice[] {
+                    return arr.every(item => isDevice(item))
+                }
+                // #endregion
+
+                // #region One border count (Only for borders)
                 if (activeTab === 'borders') {
                     items = items.filter(
                         i => {
-                            if (isDevice(i)) return false
+                            if (!isBorder(i)) return false
 
                             const value = Array.isArray(i.number_of_posts)
                                 ? parseInt(i.number_of_posts[0])
@@ -119,24 +128,27 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TApp
                         }
                     )
                 }
+                // #endregion
 
-                // Brand
+                // #region  Brand
                 if (brand && brand !== '') {
                     items = items.filter(i =>
                         i.vendor.toLocaleLowerCase() === brand.toLocaleLowerCase())
 
                     // console.log('Brand', items);
                 }
+                // #endregion
 
-                // Collection
+                // #region  Collection
                 if (collection && collection !== '') {
                     items = items.filter(i =>
                         i.collection.toLocaleLowerCase() === collection.toLocaleLowerCase())
 
                     // console.log('Collection', items);
                 }
+                // #endregion
 
-                // Colors
+                // #region  Colors
                 if (colors.length) {
                     items = items.filter(i => {
                         const idx = colors.findIndex(
@@ -147,8 +159,9 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TApp
 
                     // console.log('Colors', items);
                 }
+                // #endregion
 
-                // Materials
+                // #region  Materials
                 if (materials.length) {
                     items = items.filter(i => {
                         const idx = materials.findIndex(
@@ -159,32 +172,47 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TApp
 
                     // console.log('Materials', items);
                 }
+                // #endregion
 
-                // Functionality
+                // #region  Functionality (Only for devices)
                 if (activeTab === 'devices') {
                     const filter = get().filtersDevices
-                        .functions.filter(fn => fn.active)[0].props
+                        .functions.filter(fn => fn.active)[0]
 
-                    if (!Object.keys(filter).length) return items
+                    if (filter.default) return items
 
-                    console.log(filter);
-                    
-
-
+                    // Type
                     items = items.filter(
                         i => {
 
-                            console.log(i);
-                            
+                            if (isDevice(i)) {
+                                return i['conf_product_group']?.toLocaleLowerCase() === filter.name.toLocaleLowerCase()
+                            }
 
-
-
-                            return true
+                            return false
                         }
                     )
+
+                    // Property
+                    const selectedProps = Object.keys(filter.props)
+
+                    if (!selectedProps.length) return items
+
+                    type FilterFunc<T> = (items: T[], property: string, value: string | number) => T[]
+
+                    const filteringItemsByFunctionalityProp: FilterFunc<TDevice> = (items, property, value) => {
+                        return items.filter(i => i[property] === value)
+                    }
+
+                    for (const prop in filter.props) {
+                        const val = filter.props[prop]
+
+                        if (isDeviceArray(items)) {
+                            items = filteringItemsByFunctionalityProp(items, prop, val)
+                        }
+                    }
                 }
-
-
+                // #endregion
 
                 return items
             }

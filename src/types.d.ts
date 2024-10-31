@@ -104,6 +104,7 @@ export type TFunctions = {
     active: boolean
     name: string
     props: Record<string, string | number>
+    default?: boolean
 }
 
 type TFilters = {

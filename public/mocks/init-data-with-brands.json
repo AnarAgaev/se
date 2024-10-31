@@ -123,12 +123,6 @@
                     "values": [
                         20
                     ]
-                },
-                {
-                    "conf_product_group": "armature_material",
-                    "values": [
-                        "Пластик"
-                    ]
                 }
             ]
         },
@@ -166,12 +160,6 @@
                         2,
                         3
                     ]
-                },
-                {
-                    "conf_product_group": "armature_material",
-                    "values": [
-                        "Пластик"
-                    ]
                 }
             ]
         },
@@ -205,12 +193,6 @@
                     "values": [
                         20,
                         44
-                    ]
-                },
-                {
-                    "conf_product_group": "armature_material",
-                    "values": [
-                        "Пластик"
                     ]
                 },
                 {
@@ -274,12 +256,6 @@
                     "values": [
                         20
                     ]
-                },
-                {
-                    "conf_product_group": "armature_material",
-                    "values": [
-                        "Пластик"
-                    ]
                 }
             ]
         },
@@ -325,12 +301,6 @@
                         1,
                         2
                     ]
-                },
-                {
-                    "conf_product_group": "armature_material",
-                    "values": [
-                        "Пластик"
-                    ]
                 }
             ]
         },
@@ -355,12 +325,6 @@
                     "conf_product_group": "conf_number_of_connectors_per_socket",
                     "values": [
                         2
-                    ]
-                },
-                {
-                    "conf_product_group": "armature_material",
-                    "values": [
-                        "Пластик"
                     ]
                 },
                 {
@@ -392,12 +356,6 @@
                     "conf_product_group": "ip_class",
                     "values": [
                         20
-                    ]
-                },
-                {
-                    "conf_product_group": "armature_material",
-                    "values": [
-                        "Пластик"
                     ]
                 }
             ]

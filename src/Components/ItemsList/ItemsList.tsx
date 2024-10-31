@@ -16,8 +16,11 @@ const getElementsList = (
     const resultList: JSX.Element[] = []
 
     itemList.forEach(el => {
+        const jsonString = JSON.stringify(el, null, 2);
+        const escapedString = jsonString.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
         resultList.push(
-            <li key={`${id}-${el.id}`} className={item}>
+            <li key={`${id}-${el.id}`} className={item} title={escapedString} onClick={    () => console.table(el)    }   >
                 <span className={pic}>
                     <img src={el.preview} alt="" loading="lazy" />
                 </span>

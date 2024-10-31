@@ -38,7 +38,7 @@ export type TElementList = z.infer<typeof ElementList>
 // #region Borders
 export const Border = Element.extend({
     number_of_posts: z.array(z.string()).optional()
-})
+}).passthrough()
 export type TBorder = z.infer<typeof Border>
 
 export const BorderList = z.array(Border)
@@ -50,8 +50,10 @@ export type TBorderList = z.infer<typeof BorderList>
 // #region Devices
 export const Device = Element.extend({
     conf_product_group: z.string().optional(), // У некоторых девайсов не указан тип!!!
-})
-export type TDevice = z.infer<typeof Device>
+}).passthrough()
+export type TDevice = z.infer<typeof Device> & {
+    [key: string]: string | number
+}
 
 export const DeviceList = z.array(Device)
 export type TDeviceList = z.infer<typeof DeviceList>

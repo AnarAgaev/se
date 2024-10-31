@@ -44,7 +44,8 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
             {
                 active: true,
                 name: 'Все функции',
-                props: {}
+                props: {},
+                default: true
             },
             ...functions.map(fn => ({
                 active: false,
@@ -95,6 +96,7 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
         collection: '',
         colors: [],
         materials: [],
+        activeFunction: '',
         functions: []
     },
 
