@@ -2,7 +2,7 @@ import { useId, useMemo } from 'react'
 import { TElementList } from '../../types'
 import style from './ItemsList.module.sass'
 
-const { wrap, list, item, pic, content, name, price } = style
+const { wrap, list, item, pic, preview, content, name, price } = style
 
 interface Props {
     itemList: TElementList
@@ -22,7 +22,7 @@ const getElementsList = (
         resultList.push(
             <li key={`${id}-${el.id}`} className={item} title={escapedString} onClick={    () => console.table(el)    }   >
                 <span className={pic}>
-                    <img src={el.preview} alt="" loading="lazy" />
+                    <img src={el.preview} alt="" className={preview} loading="lazy" />
                 </span>
                 <p className={content}>
                     <span className={name}>{el.name}</span>
