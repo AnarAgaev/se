@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
-import { appSlice, bordersSlice, devicesSlice, backgroundSlice } from './'
-import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TStore, TBorder, TDevice } from '../types'
+import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } from './'
+import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice } from '../types'
 import { InitDataContract } from '../zod'
 
 const zodErrorOptions: ErrorMessageOptions = {
@@ -24,13 +24,14 @@ const zodErrorOptions: ErrorMessageOptions = {
     transform: ({ errorMessage, index }) => `🔥 \x1b[31m Zod Error #${index + 1}: \x1b[33m ${errorMessage}`,
 }
 
-const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TAppStore & TStore>()(
+const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSketchStore & TAppStore & TStore>()(
     devtools(
         (set, get, ...args) => ({
             ...appSlice(set, get, ...args),
             ...backgroundSlice(set, get, ...args),
             ...bordersSlice(set, get, ...args),
             ...devicesSlice(set, get, ...args),
+            ...sketchSlice(set, get, ...args),
 
             requestInitData: async () => {
 

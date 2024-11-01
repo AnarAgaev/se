@@ -1,5 +1,5 @@
 {
-    "date": "2024-11-01 11:55:14",
+    "date": "2024-11-01 15:44:35",
     "colors": {
         "borders": [
             "Белый",
@@ -578,7 +578,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000101_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -597,7 +599,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000102_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -616,7 +620,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000103_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -635,7 +641,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000104_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -654,7 +662,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000105_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"],
+            "number_of_posts": [
+                "5"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -666,7 +676,6 @@
             "show_article": "ATN000108",
             "vendor": "SEL_AtlasDesign",
             "price": 87,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000108_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000108_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -679,12 +688,13 @@
             "show_article": "ATN000201",
             "vendor": "SEL_AtlasDesign",
             "price": 51,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000201_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000201_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -696,12 +706,13 @@
             "show_article": "ATN000202",
             "vendor": "SEL_AtlasDesign",
             "price": 85,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000202_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000202_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -713,12 +724,13 @@
             "show_article": "ATN000203",
             "vendor": "SEL_AtlasDesign",
             "price": 160,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000203_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000203_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -737,7 +749,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000204_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -756,7 +770,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000205_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"],
+            "number_of_posts": [
+                "5"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -768,7 +784,6 @@
             "show_article": "ATN000208",
             "vendor": "SEL_AtlasDesign",
             "price": 87,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000208_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000208_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -788,7 +803,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000301_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -807,7 +824,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000302_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -826,7 +845,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000303_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -845,7 +866,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000304_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -864,7 +887,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000305_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"],
+            "number_of_posts": [
+                "5"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -876,12 +901,13 @@
             "show_article": "ATN000401",
             "vendor": "SEL_AtlasDesign",
             "price": 82,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000401_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000401_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -893,12 +919,13 @@
             "show_article": "ATN000402",
             "vendor": "SEL_AtlasDesign",
             "price": 136,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000402_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000402_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -917,7 +944,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000403_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -929,12 +958,13 @@
             "show_article": "ATN000404",
             "vendor": "SEL_AtlasDesign",
             "price": 381,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000404_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000404_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -946,12 +976,13 @@
             "show_article": "ATN000405",
             "vendor": "SEL_AtlasDesign",
             "price": 504,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000405_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000405_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"],
+            "number_of_posts": [
+                "5"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -963,12 +994,13 @@
             "show_article": "ATN000501",
             "vendor": "SEL_AtlasDesign",
             "price": 82,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000501_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000501_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -980,12 +1012,13 @@
             "show_article": "ATN000502",
             "vendor": "SEL_AtlasDesign",
             "price": 136,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000502_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000502_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -997,12 +1030,13 @@
             "show_article": "ATN000503",
             "vendor": "SEL_AtlasDesign",
             "price": 246,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000503_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000503_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1021,7 +1055,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000504_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1040,7 +1076,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000505_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"],
+            "number_of_posts": [
+                "5"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1059,7 +1097,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000601_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1078,7 +1118,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000602_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1097,7 +1139,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000603_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1116,7 +1160,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000604_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1135,7 +1181,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000605_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"],
+            "number_of_posts": [
+                "5"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1147,12 +1195,13 @@
             "show_article": "ATN000701",
             "vendor": "SEL_AtlasDesign",
             "price": 166,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000701_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000701_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1171,7 +1220,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000702_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1190,7 +1241,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000703_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1209,7 +1262,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000704_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1228,7 +1283,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000705_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"],
+            "number_of_posts": [
+                "5"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1240,12 +1297,13 @@
             "show_article": "ATN000801",
             "vendor": "SEL_AtlasDesign",
             "price": 166,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000801_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000801_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1264,7 +1322,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000802_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1283,7 +1343,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000803_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1302,7 +1364,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000804_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1314,12 +1378,13 @@
             "show_article": "ATN000805",
             "vendor": "SEL_AtlasDesign",
             "price": 1005,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000805_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000805_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"],
+            "number_of_posts": [
+                "5"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1331,12 +1396,13 @@
             "show_article": "ATN000901",
             "vendor": "SEL_AtlasDesign",
             "price": 223,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000901_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000901_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1348,12 +1414,13 @@
             "show_article": "ATN000902",
             "vendor": "SEL_AtlasDesign",
             "price": 367,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000902_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000902_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1372,7 +1439,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000903_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1384,12 +1453,13 @@
             "show_article": "ATN000904",
             "vendor": "SEL_AtlasDesign",
             "price": 1005,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000904_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000904_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1408,7 +1478,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000905_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"],
+            "number_of_posts": [
+                "5"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1427,7 +1499,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001001_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1446,7 +1520,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001002_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1465,7 +1541,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001003_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1484,7 +1562,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001004_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1503,7 +1583,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001005_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"],
+            "number_of_posts": [
+                "5"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -1515,12 +1597,13 @@
             "show_article": "ATN001101",
             "vendor": "SEL_AtlasDesign",
             "price": 89,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001101_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001101_SYSTEME_ELECTRIC.png",
             "color": "Синий",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"]
+            "number_of_posts": [
+                "1"
+            ]
         },
         {
             "id": 401,
@@ -1536,7 +1619,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001102_SYSTEME_ELECTRIC.png",
             "color": "Синий",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"]
+            "number_of_posts": [
+                "2"
+            ]
         },
         {
             "id": 402,
@@ -1552,7 +1637,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001103_SYSTEME_ELECTRIC.png",
             "color": "Синий",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"]
+            "number_of_posts": [
+                "3"
+            ]
         },
         {
             "id": 403,
@@ -1568,7 +1655,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001104_SYSTEME_ELECTRIC.png",
             "color": "Синий",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"]
+            "number_of_posts": [
+                "4"
+            ]
         },
         {
             "id": 404,
@@ -1584,7 +1673,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001105_SYSTEME_ELECTRIC.png",
             "color": "Синий",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 449,
@@ -1593,12 +1684,13 @@
             "show_article": "ATN001201",
             "vendor": "SEL_AtlasDesign",
             "price": 89,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001201_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001201_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"]
+            "number_of_posts": [
+                "1"
+            ]
         },
         {
             "id": 450,
@@ -1607,12 +1699,13 @@
             "show_article": "ATN001202",
             "vendor": "SEL_AtlasDesign",
             "price": 199,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001202_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001202_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"]
+            "number_of_posts": [
+                "2"
+            ]
         },
         {
             "id": 451,
@@ -1621,12 +1714,13 @@
             "show_article": "ATN001203",
             "vendor": "SEL_AtlasDesign",
             "price": 259,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001203_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001203_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"]
+            "number_of_posts": [
+                "3"
+            ]
         },
         {
             "id": 452,
@@ -1635,12 +1729,13 @@
             "show_article": "ATN001204",
             "vendor": "SEL_AtlasDesign",
             "price": 399,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001204_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001204_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"]
+            "number_of_posts": [
+                "4"
+            ]
         },
         {
             "id": 453,
@@ -1649,12 +1744,13 @@
             "show_article": "ATN001205",
             "vendor": "SEL_AtlasDesign",
             "price": 530,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001205_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001205_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 498,
@@ -1663,12 +1759,13 @@
             "show_article": "ATN312101",
             "vendor": "SEL_AtlasDesign",
             "price": 1126,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN312101_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312101_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1680,12 +1777,13 @@
             "show_article": "ATN312102",
             "vendor": "SEL_AtlasDesign",
             "price": 2082,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN312102_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312102_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1704,7 +1802,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312103_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1723,7 +1823,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312104_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1735,12 +1837,13 @@
             "show_article": "ATN312105",
             "vendor": "SEL_AtlasDesign",
             "price": 4968,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN312105_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312105_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 503,
@@ -1749,12 +1852,13 @@
             "show_article": "ATN312201",
             "vendor": "SEL_AtlasDesign",
             "price": 1126,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN312201_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312201_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1766,12 +1870,13 @@
             "show_article": "ATN312202",
             "vendor": "SEL_AtlasDesign",
             "price": 2082,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN312202_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312202_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1783,12 +1888,13 @@
             "show_article": "ATN312203",
             "vendor": "SEL_AtlasDesign",
             "price": 3030,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN312203_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312203_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1800,12 +1906,13 @@
             "show_article": "ATN312204",
             "vendor": "SEL_AtlasDesign",
             "price": 3984,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN312204_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312204_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1817,12 +1924,13 @@
             "show_article": "ATN312205",
             "vendor": "SEL_AtlasDesign",
             "price": 4968,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN312205_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312205_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 508,
@@ -1838,7 +1946,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312301_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1857,7 +1967,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312302_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1876,7 +1988,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312303_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1895,7 +2009,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312304_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Алюминий"
             ]
@@ -1907,12 +2023,13 @@
             "show_article": "ATN312305",
             "vendor": "SEL_AtlasDesign",
             "price": 4968,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN312305_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN312305_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 513,
@@ -1928,7 +2045,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320101_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -1947,7 +2066,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320102_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -1966,7 +2087,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320103_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -1985,7 +2108,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320104_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -1997,12 +2122,13 @@
             "show_article": "ATN320105",
             "vendor": "SEL_AtlasDesign",
             "price": 3108,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN320105_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320105_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 518,
@@ -2018,7 +2144,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320301_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2037,7 +2165,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320302_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2056,7 +2186,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320303_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2075,7 +2207,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320304_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2087,12 +2221,13 @@
             "show_article": "ATN320305",
             "vendor": "SEL_AtlasDesign",
             "price": 3108,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN320305_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320305_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 523,
@@ -2101,12 +2236,13 @@
             "show_article": "ATN320501",
             "vendor": "SEL_AtlasDesign",
             "price": 616,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN320501_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320501_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2118,12 +2254,13 @@
             "show_article": "ATN320502",
             "vendor": "SEL_AtlasDesign",
             "price": 1230,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN320502_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320502_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2135,12 +2272,13 @@
             "show_article": "ATN320503",
             "vendor": "SEL_AtlasDesign",
             "price": 1866,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN320503_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320503_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2159,7 +2297,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320504_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2171,12 +2311,13 @@
             "show_article": "ATN320505",
             "vendor": "SEL_AtlasDesign",
             "price": 3108,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN320505_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320505_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 528,
@@ -2185,12 +2326,13 @@
             "show_article": "ATN320601",
             "vendor": "SEL_AtlasDesign",
             "price": 616,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN320601_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320601_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2209,7 +2351,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320602_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2221,12 +2365,13 @@
             "show_article": "ATN320603",
             "vendor": "SEL_AtlasDesign",
             "price": 1866,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN320603_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320603_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2245,7 +2390,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320604_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2257,12 +2404,13 @@
             "show_article": "ATN320605",
             "vendor": "SEL_AtlasDesign",
             "price": 3108,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN320605_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN320605_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 533,
@@ -2271,12 +2419,13 @@
             "show_article": "ATN321001",
             "vendor": "SEL_AtlasDesign",
             "price": 616,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN321001_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN321001_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2288,12 +2437,13 @@
             "show_article": "ATN321002",
             "vendor": "SEL_AtlasDesign",
             "price": 1230,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN321002_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN321002_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2305,12 +2455,13 @@
             "show_article": "ATN321003",
             "vendor": "SEL_AtlasDesign",
             "price": 1866,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN321003_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN321003_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2322,12 +2473,13 @@
             "show_article": "ATN321004",
             "vendor": "SEL_AtlasDesign",
             "price": 2496,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN321004_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN321004_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Стекло"
             ]
@@ -2339,12 +2491,13 @@
             "show_article": "ATN321005",
             "vendor": "SEL_AtlasDesign",
             "price": 3108,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN321005_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN321005_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 538,
@@ -2353,12 +2506,13 @@
             "show_article": "ATN330101",
             "vendor": "SEL_AtlasDesign",
             "price": 616,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN330101_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN330101_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"]
+            "number_of_posts": [
+                "1"
+            ]
         },
         {
             "id": 539,
@@ -2374,7 +2528,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN330102_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"]
+            "number_of_posts": [
+                "2"
+            ]
         },
         {
             "id": 540,
@@ -2390,7 +2546,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN330103_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"]
+            "number_of_posts": [
+                "3"
+            ]
         },
         {
             "id": 541,
@@ -2406,7 +2564,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN330104_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"]
+            "number_of_posts": [
+                "4"
+            ]
         },
         {
             "id": 542,
@@ -2422,7 +2582,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN330105_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 543,
@@ -2431,12 +2593,13 @@
             "show_article": "ATN331001",
             "vendor": "SEL_AtlasDesign",
             "price": 616,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN331001_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN331001_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"]
+            "number_of_posts": [
+                "1"
+            ]
         },
         {
             "id": 544,
@@ -2445,12 +2608,13 @@
             "show_article": "ATN331002",
             "vendor": "SEL_AtlasDesign",
             "price": 1230,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN331002_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN331002_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"]
+            "number_of_posts": [
+                "2"
+            ]
         },
         {
             "id": 545,
@@ -2466,7 +2630,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN331003_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"]
+            "number_of_posts": [
+                "3"
+            ]
         },
         {
             "id": 546,
@@ -2475,12 +2641,13 @@
             "show_article": "ATN331004",
             "vendor": "SEL_AtlasDesign",
             "price": 2496,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN331004_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN331004_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"]
+            "number_of_posts": [
+                "4"
+            ]
         },
         {
             "id": 547,
@@ -2496,7 +2663,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN331005_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 548,
@@ -2505,12 +2674,13 @@
             "show_article": "ATN343101",
             "vendor": "SEL_AtlasDesign",
             "price": 1126,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN343101_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343101_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"]
+            "number_of_posts": [
+                "1"
+            ]
         },
         {
             "id": 549,
@@ -2526,7 +2696,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343102_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"]
+            "number_of_posts": [
+                "2"
+            ]
         },
         {
             "id": 550,
@@ -2535,12 +2707,13 @@
             "show_article": "ATN343103",
             "vendor": "SEL_AtlasDesign",
             "price": 3030,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN343103_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343103_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"]
+            "number_of_posts": [
+                "3"
+            ]
         },
         {
             "id": 551,
@@ -2556,7 +2729,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343104_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"]
+            "number_of_posts": [
+                "4"
+            ]
         },
         {
             "id": 552,
@@ -2565,12 +2740,13 @@
             "show_article": "ATN343105",
             "vendor": "SEL_AtlasDesign",
             "price": 4968,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN343105_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343105_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 553,
@@ -2579,12 +2755,13 @@
             "show_article": "ATN343205",
             "vendor": "SEL_AtlasDesign",
             "price": 4968,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN343205_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN343205_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 554,
@@ -2600,7 +2777,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN353201_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Дерево"
             ]
@@ -2619,7 +2798,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN353202_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Дерево"
             ]
@@ -2638,7 +2819,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN353203_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Дерево"
             ]
@@ -2657,7 +2840,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN353204_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Дерево"
             ]
@@ -2669,12 +2854,13 @@
             "show_article": "ATN353205",
             "vendor": "SEL_AtlasDesign",
             "price": 4968,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN353205_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN353205_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["5"]
+            "number_of_posts": [
+                "5"
+            ]
         },
         {
             "id": 559,
@@ -2683,12 +2869,13 @@
             "show_article": "ATN360101",
             "vendor": "SEL_AtlasDesign",
             "price": 843,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN360101_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360101_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"]
+            "number_of_posts": [
+                "1"
+            ]
         },
         {
             "id": 560,
@@ -2697,12 +2884,13 @@
             "show_article": "ATN360102",
             "vendor": "SEL_AtlasDesign",
             "price": 1560,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN360102_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360102_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"]
+            "number_of_posts": [
+                "2"
+            ]
         },
         {
             "id": 561,
@@ -2711,12 +2899,13 @@
             "show_article": "ATN360103",
             "vendor": "SEL_AtlasDesign",
             "price": 2250,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN360103_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360103_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"]
+            "number_of_posts": [
+                "3"
+            ]
         },
         {
             "id": 562,
@@ -2725,12 +2914,13 @@
             "show_article": "ATN360104",
             "vendor": "SEL_AtlasDesign",
             "price": 2988,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN360104_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360104_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"]
+            "number_of_posts": [
+                "4"
+            ]
         },
         {
             "id": 563,
@@ -2739,12 +2929,13 @@
             "show_article": "ATN360701",
             "vendor": "SEL_AtlasDesign",
             "price": 843,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN360701_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360701_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"]
+            "number_of_posts": [
+                "1"
+            ]
         },
         {
             "id": 564,
@@ -2753,12 +2944,13 @@
             "show_article": "ATN360702",
             "vendor": "SEL_AtlasDesign",
             "price": 1560,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN360702_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360702_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"]
+            "number_of_posts": [
+                "2"
+            ]
         },
         {
             "id": 565,
@@ -2767,12 +2959,13 @@
             "show_article": "ATN360703",
             "vendor": "SEL_AtlasDesign",
             "price": 2250,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN360703_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360703_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"]
+            "number_of_posts": [
+                "3"
+            ]
         },
         {
             "id": 566,
@@ -2781,12 +2974,13 @@
             "show_article": "ATN360704",
             "vendor": "SEL_AtlasDesign",
             "price": 2988,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN360704_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN360704_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"]
+            "number_of_posts": [
+                "4"
+            ]
         },
         {
             "id": 567,
@@ -2795,12 +2989,13 @@
             "show_article": "ATN361001",
             "vendor": "SEL_AtlasDesign",
             "price": 843,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN361001_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN361001_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"]
+            "number_of_posts": [
+                "1"
+            ]
         },
         {
             "id": 568,
@@ -2809,12 +3004,13 @@
             "show_article": "ATN361002",
             "vendor": "SEL_AtlasDesign",
             "price": 1560,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN361002_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN361002_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"]
+            "number_of_posts": [
+                "2"
+            ]
         },
         {
             "id": 569,
@@ -2823,12 +3019,13 @@
             "show_article": "ATN361003",
             "vendor": "SEL_AtlasDesign",
             "price": 2250,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN361003_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN361003_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"]
+            "number_of_posts": [
+                "3"
+            ]
         },
         {
             "id": 570,
@@ -2844,7 +3041,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN361004_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"]
+            "number_of_posts": [
+                "4"
+            ]
         },
         {
             "id": 571,
@@ -2860,7 +3059,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440101_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -2872,12 +3073,13 @@
             "show_article": "ATN440102",
             "vendor": "SEL_AtlasDesign",
             "price": 160,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN440102_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440102_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -2896,7 +3098,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440103_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -2915,7 +3119,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440301_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"]
+            "number_of_posts": [
+                "1"
+            ]
         },
         {
             "id": 577,
@@ -2924,12 +3130,13 @@
             "show_article": "ATN440302",
             "vendor": "SEL_AtlasDesign",
             "price": 242,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN440302_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440302_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"]
+            "number_of_posts": [
+                "2"
+            ]
         },
         {
             "id": 578,
@@ -2938,12 +3145,13 @@
             "show_article": "ATN440303",
             "vendor": "SEL_AtlasDesign",
             "price": 439,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN440303_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440303_SYSTEME_ELECTRIC.png",
             "color": "Серый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"]
+            "number_of_posts": [
+                "3"
+            ]
         },
         {
             "id": 580,
@@ -2952,12 +3160,13 @@
             "show_article": "ATN441001",
             "vendor": "SEL_AtlasDesign",
             "price": 245,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN441001_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN441001_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -2969,12 +3178,13 @@
             "show_article": "ATN441002",
             "vendor": "SEL_AtlasDesign",
             "price": 451,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN441002_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN441002_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -2986,12 +3196,13 @@
             "show_article": "ATN441003",
             "vendor": "SEL_AtlasDesign",
             "price": 814,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN441003_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN441003_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -3010,7 +3221,9 @@
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001301_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["1"],
+            "number_of_posts": [
+                "1"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -3022,12 +3235,13 @@
             "show_article": "ATN001302",
             "vendor": "SEL_AtlasDesign",
             "price": 136,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001302_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001302_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["2"],
+            "number_of_posts": [
+                "2"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -3039,12 +3253,13 @@
             "show_article": "ATN001303",
             "vendor": "SEL_AtlasDesign",
             "price": 246,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001303_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001303_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["3"],
+            "number_of_posts": [
+                "3"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -3056,12 +3271,13 @@
             "show_article": "ATN001304",
             "vendor": "SEL_AtlasDesign",
             "price": 382,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001304_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001304_SYSTEME_ELECTRIC.png",
             "color": "Белый",
             "collection": "ATLASDESIGN",
-            "number_of_posts": ["4"],
+            "number_of_posts": [
+                "4"
+            ],
             "armature_material": [
                 "Пластик"
             ]
@@ -3075,7 +3291,6 @@
             "show_article": "ATN000109",
             "vendor": "SEL_AtlasDesign",
             "price": 87,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000109_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000109_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3117,7 +3332,6 @@
             "show_article": "ATN000113",
             "vendor": "SEL_AtlasDesign",
             "price": 285,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000113_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000113_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3138,7 +3352,6 @@
             "show_article": "ATN000115",
             "vendor": "SEL_AtlasDesign",
             "price": 275,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000115_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000115_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3159,7 +3372,6 @@
             "show_article": "ATN000117",
             "vendor": "SEL_AtlasDesign",
             "price": 358,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000117_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000117_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3180,7 +3392,6 @@
             "show_article": "ATN000119",
             "vendor": "SEL_AtlasDesign",
             "price": 487,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000119_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000119_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3248,7 +3459,6 @@
             "show_article": "ATN000131",
             "vendor": "SEL_AtlasDesign",
             "price": 332,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000131_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000131_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3293,7 +3503,6 @@
             "show_article": "ATN000133",
             "vendor": "SEL_AtlasDesign",
             "price": 2910,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000133_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000133_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3308,7 +3517,6 @@
             "show_article": "ATN000135",
             "vendor": "SEL_AtlasDesign",
             "price": 5490,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000135_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000135_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3397,7 +3605,6 @@
             "show_article": "ATN000143",
             "vendor": "SEL_AtlasDesign",
             "price": 171,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000143_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000143_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3441,7 +3648,6 @@
             "show_article": "ATN000146",
             "vendor": "SEL_AtlasDesign",
             "price": 296,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000146_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000146_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3531,7 +3737,6 @@
             "show_article": "ATN000153",
             "vendor": "SEL_AtlasDesign",
             "price": 367,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000153_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000153_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3575,7 +3780,6 @@
             "show_article": "ATN000163",
             "vendor": "SEL_AtlasDesign",
             "price": 391,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000163_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000163_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3619,7 +3823,6 @@
             "show_article": "ATN000167",
             "vendor": "SEL_AtlasDesign",
             "price": 551,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000167_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000167_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3661,7 +3864,6 @@
             "show_article": "ATN000180",
             "vendor": "SEL_AtlasDesign",
             "price": 1038,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000180_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000180_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3699,7 +3901,6 @@
             "show_article": "ATN000182",
             "vendor": "SEL_AtlasDesign",
             "price": 1560,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000182_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000182_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3777,7 +3978,6 @@
             "show_article": "ATN000189",
             "vendor": "SEL_AtlasDesign",
             "price": 864,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000189_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000189_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3794,7 +3994,6 @@
             "show_article": "ATN000191",
             "vendor": "SEL_AtlasDesign",
             "price": 498,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000191_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000191_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3812,7 +4011,6 @@
             "show_article": "ATN000192",
             "vendor": "SEL_AtlasDesign",
             "price": 545,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000192_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000192_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3830,7 +4028,6 @@
             "show_article": "ATN000193",
             "vendor": "SEL_AtlasDesign",
             "price": 216,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000193_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000193_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3848,7 +4045,6 @@
             "show_article": "ATN000199",
             "vendor": "SEL_AtlasDesign",
             "price": 190,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000199_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000199_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -3867,7 +4063,6 @@
             "show_article": "ATN000209",
             "vendor": "SEL_AtlasDesign",
             "price": 87,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000209_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000209_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -3886,7 +4081,6 @@
             "show_article": "ATN000211",
             "vendor": "SEL_AtlasDesign",
             "price": 157,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000211_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000211_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -3930,7 +4124,6 @@
             "show_article": "ATN000215",
             "vendor": "SEL_AtlasDesign",
             "price": 275,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000215_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000215_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -3951,7 +4144,6 @@
             "show_article": "ATN000217",
             "vendor": "SEL_AtlasDesign",
             "price": 358,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000217_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000217_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -3972,7 +4164,6 @@
             "show_article": "ATN000219",
             "vendor": "SEL_AtlasDesign",
             "price": 487,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000219_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000219_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4016,7 +4207,6 @@
             "show_article": "ATN000230",
             "vendor": "SEL_AtlasDesign",
             "price": 4476,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000230_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000230_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4060,7 +4250,6 @@
             "show_article": "ATN000232",
             "vendor": "SEL_AtlasDesign",
             "price": 6240,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000232_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000232_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4098,7 +4287,6 @@
             "show_article": "ATN000235",
             "vendor": "SEL_AtlasDesign",
             "price": 5490,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000235_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000235_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4129,7 +4317,6 @@
             "show_article": "ATN000241",
             "vendor": "SEL_AtlasDesign",
             "price": 153,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000241_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000241_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4150,7 +4337,6 @@
             "show_article": "ATN000243",
             "vendor": "SEL_AtlasDesign",
             "price": 171,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000243_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000243_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4171,7 +4357,6 @@
             "show_article": "ATN000245",
             "vendor": "SEL_AtlasDesign",
             "price": 205,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000245_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000245_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4284,7 +4469,6 @@
             "show_article": "ATN000253",
             "vendor": "SEL_AtlasDesign",
             "price": 367,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000253_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000253_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4305,7 +4489,6 @@
             "show_article": "ATN000261",
             "vendor": "SEL_AtlasDesign",
             "price": 263,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000261_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000261_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4349,7 +4532,6 @@
             "show_article": "ATN000265",
             "vendor": "SEL_AtlasDesign",
             "price": 473,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000265_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000265_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4370,7 +4552,6 @@
             "show_article": "ATN000267",
             "vendor": "SEL_AtlasDesign",
             "price": 551,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000267_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000267_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4412,7 +4593,6 @@
             "show_article": "ATN000281",
             "vendor": "SEL_AtlasDesign",
             "price": 355,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000281_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000281_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4432,7 +4612,6 @@
             "show_article": "ATN000283",
             "vendor": "SEL_AtlasDesign",
             "price": 667,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000283_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000283_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4452,7 +4631,6 @@
             "show_article": "ATN000285",
             "vendor": "SEL_AtlasDesign",
             "price": 963,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000285_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000285_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4487,7 +4665,6 @@
             "show_article": "ATN000289",
             "vendor": "SEL_AtlasDesign",
             "price": 864,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000289_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000289_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4524,7 +4701,6 @@
             "show_article": "ATN000292",
             "vendor": "SEL_AtlasDesign",
             "price": 545,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000292_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000292_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4542,7 +4718,6 @@
             "show_article": "ATN000293",
             "vendor": "SEL_AtlasDesign",
             "price": 216,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000293_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000293_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -4581,7 +4756,6 @@
             "show_article": "ATN000308",
             "vendor": "SEL_AtlasDesign",
             "price": 132,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000308_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000308_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -4640,7 +4814,6 @@
             "show_article": "ATN000313",
             "vendor": "SEL_AtlasDesign",
             "price": 435,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000313_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000313_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -4661,7 +4834,6 @@
             "show_article": "ATN000315",
             "vendor": "SEL_AtlasDesign",
             "price": 415,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000315_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000315_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -4705,7 +4877,6 @@
             "show_article": "ATN000319",
             "vendor": "SEL_AtlasDesign",
             "price": 730,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000319_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000319_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -4796,7 +4967,6 @@
             "show_article": "ATN000332",
             "vendor": "SEL_AtlasDesign",
             "price": 8100,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000332_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000332_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -4868,7 +5038,6 @@
             "show_article": "ATN000341",
             "vendor": "SEL_AtlasDesign",
             "price": 237,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000341_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000341_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -4889,7 +5058,6 @@
             "show_article": "ATN000343",
             "vendor": "SEL_AtlasDesign",
             "price": 272,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000343_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000343_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -5138,7 +5306,6 @@
             "show_article": "ATN000380",
             "vendor": "SEL_AtlasDesign",
             "price": 1560,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000380_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000380_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -5176,7 +5343,6 @@
             "show_article": "ATN000382",
             "vendor": "SEL_AtlasDesign",
             "price": 2208,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000382_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000382_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -5313,7 +5479,6 @@
             "show_article": "ATN000393",
             "vendor": "SEL_AtlasDesign",
             "price": 327,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000393_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000393_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -5352,7 +5517,6 @@
             "show_article": "ATN000409",
             "vendor": "SEL_AtlasDesign",
             "price": 132,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000409_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000409_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5371,7 +5535,6 @@
             "show_article": "ATN000411",
             "vendor": "SEL_AtlasDesign",
             "price": 254,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000411_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000411_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5392,7 +5555,6 @@
             "show_article": "ATN000413",
             "vendor": "SEL_AtlasDesign",
             "price": 435,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000413_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000413_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5459,7 +5621,6 @@
             "show_article": "ATN000419",
             "vendor": "SEL_AtlasDesign",
             "price": 730,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000419_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000419_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5480,7 +5641,6 @@
             "show_article": "ATN000430",
             "vendor": "SEL_AtlasDesign",
             "price": 6780,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000430_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000430_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5549,7 +5709,6 @@
             "show_article": "ATN000433",
             "vendor": "SEL_AtlasDesign",
             "price": 4440,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000433_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000433_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5564,7 +5723,6 @@
             "show_article": "ATN000435",
             "vendor": "SEL_AtlasDesign",
             "price": 8400,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000435_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000435_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5578,7 +5736,6 @@
             "show_article": "ATN000436",
             "vendor": "SEL_AtlasDesign",
             "price": 7320,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000436_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000436_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5598,7 +5755,6 @@
             "show_article": "ATN000439",
             "vendor": "SEL_AtlasDesign",
             "price": 5766,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000439_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000439_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5636,7 +5792,6 @@
             "show_article": "ATN000443",
             "vendor": "SEL_AtlasDesign",
             "price": 272,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000443_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000443_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5703,7 +5858,6 @@
             "show_article": "ATN000449",
             "vendor": "SEL_AtlasDesign",
             "price": 272,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000449_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000449_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5724,7 +5878,6 @@
             "show_article": "ATN000451",
             "vendor": "SEL_AtlasDesign",
             "price": 327,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000451_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000451_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5745,7 +5898,6 @@
             "show_article": "ATN000453",
             "vendor": "SEL_AtlasDesign",
             "price": 558,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000453_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000453_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5766,7 +5918,6 @@
             "show_article": "ATN000461",
             "vendor": "SEL_AtlasDesign",
             "price": 398,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000461_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000461_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5787,7 +5938,6 @@
             "show_article": "ATN000463",
             "vendor": "SEL_AtlasDesign",
             "price": 594,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000463_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000463_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5831,7 +5981,6 @@
             "show_article": "ATN000467",
             "vendor": "SEL_AtlasDesign",
             "price": 822,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000467_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000467_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5873,7 +6022,6 @@
             "show_article": "ATN000481",
             "vendor": "SEL_AtlasDesign",
             "price": 540,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000481_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000481_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5915,7 +6063,6 @@
             "show_article": "ATN000485",
             "vendor": "SEL_AtlasDesign",
             "price": 1482,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000485_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000485_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5935,7 +6082,6 @@
             "show_article": "ATN000487",
             "vendor": "SEL_AtlasDesign",
             "price": 1902,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000487_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000487_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -5948,7 +6094,6 @@
             "show_article": "ATN000489",
             "vendor": "SEL_AtlasDesign",
             "price": 1332,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000489_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000489_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -6005,7 +6150,6 @@
             "show_article": "ATN000493",
             "vendor": "SEL_AtlasDesign",
             "price": 419,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000493_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000493_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -6065,7 +6209,6 @@
             "show_article": "ATN000511",
             "vendor": "SEL_AtlasDesign",
             "price": 254,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000511_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000511_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -6109,7 +6252,6 @@
             "show_article": "ATN000515",
             "vendor": "SEL_AtlasDesign",
             "price": 415,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000515_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000515_SYSTEME_ELECTRIC.png",
             "color": "Золотистый",
@@ -6287,7 +6429,6 @@
             "show_article": "ATN000535",
             "vendor": "SEL_AtlasDesign",
             "price": 8400,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000535_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000535_SYSTEME_ELECTRIC.png",
             "color": "Золотистый",
@@ -6341,7 +6482,6 @@
             "show_article": "ATN000543",
             "vendor": "SEL_AtlasDesign",
             "price": 272,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000543_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000543_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -6500,7 +6640,6 @@
             "show_article": "ATN000563",
             "vendor": "SEL_AtlasDesign",
             "price": 594,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000563_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000563_SYSTEME_ELECTRIC.png",
             "color": "Золотистый",
@@ -6521,7 +6660,6 @@
             "show_article": "ATN000565",
             "vendor": "SEL_AtlasDesign",
             "price": 719,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000565_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000565_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -6542,7 +6680,6 @@
             "show_article": "ATN000567",
             "vendor": "SEL_AtlasDesign",
             "price": 822,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000567_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000567_SYSTEME_ELECTRIC.png",
             "color": "Золотистый",
@@ -6628,7 +6765,6 @@
             "show_article": "ATN000585",
             "vendor": "SEL_AtlasDesign",
             "price": 1482,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000585_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000585_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -6663,7 +6799,6 @@
             "show_article": "ATN000589",
             "vendor": "SEL_AtlasDesign",
             "price": 1332,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000589_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000589_SYSTEME_ELECTRIC.png",
             "color": "Золотистый",
@@ -6680,7 +6815,6 @@
             "show_article": "ATN000591",
             "vendor": "SEL_AtlasDesign",
             "price": 756,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000591_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000591_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -6698,7 +6832,6 @@
             "show_article": "ATN000592",
             "vendor": "SEL_AtlasDesign",
             "price": 830,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000592_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000592_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -6757,7 +6890,6 @@
             "show_article": "ATN000609",
             "vendor": "SEL_AtlasDesign",
             "price": 132,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000609_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000609_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -6776,7 +6908,6 @@
             "show_article": "ATN000611",
             "vendor": "SEL_AtlasDesign",
             "price": 254,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000611_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000611_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -6820,7 +6951,6 @@
             "show_article": "ATN000615",
             "vendor": "SEL_AtlasDesign",
             "price": 415,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000615_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000615_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -6887,7 +7017,6 @@
             "show_article": "ATN000624",
             "vendor": "SEL_AtlasDesign",
             "price": 435,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000624_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000624_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -6908,7 +7037,6 @@
             "show_article": "ATN000630",
             "vendor": "SEL_AtlasDesign",
             "price": 6780,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000630_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000630_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -6977,7 +7105,6 @@
             "show_article": "ATN000633",
             "vendor": "SEL_AtlasDesign",
             "price": 4440,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000633_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000633_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -7008,7 +7135,6 @@
             "show_article": "ATN000639",
             "vendor": "SEL_AtlasDesign",
             "price": 5766,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000639_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000639_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -7046,7 +7172,6 @@
             "show_article": "ATN000643",
             "vendor": "SEL_AtlasDesign",
             "price": 272,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000643_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000643_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -7159,7 +7284,6 @@
             "show_article": "ATN000653",
             "vendor": "SEL_AtlasDesign",
             "price": 558,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000653_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000653_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -7293,7 +7417,6 @@
             "show_article": "ATN000681",
             "vendor": "SEL_AtlasDesign",
             "price": 540,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000681_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000681_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -7357,7 +7480,6 @@
             "show_article": "ATN000687",
             "vendor": "SEL_AtlasDesign",
             "price": 1902,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000687_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000687_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -7370,7 +7492,6 @@
             "show_article": "ATN000689",
             "vendor": "SEL_AtlasDesign",
             "price": 1332,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000689_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000689_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -7387,7 +7508,6 @@
             "show_article": "ATN000691",
             "vendor": "SEL_AtlasDesign",
             "price": 756,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000691_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000691_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -7425,7 +7545,6 @@
             "show_article": "ATN000693",
             "vendor": "SEL_AtlasDesign",
             "price": 327,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000693_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000693_SYSTEME_ELECTRIC.png",
             "color": "Коричневый",
@@ -7464,7 +7583,6 @@
             "show_article": "ATN000709",
             "vendor": "SEL_AtlasDesign",
             "price": 267,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000709_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000709_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -7483,7 +7601,6 @@
             "show_article": "ATN000711",
             "vendor": "SEL_AtlasDesign",
             "price": 336,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000711_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000711_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -7550,7 +7667,6 @@
             "show_article": "ATN000717",
             "vendor": "SEL_AtlasDesign",
             "price": 714,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000717_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000717_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -7571,7 +7687,6 @@
             "show_article": "ATN000719",
             "vendor": "SEL_AtlasDesign",
             "price": 973,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000719_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000719_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -7592,7 +7707,6 @@
             "show_article": "ATN000730",
             "vendor": "SEL_AtlasDesign",
             "price": 6780,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000730_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000730_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -7654,7 +7768,6 @@
             "show_article": "ATN000735",
             "vendor": "SEL_AtlasDesign",
             "price": 8400,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000735_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000735_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -7668,7 +7781,6 @@
             "show_article": "ATN000739",
             "vendor": "SEL_AtlasDesign",
             "price": 5766,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000739_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000739_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -7729,7 +7841,6 @@
             "show_article": "ATN000745",
             "vendor": "SEL_AtlasDesign",
             "price": 435,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000745_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000745_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -7999,7 +8110,6 @@
             "show_article": "ATN000785",
             "vendor": "SEL_AtlasDesign",
             "price": 1482,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000785_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000785_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -8034,7 +8144,6 @@
             "show_article": "ATN000789",
             "vendor": "SEL_AtlasDesign",
             "price": 1332,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000789_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000789_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -8051,7 +8160,6 @@
             "show_article": "ATN000791",
             "vendor": "SEL_AtlasDesign",
             "price": 756,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000791_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000791_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -8109,7 +8217,6 @@
             "show_article": "ATN000799",
             "vendor": "SEL_AtlasDesign",
             "price": 387,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000799_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000799_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -8128,7 +8235,6 @@
             "show_article": "ATN000809",
             "vendor": "SEL_AtlasDesign",
             "price": 267,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000809_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000809_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -8147,7 +8253,6 @@
             "show_article": "ATN000811",
             "vendor": "SEL_AtlasDesign",
             "price": 336,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000811_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000811_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8168,7 +8273,6 @@
             "show_article": "ATN000813",
             "vendor": "SEL_AtlasDesign",
             "price": 575,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000813_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000813_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8258,7 +8362,6 @@
             "show_article": "ATN000830",
             "vendor": "SEL_AtlasDesign",
             "price": 6780,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000830_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000830_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8280,7 +8383,6 @@
             "show_article": "ATN000831",
             "vendor": "SEL_AtlasDesign",
             "price": 671,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000831_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000831_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8301,7 +8403,6 @@
             "show_article": "ATN000833",
             "vendor": "SEL_AtlasDesign",
             "price": 4440,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000833_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000833_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8316,7 +8417,6 @@
             "show_article": "ATN000834",
             "vendor": "SEL_AtlasDesign",
             "price": 4560,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000834_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000834_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8336,7 +8436,6 @@
             "show_article": "ATN000835",
             "vendor": "SEL_AtlasDesign",
             "price": 8400,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000835_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000835_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8350,7 +8449,6 @@
             "show_article": "ATN000839",
             "vendor": "SEL_AtlasDesign",
             "price": 5766,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000839_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000839_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8365,7 +8463,6 @@
             "show_article": "ATN000841",
             "vendor": "SEL_AtlasDesign",
             "price": 315,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000841_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000841_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8386,7 +8483,6 @@
             "show_article": "ATN000843",
             "vendor": "SEL_AtlasDesign",
             "price": 361,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000843_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000843_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8430,7 +8526,6 @@
             "show_article": "ATN000846",
             "vendor": "SEL_AtlasDesign",
             "price": 622,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000846_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000846_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8451,7 +8546,6 @@
             "show_article": "ATN000849",
             "vendor": "SEL_AtlasDesign",
             "price": 357,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000849_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000849_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8472,7 +8566,6 @@
             "show_article": "ATN000851",
             "vendor": "SEL_AtlasDesign",
             "price": 435,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000851_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000851_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8516,7 +8609,6 @@
             "show_article": "ATN000861",
             "vendor": "SEL_AtlasDesign",
             "price": 528,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000861_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000861_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8537,7 +8629,6 @@
             "show_article": "ATN000863",
             "vendor": "SEL_AtlasDesign",
             "price": 790,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000863_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000863_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8558,7 +8649,6 @@
             "show_article": "ATN000865",
             "vendor": "SEL_AtlasDesign",
             "price": 958,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000865_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000865_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8579,7 +8669,6 @@
             "show_article": "ATN000867",
             "vendor": "SEL_AtlasDesign",
             "price": 1656,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000867_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000867_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8621,7 +8710,6 @@
             "show_article": "ATN000881",
             "vendor": "SEL_AtlasDesign",
             "price": 540,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000881_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000881_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8641,7 +8729,6 @@
             "show_article": "ATN000883",
             "vendor": "SEL_AtlasDesign",
             "price": 1017,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000883_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000883_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8661,7 +8748,6 @@
             "show_article": "ATN000885",
             "vendor": "SEL_AtlasDesign",
             "price": 1482,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000885_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000885_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8681,7 +8767,6 @@
             "show_article": "ATN000887",
             "vendor": "SEL_AtlasDesign",
             "price": 1902,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000887_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000887_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8753,7 +8838,6 @@
             "show_article": "ATN000893",
             "vendor": "SEL_AtlasDesign",
             "price": 419,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000893_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000893_SYSTEME_ELECTRIC.png",
             "color": "Зелёный",
@@ -8813,7 +8897,6 @@
             "show_article": "ATN000911",
             "vendor": "SEL_AtlasDesign",
             "price": 504,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000911_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000911_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -8834,7 +8917,6 @@
             "show_article": "ATN000913",
             "vendor": "SEL_AtlasDesign",
             "price": 862,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000913_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000913_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -8855,7 +8937,6 @@
             "show_article": "ATN000915",
             "vendor": "SEL_AtlasDesign",
             "price": 826,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000915_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000915_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -8876,7 +8957,6 @@
             "show_article": "ATN000917",
             "vendor": "SEL_AtlasDesign",
             "price": 1060,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000917_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000917_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -8897,7 +8977,6 @@
             "show_article": "ATN000919",
             "vendor": "SEL_AtlasDesign",
             "price": 1470,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000919_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000919_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -8918,7 +8997,6 @@
             "show_article": "ATN000930",
             "vendor": "SEL_AtlasDesign",
             "price": 6780,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000930_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000930_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -8940,7 +9018,6 @@
             "show_article": "ATN000931",
             "vendor": "SEL_AtlasDesign",
             "price": 1005,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000931_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000931_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -8978,7 +9055,6 @@
             "show_article": "ATN000935",
             "vendor": "SEL_AtlasDesign",
             "price": 8400,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000935_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000935_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -8992,7 +9068,6 @@
             "show_article": "ATN000936",
             "vendor": "SEL_AtlasDesign",
             "price": 7320,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000936_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000936_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9012,7 +9087,6 @@
             "show_article": "ATN000939",
             "vendor": "SEL_AtlasDesign",
             "price": 5766,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000939_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000939_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9027,7 +9101,6 @@
             "show_article": "ATN000941",
             "vendor": "SEL_AtlasDesign",
             "price": 469,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000941_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000941_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -9071,7 +9144,6 @@
             "show_article": "ATN000945",
             "vendor": "SEL_AtlasDesign",
             "price": 648,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000945_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000945_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -9092,7 +9164,6 @@
             "show_article": "ATN000946",
             "vendor": "SEL_AtlasDesign",
             "price": 933,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000946_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000946_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -9136,7 +9207,6 @@
             "show_article": "ATN000951",
             "vendor": "SEL_AtlasDesign",
             "price": 648,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000951_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000951_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9157,7 +9227,6 @@
             "show_article": "ATN000953",
             "vendor": "SEL_AtlasDesign",
             "price": 1113,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000953_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000953_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9178,7 +9247,6 @@
             "show_article": "ATN000961",
             "vendor": "SEL_AtlasDesign",
             "price": 790,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000961_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000961_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9199,7 +9267,6 @@
             "show_article": "ATN000963",
             "vendor": "SEL_AtlasDesign",
             "price": 1184,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000963_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000963_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9243,7 +9310,6 @@
             "show_article": "ATN000967",
             "vendor": "SEL_AtlasDesign",
             "price": 1656,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000967_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000967_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9285,7 +9351,6 @@
             "show_article": "ATN000981",
             "vendor": "SEL_AtlasDesign",
             "price": 540,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000981_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000981_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9305,7 +9370,6 @@
             "show_article": "ATN000983",
             "vendor": "SEL_AtlasDesign",
             "price": 1017,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000983_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000983_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9347,7 +9411,6 @@
             "show_article": "ATN000987",
             "vendor": "SEL_AtlasDesign",
             "price": 1902,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000987_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000987_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9379,7 +9442,6 @@
             "show_article": "ATN000991",
             "vendor": "SEL_AtlasDesign",
             "price": 756,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000991_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000991_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9397,7 +9459,6 @@
             "show_article": "ATN000992",
             "vendor": "SEL_AtlasDesign",
             "price": 830,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000992_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000992_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9415,7 +9476,6 @@
             "show_article": "ATN000993",
             "vendor": "SEL_AtlasDesign",
             "price": 628,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000993_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000993_SYSTEME_ELECTRIC.png",
             "color": "Серебристый",
@@ -9471,7 +9531,6 @@
             "show_article": "ATN001009",
             "vendor": "SEL_AtlasDesign",
             "price": 267,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001009_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001009_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -9559,7 +9618,6 @@
             "show_article": "ATN001017",
             "vendor": "SEL_AtlasDesign",
             "price": 714,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001017_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001017_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -9580,7 +9638,6 @@
             "show_article": "ATN001026",
             "vendor": "SEL_AtlasDesign",
             "price": 671,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001026_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001026_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -9625,7 +9682,6 @@
             "show_article": "ATN001031",
             "vendor": "SEL_AtlasDesign",
             "price": 671,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001031_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001031_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -9670,7 +9726,6 @@
             "show_article": "ATN001033",
             "vendor": "SEL_AtlasDesign",
             "price": 4440,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001033_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001033_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -9685,7 +9740,6 @@
             "show_article": "ATN001035",
             "vendor": "SEL_AtlasDesign",
             "price": 8400,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001035_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001035_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -9699,7 +9753,6 @@
             "show_article": "ATN001039",
             "vendor": "SEL_AtlasDesign",
             "price": 5766,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001039_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001039_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -9737,7 +9790,6 @@
             "show_article": "ATN001043",
             "vendor": "SEL_AtlasDesign",
             "price": 361,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001043_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001043_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -9850,7 +9902,6 @@
             "show_article": "ATN001053",
             "vendor": "SEL_AtlasDesign",
             "price": 744,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001053_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001053_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -9894,7 +9945,6 @@
             "show_article": "ATN001063",
             "vendor": "SEL_AtlasDesign",
             "price": 790,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001063_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001063_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -9982,7 +10032,6 @@
             "show_article": "ATN001080",
             "vendor": "SEL_AtlasDesign",
             "price": 1560,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001080_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001080_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -10060,7 +10109,6 @@
             "show_article": "ATN001085",
             "vendor": "SEL_AtlasDesign",
             "price": 1482,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001085_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001085_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -10080,7 +10128,6 @@
             "show_article": "ATN001087",
             "vendor": "SEL_AtlasDesign",
             "price": 1902,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001087_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001087_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -10096,7 +10143,6 @@
             "show_article": "ATN001089",
             "vendor": "SEL_AtlasDesign",
             "price": 1332,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001089_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001089_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -10173,7 +10219,6 @@
             "show_article": "ATN001099",
             "vendor": "SEL_AtlasDesign",
             "price": 387,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001099_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001099_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -10209,7 +10254,6 @@
             "show_article": "ATN001111",
             "vendor": "SEL_AtlasDesign",
             "price": 254,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001111_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001111_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10226,7 +10270,6 @@
             "show_article": "ATN001112",
             "vendor": "SEL_AtlasDesign",
             "price": 327,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001112_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001112_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10262,7 +10305,6 @@
             "show_article": "ATN001117",
             "vendor": "SEL_AtlasDesign",
             "price": 532,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001117_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001117_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10329,7 +10371,6 @@
             "show_article": "ATN001122",
             "vendor": "SEL_AtlasDesign",
             "price": 435,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001122_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001122_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10367,7 +10408,6 @@
             "show_article": "ATN001124",
             "vendor": "SEL_AtlasDesign",
             "price": 435,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001124_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001124_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10429,7 +10469,6 @@
             "show_article": "ATN001128",
             "vendor": "SEL_AtlasDesign",
             "price": 898,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001128_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001128_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10450,7 +10489,6 @@
             "show_article": "ATN001129",
             "vendor": "SEL_AtlasDesign",
             "price": 5958,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001129_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001129_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10553,7 +10591,6 @@
             "show_article": "ATN001135",
             "vendor": "SEL_AtlasDesign",
             "price": 8400,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001135_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001135_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10586,7 +10623,6 @@
             "show_article": "ATN001140",
             "vendor": "SEL_AtlasDesign",
             "price": 289,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001140_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001140_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10626,7 +10662,6 @@
             "show_article": "ATN001143",
             "vendor": "SEL_AtlasDesign",
             "price": 272,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001143_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001143_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10693,7 +10728,6 @@
             "show_article": "ATN001146",
             "vendor": "SEL_AtlasDesign",
             "price": 451,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001146_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001146_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10737,7 +10771,6 @@
             "show_article": "ATN001151",
             "vendor": "SEL_AtlasDesign",
             "price": 327,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001151_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001151_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10792,7 +10825,6 @@
             "show_article": "ATN001161",
             "vendor": "SEL_AtlasDesign",
             "price": 398,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001161_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001161_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -10938,7 +10970,6 @@
             "show_article": "ATN001187",
             "vendor": "SEL_AtlasDesign",
             "price": 1902,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001187_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001187_SYSTEME_ELECTRIC.png",
             "color": "Синий",
@@ -11038,7 +11069,6 @@
             "show_article": "ATN001209",
             "vendor": "SEL_AtlasDesign",
             "price": 132,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001209_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001209_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11072,7 +11102,6 @@
             "show_article": "ATN001212",
             "vendor": "SEL_AtlasDesign",
             "price": 327,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001212_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001212_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11154,7 +11183,6 @@
             "show_article": "ATN001220",
             "vendor": "SEL_AtlasDesign",
             "price": 361,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001220_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001220_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11198,7 +11226,6 @@
             "show_article": "ATN001223",
             "vendor": "SEL_AtlasDesign",
             "price": 5280,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001223_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001223_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11213,7 +11240,6 @@
             "show_article": "ATN001224",
             "vendor": "SEL_AtlasDesign",
             "price": 435,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001224_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001224_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11257,7 +11283,6 @@
             "show_article": "ATN001227",
             "vendor": "SEL_AtlasDesign",
             "price": 5958,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001227_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001227_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11360,7 +11385,6 @@
             "show_article": "ATN001232",
             "vendor": "SEL_AtlasDesign",
             "price": 8100,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001232_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001232_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11401,7 +11425,6 @@
             "show_article": "ATN001235",
             "vendor": "SEL_AtlasDesign",
             "price": 8400,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001235_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001235_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11434,7 +11457,6 @@
             "show_article": "ATN001240",
             "vendor": "SEL_AtlasDesign",
             "price": 289,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001240_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001240_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11455,7 +11477,6 @@
             "show_article": "ATN001241",
             "vendor": "SEL_AtlasDesign",
             "price": 237,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001241_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001241_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11476,7 +11497,6 @@
             "show_article": "ATN001243",
             "vendor": "SEL_AtlasDesign",
             "price": 272,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001243_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001243_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11497,7 +11517,6 @@
             "show_article": "ATN001244",
             "vendor": "SEL_AtlasDesign",
             "price": 381,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001244_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001244_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11564,7 +11583,6 @@
             "show_article": "ATN001249",
             "vendor": "SEL_AtlasDesign",
             "price": 272,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001249_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001249_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11585,7 +11603,6 @@
             "show_article": "ATN001251",
             "vendor": "SEL_AtlasDesign",
             "price": 327,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001251_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001251_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11602,7 +11619,6 @@
             "show_article": "ATN001252",
             "vendor": "SEL_AtlasDesign",
             "price": 381,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001252_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001252_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11638,7 +11654,6 @@
             "show_article": "ATN001261",
             "vendor": "SEL_AtlasDesign",
             "price": 398,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001261_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001261_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11674,7 +11689,6 @@
             "show_article": "ATN001265",
             "vendor": "SEL_AtlasDesign",
             "price": 719,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001265_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001265_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11728,7 +11742,6 @@
             "show_article": "ATN001283",
             "vendor": "SEL_AtlasDesign",
             "price": 1016,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001283_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001283_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11744,7 +11757,6 @@
             "show_article": "ATN001285",
             "vendor": "SEL_AtlasDesign",
             "price": 1482,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001285_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001285_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11778,7 +11790,6 @@
             "show_article": "ATN001287",
             "vendor": "SEL_AtlasDesign",
             "price": 1902,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001287_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001287_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11791,7 +11802,6 @@
             "show_article": "ATN001289",
             "vendor": "SEL_AtlasDesign",
             "price": 1326,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001289_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001289_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11808,7 +11818,6 @@
             "show_article": "ATN001291",
             "vendor": "SEL_AtlasDesign",
             "price": 755,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001291_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001291_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11823,7 +11832,6 @@
             "show_article": "ATN001292",
             "vendor": "SEL_AtlasDesign",
             "price": 830,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001292_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001292_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11838,7 +11846,6 @@
             "show_article": "ATN001293",
             "vendor": "SEL_AtlasDesign",
             "price": 327,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001293_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001293_SYSTEME_ELECTRIC.png",
             "color": "Бежевый",
@@ -11874,7 +11881,6 @@
             "show_article": "ATN440146",
             "vendor": "SEL_AtlasDesign",
             "price": 298,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN440146_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440146_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -11895,7 +11901,6 @@
             "show_article": "ATN440151",
             "vendor": "SEL_AtlasDesign",
             "price": 402,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN440151_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440151_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -11916,7 +11921,6 @@
             "show_article": "ATN440346",
             "vendor": "SEL_AtlasDesign",
             "price": 451,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN440346_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN440346_SYSTEME_ELECTRIC.png",
             "color": "Серый",
@@ -11937,7 +11941,6 @@
             "show_article": "ATN441046",
             "vendor": "SEL_AtlasDesign",
             "price": 556,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN441046_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN441046_SYSTEME_ELECTRIC.png",
             "color": "Чёрный",
@@ -11981,7 +11984,6 @@
             "show_article": "ATN001383",
             "vendor": "SEL_AtlasDesign",
             "price": 1051,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001383_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001383_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -12000,7 +12002,6 @@
             "show_article": "ATN001343",
             "vendor": "SEL_AtlasDesign",
             "price": 280,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001343_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001343_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -12021,7 +12022,6 @@
             "show_article": "ATN001351",
             "vendor": "SEL_AtlasDesign",
             "price": 337,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001351_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001351_SYSTEME_ELECTRIC.png",
             "color": "Белый",
@@ -12042,7 +12042,6 @@
             "show_article": "ATN001311",
             "vendor": "SEL_AtlasDesign",
             "price": 254,
-            "active": true,
             "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN001311_SYSTEME_ELECTRIC.png",
             "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN001311_SYSTEME_ELECTRIC.png",
             "color": "Белый",

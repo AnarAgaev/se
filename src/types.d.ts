@@ -39,6 +39,21 @@ export type TBackgroundsStore = {
 
 
 
+// #region Sketch
+export type TSketchStore = {
+    border: TBorder | undefined
+    device: TDevice[]
+    project: string | undefined
+    placement: string | undefined
+    count: number
+    posts: boolean[]
+    view: 'horizontal' | 'vertical'
+    scale: number
+}
+// #endregion
+
+
+
 // #region Borders
 export type TBordersStore = {
     borders: TBorderList
