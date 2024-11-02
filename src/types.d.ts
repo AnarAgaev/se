@@ -49,6 +49,7 @@ export type TSketchStore = {
     posts: boolean[]
     view: 'horizontal' | 'vertical'
     scale: number
+    resize: (direction: -1 | 1) => void
 }
 // #endregion
 

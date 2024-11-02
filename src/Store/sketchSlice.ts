@@ -1,7 +1,7 @@
 import { StateCreator  } from 'zustand'
 import { TSketchStore } from '../types'
 
-const sketchSlice: StateCreator<TSketchStore> = () => ({
+const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
     border: undefined,
     device: [],
     project: undefined,
@@ -9,7 +9,14 @@ const sketchSlice: StateCreator<TSketchStore> = () => ({
     count: 1,
     posts: [],
     view: 'horizontal',
-    scale: 0
+    scale: 1,
+
+    resize: (direction) => {
+        const scale = get().scale
+        set({
+            scale: +(scale + 0.1 * direction).toFixed(1)
+        })
+    }
 })
 
 export default sketchSlice

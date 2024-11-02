@@ -19,6 +19,7 @@
     position: absolute
     top: 20px
     left: 20px
+    z-index: 10
 
 
 .posts
@@ -112,6 +113,7 @@
     right: 20px
     width: 45px
     height: 45px
+    z-index: 10
 
     button
         display: flex
@@ -148,6 +150,7 @@
     background: var(--color-controllers-back)
     margin: 0
     padding: 10px
+    z-index: 10
 
     li
         display: flex
@@ -160,14 +163,57 @@
         background: transparent no-repeat center
 
 
+.disabled
+    opacity: 0.5
+    cursor: no-drop !important
+
+
 .cart
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNSAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEwLjI4MjMgMTQuNzA5NUwxMi40OTI3IDEyLjUwMDFNMTIuNDkyNyAxMi41MDAxTDE0LjcwMjEgMTAuMjkwN00xMi40OTI3IDEyLjUwMDFMMTAuMjgxMyAxMC4yOTA3TTEyLjQ5MjcgMTIuNTAwMUwxNC43MDIxIDE0LjcwOTVNNS4yMDgzNCAxOC43NTAxTDMuMjYwNDMgNS4xMTc4MUMzLjIyMzM2IDQuODU4MzEgMy4yODU5IDQuNTk0NCAzLjQzNTQ3IDQuMzc5MTNDMy41ODUwNCA0LjE2Mzg2IDMuODEwNTUgNC4wMTMxOCA0LjA2NjY4IDMuOTU3MzlMMTIuMDQ3OSAyLjE4MzQzQzEyLjM0NTcgMi4xMTcyNCAxMi42NTQzIDIuMTE3MjQgMTIuOTUyMSAyLjE4MzQzTDIwLjkzMzMgMy45NTg0M0MyMS40NjQ2IDQuMDc2MTQgMjEuODE2NyA0LjU3OTI2IDIxLjczOTYgNS4xMTg4NUwxOS43OTE3IDE4Ljc1MDFDMTkuNzE4OCAxOS4yNjU3IDE5LjI3MDggMjIuMzk1OSAxMi41IDIyLjM5NTlDNS43MjkxOCAyMi4zOTU5IDUuMjgxMjYgMTkuMjY1NyA1LjIwODM0IDE4Ljc1MDFaIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=") !important
+
 
 .minus
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNSAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE4LjExMTEgMTkuMTExMUwyMyAyNE03LjExMTExIDExLjc3NzhIMTQuNDQ0NE0xIDExLjc3NzhDMSAxNC4zNzEgMi4wMzAxNiAxNi44NTggMy44NjM4NCAxOC42OTE3QzUuNjk3NTMgMjAuNTI1NCA4LjE4NDU1IDIxLjU1NTYgMTAuNzc3OCAyMS41NTU2QzEzLjM3MSAyMS41NTU2IDE1Ljg1OCAyMC41MjU0IDE3LjY5MTcgMTguNjkxN0MxOS41MjU0IDE2Ljg1OCAyMC41NTU2IDE0LjM3MSAyMC41NTU2IDExLjc3NzhDMjAuNTU1NiA5LjE4NDU1IDE5LjUyNTQgNi42OTc1MyAxNy42OTE3IDQuODYzODRDMTUuODU4IDMuMDMwMTYgMTMuMzcxIDIgMTAuNzc3OCAyQzguMTg0NTUgMiA1LjY5NzUzIDMuMDMwMTYgMy44NjM4NCA0Ljg2Mzg0QzIuMDMwMTYgNi42OTc1MyAxIDkuMTg0NTUgMSAxMS43Nzc4WiIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K") !important
 
+
 .plus
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNSAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuMTExMTEgMTEuNzc3OEgxMC43Nzc4TTEwLjc3NzggMTEuNzc3OEgxNC40NDQ0TTEwLjc3NzggMTEuNzc3OFY4LjExMTExTTEwLjc3NzggMTEuNzc3OFYxNS40NDQ0TTE4LjExMTEgMTkuMTExMUwyMyAyNE0xIDExLjc3NzhDMSAxNC4zNzEgMi4wMzAxNiAxNi44NTggMy44NjM4NCAxOC42OTE3QzUuNjk3NTMgMjAuNTI1NCA4LjE4NDU1IDIxLjU1NTYgMTAuNzc3OCAyMS41NTU2QzEzLjM3MSAyMS41NTU2IDE1Ljg1OCAyMC41MjU0IDE3LjY5MTcgMTguNjkxN0MxOS41MjU0IDE2Ljg1OCAyMC41NTU2IDE0LjM3MSAyMC41NTU2IDExLjc3NzhDMjAuNTU1NiA5LjE4NDU1IDE5LjUyNTQgNi42OTc1MyAxNy42OTE3IDQuODYzODRDMTUuODU4IDMuMDMwMTYgMTMuMzcxIDIgMTAuNzc3OCAyQzguMTg0NTUgMiA1LjY5NzUzIDMuMDMwMTYgMy44NjM4NCA0Ljg2Mzg0QzIuMDMwMTYgNi42OTc1MyAxIDkuMTg0NTUgMSAxMS43Nzc4WiIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K") !important
+
+
+.set
+    display: flex
+    align-items: center
+    justify-content: center
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    overflow: auto
+    position: relative
+
+
+
+.wrap
+    display: block
+    position: relative
+    width: 100%
+    height: 100%
+    flex: 1
+    transform-origin: 0 40%
+    overflow: hidden
+    z-index: 3
+
+
+.border
+    display: block
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 280px
+    height: 280px
+    border: 2px dashed var(--color-set-border-start)
+    animation: changeBorderColor 3s infinite
 
 
 .device
@@ -175,20 +221,17 @@
     position: absolute
     top: 50%
     left: 50%
-    transform: translate(-50%, -50%) rotate(0deg)
-    width: 145px
-    height: 145px
-    border-radius: 5px
-    border: 1px dashed white
+    transform: translate(-50%, -50%)
+    width: 200px
+    height: 200px
+    border: 2px dashed var(--color-set-border-start)
+    animation: changeBorderColor 3s infinite
 
-    &::before
-        content: ''
-        display: block
-        position: absolute
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%) rotate(0deg)
-        width: 100px
-        height: 100px
-        border-radius: 5px
-        border: 1px dashed white
+
+@keyframes changeBorderColor
+    0%
+        border-color: var(--color-set-border-start)
+    50%
+        border-color: var(--color-set-border-finish)
+    100%
+        border-color: var(--color-set-border-start)

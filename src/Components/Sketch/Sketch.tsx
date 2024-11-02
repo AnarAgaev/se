@@ -1,10 +1,35 @@
 import { SketchBackground } from '../../Components'
+import useStore from '../../Store'
 import style from './Sketch.module.sass'
 
 const { sketch, construction, posts, directions, horizontal, vertical, cloud,
-    controllers, cart, minus, plus, device } = style
+    controllers, cart, minus, plus, disabled, set, wrap, border, device } = style
 
 const Sketch = () => {
+    const [
+        scale,
+        resize
+    ] = useStore(state => [
+        state.scale,
+        state.resize
+    ])
+
+
+    const transformStyle = {
+        transform: `scale(${scale})`,
+        transformOrigin: `${scale > 1 ? '0 0' : 'center'}`
+    }
+
+    const onInc = () => { // +
+        if (scale >= 1.5) return
+        resize(1)
+    }
+
+    const onDec = () => { // -
+        if (scale <= 0.5) return
+        resize(-1)
+    }
+
     return (
         <div className={sketch}>
             <SketchBackground />
@@ -27,10 +52,15 @@ const Sketch = () => {
             </div>
             <ul className={controllers}>
                 <li className={cart}></li>
-                <li className={minus}></li>
-                <li className={plus}></li>
+                <li className={scale <= 0.5 ? `${minus} ${disabled}` : minus} onClick={onDec}></li>
+                <li className={scale >= 1.5 ? `${plus} ${disabled}` : plus} onClick={onInc}></li>
             </ul>
-            <div className={device}></div>
+            <div className={set}>
+                <div className={wrap} style={transformStyle}>
+                    <div className={device}></div>
+                    <div className={border}></div>
+                </div>
+            </div>
         </div>
     )
 }
