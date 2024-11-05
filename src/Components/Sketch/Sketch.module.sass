@@ -7,6 +7,7 @@
     width: 100%
     height: auto
     aspect-ratio: 1
+    user-select: none
 
     @media (min-width: 768px)
         aspect-ratio: 690 / 320
@@ -26,6 +27,7 @@
     display: flex
     align-items: center
     gap: 10px
+    overflow: hidden
     box-shadow: inset 0 0 0 1px var(--color-border-prime)
     background: var(--color-controllers-back)
     margin: 0
@@ -35,18 +37,44 @@
         display: flex
         align-items: center
         justify-content: center
-        width: 25px
-        height: 25px
-        border-radius: 50%
-        border: 1px solid var(--color-prime)
+        position: relative
         cursor: pointer
         transition: var(--base-transition)
 
-        text-align: center
-        color: var(--color-prime)
-        font-size: 16px
-        font-weight: 700
-        line-height: 25px
+        span
+            display: flex
+            align-items: center
+            justify-content: center
+            width: 25px
+            height: 25px
+            border-radius: 50%
+            border: 1px solid var(--color-prime)
+            position: relative
+            z-index: 1
+            text-align: center
+            color: var(--color-prime)
+            font-size: 16px
+            font-weight: 700
+            line-height: 25px
+
+
+.postActive
+    span
+        border-color: var(--color-button-sec) !important
+        color: var(--color-button-sec) !important
+
+    &::before
+        content: ''
+        display: block
+        position: absolute
+        z-index: 0
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        width: calc( 100% + 10px  )
+        height: 200%
+        background: var(--color-opacity-back)
+
 
 
 .directions
@@ -166,6 +194,10 @@
 .disabled
     opacity: 0.5
     cursor: no-drop !important
+
+    & *
+        opacity: 0.5
+        cursor: no-drop !important
 
 
 .cart

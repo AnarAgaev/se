@@ -92,6 +92,31 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
 
         return false
     },
+
+    getCountOfPosts: (border) => {
+        let defaultCount = 1
+        const borders = [...get().borders]
+
+        borders.forEach(el => {
+            const isSameVendor = border.vendor.toLocaleLowerCase() === el.vendor.toLocaleLowerCase()
+            const isSameCollection = border.collection.toLocaleLowerCase() === el.collection.toLocaleLowerCase()
+            const isSameColor = border.color.toLocaleLowerCase() === el.color.toLocaleLowerCase()
+
+            if (isSameVendor && isSameCollection && isSameColor) {
+                const postsCount = el.number_of_posts
+
+                if (!postsCount) return
+
+                const currentCount = Math.max(...postsCount.map(Number))
+
+                defaultCount = currentCount > defaultCount
+                    ? currentCount
+                    : defaultCount
+            }
+        })
+
+        return defaultCount
+    }
     // #endregion
 })
 

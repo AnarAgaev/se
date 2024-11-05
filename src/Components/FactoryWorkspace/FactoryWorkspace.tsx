@@ -1,10 +1,11 @@
 import useStore from '../../Store'
 import { ItemsList  } from '../../Components/'
+import { TItemsType } from '../../types'
 import style from './FactoryWorkspace.module.sass'
 
 const { body, actions, list, title, selectors, empty } = style
 
-const FactoryWorkspace = (props: { children: React.ReactNode }) => {
+const FactoryWorkspace = (props: { children: React.ReactNode, type: TItemsType }) => {
     const filteredItems = useStore(state => state.getFilteredItems())
 
     return (
@@ -19,7 +20,7 @@ const FactoryWorkspace = (props: { children: React.ReactNode }) => {
                 <h2 className={title}>Варианты:</h2>
                 {
                     filteredItems.length
-                        ? <ItemsList itemList={filteredItems} />
+                        ? <ItemsList itemList={filteredItems} type={props.type} />
                         : <span className={empty}>
                             К сожалению, нет элементов согласно выбранным параметрам!
                         </span>

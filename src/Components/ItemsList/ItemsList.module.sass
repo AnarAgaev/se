@@ -29,13 +29,44 @@
     display: flex
     align-items: center
     gap: 10px
+    position: relative
     background: transparent
     transition: var(--base-transition)
     cursor: pointer
 
+    --data-type: attr(data-type)
+
+    &::before
+        content: ''
+        display: block
+        position: absolute
+        z-index: 1
+        inset: 0
+        opacity: 0
+        transition: var(--base-transition)
+        background: var(--color-opacity-hover)
+
+    &::after
+        content: var(--data-type)
+        display: block
+        position: absolute
+        bottom: 0
+        right: 0
+        width: auto
+        height: auto
+        background: var(--color-back-prime)
+        padding: 6px 9px
+        color: var(--color-back-init)
+        font-size: 0.7rem
+        opacity: 0
+        transition: var(--base-transition)
+
     @media (hover: hover) and (pointer: fine)
         &:hover
-            background: var(--color-element-hover)
+            &::before
+                opacity: 1
+            &::after
+                opacity: 1
 
 
 .pic

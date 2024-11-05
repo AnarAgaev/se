@@ -298,7 +298,7 @@ const DevicesWorkspace = () => {
     )
 
     return (
-        <FactoryWorkspace>
+        <FactoryWorkspace type='devices'>
             <Select title="Бренд" selectedValue={selectedBrand}>
                 {brandsOptions}
             </Select>

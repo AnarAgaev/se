@@ -266,7 +266,7 @@ const BordersWorkspace: FC = () => {
     )
 
     return (
-        <FactoryWorkspace>
+        <FactoryWorkspace type="borders">
             <Select title="Бренд" selectedValue={selectedBrand}>
                 {brandsOptions}
             </Select>

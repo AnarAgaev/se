@@ -14,6 +14,7 @@ import {
 } from "./zod"
 
 export type TCalcTabs = 'borders' | 'devices' | 'backgrounds'
+export type TItemsType = Exclude<TCalcTabs, 'backgrounds'>
 export type TViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
 
 export type TFunctionOption = { name: string, active?: boolean }
@@ -42,15 +43,21 @@ export type TBackgroundsStore = {
 // #region Sketch
 export type TSketchStore = {
     border: TBorder | undefined
-    device: TDevice[]
+    device: {
+        [1 | 2 | 3 | 4 | 5]: TDevice | undefined
+    }
     project: string | undefined
     placement: string | undefined
-    count: number
-    posts: boolean[]
+    postsCount: number
+    selectedPost: boolean[]
     view: 'horizontal' | 'vertical'
     scale: number
-    resize: (direction: -1 | 1) => void
+
+    resizeSketch: TResizeSketch
+    setFirstBorder: TSetFirstBorder
 }
+export type TResizeSketch = (direction: -1 | 1) => void
+export type TSetFirstBorder = (border: TBorder, postsCount: number) => void
 // #endregion
 
 
@@ -71,7 +78,9 @@ export type TBordersStore = {
     setPluralBordersFilter: TSetPluralFilter
     removePluralBordersFilter: TRemovePluralFilter
     checkPluralBordersFilter: TCheckPluralFilter
+    getCountOfPosts: TGetCountOfPosts
 }
+export type TGetCountOfPosts = (border: TBorder) => number
 // #endregion
 
 

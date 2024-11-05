@@ -951,6 +951,25 @@
             ]
         },
         {
+            "id": 129878778787,
+            "name": "Рамка на 2 поста Legrand Etika ATN000402",
+            "article": "ATN000401_SYSTEME_ELECTRIC",
+            "show_article": "ATN000402",
+            "vendor": "Legrand",
+            "price": 87,
+            "stock": 132,
+            "available": true,
+            "active": true,
+            "image": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/ATN000401_SYSTEME_ELECTRIC.png",
+            "preview": "https://aws.massive.ru/se-configurator/vendors/SEL_ATLASDESIGN/preview/ATN000401_SYSTEME_ELECTRIC.png",
+            "color": "Белый",
+            "collection": "Etika",
+            "number_of_posts": ["1", "2"],
+            "armature_material": [
+                "Пластик"
+            ]
+        },
+        {
             "id": 130,
             "name": "Рамка на 2 поста Systeme Electric ATLAS DESIGN ATN000402",
             "article": "ATN000402_SYSTEME_ELECTRIC",
