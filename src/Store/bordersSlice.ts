@@ -92,17 +92,52 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
 
         return false
     },
+    // #endregion
+
+    // #region Actions for Sketch
+
+    // "f" is first border for matching and "s" is second border for matching
+    checkSiblingBorder: (f, s) => {
+        const getNoramalVars = (...args: (string | string[] | undefined)[]) => {
+            return args.map(el => {
+                if (Array.isArray(el)) return el.join('-')
+
+                if (typeof el === 'string') {
+                    return el.toLocaleLowerCase()
+                }
+            })
+        }
+
+        const [fVendor, fCollection, fColor, fMaterial] = getNoramalVars (
+            f.vendor,
+            f.collection,
+            f.color,
+            f.armature_material
+        )
+
+        const [sVendor, sCollection, sColor, sMaterial] = getNoramalVars (
+            s.vendor,
+            s.collection,
+            s.color,
+            s.armature_material
+        )
+
+        const isSameVendor = fVendor === sVendor
+        const isSameCollection = fCollection === sCollection
+        const isSameColor = fColor === sColor
+        const isSameMaterial = fMaterial === sMaterial
+
+        return isSameVendor && isSameCollection && isSameColor && isSameMaterial
+    },
 
     getCountOfPosts: (border) => {
         let defaultCount = 1
         const borders = [...get().borders]
 
         borders.forEach(el => {
-            const isSameVendor = border.vendor.toLocaleLowerCase() === el.vendor.toLocaleLowerCase()
-            const isSameCollection = border.collection.toLocaleLowerCase() === el.collection.toLocaleLowerCase()
-            const isSameColor = border.color.toLocaleLowerCase() === el.color.toLocaleLowerCase()
+            const isSiblingBorders = get().checkSiblingBorder(border, el)
 
-            if (isSameVendor && isSameCollection && isSameColor) {
+            if (isSiblingBorders) {
                 const postsCount = el.number_of_posts
 
                 if (!postsCount) return
@@ -116,6 +151,24 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
         })
 
         return defaultCount
+    },
+
+    getSiblingBorder: (border, numberOfPost) => {
+        const borders = [...get().borders]
+            .filter(el => get().checkSiblingBorder(border, el)
+                && el.number_of_posts
+                && el.number_of_posts.includes(String(numberOfPost)))
+
+        if (!borders.length) {
+            return undefined
+        }
+
+        if (borders.length > 1) {
+            console.log('\x1b[31m%s\x1b[0m', `Функция поиска соседних рамок [getSiblingBorder] с количеством постов __${numberOfPost}__ вернула несколько результатов!`, borders)
+            console.log('\x1b[31m%s\x1b[0m', '__Референс__', border)
+        }
+
+        return borders[0]
     }
     // #endregion
 })

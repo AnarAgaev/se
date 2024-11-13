@@ -3,7 +3,7 @@ import { TSketchStore } from '../types'
 
 const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
     border: undefined,
-    device: {},
+    deviceList: {},
     project: undefined,
     placement: undefined,
     postsCount: 1,
@@ -26,6 +26,16 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
             selectedPost: newSelectedPosts,
             postsCount: postsCount,
             border: border
+        })
+    },
+
+    setBorder: (border, numberOfPost) => {
+        const newSelectedPosts = [...get().selectedPost]
+            .map((_el, idx) => idx === numberOfPost - 1)
+
+        set({
+            border: border,
+            selectedPost: newSelectedPosts,
         })
     }
 })

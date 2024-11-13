@@ -43,9 +43,7 @@ export type TBackgroundsStore = {
 // #region Sketch
 export type TSketchStore = {
     border: TBorder | undefined
-    device: {
-        [1 | 2 | 3 | 4 | 5]: TDevice | undefined
-    }
+    deviceList: { [1 | 2 | 3 | 4 | 5]: TDevice | undefined }
     project: string | undefined
     placement: string | undefined
     postsCount: number
@@ -55,9 +53,11 @@ export type TSketchStore = {
 
     resizeSketch: TResizeSketch
     setFirstBorder: TSetFirstBorder
+    setBorder: TSetBorder
 }
 export type TResizeSketch = (direction: -1 | 1) => void
 export type TSetFirstBorder = (border: TBorder, postsCount: number) => void
+export type TSetBorder = (border: TBorder, numberOfPost: number) => void
 // #endregion
 
 
@@ -79,8 +79,12 @@ export type TBordersStore = {
     removePluralBordersFilter: TRemovePluralFilter
     checkPluralBordersFilter: TCheckPluralFilter
     getCountOfPosts: TGetCountOfPosts
+    getSiblingBorder: TGetSiblingBorder
+    checkSiblingBorder: TCheckSiblingBorder
 }
 export type TGetCountOfPosts = (border: TBorder) => number
+export type TGetSiblingBorder = (border: TBorder, numberOfPost: number) => TBorder | undefined
+export type TCheckSiblingBorder = (f: TBorder, s: TBorder) => boolean
 // #endregion
 
 
@@ -163,11 +167,14 @@ export type TResetSelectedFuncGroup = (groupName: string) => void
 
 // #region App
 type TFunc = () => void
+type TFireError = (error: Error) => void
 export type TSetModalSelect = (caption: string, approveText: string, rejectText: string, payload: Record<string>) => void
 
 export type TAppStore = {
     loading: boolean
+
     error: Error | unknown
+    fireError: TFireError
 
     colors: TColorList | undefined
     setAppColors: (colors: TColorList) => void

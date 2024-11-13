@@ -3,7 +3,11 @@ import { TAppStore } from '../types'
 
 const appSlice: StateCreator<TAppStore> = (set, get) => ({
     loading: true,
+
     error: null,
+    fireError: (error) => {
+        set({ error: error })
+    },
 
     colors: undefined,
     setAppColors: (colors) => set({ colors: colors }),

@@ -16,11 +16,18 @@
 .construction
     display: flex
     align-items: center
-    gap: 20px
+    justify-content: space-between
     position: absolute
-    top: 20px
-    left: 20px
+    top: 10px
+    left: 10px
+    width: calc(100% - 20px)
     z-index: 10
+
+    @media (min-width: $sm)
+        gap: 20px
+        top: 20px
+        left: 20px
+        justify-content: flex-start
 
 
 .posts
@@ -137,11 +144,17 @@
 .cloud
     display: block
     position: absolute
-    top: 20px
-    right: 20px
+    bottom: 10px
+    left: 10px
     width: 45px
     height: 45px
     z-index: 10
+
+    @media (min-width: $sm)
+        top: 20px
+        right: 20px
+        bottom: auto
+        left: auto
 
     button
         display: flex
@@ -172,13 +185,17 @@
     align-items: center
     gap: 10px
     position: absolute
-    bottom: 20px
-    right: 20px
+    bottom: 10px
+    right: 10px
     box-shadow: inset 0 0 0 1px var(--color-border-prime)
     background: var(--color-controllers-back)
     margin: 0
     padding: 10px
     z-index: 10
+
+    @media (min-width: $sm)
+        bottom: 20px
+        right: 20px
 
     li
         display: flex

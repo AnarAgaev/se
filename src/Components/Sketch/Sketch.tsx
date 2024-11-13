@@ -3,6 +3,11 @@ import { SketchBackground } from '../../Components'
 import useStore from '../../Store'
 import style from './Sketch.module.sass'
 
+type TOnSetPostsCount = (
+    evt: React.MouseEvent<HTMLSpanElement, MouseEvent>,
+    newPostNumber: number
+) => void
+
 const { sketch, construction, posts, directions, horizontal, vertical, cloud,
     controllers, cart, minus, plus, disabled, set, wrap, border, device, postActive } = style
 
@@ -10,25 +15,19 @@ const createPosts = (
     id: string,
     postsCount: number,
     selectedPost: boolean[],
-    onSetPostsCount: (evt: React.MouseEvent<HTMLSpanElement, MouseEvent>, newPostNumber: number) => void
+    onSetPostsCount: TOnSetPostsCount
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
 
-    // Default posts
-    if (!selectedPost.length) {
-        for (let i = 1; i <= 5; i++) {
-            resultList.push(<li key={`post-${id}-${i}`}><span>{i}</span></li>)
-        }
-        return resultList
-    }
-
-    for (let i = 1; i <= postsCount; i++) {
-        resultList.push(
-            <li key={`post-${id}-${i}`} className={selectedPost[i - 1] ? postActive : ''}>
+    for (let i = 1; i <= (!selectedPost.length ? 5 : postsCount); i++) {
+        const jsxEl = !selectedPost.length
+            ? <li key={`post-${id}-${i}`}><span>{i}</span></li>
+            : <li key={`post-${id}-${i}`} className={selectedPost[i - 1] ? postActive : ''}>
                 <span onClick={e => onSetPostsCount(e, i)}>{i}</span>
             </li>
-        )
+
+        resultList.push(jsxEl)
     }
 
     return resultList
@@ -41,12 +40,20 @@ const Sketch = () => {
         scale,
         postsCount,
         resizeSketch,
-        selectedPost
+        selectedPost,
+        currentBorder,
+        setBorder,
+        getSiblingBorder,
+        fireError
     ] = useStore(state => [
         state.scale,
         state.postsCount,
         state.resizeSketch,
-        state.selectedPost
+        state.selectedPost,
+        state.border,
+        state.setBorder,
+        state.getSiblingBorder,
+        state.fireError
     ])
 
     const postsListRef = useRef<HTMLUListElement | null>(null)
@@ -72,7 +79,7 @@ const Sketch = () => {
         if (directionsRef.current?.classList.contains(disabled)) return
     }, [])
 
-    const onSetPostsCount = useCallback((evt: React.MouseEvent<HTMLSpanElement, MouseEvent>, newPostNumber: number) => {
+    const onSetPostsCount: TOnSetPostsCount = useCallback((evt, newPostNumber) => {
         // If parent Ul is disabled, return
         if (postsListRef.current?.classList.contains(disabled)) return
 
@@ -82,27 +89,19 @@ const Sketch = () => {
         // If parent Li is active, return
         if (li.classList.contains(postActive)) return
 
-        // Sent new active post count
+        // Sent new active post with count of posts as newPostNumber
+        if (currentBorder) {
+            const newBorder = getSiblingBorder(currentBorder, newPostNumber)
 
-        console.log('Sent new active post count', newPostNumber);
+            if (!newBorder) {
+                fireError(new Error(`Функция поиска соседних рамок [getSiblingBorder] с количеством постов ${newPostNumber} вернула пустой результат!`))
+                return
+            }
 
+            setBorder(newBorder, newPostNumber)
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }, [])
+    }, [currentBorder, setBorder, getSiblingBorder, fireError])
 
     const postList = useMemo(
         () => createPosts(id, postsCount, selectedPost, onSetPostsCount),
