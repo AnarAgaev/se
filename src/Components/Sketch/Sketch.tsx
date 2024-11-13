@@ -8,7 +8,7 @@ type TOnSetPostsCount = (
     newPostNumber: number
 ) => void
 
-const { sketch, construction, posts, directions, horizontal, vertical, cloud,
+const { sketch, construction, posts, directions, horizontal, vertical, cloud, selected,
     controllers, cart, minus, plus, disabled, set, wrap, border, device, postActive } = style
 
 const createPosts = (
@@ -41,7 +41,7 @@ const Sketch = () => {
         postsCount,
         resizeSketch,
         selectedPost,
-        currentBorder,
+        selectedBorder,
         setBorder,
         getSiblingBorder,
         fireError
@@ -90,8 +90,8 @@ const Sketch = () => {
         if (li.classList.contains(postActive)) return
 
         // Sent new active post with count of posts as newPostNumber
-        if (currentBorder) {
-            const newBorder = getSiblingBorder(currentBorder, newPostNumber)
+        if (selectedBorder) {
+            const newBorder = getSiblingBorder(selectedBorder, newPostNumber)
 
             if (!newBorder) {
                 fireError(new Error(`Функция поиска соседних рамок [getSiblingBorder] с количеством постов ${newPostNumber} вернула пустой результат!`))
@@ -101,7 +101,7 @@ const Sketch = () => {
             setBorder(newBorder, newPostNumber)
         }
 
-    }, [currentBorder, setBorder, getSiblingBorder, fireError])
+    }, [selectedBorder, setBorder, getSiblingBorder, fireError])
 
     const postList = useMemo(
         () => createPosts(id, postsCount, selectedPost, onSetPostsCount),
@@ -136,8 +136,15 @@ const Sketch = () => {
 
             <div className={set}>
                 <div className={wrap} style={transformStyle}>
-                    <div className={device}></div>
-                    <div className={border}></div>
+                    <div className={selectedBorder ? `${border} ${selected}` : border}>
+                        { selectedBorder &&
+                            <img src={selectedBorder.image} alt={selectedBorder.name} />
+                        }
+                    </div>
+
+                    <div className={!selectedPost.length || selectedPost[0] ? device : `${device} ${selected}`}>
+
+                    </div>
                 </div>
             </div>
         </div>

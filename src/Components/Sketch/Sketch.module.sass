@@ -209,11 +209,11 @@
 
 
 .disabled
-    opacity: 0.5
+    opacity: 0.4
     cursor: no-drop !important
 
     & *
-        opacity: 0.5
+        opacity: 0.7
         cursor: no-drop !important
 
 
@@ -276,6 +276,10 @@
     border: 2px dashed var(--color-set-border-start)
     animation: changeBorderColor 3s infinite
 
+
+.selected
+    border: none !important
+    animation: none !important
 
 @keyframes changeBorderColor
     0%
