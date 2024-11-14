@@ -92,6 +92,7 @@
     background: var(--color-controllers-back)
     margin: 0
     padding: 10px
+    overflow: hidden
 
     li
         display: flex
@@ -131,6 +132,28 @@
                 height: 100%
                 background: var(--color-prime)
                 transition: var(--base-transition)
+
+
+.directionActive
+    i
+        border-color: var(--color-button-sec) !important
+
+        &::before
+            background-color: var(--color-button-sec) !important
+
+    &::before
+        content: ''
+        display: block
+        position: absolute
+        z-index: 0
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        width: calc( 100% + 10px  )
+        height: 200%
+        background: var(--color-opacity-back)
+
+
 
 
 .horizontal
@@ -210,14 +233,14 @@
 
 .disabled
     opacity: 0.4
-    cursor: no-drop !important
+    pointer-events: none
 
     & *
         opacity: 0.7
-        cursor: no-drop !important
+        pointer-events: none
 
 
-.cart
+.trashСan
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNSAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEwLjI4MjMgMTQuNzA5NUwxMi40OTI3IDEyLjUwMDFNMTIuNDkyNyAxMi41MDAxTDE0LjcwMjEgMTAuMjkwN00xMi40OTI3IDEyLjUwMDFMMTAuMjgxMyAxMC4yOTA3TTEyLjQ5MjcgMTIuNTAwMUwxNC43MDIxIDE0LjcwOTVNNS4yMDgzNCAxOC43NTAxTDMuMjYwNDMgNS4xMTc4MUMzLjIyMzM2IDQuODU4MzEgMy4yODU5IDQuNTk0NCAzLjQzNTQ3IDQuMzc5MTNDMy41ODUwNCA0LjE2Mzg2IDMuODEwNTUgNC4wMTMxOCA0LjA2NjY4IDMuOTU3MzlMMTIuMDQ3OSAyLjE4MzQzQzEyLjM0NTcgMi4xMTcyNCAxMi42NTQzIDIuMTE3MjQgMTIuOTUyMSAyLjE4MzQzTDIwLjkzMzMgMy45NTg0M0MyMS40NjQ2IDQuMDc2MTQgMjEuODE2NyA0LjU3OTI2IDIxLjczOTYgNS4xMTg4NUwxOS43OTE3IDE4Ljc1MDFDMTkuNzE4OCAxOS4yNjU3IDE5LjI3MDggMjIuMzk1OSAxMi41IDIyLjM5NTlDNS43MjkxOCAyMi4zOTU5IDUuMjgxMjYgMTkuMjY1NyA1LjIwODM0IDE4Ljc1MDFaIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=") !important
 
 
@@ -241,7 +264,6 @@
     position: relative
 
 
-
 .wrap
     display: block
     position: relative
@@ -253,33 +275,66 @@
     z-index: 3
 
 
+.placeholder
+    display: block
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: auto
+    height: 50%
+    aspect-ratio: 1 / 1
+
+    @media (min-width: $md)
+        height: 60%
+
+    &::before,
+    &::after
+        content: ''
+        display: block
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        height: auto
+        aspect-ratio: 1 / 1
+        border: 2px dashed var(--color-set-border-start)
+        animation: changeBorderColor 3s infinite
+
+    &::before
+        width: 100%
+
+    &::after
+        width: 70%
+
+
 .border
     display: block
     position: absolute
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
-    width: 280px
-    height: 280px
-    border: 2px dashed var(--color-set-border-start)
-    animation: changeBorderColor 3s infinite
 
 
 .device
     display: block
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    width: 200px
-    height: 200px
-    border: 2px dashed var(--color-set-border-start)
-    animation: changeBorderColor 3s infinite
+    // position: absolute
+    // top: 50%
+    // left: 50%
+    // transform: translate(-50%, -50%)
+    // width: 200px
+    // height: 200px
+    // border: 2px dashed var(--color-set-border-start)
+    // animation: changeBorderColor 3s infinite
 
 
 .selected
     border: none !important
     animation: none !important
+
+    &::before,
+    &::after
+        display: none
 
 @keyframes changeBorderColor
     0%

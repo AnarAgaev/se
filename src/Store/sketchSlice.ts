@@ -1,15 +1,19 @@
 import { StateCreator  } from 'zustand'
-import { TSketchStore } from '../types'
+import { TSketchStore, TDefaultSketchProps, TSketchDeviceList } from '../types'
 
-const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
+const defaultSketchProps:TDefaultSketchProps = {
     border: undefined,
-    deviceList: {},
+    deviceList: { 1: undefined },
     project: undefined,
     placement: undefined,
     postsCount: 1,
     selectedPost: [],
-    view: 'horizontal',
+    direction: 'horizontal',
     scale: 1,
+}
+
+const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
+    ...defaultSketchProps,
 
     resizeSketch: (direction) => {
         const scale = get().scale
@@ -37,6 +41,36 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
             border: border,
             selectedPost: newSelectedPosts,
         })
+    },
+
+    resetSketch: () => {
+        set({
+            ...defaultSketchProps
+        })
+    },
+
+    setDirection: (d) => {
+        set({direction: d})
+    },
+
+    setDevice: (d) => {
+
+
+        console.log(d);
+
+
+        const newDeviceList: TSketchDeviceList = {...get().deviceList}
+
+        for (const i in newDeviceList as TSketchDeviceList) {
+            if (i === '1' || i === '2' || i === '3' || i === '4' || i === '5') {
+                const val = newDeviceList[i]
+
+                if (val === undefined ) {
+                    newDeviceList[i] = d
+                    break
+                }
+            }
+        }
     }
 })
 

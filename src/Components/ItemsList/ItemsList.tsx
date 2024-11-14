@@ -1,5 +1,5 @@
 import { useId, useMemo } from 'react'
-import { TBorder, TDevice, TElementList, TItemsType, TSetFirstBorder, TGetCountOfPosts } from '../../types'
+import { TBorder, TDevice, TElementList, TItemsType, TSetFirstBorder, TGetCountOfPosts, TSetDevice } from '../../types'
 import useStore from '../../Store'
 import style from './ItemsList.module.sass'
 
@@ -15,15 +15,24 @@ const getElementsList = (
     itemList: TElementList,
     type: TItemsType,
     setFirstBorder: TSetFirstBorder,
-    getCountOfPosts: TGetCountOfPosts
+    getCountOfPosts: TGetCountOfPosts,
+    setDevice: TSetDevice
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
+
+    function isDevice(i: TDevice | TBorder): i is TDevice {
+        return (i as TDevice).conf_product_group !== undefined
+    }
 
     const addItemHandler: (type: TItemsType, item: TDevice | TBorder) => void = (type, item) => {
         if (type === 'borders') {
             const countOfPosts = getCountOfPosts(item)
             setFirstBorder(item, countOfPosts)
+        }
+
+        if (type === 'devices' && isDevice(item)) {
+            setDevice(item)
         }
     }
 
@@ -65,15 +74,17 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
 
     const [
         setFirstBorder,
-        getCountOfPosts
+        getCountOfPosts,
+        setDevice
     ] = useStore(state => [
         state.setFirstBorder,
-        state.getCountOfPosts
+        state.getCountOfPosts,
+        state.setDevice
     ])
 
     const ElementsList = useMemo(
-        () => getElementsList(id, itemList, type, setFirstBorder, getCountOfPosts),
-        [id, itemList, type, setFirstBorder, getCountOfPosts]
+        () => getElementsList(id, itemList, type, setFirstBorder, getCountOfPosts, setDevice),
+        [id, itemList, type, setFirstBorder, getCountOfPosts, setDevice]
     )
 
     return (

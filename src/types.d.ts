@@ -43,21 +43,34 @@ export type TBackgroundsStore = {
 // #region Sketch
 export type TSketchStore = {
     border: TBorder | undefined
-    deviceList: { [1 | 2 | 3 | 4 | 5]: TDevice | undefined }
+    deviceList: TSketchDeviceList
     project: string | undefined
     placement: string | undefined
     postsCount: number
     selectedPost: boolean[]
-    view: 'horizontal' | 'vertical'
+    direction: TDirections
     scale: number
 
     resizeSketch: TResizeSketch
     setFirstBorder: TSetFirstBorder
     setBorder: TSetBorder
+    resetSketch: TResetSketch
+    setDirection: TSetDirection
+    setDevice: TSetDevice
 }
+export type TDirections = 'horizontal' | 'vertical'
 export type TResizeSketch = (direction: -1 | 1) => void
 export type TSetFirstBorder = (border: TBorder, postsCount: number) => void
 export type TSetBorder = (border: TBorder, numberOfPost: number) => void
+export type TResetSketch = () => void
+export type TSetDirection = (d: TDirections) => void
+export type TSketchDeviceItem = TDevice | undefined
+export type TSketchDeviceList = Record<1, TSketchDeviceItem> & Partial<Record<2 | 3 | 4 | 5, TSketchDeviceItem>>
+export type TSetDevice = (d: TDevice) => void
+
+export type TDefaultSketchProps = Omit<TSketchStore, 'resizeSketch' | 'setFirstBorder'
+    | 'setBorder' | 'resetSketch' | 'setDirection' | 'setDevice'>
+
 // #endregion
 
 

@@ -1,5 +1,6 @@
-import { useRef, useMemo, useCallback, useId } from 'react'
+import { useRef, useMemo, useCallback, useId, useState, useEffect } from 'react'
 import { SketchBackground } from '../../Components'
+import { TDirections } from '../../types'
 import useStore from '../../Store'
 import style from './Sketch.module.sass'
 
@@ -9,7 +10,8 @@ type TOnSetPostsCount = (
 ) => void
 
 const { sketch, construction, posts, directions, horizontal, vertical, cloud, selected,
-    controllers, cart, minus, plus, disabled, set, wrap, border, device, postActive } = style
+    controllers, trashСan, minus, plus, disabled, set, wrap, placeholder, border, device,
+    postActive, directionActive } = style
 
 const createPosts = (
     id: string,
@@ -44,7 +46,11 @@ const Sketch = () => {
         selectedBorder,
         setBorder,
         getSiblingBorder,
-        fireError
+        fireError,
+        resetSketch,
+        deviceList,
+        direction,
+        setDirection,
     ] = useStore(state => [
         state.scale,
         state.postsCount,
@@ -53,9 +59,14 @@ const Sketch = () => {
         state.border,
         state.setBorder,
         state.getSiblingBorder,
-        state.fireError
+        state.fireError,
+        state.resetSketch,
+        state.deviceList,
+        state.direction,
+        state.setDirection,
     ])
 
+    const sketchRef = useRef<HTMLDivElement | null>(null)
     const postsListRef = useRef<HTMLUListElement | null>(null)
     const directionsRef = useRef<HTMLUListElement | null>(null)
 
@@ -63,6 +74,25 @@ const Sketch = () => {
         transform: `scale(${scale})`,
         transformOrigin: `${scale > 1 ? '0 0' : 'center'}`
     }
+
+    const [maxWidth, setMaxWidth] = useState('none')
+
+    useEffect(
+        () => {
+            const updateMaxWidth = () => {
+                if (sketchRef.current?.offsetHeight) {
+                    setMaxWidth(sketchRef.current?.offsetHeight * 0.8 + 'px')
+                }
+            }
+
+            updateMaxWidth()
+
+            window.addEventListener('resize', updateMaxWidth)
+
+            return () => window.removeEventListener('resize', updateMaxWidth)
+        },
+        [maxWidth, setMaxWidth, selectedPost]
+    )
 
     const onInc = () => { // +
         if (scale >= 1.5) return
@@ -75,9 +105,13 @@ const Sketch = () => {
     }
 
     // const onSetDirection = useCallback((e: React.ChangeEvent<HTMLLIElement>) => {
-    const onSetDirection = useCallback(() => {
+    const onSetDirection = useCallback((d: TDirections) => {
         if (directionsRef.current?.classList.contains(disabled)) return
-    }, [])
+
+        if (direction === d) return
+
+        setDirection(d)
+    }, [direction, setDirection])
 
     const onSetPostsCount: TOnSetPostsCount = useCallback((evt, newPostNumber) => {
         // If parent Ul is disabled, return
@@ -109,40 +143,80 @@ const Sketch = () => {
     )
 
     return (
-        <div className={sketch}>
+        <div ref={sketchRef} className={sketch}>
             <SketchBackground />
 
+
+            {/* Count of posts and Direction */}
             <div className={construction}>
                 <ul ref={postsListRef}
                     className={selectedPost.length ? posts : `${posts} ${disabled}`}>
                     {postList}
                 </ul>
-                <ul ref={directionsRef}
-                    className={selectedPost.length ? directions : `${directions} ${disabled}`}>
-                    <li onClick={onSetDirection}><i className={horizontal}></i></li>
-                    <li onClick={onSetDirection}><i className={vertical}></i></li>
+
+                <ul ref={directionsRef} className={
+                        selectedPost.length > 2 && !selectedPost[0]
+                            ? directions
+                            : `${directions} ${disabled}`
+                        }>
+
+                    <li onClick={() => onSetDirection('horizontal')} className={
+                        direction === 'horizontal' && selectedPost.length > 2 && !selectedPost[0]
+                            ? directionActive
+                            : ''
+                    }>
+                        <i className={horizontal}></i>
+                    </li>
+
+                    <li onClick={() => onSetDirection('vertical')} className={
+                        direction === 'vertical' && selectedPost.length > 2 && !selectedPost[0]
+                            ? directionActive
+                            : ''
+                    }>
+                        <i className={vertical}></i>
+                    </li>
+
                 </ul>
             </div>
 
+
+            {/* Save image */}
             <div className={cloud}>
                 <button><i></i></button>
             </div>
 
-            <ul className={controllers}>
-                <li className={cart}></li>
+
+            {/* Cart, Inc, Dec  */}
+            <ul className={
+                    selectedPost.length || Object.keys(deviceList).length
+                        ? controllers
+                        : `${controllers} ${disabled}`
+                    }>
+                <li className={trashСan} onClick={resetSketch}></li>
                 <li className={scale <= 0.5 ? `${minus} ${disabled}` : minus} onClick={onDec}></li>
                 <li className={scale >= 1.5 ? `${plus} ${disabled}` : plus} onClick={onInc}></li>
             </ul>
 
+
+            {/* Image Border and Devices */}
             <div className={set}>
                 <div className={wrap} style={transformStyle}>
-                    <div className={selectedBorder ? `${border} ${selected}` : border}>
-                        { selectedBorder &&
-                            <img src={selectedBorder.image} alt={selectedBorder.name} />
-                        }
-                    </div>
+                    {
+                        !selectedBorder && !deviceList['1']
+                            && <span className={placeholder}></span>
+                    }
 
-                    <div className={!selectedPost.length || selectedPost[0] ? device : `${device} ${selected}`}>
+                    <div style={{transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`}} className={selectedBorder ? `${border} ${selected}` : border}>
+                        { selectedBorder &&
+                            <img src={selectedBorder.image} alt={selectedBorder.name} style={{maxWidth: maxWidth}} />
+                        }
+
+
+                        {/*
+                        <div className={!selectedPost.length || selectedPost[0] ? device : `${device} ${selected}`}>
+
+                        </div> */}
+
 
                     </div>
                 </div>
