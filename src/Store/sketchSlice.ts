@@ -1,9 +1,9 @@
 import { StateCreator  } from 'zustand'
-import { TSketchStore, TDefaultSketchProps, TSketchDeviceList } from '../types'
+import { TSketchStore, TDefaultSketchProps, TSketchDeviceList, TNumberOfPosts } from '../types'
 
 const defaultSketchProps:TDefaultSketchProps = {
     border: undefined,
-    deviceList: { 1: undefined },
+    deviceList: { 1: null },
     project: undefined,
     placement: undefined,
     postsCount: 1,
@@ -33,14 +33,35 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
         })
     },
 
-    setBorder: (border, numberOfPost) => {
+    setBorder: (border, numberOfPosts) => {
         const newSelectedPosts = [...get().selectedPost]
-            .map((_el, idx) => idx === numberOfPost - 1)
+            .map((_el, idx) => idx === numberOfPosts - 1)
+
+        const fixedDeviceList = get().fixDeviceList(numberOfPosts as TNumberOfPosts)
 
         set({
             border: border,
             selectedPost: newSelectedPosts,
+            deviceList: fixedDeviceList
         })
+    },
+
+    fixDeviceList: (numberOfPosts) => {
+        const newDeviceList: TSketchDeviceList = {...get().deviceList}
+        const to = Math.max(numberOfPosts, Object.keys(newDeviceList).length)
+        const from = 1
+
+        for (let i = from; i <= to; i++) {
+            if (!( i === 1 || i === 2 || i === 3 || i === 4 || i === 5 )) return newDeviceList
+
+            if (i > numberOfPosts) {
+                delete newDeviceList[i]
+            } else if (!newDeviceList[i]) {
+                newDeviceList[i] = null
+            }
+        }
+
+        return newDeviceList
     },
 
     resetSketch: () => {
@@ -54,23 +75,20 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
     },
 
     setDevice: (d) => {
-
-
-        console.log(d);
-
-
         const newDeviceList: TSketchDeviceList = {...get().deviceList}
 
-        for (const i in newDeviceList as TSketchDeviceList) {
-            if (i === '1' || i === '2' || i === '3' || i === '4' || i === '5') {
-                const val = newDeviceList[i]
+        for (const key in newDeviceList as TSketchDeviceList) {
+            const i = parseInt(key)
 
-                if (val === undefined ) {
+            if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
+                if (!newDeviceList[i]) {
                     newDeviceList[i] = d
                     break
                 }
             }
         }
+
+        set({ deviceList: newDeviceList })
     }
 })
 

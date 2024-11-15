@@ -57,19 +57,22 @@ export type TSketchStore = {
     resetSketch: TResetSketch
     setDirection: TSetDirection
     setDevice: TSetDevice
+    fixDeviceList: TFixDeviceList
 }
 export type TDirections = 'horizontal' | 'vertical'
 export type TResizeSketch = (direction: -1 | 1) => void
 export type TSetFirstBorder = (border: TBorder, postsCount: number) => void
-export type TSetBorder = (border: TBorder, numberOfPost: number) => void
+export type TSetBorder = (border: TBorder, numberOfPosts: TNumberOfPosts ) => void
 export type TResetSketch = () => void
 export type TSetDirection = (d: TDirections) => void
-export type TSketchDeviceItem = TDevice | undefined
+export type TSketchDeviceItem = TDevice | null
 export type TSketchDeviceList = Record<1, TSketchDeviceItem> & Partial<Record<2 | 3 | 4 | 5, TSketchDeviceItem>>
 export type TSetDevice = (d: TDevice) => void
+export type TFixDeviceList = (numberOfPosts: TNumberOfPosts) => TSketchDeviceList
+export type TNumberOfPosts = 1 | 2 | 3 | 4 | 5
 
 export type TDefaultSketchProps = Omit<TSketchStore, 'resizeSketch' | 'setFirstBorder'
-    | 'setBorder' | 'resetSketch' | 'setDirection' | 'setDevice'>
+    | 'setBorder' | 'resetSketch' | 'setDirection' | 'setDevice' | 'fixDeviceList'>
 
 // #endregion
 

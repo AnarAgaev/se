@@ -123,7 +123,7 @@ const Sketch = () => {
         // If parent Li is active, return
         if (li.classList.contains(postActive)) return
 
-        // Sent new active post with count of posts as newPostNumber
+        // Sent a new active post with count of posts as newPostNumber
         if (selectedBorder) {
             const newBorder = getSiblingBorder(selectedBorder, newPostNumber)
 
@@ -132,7 +132,13 @@ const Sketch = () => {
                 return
             }
 
-            setBorder(newBorder, newPostNumber)
+            if (newPostNumber === 1
+                    || newPostNumber === 2
+                    || newPostNumber === 3
+                    || newPostNumber === 4
+                    || newPostNumber === 5) {
+                setBorder(newBorder, newPostNumber)
+            }
         }
 
     }, [selectedBorder, setBorder, getSiblingBorder, fireError])
@@ -208,7 +214,7 @@ const Sketch = () => {
 
                     <div style={{transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`}} className={selectedBorder ? `${border} ${selected}` : border}>
                         { selectedBorder &&
-                            <img src={selectedBorder.image} alt={selectedBorder.name} style={{maxWidth: maxWidth}} />
+                            <img src={selectedBorder.image} alt={selectedBorder.name} style={{maxWidth: direction === 'vertical' ? maxWidth : 'none'}} />
                         }
 
 

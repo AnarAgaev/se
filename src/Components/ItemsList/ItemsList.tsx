@@ -1,5 +1,5 @@
 import { useId, useMemo } from 'react'
-import { TBorder, TDevice, TElementList, TItemsType, TSetFirstBorder, TGetCountOfPosts, TSetDevice } from '../../types'
+import { TBorder, TDevice, TElementList, TItemsType, TSetFirstBorder, TGetCountOfPosts, TSetDevice, TSketchDeviceList } from '../../types'
 import useStore from '../../Store'
 import style from './ItemsList.module.sass'
 
@@ -10,13 +10,28 @@ interface Props {
     type: TItemsType
 }
 
+function hasNull(obj: TSketchDeviceList): boolean {
+    let isDefined = false
+
+    for (const key in obj) {
+        const i = parseInt(key)
+
+        if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
+            if (obj[i] === null) isDefined = true
+        }
+    }
+
+    return isDefined
+}
+
 const getElementsList = (
     id: string,
     itemList: TElementList,
     type: TItemsType,
     setFirstBorder: TSetFirstBorder,
     getCountOfPosts: TGetCountOfPosts,
-    setDevice: TSetDevice
+    setDevice: TSetDevice,
+    deviceList: TSketchDeviceList
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
@@ -31,7 +46,7 @@ const getElementsList = (
             setFirstBorder(item, countOfPosts)
         }
 
-        if (type === 'devices' && isDevice(item)) {
+        if (type === 'devices' && isDevice(item) && hasNull(deviceList)) {
             setDevice(item)
         }
     }
@@ -75,16 +90,18 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
     const [
         setFirstBorder,
         getCountOfPosts,
-        setDevice
+        setDevice,
+        deviceList
     ] = useStore(state => [
         state.setFirstBorder,
         state.getCountOfPosts,
-        state.setDevice
+        state.setDevice,
+        state.deviceList
     ])
 
     const ElementsList = useMemo(
-        () => getElementsList(id, itemList, type, setFirstBorder, getCountOfPosts, setDevice),
-        [id, itemList, type, setFirstBorder, getCountOfPosts, setDevice]
+        () => getElementsList(id, itemList, type, setFirstBorder, getCountOfPosts, setDevice, deviceList),
+        [id, itemList, type, setFirstBorder, getCountOfPosts, setDevice, deviceList]
     )
 
     return (
