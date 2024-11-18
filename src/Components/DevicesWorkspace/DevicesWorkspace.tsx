@@ -3,7 +3,8 @@ import useStore from '../../Store'
 
 import { TDevicesFilters, TBordersFilters, TVendor, TGetBrandByCollection,
     TFunctionOptionList, TSetSingleFilter, TCheckSingleFilter, TRemoveSingleFilter,
-    TSetPluralFilter, TRemovePluralFilter, TCheckPluralFilter, TSetModalSelect } from '../../types'
+    TSetPluralFilter, TRemovePluralFilter, TCheckPluralFilter, TSetModalSelect,
+    TResetSketch } from '../../types'
 
 import { FactoryWorkspace, ColorSelector, Select,
     OptionFunction, OptionBrand, OptionCollection,
@@ -81,7 +82,8 @@ const getCollectionsOptionsList = (
     getBrandByCollection: TGetBrandByCollection,
     selectedBrand: TBordersFilters['brand'],
     setModalSelect: TSetModalSelect,
-    key: string
+    key: string,
+    resetSketch: TResetSketch
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
@@ -110,6 +112,9 @@ const getCollectionsOptionsList = (
             // Если не выбран бренд или Выбран бренд, но меням коллекцию в рамках одного бренда
             if (!selectedBrand || (selectedBrand && selectable)) {
                 approveAction()
+
+                // Всегда, при изменении Коллекции, сбрасываем скетч
+                resetSketch()
                 return
             }
 
@@ -217,6 +222,8 @@ const DevicesWorkspace = () => {
     const selectedFunction = filterFunctions.find(fn => fn.active)?.name
 
     const setModalSelect = useStore(state => state.setModalSelect)
+
+    const resetSketch = useStore(state => state.resetSketch)
     // #endregion
 
     const brandsOptions = useMemo(
@@ -255,7 +262,8 @@ const DevicesWorkspace = () => {
             getBrandByCollection,
             selectedBrand,
             setModalSelect,
-            key
+            key,
+            resetSketch
         ),
         [
             collectionsList,
@@ -265,7 +273,8 @@ const DevicesWorkspace = () => {
             getBrandByCollection,
             selectedBrand,
             setModalSelect,
-            key
+            key,
+            resetSketch
         ]
     )
 

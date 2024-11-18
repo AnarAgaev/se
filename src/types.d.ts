@@ -152,7 +152,7 @@ export type TFunctions = {
     default?: boolean
 }
 
-type TFilters = {
+export type TFilters = {
     brand?: string
     collection?: string
     colors: string[]
@@ -217,6 +217,7 @@ export type TAppStore = {
     dictionary: TDictionary
     setDictionary: (dictionary: TDictionary) => void
 
+    // #region Modal Select
     modalSelectVisible: boolean
     modalSelectCaption: string
     modalSelectButtonApproveText: string
@@ -228,6 +229,14 @@ export type TAppStore = {
     }
     resetModalSelect: TFunc
     setModalSelect: TSetModalSelect
+    // #endregion
+
+    // #region Modal Warning
+    modalWarningVisible: boolean
+    modalWarningCaption: string
+    modalWarningEnabled: boolean
+    modalWarningSet: (visible: boolean, caption: string, enabled?: boolean) => void
+    // #endregion
 }
 // #endregion
 

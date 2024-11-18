@@ -4,6 +4,8 @@ import style from './ModalSelect.module.sass'
 const { modal, body, text, buttons, button } = style
 
 const ModalResetBrandOrCollection = () => {
+
+    // #region Variables
     const [
         modalSelectCaption,
         modalSelectButtonApproveText,
@@ -13,7 +15,8 @@ const ModalResetBrandOrCollection = () => {
         setSingleBordersFilter,
         setSingleDevicesFilter,
         removeSingleBordersFilter,
-        removeSingleDevicesFilter
+        removeSingleDevicesFilter,
+        resetSketch
     ] = useStore(state => [
         state.modalSelectCaption,
         state.modalSelectButtonApproveText,
@@ -24,11 +27,15 @@ const ModalResetBrandOrCollection = () => {
         state.setSingleDevicesFilter,
         state.removeSingleBordersFilter,
         state.removeSingleDevicesFilter,
+        state.resetSketch
     ])
+    // #endregion
 
     const onApprove = () => {
         const [ brand, collection ] = [ modalSelectPayload.brandName, modalSelectPayload.collectionName ]
 
+        resetModalSelect()
+        resetSketch()
 
         // Если задаем вопрос, то значит, меняем бренд при выбранной ранее коллекции
         if (modalSelectPayload.from === 'brand') {
@@ -37,8 +44,6 @@ const ModalResetBrandOrCollection = () => {
 
             setSingleDevicesFilter('brand', brand)
             removeSingleDevicesFilter('collection')
-
-            resetModalSelect()
 
             return
         }
@@ -50,8 +55,6 @@ const ModalResetBrandOrCollection = () => {
 
             setSingleDevicesFilter('collection', collection)
             setSingleDevicesFilter('brand', brand)
-
-            resetModalSelect()
 
             return
         }

@@ -1,10 +1,10 @@
-import { useMemo, useId, FC } from 'react'
+import { useMemo, useId } from 'react'
 import useStore from '../../Store'
 
 import {
     TBordersFilters, TCheckSingleFilter, TRemoveSingleFilter, TDevicesFilters,
     TVendor, TGetBrandByCollection, TSetSingleFilter, TSetPluralFilter,
-    TRemovePluralFilter, TCheckPluralFilter, TSetModalSelect } from '../../types'
+    TRemovePluralFilter, TCheckPluralFilter, TSetModalSelect, TResetSketch } from '../../types'
 
 import { FactoryWorkspace, ColorSelector, Select,
     OptionBrand, OptionCollection, OptionMaterial } from '../../Components'
@@ -19,7 +19,7 @@ const getBrandsOptionsList = (
     removeSingleDevicesFilter: TRemoveSingleFilter<keyof TDevicesFilters>,
     selectedCollection: TBordersFilters['collection'],
     setModalSelect: TSetModalSelect,
-    key: string
+    key: string,
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
@@ -83,7 +83,8 @@ const getCollectionsOptionsList = (
     getBrandByCollection: TGetBrandByCollection,
     selectedBrand: TBordersFilters['brand'],
     setModalSelect: TSetModalSelect,
-    key: string
+    key: string,
+    resetSketch: TResetSketch
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
@@ -112,8 +113,13 @@ const getCollectionsOptionsList = (
             // Если не выбран бренд или Выбран бренд, но меням коллекцию в рамках одного бренда
             if (!selectedBrand || (selectedBrand && selectable)) {
                 approveAction()
+
+                // Всегда, при изменении Коллекции, сбрасываем скетч
+                resetSketch()
+
                 return
             }
+
 
             // Если пытаемся изменить коллекцию, но ранее уже выбирали коллекцию из другого бренда
             setModalSelect(
@@ -169,7 +175,7 @@ const getMaterialsOptionsList = (
     return elementsList
 }
 
-const BordersWorkspace: FC = () => {
+const BordersWorkspace = () => {
 
     // #region Variables
     const key = useId()
@@ -196,6 +202,8 @@ const BordersWorkspace: FC = () => {
     const selectedMaterials = useStore(state => state.filtersBorders.materials).sort().join(', ')
 
     const setModalSelect = useStore(state => state.setModalSelect)
+
+    const resetSketch = useStore(state => state.resetSketch)
     // #endregion
 
     const brandsOptions = useMemo(
@@ -234,7 +242,8 @@ const BordersWorkspace: FC = () => {
             getBrandByCollection,
             selectedBrand,
             setModalSelect,
-            key
+            key,
+            resetSketch
         ),
         [
             collectionsList,
@@ -244,7 +253,8 @@ const BordersWorkspace: FC = () => {
             getBrandByCollection,
             selectedBrand,
             setModalSelect,
-            key
+            key,
+            resetSketch
         ]
     )
 

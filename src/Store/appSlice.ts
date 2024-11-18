@@ -121,6 +121,22 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 collectionName: ''
             }
         })
+    },
+    // #endregion
+
+    // #region ModalWarning
+    modalWarningVisible: false,
+    modalWarningCaption: '',
+    modalWarningEnabled: true,
+    modalWarningSet: (visible, caption, enabled) => {
+        set({
+            modalWarningVisible: visible,
+            modalWarningCaption: caption,
+
+            modalWarningEnabled: typeof enabled === 'undefined'
+                ? get().modalWarningEnabled
+                : enabled,
+        })
     }
     // #endregion
 })

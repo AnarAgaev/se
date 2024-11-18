@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef, ReactNode, FC } from 'react'
+import { TSketchDeviceList } from '../../types'
+import useStore from '../../Store'
 import style from './Select.module.sass'
 
 interface Props {
@@ -10,7 +12,33 @@ interface Props {
 const { select, select_dropped, value, caption,
     arrow, body, collapse, inner, text, match } = style
 
+function checkDeviceList(obj: TSketchDeviceList) {
+
+    for (const key in obj as TSketchDeviceList) {
+        const i = parseInt(key)
+        if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
+            if (obj[i] !== null) {
+                return true
+            }
+        }
+    }
+    return false
+}
+
 const Select: FC<Props> = ({ title, children, selectedValue }) => {
+
+    const [
+        modalWarningSet,
+        modalWarningEnabled,
+        border,
+        deviceList
+    ] = useStore(state => [
+        state.modalWarningSet,
+        state.modalWarningEnabled,
+        state.border,
+        state.deviceList
+    ])
+
     const [dropped, toggleDropped] = useState(false)
 
     const selectRef = useRef<HTMLDivElement | null>(null)
@@ -22,6 +50,9 @@ const Select: FC<Props> = ({ title, children, selectedValue }) => {
     useEffect(() => {
         const selectClickHandler = (evt: MouseEvent) => {
             const target = evt.target as HTMLElement
+
+            const isOnWarning = !!target.closest('.modal-warning')
+            if (isOnWarning) return
 
             const isChild = selectRef.current
                 && selectRef.current.contains(target)
@@ -37,9 +68,20 @@ const Select: FC<Props> = ({ title, children, selectedValue }) => {
             'click', selectClickHandler)
     }, [])
 
+    const handler = () => {
+        toggleDropped(!dropped)
+
+        const devices = checkDeviceList(deviceList)
+        const msg = `При изменении Бренда или Коллекции, ${border && !devices ? 'будет сброшена' : 'будут сброшены'}${border ? ' рамка': ''}${border && devices ? ' и': ''}${devices ? ' устройства' : ''}`
+
+        if (!dropped && modalWarningEnabled && (border || devices)) {
+            modalWarningSet(true, msg)
+        }
+    }
+
     return (
         <div ref={selectRef} className={clazz}>
-            <div className={value} onClick={() => toggleDropped(!dropped)}>
+            <div className={value} onClick={handler}>
                 <p className={caption}>
                     <span className={text}>{title}</span>
                     <span className={match}>{selectedValue}</span>

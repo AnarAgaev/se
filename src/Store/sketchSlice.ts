@@ -65,6 +65,9 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
     },
 
     resetSketch: () => {
+
+        console.log('resetSketch');
+
         set({
             ...defaultSketchProps
         })

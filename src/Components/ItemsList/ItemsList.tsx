@@ -1,7 +1,9 @@
 import { useId, useMemo } from 'react'
-import { TBorder, TDevice, TElementList, TItemsType, TSetFirstBorder, TGetCountOfPosts, TSetDevice, TSketchDeviceList } from '../../types'
 import useStore from '../../Store'
 import style from './ItemsList.module.sass'
+import { TBorder, TDevice, TElementList, TItemsType,
+    TSetFirstBorder, TGetCountOfPosts, TSetDevice,
+    TSketchDeviceList, TSetSingleFilter, TFilters } from '../../types'
 
 const { wrap, list, item, pic, preview, content, name, price } = style
 
@@ -31,7 +33,11 @@ const getElementsList = (
     setFirstBorder: TSetFirstBorder,
     getCountOfPosts: TGetCountOfPosts,
     setDevice: TSetDevice,
-    deviceList: TSketchDeviceList
+    deviceList: TSketchDeviceList,
+    setSingleBordersFilter: TSetSingleFilter,
+    setSingleDevicesFilter: TSetSingleFilter,
+    selectedBrand: TFilters['brand'],
+    selectedCollection: TFilters['collection']
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
@@ -48,6 +54,28 @@ const getElementsList = (
 
         if (type === 'devices' && isDevice(item) && hasNull(deviceList)) {
             setDevice(item)
+        }
+
+        /*
+        * For both the frame and the device,
+        * when choosing, we immediately set
+        * the Brand and Collection filters
+        */
+        if (!selectedBrand && !selectedCollection) {
+            setSingleBordersFilter('brand', item.vendor)
+            setSingleBordersFilter('collection', item.collection)
+
+            setSingleDevicesFilter('brand', item.vendor)
+            setSingleDevicesFilter('collection', item.collection)
+
+            return
+        }
+
+        if (selectedBrand && !selectedCollection) {
+            setSingleBordersFilter('collection', item.collection)
+            setSingleDevicesFilter('collection', item.collection)
+
+            return
         }
     }
 
@@ -87,21 +115,45 @@ const getElementsList = (
 const ItemsList: React.FC<Props> = ({itemList, type}) => {
     const id = useId()
 
+    // #region Variables
     const [
         setFirstBorder,
         getCountOfPosts,
         setDevice,
-        deviceList
+        deviceList,
+        setSingleBordersFilter,
+        setSingleDevicesFilter,
+        selectedBrand,
+        selectedCollection
     ] = useStore(state => [
         state.setFirstBorder,
         state.getCountOfPosts,
         state.setDevice,
-        state.deviceList
+        state.deviceList,
+        state.setSingleBordersFilter,
+        state.setSingleDevicesFilter,
+        state.filtersBorders.brand,
+        state.filtersBorders.collection
     ])
+    // #endregion
 
     const ElementsList = useMemo(
-        () => getElementsList(id, itemList, type, setFirstBorder, getCountOfPosts, setDevice, deviceList),
-        [id, itemList, type, setFirstBorder, getCountOfPosts, setDevice, deviceList]
+        () => getElementsList(
+            id, itemList, type, setFirstBorder,
+            getCountOfPosts, setDevice, deviceList,
+            setSingleBordersFilter,
+            setSingleDevicesFilter,
+            selectedBrand,
+            selectedCollection
+        ),
+        [
+            id, itemList, type, setFirstBorder,
+            getCountOfPosts, setDevice, deviceList,
+            setSingleBordersFilter,
+            setSingleDevicesFilter,
+            selectedBrand,
+            selectedCollection
+        ]
     )
 
     return (

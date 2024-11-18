@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Loader, Tabs, Factory, Viewport, ModalSelect } from '../../Components'
+import { Loader, Tabs, Factory, Viewport, ModalSelect, ModalWarning } from '../../Components'
 import useStore from '../../Store'
 import style from './App.module.sass'
 import '../../Sass/main.sass'
@@ -7,12 +7,22 @@ import '../../Sass/main.sass'
 const { app, caption, body } = style
 
 const App = () => {
-	const [ requestInitData, loading, error, modalSelectVisible ] = useStore(state => [
+
+	// #region Variables
+	const [
+		requestInitData,
+		loading,
+		error,
+		modalSelectVisible,
+		modalWarningVisible
+	] = useStore(state => [
 		state.requestInitData,
 		state.loading,
 		state.error,
-		state.modalSelectVisible
+		state.modalSelectVisible,
+		state.modalWarningVisible
 	])
+	// #endregion
 
 	if (error !== null) {
 		throw new Error(`${error ? error : ''}`)
@@ -36,6 +46,7 @@ const App = () => {
 						<Viewport />
 					</div>
 					{ modalSelectVisible && <ModalSelect /> }
+					{ modalWarningVisible && <ModalWarning /> }
 				</>
 			}
 		</section>
