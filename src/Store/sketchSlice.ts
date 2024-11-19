@@ -26,10 +26,20 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
         const newSelectedPosts = [...new Array(postsCount)].fill(false)
         newSelectedPosts[0] = true
 
+        const trimDeviceList = {...get().deviceList}
+
+        for (const key in trimDeviceList) {
+            const i = parseInt(key) as TNumberOfPosts
+
+            if (i !== 1) delete trimDeviceList[i]
+        }
+
         set({
             selectedPost: newSelectedPosts,
             postsCount: postsCount,
-            border: border
+            border: border,
+            deviceList: trimDeviceList,
+            direction: 'horizontal'
         })
     },
 
@@ -65,9 +75,6 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
     },
 
     resetSketch: () => {
-
-        console.log('resetSketch');
-
         set({
             ...defaultSketchProps
         })

@@ -83,8 +83,8 @@ const getCollectionsOptionsList = (
     getBrandByCollection: TGetBrandByCollection,
     selectedBrand: TBordersFilters['brand'],
     setModalSelect: TSetModalSelect,
+    resetSketch: TResetSketch,
     key: string,
-    resetSketch: TResetSketch
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
@@ -119,7 +119,6 @@ const getCollectionsOptionsList = (
 
                 return
             }
-
 
             // Если пытаемся изменить коллекцию, но ранее уже выбирали коллекцию из другого бренда
             setModalSelect(
@@ -242,8 +241,8 @@ const BordersWorkspace = () => {
             getBrandByCollection,
             selectedBrand,
             setModalSelect,
-            key,
-            resetSketch
+            resetSketch,
+            key
         ),
         [
             collectionsList,
@@ -253,8 +252,8 @@ const BordersWorkspace = () => {
             getBrandByCollection,
             selectedBrand,
             setModalSelect,
-            key,
-            resetSketch
+            resetSketch,
+            key
         ]
     )
 

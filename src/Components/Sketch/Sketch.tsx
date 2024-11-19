@@ -1,5 +1,5 @@
 import { useRef, useMemo, useCallback, useId, useState, useEffect } from 'react'
-import { SketchBackground } from '../../Components'
+import { SketchBackground, DeviceList } from '../../Components'
 import { TDirections } from '../../types'
 import useStore from '../../Store'
 import style from './Sketch.module.sass'
@@ -9,8 +9,8 @@ type TOnSetPostsCount = (
     newPostNumber: number
 ) => void
 
-const { sketch, construction, posts, directions, horizontal, vertical, cloud, selected,
-    controllers, trashСan, minus, plus, disabled, set, wrap, placeholder, border, device,
+const { sketch, construction, posts, directions, horizontal, vertical, cloud,
+    controllers, trashСan, minus, plus, disabled, set, wrap, placeholder, container,
     postActive, directionActive } = style
 
 const createPosts = (
@@ -38,6 +38,7 @@ const createPosts = (
 const Sketch = () => {
     const id = useId()
 
+    // #region Variables
     const [
         scale,
         postsCount,
@@ -65,6 +66,7 @@ const Sketch = () => {
         state.direction,
         state.setDirection,
     ])
+    // #endregion
 
     const sketchRef = useRef<HTMLDivElement | null>(null)
     const postsListRef = useRef<HTMLUListElement | null>(null)
@@ -80,8 +82,12 @@ const Sketch = () => {
     useEffect(
         () => {
             const updateMaxWidth = () => {
-                if (sketchRef.current?.offsetHeight) {
-                    setMaxWidth(sketchRef.current?.offsetHeight * 0.8 + 'px')
+                const target = direction === 'horizontal'
+                    ? sketchRef.current?.offsetWidth
+                    : sketchRef.current?.offsetHeight
+
+                if (target) {
+                    setMaxWidth(target * 0.8 + 'px')
                 }
             }
 
@@ -91,7 +97,7 @@ const Sketch = () => {
 
             return () => window.removeEventListener('resize', updateMaxWidth)
         },
-        [maxWidth, setMaxWidth, selectedPost]
+        [maxWidth, direction, selectedPost]
     )
 
     const onInc = () => { // +
@@ -207,23 +213,14 @@ const Sketch = () => {
             {/* Image Border and Devices */}
             <div className={set}>
                 <div className={wrap} style={transformStyle}>
-                    {
-                        !selectedBorder && !deviceList['1']
-                            && <span className={placeholder}></span>
-                    }
+                    { !selectedBorder && <span className={placeholder}></span> }
 
-                    <div style={{transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`}} className={selectedBorder ? `${border} ${selected}` : border}>
-                        { selectedBorder &&
-                            <img src={selectedBorder.image} alt={selectedBorder.name} style={{maxWidth: direction === 'vertical' ? maxWidth : 'none'}} />
+                    <div style={{transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`}} className={container}>
+                        { selectedBorder && <img
+                                style={{maxWidth: maxWidth}}
+                                src={selectedBorder.image} alt={selectedBorder.name} />
                         }
-
-
-                        {/*
-                        <div className={!selectedPost.length || selectedPost[0] ? device : `${device} ${selected}`}>
-
-                        </div> */}
-
-
+                        { selectedBorder && <DeviceList /> }
                     </div>
                 </div>
             </div>
