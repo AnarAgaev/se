@@ -1,14 +1,15 @@
-import { useId, useMemo, useRef, useState, useEffect } from "react"
+import { useId, useMemo, useRef, useState, useEffect } from 'react'
 import { TSketchDeviceList, TDirections } from '../../types'
 import useStore from '../../Store'
 import style from './DeviceList.module.sass'
 
-const { list, item, image, rotated } = style
+const { list, item, close, image, rotated } = style
 
-const getDeviceContainerList = (
+const getDevicesList = (
     id: string,
     deviceList: TSketchDeviceList,
-    direction: TDirections
+    direction: TDirections,
+    scale: number
 ): JSX.Element[] => {
 
     const elList: JSX.Element[] = []
@@ -28,6 +29,11 @@ const getDeviceContainerList = (
                                 alt={deviceList[i]?.name}
                                 title={deviceList[i]?.name} />
                     }
+                    {
+                        !deviceList[i]
+                            ? null
+                            : <span className={close} style={{transform: `scale(${1 / scale})`}}></span>
+                    }
                 </li>
             )
         }
@@ -41,10 +47,12 @@ const DeviceList = () => {
     // #region Variables
     const [
         deviceList,
-        direction
+        direction,
+        scale
     ] = useStore(state => [
         state.deviceList,
-        state.direction
+        state.direction,
+        state.scale
     ])
     // #endregion
 
@@ -91,14 +99,14 @@ const DeviceList = () => {
         [deviceList, direction]
     )
 
-    const deviceContainerList = useMemo(
-        () => getDeviceContainerList(id, deviceList, direction),
-        [id, deviceList, direction]
+    const devicesList = useMemo(
+        () => getDevicesList(id, deviceList, direction, scale),
+        [id, deviceList, direction, scale]
     )
 
     return (
         <ul ref={listRef} className={list} style={{gap: `${gap}px`}}>
-            {deviceContainerList}
+            {devicesList}
         </ul>
     )
 }

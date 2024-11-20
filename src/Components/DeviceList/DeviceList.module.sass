@@ -28,28 +28,33 @@
     &:has(img)
         cursor: pointer
 
-        &::after
-            content: '✖'
-            display: flex
-            align-items: center
-            justify-content: center
-            position: absolute
-            z-index: 2
-            position: absolute
-            top: 50%
-            left: 50%
-            transform: translate(-50%, -50%) scale(0)
-            width: 36px
-            height: 36px
-            border-radius: 50%
-            background: var(--color-opacity-back)
-            opacity: 0
-            transition: var(--base-transition)
-
-        @media (hover: hover) and (pointer: fine)
-            &:hover::after
+    @media (hover: hover) and (pointer: fine)
+        &:hover
+            span
                 opacity: 1
-                transform: translate(-50%, -50%) scale(1)
+
+
+.close
+    display: flex
+    align-items: center
+    justify-content: center
+    position: absolute
+    z-index: 2
+    top: 50%
+    left: 50%
+    translate: -50% -50%
+    width: 33px
+    height: 33px
+
+    border-radius: 50%
+    background: var(--color-opacity-back)
+    opacity: 0
+    transition: var(--base-transition)
+
+    &::after
+        content: '✖'
+        display: inline
+        position: relative
 
 
 .image
