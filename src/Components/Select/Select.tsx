@@ -7,6 +7,7 @@ interface Props {
     title: string
     children: ReactNode
     selectedValue?: string
+    critical?: boolean
 }
 
 const { select, select_dropped, value, caption,
@@ -25,8 +26,9 @@ function checkDeviceList(obj: TSketchDeviceList) {
     return false
 }
 
-const Select: FC<Props> = ({ title, children, selectedValue }) => {
+const Select: FC<Props> = ({ title, children, selectedValue, critical }) => {
 
+    // #region Variables
     const [
         modalWarningSet,
         modalWarningEnabled,
@@ -38,6 +40,7 @@ const Select: FC<Props> = ({ title, children, selectedValue }) => {
         state.border,
         state.deviceList
     ])
+    // #endregion
 
     const [dropped, toggleDropped] = useState(false)
 
@@ -72,9 +75,9 @@ const Select: FC<Props> = ({ title, children, selectedValue }) => {
         toggleDropped(!dropped)
 
         const devices = checkDeviceList(deviceList)
-        const msg = `При изменении Бренда или Коллекции, ${border && !devices ? 'будет сброшена' : 'будут сброшены'}${border ? ' рамка': ''}${border && devices ? ' и': ''}${devices ? ' устройства' : ''}`
+        const msg = "При изменении бренда или коллекции, будут сброшены выбранные рамка и устройства"
 
-        if (!dropped && modalWarningEnabled && (border || devices)) {
+        if (!dropped && modalWarningEnabled && (border || devices) && critical) {
             modalWarningSet(true, msg)
         }
     }

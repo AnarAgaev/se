@@ -276,10 +276,10 @@ const BordersWorkspace = () => {
 
     return (
         <FactoryWorkspace type="borders">
-            <Select title="Бренд" selectedValue={selectedBrand}>
+            <Select title="Бренд" critical selectedValue={selectedBrand}>
                 {brandsOptions}
             </Select>
-            <Select title="Коллекция" selectedValue={selectedCollection}>
+            <Select title="Коллекция" critical selectedValue={selectedCollection}>
                 {collectionsOptions}
             </Select>
             <Select title="Материал рамки" selectedValue={selectedMaterials}>
