@@ -1,5 +1,5 @@
 import { useId, useMemo, useRef, useState, useEffect } from 'react'
-import { TSketchDeviceList, TDirections } from '../../types'
+import { TSketchDeviceList, TDirections, TRemoveDevice } from '../../types'
 import useStore from '../../Store'
 import style from './DeviceList.module.sass'
 
@@ -9,7 +9,8 @@ const getDevicesList = (
     id: string,
     deviceList: TSketchDeviceList,
     direction: TDirections,
-    scale: number
+    scale: number,
+    removeDevice: TRemoveDevice
 ): JSX.Element[] => {
 
     const elList: JSX.Element[] = []
@@ -19,7 +20,7 @@ const getDevicesList = (
 
         if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
             elList.push(
-                <li key={`${id}-${i}`}
+                <li key={`${id}-${i}`} onClick={() => deviceList[i] && removeDevice(i)}
                     className={direction === 'vertical' ? `${item} ${rotated}` : item} >
                     {
                         !deviceList[i]
@@ -32,7 +33,7 @@ const getDevicesList = (
                     {
                         !deviceList[i]
                             ? null
-                            : <span className={close} style={{transform: `scale(${1 / scale})`}}></span>
+                            : <span className={close} style={{transform: `scale(${1 / (scale > 1 ? scale : 1)})`}}></span>
                     }
                 </li>
             )
@@ -48,11 +49,13 @@ const DeviceList = () => {
     const [
         deviceList,
         direction,
-        scale
+        scale,
+        removeDevice
     ] = useStore(state => [
         state.deviceList,
         state.direction,
-        state.scale
+        state.scale,
+        state.removeDevice
     ])
     // #endregion
 
@@ -100,8 +103,8 @@ const DeviceList = () => {
     )
 
     const devicesList = useMemo(
-        () => getDevicesList(id, deviceList, direction, scale),
-        [id, deviceList, direction, scale]
+        () => getDevicesList(id, deviceList, direction, scale, removeDevice),
+        [id, deviceList, direction, scale, removeDevice]
     )
 
     return (

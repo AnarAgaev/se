@@ -58,7 +58,7 @@ const getElementsList = (
         if (type === 'devices' && isDevice(item) && hasNull(deviceList)) {
 
             if (border === null) {
-                modalMessageSet(true, 'В начале необходимо выбрать рамку')
+                modalMessageSet(true, 'Вначале необходимо выбрать рамку')
                 return
             }
 

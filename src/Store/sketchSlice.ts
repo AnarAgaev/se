@@ -99,6 +99,20 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
         }
 
         set({ deviceList: newDeviceList })
+    },
+
+    removeDevice: (position) => {
+        const newDeviceList = {...get().deviceList}
+
+        for (const key in newDeviceList as TSketchDeviceList) {
+            const i = parseInt(key)
+
+            if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
+                i === position && (newDeviceList[i] = null)
+            }
+        }
+
+        set({ deviceList: newDeviceList })
     }
 })
 
