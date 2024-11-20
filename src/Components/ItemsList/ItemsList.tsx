@@ -3,7 +3,8 @@ import useStore from '../../Store'
 import style from './ItemsList.module.sass'
 import { TBorder, TDevice, TElementList, TItemsType,
     TSetFirstBorder, TGetCountOfPosts, TSetDevice,
-    TSketchDeviceList, TSetSingleFilter, TFilters } from '../../types'
+    TSketchDeviceList, TSetSingleFilter, TFilters,
+    TSketchStore, TAppStore } from '../../types'
 
 const { wrap, list, item, pic, preview, content, name, price } = style
 
@@ -37,7 +38,9 @@ const getElementsList = (
     setSingleBordersFilter: TSetSingleFilter,
     setSingleDevicesFilter: TSetSingleFilter,
     selectedBrand: TFilters['brand'],
-    selectedCollection: TFilters['collection']
+    selectedCollection: TFilters['collection'],
+    border: TSketchStore['border'],
+    modalMessageSet: TAppStore['modalMessageSet']
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
@@ -53,6 +56,12 @@ const getElementsList = (
         }
 
         if (type === 'devices' && isDevice(item) && hasNull(deviceList)) {
+
+            if (border === null) {
+                modalMessageSet(true, 'В начале необходимо выбрать рамку')
+                return
+            }
+
             setDevice(item)
         }
 
@@ -117,6 +126,7 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
 
     // #region Variables
     const [
+        border,
         setFirstBorder,
         getCountOfPosts,
         setDevice,
@@ -124,8 +134,10 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
         setSingleBordersFilter,
         setSingleDevicesFilter,
         selectedBrand,
-        selectedCollection
+        selectedCollection,
+        modalMessageSet
     ] = useStore(state => [
+        state.border,
         state.setFirstBorder,
         state.getCountOfPosts,
         state.setDevice,
@@ -133,7 +145,8 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
         state.setSingleBordersFilter,
         state.setSingleDevicesFilter,
         state.filtersBorders.brand,
-        state.filtersBorders.collection
+        state.filtersBorders.collection,
+        state.modalMessageSet
     ])
     // #endregion
 
@@ -144,7 +157,9 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
             setSingleBordersFilter,
             setSingleDevicesFilter,
             selectedBrand,
-            selectedCollection
+            selectedCollection,
+            border,
+            modalMessageSet
         ),
         [
             id, itemList, type, setFirstBorder,
@@ -152,7 +167,9 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
             setSingleBordersFilter,
             setSingleDevicesFilter,
             selectedBrand,
-            selectedCollection
+            selectedCollection,
+            border,
+            modalMessageSet
         ]
     )
 

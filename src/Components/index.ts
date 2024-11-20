@@ -38,6 +38,7 @@ import OptionLocation from './OptionLocation/OptionLocation'
 import InputAdd from './InputAdd/InputAdd'
 import ModalSelect from './ModalSelect/ModalSelect'
 import ModalWarning from './ModalWarning/ModalWarning'
+import ModalMessage from './ModalMessage/ModalMessage'
 import DeviceList from './DeviceList/DeviceList'
 
 export {
@@ -81,5 +82,6 @@ export {
     InputAdd,
     ModalSelect,
     ModalWarning,
+    ModalMessage,
     DeviceList
 }

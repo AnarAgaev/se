@@ -42,7 +42,7 @@ export type TBackgroundsStore = {
 
 // #region Sketch
 export type TSketchStore = {
-    border: TBorder | undefined
+    border: TBorder | null
     deviceList: TSketchDeviceList
     project: string | undefined
     placement: string | undefined
@@ -237,6 +237,13 @@ export type TAppStore = {
     modalWarningEnabled: boolean
     modalWarningSet: (visible: boolean, caption: string, enabled?: boolean) => void
     // #endregion
+
+    // #region Modal Message
+    modalMessageVisible: boolean
+    modalMessageCaption: string
+    modalMessageSet: (visible: boolean, caption: string) => void
+    // #endregion
+
 }
 // #endregion
 

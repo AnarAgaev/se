@@ -2,7 +2,7 @@ import { StateCreator  } from 'zustand'
 import { TSketchStore, TDefaultSketchProps, TSketchDeviceList, TNumberOfPosts } from '../types'
 
 const defaultSketchProps:TDefaultSketchProps = {
-    border: undefined,
+    border: null,
     deviceList: { 1: null },
     project: undefined,
     placement: undefined,

@@ -137,8 +137,20 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 ? get().modalWarningEnabled
                 : enabled,
         })
+    },
+    // #endregion
+
+    // #region ModalMessage
+    modalMessageVisible: false,
+    modalMessageCaption: '',
+    modalMessageSet: (visible, caption) => {
+        set({
+            modalMessageVisible: visible,
+            modalMessageCaption: caption
+        })
     }
     // #endregion
+
 })
 
 export default appSlice
