@@ -5,7 +5,6 @@ const { set, list, item, pic, content, head, body,
     caption, close, data, price, count, add, nav,
     nav_prev, nav_next, nav_inactive } = style
 
-
 const getShowNext = (
     set: HTMLDivElement,
     list: HTMLUListElement,

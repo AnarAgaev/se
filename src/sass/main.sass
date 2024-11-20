@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap')
 
 @import '_variables'
 @import '_mixins'
@@ -190,6 +190,12 @@
 
         &.disabled
             pointer-events: none
+            background: var(--color-button-disabled)
+            border-color: var(--color-button-disabled)
+            color: var(--color-button-font-disabled)
+
+        &.clickedDisabled
+            cursor: no-drop
             background: var(--color-button-disabled)
             border-color: var(--color-button-disabled)
             color: var(--color-button-font-disabled)

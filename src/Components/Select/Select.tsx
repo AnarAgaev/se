@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, ReactNode, FC } from 'react'
-import { TSketchDeviceList } from '../../types'
 import useStore from '../../Store'
 import style from './Select.module.sass'
 
@@ -13,32 +12,17 @@ interface Props {
 const { select, select_dropped, value, caption,
     arrow, body, collapse, inner, text, match } = style
 
-function checkDeviceList(obj: TSketchDeviceList) {
-
-    for (const key in obj as TSketchDeviceList) {
-        const i = parseInt(key)
-        if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
-            if (obj[i] !== null) {
-                return true
-            }
-        }
-    }
-    return false
-}
-
 const Select: FC<Props> = ({ title, children, selectedValue, critical }) => {
 
     // #region Variables
     const [
         modalWarningSet,
         modalWarningEnabled,
-        border,
-        deviceList
+        selectedBorder,
     ] = useStore(state => [
         state.modalWarningSet,
         state.modalWarningEnabled,
         state.border,
-        state.deviceList
     ])
     // #endregion
 
@@ -74,10 +58,9 @@ const Select: FC<Props> = ({ title, children, selectedValue, critical }) => {
     const handler = () => {
         toggleDropped(!dropped)
 
-        const devices = checkDeviceList(deviceList)
         const msg = "При изменении бренда или коллекции, будут сброшены выбранные рамка и устройства"
 
-        if (!dropped && modalWarningEnabled && (border || devices) && critical) {
+        if (!dropped && modalWarningEnabled && selectedBorder && critical) {
             modalWarningSet(true, msg)
         }
     }
