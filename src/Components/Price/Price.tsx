@@ -1,20 +1,20 @@
-import { useState } from 'react'
+import useStore from '../../Store'
 import style from './Price.module.sass'
 
-const { wrap, sum, counter, val, controller, controller_dec, controller_inc } = style
-
-const handleCounter = (
-    value: number,
-    direction: number,
-    func: Function
-) => {
-    let newValue = value + direction
-    if (newValue < 0) newValue = 0
-    func(newValue)
-}
+const { wrap, sum, counter, val, controller,
+    controller_dec, controller_inc } = style
 
 const Price = () => {
-    const [value, setValue] = useState<number>(0)
+
+    // #region Variables
+    const [
+        count,
+        handler
+    ] = useStore(state => [
+        state.countOfSets,
+        state.setCountOfSets
+    ])
+    // #endregion
 
     return (
         <div className={wrap}>
@@ -22,13 +22,13 @@ const Price = () => {
 
             <div className={counter}>
                 <button type="button"
-                    onClick={() => handleCounter(value, -1, setValue)}
+                    onClick={() => handler(-1)}
                     className={`${controller} ${controller_dec}`}></button>
 
-                <input type="text" className={val} value={value} readOnly />
+                <input type="text" className={val} value={count} readOnly />
 
                 <button type="button"
-                    onClick={() => handleCounter(value, 1, setValue)}
+                    onClick={() => handler(1)}
                     className={`${controller} ${controller_inc}`}></button>
             </div>
         </div>

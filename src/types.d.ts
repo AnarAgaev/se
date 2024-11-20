@@ -61,6 +61,7 @@ export type TSketchStore = {
     fixDeviceList: TFixDeviceList,
     checkDevices: TCheckDevices
 }
+
 export type TDirections = 'horizontal' | 'vertical'
 export type TResizeSketch = (direction: -1 | 1) => void
 export type TSetFirstBorder = (border: TBorder, postsCount: number) => void
@@ -221,6 +222,9 @@ export type TAppStore = {
 
     dictionary: TDictionary
     setDictionary: (dictionary: TDictionary) => void
+
+    countOfSets: number
+    setCountOfSets: (direction: 1 | -1) => void
 
     // #region Modal Select
     modalSelectVisible: boolean

@@ -90,6 +90,15 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         set({ dictionary: dictionary})
     },
 
+    countOfSets: 1,
+    setCountOfSets: (direction) => {
+        let newCount = get().countOfSets + 1 * direction
+
+        if (newCount === 0) newCount = 1
+
+        set({ countOfSets: newCount })
+    },
+
     // #region ModalSelect
     modalSelectVisible: false,
     modalSelectCaption: '',
