@@ -52,6 +52,7 @@ const Sketch = () => {
         deviceList,
         direction,
         setDirection,
+        visible
     ] = useStore(state => [
         state.scale,
         state.postsCount,
@@ -65,6 +66,7 @@ const Sketch = () => {
         state.deviceList,
         state.direction,
         state.setDirection,
+        state.visible
     ])
     // #endregion
 
@@ -163,7 +165,7 @@ const Sketch = () => {
             <div className={construction}>
                 <ul ref={postsListRef}
                     className={selectedPost.length ? posts : `${posts} ${disabled}`}>
-                    {postList}
+                    { postList }
                 </ul>
 
                 <ul ref={directionsRef} className={
@@ -215,7 +217,8 @@ const Sketch = () => {
                 <div className={wrap} style={transformStyle}>
                     { !selectedBorder && <span className={placeholder}></span> }
 
-                    <div style={{transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`}} className={container}>
+                    <div style={{opacity: visible ? '1' : '0', transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`}}
+                        className={container} >
                         { selectedBorder && <img
                                 style={{maxWidth: maxWidth}}
                                 src={selectedBorder.image} alt={selectedBorder.name} />

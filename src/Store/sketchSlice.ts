@@ -10,6 +10,7 @@ const defaultSketchProps:TDefaultSketchProps = {
     selectedPost: [],
     direction: 'horizontal',
     scale: 1,
+    visible: true
 }
 
 const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
@@ -49,11 +50,15 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
 
         const fixedDeviceList = get().fixDeviceList(numberOfPosts as TNumberOfPosts)
 
-        set({
+        set({visible: false})
+
+        setTimeout(() => set({
             border: border,
             selectedPost: newSelectedPosts,
             deviceList: fixedDeviceList
-        })
+        }), 100)
+
+        setTimeout(() => set({visible: true}), 200)
     },
 
     fixDeviceList: (numberOfPosts) => {
@@ -81,7 +86,11 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
     },
 
     setDirection: (d) => {
-        set({direction: d})
+        set({visible: false})
+
+        setTimeout(() => set({direction: d}), 100)
+
+        setTimeout(() => set({visible: true}), 200)
     },
 
     setDevice: (d) => {

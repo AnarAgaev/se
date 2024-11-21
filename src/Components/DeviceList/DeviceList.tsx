@@ -82,7 +82,7 @@ const DeviceList = () => {
                 const parentHeight = parentNode.clientHeight
                 const listHeight = list.clientHeight
 
-                setGap((parentHeight - listHeight) / 2.2)
+                setGap((parentHeight - listHeight) / 2.1)
             }
 
             timeoutId = setTimeout(calc, 50)
@@ -109,7 +109,7 @@ const DeviceList = () => {
 
     return (
         <ul ref={listRef} className={list} style={{gap: `${gap}px`}}>
-            {devicesList}
+            { devicesList }
         </ul>
     )
 }

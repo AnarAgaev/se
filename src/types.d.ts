@@ -50,6 +50,7 @@ export type TSketchStore = {
     selectedPost: boolean[]
     direction: TDirections
     scale: number
+    visible: boolean
 
     resizeSketch: TResizeSketch
     setFirstBorder: TSetFirstBorder
@@ -75,6 +76,7 @@ export type TRemoveDevice = (position: TNumberOfPosts) => void
 export type TFixDeviceList = (numberOfPosts: TNumberOfPosts) => TSketchDeviceList
 export type TNumberOfPosts = 1 | 2 | 3 | 4 | 5
 export type TCheckDevices = () => boolean
+export type TSetVisible = (direction: boolean) => void
 
 export type TDefaultSketchProps = Omit<TSketchStore, 'resizeSketch' | 'setFirstBorder'
     | 'setBorder' | 'resetSketch' | 'setDirection' | 'setDevice' | 'fixDeviceList'
