@@ -13,18 +13,16 @@ interface Props {
     type: TItemsType
 }
 
-function hasNull(obj: TSketchDeviceList): boolean {
-    let isDefined = false
+const hasNull = (obj: TSketchDeviceList): boolean => {
+    const keysToCheck = [1, 2, 3, 4, 5]
 
-    for (const key in obj) {
-        const i = parseInt(key)
-
-        if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
-            if (obj[i] === null) isDefined = true
-        }
+    for (const i of keysToCheck) {
+        if ((i === 1 || i === 2 || i === 3 || i === 4 || i === 5)
+                && (i in obj)
+                && (obj[i] === null)) return true
     }
 
-    return isDefined
+    return false
 }
 
 const getElementsList = (
@@ -40,7 +38,7 @@ const getElementsList = (
     selectedBrand: TFilters['brand'],
     selectedCollection: TFilters['collection'],
     border: TSketchStore['border'],
-    modalMessageSet: TAppStore['modalMessageSet']
+    modalMessageSet: TAppStore['modalMessageSet'],
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
@@ -50,15 +48,21 @@ const getElementsList = (
     }
 
     const addItemHandler: (type: TItemsType, item: TDevice | TBorder) => void = (type, item) => {
+
         if (type === 'borders') {
             const countOfPosts = getCountOfPosts(item)
             setFirstBorder(item, countOfPosts)
         }
 
-        if (type === 'devices' && isDevice(item) && hasNull(deviceList)) {
+        if (type === 'devices' && isDevice(item)) {
 
             if (border === null) {
                 modalMessageSet(true, 'Вначале необходимо выбрать рамку')
+                return
+            }
+
+            if (!hasNull(deviceList)) {
+                modalMessageSet(true, 'Все посты заполнены. Выберите рамку с большим количеством постов или удалите устройства.')
                 return
             }
 

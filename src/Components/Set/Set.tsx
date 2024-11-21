@@ -37,7 +37,7 @@ const getSetList = (
             if (devices[i] === null) continue
 
             elList.push(
-                <li key={`${id}-border`} className={item} title={devices[i]?.name}>
+                <li key={`${id}-${i}`} className={item} title={devices[i]?.name}>
                     <div className={pic}>
                         <img src={devices[i]?.preview} alt="" />
                     </div>
