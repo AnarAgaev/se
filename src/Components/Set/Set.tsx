@@ -9,6 +9,35 @@ const { wrapper, set, list, item, pic, content, head, body,
     caption, close, data, price, count, add, nav, navButton,
     prev, next, navDisabled } = style
 
+const getBorder = (
+    id: string,
+    border: TSketchStore['border'],
+    countOfSets: TAppStore['countOfSets'],
+    resetSketch: TSketchStore['resetSketch']
+): JSX.Element => { return (
+    <li key={`${id}-border`} className={item} title={border?.name}>
+        <div className={pic}>
+            <img src={border?.preview} alt="" />
+        </div>
+        <div className={content}>
+            <div className={head}>
+                <span className={caption}>{border?.name}</span>
+                <button type="button" className={close} onClick={resetSketch}></button>
+            </div>
+            <div className={body}>
+                <div className={data}>
+                    <span className={price}>{border?.price} ₽</span>
+                    <span className={count}>{countOfSets} шт.</span>
+                </div>
+                <button type="button" className={`button button_small button_dark button_cart ${add}`}>
+                    В корзину
+                    <i className='icon icon_cart'></i>
+                </button>
+            </div>
+        </div>
+    </li>
+)}
+
 const getSetList = (
     id: string,
     devices: TSketchStore['deviceList'],
@@ -52,34 +81,6 @@ const getSetList = (
     return elList
 }
 
-const getBorder = (
-    id: string,
-    border: TSketchStore['border'],
-    countOfSets: TAppStore['countOfSets']
-): JSX.Element => { return (
-    <li key={`${id}-border`} className={item} title={border?.name}>
-        <div className={pic}>
-            <img src={border?.preview} alt="" />
-        </div>
-        <div className={content}>
-            <div className={head}>
-                <span className={caption}>{border?.name}</span>
-                <button type="button" className={close}></button>
-            </div>
-            <div className={body}>
-                <div className={data}>
-                    <span className={price}>{border?.price} ₽</span>
-                    <span className={count}>{countOfSets} шт.</span>
-                </div>
-                <button type="button" className={`button button_small button_dark button_cart ${add}`}>
-                    В корзину
-                    <i className='icon icon_cart'></i>
-                </button>
-            </div>
-        </div>
-    </li>
-)}
-
 const Set = () => {
     const id = useId()
 
@@ -87,11 +88,13 @@ const Set = () => {
     const [
         border,
         countOfSets,
-        deviceList
+        deviceList,
+        resetSketch
     ] = useStore(state => [
         state.border,
         state.countOfSets,
-        state.deviceList
+        state.deviceList,
+        state.resetSketch
     ])
     // #endregion
 
@@ -112,8 +115,8 @@ const Set = () => {
 
     // #region Getting JSX Elements
     const selectedBorder = useMemo(
-        () => getBorder(id, border, countOfSets),
-        [id, border, countOfSets]
+        () => getBorder(id, border, countOfSets, resetSketch),
+        [id, border, countOfSets, resetSketch]
     )
 
     const setList = useMemo(
