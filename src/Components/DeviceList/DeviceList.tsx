@@ -85,10 +85,10 @@ const DeviceList = () => {
                 setGap((parentHeight - listHeight) / 2)
             }
 
-            timeoutId = setTimeout(calc, 30)
+            timeoutId = setTimeout(calc, 50)
 
             const onWindowResize = (() => {
-                timeoutId = setTimeout(calc, 30)
+                timeoutId = setTimeout(calc, 50)
             })
 
             window.addEventListener('resize', onWindowResize)
