@@ -82,7 +82,7 @@ const DeviceList = () => {
                 const parentHeight = parentNode.clientHeight
                 const listHeight = list.clientHeight
 
-                setGap((parentHeight - listHeight) / 2)
+                setGap((parentHeight - listHeight) / 2.2)
             }
 
             timeoutId = setTimeout(calc, 50)
