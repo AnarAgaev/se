@@ -2,58 +2,92 @@
 @import '../../Sass/_mixins'
 
 
+.wrapper
+    display: flex
+    flex-direction: column
+
 .set
     display: block
-    position: relative
+    // position: relative
     width: 100%
     height: auto
     user-select: none
+    overflow: hidden
 
-    @media (min-width: $md)
-        overflow: hidden
+
+
+    // @media (min-width: $md)
+    //     overflow: hidden
 
 
 .list
+
     display: flex
-    flex-wrap: nowrap
-    flex-direction: row
-    gap: 20px
-    position: relative
-    left: 0
-    width: fit-content
+    gap: 10px
+
+    width: auto
     height: auto
+
     margin: 0
     padding: 0
-    transition: var(--base-transition)
-    transition-timing-function: var(--synth-timing-func)
-    transition-duration: 0.3s
 
-    @media (max-width: $sm - 1px)
-        gap: 10px
+    // display: flex
+    // flex-wrap: nowrap
+    // flex-direction: row
+    // gap: 20px
+    // position: relative
+    // left: 0
+    // width: fit-content
+    // height: auto
+    // margin: 0
+    // padding: 0
+    // transition: var(--base-transition)
+    // transition-timing-function: var(--synth-timing-func)
+    // transition-duration: 0.3s
 
-    @media (max-width: $md - 1px)
-        width: auto
-        overflow-x: auto
-        overflow-y: hidden
-        -ms-overflow-style: none
-        scrollbar-width: none
+    @media (min-width: $sm)
+        gap: 20px
 
-        &::-webkit-scrollbar
-            width: 0
-            height: 0
+    // @media (max-width: $sm - 1px)
+    //     gap: 10px
+
+    // @media (max-width: $md - 1px)
+    //     width: auto
+    //     overflow-x: auto
+    //     overflow-y: hidden
+    //     -ms-overflow-style: none
+    //     scrollbar-width: none
+
+    //     &::-webkit-scrollbar
+    //         width: 0
+    //         height: 0
 
 
 .item
+
     flex-shrink: 0
-    display: flex
-    align-items: flex-start
-    gap: 5px
+    display: block
     position: relative
     width: 300px
     height: auto
 
+    // flex: 0 0 100%
+    min-width: 0
+
+
+    // aspect-ratio: 3 / 2
+    // background: lightblue
+
+    // flex-shrink: 0
+    display: flex
+    align-items: flex-start
+    gap: 5px
+    position: relative
+    // width: 300px
+    // height: auto
+
     @media (min-width: $sm)
-        gap: 10px
+    //     gap: 10px
         width: 360px
 
 
@@ -179,36 +213,48 @@
 
 
 .nav
-    display: block
-    position: absolute
-    z-index: 1
-    top: 50%
-    width: 40px
-    height: 40px
+    display: flex
+    justify-content: flex-end
+    align-items: flex-end
+    gap: 10px
+    width: 100%
+    height: 0
+    translate: 0 -17px
+
+
+.navButton
+    width: 25px !important
+    height: 25px !important
+    border: none !important
+    padding: 0 !important
     border-radius: 50%
-    border: none
-    cursor: pointer
-    transition: var(--base-transition)
-    background: var(--color-nav) no-repeat center
-    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNyAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzIwNTlfMjQ5NzYpIj4KPHBhdGggZD0iTTQuMTA3OTMgMC40MzI5ODVMMy41NTgyIDAuOTc4OTI0QzMuMzg2NTEgMS4xNTA3NCAzLjI5MTkzIDEuMzc5MzMgMy4yOTE5MyAxLjYyMzY0QzMuMjkxOTMgMS44Njc4MiAzLjM4NjUxIDIuMDk2NjggMy41NTgyIDIuMjY4NUw5Ljc4NjE2IDguNDk2MTlMMy41NTEyOCAxNC43MzExQzMuMzc5NiAxNC45MDI2IDMuMjg1MTYgMTUuMTMxNSAzLjI4NTE2IDE1LjM3NTdDMy4yODUxNiAxNS42MTk4IDMuMzc5NiAxNS44NDg4IDMuNTUxMjggMTYuMDIwNUw0LjA5NzYzIDE2LjU2NjZDNC40NTI5MiAxNi45MjIxIDUuMDMxNjUgMTYuOTIyMSA1LjM4NjkzIDE2LjU2NjZMMTIuODM3IDkuMTQzMjJDMTMuMDA4NSA4Ljk3MTY3IDEzLjEyOTQgOC43NDMwOCAxMy4xMjk0IDguNDk2NzRMMTMuMTI5NCA4LjQ5Mzg5QzEzLjEyOTQgOC4yNDk1OCAxMy4wMDg0IDguMDIwOTkgMTIuODM3IDcuODQ5NDRMNS40MDcxMyAwLjQzMjk4NUM1LjIzNTU4IDAuMjYxMTY4IDUuMDAwMDggMC4xNjY4NTggNC43NTU5IDAuMTY2NTg3QzQuNTExNTkgMC4xNjY1ODcgNC4yNzkzNCAwLjI2MTE2OCA0LjEwNzkzIDAuNDMyOTg1WiIgZmlsbD0iYmxhY2siLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8yMDU5XzI0OTc2Ij4KPHJlY3Qgd2lkdGg9IjE2LjY2NjciIGhlaWdodD0iMTYuNjY2NyIgZmlsbD0id2hpdGUiIHRyYW5zZm9ybT0ibWF0cml4KDAgMSAtMSAwIDE2LjgzMyAwLjE2NjYyNikiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K")
+    background-size: 40%
+    background-repeat: no-repeat
+    background-position-y: center
 
-    @media (max-width: $md - 1)
-        display: none
-
-    @media (hover: hover) and (pointer: fine)
-        &:hover
-            background-color: var(--color-button-font-dark)
-            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNyAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzIwNTlfMjQ5NzYpIj4KPHBhdGggZD0iTTQuMTA3OTMgMC40MzI5ODVMMy41NTgyIDAuOTc4OTI1QzMuMzg2NTEgMS4xNTA3NCAzLjI5MTkzIDEuMzc5MzMgMy4yOTE5MyAxLjYyMzY0QzMuMjkxOTMgMS44Njc4MiAzLjM4NjUxIDIuMDk2NjggMy41NTgyIDIuMjY4NUw5Ljc4NjE2IDguNDk2MTlMMy41NTEyOCAxNC43MzExQzMuMzc5NiAxNC45MDI2IDMuMjg1MTYgMTUuMTMxNSAzLjI4NTE2IDE1LjM3NTdDMy4yODUxNiAxNS42MTk4IDMuMzc5NiAxNS44NDg4IDMuNTUxMjggMTYuMDIwNUw0LjA5NzYzIDE2LjU2NjZDNC40NTI5MiAxNi45MjIxIDUuMDMxNjUgMTYuOTIyMSA1LjM4NjkzIDE2LjU2NjZMMTIuODM3IDkuMTQzMjJDMTMuMDA4NSA4Ljk3MTY3IDEzLjEyOTQgOC43NDMwOCAxMy4xMjk0IDguNDk2NzRMMTMuMTI5NCA4LjQ5Mzg5QzEzLjEyOTQgOC4yNDk1OCAxMy4wMDg0IDguMDIwOTkgMTIuODM3IDcuODQ5NDRMNS40MDcxMyAwLjQzMjk4NUM1LjIzNTU4IDAuMjYxMTY4IDUuMDAwMDggMC4xNjY4NTkgNC43NTU5IDAuMTY2NTg4QzQuNTExNTkgMC4xNjY1ODggNC4yNzkzNCAwLjI2MTE2OCA0LjEwNzkzIDAuNDMyOTg1WiIgZmlsbD0id2hpdGUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8yMDU5XzI0OTc2Ij4KPHJlY3Qgd2lkdGg9IjE2LjY2NjciIGhlaWdodD0iMTYuNjY2NyIgZmlsbD0id2hpdGUiIHRyYW5zZm9ybT0ibWF0cml4KDAgMSAtMSAwIDE2LjgzMyAwLjE2NjYyNikiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K")
+    @media (min-width: $sm)
+        background-size: 35%
+        width: 30px !important
+        height: 30px !important
 
 
-    &_inactive
-            transform: translateY(-50%) scale(0) !important
-            opacity: 0 !important
+.prev
+    background-position-x: 7px
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI2Ljc0MTIgMC44NTM2NzNDMjcuNzc4MiAtMC4xODQyOTcgMjkuNDYzNiAtMC4xODQyOTcgMzAuNTAwNiAwLjg1MzY3M0MzMS41MzcxIDEuODkxNTcgMzEuNTM3MSAzLjU3ODMzIDMwLjUwMDYgNC42MTU2M0wxNS4xMjkxIDIwTDMwLjUwMDcgMzUuMzg0MkMzMS41MzcyIDM2LjQyMjIgMzEuNTM3MiAzOC4xMDg5IDMwLjUwMDcgMzkuMTQ2OUMyOS40NjM2IDQwLjE4NDIgMjcuNzc4MyA0MC4xODQyIDI2Ljc0MTIgMzkuMTQ2OUMyMC45OTM2IDMzLjM5NiAxNS4yNDYgMjcuNjQ1MyA5LjQ5ODE1IDIxLjg5NDdDOS4yNDk1OSAyMS42NDczIDkuMDUyODkgMjEuMzUyOCA4LjkxOTU4IDIxLjAyODRDOC43ODYyNyAyMC43MDQgOC43MTkwMSAyMC4zNTYzIDguNzIxNzYgMjAuMDA1NkM4LjcyMTc2IDE5LjMxMzggOC45NzY4NyAxOC42MzI2IDkuNDk4MTUgMTguMTEwOEMxMi45NDY2IDE0LjY1OTYgMjUuMDE3MiAyLjU3OTY5IDI2Ljc0MTIgMC44NTM2NzNaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K")
 
-    &_next
-        transform: translateY(-50%)
-        right: 0
+    @media (min-width: $sm)
+        background-position-x: 9px
 
-    &_prev
-        transform: translateY(-50%) scale(-1, 1)
-        left: 0
+
+.next
+    background-position-x: 8px
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjI1ODUgMzkuMTQ2M0MxMi4yMjE0IDQwLjE4NDMgMTAuNTM2MSA0MC4xODQzIDkuNDk5MDMgMzkuMTQ2M0M4LjQ2MjU2IDM4LjEwODQgOC40NjI1NiAzNi40MjE3IDkuNDk5MDMgMzUuMzg0NEwyNC44NzA1IDIwTDkuNDk5MSA0LjYxNTg3QzguNDYyNjQgMy41Nzc5IDguNDYyNjQgMS44OTExNCA5LjQ5OTEgMC44NTMxNjVDMTAuNTM2MiAtMC4xODQxMjggMTIuMjIxNSAtMC4xODQxMjggMTMuMjU4NyAwLjg1MzE2NUMxNC45ODI2IDIuNTc4NSAyOC43NzcxIDE2LjM4IDMwLjUwMTcgMTguMTA1M0MzMC43NTAyIDE4LjM1MjggMzAuOTQ2OSAxOC42NDczIDMxLjA4MDIgMTguOTcxN0MzMS4yMTM1IDE5LjI5NjEgMzEuMjgwOCAxOS42NDM4IDMxLjI3ODEgMTkuOTk0NUMzMS4yNzgxIDIwLjY4NjIgMzEuMDIyOSAyMS4zNjc1IDMwLjUwMTcgMjEuODg5M0MyNy4wNTMyIDI1LjM0MDUgMTQuOTgyNiAzNy40MjA0IDEzLjI1ODcgMzkuMTQ2NEwxMy4yNTg1IDM5LjE0NjNaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K")
+
+    @media (min-width: $sm)
+        background-position-x: 10px
+
+
+.navDisabled
+    opacity: 0.2
+    cursor: no-drop !important
+    background-color: var(--color-button-prime) !important

@@ -1,25 +1,13 @@
-import { useId, useMemo, useState, useRef } from 'react'
+import { useId, useMemo } from 'react'
 import { TSketchStore, TAppStore, TSketchDeviceList } from '../../types'
+import useEmblaCarousel from 'embla-carousel-react'
+import usePrevNextButtons from './CarouselArrowButtons'
 import useStore from '../../Store'
 import style from './Set.module.sass'
 
-const { set, list, item, pic, content, head, body,
-    caption, close, data, price, count, add, nav,
-    nav_prev, nav_next, nav_inactive } = style
-
-const getShowNext = (
-    set: HTMLDivElement,
-    list: HTMLUListElement,
-    itemWidth: number
-): boolean => {
-
-    const viewportRight = set.getBoundingClientRect().right
-    const listWidth = list.getBoundingClientRect().width
-    const listLeft = list.getBoundingClientRect().left
-    const listRight = listLeft + listWidth + itemWidth
-
-    return !(listRight < viewportRight)
-}
+const { wrapper, set, list, item, pic, content, head, body,
+    caption, close, data, price, count, add, nav, navButton,
+    prev, next, navDisabled } = style
 
 const getSetList = (
     id: string,
@@ -28,7 +16,6 @@ const getSetList = (
 ): JSX.Element[] => {
 
     const elList: JSX.Element[] = []
-
 
     for (const key in devices as TSketchDeviceList) {
         const i = parseInt(key)
@@ -69,7 +56,7 @@ const getBorder = (
     id: string,
     border: TSketchStore['border'],
     countOfSets: TAppStore['countOfSets']
-): JSX.Element => (
+): JSX.Element => { return (
     <li key={`${id}-border`} className={item} title={border?.name}>
         <div className={pic}>
             <img src={border?.preview} alt="" />
@@ -91,9 +78,10 @@ const getBorder = (
             </div>
         </div>
     </li>
-)
+)}
 
 const Set = () => {
+    const id = useId()
 
     // #region Variables
     const [
@@ -107,38 +95,19 @@ const Set = () => {
     ])
     // #endregion
 
-    const id = useId()
-    const [offset, setOffset] = useState(0)
-    const [showNext, setShowNext] = useState(true)
-    const setRef = useRef<HTMLDivElement>(null)
-    const listRef = useRef<HTMLUListElement>(null)
+    // #region Carousel
+    const [emblaRef, emblaApi] = useEmblaCarousel({
+        loop: false,
+        align: 'start',
+        duration: 10
+    })
 
-    // #region Slider
-    // Gets this value from styles ./Set.module.sass
-    // 360 is a block width and 20 is offset between blocks
-    const ITEM_WIDTH = 360 + 20
-
-    const handlePrevClick = () => {
-        const set = setRef.current
-        const list = listRef.current
-        const newOffset = offset + ITEM_WIDTH
-
-        if (set && list) {
-            setShowNext(getShowNext(set, list, ITEM_WIDTH))
-            setOffset(newOffset >= 0 ? 0 : newOffset)
-        }
-    }
-
-    const handleNextClick = () => {
-        const set = setRef.current
-        const list = listRef.current
-        const newOffset = offset - ITEM_WIDTH
-
-        if (set && list) {
-            setShowNext(getShowNext(set, list, -ITEM_WIDTH))
-            setOffset(newOffset)
-        }
-    }
+    const {
+        prevBtnDisabled,
+        nextBtnDisabled,
+        onPrevButtonClick,
+        onNextButtonClick
+    } = usePrevNextButtons(emblaApi)
     // #endregion
 
     // #region Getting JSX Elements
@@ -153,30 +122,22 @@ const Set = () => {
     )
     // #endregion
 
-    // #region Style classes
-    const prevButtonClazz = offset >= 0
-    ? `${nav} ${nav_prev} ${nav_inactive}`
-    : `${nav} ${nav_prev}`
+    const prevBtnClazz = `button button_dark ${navButton} ${prev} ${prevBtnDisabled ? navDisabled : ''}`
 
-    const nextButtonClazz = showNext
-    ? `${nav} ${nav_next}`
-    : `${nav} ${nav_next} ${nav_inactive}`
-
-    const listTransformOffset = {
-        transform: `translateX(${offset}px)`
-    }
-    // #endregion
+    const nextBrnClazz = `button button_dark ${navButton} ${next} ${nextBtnDisabled ? navDisabled : ''}`
 
     return (
-        <div ref={setRef} className={set}>
-            <ul ref={listRef} className={list} style={listTransformOffset}>
-                { border && selectedBorder }
-                {setList}
-            </ul>
-            <button type="button" className={prevButtonClazz}
-                onClick={handlePrevClick}></button>
-            <button type="button" className={nextButtonClazz}
-                onClick={handleNextClick}></button>
+        <div className={wrapper}>
+            <div className={nav}>
+                <button className={prevBtnClazz} onClick={onPrevButtonClick}></button>
+                <button className={nextBrnClazz} onClick={onNextButtonClick}></button>
+            </div>
+            <div ref={emblaRef} className={set}>
+                <ul className={list}>
+                    { border && selectedBorder }
+                    { setList }
+                </ul>
+            </div>
         </div>
     )
 }
