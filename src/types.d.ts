@@ -72,7 +72,7 @@ export type TSetDirection = (d: TDirections) => void
 export type TSketchDeviceItem = TDevice | null
 export type TSketchDeviceList = Record<1, TSketchDeviceItem> & Partial<Record<2 | 3 | 4 | 5, TSketchDeviceItem>>
 export type TSetDevice = (d: TDevice) => void
-export type TRemoveDevice = (position: TNumberOfPosts) => void
+export type TRemoveDevice = (remoteDevicePosition: TNumberOfPosts | null, remoteDeviceId?: string | number) => void
 export type TFixDeviceList = (numberOfPosts: TNumberOfPosts) => TSketchDeviceList
 export type TNumberOfPosts = 1 | 2 | 3 | 4 | 5
 export type TCheckDevices = () => boolean

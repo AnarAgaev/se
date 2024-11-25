@@ -52,8 +52,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         body: body
                     })
 
-                    if (!res.ok) console.error(
-                        'Failed to fetch json initial data! URL link is', initSourceDataLink)
+                    if (!res.ok) console.error('Failed to fetch json initial data! URL link is', initSourceDataLink)
 
                     const safeResponse = InitDataContract.passthrough().safeParse(await res.json())
 

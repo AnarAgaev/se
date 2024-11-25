@@ -1,5 +1,5 @@
 import { useId, useMemo } from 'react'
-import { TSketchStore, TAppStore, TSketchDeviceList } from '../../types'
+import { TDevice, TSketchStore, TAppStore } from '../../types'
 import useEmblaCarousel from 'embla-carousel-react'
 import usePrevNextButtons from './CarouselArrowButtons'
 import useStore from '../../Store'
@@ -9,11 +9,34 @@ const { wrapper, set, list, item, pic, content, head, body,
     caption, close, data, price, count, add, nav, navButton,
     prev, next, navDisabled } = style
 
+const collapseDevices = (devices: TSketchStore['deviceList']): (TDevice & { selectedCount: number })[]  => {
+    const devicesMap = new Map()
+
+    for (const key in devices) {
+        const i = parseInt(key)
+
+        if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
+            const d = devices[i]
+
+            if (!d) continue
+
+            if (devicesMap.has(d.id)) {
+                const existingDevice = devicesMap.get(d.id)
+                existingDevice.selectedCount++
+            } else {
+                devicesMap.set(d.id, { ...d, selectedCount: 1 })
+            }
+        }
+    }
+
+    return Array.from(devicesMap.values())
+}
+
 const getBorder = (
     id: string,
     border: TSketchStore['border'],
     countOfSets: TAppStore['countOfSets'],
-    resetSketch: TSketchStore['resetSketch']
+    resetSketch: TSketchStore['resetSketch'],
 ): JSX.Element => { return (
     <li key={`${id}-border`} className={item} title={border?.name}>
         <div className={pic}>
@@ -40,45 +63,47 @@ const getBorder = (
 
 const getSetList = (
     id: string,
-    devices: TSketchStore['deviceList'],
-    countOfSets: TAppStore['countOfSets']
+    deviceList: TSketchStore['deviceList'],
+    countOfSets: TAppStore['countOfSets'],
+    removeDevice: TSketchStore['removeDevice']
 ): JSX.Element[] => {
 
-    const elList: JSX.Element[] = []
+    const devices = collapseDevices(deviceList)
 
-    for (const key in devices as TSketchDeviceList) {
-        const i = parseInt(key)
+    return devices.map((d, i) => {
 
-        if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
-            if (devices[i] === null) continue
+        const finalPrice = typeof d.price === 'string'
+            ? parseFloat(d.price) * d.selectedCount * countOfSets
+            : d.price * d.selectedCount * countOfSets
 
-            elList.push(
-                <li key={`${id}-${i}`} className={item} title={devices[i]?.name}>
-                    <div className={pic}>
-                        <img src={devices[i]?.preview} alt="" />
+        return (
+            <li key={`${id}-${i}`} className={item} title={d?.name}>
+            <div className={pic}>
+                <img src={d?.preview} alt="" />
+            </div>
+            <div className={content}>
+                <div className={head}>
+                    <span className={caption}>{d?.name}</span>
+                    <button onClick={() => removeDevice(null, d.id)}
+                        type="button" className={close}></button>
+                </div>
+                <div className={body}>
+                    <div className={data}>
+                        <span className={price}>{finalPrice} ₽</span>
+                        <span className={count}>
+                            {d.selectedCount * countOfSets} шт.
+                            <i>({d.price} р. ед.)</i>
+                        </span>
                     </div>
-                    <div className={content}>
-                        <div className={head}>
-                            <span className={caption}>{devices[i]?.name}</span>
-                            <button type="button" className={close}></button>
-                        </div>
-                        <div className={body}>
-                            <div className={data}>
-                                <span className={price}>{devices[i]?.price} ₽</span>
-                                <span className={count}>{countOfSets} шт.</span>
-                            </div>
-                            <button type="button" className={`button button_small button_dark button_cart ${add}`}>
-                                В корзину
-                                <i className='icon icon_cart'></i>
-                            </button>
-                        </div>
-                    </div>
-                </li>
-            )
-        }
-    }
-
-    return elList
+                    <button type="button" className={`button button_small button_dark button_cart ${add}`}>
+                        В корзину
+                        <i className='icon icon_cart'></i>
+                    </button>
+                </div>
+            </div>
+        </li>
+        )
+    })
 }
 
 const Set = () => {
@@ -89,12 +114,14 @@ const Set = () => {
         border,
         countOfSets,
         deviceList,
-        resetSketch
+        resetSketch,
+        removeDevice
     ] = useStore(state => [
         state.border,
         state.countOfSets,
         state.deviceList,
-        state.resetSketch
+        state.resetSketch,
+        state.removeDevice
     ])
     // #endregion
 
@@ -120,8 +147,8 @@ const Set = () => {
     )
 
     const setList = useMemo(
-        () => getSetList(id, deviceList, countOfSets),
-        [id, deviceList, countOfSets]
+        () => getSetList(id, deviceList, countOfSets, removeDevice),
+        [id, deviceList, countOfSets, removeDevice]
     )
     // #endregion
 

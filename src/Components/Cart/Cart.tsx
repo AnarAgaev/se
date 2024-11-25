@@ -20,7 +20,7 @@ const Cart = () => {
 
     const handler = () => {
         if (!checkDevices()) {
-            modalMessageSet(true, 'Необходимо добавить еще устройств или выбрать рамку с меньшим количеством постов')
+            modalMessageSet(true, 'Необходимо заполнить все посты в рамке. Добавьте устройства.')
             return
         }
 

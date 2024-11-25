@@ -11,7 +11,7 @@ type TOnSetPostsCount = (
 
 const { sketch, construction, posts, directions, horizontal, vertical, cloud,
     controllers, trashСan, minus, plus, disabled, set, wrap, placeholder, container,
-    postActive, directionActive } = style
+    postActive, directionActive, loader } = style
 
 const createPosts = (
     id: string,
@@ -159,6 +159,9 @@ const Sketch = () => {
     return (
         <div ref={sketchRef} className={sketch}>
             <SketchBackground />
+
+
+            <span className={loader} style={{opacity: visible ? 0 : 1}}></span>
 
 
             {/* Count of posts and Direction */}

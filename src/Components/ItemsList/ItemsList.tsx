@@ -39,6 +39,8 @@ const getElementsList = (
     selectedCollection: TFilters['collection'],
     border: TSketchStore['border'],
     modalMessageSet: TAppStore['modalMessageSet'],
+    postsCount: TSketchStore['postsCount'],
+    selectedPost: TSketchStore['selectedPost']
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
@@ -62,7 +64,7 @@ const getElementsList = (
             }
 
             if (!hasNull(deviceList)) {
-                modalMessageSet(true, 'Все посты заполнены. Выберите рамку с большим количеством постов или удалите устройства.')
+                modalMessageSet(true, `Все посты заполнены. ${!selectedPost[postsCount - 1] ? 'Выберите рамку с большим количеством постов или' : ''} ${!selectedPost[postsCount - 1] ? 'у' : 'У'}далите устройства.`)
                 return
             }
 
@@ -139,7 +141,9 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
         setSingleDevicesFilter,
         selectedBrand,
         selectedCollection,
-        modalMessageSet
+        modalMessageSet,
+        postsCount,
+        selectedPost
     ] = useStore(state => [
         state.border,
         state.setFirstBorder,
@@ -150,7 +154,9 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
         state.setSingleDevicesFilter,
         state.filtersBorders.brand,
         state.filtersBorders.collection,
-        state.modalMessageSet
+        state.modalMessageSet,
+        state.postsCount,
+        state.selectedPost
     ])
     // #endregion
 
@@ -163,7 +169,9 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
             selectedBrand,
             selectedCollection,
             border,
-            modalMessageSet
+            modalMessageSet,
+            postsCount,
+            selectedPost
         ),
         [
             id, itemList, type, setFirstBorder,
@@ -173,14 +181,16 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
             selectedBrand,
             selectedCollection,
             border,
-            modalMessageSet
+            modalMessageSet,
+            postsCount,
+            selectedPost
         ]
     )
 
     return (
         <div className={wrap}>
             <ul className={list}>
-                {ElementsList}
+                { ElementsList }
             </ul>
         </div>
     )

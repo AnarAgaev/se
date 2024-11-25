@@ -108,26 +108,30 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
             })
         }
 
-        const [fVendor, fCollection, fColor, fMaterial] = getNoramalVars (
+        const [fVendor, fCollection, fColor, fConfColor, fMaterial] = getNoramalVars (
             f.vendor,
             f.collection,
             f.color,
+            f.conf_color,
             f.armature_material
         )
 
-        const [sVendor, sCollection, sColor, sMaterial] = getNoramalVars (
+        const [sVendor, sCollection, sColor, sConfColor, sMaterial] = getNoramalVars (
             s.vendor,
             s.collection,
             s.color,
+            s.conf_color,
             s.armature_material
         )
 
         const isSameVendor = fVendor === sVendor
         const isSameCollection = fCollection === sCollection
         const isSameColor = fColor === sColor
+        // const isSameConfColor = fConfColor === sConfColor && fConfColor !== undefined && sConfColor !== undefined
+        const isSameConfColor = fConfColor === sConfColor
         const isSameMaterial = fMaterial === sMaterial
 
-        return isSameVendor && isSameCollection && isSameColor && isSameMaterial
+        return isSameVendor && isSameCollection && isSameColor && isSameConfColor && isSameMaterial
     },
 
     getCountOfPosts: (border) => {

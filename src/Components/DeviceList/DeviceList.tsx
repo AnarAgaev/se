@@ -63,7 +63,9 @@ const DeviceList = () => {
 
     const listRef = useRef<HTMLUListElement | null>(null)
 
-    const [gap, setGap] = useState(0)
+    const [padding, setPadding] = useState(0)
+
+
 
     useEffect(
         () => {
@@ -82,7 +84,7 @@ const DeviceList = () => {
                 const parentHeight = parentNode.clientHeight
                 const listHeight = list.clientHeight
 
-                setGap((parentHeight - listHeight) / 2.1)
+                setPadding((parentHeight - listHeight) / 2)
             }
 
             timeoutId = setTimeout(calc, 50)
@@ -108,7 +110,7 @@ const DeviceList = () => {
     )
 
     return (
-        <ul ref={listRef} className={list} style={{gap: `${gap}px`}}>
+        <ul ref={listRef} className={list} style={{padding: `0 ${padding}px`}}>
             { devicesList }
         </ul>
     )

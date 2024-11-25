@@ -138,7 +138,10 @@
 
 
 .count
-    display: block
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-end
+    gap: 5px
     position: relative
     width: 100%
 
@@ -146,6 +149,15 @@
     font-size: 16px
     font-weight: 400
     line-height: 120% /* 19.2px */
+
+    i
+        display: inline-block
+        position: relative
+        margin: 0
+        padding: 0
+        color: var(--color-scroll-thumb)
+        font-size: 12px
+        font-weight: 400
 
 
 .add

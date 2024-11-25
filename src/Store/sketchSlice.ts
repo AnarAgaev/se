@@ -56,9 +56,9 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
             border: border,
             selectedPost: newSelectedPosts,
             deviceList: fixedDeviceList
-        }), 100)
+        }), 700)
 
-        setTimeout(() => set({visible: true}), 200)
+        setTimeout(() => set({visible: true}), 1000)
     },
 
     fixDeviceList: (numberOfPosts) => {
@@ -88,9 +88,9 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
     setDirection: (d) => {
         set({visible: false})
 
-        setTimeout(() => set({direction: d}), 100)
+        setTimeout(() => set({direction: d}), 700)
 
-        setTimeout(() => set({visible: true}), 200)
+        setTimeout(() => set({visible: true}), 1000)
     },
 
     setDevice: (d) => {
@@ -110,14 +110,29 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
         set({ deviceList: newDeviceList })
     },
 
-    removeDevice: (position) => {
+    removeDevice: (remoteDevicePosition, remoteDeviceId) => {
         const newDeviceList = {...get().deviceList}
 
-        for (const key in newDeviceList as TSketchDeviceList) {
-            const i = parseInt(key)
+        // Deleting by device position
+        if (remoteDevicePosition) {
+            for (const key in newDeviceList as TSketchDeviceList) {
+                const i = parseInt(key)
 
-            if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
-                i === position && (newDeviceList[i] = null)
+                if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
+                    i === remoteDevicePosition && (newDeviceList[i] = null)
+                }
+            }
+        }
+
+        // Deleting by device ID
+        if (remoteDeviceId) {
+            for (let i = 5; i > 0; i--) {
+                if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
+                    if (newDeviceList[i]?.id === remoteDeviceId) {
+                        newDeviceList[i] = null
+                        break
+                    }
+                }
             }
         }
 
