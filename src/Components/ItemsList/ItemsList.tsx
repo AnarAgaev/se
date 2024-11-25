@@ -2,9 +2,9 @@ import { useId, useMemo } from 'react'
 import useStore from '../../Store'
 import style from './ItemsList.module.sass'
 import { TBorder, TDevice, TElementList, TItemsType,
-    TSetFirstBorder, TGetCountOfPosts, TSetDevice,
+    TSetBorder, TGetCountOfPosts, TSetDevice,
     TSketchDeviceList, TSetSingleFilter, TFilters,
-    TSketchStore, TAppStore } from '../../types'
+    TSketchStore, TAppStore, TGetSiblingBorder } from '../../types'
 
 const { wrap, list, item, pic, preview, content, name, price } = style
 
@@ -29,7 +29,7 @@ const getElementsList = (
     id: string,
     itemList: TElementList,
     type: TItemsType,
-    setFirstBorder: TSetFirstBorder,
+    setBorder: TSetBorder,
     getCountOfPosts: TGetCountOfPosts,
     setDevice: TSetDevice,
     deviceList: TSketchDeviceList,
@@ -40,7 +40,8 @@ const getElementsList = (
     border: TSketchStore['border'],
     modalMessageSet: TAppStore['modalMessageSet'],
     postsCount: TSketchStore['postsCount'],
-    selectedPost: TSketchStore['selectedPost']
+    selectedPost: TSketchStore['selectedPost'],
+    getSiblingBorder: TGetSiblingBorder
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
@@ -52,8 +53,32 @@ const getElementsList = (
     const addItemHandler: (type: TItemsType, item: TDevice | TBorder) => void = (type, item) => {
 
         if (type === 'borders') {
+
             const countOfPosts = getCountOfPosts(item)
-            setFirstBorder(item, countOfPosts)
+
+            // When add border first time
+            if (selectedPost.length === 0) {
+
+                setBorder(item, 1, countOfPosts)
+
+            } else {
+
+                const numberOfPost = selectedPost.findIndex(el => el) + 1
+                const newBorder = getSiblingBorder(item, numberOfPost)
+
+                if (numberOfPost === 1 || numberOfPost === 2 || numberOfPost === 3
+                        || numberOfPost === 4 || numberOfPost === 5) {
+
+                    if (newBorder) {
+                        setBorder(newBorder, numberOfPost)
+                    }
+                    else {
+                        setBorder(item, 1, countOfPosts)
+                        console.log('\x1b[31m%s\x1b[0m', `There's no border with ${numberOfPost} count of posts for display. getSiblingBorder method returned empty result!`)
+                        console.log('\x1b[34m%s\x1b[0m', 'Updated to border with one post.')
+                    }
+                }
+            }
         }
 
         if (type === 'devices' && isDevice(item)) {
@@ -64,7 +89,8 @@ const getElementsList = (
             }
 
             if (!hasNull(deviceList)) {
-                modalMessageSet(true, `Все посты заполнены. ${!selectedPost[postsCount - 1] ? 'Выберите рамку с большим количеством постов или' : ''} ${!selectedPost[postsCount - 1] ? 'у' : 'У'}далите устройства.`)
+                const msg = `Все посты заполнены. ${!selectedPost[postsCount - 1] ? 'Выберите рамку с большим количеством постов или' : ''} ${!selectedPost[postsCount - 1] ? 'у' : 'У'}далите устройства.`
+                modalMessageSet(true, msg)
                 return
             }
 
@@ -72,7 +98,7 @@ const getElementsList = (
         }
 
         /*
-        * For both the frame and the device,
+        * For both, the frame and the device,
         * when choosing, we immediately set
         * the Brand and Collection filters
         */
@@ -133,7 +159,7 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
     // #region Variables
     const [
         border,
-        setFirstBorder,
+        setBorder,
         getCountOfPosts,
         setDevice,
         deviceList,
@@ -143,10 +169,11 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
         selectedCollection,
         modalMessageSet,
         postsCount,
-        selectedPost
+        selectedPost,
+        getSiblingBorder
     ] = useStore(state => [
         state.border,
-        state.setFirstBorder,
+        state.setBorder,
         state.getCountOfPosts,
         state.setDevice,
         state.deviceList,
@@ -156,13 +183,14 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
         state.filtersBorders.collection,
         state.modalMessageSet,
         state.postsCount,
-        state.selectedPost
+        state.selectedPost,
+        state.getSiblingBorder
     ])
     // #endregion
 
     const ElementsList = useMemo(
         () => getElementsList(
-            id, itemList, type, setFirstBorder,
+            id, itemList, type, setBorder,
             getCountOfPosts, setDevice, deviceList,
             setSingleBordersFilter,
             setSingleDevicesFilter,
@@ -171,10 +199,11 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
             border,
             modalMessageSet,
             postsCount,
-            selectedPost
+            selectedPost,
+            getSiblingBorder
         ),
         [
-            id, itemList, type, setFirstBorder,
+            id, itemList, type, setBorder,
             getCountOfPosts, setDevice, deviceList,
             setSingleBordersFilter,
             setSingleDevicesFilter,
@@ -183,7 +212,8 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
             border,
             modalMessageSet,
             postsCount,
-            selectedPost
+            selectedPost,
+            getSiblingBorder
         ]
     )
 

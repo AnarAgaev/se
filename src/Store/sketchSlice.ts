@@ -23,39 +23,23 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
         })
     },
 
-    setFirstBorder: (border, postsCount) => {
-        const newSelectedPosts = [...new Array(postsCount)].fill(false)
-        newSelectedPosts[0] = true
+    setBorder: (border, numberOfPost, countOfPosts) => {
 
-        const trimDeviceList = {...get().deviceList}
+        let newSelectedPosts = countOfPosts !== undefined
+            ? [...new Array(countOfPosts)].fill(false)
+            : [...get().selectedPost]
 
-        for (const key in trimDeviceList) {
-            const i = parseInt(key) as TNumberOfPosts
+        newSelectedPosts = newSelectedPosts.map((_el, idx) => idx === numberOfPost - 1)
 
-            if (i !== 1) delete trimDeviceList[i]
-        }
-
-        set({
-            selectedPost: newSelectedPosts,
-            postsCount: postsCount,
-            border: border,
-            deviceList: trimDeviceList,
-            direction: 'horizontal'
-        })
-    },
-
-    setBorder: (border, numberOfPosts) => {
-        const newSelectedPosts = [...get().selectedPost]
-            .map((_el, idx) => idx === numberOfPosts - 1)
-
-        const fixedDeviceList = get().fixDeviceList(numberOfPosts as TNumberOfPosts)
+        const fixedDeviceList = get().fixDeviceList(numberOfPost as TNumberOfPosts)
 
         set({visible: false})
 
         setTimeout(() => set({
             border: border,
             selectedPost: newSelectedPosts,
-            deviceList: fixedDeviceList
+            deviceList: fixedDeviceList,
+            postsCount: newSelectedPosts.length
         }), 700)
 
         setTimeout(() => set({visible: true}), 1000)

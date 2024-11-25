@@ -166,11 +166,13 @@ const Sketch = () => {
 
             {/* Count of posts and Direction */}
             <div className={construction}>
+                {/* Counts */}
                 <ul ref={postsListRef}
                     className={selectedPost.length ? posts : `${posts} ${disabled}`}>
                     { postList }
                 </ul>
 
+                {/* Directions */}
                 <ul ref={directionsRef} className={
                         selectedPost.length > 2 && !selectedPost[0]
                             ? directions

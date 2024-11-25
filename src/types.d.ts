@@ -53,7 +53,6 @@ export type TSketchStore = {
     visible: boolean
 
     resizeSketch: TResizeSketch
-    setFirstBorder: TSetFirstBorder
     setBorder: TSetBorder
     resetSketch: TResetSketch
     setDirection: TSetDirection
@@ -65,8 +64,7 @@ export type TSketchStore = {
 
 export type TDirections = 'horizontal' | 'vertical'
 export type TResizeSketch = (direction: -1 | 1) => void
-export type TSetFirstBorder = (border: TBorder, postsCount: number) => void
-export type TSetBorder = (border: TBorder, numberOfPosts: TNumberOfPosts ) => void
+export type TSetBorder = (border: TBorder, numberOfPost: TNumberOfPosts, countOfPosts?: number ) => void
 export type TResetSketch = () => void
 export type TSetDirection = (d: TDirections) => void
 export type TSketchDeviceItem = TDevice | null
