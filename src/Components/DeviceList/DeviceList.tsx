@@ -85,10 +85,10 @@ const DeviceList = (props: {shouldUpdate: boolean}) => {
                 setPadding((parentHeight - listHeight) / 2)
             }
 
-            timeoutId = setTimeout(calc, 100)
+            timeoutId = setTimeout(calc, 300)
 
             const onWindowResize = (() => {
-                timeoutId = setTimeout(calc, 100)
+                timeoutId = setTimeout(calc, 300)
             })
 
             window.addEventListener('resize', onWindowResize)

@@ -1,5 +1,5 @@
 import { useRef, useMemo, useCallback, useId, useState, useEffect } from 'react'
-import { SketchBackground, DeviceList } from '../../Components'
+import { SketchBackground, DeviceList, SketchSaver } from '../../Components'
 import { TDirections } from '../../types'
 import useStore from '../../Store'
 import style from './Sketch.module.sass'
@@ -9,7 +9,7 @@ type TOnSetPostsCount = (
     newPostNumber: number
 ) => void
 
-const { sketch, construction, posts, directions, horizontal, vertical, cloud,
+const { sketch, construction, posts, directions, horizontal, vertical, save,
     controllers, trashСan, minus, plus, disabled, set, wrap, placeholder, container,
     postActive, directionActive, loader } = style
 
@@ -73,6 +73,8 @@ const Sketch = () => {
     // #endregion
 
     const sketchRef = useRef<HTMLDivElement | null>(null)
+    const backImgRef = useRef<HTMLImageElement | null>(null)
+
     const postsListRef = useRef<HTMLUListElement | null>(null)
     const directionsRef = useRef<HTMLUListElement | null>(null)
 
@@ -161,12 +163,12 @@ const Sketch = () => {
 
     const onLoad = () => {
         setShouldUpdate(!shouldUpdate)
-        setTimeout(() => setVisible(true), 700)
+        setTimeout(() => setVisible(true), 500)
     }
 
     return (
         <div ref={sketchRef} className={sketch}>
-            <SketchBackground />
+            <SketchBackground backImgRef={backImgRef}/>
             <span className={loader} style={{opacity: visible ? 0 : 1}}></span>
 
             {/* Count of posts and Direction */}
@@ -205,8 +207,8 @@ const Sketch = () => {
 
 
             {/* Save image */}
-            <div className={cloud}>
-                <button><i></i></button>
+            <div className={`${save} ${!selectedBorder ? disabled : ''}`}>
+                <SketchSaver sketchRef={sketchRef} backImgRef={backImgRef} />
             </div>
 
 
