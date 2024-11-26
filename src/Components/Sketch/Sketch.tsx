@@ -74,6 +74,7 @@ const Sketch = () => {
 
     const sketchRef = useRef<HTMLDivElement | null>(null)
     const backImgRef = useRef<HTMLImageElement | null>(null)
+    const borderRef = useRef<HTMLImageElement | null>(null)
 
     const postsListRef = useRef<HTMLUListElement | null>(null)
     const directionsRef = useRef<HTMLUListElement | null>(null)
@@ -208,7 +209,7 @@ const Sketch = () => {
 
             {/* Save image */}
             <div className={`${save} ${!selectedBorder ? disabled : ''}`}>
-                <SketchSaver sketchRef={sketchRef} backImgRef={backImgRef} />
+                <SketchSaver sketchRef={sketchRef} backImgRef={backImgRef} borderRef={borderRef} />
             </div>
 
 
@@ -232,6 +233,7 @@ const Sketch = () => {
                     <div style={{opacity: visible ? '1' : '0', transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`}}
                         className={container} >
                         { selectedBorder && <img
+                                ref={borderRef}
                                 onLoad={onLoad}
                                 style={{maxWidth: maxWidth}}
                                 src={selectedBorder.image} alt={selectedBorder.name} />

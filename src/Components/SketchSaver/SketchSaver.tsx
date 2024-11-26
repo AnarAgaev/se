@@ -1,4 +1,5 @@
 import { calculateSketchBackgroundPosition } from '../../Helpers'
+import useStore from '../../Store'
 import style from './SketchSaver.module.sass'
 
 const _DEFAULT_BACKGROUND_SRC = 'https://aws.massive.ru/sew/img/background-default.svg'
@@ -6,20 +7,40 @@ const _DEFAULT_BACKGROUND_SRC = 'https://aws.massive.ru/sew/img/background-defau
 type TProps = {
     sketchRef: React.MutableRefObject<HTMLDivElement | null>
     backImgRef: React.MutableRefObject<HTMLImageElement | null>
+    borderRef: React.MutableRefObject<HTMLImageElement | null>
 }
 
-type Canvas = {
+type TCanvas = {
 	canvas: HTMLCanvasElement | null,
 	context: CanvasRenderingContext2D,
 	loaded: boolean
 }
 
-const SketchSaver = ({ sketchRef, backImgRef }: TProps) => {
+const sketchWorkspace: {
+    background?: TCanvas | null,
+    border?: TCanvas | null,
+    [key: number]: TCanvas
+} = {}
 
-    const sketchWorkspace: {
-		background?: Canvas | null,
-		[key: number]: Canvas
-	} = {}
+const createCanvas = (width: number, height: number) => {
+    const canvas = document.createElement('canvas')
+    canvas.width = width
+    canvas.height = height
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return null
+    return { canvas: canvas, context: ctx, loaded: false }
+}
+
+const checkLoadedWorkspace = () => {
+    for (const key in sketchWorkspace) {
+        if (!sketchWorkspace[key].loaded) return false
+    }
+    return true
+}
+
+const SketchSaver = ({ sketchRef, backImgRef, borderRef }: TProps) => {
+
+    const direction = useStore(state => state.direction)
 
     const addBackToWorkspace = (width: number, height: number, back: HTMLImageElement | null) => {
 		sketchWorkspace.background = createCanvas(width, height)
@@ -51,50 +72,49 @@ const SketchSaver = ({ sketchRef, backImgRef }: TProps) => {
                     sketchWorkspace.background.canvas, backImg
                 )
 
-                sketchWorkspace.background?.context.drawImage(backImg, posSketchX, posSketchY, sketchWidth, sketchHeight)
+                sketchWorkspace.background.context.drawImage(backImg, posSketchX, posSketchY, sketchWidth, sketchHeight)
                 sketchWorkspace.background.loaded = true
             }
         }
 	}
 
-    const createCanvas = (width: number, height: number) => {
-		const canvas = document.createElement('canvas')
-		canvas.width = width
-		canvas.height = height
-		const ctx = canvas.getContext('2d')
-		if (!ctx) return null
-		return { canvas: canvas, context: ctx, loaded: false }
-	}
+    const addBorderToWorkspace = (width: number, height: number, border: HTMLImageElement | null) => {
 
-    const handleSave = async () => {
+        if (!border) return
 
-        // Image sizes
-		if (!sketchRef.current) return
+        // Создаем канвас для видимой картинки
+        sketchWorkspace.border = createCanvas(width, height)
 
-		const resImgWidth = sketchRef.current.offsetWidth
-		const resImgHeight = sketchRef.current.offsetHeight
+        const pic = new Image()
+        pic.src = border.src
+        pic.crossOrigin = 'anonymous'
 
-		// Создаем canvas с картинкой фона
-		addBackToWorkspace(resImgWidth, resImgHeight, backImgRef?.current)
+        pic.onload = () => {
+            const computedStyle = window.getComputedStyle(border)
+            const picWidth = parseFloat(computedStyle.width) // ширина рамки
+            const picHeight = parseFloat(computedStyle.height) // высота рамки
 
-		// Рисуем картинки продуктов, каждую на своем canvas
-		// addPicCanvasesToWorkspace(resultImgWidth, resultImgHeight, imgRefs)
+            // Рисуем рамку на canvas
+            if (sketchWorkspace.border?.canvas) {
 
-		// Циклически проверяем загрузку всех картинок. Если ок, то скачиваем примерку
-		const intervalId = setInterval(() => {
-            const isLoaded = checkLoadedWorkspace()
-			if (isLoaded) {
-				clearInterval(intervalId)
-				downloadFinalPicture(resImgWidth, resImgHeight)
-			}
-		}, 100)
-	}
+                // Поворачиваем рамку
+                if (direction === 'vertical') {
+                    // Смещаем начальную точку в центр изображения
+                    sketchWorkspace.border.context.translate(width / 2, height / 2)
 
-    const checkLoadedWorkspace = () => {
-		for (const key in sketchWorkspace) {
-			if (!sketchWorkspace[key].loaded) return false
-		}
-		return true
+                    // Поворачиваем на 90 градусов
+                    sketchWorkspace.border.context.rotate(Math.PI / 2)
+
+                    // Рисуем изображение
+                    sketchWorkspace.border.context.drawImage(pic, -picWidth / 2, -picHeight / 2, picWidth, picHeight)
+
+                } else {
+                    sketchWorkspace.border.context.drawImage(pic, (width - picWidth) / 2, (height - picHeight) / 2, picWidth, picHeight)
+                }
+
+                sketchWorkspace.border.loaded = true
+            }
+        }
 	}
 
     const downloadFinalPicture = (width: number, height: number) => {
@@ -112,6 +132,11 @@ const SketchSaver = ({ sketchRef, backImgRef }: TProps) => {
 			combinedCtx.drawImage(sketchWorkspace.background.canvas, 0, 0)
 		}
 
+        // Добавляем картинку рамки
+        if (sketchWorkspace.border?.canvas) {
+			combinedCtx.drawImage(sketchWorkspace.border.canvas, 0, 0)
+		}
+
 		// // Добавляем картинки продуктов
 		// for (const idx in imgRefs) {
 		// 	if (products[idx].visibility && canvasWorkspace[idx]?.canvas) {
@@ -127,6 +152,33 @@ const SketchSaver = ({ sketchRef, backImgRef }: TProps) => {
 		document.body.appendChild(link)
 		link.click()
 		document.body.removeChild(link)
+	}
+
+    const handleSave = async () => {
+
+        // Image sizes
+		if (!sketchRef.current) return
+
+		const resImgWidth = sketchRef.current.offsetWidth
+		const resImgHeight = sketchRef.current.offsetHeight
+
+		// Создаем canvas с картинкой фона
+		addBackToWorkspace(resImgWidth, resImgHeight, backImgRef?.current)
+
+        // Добавляем рамку на canvas
+        addBorderToWorkspace(resImgWidth, resImgHeight, borderRef?.current)
+
+		// Рисуем картинки продуктов, каждую на своем canvas
+		// addPicCanvasesToWorkspace(resultImgWidth, resultImgHeight, imgRefs)
+
+		// Циклически проверяем загрузку всех картинок. Если ок, то скачиваем примерку
+		const intervalId = setInterval(() => {
+            const isLoaded = checkLoadedWorkspace()
+			if (isLoaded) {
+				clearInterval(intervalId)
+				downloadFinalPicture(resImgWidth, resImgHeight)
+			}
+		}, 100)
 	}
 
     return (
