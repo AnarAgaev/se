@@ -43,7 +43,7 @@ const getDevicesList = (
     return elList
 }
 
-const DeviceList = () => {
+const DeviceList = (props: {shouldUpdate: boolean}) => {
 
     // #region Variables
     const [
@@ -85,10 +85,10 @@ const DeviceList = () => {
                 setPadding((parentHeight - listHeight) / 2)
             }
 
-            timeoutId = setTimeout(calc, 50)
+            timeoutId = setTimeout(calc, 100)
 
             const onWindowResize = (() => {
-                timeoutId = setTimeout(calc, 50)
+                timeoutId = setTimeout(calc, 100)
             })
 
             window.addEventListener('resize', onWindowResize)
@@ -99,7 +99,7 @@ const DeviceList = () => {
             }
         },
 
-        [deviceList, direction]
+        [deviceList, direction, props]
     )
 
     const devicesList = useMemo(

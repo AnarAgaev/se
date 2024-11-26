@@ -81,6 +81,7 @@ const Sketch = () => {
         transformOrigin: `${scale > 1 ? '0 0' : 'center'}`
     }
 
+    const [shouldUpdate, setShouldUpdate] = useState(false)
     const [maxWidth, setMaxWidth] = useState('none')
 
     useEffect(
@@ -158,6 +159,11 @@ const Sketch = () => {
         [id, postsCount, selectedPost, onSetPostsCount]
     )
 
+    const onLoad = () => {
+        setShouldUpdate(!shouldUpdate)
+        setTimeout(() => setVisible(true), 300)
+    }
+
     return (
         <div ref={sketchRef} className={sketch}>
             <SketchBackground />
@@ -224,11 +230,11 @@ const Sketch = () => {
                     <div style={{opacity: visible ? '1' : '0', transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`}}
                         className={container} >
                         { selectedBorder && <img
-                                onLoad={() => setTimeout(() => setVisible(true), 300)}
+                                onLoad={onLoad}
                                 style={{maxWidth: maxWidth}}
                                 src={selectedBorder.image} alt={selectedBorder.name} />
                         }
-                        { selectedBorder && <DeviceList /> }
+                        { selectedBorder && <DeviceList shouldUpdate={shouldUpdate}/> }
                     </div>
                 </div>
             </div>
