@@ -4,7 +4,7 @@ import style from './ItemsList.module.sass'
 import { TBorder, TDevice, TElementList, TItemsType,
     TSetBorder, TGetCountOfPosts, TSetDevice,
     TSketchDeviceList, TSetSingleFilter, TFilters,
-    TSketchStore, TAppStore, TGetSiblingBorder } from '../../types'
+    TSketchStore, TAppStore, TGetSiblingBorder, TNumberOfPosts } from '../../types'
 
 const { wrap, list, item, pic, preview, content, name, price } = style
 
@@ -62,22 +62,21 @@ const getElementsList = (
                 setBorder(item, 1, countOfPosts)
 
             } else {
+                let numberOfPost
+                let newBorder
 
-                const numberOfPost = selectedPost.findIndex(el => el) + 1
-                const newBorder = getSiblingBorder(item, numberOfPost)
+                // Find maximum post count of the current border
+                for (let i = selectedPost.findIndex(el => el) + 1; i > 0; i--) {
+                    const border = getSiblingBorder(item, i)
 
-                if (numberOfPost === 1 || numberOfPost === 2 || numberOfPost === 3
-                        || numberOfPost === 4 || numberOfPost === 5) {
-
-                    if (newBorder) {
-                        setBorder(newBorder, numberOfPost)
-                    }
-                    else {
-                        setBorder(item, 1, countOfPosts)
-                        console.log('\x1b[31m%s\x1b[0m', `There's no border with ${numberOfPost} count of posts for display. getSiblingBorder method returned empty result!`)
-                        console.log('\x1b[34m%s\x1b[0m', 'Updated to border with one post.')
+                    if (border) {
+                        numberOfPost = i
+                        newBorder = border
+                        break
                     }
                 }
+
+                setBorder(newBorder as TBorder, numberOfPost as TNumberOfPosts, countOfPosts)
             }
         }
 

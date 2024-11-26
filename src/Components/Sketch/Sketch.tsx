@@ -161,7 +161,7 @@ const Sketch = () => {
 
     const onLoad = () => {
         setShouldUpdate(!shouldUpdate)
-        setTimeout(() => setVisible(true), 300)
+        setTimeout(() => setVisible(true), 700)
     }
 
     return (
