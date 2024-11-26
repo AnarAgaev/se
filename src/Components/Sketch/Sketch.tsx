@@ -17,7 +17,7 @@ const createPosts = (
     id: string,
     postsCount: number,
     selectedPost: boolean[],
-    onSetPostsCount: TOnSetPostsCount
+    onSetPostsCount: TOnSetPostsCount,
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
@@ -52,7 +52,8 @@ const Sketch = () => {
         deviceList,
         direction,
         setDirection,
-        visible
+        visible,
+        setVisible
     ] = useStore(state => [
         state.scale,
         state.postsCount,
@@ -66,7 +67,8 @@ const Sketch = () => {
         state.deviceList,
         state.direction,
         state.setDirection,
-        state.visible
+        state.visible,
+        state.setVisible
     ])
     // #endregion
 
@@ -145,10 +147,10 @@ const Sketch = () => {
                     || newPostNumber === 3
                     || newPostNumber === 4
                     || newPostNumber === 5) {
+
                 setBorder(newBorder, newPostNumber)
             }
         }
-
     }, [selectedBorder, setBorder, getSiblingBorder, fireError])
 
     const postList = useMemo(
@@ -159,10 +161,7 @@ const Sketch = () => {
     return (
         <div ref={sketchRef} className={sketch}>
             <SketchBackground />
-
-
             <span className={loader} style={{opacity: visible ? 0 : 1}}></span>
-
 
             {/* Count of posts and Direction */}
             <div className={construction}>
@@ -220,11 +219,12 @@ const Sketch = () => {
             {/* Image Border and Devices */}
             <div className={set}>
                 <div className={wrap} style={transformStyle}>
-                    { !selectedBorder && <span className={placeholder}></span> }
+                    { !selectedBorder && visible && <span className={placeholder}></span> }
 
                     <div style={{opacity: visible ? '1' : '0', transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`}}
                         className={container} >
                         { selectedBorder && <img
+                                onLoad={() => setTimeout(() => setVisible(true), 300)}
                                 style={{maxWidth: maxWidth}}
                                 src={selectedBorder.image} alt={selectedBorder.name} />
                         }

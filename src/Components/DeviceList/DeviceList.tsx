@@ -65,8 +65,6 @@ const DeviceList = () => {
 
     const [padding, setPadding] = useState(0)
 
-
-
     useEffect(
         () => {
 

@@ -41,7 +41,7 @@ const getElementsList = (
     modalMessageSet: TAppStore['modalMessageSet'],
     postsCount: TSketchStore['postsCount'],
     selectedPost: TSketchStore['selectedPost'],
-    getSiblingBorder: TGetSiblingBorder
+    getSiblingBorder: TGetSiblingBorder,
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
@@ -170,7 +170,7 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
         modalMessageSet,
         postsCount,
         selectedPost,
-        getSiblingBorder
+        getSiblingBorder,
     ] = useStore(state => [
         state.border,
         state.setBorder,
@@ -184,7 +184,7 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
         state.modalMessageSet,
         state.postsCount,
         state.selectedPost,
-        state.getSiblingBorder
+        state.getSiblingBorder,
     ])
     // #endregion
 
@@ -200,7 +200,7 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
             modalMessageSet,
             postsCount,
             selectedPost,
-            getSiblingBorder
+            getSiblingBorder,
         ),
         [
             id, itemList, type, setBorder,
@@ -213,7 +213,7 @@ const ItemsList: React.FC<Props> = ({itemList, type}) => {
             modalMessageSet,
             postsCount,
             selectedPost,
-            getSiblingBorder
+            getSiblingBorder,
         ]
     )
 

@@ -59,7 +59,8 @@ export type TSketchStore = {
     setDevice: TSetDevice
     removeDevice: TRemoveDevice
     fixDeviceList: TFixDeviceList,
-    checkDevices: TCheckDevices
+    checkDevices: TCheckDevices,
+    setVisible: TSetVisible
 }
 
 export type TDirections = 'horizontal' | 'vertical'
@@ -78,7 +79,7 @@ export type TSetVisible = (direction: boolean) => void
 
 export type TDefaultSketchProps = Omit<TSketchStore, 'resizeSketch' | 'setFirstBorder'
     | 'setBorder' | 'resetSketch' | 'setDirection' | 'setDevice' | 'fixDeviceList'
-    | 'removeDevice' | 'checkDevices' >
+    | 'removeDevice' | 'checkDevices' | 'setVisible' >
 
 // #endregion
 
