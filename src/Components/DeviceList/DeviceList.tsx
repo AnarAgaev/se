@@ -1,4 +1,4 @@
-import { useId, useMemo, useRef, useState, useEffect } from 'react'
+import { useId, useMemo, useState, useEffect } from 'react'
 import { TSketchDeviceList, TDirections, TRemoveDevice } from '../../types'
 import useStore from '../../Store'
 import style from './DeviceList.module.sass'
@@ -43,7 +43,7 @@ const getDevicesList = (
     return elList
 }
 
-const DeviceList = (props: {shouldUpdate: boolean}) => {
+const DeviceList = (props: { shouldUpdate: boolean, listRef: React.MutableRefObject<HTMLUListElement | null> }) => {
 
     // #region Variables
     const [
@@ -61,8 +61,6 @@ const DeviceList = (props: {shouldUpdate: boolean}) => {
 
     const id = useId()
 
-    const listRef = useRef<HTMLUListElement | null>(null)
-
     const [padding, setPadding] = useState(0)
 
     useEffect(
@@ -71,7 +69,7 @@ const DeviceList = (props: {shouldUpdate: boolean}) => {
             let timeoutId: number
 
             const calc = () => {
-                const list = listRef.current
+                const list = props.listRef.current
 
                 if (!list) return
 
@@ -108,7 +106,7 @@ const DeviceList = (props: {shouldUpdate: boolean}) => {
     )
 
     return (
-        <ul ref={listRef} className={list} style={{padding: `0 ${padding}px`}}>
+        <ul ref={props.listRef} className={list} style={{padding: `0 ${padding}px`}}>
             { devicesList }
         </ul>
     )

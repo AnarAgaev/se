@@ -25,6 +25,10 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
 
     setBorder: (border, numberOfPost, countOfPosts) => {
 
+        const newDirection = numberOfPost === 1
+            ? 'horizontal'
+            : get().direction
+
         let newSelectedPosts = countOfPosts !== undefined
             ? [...new Array(countOfPosts)].fill(false)
             : [...get().selectedPost]
@@ -36,6 +40,7 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
         set({visible: false})
 
         setTimeout(() => set({
+            direction: newDirection,
             border: border,
             selectedPost: newSelectedPosts,
             deviceList: fixedDeviceList,

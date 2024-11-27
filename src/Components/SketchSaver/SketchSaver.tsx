@@ -1,4 +1,5 @@
 import { calculateSketchBackgroundPosition } from '../../Helpers'
+import { TSketchStore, TNumberOfPosts } from '../../types'
 import useStore from '../../Store'
 import style from './SketchSaver.module.sass'
 
@@ -8,6 +9,7 @@ type TProps = {
     sketchRef: React.MutableRefObject<HTMLDivElement | null>
     backImgRef: React.MutableRefObject<HTMLImageElement | null>
     borderRef: React.MutableRefObject<HTMLImageElement | null>
+    listRef: React.MutableRefObject<HTMLUListElement | null>
 }
 
 type TCanvas = {
@@ -19,7 +21,7 @@ type TCanvas = {
 const sketchWorkspace: {
     background?: TCanvas | null,
     border?: TCanvas | null,
-    [key: number]: TCanvas
+    [key: number]: TCanvas | null
 } = {}
 
 const createCanvas = (width: number, height: number) => {
@@ -33,14 +35,15 @@ const createCanvas = (width: number, height: number) => {
 
 const checkLoadedWorkspace = () => {
     for (const key in sketchWorkspace) {
-        if (!sketchWorkspace[key].loaded) return false
+        if (!sketchWorkspace[key]?.loaded) return false
     }
     return true
 }
 
-const SketchSaver = ({ sketchRef, backImgRef, borderRef }: TProps) => {
+const SketchSaver = ({ sketchRef, backImgRef, borderRef, listRef }: TProps) => {
 
     const direction = useStore(state => state.direction)
+    const deviceList = useStore(state => state.deviceList)
 
     const addBackToWorkspace = (width: number, height: number, back: HTMLImageElement | null) => {
 		sketchWorkspace.background = createCanvas(width, height)
@@ -117,6 +120,84 @@ const SketchSaver = ({ sketchRef, backImgRef, borderRef }: TProps) => {
         }
 	}
 
+    const addDevicesToWorkspace = (width: number, height: number, deviceList: TSketchStore['deviceList'], border: HTMLImageElement | null) => {
+
+        for (let numberOfPost = 1; numberOfPost < 6; numberOfPost++) {
+            const i = numberOfPost as TNumberOfPosts
+
+            if (!deviceList[i]) {
+                delete sketchWorkspace[i]
+                continue
+            }
+
+            // Создаем canvas для устройства
+            sketchWorkspace[i] = createCanvas(width, height)
+
+            const pic = new Image()
+            const img = deviceList[i]?.image
+
+            if (!img) continue
+
+            pic.src = img
+            pic.crossOrigin = 'anonymous'
+
+            pic.onload = () => {
+
+                if (!listRef.current) return
+                if (!border) return
+
+                const countOfPosts = Object.keys(deviceList).length
+
+                const computedBorderStyle = window.getComputedStyle(border)
+                const borderWidth = parseFloat(computedBorderStyle.width) // ширина рамки
+                const borderHeight = parseFloat(computedBorderStyle.height) // высота рамки
+
+                // отступ сверху до рамки
+                const borderTop = direction === 'vertical'
+                    ? (height - borderWidth) / 2
+                    : (height - borderHeight) / 2
+
+                // отступ слева до рамки
+                const borderLeft = direction === 'vertical'
+                    ? (width - borderHeight) / 2
+                    : (width - borderWidth) / 2
+
+                const computedImgStyle = window.getComputedStyle(listRef.current)
+                const imgHeight = parseFloat(computedImgStyle.height) // высота картинки
+                const imgWidth = imgHeight // ширина картинки
+
+                const imgRoundOffset = (borderHeight - imgHeight) / 2 // один отступ (одинаковый и слева и справа)
+
+                const paddings = (imgRoundOffset * 2) // сумма отступов слева и справа
+                const imgWidthSum = (imgWidth * countOfPosts) // сумма ширин всех устройств
+
+                // размер одного отступа между устройствами
+                const imgBetweenOffset = (borderWidth - paddings - imgWidthSum) / (countOfPosts - 1)
+
+                let imgTop // отступ сверху до картинки устройства
+                let imgLeft // отступ слева до картинки устройства
+
+                if (direction === 'horizontal') {
+                    imgTop = borderTop + imgRoundOffset
+
+                    imgLeft = countOfPosts === 1
+                        ? borderLeft + imgRoundOffset
+                        : borderLeft + (imgBetweenOffset * i - 1) + (imgWidth * (i - 1))
+                } else {
+                    imgTop = countOfPosts === 1
+                        ? borderTop + imgRoundOffset
+                        : borderTop + (imgBetweenOffset * i - 1) + (imgWidth * (i - 1))
+
+                    imgLeft = borderLeft + imgRoundOffset
+                }
+
+                // Рисуем рамку на canvas
+                (sketchWorkspace[i] as TCanvas).context.drawImage(pic, imgLeft, imgTop, imgWidth, imgHeight);
+                (sketchWorkspace[i] as TCanvas).loaded = true
+            }
+		}
+	}
+
     const downloadFinalPicture = (width: number, height: number) => {
 
         // Объединяем все, созданные ранее, canvas в единый
@@ -137,12 +218,11 @@ const SketchSaver = ({ sketchRef, backImgRef, borderRef }: TProps) => {
 			combinedCtx.drawImage(sketchWorkspace.border.canvas, 0, 0)
 		}
 
-		// // Добавляем картинки продуктов
-		// for (const idx in imgRefs) {
-		// 	if (products[idx].visibility && canvasWorkspace[idx]?.canvas) {
-		// 		combinedCtx.drawImage(canvasWorkspace[idx].canvas, 0, 0)
-		// 	}
-		// }
+		// Добавляем картинки продуктов
+        for (let i = 1; i < 6; i++) {
+            const deviceCanvas = sketchWorkspace[i]?.canvas
+            if (deviceCanvas) combinedCtx.drawImage(deviceCanvas, 0, 0)
+        }
 
 		// Сохраняем финальную картинку на клиенте
 		const imgBase64 = combinedCanvas.toDataURL('image/png')
@@ -168,8 +248,8 @@ const SketchSaver = ({ sketchRef, backImgRef, borderRef }: TProps) => {
         // Добавляем рамку на canvas
         addBorderToWorkspace(resImgWidth, resImgHeight, borderRef?.current)
 
-		// Рисуем картинки продуктов, каждую на своем canvas
-		// addPicCanvasesToWorkspace(resultImgWidth, resultImgHeight, imgRefs)
+		// Рисуем картинки продуктов (каждую на своем canvas)
+		addDevicesToWorkspace(resImgWidth, resImgHeight, deviceList, borderRef?.current)
 
 		// Циклически проверяем загрузку всех картинок. Если ок, то скачиваем примерку
 		const intervalId = setInterval(() => {

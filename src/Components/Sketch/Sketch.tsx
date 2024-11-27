@@ -75,6 +75,7 @@ const Sketch = () => {
     const sketchRef = useRef<HTMLDivElement | null>(null)
     const backImgRef = useRef<HTMLImageElement | null>(null)
     const borderRef = useRef<HTMLImageElement | null>(null)
+    const listRef = useRef<HTMLUListElement | null>(null)
 
     const postsListRef = useRef<HTMLUListElement | null>(null)
     const directionsRef = useRef<HTMLUListElement | null>(null)
@@ -209,7 +210,11 @@ const Sketch = () => {
 
             {/* Save image */}
             <div className={`${save} ${!selectedBorder ? disabled : ''}`}>
-                <SketchSaver sketchRef={sketchRef} backImgRef={backImgRef} borderRef={borderRef} />
+                <SketchSaver
+                    sketchRef={sketchRef}
+                    backImgRef={backImgRef}
+                    borderRef={borderRef}
+                    listRef={listRef} />
             </div>
 
 
@@ -238,7 +243,7 @@ const Sketch = () => {
                                 style={{maxWidth: maxWidth}}
                                 src={selectedBorder.image} alt={selectedBorder.name} />
                         }
-                        { selectedBorder && <DeviceList shouldUpdate={shouldUpdate}/> }
+                        { selectedBorder && <DeviceList shouldUpdate={shouldUpdate} listRef={listRef}/> }
                     </div>
                 </div>
             </div>
