@@ -20,14 +20,27 @@ const getTabClassName = (onTab: string, activeTab: string): string => {
 }
 
 const TabsPages = () => {
-    const activeViewportTab = useStore(state => state.activeViewportTab)
-    const setActiveTab = useStore(state => state.setActiveViewportTab)
-    const setVisible = useStore(state => state.setVisible)
+
+    // #region Variables
+    const [
+        activeViewportTab,
+        setActiveTab,
+        setVisible,
+        selectedBorder
+    ] = useStore(state => [
+        state.activeViewportTab,
+        state.setActiveViewportTab,
+        state.setVisible,
+        state.border
+    ])
+    // #endregion
+
+
 
     const clickHandler = (page: TViewportTabs) => {
         setActiveTab(page)
 
-        if (page === 'configurator') setVisible(false)
+        if (page === 'configurator' && selectedBorder) setVisible(false)
     }
 
     return (

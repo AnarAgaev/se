@@ -5,6 +5,11 @@ import style from './DeviceList.module.sass'
 
 const { list, item, close, image, rotated } = style
 
+type TProps = {
+    shouldUpdate: boolean,
+    listRef: React.MutableRefObject<HTMLUListElement | null>
+}
+
 const getDevicesList = (
     id: string,
     deviceList: TSketchDeviceList,
@@ -43,7 +48,9 @@ const getDevicesList = (
     return elList
 }
 
-const DeviceList = (props: { shouldUpdate: boolean, listRef: React.MutableRefObject<HTMLUListElement | null> }) => {
+const DeviceList = ({ shouldUpdate, listRef } : TProps) => {
+
+    shouldUpdate;
 
     // #region Variables
     const [
@@ -73,7 +80,7 @@ const DeviceList = (props: { shouldUpdate: boolean, listRef: React.MutableRefObj
             let timeoutId: number
 
             const calc = () => {
-                const list = props.listRef.current
+                const list = listRef.current
                 const border = list?.parentElement
 
                 if (!border) return
@@ -100,7 +107,7 @@ const DeviceList = (props: { shouldUpdate: boolean, listRef: React.MutableRefObj
             }
         },
 
-        [deviceList, props.listRef, setVisible, direction, activeViewportTab]
+        [deviceList, listRef, setVisible, direction, activeViewportTab]
     )
 
     const devicesList = useMemo(
@@ -109,7 +116,7 @@ const DeviceList = (props: { shouldUpdate: boolean, listRef: React.MutableRefObj
     )
 
     return (
-        <ul ref={props.listRef} className={list} style={{padding: `0 ${padding}px`}}>
+        <ul ref={listRef} className={list} style={{padding: `0 ${padding}px`}}>
             { devicesList }
         </ul>
     )
