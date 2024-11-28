@@ -53,7 +53,10 @@ const Sketch = () => {
         direction,
         setDirection,
         visible,
-        setVisible
+        setVisible,
+        resetProject,
+        resetRoom,
+        resetCountOfSets
     ] = useStore(state => [
         state.scale,
         state.postsCount,
@@ -68,7 +71,10 @@ const Sketch = () => {
         state.direction,
         state.setDirection,
         state.visible,
-        state.setVisible
+        state.setVisible,
+        state.resetProject,
+        state.resetRoom,
+        state.resetCountOfSets
     ])
     // #endregion
 
@@ -168,6 +174,13 @@ const Sketch = () => {
         setTimeout(() => setVisible(true), 500)
     }
 
+    const onReset = () => {
+        resetSketch()
+        resetProject()
+        resetRoom()
+        resetCountOfSets()
+    }
+
     return (
         <div ref={sketchRef} className={sketch}>
             <SketchBackground backImgRef={backImgRef}/>
@@ -224,7 +237,7 @@ const Sketch = () => {
                         ? controllers
                         : `${controllers} ${disabled}`
                     }>
-                <li className={trashСan} onClick={resetSketch}></li>
+                <li className={trashСan} onClick={onReset}></li>
                 <li className={scale <= 0.5 ? `${minus} ${disabled}` : minus} onClick={onDec}></li>
                 <li className={scale >= 1.5 ? `${plus} ${disabled}` : plus} onClick={onInc}></li>
             </ul>

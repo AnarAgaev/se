@@ -91,6 +91,13 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         return false
     },
+    resetProject: () => {
+        const newProjects = [...get().projects]
+
+        newProjects.forEach(p => p.selected = false)
+
+        set({ projects: newProjects })
+    },
     // #endregion
 
 
@@ -124,6 +131,13 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         return false
     },
+    resetRoom: () => {
+        const newRooms = [...get().rooms]
+
+        newRooms.forEach(r => r.selected = false)
+
+        set({ rooms: newRooms })
+    },
     // #endregion
 
 
@@ -134,7 +148,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     setDictionary: (dictionary) => {
         set({ dictionary: dictionary})
     },
+    // #endregion
 
+
+    // #region Counter
     countOfSets: 1,
     setCountOfSets: (direction) => {
         let newCount = get().countOfSets + 1 * direction
@@ -143,6 +160,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ countOfSets: newCount })
     },
+    resetCountOfSets: () => set({countOfSets: 1}),
     // #endregion
 
 

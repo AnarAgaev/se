@@ -218,18 +218,21 @@ export type TAppStore = {
     addProject: (project: string) => void
     setProject: (id: TProject['id']) => void
     checkProject: () => boolean
+    resetProject: () => void
 
     rooms: TRoomList
     setAppRooms: (rooms: TRoomList) => void
     addRoom: (room: string) => void
     setRoom: (id: TRoom['id']) => void
     checkRoom: () => boolean
+    resetRoom: () => void
 
     dictionary: TDictionary
     setDictionary: (dictionary: TDictionary) => void
 
     countOfSets: number
     setCountOfSets: (direction: 1 | -1) => void
+    resetCountOfSets: () => void
 
     // #region Modal Select
     modalSelectVisible: boolean

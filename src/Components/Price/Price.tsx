@@ -1,18 +1,19 @@
+import { useMemo } from 'react'
 import useStore from '../../Store'
 import { TDevice, TBorder } from '../../types'
 import style from './Price.module.sass'
 
-const { wrap, sum, counter, val, controller,
-    controller_dec, controller_inc } = style
+const { wrap, price, priceDisabled, counter, counterDisabled,
+    val, controller, controller_dec, controller_inc } = style
 
 const Price = () => {
 
     // #region Variables
     const [
         count,
-        handler,
+        setCountOfSets,
         border,
-        devices
+        devices,
     ] = useStore(state => [
         state.countOfSets,
         state.setCountOfSets,
@@ -21,44 +22,57 @@ const Price = () => {
     ])
     // #endregion
 
-    const price = () => {
-        let sum: number = 0
+    const totalPrice = useMemo(
+        () => {
+            let sum: number = 0
 
-        const toNumber = (el: TBorder | TDevice): number => {
-            return typeof el.price === 'string'
-                ? parseFloat(el.price)
-                : el.price
-        }
-
-        if (border) sum += toNumber(border)
-
-        for (const key in devices) {
-            const i = parseInt(key)
-
-            if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
-                if (devices[i] === null) continue
-
-                const device = devices[i]
-                if (device) sum += toNumber(device)
+            if (!border) {
+                return '0'
             }
-        }
 
-        return (sum * count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+            const toNumber = (el: TBorder | TDevice): number => {
+                return typeof el.price === 'string'
+                    ? parseFloat(el.price)
+                    : el.price
+            }
+
+            if (border) sum += toNumber(border)
+
+            for (const key in devices) {
+                const i = parseInt(key)
+
+                if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
+                    if (devices[i] === null) continue
+
+                    const device = devices[i]
+                    if (device) sum += toNumber(device)
+                }
+            }
+
+            return (sum * count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+        },
+        [ border, devices, count ])
+
+    const onCalc = (direction: -1 | 1) => {
+        if (!border) return
+
+        setCountOfSets(direction)
     }
 
     return (
         <div className={wrap}>
-            <span className={sum}>{price()} ₽</span>
+            <span className={`${price} ${parseInt(totalPrice) === 0 ? priceDisabled : ''}`}>{totalPrice} ₽</span>
 
-            <div className={counter}>
+            <div className={`${counter} ${!border ? counterDisabled : ''}`}>
                 <button type="button"
-                    onClick={() => handler(-1)}
+                    onClick={() => onCalc(-1)}
                     className={`${controller} ${controller_dec}`}></button>
 
-                <input type="text" className={val} value={count} readOnly />
+                <input readOnly type="text" className={val}
+                    value={parseInt(totalPrice) === 0 ? 0 : count} />
 
                 <button type="button"
-                    onClick={() => handler(1)}
+                    onClick={() => onCalc(1)}
                     className={`${controller} ${controller_inc}`}></button>
             </div>
         </div>
