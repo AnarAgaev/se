@@ -1,5 +1,6 @@
 import useStore from '../../Store'
 import style from './TabsPages.module.sass'
+import { TViewportTabs } from '../../types'
 
 const { tabs, list, item,
     item_active, item_configurator, item_collections,
@@ -21,30 +22,37 @@ const getTabClassName = (onTab: string, activeTab: string): string => {
 const TabsPages = () => {
     const activeViewportTab = useStore(state => state.activeViewportTab)
     const setActiveTab = useStore(state => state.setActiveViewportTab)
+    const setVisible = useStore(state => state.setVisible)
+
+    const clickHandler = (page: TViewportTabs) => {
+        setActiveTab(page)
+
+        if (page === 'configurator') setVisible(false)
+    }
 
     return (
         <div className={tabs}>
             <ul className={list}>
                 <li className={getTabClassName('configurator', activeViewportTab)}
-                    onClick={() => setActiveTab('configurator')}>
+                    onClick={() => clickHandler('configurator')}>
                     <span>
                         Конфигуратор
                     </span>
                 </li>
                 <li className={getTabClassName('collections', activeViewportTab)}
-                    onClick={() => setActiveTab('collections')}>
+                    onClick={() => clickHandler('collections')}>
                     <span>
                         Гид по коллекциям
                     </span>
                 </li>
                 <li className={getTabClassName('project', activeViewportTab)}
-                    onClick={() => setActiveTab('project')}>
+                    onClick={() => clickHandler('project')}>
                     <span>
                         Состав проекта
                     </span>
                 </li>
                 <li className={getTabClassName('hub', activeViewportTab)}
-                    onClick={() => setActiveTab('hub')}>
+                    onClick={() => clickHandler('hub')}>
                     <span>
                         Мои проекты
                     </span>

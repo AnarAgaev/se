@@ -50,12 +50,16 @@ const DeviceList = (props: { shouldUpdate: boolean, listRef: React.MutableRefObj
         deviceList,
         direction,
         scale,
-        removeDevice
+        removeDevice,
+        activeViewportTab,
+        setVisible
     ] = useStore(state => [
         state.deviceList,
         state.direction,
         state.scale,
-        state.removeDevice
+        state.removeDevice,
+        state.activeViewportTab,
+        state.setVisible
     ])
     // #endregion
 
@@ -70,17 +74,16 @@ const DeviceList = (props: { shouldUpdate: boolean, listRef: React.MutableRefObj
 
             const calc = () => {
                 const list = props.listRef.current
+                const border = list?.parentElement
 
-                if (!list) return
+                if (!border) return
 
-                const parentNode = list.parentElement
+                const borderWidth = border.clientWidth
+                const deviceWidth = list.clientHeight
+                const countOfPosts = Object.keys(deviceList).length
 
-                if (!parentNode) return
-
-                const parentHeight = parentNode.clientHeight
-                const listHeight = list.clientHeight
-
-                setPadding((parentHeight - listHeight) / 2)
+                setPadding((borderWidth - (deviceWidth * countOfPosts)) / (countOfPosts + 1))
+                setVisible(true)
             }
 
             timeoutId = setTimeout(calc, 300)
@@ -97,7 +100,7 @@ const DeviceList = (props: { shouldUpdate: boolean, listRef: React.MutableRefObj
             }
         },
 
-        [deviceList, direction, props]
+        [deviceList, direction, props, activeViewportTab, setVisible]
     )
 
     const devicesList = useMemo(
