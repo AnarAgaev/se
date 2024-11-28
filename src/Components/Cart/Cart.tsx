@@ -10,22 +10,62 @@ const Cart = () => {
     const [
         selectedBorder,
         checkDevices,
-        modalMessageSet
+        modalMessageSet,
+        checkProject,
+        checkRoom,
+        projects,
+        rooms
     ] = useStore(state => [
         state.border,
         state.checkDevices,
-        state.modalMessageSet
+        state.modalMessageSet,
+        state.checkProject,
+        state.checkRoom,
+        state.projects,
+        state.rooms
     ])
     // #endregion
 
-    const handler = () => {
-        if (!checkDevices()) {
-            modalMessageSet(true, 'Необходимо заполнить все посты в рамке. Добавьте устройства.')
+    const isSelectedBorder = Boolean(selectedBorder)
+    const isSelectedDevice = checkDevices()
+    const isProjectSelected = checkProject()
+    const isRoomSelected = checkRoom()
+
+    const addToProjectHandler = () => {
+        if (!isSelectedBorder) {
+            modalMessageSet(true, 'В начале необходимо выбрать рамку')
             return
         }
 
-        console.log('\x1b[34m%s\x1b[0m', 'Отправляем запрос на API --- Добавляем комплект в корзину')
+        if (!isSelectedDevice) {
+            modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство')
+            return
+        }
+
+        if (!isProjectSelected) {
+            modalMessageSet(true, `Необходимо ${projects.length ? 'выбрать' : 'добавить'} проект`)
+            return
+        }
+
+        if (!isRoomSelected) {
+            modalMessageSet(true, `Необходимо ${rooms.length ? 'выбрать' : 'добавить'} помещение`)
+            return
+        }
+
+        alert("Отправляем запрос на API --- Сохраняем конфигурацию в выбранном проекте")
     }
+
+    const addToCartHandler = () => {
+        if (!isSelectedDevice) {
+            modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство')
+            return
+        }
+
+        alert("Отправляем запрос на API --- Добавляем комплект в корзину")
+    }
+
+    const addToProjectButtonClazz = `button button_block button_dark ${!isSelectedBorder || !isSelectedDevice || !isProjectSelected || !isRoomSelected ? 'clickedDisabled' : ''}`
+    const addToCartButtonClazz = `button button_block button_dark ${!isSelectedDevice ? 'clickedDisabled' : ''}`
 
     return (
         <div className={cart}>
@@ -33,16 +73,17 @@ const Cart = () => {
                 <h3 className={caption}>Стоимость полного комплекта</h3>
                 <Price />
                 <Locations />
-                <button type="button" className='button button_block button_dark'>
+                <button type="button" onClick={addToProjectHandler}
+                    className={addToProjectButtonClazz}>
                     Добавить в проект
                 </button>
             </div>
-            { selectedBorder &&
+            { Boolean(selectedBorder) &&
                 <div className={section}>
                     <h3 className={caption}>Состав комплекта</h3>
                     <Set />
-                    <button type="button" onClick={handler}
-                        className={`button button_block button_dark ${checkDevices() ? '' : ' clickedDisabled'}`}>
+                    <button type="button" onClick={addToCartHandler}
+                        className={addToCartButtonClazz}>
                         Добавить комплект в корзину
                     </button>
                 </div>

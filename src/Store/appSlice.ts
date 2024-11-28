@@ -9,9 +9,14 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         set({ error: error })
     },
 
+
+    // #region Colors
     colors: undefined,
     setAppColors: (colors) => set({ colors: colors }),
+    // #endregion
 
+
+    // #region Vendors
     vendors: [],
     setAppVendors: (vendors) => set({vendors: vendors}),
     getVendorByName: (vendorName) => {
@@ -44,13 +49,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         return vendor[0].name
     },
+    // #endregion
 
+
+    // #region Tabs and Pages
     activeCalcTab: 'borders',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
     activeViewportTab: 'configurator',
     setActiveViewportTab: (tab) => set({activeViewportTab: tab}),
+    // #endregion
 
+
+    // #region Projects
     projects: [],
     setAppProjects: (projects) => set({ projects: projects }),
     addProject: (project) => {
@@ -66,7 +77,24 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ projects: newProjects })
     },
+    setProject: (id) => {
+        const newProjects = [...get().projects]
 
+        newProjects.forEach(p => p.selected = p.id === id)
+
+        set({ projects: newProjects })
+    },
+    checkProject: () => {
+        for (const p of get().projects) {
+            if (p.selected) return true
+        }
+
+        return false
+    },
+    // #endregion
+
+
+    // #region Rooms
     rooms: [],
     setAppRooms: (rooms) => set({ rooms: rooms }),
     addRoom: (room) => {
@@ -82,7 +110,24 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ rooms: newRooms })
     },
+    setRoom: (id) => {
+        const newRooms = [...get().rooms]
 
+        newRooms.forEach(r => r.selected = r.id === id)
+
+        set({ rooms: newRooms })
+    },
+    checkRoom: () => {
+        for (const r of get().rooms) {
+            if (r.selected) return true
+        }
+
+        return false
+    },
+    // #endregion
+
+
+    // #region Dictionary
     dictionary: {
         ru: {}
     },
@@ -98,6 +143,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ countOfSets: newCount })
     },
+    // #endregion
+
 
     // #region ModalSelect
     modalSelectVisible: false,
@@ -133,6 +180,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     },
     // #endregion
 
+
     // #region ModalWarning
     modalWarningVisible: false,
     modalWarningCaption: '',
@@ -148,6 +196,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         })
     },
     // #endregion
+
 
     // #region ModalMessage
     modalMessageVisible: false,

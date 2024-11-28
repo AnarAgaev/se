@@ -7,12 +7,14 @@ interface Props {
     placeholder: string
     children: ReactNode
     cbf: (value: string) => void
+    selectedValue: string
 }
 
 const { select, select_dropped, value, caption,
-    arrow, body, collapse, add, inner } = style
+    text, match, arrow, body, collapse, add,
+    inner } = style
 
-const InputSelect: FC<Props> = ({ title, placeholder, children, cbf }) => {
+const InputSelect: FC<Props> = ({ title, placeholder, children, cbf, selectedValue }) => {
     const [dropped, toggleDropped] = useState(false)
     const selectRef = useRef<HTMLDivElement | null>(null)
 
@@ -40,10 +42,13 @@ const InputSelect: FC<Props> = ({ title, placeholder, children, cbf }) => {
 
     return (
         <div ref={selectRef} className={clazz}>
-            <p className={value} onClick={() => toggleDropped(!dropped)}>
-                <span className={caption}>{title}</span>
+            <div className={value} onClick={() => toggleDropped(!dropped)}>
+                <p className={caption}>
+                    <span className={text}>{title}</span>
+                    <span className={match}>{selectedValue}</span>
+                </p>
                 <i className={arrow}></i>
-            </p>
+            </div>
             <div className={body}>
                 <div className={collapse}>
                     <div className={add}>

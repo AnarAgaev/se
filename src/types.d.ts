@@ -216,10 +216,14 @@ export type TAppStore = {
     projects: TProjectList
     setAppProjects: (projects: TProjectList) => void
     addProject: (project: string) => void
+    setProject: (id: TProject['id']) => void
+    checkProject: () => boolean
 
     rooms: TRoomList
     setAppRooms: (rooms: TRoomList) => void
     addRoom: (room: string) => void
+    setRoom: (id: TRoom['id']) => void
+    checkRoom: () => boolean
 
     dictionary: TDictionary
     setDictionary: (dictionary: TDictionary) => void

@@ -100,7 +100,7 @@ const DeviceList = (props: { shouldUpdate: boolean, listRef: React.MutableRefObj
             }
         },
 
-        [deviceList, direction, props, activeViewportTab, setVisible]
+        [deviceList, props.listRef, setVisible, direction, activeViewportTab]
     )
 
     const devicesList = useMemo(

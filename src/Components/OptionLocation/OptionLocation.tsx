@@ -1,21 +1,22 @@
-import { FC } from 'react'
 import style from './OptionLocation.module.sass'
 
-interface Props {
+type TProps = {
     caption: string
-    name: string
+    isChecked: boolean
+    eventHandler: () => void
 }
 
 const { option, text } = style
 
-const OptionLocation: FC<Props> = ({ caption, name }) => {
+const OptionLocation = ({ caption, isChecked, eventHandler }: TProps) => {
     return (
         <li className='closing'>
             <label className={option}>
                 <input
                     className='invisible'
-                    type='radio'
-                    name={name} />
+                    type='checkbox'
+                    checked={isChecked}
+                    onChange={eventHandler} />
                 <span></span>
                 <mark className={text}>{caption}</mark>
             </label>

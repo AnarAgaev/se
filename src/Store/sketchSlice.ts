@@ -127,11 +127,11 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
     checkDevices: () => {
         const deviceList = {...get().deviceList}
 
-        if (deviceList[1] === null) {
-            return false
+        for (const i in deviceList) {
+            if (deviceList[parseInt(i) as TNumberOfPosts] !== null ) return true
         }
 
-        return true
+        return false
     },
 
     setVisible: (direction) => set({visible: direction})

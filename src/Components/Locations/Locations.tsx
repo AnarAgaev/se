@@ -1,14 +1,15 @@
 import { useMemo, useId } from 'react'
 import { InputSelect, OptionLocation } from '../../Components'
-import { TProjectList, TRoomList } from '../../types'
+import { TProjectList, TRoomList, TAppStore } from '../../types'
 import useStore from '../../Store'
 import style from './Locations.module.sass'
 
 const { locations } = style
 
 const getProjectsOptionsList = (
+    key: string,
     projectsList: TProjectList,
-    key: string
+    setProject: TAppStore['setProject']
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
@@ -18,7 +19,8 @@ const getProjectsOptionsList = (
             <OptionLocation
                 key={`${key}-${project.id}`}
                 caption={project.name}
-                name={'projects'} />
+                isChecked={project.selected}
+                eventHandler={() => setProject(project.id)} />
         )
     })
 
@@ -26,8 +28,9 @@ const getProjectsOptionsList = (
 }
 
 const getRoomsOptionsList = (
+    key: string,
     roomsList: TRoomList,
-    key: string
+    setRoom: TAppStore['setRoom']
 ): JSX.Element[] => {
 
     const elementsList: JSX.Element[] = []
@@ -37,7 +40,8 @@ const getRoomsOptionsList = (
             <OptionLocation
                 key={`${key}-${room.id}`}
                 caption={room.name}
-                name={'rooms'} />
+                isChecked={room.selected}
+                eventHandler={() => setRoom(room.id)} />
         )
     })
 
@@ -46,33 +50,52 @@ const getRoomsOptionsList = (
 
 const Locations = () => {
     const key = useId()
-    const projects = useStore(state => state.projects)
-    const addProject = useStore(state => state.addProject)
-    const rooms = useStore(state => state.rooms)
-    const addRoom = useStore(state => state.addRoom)
+
+    // #region Variables
+    const [
+        projects,
+        addProject,
+        rooms,
+        addRoom,
+        setProject,
+        setRoom
+    ] = useStore(state => [
+        state.projects,
+        state.addProject,
+        state.rooms,
+        state.addRoom,
+        state.setProject,
+        state.setRoom
+    ])
+    // #endregion
 
     const projectsOptions = useMemo(
-        () => getProjectsOptionsList(projects, key),
-        [projects, key]
+        () => getProjectsOptionsList(key, projects, setProject),
+        [key, projects, setProject]
     )
 
     const roomsOptions = useMemo(
-        () => getRoomsOptionsList(rooms, key),
-        [rooms, key]
+        () => getRoomsOptionsList(key, rooms, setRoom),
+        [key, rooms, setRoom]
     )
+
+    const selectedProject = projects.filter(p => p.selected)[0];
+    const selectedRoom = rooms.filter(r => r.selected)[0]
 
     return (
         <div className={locations}>
             <InputSelect
                 cbf={addProject}
                 title="Выбрать проект"
-                placeholder="Создать проект">
+                placeholder="Создать проект"
+                selectedValue={selectedProject && selectedProject.name} >
                 { projectsOptions }
             </InputSelect>
             <InputSelect
                 cbf={addRoom}
                 title="Выбрать помещение"
-                placeholder="Создать помещение">
+                placeholder="Создать помещение"
+                selectedValue={selectedRoom && selectedRoom.name} >
                 { roomsOptions }
             </InputSelect>
         </div>
