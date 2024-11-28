@@ -56,7 +56,9 @@ const Sketch = () => {
         setVisible,
         resetProject,
         resetRoom,
-        resetCountOfSets
+        resetCountOfSets,
+        removeSingleBordersFilter,
+        removeSingleDevicesFilter
     ] = useStore(state => [
         state.scale,
         state.postsCount,
@@ -74,7 +76,9 @@ const Sketch = () => {
         state.setVisible,
         state.resetProject,
         state.resetRoom,
-        state.resetCountOfSets
+        state.resetCountOfSets,
+        state.removeSingleBordersFilter,
+        state.removeSingleDevicesFilter
     ])
     // #endregion
 
@@ -179,6 +183,12 @@ const Sketch = () => {
         resetProject()
         resetRoom()
         resetCountOfSets()
+
+        // Reset selected Brand and Collection
+        removeSingleBordersFilter('brand')
+        removeSingleBordersFilter('collection')
+        removeSingleDevicesFilter('brand')
+        removeSingleDevicesFilter('collection')
     }
 
     return (
