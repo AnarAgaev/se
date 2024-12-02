@@ -31,7 +31,7 @@ const getProjectsElms = (
     return elList
 }
 
-const MyProjectsWorkspace = () => {
+const HubWorkspace = () => {
     const id = useId()
     const projects = useStore(state => state.projects)
     const addProject = useStore(state => state.addProject)
@@ -87,4 +87,4 @@ const MyProjectsWorkspace = () => {
     )
 }
 
-export default MyProjectsWorkspace
+export default HubWorkspace
