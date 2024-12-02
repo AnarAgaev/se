@@ -36,7 +36,26 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
             requestInitData: async () => {
 
                 // This variable should be initialized on the page with the widget
-                const initSourceDataLink = window.initSourceDataLink
+                let initSourceDataLink = window.initSourceDataLink
+
+
+
+
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   Временно удалить перед деплоем
+                const url = new URL(window.location.href)
+                const apiValue = url.searchParams.get('api')
+
+                if (apiValue) {
+                    initSourceDataLink = `https://${apiValue}?domain=fandeco`
+                    console.log('\x1b[31m%s\x1b[0m', `Запрос с использование API в GET`, initSourceDataLink)
+                }
+
+
+
+
+
 
                 set({ loading: true })
 
@@ -47,10 +66,13 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     const body = new FormData()
                     body.append('domain', 'fandeco')
 
-                    const res = await fetch(initSourceDataLink, {
-                        method: 'POST',
-                        body: body
-                    })
+                    const res = await fetch(
+                        initSourceDataLink,
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   Временно удалить перед деплоем
+                        apiValue
+                            ? { method: 'POST', body: body }
+                            : { method: 'GET' }
+                    )
 
                     if (!res.ok) console.error('Failed to fetch json initial data! URL link is', initSourceDataLink)
 

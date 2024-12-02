@@ -1,6 +1,5 @@
 import React from 'react'
 import style from './ErrorBoundary.module.sass'
-import image from './error.webp'
 
 interface Props {
     children: React.ReactNode
@@ -35,7 +34,7 @@ class ErrorBoundary extends React.Component<Props, ErrorState> {
                 <div className={container}>
                     <h1 className={title}>Что-то пошло не так!</h1>
                     <p className={subtitle}>Попробуйте перезагрузить страницу или зайти на сайт позже.</p>
-                    <img className={picture} src={image} alt="Что-то пошло не так."/>
+                    <img className={picture} src="https://aws.massive.ru/sew/img/error.webp" alt="Что-то пошло не так."/>
                 </div>
             );
         }
