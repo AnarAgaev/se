@@ -203,20 +203,31 @@ export type TAppStore = {
     error: Error | unknown
     fireError: TFireError
 
+
+    // #region Colors
     colors: TColorList | undefined
     setAppColors: (colors: TColorList) => void
+    // #endregion
 
+
+    // #region Tabs
     activeCalcTab: TCalcTabs
     setActiveCalcTab: (tab: TCalcTabs) => void
 
     activeViewportTab: TViewportTabs
     setActiveViewportTab: (tab: TViewportTabs) => void
+    // #endregion
 
+
+    // #region Vendors
     vendors: TVendorList
     setAppVendors: (vendors: TVendorList) => void
     getVendorByName: (brandName: string) => TVendor | undefined
     getBrandByCollection: TGetBrandByCollection
+    // #endregion
 
+
+    // #region Project
     projects: TProjectList
     setAppProjects: (projects: TProjectList) => void
     addProject: (project: string) => void
@@ -225,20 +236,29 @@ export type TAppStore = {
     shareProject: (id: TProject['id']) => void
     checkProject: () => boolean
     resetProject: () => void
+    // #endregion
 
+
+    // #region Rooms
     rooms: TRoomList
     setAppRooms: (rooms: TRoomList) => void
     addRoom: (room: string) => void
     setRoom: (id: TRoom['id']) => void
     checkRoom: () => boolean
     resetRoom: () => void
+    // #endregion
 
+
+    // #region Dictionary
     dictionary: TDictionary
     setDictionary: (dictionary: TDictionary) => void
+    // #endregion
+
 
     countOfSets: number
     setCountOfSets: (direction: 1 | -1) => void
     resetCountOfSets: () => void
+
 
     // #region Modal Select
     modalSelectVisible: boolean
@@ -254,6 +274,7 @@ export type TAppStore = {
     setModalSelect: TSetModalSelect
     // #endregion
 
+
     // #region Modal Warning
     modalWarningVisible: boolean
     modalWarningCaption: string
@@ -261,11 +282,13 @@ export type TAppStore = {
     modalWarningSet: (visible: boolean, caption: string, enabled?: boolean) => void
     // #endregion
 
+
     // #region Modal Message
     modalMessageVisible: boolean
     modalMessageCaption: string
     modalMessageSet: (visible: boolean, caption: string) => void
     // #endregion
+
 
     // #region Modal Share
     modalShareVisible: boolean
