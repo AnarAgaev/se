@@ -115,8 +115,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         const apiLink = window.shareProjectLink
 
         if (!apiLink) {
-            console.log('\x1b[31m%s\x1b[0m', 'На странице не указана ссылка на API Share', 'window.shareProjectLink')
-            return
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Share window.shareProjectLink`)
         }
 
         set({ dataLoading: true })
@@ -126,11 +126,17 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         try {
             const res = await fetch(requestLink)
 
-            if (!res.ok) throw new Error(`Failed to fetch json Share project! URL link is ${requestLink}`)
+            if (!res.ok) {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Failed to fetch json Share project! URL link is ${requestLink}`)
+            }
 
             const data = await res.json()
 
-            if (data.status === 'error') throw new Error(data.error)
+            if (data.status === 'error') {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(data.error)
+            }
 
             set({
                 dataLoading: false,
@@ -220,6 +226,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
     setModalSelect: (caption, approveText, rejectText, payload) => {
         set({
+            loading: false,
+            dataLoading: false,
             modalSelectVisible: true,
             modalSelectCaption: caption,
             modalSelectButtonApproveText: approveText,
@@ -249,6 +257,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     modalWarningEnabled: true,
     modalWarningSet: (visible, caption, enabled) => {
         set({
+            loading: false,
+            dataLoading: false,
             modalWarningVisible: visible,
             modalWarningCaption: caption,
 
@@ -265,6 +275,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     modalMessageCaption: '',
     modalMessageSet: (visible, caption) => {
         set({
+            loading: false,
+            dataLoading: false,
             modalMessageVisible: visible,
             modalMessageCaption: caption
         })
@@ -277,6 +289,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     modalShareValue: null,
     modalShareSet: (visible, value) => {
         set({
+            loading: false,
+            dataLoading: false,
             modalShareVisible: visible,
             modalShareValue: value
         })

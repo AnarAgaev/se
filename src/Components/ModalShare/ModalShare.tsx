@@ -7,6 +7,7 @@ const { modal, body, close, title, label, input, progress, path } = style
 const ModalShare = () => {
 
     const inputRef = useRef<HTMLInputElement | null>(null)
+    const buttonRef = useRef<HTMLButtonElement | null>(null)
 
     const [copied, setCopied] = useState(false)
 
@@ -26,11 +27,12 @@ const ModalShare = () => {
     // #endregion
 
     const copyToClipboard = () => {
-        if (!inputRef.current) return
+        if (!inputRef.current || !buttonRef.current) return
 
         inputRef.current.select()
         document.execCommand('copy')
         setCopied(true)
+        buttonRef.current.focus()
     }
 
     return (
@@ -45,7 +47,7 @@ const ModalShare = () => {
                         readOnly autoComplete="off"
                         value={value ? value : ''} />
                 </label>
-                <button onClick={copyToClipboard}
+                <button ref={buttonRef} onClick={copyToClipboard}
                     style={{ pointerEvents: copied ? 'none' : 'all' }}
                     className={`button button_small button_block button_dark`}>
                     { copied ? 'Ссылка скопирована' : 'Скопировать ссылку' }
