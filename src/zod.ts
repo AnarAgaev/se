@@ -1,5 +1,9 @@
 import { z } from 'zod'
 
+
+export const UserId = z.union([z.string(), z.number()]).optional()
+export type TUserId = z.infer<typeof UserId>
+
 // #region Backgrounds
 export const Background = z.object({
     id: z.union([z.string(), z.number()]),
@@ -94,8 +98,9 @@ export type TVendorList = z.infer<typeof VendorList>
 // #region Projects
 export const Project = z.object({
     id: z.union([z.number(), z.string()]),
+    name: z.string(),
     selected: z.boolean(),
-    name: z.string()
+    edit: z.boolean()
 })
 export type TProject = z.infer<typeof Project>
 
@@ -161,6 +166,7 @@ export type TDictionary = z.infer<typeof Dictionary>
 
 // #region Initial data
 export const InitDataContract = z.object({
+    user_id: UserId,
     borders: BorderList,
     backgrounds: BackgroundList,
     devices: DeviceList,

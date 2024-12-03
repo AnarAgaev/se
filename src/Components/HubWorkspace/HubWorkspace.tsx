@@ -1,45 +1,69 @@
 import { useId, useMemo, useState } from 'react'
 import { InputAdd } from '../../Components'
-import { TProjectList } from '../../types'
+import { TProjectList, TAppStore } from '../../types'
 import useStore from '../../Store'
 import style from './HubWorkspace.module.sass'
 
-const { hub, form, add, upload, blocks, title, list, item, name, actions,
-    button, button_edit, button_share, button_cloud, button_cart,
+const { hub, form, add, upload, blocks, title, message, list, item, name, actions,
+    button, button_edit, button_share, button_down, button_cart,
     modal, modal_show, close, content, caption, controllers } = style
 
 const getProjectsElms = (
+    id: string,
     projects: TProjectList,
-    id: string
+    editProject: TAppStore['editProject'],
+    shareProject: TAppStore['shareProject']
 ): JSX.Element[] => {
 
-    const elList: JSX.Element[] = []
-    const names = Object.keys(projects)
-
-    names.forEach(project => elList.push(
-        <li key={`${id}-${project}`} className={item}>
-            <span className={name}>{project}</span>
+    return projects.map(p => (
+        <li key={`${id}-${p.id}`} className={item}>
+            <span className={name}>
+                {p.name}
+                <i>#{p.id}</i>
+            </span>
             <ul className={actions}>
-                <li className={`${button} ${button_edit}`}></li>
-                <li className={`${button} ${button_share}`}></li>
-                <li className={`${button} ${button_cloud}`}></li>
-                <li className={`${button} ${button_cart}`}></li>
+                <li className={`${button} ${button_edit}`}
+                    onClick={() => editProject(p.id)}
+                    title="Редактировать проект"></li>
+
+                <li className={`${button} ${button_share}`}
+                    onClick={() => shareProject(p.id)}
+                    title="Поделиться проектом"></li>
+
+                <li className={`${button} ${button_down}`}
+                    title="Скачать проект"></li>
+
+                <li className={`${button} ${button_cart}`}
+                    title="Удалить проект"></li>
             </ul>
         </li>
     ))
-
-    return elList
 }
 
 const HubWorkspace = () => {
     const id = useId()
-    const projects = useStore(state => state.projects)
-    const addProject = useStore(state => state.addProject)
+
+    // #region Variables
+    const [
+        userId,
+        projects,
+        addProject,
+        editProject,
+        shareProject
+    ] = useStore(state => [
+        state.userId,
+        state.projects,
+        state.addProject,
+        state.editProject,
+        state.shareProject
+    ])
+    // #endregion
+
     const [showModal, toggleShowModal] = useState(false)
 
     const projectList = useMemo(
-        () => getProjectsElms(projects, id),
-        [projects, id]
+        () => getProjectsElms(id, projects, editProject, shareProject),
+        [id, projects, editProject, shareProject]
     )
 
     return (
@@ -58,7 +82,15 @@ const HubWorkspace = () => {
                     </div>
                 </div>
                 <div className={blocks}>
-                    <h3 className={title}>Список проектов</h3>
+                    {!userId &&
+                        <h3 className={message}>Чтобы сохранить проект или работать с сохраненными проектами, войдите на сайт.</h3>
+                    }
+                    <h3 className={title}>
+                        { projects.length === 0
+                                ? 'У Вас пока нет проектов. Создайте новый проект или загрузите проект по ссылке.'
+                                : 'Список проектов'
+                        }
+                    </h3>
                     <ul className={list}>
                         { projectList }
                     </ul>
@@ -83,7 +115,6 @@ const HubWorkspace = () => {
                 </div>
             </div>
         </>
-
     )
 }
 

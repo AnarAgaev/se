@@ -10,6 +10,7 @@ import {
     TFunction, TFunctionItem, TFunctionList,
     TColorList,
     TDictionary,
+    TUserId,
     InitDataContract,
 } from "./zod"
 
@@ -194,7 +195,10 @@ type TFireError = (error: Error) => void
 export type TSetModalSelect = (caption: string, approveText: string, rejectText: string, payload: Record<string>) => void
 
 export type TAppStore = {
+    userId?: TUserId
+
     loading: boolean
+    dataLoading: boolean
 
     error: Error | unknown
     fireError: TFireError
@@ -217,6 +221,8 @@ export type TAppStore = {
     setAppProjects: (projects: TProjectList) => void
     addProject: (project: string) => void
     setProject: (id: TProject['id']) => void
+    editProject: (id: TProject['id']) => void
+    shareProject: (id: TProject['id']) => void
     checkProject: () => boolean
     resetProject: () => void
 
@@ -259,6 +265,12 @@ export type TAppStore = {
     modalMessageVisible: boolean
     modalMessageCaption: string
     modalMessageSet: (visible: boolean, caption: string) => void
+    // #endregion
+
+    // #region Modal Share
+    modalShareVisible: boolean
+    modalShareValue: string | null
+    modalShareSet: (visible: boolean, value: string | null) => void
     // #endregion
 
 }

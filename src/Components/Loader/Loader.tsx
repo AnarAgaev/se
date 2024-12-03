@@ -2,7 +2,7 @@ import style from './Loader.module.sass'
 
 const { loader, loader_visible, body, message, process, point } = style
 
-const Loader:React.FC = () => {
+const Loader = () => {
     return(
         <div className={`${loader} ${loader_visible}`}>
             <div className={body}>

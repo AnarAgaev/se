@@ -1,0 +1,31 @@
+@import '../../Sass/_variables'
+
+.loading
+    display: flex
+    align-items: center
+    justify-content: center
+    position: fixed
+    z-index: -1
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background-color: var(--color-opacity-back)
+    opacity: 0
+    transition: var(--base-transition)
+
+
+.visible
+    z-index: 10
+    opacity: 1
+
+
+.body
+    display: block
+    width: 200px
+    height: 200px
+    border-radius: 50%
+    background: var(--color-back-secondary) no-repeat center
+    background-image: url('https://aws.massive.ru/sew/img/loader-points.svg')
+    background-size: 70%
+    border: 1px solid var(--color-button-font-disabled)

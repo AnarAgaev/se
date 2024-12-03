@@ -39,8 +39,10 @@ import InputAdd from './InputAdd/InputAdd'
 import ModalSelect from './ModalSelect/ModalSelect'
 import ModalWarning from './ModalWarning/ModalWarning'
 import ModalMessage from './ModalMessage/ModalMessage'
+import ModalShare from './ModalShare/ModalShare'
 import DeviceList from './DeviceList/DeviceList'
 import SketchSaver from './SketchSaver/SketchSaver'
+import Loading from './Loading/Loading'
 
 export {
     App,
@@ -84,6 +86,8 @@ export {
     ModalSelect,
     ModalWarning,
     ModalMessage,
+    ModalShare,
     DeviceList,
-    SketchSaver
+    SketchSaver,
+    Loading
 }

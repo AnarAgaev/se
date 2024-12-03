@@ -99,7 +99,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         get().setFunctions(safeResponse.data.functions)
                         get().setDictionary(safeResponse.data.lang)
 
-                        set({ error: null, loading: false, visible: false })
+                        set({ error: null, loading: false, visible: false, userId: safeResponse.data.user_id })
 
                         setTimeout(() => set({visible: true}), 1000)
                     } catch (error: Error | unknown) {

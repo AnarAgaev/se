@@ -1,0 +1,137 @@
+@import '../../Sass/_variables'
+
+.modal
+    display: flex
+    align-items: center
+    justify-content: center
+    position: fixed
+    z-index: 10
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background-color: var(--color-opacity-back)
+
+
+.body
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 20px
+    position: fixed
+    z-index: 10
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    margin: 0
+    padding: 40px 20px
+    background: var(--color-back-secondary)
+    width: 90%
+    max-width: 500px
+    height: auto
+
+    @media (min-width: $sm)
+        padding-left: 40px
+        padding-right: 40px
+
+
+.close
+    display: block
+    position: absolute
+    top: 10px
+    right: 10px
+    width: 25px
+    height: 25px
+    background: transparent no-repeat center
+    border: none
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNSAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMi41IDEzLjk3MjlMMTguMzkyNyAxOS44NjU2QzE4LjU4OTIgMjAuMDU1NCAxOC44NTIzIDIwLjE2MDQgMTkuMTI1NSAyMC4xNThDMTkuMzk4NiAyMC4xNTU2IDE5LjY1OTggMjAuMDQ2MSAxOS44NTMgMTkuODUyOUMyMC4wNDYxIDE5LjY1OTggMjAuMTU1NyAxOS4zOTg1IDIwLjE1OCAxOS4xMjU0QzIwLjE2MDQgMTguODUyMyAyMC4wNTU0IDE4LjU4OTIgMTkuODY1NyAxOC4zOTI3TDEzLjk3MyAxMi41TDE5Ljg2NTcgNi42MDcyOUMyMC4wNTU0IDYuNDEwODMgMjAuMTYwNCA2LjE0NzcgMjAuMTU4IDUuODc0NThDMjAuMTU1NyA1LjYwMTQ2IDIwLjA0NjEgNS4zNDAyIDE5Ljg1MyA1LjE0NzA2QzE5LjY1OTggNC45NTM5MyAxOS4zOTg2IDQuODQ0MzggMTkuMTI1NSA0Ljg0MkMxOC44NTIzIDQuODM5NjMgMTguNTg5MiA0Ljk0NDYyIDE4LjM5MjcgNS4xMzQzN0wxMi41IDExLjAyNzFMNi42MDczMyA1LjEzNDM3QzYuNDA5OTkgNC45NDkzMiA2LjE0ODM5IDQuODQ4MyA1Ljg3Nzg4IDQuODUyNjlDNS42MDczOCA0Ljg1NzA4IDUuMzQ5MiA0Ljk2NjU0IDUuMTU3OTcgNS4xNTc5MUM0Ljk2NjczIDUuMzQ5MjggNC44NTc0NiA1LjYwNzU0IDQuODUzMjUgNS44NzgwNEM0Ljg0OTA1IDYuMTQ4NTUgNC45NTAyNiA2LjQxMDA4IDUuMTM1NDYgNi42MDcyOUwxMS4wMjcxIDEyLjVMNS4xMzQ0MSAxOC4zOTI3QzUuMDM0OTIgMTguNDg4OCA0Ljk1NTU3IDE4LjYwMzcgNC45MDA5OCAxOC43MzA4QzQuODQ2MzggMTguODU3OSA0LjgxNzY1IDE4Ljk5NDYgNC44MTY0NSAxOS4xMzI5QzQuODE1MjQgMTkuMjcxMiA0Ljg0MTYgMTkuNDA4NCA0Ljg5Mzk4IDE5LjUzNjRDNC45NDYzNSAxOS42NjQ0IDUuMDIzNyAxOS43ODA3IDUuMTIxNSAxOS44Nzg1QzUuMjE5MzEgMTkuOTc2MyA1LjMzNTYxIDIwLjA1MzcgNS40NjM2MyAyMC4xMDYxQzUuNTkxNjUgMjAuMTU4NCA1LjcyODgxIDIwLjE4NDggNS44NjcxMiAyMC4xODM2QzYuMDA1NDQgMjAuMTgyNCA2LjE0MjEyIDIwLjE1MzcgNi4yNjkyMSAyMC4wOTkxQzYuMzk2MyAyMC4wNDQ1IDYuNTExMjQgMTkuOTY1MSA2LjYwNzMzIDE5Ljg2NTZMMTIuNSAxMy45NzI5WiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg==")
+    cursor: pointer
+    transition: var(--base-transition)
+
+    @media (min-width: $sm)
+        top: 20px
+        right: 20px
+
+    @media (hover: hover) and (pointer: fine)
+        &:hover
+            opacity: 0.7
+
+.title
+    display: block
+    position: relative
+    text-align: center
+    margin: 0 0 10px 0
+    padding: 0
+    font-weight: 700
+    font-size: 22px
+    line-height: 1.3
+    text-wrap: balance
+    font-style: normal
+    user-select: none
+
+    @media (min-width: $sm)
+        font-size: 32px
+        margin-bottom: 20px
+
+
+.label
+    display: block
+    width: 100%
+    height: auto
+
+
+.input
+    display: flex
+    align-items: center
+    width: 100%
+    height: 40px
+    padding: 0 15px
+    border: 1px solid var(--color-button-font-disabled)
+    background: var(--color-back-ini)
+    font-size: 16px
+    font-style: normal
+    font-weight: 400
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    box-sizing: border-box
+
+    &::selection
+        background-color: transparent
+
+
+.progress
+    --size: 15px
+    --half-size: calc(var(--size) / 2)
+    --stroke-width: 2px
+    --radius: calc((var(--size) - var(--stroke-width)) / 2)
+    --circumference: calc(var(--radius) * pi * 2)
+    --dash: calc((var(--progress) * var(--circumference)) / 100)
+    animation: progress-animation 5s linear 0s 1 forwards
+
+    circle
+        cx: var(--half-size)
+        cy: var(--half-size)
+        r: var(--radius)
+        stroke-width: var(--stroke-width)
+        fill: none
+        stroke-linecap: round
+
+.path
+    transform: rotate(-90deg)
+    transform-origin: var(--half-size) var(--half-size)
+    stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash))
+    transition: stroke-dasharray 0.3s linear 0s
+    stroke: var(--color-back-shetch)
+
+@property --progress
+    syntax: "<number>"
+    inherits: false
+    initial-value: 0
+
+@keyframes progress-animation
+    from
+        --progress: 0
+
+    to
+        --progress: 100

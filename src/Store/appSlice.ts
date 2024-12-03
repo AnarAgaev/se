@@ -3,6 +3,8 @@ import { TAppStore } from '../types'
 
 const appSlice: StateCreator<TAppStore> = (set, get) => ({
     loading: true,
+    dataLoading: false,
+
 
     error: null,
     fireError: (error) => {
@@ -72,7 +74,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         newProjects.unshift({
             id: Math.floor(Math.random() * Date.now()),
             name: project,
-            selected: true
+            selected: true,
+            edit: false
         })
 
         set({ projects: newProjects })
@@ -97,6 +100,47 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         newProjects.forEach(p => p.selected = false)
 
         set({ projects: newProjects })
+    },
+    editProject: (id) => {
+        const newProjects = [...get().projects]
+
+        newProjects.forEach(p => p.edit = p.id === id)
+
+        set({
+            projects: newProjects,
+            activeViewportTab: 'project'
+        })
+    },
+    shareProject: async (id) => {
+        const apiLink = window.shareProjectLink
+
+        if (!apiLink) {
+            console.log('\x1b[31m%s\x1b[0m', 'На странице не указана ссылка на API Share', 'window.shareProjectLink')
+            return
+        }
+
+        set({ dataLoading: true })
+
+        const requestLink = `${apiLink}?share=${id}`
+
+        try {
+            const res = await fetch(requestLink)
+
+            if (!res.ok) throw new Error(`Failed to fetch json Share project! URL link is ${requestLink}`)
+
+            const data = await res.json()
+
+            if (data.status === 'error') throw new Error(data.error)
+
+            set({
+                dataLoading: false,
+                modalShareVisible: true,
+                modalShareValue: data.link,
+            })
+
+        } catch (error) {
+            console.error(error)
+        }
     },
     // #endregion
 
@@ -223,6 +267,18 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         set({
             modalMessageVisible: visible,
             modalMessageCaption: caption
+        })
+    },
+    // #endregion
+
+
+    // #region ModalMessage
+    modalShareVisible: false,
+    modalShareValue: null,
+    modalShareSet: (visible, value) => {
+        set({
+            modalShareVisible: visible,
+            modalShareValue: value
         })
     }
     // #endregion

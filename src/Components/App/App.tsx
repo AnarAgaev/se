@@ -3,8 +3,8 @@ import useStore from '../../Store'
 import style from './App.module.sass'
 import '../../Sass/main.sass'
 
-import { Loader, Tabs, Factory, Viewport, ModalSelect,
-	ModalWarning, ModalMessage } from '../../Components'
+import { Loading, Loader, Tabs, Factory, Viewport, ModalSelect,
+	ModalWarning, ModalMessage, ModalShare } from '../../Components'
 
 const { app, caption, body } = style
 
@@ -17,14 +17,18 @@ const App = () => {
 		error,
 		modalSelectVisible,
 		modalWarningVisible,
-		modalMessageVisible
+		modalMessageVisible,
+		modalShareVisible,
+		dataLoading
 	] = useStore(state => [
 		state.requestInitData,
 		state.loading,
 		state.error,
 		state.modalSelectVisible,
 		state.modalWarningVisible,
-		state.modalMessageVisible
+		state.modalMessageVisible,
+		state.modalShareVisible,
+		state.dataLoading
 	])
 	// #endregion
 
@@ -52,8 +56,10 @@ const App = () => {
 					{ modalSelectVisible && <ModalSelect /> }
 					{ modalWarningVisible && <ModalWarning /> }
 					{ modalMessageVisible && <ModalMessage /> }
+					{ modalShareVisible && <ModalShare /> }
 				</>
 			}
+			{ dataLoading && <Loading /> }
 		</section>
 	)
 }

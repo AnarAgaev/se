@@ -1,10 +1,34 @@
+import useStore from '../../Store'
 import style from './ProjectWorkspace.module.sass'
 
-const { wrap, caption, body, footer, actions,total } = style
+const { wrap, wrapCenter, caption, title, subtitle, body, footer, actions,total } = style
 
 const ProjectWorkspace = () => {
-    return (
-        <div className={wrap}>
+
+    // #region Variables
+    const [
+        projects,
+        setActiveTab
+    ] = useStore(state => [
+        state.projects,
+        state.setActiveViewportTab
+    ])
+    // #endregion
+
+    const project = projects.filter(p => p.edit)[0]
+
+    return !project
+
+        ? ( <div className={wrapCenter}>
+                <h2 className={title}>
+                    Вначале необходимо выбрать проект
+                </h2>
+                <p className={subtitle}>
+                    Перейдите на вкладку <button onClick={() => setActiveTab('hub')}>Мои проекты</button> и кликните по иконке <span><i></i> (Редактировать)</span> одного из проектов.
+                </p>
+            </div> )
+
+        : ( <div className={wrap}>
             <h2 className={caption}>Название проекта</h2>
 
             <div className={body}>
