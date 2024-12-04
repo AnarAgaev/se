@@ -10,11 +10,32 @@ interface Props {
     checkColorFn: TCheckPluralFilter
 }
 
-const { body, title, list, item, color,
-    color_gold, color_gray, color_white,
-    color_copper, color_black, color_silver,
-    color_brown, color_green, color_blue,
-    color_beige
+// #region Colors
+const {
+    body,
+    title,
+    list,
+    item,
+    color,
+    color_gold,
+    color_gray,
+    color_white,
+    color_copper,
+    color_black,
+    color_silver,
+    color_brown,
+    color_green,
+    color_blue,
+    color_beige,
+    color_orange,
+    color_yellow,
+    color_lightblue,
+    color_transparent,
+    color_pink,
+    color_chromium,
+    color_red,
+    color_purple,
+    color_bronze
 } = style
 
 const colorClassDictionary: Record<string, string> = {
@@ -28,7 +49,18 @@ const colorClassDictionary: Record<string, string> = {
     "Серебристый": color_silver,
     "Золотистый": color_gold,
     "Медный": color_copper,
+    "Оранжевый": color_orange,
+    "Жёлтый": color_yellow,
+    "Желтый": color_yellow,
+    "Голубой": color_lightblue,
+    "Прозрачный": color_transparent,
+    "Розовый": color_pink,
+    "Хром": color_chromium,
+    "Красный": color_red,
+    "Фиолетовый": color_purple,
+    "Бронза": color_bronze,
 }
+// #endregion
 
 const getColorsList = (
     colors: Array<string>,
@@ -70,7 +102,7 @@ const getColorsList = (
     return list
 }
 
-const ColorSelector: React.FC<Props> = ({caption, colors, setColorFn, removeColorFn, checkColorFn}) => {
+const ColorSelector = ({caption, colors, setColorFn, removeColorFn, checkColorFn}: Props) => {
     const id = useId()
 
     const colorsList = getColorsList(colors, setColorFn, removeColorFn, checkColorFn, id)

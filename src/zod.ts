@@ -1,6 +1,5 @@
 import { z } from 'zod'
 
-
 export const UserId = z.union([z.string(), z.number()]).optional()
 export type TUserId = z.infer<typeof UserId>
 

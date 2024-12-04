@@ -12,7 +12,8 @@ const getProjectsElms = (
     id: string,
     projects: TProjectList,
     editProject: TAppStore['editProject'],
-    shareProject: TAppStore['shareProject']
+    shareProject: TAppStore['shareProject'],
+    removeProject: TAppStore['removeProject']
 ): JSX.Element[] => {
 
     return projects.map(p => (
@@ -22,18 +23,19 @@ const getProjectsElms = (
                 <i>#{p.id}</i>
             </span>
             <ul className={actions}>
-                <li className={`${button} ${button_edit}`}
-                    onClick={() => editProject(p.id)}
+                <li onClick={() => editProject(p.id)}
+                    className={`${button} ${button_edit}`}
                     title="Редактировать проект"></li>
 
-                <li className={`${button} ${button_share}`}
-                    onClick={() => shareProject(p.id)}
+                <li onClick={() => shareProject(p.id)}
+                    className={`${button} ${button_share}`}
                     title="Поделиться проектом"></li>
 
                 <li className={`${button} ${button_down}`}
                     title="Скачать проект"></li>
 
-                <li className={`${button} ${button_cart}`}
+                <li onClick={() => removeProject(p.id, p.name)}
+                    className={`${button} ${button_cart}`}
                     title="Удалить проект"></li>
             </ul>
         </li>
@@ -49,21 +51,23 @@ const HubWorkspace = () => {
         projects,
         addProject,
         editProject,
-        shareProject
+        shareProject,
+        removeProject
     ] = useStore(state => [
         state.userId,
         state.projects,
         state.addProject,
         state.editProject,
-        state.shareProject
+        state.shareProject,
+        state.removeProject
     ])
     // #endregion
 
     const [showModal, toggleShowModal] = useState(false)
 
     const projectList = useMemo(
-        () => getProjectsElms(id, projects, editProject, shareProject),
-        [id, projects, editProject, shareProject]
+        () => getProjectsElms(id, projects, editProject, shareProject, removeProject),
+        [id, projects, editProject, shareProject, removeProject]
     )
 
     return (

@@ -77,6 +77,19 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
                         if (!res.ok) console.error('Failed to fetch json initial data! URL link is', initSourceDataLink)
 
+
+    // const data = await res.json()
+
+    // const set = new Set()
+
+
+    // data.borders.forEach(i => {
+    //     set.add(i.color)
+    // })
+
+    // console.log(Array.from(set))
+
+
                         const safeResponse = InitDataContract.passthrough().safeParse(await res.json())
 
                         if (!safeResponse.success) {
@@ -102,6 +115,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         set({ error: null, loading: false, visible: false, userId: safeResponse.data.user_id })
 
                         setTimeout(() => set({visible: true}), 1000)
+
                     } catch (error: Error | unknown) {
                         set({ error: error, loading: false })
                     }

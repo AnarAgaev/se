@@ -138,11 +138,52 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 throw new Error(data.error)
             }
 
-            set({
+            setTimeout(() => set({
                 dataLoading: false,
                 modalShareVisible: true,
                 modalShareValue: data.link,
-            })
+            }), 500)
+
+        } catch (error) {
+            console.error(error)
+        }
+    },
+    removeProject: async (id, name) => {
+        const apiLink = window.removeProjectLink
+
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Remove window.removeProjectLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const requestLink = `${apiLink}?remove=${id}`
+
+        try {
+            const res = await fetch(requestLink)
+
+            if (!res.ok) {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Failed to fetch json Remove project! URL link is ${requestLink}`)
+            }
+
+            const data = await res.json()
+
+            if (data.status === 'error') {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(data.error)
+            }
+
+            // Remove project
+            const newProjects = [...get().projects].filter(p => p.id !== id)
+
+            setTimeout(() =>             set({
+                dataLoading: false,
+                modalMessageVisible: true,
+                modalMessageCaption: `Проект #${id} "${name}" успешно удален`,
+                projects: newProjects
+            }), 500)
 
         } catch (error) {
             console.error(error)

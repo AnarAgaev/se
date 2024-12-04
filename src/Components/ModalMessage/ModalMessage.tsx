@@ -21,7 +21,7 @@ const ModalMessage = () => {
                 <h3 className={text}>{modalMessageCaption}</h3>
                 <button onClick={() => modalMessageSet(false, '')}
                     className={`button button_block button_dark ${button}`}>
-                    Хорошо
+                    Понятно
                 </button>
             </div>
         </div>

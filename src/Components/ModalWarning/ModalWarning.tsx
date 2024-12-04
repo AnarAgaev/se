@@ -22,7 +22,7 @@ const ModalWarning = () => {
                 <div className={buttons}>
                     <button onClick={() => modalWarningSet(false, '', true)}
                         className={`button button_block button_dark ${button}`}>
-                        Хорошо
+                        Понятно
                     </button>
                     <button onClick={() => modalWarningSet(false, '', false)}
                         className={`button button_block button_dark ${button}`}>
