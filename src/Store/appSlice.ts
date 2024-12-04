@@ -66,19 +66,59 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // #region Projects
     projects: [],
     setAppProjects: (projects) => set({ projects: projects }),
-    addProject: (project) => {
-        const newProjects = [...get().projects]
+    addProject: async (project) => {
 
-        newProjects.forEach(project => project.selected = false)
+        const apiLink = window.addProjectLink
 
-        newProjects.unshift({
-            id: Math.floor(Math.random() * Date.now()),
-            name: project,
-            selected: true,
-            edit: false
-        })
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Add Project window.addProjectLink`)
+        }
 
-        set({ projects: newProjects })
+        set({ dataLoading: true })
+
+        const requestLink = `${apiLink}?name=${project}`
+
+        try {
+            const res = await fetch(requestLink)
+
+            if (!res.ok) {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Ошибка fetch запроса Добавить проект! Запрос к URL ${requestLink}`)
+            }
+
+            const data = await res.json()
+
+            if (data.status === 'error') {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(data.error)
+            }
+
+            // Add project
+            const newProjects = [...get().projects]
+
+            let addedProjectId = data.id
+            addedProjectId = typeof addedProjectId === 'string'
+                ? addedProjectId
+                : addedProjectId.toString()
+
+            newProjects.unshift({
+                id: addedProjectId,
+                name: project,
+                selected: false,
+                edit: false
+            })
+
+            setTimeout(() => set({
+                dataLoading: false,
+                modalMessageVisible: true,
+                modalMessageCaption: `Проект #${addedProjectId} ${project} добавлен`,
+                projects: newProjects
+            }), 500)
+
+        } catch (error) {
+            console.error(error)
+        }
     },
     setProject: (id) => {
         const newProjects = [...get().projects]
@@ -116,7 +156,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
-            throw new Error(`На странице не указана ссылка на API Share window.shareProjectLink`)
+            throw new Error(`На странице не указана ссылка на API Share Project window.shareProjectLink`)
         }
 
         set({ dataLoading: true })
@@ -128,7 +168,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             if (!res.ok) {
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Failed to fetch json Share project! URL link is ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса Поделиться проектом! Запрос к URL ${requestLink}`)
             }
 
             const data = await res.json()
@@ -153,7 +193,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
-            throw new Error(`На странице не указана ссылка на API Remove window.removeProjectLink`)
+            throw new Error(`На странице не указана ссылка на API Remove Project window.removeProjectLink`)
         }
 
         set({ dataLoading: true })
@@ -165,7 +205,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             if (!res.ok) {
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Failed to fetch json Remove project! URL link is ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса Удалить проект! Запрос к URL ${requestLink}`)
             }
 
             const data = await res.json()
@@ -178,10 +218,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             // Remove project
             const newProjects = [...get().projects].filter(p => p.id !== id)
 
-            setTimeout(() =>             set({
+            setTimeout(() => set({
                 dataLoading: false,
                 modalMessageVisible: true,
-                modalMessageCaption: `Проект #${id} "${name}" успешно удален`,
+                modalMessageCaption: `Проект #${id} ${name} удален`,
                 projects: newProjects
             }), 500)
 

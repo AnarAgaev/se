@@ -3,4 +3,5 @@ interface Window {
     uploadBackgroundLink: string
     shareProjectLink: string
     removeProjectLink: string
+    addProjectLink: string
 }
