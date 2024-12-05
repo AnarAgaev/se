@@ -4,8 +4,27 @@ import { TProjectList, TAppStore } from '../../types'
 import useStore from '../../Store'
 import style from './HubWorkspace.module.sass'
 
+import { PdfDocument } from '../../Components'
+import { PDFDownloadLink } from '@react-pdf/renderer';
+
+
 const { hub, form, add, upload, blocks, title, message, list, item, name, actions,
-    button, button_edit, button_share, button_down, button_cart } = style
+    button, button_edit, button_share, button_down, button_cart, download } = style
+
+const getFileName = (name: string, id: string | number): string => {
+    const cyrillicToLatinMap: Record<string, string> = {
+        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i',
+        'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't',
+        'у': 'u', 'ф': 'f', 'х': 'kh', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'sh', 'ъ': '', 'ы': 'y', 'ь': '',
+        'э': 'e', 'ю': 'yu', 'я': 'ya', ' ': '-'
+    }
+
+    const number = typeof id === 'number' ? id.toString() : id
+    const fileNumber = number.toLowerCase().split('').map(char => cyrillicToLatinMap[char] || char).join('')
+    const fileName = name.toLowerCase().split('').map(char => cyrillicToLatinMap[char] || '').join('')
+
+    return `${fileName}__${fileNumber}.pdf`
+}
 
 const getProjectsElms = (
     id: string,
@@ -31,7 +50,11 @@ const getProjectsElms = (
                     title="Поделиться проектом"></li>
 
                 <li className={`${button} ${button_down}`}
-                    title="Скачать проект"></li>
+                    title="Скачать проект">
+                        <PDFDownloadLink document={ <PdfDocument project={p} /> } fileName={getFileName(p.name, p.id)}>
+                            <button className={download}></button>
+                        </PDFDownloadLink>
+                </li>
 
                 <li onClick={() => removeProject(p.id, p.name)}
                     className={`${button} ${button_cart}`}

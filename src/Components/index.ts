@@ -45,6 +45,9 @@ import DeviceList from './DeviceList/DeviceList'
 import SketchSaver from './SketchSaver/SketchSaver'
 import Loading from './Loading/Loading'
 
+
+import PdfDocument from './PdfDocument/PdfDocument'
+
 export {
     App,
     Loader,
@@ -91,5 +94,11 @@ export {
     ModalLoadProject,
     DeviceList,
     SketchSaver,
-    Loading
+    Loading,
+
+
+
+
+
+    PdfDocument
 }
