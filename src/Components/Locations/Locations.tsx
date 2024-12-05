@@ -86,14 +86,14 @@ const Locations = () => {
         <div className={locations}>
             <InputSelect
                 cbf={addProject}
-                title="Выбрать проект"
+                title={selectedProject ? 'Проект' : 'Выбрать проект'}
                 placeholder="Создать проект"
                 selectedValue={selectedProject && selectedProject.name} >
                 { projectsOptions }
             </InputSelect>
             <InputSelect
                 cbf={addRoom}
-                title="Выбрать помещение"
+                title={selectedRoom ? 'Помещение' : 'Выбрать помещение'}
                 placeholder="Создать помещение"
                 selectedValue={selectedRoom && selectedRoom.name} >
                 { roomsOptions }
