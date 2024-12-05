@@ -11,7 +11,14 @@
         height: 100%
         background: var(--color-back-secondary) center no-repeat
         background-size: cover
+        animation: image-failed .77s linear infinite alternate
 
+
+@keyframes image-failed
+    0%
+        background-color: var(--color-back-secondary)
+    100%
+        background-color: var(--color-img-faild)
 
 @mixin verticalCustomScrollbar($border-radius)
     &::-webkit-scrollbar
