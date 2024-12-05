@@ -188,6 +188,51 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             console.error(error)
         }
     },
+    loadProject: async (id) => {
+
+        const apiLink = window.loadProjectLink
+
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Load Project window.loadProjectLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const requestLink = `${apiLink}?load=${id}`
+
+        try {
+            const res = await fetch(requestLink)
+
+            if (!res.ok) {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Ошибка fetch запроса Загрузить проект! Запрос к URL ${requestLink}`)
+            }
+
+            const data = await res.json()
+
+            if (data.status === 'error') {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(data.error)
+            }
+
+            setTimeout(() => {
+                set({
+                    dataLoading: false
+                })
+
+
+                alert('Добавляем проект в конфигуратор. Добавить логику когда будет ясна сигнатура Проекта.')
+
+
+
+
+            }, 500)
+
+        } catch (error) {
+            console.error(error)
+        }
+    },
     removeProject: async (id, name) => {
         const apiLink = window.removeProjectLink
 
@@ -365,7 +410,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // #endregion
 
 
-    // #region ModalMessage
+    // #region ModalShare
     modalShareVisible: false,
     modalShareValue: null,
     modalShareSet: (visible, value) => {
@@ -375,7 +420,20 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             modalShareVisible: visible,
             modalShareValue: value
         })
-    }
+    },
+    // #endregion
+
+
+    // #region ModalLoadProject
+    modalLoadProjectVisible: false,
+    modalLoadProjectValue: '',
+    modalLoadProjectSetValue: (value) => set({ modalLoadProjectValue: value }),
+    modalLoadProjectSet: (visible, value) => {
+        set({
+            modalLoadProjectVisible: visible,
+            modalLoadProjectValue: value
+        })
+    },
     // #endregion
 
 })

@@ -1,12 +1,11 @@
-import { useId, useMemo, useState } from 'react'
+import { useId, useMemo } from 'react'
 import { InputAdd } from '../../Components'
 import { TProjectList, TAppStore } from '../../types'
 import useStore from '../../Store'
 import style from './HubWorkspace.module.sass'
 
 const { hub, form, add, upload, blocks, title, message, list, item, name, actions,
-    button, button_edit, button_share, button_down, button_cart,
-    modal, modal_show, close, content, caption, controllers } = style
+    button, button_edit, button_share, button_down, button_cart } = style
 
 const getProjectsElms = (
     id: string,
@@ -52,18 +51,18 @@ const HubWorkspace = () => {
         addProject,
         editProject,
         shareProject,
-        removeProject
+        removeProject,
+        modalLoadProjectSet
     ] = useStore(state => [
         state.userId,
         state.projects,
         state.addProject,
         state.editProject,
         state.shareProject,
-        state.removeProject
+        state.removeProject,
+        state.modalLoadProjectSet
     ])
     // #endregion
-
-    const [showModal, toggleShowModal] = useState(false)
 
     const projectList = useMemo(
         () => getProjectsElms(id, projects, editProject, shareProject, removeProject),
@@ -79,7 +78,7 @@ const HubWorkspace = () => {
                     </div>
                     <div className={upload}>
                         <button type="button" className='button button_block button_dark'
-                            onClick={() => toggleShowModal(true)}>
+                            onClick={() => modalLoadProjectSet(true, '')}>
                             Загрузить по ссылке
                             <i className="icon icon_upload"></i>
                         </button>
@@ -98,24 +97,6 @@ const HubWorkspace = () => {
                     <ul className={list}>
                         { projectList }
                     </ul>
-                </div>
-            </div>
-
-            <div className={ showModal ? `${modal} ${modal_show}` : modal }>
-                <button type='button' className={close}
-                    onClick={() => toggleShowModal(false)}></button>
-                <div className={content}>
-                    <h4 className={caption}>
-                        Загрузить проект по ссылке
-                    </h4>
-                    <div className={controllers}>
-                        <input type="text" placeholder='Вставьте ссылку на проект' />
-                        <button type='button' className='button button_dark'
-                            onClick={() => toggleShowModal(false)}>
-                            Примерить
-                            <i className='icon  icon_check'></i>
-                        </button>
-                    </div>
                 </div>
             </div>
         </>

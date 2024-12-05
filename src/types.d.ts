@@ -235,6 +235,7 @@ export type TAppStore = {
     editProject: (id: TProject['id']) => void
     shareProject: (id: TProject['id']) => void
     removeProject: (id: TProject['id'], name: TProject['name']) => void
+    loadProject: (id: TProject['id']) => void
     checkProject: () => boolean
     resetProject: () => void
     // #endregion
@@ -295,6 +296,14 @@ export type TAppStore = {
     modalShareVisible: boolean
     modalShareValue: string | null
     modalShareSet: (visible: boolean, value: string | null) => void
+    // #endregion
+
+
+    // #region Modal Load Project
+    modalLoadProjectVisible: boolean
+    modalLoadProjectValue: string
+    modalLoadProjectSetValue: (value: string) => void
+    modalLoadProjectSet: (visible: boolean, value: string) => void
     // #endregion
 
 }

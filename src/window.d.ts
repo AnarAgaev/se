@@ -4,4 +4,5 @@ interface Window {
     shareProjectLink: string
     removeProjectLink: string
     addProjectLink: string
+    loadProjectLink: string
 }
