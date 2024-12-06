@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     page: {
         fontFamily: 'Roboto',
         flexDirection: 'row',
-        backgroundColor: 'lightblue'
+        backgroundColor: 'white'
     },
 
     section: {

@@ -1,12 +1,9 @@
 import { useId, useMemo } from 'react'
-import { InputAdd } from '../../Components'
+import { PDFDownloadLink } from '@react-pdf/renderer'
+import { InputAdd, PdfDocument } from '../../Components'
 import { TProjectList, TAppStore } from '../../types'
 import useStore from '../../Store'
 import style from './HubWorkspace.module.sass'
-
-import { PdfDocument } from '../../Components'
-import { PDFDownloadLink } from '@react-pdf/renderer';
-
 
 const { hub, form, add, upload, blocks, title, message, list, item, name, actions,
     button, button_edit, button_share, button_down, button_cart, download } = style
@@ -51,9 +48,11 @@ const getProjectsElms = (
 
                 <li className={`${button} ${button_down}`}
                     title="Скачать проект">
-                        <PDFDownloadLink document={ <PdfDocument project={p} /> } fileName={getFileName(p.name, p.id)}>
-                            <button className={download}></button>
-                        </PDFDownloadLink>
+                        <PDFDownloadLink
+                            className={ download }
+                            document={ <PdfDocument project={p} /> }
+                            fileName={ getFileName(p.name, p.id) }
+                        />
                 </li>
 
                 <li onClick={() => removeProject(p.id, p.name)}
