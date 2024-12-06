@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react'
+import { Modal } from '../../Components'
 import useStore from '../../Store'
 import style from './ModalLoadProject.module.sass'
 
-const { modal, body, close, content, caption, controllers, error } = style
+const { controllers, error } = style
 
 const removeProtocol = (url: string) => {
     return url.replace(/^https?:\/\//, '');
@@ -78,31 +79,22 @@ const ModalLoadProject = () => {
     }
 
     return (
-        <div className={modal}>
-            <div className={body}>
-            <button type='button' className={close} onClick={onClose}></button>
-                <div className={content}>
-                    <h4 className={caption}>
-                        Загрузить проект по ссылке
-                    </h4>
-                    <div className={controllers}>
-                        <input
-                            ref={inputRef}
-                            value={value}
-                            onChange={onInput}
-                            type='text'
-                            placeholder='Вставьте ссылку на проект'
-                        />
-                        <button type='button' className='button button_dark' onClick={onSend}>
-                            Примерить
-                            <i className='icon  icon_check'></i>
-                        </button>
-                    </div>
-                    { isError && <p className={error}>Укажите корректную ссылку</p> }
-                </div>
+        <Modal title='Загрузить проект по ссылке' onClose={onClose}>
+            <div className={controllers}>
+                <input
+                    ref={inputRef}
+                    value={value}
+                    onChange={onInput}
+                    type='text'
+                    placeholder='Вставьте ссылку на проект'
+                />
+                <button type='button' className='button button_dark' onClick={onSend}>
+                    Примерить
+                    <i className='icon  icon_check'></i>
+                </button>
             </div>
-        </div>
-
+            { isError && <p className={error}>Укажите корректную ссылку</p> }
+        </Modal>
     )
 }
 

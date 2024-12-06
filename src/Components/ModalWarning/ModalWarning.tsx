@@ -1,7 +1,6 @@
+import { Modal } from '../../Components'
 import useStore from '../../Store'
 import style from './ModalWarning.module.sass'
-
-const { modal, body, text, buttons, button } = style
 
 const ModalWarning = () => {
 
@@ -16,21 +15,18 @@ const ModalWarning = () => {
     // #endregion
 
     return (
-        <div className={`modal-warning ${modal}`}>
-            <div className={body}>
-                <h3 className={text}>{modalWarningCaption}</h3>
-                <div className={buttons}>
-                    <button onClick={() => modalWarningSet(false, '', true)}
-                        className={`button button_block button_dark ${button}`}>
-                        Понятно
-                    </button>
-                    <button onClick={() => modalWarningSet(false, '', false)}
-                        className={`button button_block button_dark ${button}`}>
-                        Больше не показывать
-                    </button>
-                </div>
+        <Modal title={modalWarningCaption} onClose={() => modalWarningSet(false, '', true)}>
+            <div className={style.buttons}>
+                <button onClick={() => modalWarningSet(false, '', false)}
+                    className={`button button_block button_lite`}>
+                    Больше не показывать
+                </button>
+                <button onClick={() => modalWarningSet(false, '', true)}
+                    className={`button button_block button_dark`}>
+                    Понятно
+                </button>
             </div>
-        </div>
+        </Modal>
     )
 }
 

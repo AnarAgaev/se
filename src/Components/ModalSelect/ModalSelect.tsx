@@ -1,7 +1,6 @@
+import { Modal } from '../../Components'
 import useStore from '../../Store'
 import style from './ModalSelect.module.sass'
-
-const { modal, body, text, buttons, button } = style
 
 const ModalResetBrandOrCollection = () => {
 
@@ -61,21 +60,18 @@ const ModalResetBrandOrCollection = () => {
     }
 
     return (
-        <div className={modal}>
-            <div className={body}>
-                <h3 className={text}>{modalSelectCaption}</h3>
-                <div className={buttons}>
-                    <button onClick={onApprove}
-                        className={`button button_block button_dark ${button}`}>
-                        {modalSelectButtonRejectText}
-                    </button>
-                    <button onClick={resetModalSelect}
-                        className={`button button_block button_dark ${button}`}>
-                        {modalSelectButtonApproveText}
-                    </button>
-                </div>
+        <Modal title={modalSelectCaption} onClose={resetModalSelect}>
+            <div className={style.buttons}>
+                <button onClick={onApprove}
+                    className='button button_block button_lite'>
+                    { modalSelectButtonRejectText }
+                </button>
+                <button onClick={resetModalSelect}
+                    className='button button_block button_dark'>
+                    { modalSelectButtonApproveText }
+                </button>
             </div>
-        </div>
+        </Modal>
     )
 }
 

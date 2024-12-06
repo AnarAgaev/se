@@ -1,7 +1,5 @@
+import { Modal } from '../../Components'
 import useStore from '../../Store'
-import style from './ModalMessage.module.sass'
-
-const { modal, body, text, button } = style
 
 const ModalMessage = () => {
 
@@ -16,15 +14,12 @@ const ModalMessage = () => {
     // #endregion
 
     return (
-        <div className={modal}>
-            <div className={body}>
-                <h3 className={text}>{modalMessageCaption}</h3>
-                <button onClick={() => modalMessageSet(false, '')}
-                    className={`button button_block button_dark ${button}`}>
+        <Modal title={modalMessageCaption} onClose={() => modalMessageSet(false, '')}>
+            <button onClick={() => modalMessageSet(false, '')}
+                    className='button button_block button_dark'>
                     Понятно
-                </button>
-            </div>
-        </div>
+            </button>
+        </Modal>
     )
 }
 

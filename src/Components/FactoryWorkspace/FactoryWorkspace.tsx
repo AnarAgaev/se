@@ -5,7 +5,12 @@ import style from './FactoryWorkspace.module.sass'
 
 const { body, actions, list, title, selectors, empty } = style
 
-const FactoryWorkspace = (props: { children: React.ReactNode, type: TItemsType }) => {
+type TProps = {
+    type: TItemsType
+    children: React.ReactNode
+}
+
+const FactoryWorkspace = ({ type, children }: TProps) => {
     const filteredItems = useStore(state => state.getFilteredItems())
 
     return (
@@ -13,14 +18,14 @@ const FactoryWorkspace = (props: { children: React.ReactNode, type: TItemsType }
             <div className={actions}>
                 <h2 className={title}>Выберите:</h2>
                 <div className={selectors}>
-                    { props.children }
+                    { children }
                 </div>
             </div>
             <div className={list}>
                 <h2 className={title}>Варианты:</h2>
                 {
                     filteredItems.length
-                        ? <ItemsList itemList={filteredItems} type={props.type} />
+                        ? <ItemsList itemList={filteredItems} type={type} />
                         : <span className={empty}>
                             К сожалению, нет элементов согласно выбранным параметрам!
                         </span>
