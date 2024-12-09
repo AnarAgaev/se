@@ -5,4 +5,5 @@ interface Window {
     removeProjectLink: string
     addProjectLink: string
     loadProjectLink: string
+    addRoomLink: string
 }

@@ -280,18 +280,57 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // #region Rooms
     rooms: [],
     setAppRooms: (rooms) => set({ rooms: rooms }),
-    addRoom: (room) => {
-        const newRooms = [...get().rooms]
+    addRoom: async (room) => {
+        const apiLink = window.addRoomLink
 
-        newRooms.forEach(room => room.selected = false)
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Add Room window.addRoomLink`)
+        }
 
-        newRooms.unshift({
-            id: Math.floor(Math.random() * Date.now()),
-            name: room,
-            selected: true
-        })
+        set({ dataLoading: true })
 
-        set({ rooms: newRooms })
+        const requestLink = `${apiLink}?name=${room}`
+
+        try {
+            const res = await fetch(requestLink)
+
+            if (!res.ok) {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Ошибка fetch запроса Добавить помещение! Запрос к URL ${requestLink}`)
+            }
+
+            const data = await res.json()
+
+            if (data.status === 'error') {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(data.error)
+            }
+
+            // Add room
+            const newRooms = [...get().rooms]
+
+            let addedRoomId = data.id
+            addedRoomId = typeof addedRoomId === 'string'
+                ? addedRoomId
+                : addedRoomId.toString()
+
+            newRooms.unshift({
+                id: addedRoomId,
+                name: room,
+                selected: false,
+            })
+
+            setTimeout(() => set({
+                dataLoading: false,
+                modalMessageVisible: true,
+                modalMessageCaption: `Помещение #${addedRoomId} ${room} добавлено`,
+                rooms: newRooms
+            }), 500)
+
+        } catch (error) {
+            console.error(error)
+        }
     },
     setRoom: (id) => {
         const newRooms = [...get().rooms]
