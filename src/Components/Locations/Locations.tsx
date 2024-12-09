@@ -4,8 +4,6 @@ import { TProjectList, TRoomList, TAppStore } from '../../types'
 import useStore from '../../Store'
 import style from './Locations.module.sass'
 
-const { locations } = style
-
 const getProjectsOptionsList = (
     key: string,
     projectsList: TProjectList,
@@ -79,12 +77,13 @@ const Locations = () => {
         [key, rooms, setRoom]
     )
 
-    const selectedProject = projects.filter(p => p.selected)[0];
+    const selectedProject = projects.filter(p => p.selected)[0]
     const selectedRoom = rooms.filter(r => r.selected)[0]
 
     return (
-        <div className={locations}>
+        <div className={style.locations}>
             <InputSelect
+                type={'project'}
                 cbf={addProject}
                 title={selectedProject ? 'Проект' : 'Выбрать проект'}
                 placeholder="Создать проект"
@@ -92,6 +91,7 @@ const Locations = () => {
                 { projectsOptions }
             </InputSelect>
             <InputSelect
+                type={'room'}
                 cbf={addRoom}
                 title={selectedRoom ? 'Помещение' : 'Выбрать помещение'}
                 placeholder="Создать помещение"

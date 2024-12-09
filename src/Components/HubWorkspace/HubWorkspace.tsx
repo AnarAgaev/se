@@ -96,7 +96,7 @@ const HubWorkspace = () => {
             <div className={hub}>
                 <div className={form}>
                     <div className={add}>
-                        <InputAdd placeholder="Создать новый проект" cbf={addProject} />
+                        <InputAdd placeholder="Создать новый проект" cbf={addProject} type='project' />
                     </div>
                     <div className={upload}>
                         <button type="button" className='button button_block button_dark'
