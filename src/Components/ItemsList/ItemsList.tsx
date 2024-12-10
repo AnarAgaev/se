@@ -120,19 +120,19 @@ const getElementsList = (
     }
 
     itemList.forEach(el => {
-        const jsonString = JSON.stringify(el, null, 2);
-        const escapedString = jsonString.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        // const jsonString = JSON.stringify(el, null, 2);
+        // const escapedString = jsonString.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
         resultList.push(
             <li key={`${id}-${el.id}`}
                 onClick={() => {
                     addItemHandler(type, el)
 
-                    console.table(el) // Временно печатаем в консоль Item. Удалить перед деплоем!
+                    // console.table(el) // Временно печатаем в консоль Item. Удалить перед деплоем!
                 }}
 
 
-                title={escapedString} // Временно при ховере показываем Item. Удалить перед деплоем!
+                // title={escapedString} // Временно при ховере показываем Item. Удалить перед деплоем!
 
 
                 className={item}

@@ -83,12 +83,13 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
     // const set = new Set()
 
 
-    // data.borders.forEach(i => {
-    //     set.add(i.color)
+    // data.devices.forEach(i => {
+    //     if (!i.color) set.add(i.id)
+    //     // console.log(i.id)
+    //     // set.add(i.id)
     // })
 
-    // console.log(Array.from(set))
-
+    // console.log(Array.from(set).join(', '))
 
                         const safeResponse = InitDataContract.passthrough().safeParse(await res.json())
 

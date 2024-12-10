@@ -10,7 +10,7 @@ interface Props {
     checkColorFn: TCheckPluralFilter
 }
 
-// #region Colors
+// #region Colors Dictionary and Variables
 const {
     body,
     title,
@@ -81,18 +81,20 @@ const getColorsList = (
         removeColorFn('colors', color)
     }
 
-    colors.forEach(clr => {
-        const clazz = `${color} ${colorClassDictionary[clr]}`
-        const isChecked = checkColorFn('colors', clr)
+    colors.forEach(c => {
+        if (!c) return
+
+        const clazz = `${color} ${colorClassDictionary[c]}`
+        const isChecked = checkColorFn('colors', c)
 
         list.push(
-            <li key={`${id}-${clr}`} className={item}>
-                <label className={clazz} title={clr}>
+            <li key={`${id}-${c}`} className={item}>
+                <label className={clazz} title={c}>
                     <input
                         className="invisible"
                         type="checkbox"
                         checked={isChecked}
-                        onChange={e => handler(e, clr)}
+                        onChange={e => handler(e, c)}
                     />
                 </label>
             </li>

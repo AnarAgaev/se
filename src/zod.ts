@@ -166,8 +166,8 @@ export type TDictionary = z.infer<typeof Dictionary>
 // #region Initial data
 export const InitDataContract = z.object({
     user_id: UserId,
-    borders: BorderList,
     backgrounds: BackgroundList,
+    borders: BorderList,
     devices: DeviceList,
     colors: ColorList,
     vendors: VendorList,

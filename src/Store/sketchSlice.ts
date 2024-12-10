@@ -92,7 +92,8 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
             }
         }
 
-        set({ deviceList: newDeviceList })
+        set({visible: false})
+        setTimeout(() => set({ deviceList: newDeviceList }), 300)
     },
 
     removeDevice: (remoteDevicePosition, remoteDeviceId) => {
