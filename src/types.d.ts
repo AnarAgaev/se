@@ -12,6 +12,10 @@ import {
     TDictionary,
     TUserId,
     InitDataContract,
+    TConfiguration,
+    TConfigurationList,
+    TRoomItem,
+    TRooms
 } from "./zod"
 
 export type TCalcTabs = 'borders' | 'devices' | 'backgrounds'
@@ -323,5 +327,9 @@ export {
     TFunction, TFunctionItem, TFunctionList,
     TColorList,
     TDictionary,
-    InitDataContract
+    InitDataContract,
+    TConfiguration,
+    TConfigurationList,
+    TRoomItem,
+    TRooms
 }

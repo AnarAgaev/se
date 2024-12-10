@@ -95,11 +95,34 @@ export type TVendorList = z.infer<typeof VendorList>
 
 
 // #region Projects
+export const Configuration = z.object({
+    id: z.union([z.number(), z.string()]),
+    border: Border,
+    devices: DeviceList,
+    background: z.union([z.number(), z.string()]).optional(),
+    edit: z.boolean().optional()
+})
+export type TConfiguration = z.infer<typeof Configuration>
+
+export const ConfigurationList = z.array(Configuration)
+export type TConfigurationList = z.infer<typeof ConfigurationList>
+
+export const RoomItem = z.object({
+    id: z.union([z.number(), z.string()]),
+    name: z.string(),
+    configurations: ConfigurationList
+})
+export type TRoomItem = z.infer<typeof RoomItem>
+
+export const Rooms = z.array(RoomItem)
+export type TRooms = z.infer<typeof Rooms>
+
 export const Project = z.object({
     id: z.union([z.number(), z.string()]),
     name: z.string(),
     selected: z.boolean(),
-    edit: z.boolean()
+    edit: z.boolean(),
+    rooms: Rooms.optional()
 })
 export type TProject = z.infer<typeof Project>
 
