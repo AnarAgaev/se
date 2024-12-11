@@ -1,5 +1,2 @@
-import calculateSketchBackgroundPosition from './calculateSketchBackgroundPosition'
-
-export {
-    calculateSketchBackgroundPosition
-}
+export * from './calculateSketchBackgroundPosition'
+export * from './getFileName'

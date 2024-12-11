@@ -1,4 +1,4 @@
-const calculateSketchBackgroundPosition = (canvas: HTMLCanvasElement, img: HTMLImageElement)
+export const calculateSketchBackgroundPosition = (canvas: HTMLCanvasElement, img: HTMLImageElement)
 	: [number, number, number, number] => {
 
 	const canvasRatio = canvas.width / canvas.height
@@ -33,5 +33,3 @@ const calculateSketchBackgroundPosition = (canvas: HTMLCanvasElement, img: HTMLI
 
 	return [posX, posY, imgWidth, imgHeight]
 }
-
-export default calculateSketchBackgroundPosition

@@ -2,26 +2,12 @@ import { useId, useMemo } from 'react'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { InputAdd, PdfDocument } from '../../Components'
 import { TProjectList, TAppStore } from '../../types'
+import { getFileName } from '../../Helpers'
 import useStore from '../../Store'
 import style from './HubWorkspace.module.sass'
 
-const { hub, form, add, upload, blocks, title, message, list, item, name, actions,
-    button, button_edit, button_share, button_down, button_cart, download } = style
-
-const getFileName = (name: string, id: string | number): string => {
-    const cyrillicToLatinMap: Record<string, string> = {
-        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i',
-        'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't',
-        'у': 'u', 'ф': 'f', 'х': 'kh', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'sh', 'ъ': '', 'ы': 'y', 'ь': '',
-        'э': 'e', 'ю': 'yu', 'я': 'ya', ' ': '-'
-    }
-
-    const number = typeof id === 'number' ? id.toString() : id
-    const fileNumber = number.toLowerCase().split('').map(char => cyrillicToLatinMap[char] || char).join('')
-    const fileName = name.toLowerCase().split('').map(char => cyrillicToLatinMap[char] || '').join('')
-
-    return `${fileName}__${fileNumber}.pdf`
-}
+const { hub, form, add, upload, blocks, title,
+    message, list, item, name, actions } = style
 
 const getProjectsElms = (
     id: string,
@@ -38,26 +24,44 @@ const getProjectsElms = (
                 <i>#{p.id}</i>
             </span>
             <ul className={actions}>
-                <li onClick={() => editProject(p.id)}
-                    className={`${button} ${button_edit}`}
-                    title="Редактировать проект"></li>
-
-                <li onClick={() => shareProject(p.id)}
-                    className={`${button} ${button_share}`}
-                    title="Поделиться проектом"></li>
-
-                <li className={`${button} ${button_down}`}
-                    title="Скачать проект">
-                        <PDFDownloadLink
-                            className={ download }
-                            document={ <PdfDocument project={p} /> }
-                            fileName={ getFileName(p.name, p.id) }
-                        />
+                <li>
+                    <button
+                        onClick={() => editProject(p.id)}
+                        className="button button_dark"
+                        title="Редактировать проект">
+                        <i className='icon icon_edit'></i>
+                    </button>
                 </li>
 
-                <li onClick={() => removeProject(p.id, p.name)}
-                    className={`${button} ${button_cart}`}
-                    title="Удалить проект"></li>
+                <li>
+                    <button
+                        onClick={() => shareProject(p.id)}
+                        className="button button_dark"
+                        title="Поделиться проектом">
+                        <i className='icon icon_share'></i>
+                    </button>
+                </li>
+
+                <li>
+                    <PDFDownloadLink
+                        document={ <PdfDocument project={p} /> }
+                        fileName={ getFileName(p.name, p.id) }>
+                        <button
+                            className="button button_dark"
+                            title="Скачать проект">
+                            <i className="icon icon_down"></i>
+                        </button>
+                    </PDFDownloadLink>
+                </li>
+
+                <li>
+                    <button
+                        onClick={() => removeProject(p.id, p.name)}
+                        className="button button_dark"
+                        title="Удалить проект">
+                        <i className="icon icon_basket"></i>
+                    </button>
+                </li>
             </ul>
         </li>
     ))

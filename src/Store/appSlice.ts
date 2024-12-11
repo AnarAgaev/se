@@ -58,7 +58,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     activeCalcTab: 'borders',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
-    activeViewportTab: 'configurator',
+    activeViewportTab: 'hub',
     setActiveViewportTab: (tab) => set({activeViewportTab: tab}),
     // #endregion
 
