@@ -1,5 +1,6 @@
 import useStore from '../../Store'
 import { Price, Locations, Set } from '../../Components'
+import { TDevice } from '../../types'
 import style from './Cart.module.sass'
 
 const { cart, section, caption } = style
@@ -14,7 +15,11 @@ const Cart = () => {
         checkProject,
         checkRoom,
         projects,
-        rooms
+        rooms,
+        addConfiguration,
+        getSelectedBackgroundId,
+        deviceList,
+        countOfSets
     ] = useStore(state => [
         state.border,
         state.checkDevices,
@@ -22,7 +27,11 @@ const Cart = () => {
         state.checkProject,
         state.checkRoom,
         state.projects,
-        state.rooms
+        state.rooms,
+        state.addConfiguration,
+        state.getSelectedBackgroundId,
+        state.deviceList,
+        state.countOfSets
     ])
     // #endregion
 
@@ -52,7 +61,20 @@ const Cart = () => {
             return
         }
 
-        alert("Отправляем запрос на API --- Сохраняем конфигурацию в выбранном проекте")
+        const project = [...projects].filter(p => p.selected)[0]
+        const room = [...rooms].filter(r => r.selected)[0]
+        const backgroundId = getSelectedBackgroundId()
+        const devices = Object.values(deviceList).filter(d => !!d)
+
+        addConfiguration(
+            project.id,
+            room.id,
+            room.name,
+            backgroundId,
+            selectedBorder,
+            devices as TDevice[],
+            countOfSets
+        )
     }
 
     const addToCartHandler = () => {

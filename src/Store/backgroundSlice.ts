@@ -26,6 +26,14 @@ const backgroundSlice: StateCreator<TBackgroundsStore> = (set, get) => ({
         backgrounds.forEach(el => el.selected = el.id === backgroundId)
 
         set({ backgrounds: backgrounds })
+    },
+
+    getSelectedBackgroundId: () => {
+        const activeBackground = [...get().backgrounds].filter(b => b.selected)[0]
+
+        if (activeBackground) return activeBackground.id
+
+        return null
     }
 })
 

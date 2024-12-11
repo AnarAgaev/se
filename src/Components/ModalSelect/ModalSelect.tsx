@@ -2,7 +2,7 @@ import { Modal } from '../../Components'
 import useStore from '../../Store'
 import style from './ModalSelect.module.sass'
 
-const ModalResetBrandOrCollection = () => {
+const ModalResetBrandOrCollection = ({visible}: {visible: boolean}) => {
 
     // #region Variables
     const [
@@ -60,7 +60,7 @@ const ModalResetBrandOrCollection = () => {
     }
 
     return (
-        <Modal title={modalSelectCaption} onClose={resetModalSelect}>
+        <Modal visible={visible} title={modalSelectCaption} onClose={resetModalSelect}>
             <div className={style.buttons}>
                 <button onClick={onApprove}
                     className='button button_block button_lite'>

@@ -1,7 +1,7 @@
 import { Modal } from '../../Components'
 import useStore from '../../Store'
 
-const ModalMessage = () => {
+const ModalMessage = ({ visible }: {visible: boolean}) => {
 
     // #region Variables
     const [
@@ -14,7 +14,7 @@ const ModalMessage = () => {
     // #endregion
 
     return (
-        <Modal title={modalMessageCaption} onClose={() => modalMessageSet(false, '')}>
+        <Modal visible={visible} title={modalMessageCaption} onClose={() => modalMessageSet(false, '')}>
             <button onClick={() => modalMessageSet(false, '')}
                     className='button button_block button_dark'>
                     Понятно

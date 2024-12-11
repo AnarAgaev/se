@@ -23,7 +23,7 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
 
         borders.forEach(border => {
             if (!border.armature_material) {
-                // console.log('\x1b[31m%s\x1b[0m', `У рамки ID:${border['id']} не указан свойство Материал! [armature_material]`)
+                console.log('\x1b[31m%s\x1b[0m', `У рамки ID:${border['id']} не указан свойство Материал! [armature_material]`)
                 return
             }
 

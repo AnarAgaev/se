@@ -99,6 +99,7 @@ export const Configuration = z.object({
     id: z.union([z.number(), z.string()]),
     border: Border,
     devices: DeviceList,
+    count: z.number(),
     background: z.union([z.number(), z.string()]).optional(),
     edit: z.boolean().optional()
 })

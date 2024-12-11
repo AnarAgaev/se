@@ -27,7 +27,7 @@ const getParamFromUrl = (link: string, param: string) => {
     return url.searchParams.get(param)
 }
 
-const ModalLoadProject = () => {
+const ModalLoadProject = ({visible}: {visible: boolean}) => {
 
     const inputRef = useRef<HTMLInputElement | null>(null)
     const [isError, setError] = useState(false)
@@ -79,7 +79,7 @@ const ModalLoadProject = () => {
     }
 
     return (
-        <Modal title='Загрузить проект по ссылке' onClose={onClose}>
+        <Modal visible={visible} title='Загрузить проект по ссылке' onClose={onClose}>
             <div className={controllers}>
                 <input
                     ref={inputRef}

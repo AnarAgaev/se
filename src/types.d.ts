@@ -25,6 +25,15 @@ export type TViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
 export type TFunctionOption = { name: string, active?: boolean }
 export type TFunctionOptionList = TFunctionOption[]
 
+export type TRequestAddConfiguration = {
+    projectId: string | number
+	roomId: string | number,
+	border: TBorder,
+	devices: TDevice[],
+    counts: number,
+	backgroundId?: string | number
+}
+
 // #region Bound of the all Stores
 export type TStore = {
     requestInitData: () => void
@@ -40,6 +49,7 @@ export type TBackgroundsStore = {
     setInitBackgroundsData: (payload: TBackgroundList) => void
     addUploadedBackground: (background: TBackground) => void
     setActiveBackground: (backgroundId: string | number) => void
+    getSelectedBackgroundId: () => string | number | null
 }
 // #endregion
 
@@ -254,6 +264,18 @@ export type TAppStore = {
     resetRoom: () => void
     // #endregion
 
+
+    // #region Add Configuration
+    addConfiguration: (
+        projectId: string | number,
+        roomId: string | number,
+        roomName: string,
+        backgroundId: string | number | null,
+        border: TBorder | null,
+        devices: TDevice[],
+        counts: number
+    ) => void
+    // #endregion
 
     // #region Dictionary
     dictionary: TDictionary

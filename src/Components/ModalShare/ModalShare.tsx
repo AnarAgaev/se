@@ -5,7 +5,7 @@ import style from './ModalShare.module.sass'
 
 const { label, input, progress, path } = style
 
-const ModalShare = () => {
+const ModalShare = ({visible}: {visible: boolean}) => {
 
     const inputRef = useRef<HTMLInputElement | null>(null)
     const buttonRef = useRef<HTMLButtonElement | null>(null)
@@ -37,7 +37,7 @@ const ModalShare = () => {
     }
 
     return (
-        <Modal title='Поделиться проектом' onClose={() => modalShareSet(false, null)}>
+        <Modal visible={visible} title='Поделиться проектом' onClose={() => modalShareSet(false, null)}>
             <label className={label}>
                 <input ref={inputRef}
                     className={input}

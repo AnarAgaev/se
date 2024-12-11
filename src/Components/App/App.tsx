@@ -20,7 +20,6 @@ const App = () => {
 		modalMessageVisible,
 		modalShareVisible,
 		modalLoadProjectVisible,
-		dataLoading
 	] = useStore(state => [
 		state.requestInitData,
 		state.loading,
@@ -30,7 +29,6 @@ const App = () => {
 		state.modalMessageVisible,
 		state.modalShareVisible,
 		state.modalLoadProjectVisible,
-		state.dataLoading
 	])
 	// #endregion
 
@@ -55,14 +53,15 @@ const App = () => {
 						<Factory />
 						<Viewport />
 					</div>
-					{ modalSelectVisible && <ModalSelect /> }
-					{ modalWarningVisible && <ModalWarning /> }
-					{ modalMessageVisible && <ModalMessage /> }
-					{ modalShareVisible && <ModalShare /> }
-					{ modalLoadProjectVisible && <ModalLoadProject /> }
+
 				</>
 			}
-			{ dataLoading && <Loading /> }
+			<ModalSelect visible={modalSelectVisible} />
+			<ModalWarning visible={modalWarningVisible} />
+			<ModalMessage visible={modalMessageVisible} />
+			<ModalShare visible={modalShareVisible} />
+			<ModalLoadProject visible={modalLoadProjectVisible} />
+			<Loading />
 		</section>
 	)
 }

@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand'
-import { TAppStore } from '../types'
+import { TAppStore, TRequestAddConfiguration, TConfiguration } from '../types'
 
 const appSlice: StateCreator<TAppStore> = (set, get) => ({
     loading: true,
@@ -352,6 +352,104 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         newRooms.forEach(r => r.selected = false)
 
         set({ rooms: newRooms })
+    },
+    // #endregion
+
+
+    // #region Adding Configuration
+    addConfiguration: async (projectId, roomId, roomName, backgroundId, border, devices, counts) => {
+
+        if (border === null) return
+
+        const configuration: TRequestAddConfiguration = {
+            projectId: projectId,
+            roomId: roomId,
+            border: border,
+            devices: [...devices],
+            counts: counts,
+        }
+
+        if (backgroundId) configuration.backgroundId = backgroundId
+
+        const JSONRequestData = JSON.stringify(configuration)
+        const apiLink = window.addConfigurationLink
+
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Add Configuration window.addConfigurationLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const requestLink = `${apiLink}?configuration=${JSONRequestData}`
+
+        try {
+            const res = await fetch(requestLink)
+
+            if (!res.ok) {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Ошибка fetch запроса Добавить проект! Запрос к URL ${requestLink}`)
+            }
+
+            const data = await res.json()
+
+            if (data.status === 'error') {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(data.error)
+            }
+
+            // debugger
+
+            // Add configuration to selected project
+            const newProjects = [...get().projects]
+            const editProjectKey = newProjects.findIndex(p => p.selected)
+
+            const configuration: TConfiguration = {
+                id: data.id,
+                border: border,
+                devices: [...devices],
+                count: get().countOfSets
+            }
+
+            if (backgroundId) configuration.background = backgroundId
+
+            const newRooms = newProjects[editProjectKey].rooms
+
+            // Если уже добавляли ни одной конфигурации
+            if (newRooms) {
+                const editRoomKey = newRooms.findIndex(r => r.id === roomId)
+
+                if (editRoomKey !== -1) {
+                    newRooms[editRoomKey].configurations.push(configuration)
+                } else {
+                    newRooms.push({
+                        id: roomId,
+                        name: roomName,
+                        configurations: [configuration]
+                    })
+                }
+
+                newProjects[editProjectKey].rooms = [...newRooms]
+            }
+            // Если еще не добавляли ни одной конфигурации
+            else {
+                newProjects[editProjectKey].rooms = [{
+                    id: roomId,
+                    name: roomName,
+                    configurations: [configuration]
+                }]
+            }
+
+            setTimeout(() => set({
+                dataLoading: false,
+                modalMessageVisible: true,
+                modalMessageCaption: `Конфигурация добавлена`,
+                projects: newProjects
+            }), 500)
+
+        } catch (error) {
+            console.error(error)
+        }
     },
     // #endregion
 
