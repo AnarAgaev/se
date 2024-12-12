@@ -1,5 +1,6 @@
+import { useMemo } from 'react'
 import { PDFDownloadLink } from '@react-pdf/renderer'
-import { PdfDocument } from '../../Components'
+import { PdfDocument, ProjectComposition } from '../../Components'
 import { getFileName } from '../../Helpers'
 import { TAppStore, TProject } from '../../types'
 import useStore from '../../Store'
@@ -11,47 +12,53 @@ const { wrap, wrapCenter, caption, title, subtitle,
 const getProjectActions = (
     project: TProject,
     shareProject: TAppStore['shareProject'],
-    removeProject: TAppStore['removeProject']
-): JSX.Element => {
-    return (
-        <ul className={actions}>
-            <li>
+    removeProject: TAppStore['removeProject'],
+    modalLoadProjectSet: TAppStore['modalLoadProjectSet']
+): JSX.Element | null => {
+    return !project
+        ? null
+        : <ul className={actions}>
+
+        <li>
+            <button
+                onClick={() => shareProject(project.id)}
+                className="button button_dark"
+                title="Поделиться проектом">
+                <i className='icon icon_share'></i>
+            </button>
+        </li>
+
+        <li>
+            <PDFDownloadLink
+                document={ <PdfDocument project={project} /> }
+                fileName={ getFileName(project.name, project.id) }>
                 <button
-                    onClick={() => shareProject(project.id)}
                     className="button button_dark"
-                    title="Поделиться проектом">
-                    <i className='icon icon_share'></i>
+                    title="Скачать проект">
+                    <i className="icon icon_down"></i>
                 </button>
-            </li>
+            </PDFDownloadLink>
+        </li>
 
-            <li>
-                <PDFDownloadLink
-                    document={ <PdfDocument project={project} /> }
-                    fileName={ getFileName(project.name, project.id) }>
-                    <button
-                        className="button button_dark"
-                        title="Скачать проект">
-                        <i className="icon icon_down"></i>
-                    </button>
-                </PDFDownloadLink>
-            </li>
+        <li>
+            <button
+                onClick={() => modalLoadProjectSet(true, '')}
+                className="button button_dark"
+                title="Загрузить проект по ссылке">
+                <i className="icon icon_upload"></i>
+            </button>
+        </li>
 
-            <li title="Что-то сделать, не знаю что. А если не знаешь, то, конечно же, спроси и Лили!">
-                <button className="button button_dark">
-                    <i className="icon icon_upload"></i>
-                </button>
-            </li>
+        <li>
+            <button
+                onClick={() => removeProject(project.id, project.name)}
+                className="button button_dark"
+                title="Удалить проект">
+                <i className="icon icon_basket"></i>
+            </button>
+        </li>
 
-            <li>
-                <button
-                    onClick={() => removeProject(project.id, project.name)}
-                    className="button button_dark"
-                    title="Удалить проект">
-                    <i className="icon icon_basket"></i>
-                </button>
-            </li>
-        </ul>
-    )
+    </ul>
 }
 
 const ProjectWorkspace = () => {
@@ -61,48 +68,62 @@ const ProjectWorkspace = () => {
         projects,
         setActiveTab,
         removeProject,
-        shareProject
+        shareProject,
+        modalLoadProjectSet
     ] = useStore(state => [
         state.projects,
         state.setActiveViewportTab,
         state.removeProject,
-        state.shareProject
+        state.shareProject,
+        state.modalLoadProjectSet
     ])
     // #endregion
 
     const project = projects.filter(p => p.edit)[0]
 
+    const projectActions = useMemo(() => getProjectActions(project, shareProject, removeProject, modalLoadProjectSet), [
+        project, shareProject, removeProject, modalLoadProjectSet
+    ])
+
+    let addToCartButtonClassName = 'button button_dark button_block'
+    if (project && !project.rooms?.length) addToCartButtonClassName += ' disabled'
+
     return !project
 
-        ? ( <div className={wrapCenter}>
-                <h2 className={title}>
-                    Вначале необходимо выбрать проект
-                </h2>
-                <p className={subtitle}>
-                    Перейдите на вкладку <button onClick={() => setActiveTab('hub')}>Мои проекты</button> и кликните по иконке <span><i></i> (Редактировать)</span> одного из проектов.
-                </p>
-            </div> )
+        ? <div className={wrapCenter}>
+            <h2 className={title}>
+                Вначале необходимо выбрать проект
+            </h2>
+            <p className={subtitle}>
+                Перейдите на вкладку <button onClick={() => setActiveTab('hub')}>Мои проекты</button> и кликните по иконке <span><i></i> (Редактировать)</span> одного из проектов.
+            </p>
+        </div>
 
-        : ( <div className={wrap}>
+        : <div className={wrap}>
             <h2 className={caption}>{project.name}</h2>
 
             <div className={body}>
-
-
+                <ProjectComposition project={project} />
+                {/* <pre>
+                    {JSON.stringify(project, null, 4)}
+                </pre> */}
             </div>
 
             <footer className={footer}>
-                { getProjectActions(project, shareProject, removeProject) }
+                { projectActions }
                 <div className={total}>
-                    <p>
-                        <span>Общая стоимость:</span>
-                        <strong>123 078.19 ₽</strong>
-                    </p>
-                    <button className='button button_dark button_block'>Добавить в корзину</button>
+                    {
+                        project && project.rooms?.length &&
+                        <p>
+                            <span>Общая стоимость:</span>
+                            <strong>123 078.19 р.</strong>
+                        </p>
+                    }
+
+                    <button className={addToCartButtonClassName}>Добавить в корзину</button>
                 </div>
             </footer>
         </div>
-    )
 }
 
 export default ProjectWorkspace

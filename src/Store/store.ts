@@ -77,19 +77,24 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
                         if (!res.ok) console.error('Failed to fetch json initial data! URL link is', initSourceDataLink)
 
-
     // const data = await res.json()
 
-    // const set = new Set()
-
-
-    // data.devices.forEach(i => {
-    //     if (!i.color) set.add(i.id)
-    //     // console.log(i.id)
-    //     // set.add(i.id)
+    // const borderSet = new Set()
+    // data.borders.forEach(b => {
+    //     // if (!b.conf_color) borderSet.add(b.id)
+    //     // console.log(b.conf_color)
+    //     borderSet.add(b.conf_color)
     // })
 
-    // console.log(Array.from(set).join(', '))
+    // const devicesSet = new Set()
+    // data.devices.forEach(d => {
+    //     devicesSet.add(d.conf_color)
+    // })
+
+    // console.log('Цвета рамок')
+    // console.log(Array.from(borderSet).join(', '))
+    // console.log('Цвета устройств')
+    // console.log(Array.from(devicesSet).join(', '))
 
                         const safeResponse = InitDataContract.passthrough().safeParse(await res.json())
 

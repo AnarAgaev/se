@@ -45,6 +45,7 @@ import DeviceList from './DeviceList/DeviceList'
 import SketchSaver from './SketchSaver/SketchSaver'
 import Loading from './Loading/Loading'
 import Modal from './Modal/Modal'
+import ProjectComposition from './ProjectComposition/ProjectComposition'
 
 
 import PdfDocument from './PdfDocument/PdfDocument'
@@ -97,9 +98,6 @@ export {
     SketchSaver,
     Loading,
     Modal,
-
-
-
-
+    ProjectComposition,
     PdfDocument
 }
