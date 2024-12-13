@@ -1,9 +1,189 @@
-import { TProject } from '../../types'
+import { MouseEvent, useMemo } from 'react'
+import { formatNumber, getPostWordDeclension } from '../../Helpers'
+import { TProject, TConfiguration, TConfigurationList, TDeviceList, TBorder } from '../../types'
 import style from './ProjectComposition.module.sass'
 
-const { help, composition, item, title, subtitle, rooms, room, table, border, pic, desc, counter, inc, dec } = style
+type TOnShowClick = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void
 
-const ProjectComposition = ({ project }: {project: TProject}) => {
+const onShowClick: TOnShowClick = (e) => {
+    const button: HTMLButtonElement = e.target as HTMLButtonElement
+    const table: HTMLElement | null = button.closest('table')
+    if (table) table.classList.toggle(dropped)
+}
+
+const { help, composition, room, title, subtitle, sets, set,
+    table, item, pic, desc, counter, inc, dec, dropped } = style
+
+const getTotalPriceConfiguration = (conf: TConfiguration): string => {
+    const count = conf.count
+
+    const borderPrice = typeof conf.border.price === 'string'
+        ? parseFloat(conf.border.price)
+        : conf.border.price
+
+    const devicesPrice: number = conf.devices.reduce((acc, device) => {
+        if (typeof device.price === 'string') {
+            return acc + parseFloat(device.price)
+        } else if (typeof device.price === 'number') {
+            return acc + device.price
+        } else {
+            return acc
+        }
+    }, 0)
+
+    return formatNumber((borderPrice + devicesPrice) * count)
+}
+
+const getBorder = (border: TBorder): JSX.Element => {
+    return (
+        <tr key={border.show_article}>
+            <td>
+                <div className={item}>
+                    <span className={pic}>
+                        <img src={border.preview} alt={border.name} />
+                    </span>
+                    <span className={desc}>
+                        <mark>{border.name}</mark>
+                        <i>{border.show_article}</i>
+                        <button onClick={onShowClick} />
+                    </span>
+                </div>
+            </td>
+            <td>1</td>
+            <td>{formatNumber(border.price)} р.</td>
+        </tr>
+    )
+}
+
+const getDeviceList = (devices: TDeviceList): JSX.Element[] | null => {
+
+    if (!devices.length) return null
+
+    const deviceList: JSX.Element[] = []
+
+    devices.forEach(d => {
+        deviceList.push(
+            <tr key={d.show_article}>
+                <td>
+                    <div className={item}>
+                        <span className={pic}>
+                            <img src={d.preview} alt={d.name} />
+                        </span>
+                        <span className={desc}>
+                            <mark>{d.name}</mark>
+                            <i>{d.show_article}</i>
+                        </span>
+                    </div>
+                </td>
+                <td>1</td>
+                <td>{formatNumber(d.price)} р.</td>
+            </tr>
+        )
+    })
+
+    return deviceList
+}
+
+const getConfigurationList = (configurations: TConfigurationList): JSX.Element[] | null => {
+
+    const configurationList: JSX.Element[] = []
+
+    configurations.forEach((c, idx) => {
+
+        const vendor = c.border.vendor
+
+        const postsCount = !c.border.number_of_posts
+            ? null
+            : parseInt(c.border.number_of_posts[0])
+
+        const posts = `, ${postsCount} ${postsCount ? getPostWordDeclension(postsCount) : ''}`
+
+        const colorSet = new Set()
+        colorSet.add(c.border.color)
+        c.devices.forEach(d => colorSet.add(d.color))
+        const color = Array.from(colorSet).join('/')
+
+        configurationList.push(
+            <li className={set} key={`${c.id}-${idx}`}>
+                <p className={subtitle}>{`Комплект ${vendor}, ${color}${posts}`}</p>
+                <table className={table}>
+                    <thead>
+                        <tr>
+                            <th>Состав комплектующих</th>
+                            <th>Количество</th>
+                            <th>Стоимость</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { getBorder(c.border) }
+                        { getDeviceList(c.devices) }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <button className='button button_small button_dark' title="Изменить конфигурацию">
+                                    <span>Изменить</span>
+                                    <i className='icon icon_change'></i>
+                                </button>
+                                <button className='button button_small button_dark' title="Перенести конфигурацию в другой проект/помещение">
+                                    <span>Перенести</span>
+                                    <i className='icon icon_move'></i>
+                                </button>
+                                <button className='button button_small button_dark' title="Скопировать конфигурацию в другой проект/помещение">
+                                    <span>Скопировать</span>
+                                    <i className='icon icon_copy'></i>
+                                </button>
+                                <button className='button button_small button_dark' title="Удалить конфигурацию">
+                                    <span>Удалить</span>
+                                    <i className='icon icon_basket'></i>
+                                </button>
+                            </td>
+                            <td>
+                                <div className={counter}>
+                                    <button className={dec} />
+                                    <input type="text" value={c.count} readOnly />
+                                    <button className={inc} />
+                                </div>
+                            </td>
+                            <td>{getTotalPriceConfiguration(c)} р.</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </li>
+        )
+    })
+
+    return configurationList
+}
+
+const getRoomList = (project: TProject): JSX.Element[] | null => {
+
+    const roomList: JSX.Element[] = []
+
+    const rooms = project.rooms
+
+    if (!rooms || rooms && rooms.length === 0) return null
+
+    rooms.forEach((r, idx) => {
+
+        const configurations = getConfigurationList(r.configurations)
+
+        roomList.push(
+            <div key={`${r.id}-${idx}`} className={room}>
+                <h3 className={title}>{r.name}</h3>
+                <ul className={sets}>
+                    { configurations }
+                </ul>
+            </div>
+        )
+    })
+
+    return roomList
+}
+
+const ProjectComposition = ({ project }: { project: TProject }) => {
+
+    const roomList = useMemo(() => getRoomList(project), [project])
 
     if (project && !project.rooms?.length) return (
         <div className={composition}>
@@ -17,288 +197,9 @@ const ProjectComposition = ({ project }: {project: TProject}) => {
         </div>
     )
 
-
-
-
-
-
-
-
-
-
-
-
-
     return (
         <div className={composition}>
-            <div className={item}>
-                <h3 className={title}>Столовая</h3>
-                <p className={subtitle}>Комплект Celiane, Лазурный пунктом, 1 пост</p>
-                <ul className={rooms}>
-                    <li className={room}>
-                        <table className={table}>
-                            <thead>
-                                <tr>
-                                    <th>Состав комплектующих НОМЕР 1:</th>
-                                    <th>Количество</th>
-                                    <th>Стоимость</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div className={border}>
-                                            <span className={pic}>
-                                                <img src="" alt="" />
-                                            </span>
-                                            <span className={desc}>
-                                                <mark>Рамка, цвет Лазурный пунктом, 1 пост</mark>
-                                                <i>068771</i>
-                                                <button></button>
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className={border}>
-                                            <span className={pic}><img src="" alt="" /></span>
-                                            <span className={desc}>
-                                                <mark>Механизм какой-то</mark>
-                                                <i>068771</i>
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className={border}>
-                                            <span className={pic}><img src="" alt="" /></span>
-                                            <span className={desc}>
-                                                <mark>Механизм какой-то</mark>
-                                                <i>068771</i>
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>нет в наличие</td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td>
-                                        <button className='button button_small button_dark' title="Изменить конфигурацию">
-                                            Изменить
-                                            <i className='icon icon_change'></i>
-                                        </button>
-                                        <button className='button button_small button_dark' title="Перенести конфигурацию в другой проект/помещение">
-                                            Перенести
-                                            <i className='icon icon_moove'></i>
-                                        </button>
-                                        <button className='button button_small button_dark' title="Скопировать конфигурацию в другой проект/помещение">
-                                            Скопировать
-                                            <i className='icon icon_copy'></i>
-                                        </button>
-                                        <button className='button button_small button_dark' title="Удалить конфигурацию">
-                                            Удалить
-                                            <i className='icon icon_basket'></i>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <div className={counter}>
-                                            <button className={dec} />
-                                            <input type="text" value="5" readOnly />
-                                            <button className={inc} />
-                                        </div>
-                                    </td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </li>
-                </ul>
-            </div>
-
-
-
-            <div className={item}>
-                <h3 className={title}>Прихожая</h3>
-                <p className={subtitle}>Комплект Celiane, Лазурный пунктом, 1 пост</p>
-                <ul className={rooms}>
-                    <li className={room}>
-                        <table className={table}>
-                            <thead>
-                                <tr>
-                                    <th>Состав комплектующих НОМЕР 1:</th>
-                                    <th>Количество</th>
-                                    <th>Стоимость</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div className={border}>
-                                            <span className={pic}>
-                                                <img src="" alt="" />
-                                            </span>
-                                            <span className={desc}>
-                                                <mark>Рамка, цвет Лазурный пунктом, 1 пост</mark>
-                                                <i>068771</i>
-                                                <button></button>
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className={border}>
-                                            <span className={pic}><img src="" alt="" /></span>
-                                            <span className={desc}>
-                                                <mark>Механизм какой-то</mark>
-                                                <i>068771</i>
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className={border}>
-                                            <span className={pic}><img src="" alt="" /></span>
-                                            <span className={desc}>
-                                                <mark>Механизм какой-то</mark>
-                                                <i>068771</i>
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>нет в наличие</td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td>
-                                        <button className='button button_small button_dark' title="Изменить конфигурацию">
-                                            Изменить
-                                            <i className='icon icon_change'></i>
-                                        </button>
-                                        <button className='button button_small button_dark' title="Перенести конфигурацию в другой проект/помещение">
-                                            Перенести
-                                            <i className='icon icon_moove'></i>
-                                        </button>
-                                        <button className='button button_small button_dark' title="Скопировать конфигурацию в другой проект/помещение">
-                                            Скопировать
-                                            <i className='icon icon_copy'></i>
-                                        </button>
-                                        <button className='button button_small button_dark' title="Удалить конфигурацию">
-                                            Удалить
-                                            <i className='icon icon_basket'></i>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <div className={counter}>
-                                            <button className={dec} />
-                                            <input type="text" value="5" readOnly />
-                                            <button className={inc} />
-                                        </div>
-                                    </td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                        <table className={table}>
-                            <thead>
-                                <tr>
-                                    <th>Состав комплектующих НОМЕР 2:</th>
-                                    <th>Количество</th>
-                                    <th>Стоимость</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div className={border}>
-                                            <span className={pic}>
-                                                <img src="" alt="" />
-                                            </span>
-                                            <span className={desc}>
-                                                <mark>Рамка, цвет Лазурный пунктом, 1 пост</mark>
-                                                <i>068771</i>
-                                                <button></button>
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className={border}>
-                                            <span className={pic}><img src="" alt="" /></span>
-                                            <span className={desc}>
-                                                <mark>Механизм какой-то</mark>
-                                                <i>068771</i>
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className={border}>
-                                            <span className={pic}><img src="" alt="" /></span>
-                                            <span className={desc}>
-                                                <mark>Механизм какой-то</mark>
-                                                <i>068771</i>
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>нет в наличие</td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td>
-                                        <button className='button button_small button_dark' title="Изменить конфигурацию">
-                                            Изменить
-                                            <i className='icon icon_change'></i>
-                                        </button>
-                                        <button className='button button_small button_dark' title="Перенести конфигурацию в другой проект/помещение">
-                                            Перенести
-                                            <i className='icon icon_moove'></i>
-                                        </button>
-                                        <button className='button button_small button_dark' title="Скопировать конфигурацию в другой проект/помещение">
-                                            Скопировать
-                                            <i className='icon icon_copy'></i>
-                                        </button>
-                                        <button className='button button_small button_dark' title="Удалить конфигурацию">
-                                            Удалить
-                                            <i className='icon icon_basket'></i>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <div className={counter}>
-                                            <button className={dec} />
-                                            <input type="text" value="5" readOnly />
-                                            <button className={inc} />
-                                        </div>
-                                    </td>
-                                    <td>123 078.19 р.</td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </li>
-                </ul>
-            </div>
+            { roomList }
         </div>
     )
 }

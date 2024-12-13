@@ -28,7 +28,8 @@ export const Element = z.object({
     preview: z.string(),
     vendor: z.string(),
     collection: z.string(),
-    armature_material: z.array(z.string()).optional(),
+    show_article: z.string(),
+    armature_material: z.array(z.string()).optional()
 })
 export type TElement = z.infer<typeof Element>
 

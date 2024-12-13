@@ -112,14 +112,12 @@ const ProjectWorkspace = () => {
             <footer className={footer}>
                 { projectActions }
                 <div className={total}>
-                    {
-                        project && project.rooms?.length &&
+                    { project && project.rooms?.length &&
                         <p>
                             <span>Общая стоимость:</span>
                             <strong>123 078.19 р.</strong>
                         </p>
                     }
-
                     <button className={addToCartButtonClassName}>Добавить в корзину</button>
                 </div>
             </footer>
