@@ -1,5 +1,7 @@
 import { StateCreator } from 'zustand'
-import { TAppStore, TRequestAddConfiguration, TConfiguration } from '../types'
+import { TAppStore, TRequestAddConfiguration, TRequestUpdateConfigurationCount, TConfiguration } from '../types'
+
+// let timeoutId: number | undefined
 
 const appSlice: StateCreator<TAppStore> = (set, get) => ({
     loading: true,
@@ -10,6 +12,9 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     fireError: (error) => {
         set({ error: error })
     },
+
+    setCountTimeoutId: undefined,
+    startValueConfigurationCount: null,
 
 
     // #region Colors
@@ -450,6 +455,145 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         } catch (error) {
             console.error(error)
         }
+    },
+    // #endregion
+
+
+    // #region Set Configuration Count
+    setConfigurationCount: (projectId, roomId, configurationId, direction) => {
+
+        const newProjects = [...get().projects]
+
+        let count: number
+
+        for (const p of newProjects) {
+
+            if (p.id === projectId && p.rooms) {
+                for (const r of p.rooms) {
+
+                    if (r.id === roomId) {
+                        for (const c of r.configurations) {
+
+                            if (c.id === configurationId) {
+
+                                if (!get().startValueConfigurationCount) {
+                                    set({startValueConfigurationCount: c.count})
+                                }
+
+                                const newCount = c.count + direction
+
+                                c.count = newCount
+                                count = newCount
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        set({ projects: [...newProjects] });
+
+        // Обновляем значение в БД с таймаутом в 500 мс.
+        (async () => {
+            clearTimeout(get().setCountTimeoutId)
+
+            const timeoutId = setTimeout(() => {
+                get().updateRemoteConfigurationCount(
+                    projectId,
+                    roomId,
+                    configurationId,
+                    count
+                )
+            }, 500)
+
+            set({setCountTimeoutId: timeoutId})
+        })()
+    },
+
+    updateRemoteConfigurationCount: async (projectId, roomId, configurationId, count) => {
+
+        const data: TRequestUpdateConfigurationCount = {
+            projectId: projectId,
+            roomId: roomId,
+            configurationId: configurationId,
+            count: count,
+        }
+
+        const JSONRequestData = JSON.stringify(data)
+        const apiLink = window.updateConfigurationCountLink
+
+        if (!apiLink) {
+            // В случае ошибки, сбрасываем счетчик в изначальное значение
+            get().resetConfigurationCountToStart(projectId, roomId, configurationId)
+
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Update Configuration Count window.updateConfigurationCountLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const requestLink = `${apiLink}?data=${JSONRequestData}`
+
+        try {
+            const res = await fetch(requestLink)
+
+            if (!res.ok) {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Ошибка fetch запроса Обновить Количество Конфигураций! Запрос к URL ${requestLink}`)
+            }
+
+            const data = await res.json()
+
+            if (data.status === 'error') {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(data.error)
+            }
+
+            setTimeout(() => set({
+                dataLoading: false,
+                modalMessageVisible: true,
+                modalMessageCaption: `Количество изменено`,
+            }), 500)
+
+        } catch (error) {
+            console.error(error)
+
+            // В случае ошибки, сбрасываем счетчик в изначальное значение
+            get().resetConfigurationCountToStart(projectId, roomId, configurationId)
+        }
+    },
+
+    resetConfigurationCountToStart: (projectId, roomId, configurationId) => {
+
+        console.log('resetConfigurationCountToStart');
+
+        const newProjects = [...get().projects]
+
+        const startCount = get().startValueConfigurationCount
+
+        if (!startCount) return
+
+        for (const p of newProjects) {
+
+            if (p.id === projectId && p.rooms) {
+                for (const r of p.rooms) {
+
+                    if (r.id === roomId) {
+                        for (const c of r.configurations) {
+
+                            if (c.id === configurationId) {
+                                c.count = startCount
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        set({
+            projects: [...newProjects],
+            startValueConfigurationCount: null
+        })
     },
     // #endregion
 

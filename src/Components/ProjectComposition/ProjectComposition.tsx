@@ -1,18 +1,19 @@
-import { MouseEvent, useMemo } from 'react'
+import { MouseEvent } from 'react'
 import { formatNumber, getPostWordDeclension } from '../../Helpers'
-import { TProject, TConfiguration, TConfigurationList, TDeviceList, TBorder } from '../../types'
+import { TAppStore, TProject, TConfiguration, TConfigurationList, TDeviceList, TBorder } from '../../types'
+import useStore from '../../Store'
 import style from './ProjectComposition.module.sass'
 
-type TOnShowClick = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void
+const { help, composition, room, title, subtitle, sets, set,
+    table, item, pic, desc, counter, disabled, inc, dec, dropped } = style
 
-const onShowClick: TOnShowClick = (e) => {
+type TOnShow = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void
+
+const onShow: TOnShow = (e) => {
     const button: HTMLButtonElement = e.target as HTMLButtonElement
     const table: HTMLElement | null = button.closest('table')
     if (table) table.classList.toggle(dropped)
 }
-
-const { help, composition, room, title, subtitle, sets, set,
-    table, item, pic, desc, counter, inc, dec, dropped } = style
 
 const getTotalPriceConfiguration = (conf: TConfiguration): string => {
     const count = conf.count
@@ -45,7 +46,7 @@ const getBorder = (border: TBorder): JSX.Element => {
                     <span className={desc}>
                         <mark>{border.name}</mark>
                         <i>{border.show_article}</i>
-                        <button onClick={onShowClick} />
+                        <button onClick={onShow} />
                     </span>
                 </div>
             </td>
@@ -84,7 +85,12 @@ const getDeviceList = (devices: TDeviceList): JSX.Element[] | null => {
     return deviceList
 }
 
-const getConfigurationList = (configurations: TConfigurationList): JSX.Element[] | null => {
+const getConfigurationList = (
+    configurations: TConfigurationList,
+    projectId: string | number,
+    roomId: string | number,
+    setConfigurationCount: TAppStore['setConfigurationCount']
+): JSX.Element[] | null => {
 
     const configurationList: JSX.Element[] = []
 
@@ -102,6 +108,8 @@ const getConfigurationList = (configurations: TConfigurationList): JSX.Element[]
         colorSet.add(c.border.color)
         c.devices.forEach(d => colorSet.add(d.color))
         const color = Array.from(colorSet).join('/')
+
+        const onChangeCount = (direction: -1 | 1) => setConfigurationCount(projectId, roomId, c.id, direction)
 
         configurationList.push(
             <li className={set} key={`${c.id}-${idx}`}>
@@ -140,9 +148,9 @@ const getConfigurationList = (configurations: TConfigurationList): JSX.Element[]
                             </td>
                             <td>
                                 <div className={counter}>
-                                    <button className={dec} />
+                                    <button className={c.count === 1 ? `${dec} ${disabled}` : dec} onClick={() => onChangeCount(-1)}/>
                                     <input type="text" value={c.count} readOnly />
-                                    <button className={inc} />
+                                    <button className={inc} onClick={() => onChangeCount(1)}/>
                                 </div>
                             </td>
                             <td>{getTotalPriceConfiguration(c)} р.</td>
@@ -156,7 +164,7 @@ const getConfigurationList = (configurations: TConfigurationList): JSX.Element[]
     return configurationList
 }
 
-const getRoomList = (project: TProject): JSX.Element[] | null => {
+const getRoomList = (project: TProject, setConfigurationCount: TAppStore['setConfigurationCount']): JSX.Element[] | null => {
 
     const roomList: JSX.Element[] = []
 
@@ -166,7 +174,7 @@ const getRoomList = (project: TProject): JSX.Element[] | null => {
 
     rooms.forEach((r, idx) => {
 
-        const configurations = getConfigurationList(r.configurations)
+        const configurations = getConfigurationList(r.configurations, project.id, r.id, setConfigurationCount)
 
         roomList.push(
             <div key={`${r.id}-${idx}`} className={room}>
@@ -183,7 +191,16 @@ const getRoomList = (project: TProject): JSX.Element[] | null => {
 
 const ProjectComposition = ({ project }: { project: TProject }) => {
 
-    const roomList = useMemo(() => getRoomList(project), [project])
+    // #region Variables
+    const [
+        setConfigurationCount
+    ] = useStore(state => [
+        state.setConfigurationCount
+    ])
+    // #endregion
+
+    const roomList = getRoomList(project, setConfigurationCount)
+    // const roomList = useMemo(() => getRoomList(project, setConfigurationCount), [project, setConfigurationCount])
 
     if (project && !project.rooms?.length) return (
         <div className={composition}>

@@ -323,10 +323,11 @@
 
         @media (hover: hover) and (pointer: fine)
             &:hover
-                background: var(--color-back-shetch)
+                background: var(--color-prime)
+                border-color: var(--color-prime)
 
                 &::before, &::after
-                    background: var(--color-border-prime)
+                    background: var(--color-button-font-lite)
 
         &::before, &::after
             content: ''
@@ -346,6 +347,11 @@
 
         &::after
             transform: translate(-50%, -50%) rotate(90deg)
+
+
+.disabled
+    pointer-events: none
+    opacity: 0.33
 
 
 .inc

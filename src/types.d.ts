@@ -27,11 +27,18 @@ export type TFunctionOptionList = TFunctionOption[]
 
 export type TRequestAddConfiguration = {
     projectId: string | number
-	roomId: string | number,
-	border: TBorder,
-	devices: TDevice[],
-    counts: number,
+	roomId: string | number
+	border: TBorder
+	devices: TDevice[]
+    counts: number
 	backgroundId?: string | number
+}
+
+export type TRequestUpdateConfigurationCount = {
+    projectId: string | number
+    roomId: string | number
+    configurationId: string | number
+    count: number
 }
 
 // #region Bound of the all Stores
@@ -218,6 +225,9 @@ export type TAppStore = {
     fireError: TFireError
 
 
+    setCountTimeoutId: number | undefined
+    startValueConfigurationCount: number | null
+
     // #region Colors
     colors: TColorList | undefined
     setAppColors: (colors: TColorList) => void
@@ -274,6 +284,28 @@ export type TAppStore = {
         border: TBorder | null,
         devices: TDevice[],
         counts: number
+    ) => void
+    // #endregion
+
+    // #region Set Configuration count
+    setConfigurationCount: (
+        projectId: string | number,
+        roomId: string | number,
+        configurationId: string | number,
+        direction: -1 | 1
+    ) => void
+
+    updateRemoteConfigurationCount: (
+        projectId: string | number,
+        roomId: string | number,
+        configurationId: string | number,
+        count: number
+    ) => void
+
+    resetConfigurationCountToStart: (
+        projectId: string | number,
+        roomId: string | number,
+        configurationId: string | number
     ) => void
     // #endregion
 
