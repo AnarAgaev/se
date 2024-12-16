@@ -89,7 +89,8 @@ const getConfigurationList = (
     configurations: TConfigurationList,
     projectId: string | number,
     roomId: string | number,
-    setConfigurationCount: TAppStore['setConfigurationCount']
+    setConfigurationCount: TAppStore['setConfigurationCount'],
+    removeConfiguration: TAppStore['removeConfiguration']
 ): JSX.Element[] | null => {
 
     const configurationList: JSX.Element[] = []
@@ -111,6 +112,8 @@ const getConfigurationList = (
 
         const onChangeCount = (direction: -1 | 1) => setConfigurationCount(projectId, roomId, c.id, direction)
 
+        const onRemove = () => removeConfiguration(projectId, roomId, c.id)
+
         configurationList.push(
             <li className={set} key={`${c.id}-${idx}`}>
                 <p className={subtitle}>{`Комплект ${vendor}, ${color}${posts}`}</p>
@@ -129,19 +132,27 @@ const getConfigurationList = (
                     <tfoot>
                         <tr>
                             <td>
-                                <button className='button button_small button_dark' title="Изменить конфигурацию">
+                                <button  onClick={() => {}}
+                                    className='button button_small button_dark'
+                                    title="Изменить конфигурацию">
                                     <span>Изменить</span>
                                     <i className='icon icon_change'></i>
                                 </button>
-                                <button className='button button_small button_dark' title="Перенести конфигурацию в другой проект/помещение">
+                                <button  onClick={() => {}}
+                                    className='button button_small button_dark'
+                                    title="Перенести конфигурацию в другой проект/помещение">
                                     <span>Перенести</span>
                                     <i className='icon icon_move'></i>
                                 </button>
-                                <button className='button button_small button_dark' title="Скопировать конфигурацию в другой проект/помещение">
+                                <button  onClick={() => {}}
+                                    className='button button_small button_dark'
+                                    title="Скопировать конфигурацию в другой проект/помещение">
                                     <span>Скопировать</span>
                                     <i className='icon icon_copy'></i>
                                 </button>
-                                <button className='button button_small button_dark' title="Удалить конфигурацию">
+                                <button onClick={onRemove}
+                                    title="Удалить конфигурацию"
+                                    className='button button_small button_dark'>
                                     <span>Удалить</span>
                                     <i className='icon icon_basket'></i>
                                 </button>
@@ -164,7 +175,11 @@ const getConfigurationList = (
     return configurationList
 }
 
-const getRoomList = (project: TProject, setConfigurationCount: TAppStore['setConfigurationCount']): JSX.Element[] | null => {
+const getRoomList = (
+    project: TProject,
+    setConfigurationCount: TAppStore['setConfigurationCount'],
+    removeConfiguration: TAppStore['removeConfiguration']
+): JSX.Element[] | null => {
 
     const roomList: JSX.Element[] = []
 
@@ -174,7 +189,13 @@ const getRoomList = (project: TProject, setConfigurationCount: TAppStore['setCon
 
     rooms.forEach((r, idx) => {
 
-        const configurations = getConfigurationList(r.configurations, project.id, r.id, setConfigurationCount)
+        const configurations = getConfigurationList(
+            r.configurations,
+            project.id,
+            r.id,
+            setConfigurationCount,
+            removeConfiguration
+        )
 
         roomList.push(
             <div key={`${r.id}-${idx}`} className={room}>
@@ -193,14 +214,15 @@ const ProjectComposition = ({ project }: { project: TProject }) => {
 
     // #region Variables
     const [
-        setConfigurationCount
+        setConfigurationCount,
+        removeConfiguration
     ] = useStore(state => [
-        state.setConfigurationCount
+        state.setConfigurationCount,
+        state.removeConfiguration
     ])
     // #endregion
 
-    const roomList = getRoomList(project, setConfigurationCount)
-    // const roomList = useMemo(() => getRoomList(project, setConfigurationCount), [project, setConfigurationCount])
+    const roomList = getRoomList(project, setConfigurationCount, removeConfiguration)
 
     if (project && !project.rooms?.length) return (
         <div className={composition}>

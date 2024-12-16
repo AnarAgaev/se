@@ -1,5 +1,6 @@
 import { StateCreator } from 'zustand'
-import { TAppStore, TRequestAddConfiguration, TRequestUpdateConfigurationCount, TConfiguration } from '../types'
+import { TAppStore, TRequestAddConfiguration, TRequestUpdateConfigurationCount,
+    TRequestRemoveConfiguration, TConfiguration } from '../types'
 
 // let timeoutId: number | undefined
 
@@ -403,8 +404,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 throw new Error(data.error)
             }
 
-            // debugger
-
             // Add configuration to selected project
             const newProjects = [...get().projects]
             const editProjectKey = newProjects.findIndex(p => p.selected)
@@ -459,7 +458,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // #endregion
 
 
-    // #region Set Configuration Count
+    // #region Configuration Actions
     setConfigurationCount: (projectId, roomId, configurationId, direction) => {
 
         const newProjects = [...get().projects]
@@ -512,14 +511,14 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
     updateRemoteConfigurationCount: async (projectId, roomId, configurationId, count) => {
 
-        const data: TRequestUpdateConfigurationCount = {
+        const requestData: TRequestUpdateConfigurationCount = {
             projectId: projectId,
             roomId: roomId,
             configurationId: configurationId,
             count: count,
         }
 
-        const JSONRequestData = JSON.stringify(data)
+        const JSONRequestData = JSON.stringify(requestData)
         const apiLink = window.updateConfigurationCountLink
 
         if (!apiLink) {
@@ -594,6 +593,104 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             projects: [...newProjects],
             startValueConfigurationCount: null
         })
+    },
+
+    removeConfiguration: async (projectId, roomId, configurationId) => {
+
+        const removeConfiguration = () => {
+            const newProjects = [...get().projects]
+
+            // Projects
+            for (let pIdx = 0; pIdx < newProjects.length; pIdx++) {
+
+                const project = newProjects[pIdx]
+
+                if (project.id === projectId) {
+
+                    const rooms = project.rooms
+
+                    if (rooms) {
+
+                        // Rooms
+                        for (let rIdx = 0; rIdx < rooms.length; rIdx++) {
+
+                            const room = rooms[rIdx]
+
+                            if (room.id === roomId) {
+
+                                // Configurations
+                                for (let cIdx = 0; cIdx < room.configurations.length; cIdx++) {
+
+                                    const configuration = room.configurations[cIdx]
+
+                                    if (configuration.id === configurationId) {
+                                        room.configurations.splice(cIdx, 1)
+                                    }
+                                }
+                            }
+
+                            if (rooms[rIdx].configurations.length === 0) {
+                                rooms.splice(rIdx, 1)
+                            }
+                        }
+                    }
+
+                    if (rooms?.length === 0) {
+                        delete newProjects[pIdx].rooms
+                    }
+                }
+            }
+
+            set({
+                dataLoading: false,
+                modalMessageVisible: true,
+                modalMessageCaption: `Конфигурация удалена`,
+                projects: [...newProjects]
+            })
+        }
+
+        const requestData: TRequestRemoveConfiguration = {
+            projectId: projectId,
+            roomId: roomId,
+            configurationId: configurationId
+        }
+
+        const JSONRequestData = JSON.stringify(requestData)
+        const apiLink = window.removeConfigurationLink
+
+
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Remove Configuration window.removeConfigurationLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const requestLink = `${apiLink}?data=${JSONRequestData}`
+
+        try {
+            const res = await fetch(requestLink)
+
+            if (!res.ok) {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Ошибка fetch запроса Удалить Конфигурацию! Запрос к URL ${requestLink}`)
+            }
+
+            const data = await res.json()
+
+            if (data.status === 'error') {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(data.error)
+            }
+
+
+            // Если успешно удалил в БД, удаляем из Стора
+            setTimeout(removeConfiguration, 500)
+
+
+        } catch (error) {
+            console.error(error)
+        }
     },
     // #endregion
 

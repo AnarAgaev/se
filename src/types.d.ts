@@ -41,6 +41,12 @@ export type TRequestUpdateConfigurationCount = {
     count: number
 }
 
+export type TRequestRemoveConfiguration = {
+    projectId: string | number
+    roomId: string | number
+    configurationId: string | number
+}
+
 // #region Bound of the all Stores
 export type TStore = {
     requestInitData: () => void
@@ -275,7 +281,7 @@ export type TAppStore = {
     // #endregion
 
 
-    // #region Add Configuration
+    // #region Configuration Actions
     addConfiguration: (
         projectId: string | number,
         roomId: string | number,
@@ -285,9 +291,7 @@ export type TAppStore = {
         devices: TDevice[],
         counts: number
     ) => void
-    // #endregion
 
-    // #region Set Configuration count
     setConfigurationCount: (
         projectId: string | number,
         roomId: string | number,
@@ -303,6 +307,12 @@ export type TAppStore = {
     ) => void
 
     resetConfigurationCountToStart: (
+        projectId: string | number,
+        roomId: string | number,
+        configurationId: string | number
+    ) => void
+
+    removeConfiguration: (
         projectId: string | number,
         roomId: string | number,
         configurationId: string | number

@@ -8,4 +8,5 @@ interface Window {
     addRoomLink: string
     addConfigurationLink: string
     updateConfigurationCountLink: string
+    removeConfigurationLink: string
 }
