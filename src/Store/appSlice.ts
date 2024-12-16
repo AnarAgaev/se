@@ -362,7 +362,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // #endregion
 
 
-    // #region Adding Configuration
+    // #region Configuration Actions
     addConfiguration: async (projectId, roomId, roomName, backgroundId, border, devices, counts) => {
 
         if (border === null) return
@@ -455,10 +455,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             console.error(error)
         }
     },
-    // #endregion
 
-
-    // #region Configuration Actions
     setConfigurationCount: (projectId, roomId, configurationId, direction) => {
 
         const newProjects = [...get().projects]

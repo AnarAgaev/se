@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { PdfDocument, ProjectComposition } from '../../Components'
-import { getFileName } from '../../Helpers'
+import { getFileName, formatNumber } from '../../Helpers'
 import { TAppStore, TProject } from '../../types'
 import useStore from '../../Store'
 import style from './ProjectWorkspace.module.sass'
@@ -85,6 +85,37 @@ const ProjectWorkspace = () => {
         project, shareProject, removeProject, modalLoadProjectSet
     ])
 
+    const getTotalCost = () => {
+        const rooms = project.rooms
+
+        let total = 0
+
+        if (!rooms) return null
+
+        for (const r of rooms) {
+            const configurations = r.configurations
+
+            for (const c of configurations) {
+
+                let totalConfigurationsCost = typeof c.border.price === 'string'
+                    ? parseFloat(c.border.price)
+                    : c.border.price
+
+                for (const d of c.devices) {
+                    totalConfigurationsCost += typeof d.price === 'string'
+                        ? parseFloat(d.price)
+                        : d.price
+                }
+
+                total += (totalConfigurationsCost * c.count)
+            }
+        }
+
+        return total
+    }
+
+    const totalProjectCost = getTotalCost()
+
     let addToCartButtonClassName = 'button button_dark button_block'
     if (project && !project.rooms?.length) addToCartButtonClassName += ' disabled'
 
@@ -112,10 +143,10 @@ const ProjectWorkspace = () => {
             <footer className={footer}>
                 { projectActions }
                 <div className={total}>
-                    { project && project.rooms?.length &&
+                    { project && project.rooms?.length && totalProjectCost &&
                         <p>
                             <span>Общая стоимость:</span>
-                            <strong>123 078.19 р.</strong>
+                            <strong>{formatNumber(totalProjectCost)} р.</strong>
                         </p>
                     }
                     <button className={addToCartButtonClassName}>Добавить в корзину</button>
