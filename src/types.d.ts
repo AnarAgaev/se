@@ -47,6 +47,15 @@ export type TRequestRemoveConfiguration = {
     configurationId: string | number
 }
 
+export type TRequestCopyReplaceConfiguration = {
+	projectIdFrom: string | number
+	roomIdFrom: string | number
+	configurationId: string | number
+	projectIdTo: string | number
+	roomIdTo: string | number
+	requestType: "copy" | "replace"
+}
+
 // #region Bound of the all Stores
 export type TStore = {
     requestInitData: () => void
@@ -282,6 +291,23 @@ export type TAppStore = {
 
 
     // #region Configuration Actions
+    currentConfiguration: {
+        projectId: string | number | null
+        roomId: string | number | null
+        configurationId: string | number | null
+        type: 'copy' | 'replace' | null
+    }
+
+    setCurrentConfiguration: ( configuration: currentConfiguration ) => void
+
+    resetCurrentConfiguration: () => void
+
+    copyReplaceConfiguration: (
+        projectId: string | number,
+        roomId: string | number,
+        roomName: string
+    ) => void
+
     addConfiguration: (
         projectId: string | number,
         roomId: string | number,
@@ -318,6 +344,7 @@ export type TAppStore = {
         configurationId: string | number
     ) => void
     // #endregion
+
 
     // #region Dictionary
     dictionary: TDictionary
@@ -373,6 +400,7 @@ export type TAppStore = {
     modalLoadProjectSetValue: (value: string) => void
     modalLoadProjectSet: (visible: boolean, value: string) => void
     // #endregion
+
 
     // #region Modal Copy Configuration
     modalCopyConfigurationType: 'copy' | 'replace' | null

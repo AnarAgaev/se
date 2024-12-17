@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand'
 import { TAppStore, TRequestAddConfiguration, TRequestUpdateConfigurationCount,
-    TRequestRemoveConfiguration, TConfiguration } from '../types'
+    TRequestRemoveConfiguration, TRequestCopyReplaceConfiguration, TConfiguration } from '../types'
 
 // let timeoutId: number | undefined
 
@@ -64,7 +64,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     activeCalcTab: 'borders',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
-    activeViewportTab: 'hub',
+    activeViewportTab: 'configurator',
     setActiveViewportTab: (tab) => set({activeViewportTab: tab}),
     // #endregion
 
@@ -363,6 +363,217 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
 
     // #region Configuration Actions
+    currentConfiguration: {
+        projectId: null,
+        roomId: null,
+        configurationId: null,
+        type: null
+    },
+
+    setCurrentConfiguration: (configuration) => {
+        set({currentConfiguration: configuration})
+    },
+
+    resetCurrentConfiguration: () => {
+        set({currentConfiguration: {
+            projectId: null,
+            roomId: null,
+            configurationId: null,
+            type: null
+        }})
+    },
+
+    copyReplaceConfiguration: async (projectId, roomId, roomName) => {
+
+        const from = { ...get().currentConfiguration }
+        const to = { projectId: projectId, roomId: roomId, roomName: roomName}
+
+        if ( from.projectId === null
+            || from.roomId === null
+            || from.configurationId === null
+            || from.type === null
+        ) return
+
+        const data: TRequestCopyReplaceConfiguration = {
+            // from
+            projectIdFrom: from.projectId,
+            roomIdFrom: from.roomId,
+            configurationId: from.configurationId,
+            requestType: from.type,
+
+            // to
+            projectIdTo: to.projectId,
+            roomIdTo: to.roomId
+        }
+
+        const JSONRequestData = JSON.stringify(data)
+
+        set({
+            modalCopyConfigurationType: null,
+            modalCopyConfigurationVisible: false,
+            modalCopyConfigurationCaption: '',
+            currentConfiguration: {
+                projectId: null,
+                roomId: null,
+                configurationId: null,
+                type: null
+            }
+        })
+
+        const apiLink = window.copyReplaceConfigurationLink
+
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Copy or Replace Configuration window.copyReplaceConfigurationLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const requestLink = `${apiLink}?data=${JSONRequestData}`
+
+        try {
+            const res = await fetch(requestLink)
+
+            if (!res.ok) {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Ошибка fetch запроса ${from.type === 'copy' ? "копировать" : "перенести"} конфигурацию! Запрос к URL ${requestLink}`)
+            }
+
+            const data = await res.json()
+
+            if (data.status === 'error') {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(data.error)
+            }
+
+            // 1. Получаем копию конфигурации
+            // 2. Создаем новую конфигурацию
+            // 3. Если тип запроса Перенести (replace), то удаляем референс
+
+            const newConfigurationId: string | number = data.id
+            const newProjects = [...get().projects]
+
+            // 1. Получаем копию конфигурации
+            let configurationCopy: TConfiguration = {} as TConfiguration
+
+            for (const p of newProjects) {
+
+                if (p.id === from.projectId && p.rooms) {
+                    for (const r of p.rooms) {
+
+                        if (r.id === from.roomId) {
+                            for (const c of r.configurations) {
+
+                                if (c.id === from.configurationId) {
+                                    configurationCopy = {
+                                        ...c,
+                                        id: newConfigurationId,
+                                        edit: false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            // 2. Создаем новую конфигурацию
+            const toProjectIdx = newProjects.findIndex(p => p.id === to.projectId)
+            const rooms = newProjects[toProjectIdx].rooms
+
+            if (rooms) {
+                const toRoomId = rooms.findIndex(r => r.id === to.roomId)
+
+                // Если такой комнаты нет
+                if (toRoomId === -1) {
+                    newProjects[toProjectIdx].rooms = [
+                        ...rooms,
+                        {
+                            id: to.roomId,
+                            name: to.roomName,
+                            configurations: [
+                                { ...configurationCopy }
+                            ]
+                        }
+                    ]
+                } else {
+                    const fromConfigurations = rooms[toRoomId].configurations
+                    rooms[toRoomId].configurations = [
+                        ...fromConfigurations,
+                        { ...configurationCopy }
+                    ]
+                }
+
+            } else {
+                newProjects[toProjectIdx].rooms = [
+                    {
+                        id: to.roomId,
+                        name: to.roomName,
+                        configurations: [
+                            { ...configurationCopy }
+                        ]
+                    }
+                ]
+            }
+
+
+            // 3. Если тип запроса Перенести (replace), то удаляем референс
+            if (from.type === 'replace') {
+                // Projects
+                for (let pIdx = 0; pIdx < newProjects.length; pIdx++) {
+
+                    const project = newProjects[pIdx]
+
+                    if (project.id === from.projectId) {
+
+                        const rooms = project.rooms
+
+                        if (rooms) {
+
+                            // Rooms
+                            for (let rIdx = 0; rIdx < rooms.length; rIdx++) {
+
+                                const room = rooms[rIdx]
+
+                                if (room.id === from.roomId) {
+
+                                    // Configurations
+                                    for (let cIdx = 0; cIdx < room.configurations.length; cIdx++) {
+
+                                        const configuration = room.configurations[cIdx]
+
+                                        if (configuration.id === from.configurationId) {
+                                            room.configurations.splice(cIdx, 1)
+                                        }
+                                    }
+                                }
+
+                                if (rooms[rIdx].configurations.length === 0) {
+                                    rooms.splice(rIdx, 1)
+                                }
+                            }
+                        }
+
+                        if (rooms?.length === 0) {
+                            delete newProjects[pIdx].rooms
+                        }
+                    }
+                }
+            }
+
+            setTimeout(() => set({
+                dataLoading: false,
+                modalMessageVisible: true,
+                modalMessageCaption: `Комплект ${from.type === 'copy' ? 'скопирован' : 'перенесен'}`,
+                projects: [...newProjects]
+            }), 500)
+
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
     addConfiguration: async (projectId, roomId, roomName, backgroundId, border, devices, counts) => {
 
         if (border === null) return
@@ -790,16 +1001,11 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     modalCopyConfigurationVisible: false,
     modalCopyConfigurationCaption: '',
     modalCopyConfigurationSet: (type, visible: boolean, caption: string) => {
-
-
-
         set({
             modalCopyConfigurationType: type,
             modalCopyConfigurationVisible: visible,
             modalCopyConfigurationCaption: caption
         })
-
-
     },
     // #endregion
 

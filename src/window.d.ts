@@ -9,4 +9,5 @@ interface Window {
     addConfigurationLink: string
     updateConfigurationCountLink: string
     removeConfigurationLink: string
+    copyReplaceConfigurationLink: string
 }

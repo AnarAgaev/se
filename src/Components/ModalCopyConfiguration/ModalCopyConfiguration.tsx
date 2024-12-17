@@ -1,4 +1,4 @@
-import { useState, useMemo, useId } from 'react'
+import { useState, useMemo, useId, useEffect } from 'react'
 import { Modal, Select, OptionLocation } from '../../Components'
 import { TProjectList, TRoomList } from '../../types'
 import useStore from '../../Store'
@@ -38,14 +38,23 @@ const ModalCopyConfiguration = ({ visible }: {visible: boolean}) => {
         projects,
         rooms,
         modalCopyConfigurationCaption,
-        modalCopyConfigurationSet
+        modalCopyConfigurationSet,
+        resetCurrentConfiguration,
+        copyReplaceConfiguration
     ] = useStore(state => [
         state.projects,
         state.rooms,
         state.modalCopyConfigurationCaption,
-        state.modalCopyConfigurationSet
+        state.modalCopyConfigurationSet,
+        state.resetCurrentConfiguration,
+        state.copyReplaceConfiguration
     ])
     // #endregion
+
+    useEffect(() => {
+        setProject({error: false})
+        setRoom({error: false})
+    }, [visible])
 
     const projectsOptions = useMemo(
         () => getOptionsList(key, projects, selectedProject, setProject),
@@ -61,6 +70,7 @@ const ModalCopyConfiguration = ({ visible }: {visible: boolean}) => {
         setProject({error: false})
         setRoom({error: false})
         modalCopyConfigurationSet(null, false, '')
+        resetCurrentConfiguration()
     }
 
     const onSend = () => {
@@ -69,16 +79,9 @@ const ModalCopyConfiguration = ({ visible }: {visible: boolean}) => {
 
         if (!selectedProject.id || !selectedRoom.id) return
         if (selectedProject.error || selectedRoom.error) return
+        if (!selectedRoom.name) return
 
-
-
-
-
-
-
-        alert('copy');
-
-
+        copyReplaceConfiguration(selectedProject.id, selectedRoom.id, selectedRoom.name)
     }
 
     let sendButtonClazz = 'button button_block button_dark'
@@ -92,7 +95,7 @@ const ModalCopyConfiguration = ({ visible }: {visible: boolean}) => {
 
             <div className={selectors}>
                 <div className={selector}>
-                    <Select title={selectedProject ? 'Проект' : 'Выбрать проект'}
+                    <Select title={selectedProject.id ? 'Проект' : 'Выберите проект'}
                         selectedValue={selectedProject ? selectedProject.name : undefined}>
                         { projectsOptions }
                     </Select>
@@ -100,7 +103,7 @@ const ModalCopyConfiguration = ({ visible }: {visible: boolean}) => {
                         className={error}>Необходимо выбрать Проект</span>
                 </div>
                 <div className={selector}>
-                    <Select title={selectedRoom ? 'Помещение' : 'Выберите помещение'}
+                    <Select title={selectedRoom.id ? 'Помещение' : 'Выберите помещение'}
                         selectedValue={selectedRoom ? selectedRoom.name : undefined}>
                         { roomsOptions }
                     </Select>

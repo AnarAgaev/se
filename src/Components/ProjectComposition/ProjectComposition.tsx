@@ -91,7 +91,8 @@ const getConfigurationList = (
     roomId: string | number,
     setConfigurationCount: TAppStore['setConfigurationCount'],
     removeConfiguration: TAppStore['removeConfiguration'],
-    modalCopyConfigurationSet: TAppStore['modalCopyConfigurationSet']
+    modalCopyConfigurationSet: TAppStore['modalCopyConfigurationSet'],
+    setCurrentConfiguration: TAppStore['setCurrentConfiguration']
 ): JSX.Element[] | null => {
 
     const configurationList: JSX.Element[] = []
@@ -116,10 +117,12 @@ const getConfigurationList = (
         const onRemove = () => removeConfiguration(projectId, roomId, c.id)
 
         const onReplace = () => {
+            setCurrentConfiguration({ projectId, roomId, configurationId: c.id, type: 'replace' })
             modalCopyConfigurationSet('replace', true, 'Перенести комплект')
         }
 
         const onCopy = () => {
+            setCurrentConfiguration({ projectId, roomId, configurationId: c.id, type: 'copy' })
             modalCopyConfigurationSet('copy', true, 'Копировать комплект')
         }
 
@@ -188,7 +191,8 @@ const getRoomList = (
     project: TProject,
     setConfigurationCount: TAppStore['setConfigurationCount'],
     removeConfiguration: TAppStore['removeConfiguration'],
-    modalCopyConfigurationSet: TAppStore['modalCopyConfigurationSet']
+    modalCopyConfigurationSet: TAppStore['modalCopyConfigurationSet'],
+    setCurrentConfiguration: TAppStore['setCurrentConfiguration']
 ): JSX.Element[] | null => {
 
     const roomList: JSX.Element[] = []
@@ -205,7 +209,8 @@ const getRoomList = (
             r.id,
             setConfigurationCount,
             removeConfiguration,
-            modalCopyConfigurationSet
+            modalCopyConfigurationSet,
+            setCurrentConfiguration
         )
 
         roomList.push(
@@ -227,15 +232,18 @@ const ProjectComposition = ({ project }: { project: TProject }) => {
     const [
         setConfigurationCount,
         removeConfiguration,
-        modalCopyConfigurationSet
+        modalCopyConfigurationSet,
+        setCurrentConfiguration
     ] = useStore(state => [
         state.setConfigurationCount,
         state.removeConfiguration,
-        state.modalCopyConfigurationSet
+        state.modalCopyConfigurationSet,
+        state.setCurrentConfiguration
     ])
     // #endregion
 
-    const roomList = getRoomList(project, setConfigurationCount, removeConfiguration, modalCopyConfigurationSet)
+    const roomList = getRoomList(project, setConfigurationCount, removeConfiguration,
+            modalCopyConfigurationSet, setCurrentConfiguration)
 
     if (project && !project.rooms?.length) return (
         <div className={composition}>

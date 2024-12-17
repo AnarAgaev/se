@@ -557,9 +557,9 @@
     "backgrounds": [
         {
             "id": 1,
-            "image": "img/se-configurator/backgrounds/bg-12.jpg",
-            "preview": "img/se-configurator/backgrounds/preview/bg-12.jpg",
-            "selected": false
+            "image": "img/se-configurator/backgrounds/bg-white.jpg",
+            "preview": "img/se-configurator/backgrounds/preview/bg-white-prev.jpg",
+            "selected": true
         },
         {
             "id": 2,
@@ -745,6 +745,12 @@
             "id": 32,
             "image": "img/se-configurator/backgrounds/bg-52.jpg",
             "preview": "img/se-configurator/backgrounds/preview/bg-52.jpg",
+            "selected": false
+        },
+        {
+            "id": 33,
+            "image": "img/se-configurator/backgrounds/bg-12.jpg",
+            "preview": "img/se-configurator/backgrounds/preview/bg-12.jpg",
             "selected": false
         }
     ],
