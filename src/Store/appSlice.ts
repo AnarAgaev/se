@@ -520,6 +520,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             // 3. Если тип запроса Перенести (replace), то удаляем референс
             if (from.type === 'replace') {
+
                 // Projects
                 for (let pIdx = 0; pIdx < newProjects.length; pIdx++) {
 

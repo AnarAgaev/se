@@ -81,14 +81,17 @@ const ProjectWorkspace = () => {
 
     const project = projects.filter(p => p.edit)[0]
 
+
     const projectActions = useMemo(() => getProjectActions(project, shareProject, removeProject, modalLoadProjectSet), [
         project, shareProject, removeProject, modalLoadProjectSet
     ])
 
     const getTotalCost = () => {
-        const rooms = project.rooms
-
         let total = 0
+
+        if (!project) return total
+
+        const rooms = project.rooms
 
         if (!rooms) return null
 
