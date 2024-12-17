@@ -90,7 +90,8 @@ const getConfigurationList = (
     projectId: string | number,
     roomId: string | number,
     setConfigurationCount: TAppStore['setConfigurationCount'],
-    removeConfiguration: TAppStore['removeConfiguration']
+    removeConfiguration: TAppStore['removeConfiguration'],
+    modalCopyConfigurationSet: TAppStore['modalCopyConfigurationSet']
 ): JSX.Element[] | null => {
 
     const configurationList: JSX.Element[] = []
@@ -113,6 +114,14 @@ const getConfigurationList = (
         const onChangeCount = (direction: -1 | 1) => setConfigurationCount(projectId, roomId, c.id, direction)
 
         const onRemove = () => removeConfiguration(projectId, roomId, c.id)
+
+        const onReplace = () => {
+            modalCopyConfigurationSet('replace', true, 'Перенести комплект')
+        }
+
+        const onCopy = () => {
+            modalCopyConfigurationSet('copy', true, 'Копировать комплект')
+        }
 
         configurationList.push(
             <li className={set} key={`${c.id}-${idx}`}>
@@ -138,13 +147,13 @@ const getConfigurationList = (
                                     <span>Изменить</span>
                                     <i className='icon icon_change'></i>
                                 </button>
-                                <button  onClick={() => {}}
+                                <button onClick={onReplace}
                                     className='button button_small button_dark'
                                     title="Перенести конфигурацию в другой проект/помещение">
                                     <span>Перенести</span>
                                     <i className='icon icon_move'></i>
                                 </button>
-                                <button  onClick={() => {}}
+                                <button onClick={onCopy}
                                     className='button button_small button_dark'
                                     title="Скопировать конфигурацию в другой проект/помещение">
                                     <span>Скопировать</span>
@@ -178,7 +187,8 @@ const getConfigurationList = (
 const getRoomList = (
     project: TProject,
     setConfigurationCount: TAppStore['setConfigurationCount'],
-    removeConfiguration: TAppStore['removeConfiguration']
+    removeConfiguration: TAppStore['removeConfiguration'],
+    modalCopyConfigurationSet: TAppStore['modalCopyConfigurationSet']
 ): JSX.Element[] | null => {
 
     const roomList: JSX.Element[] = []
@@ -194,7 +204,8 @@ const getRoomList = (
             project.id,
             r.id,
             setConfigurationCount,
-            removeConfiguration
+            removeConfiguration,
+            modalCopyConfigurationSet
         )
 
         roomList.push(
@@ -215,14 +226,16 @@ const ProjectComposition = ({ project }: { project: TProject }) => {
     // #region Variables
     const [
         setConfigurationCount,
-        removeConfiguration
+        removeConfiguration,
+        modalCopyConfigurationSet
     ] = useStore(state => [
         state.setConfigurationCount,
-        state.removeConfiguration
+        state.removeConfiguration,
+        state.modalCopyConfigurationSet
     ])
     // #endregion
 
-    const roomList = getRoomList(project, setConfigurationCount, removeConfiguration)
+    const roomList = getRoomList(project, setConfigurationCount, removeConfiguration, modalCopyConfigurationSet)
 
     if (project && !project.rooms?.length) return (
         <div className={composition}>

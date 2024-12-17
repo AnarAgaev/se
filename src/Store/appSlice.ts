@@ -785,6 +785,25 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // #endregion
 
 
+    // #region
+    modalCopyConfigurationType: null,
+    modalCopyConfigurationVisible: false,
+    modalCopyConfigurationCaption: '',
+    modalCopyConfigurationSet: (type, visible: boolean, caption: string) => {
+
+
+
+        set({
+            modalCopyConfigurationType: type,
+            modalCopyConfigurationVisible: visible,
+            modalCopyConfigurationCaption: caption
+        })
+
+
+    },
+    // #endregion
+
+
     // #region ModalShare
     modalShareVisible: false,
     modalShareValue: null,

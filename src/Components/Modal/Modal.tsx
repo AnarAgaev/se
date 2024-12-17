@@ -1,25 +1,25 @@
 import style from './Modal.module.sass'
 
-const {modal, body, close, content, caption, wrap, show} = style
+const {modal, body, close, content, header, caption, subcaption, wrap, show} = style
 
 type TProps = {
     title?: string
+    subtitle?: string
     onClose?: () => void
     children: React.ReactNode
     visible: boolean
 }
 
-const Modal = ({title, onClose, children, visible} : TProps) => {
+const Modal = ({title, subtitle, onClose, children, visible} : TProps) => {
     return (
         <div className={visible ? `${modal} ${show}` : modal}>
             <div className={body}>
                 <button type='button' role='close' className={close} onClick={onClose}></button>
                 <div className={content}>
-                    { title &&
-                        <h4 className={caption}>
-                            {title}
-                        </h4>
-                    }
+                    <div className={header}>
+                        {title && <h4 className={caption}>{title}</h4>}
+                        {subtitle && <p className={subcaption}>{subtitle}</p>}
+                    </div>
                     <div className={wrap}>
                         {children}
                     </div>

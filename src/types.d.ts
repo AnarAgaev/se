@@ -374,6 +374,12 @@ export type TAppStore = {
     modalLoadProjectSet: (visible: boolean, value: string) => void
     // #endregion
 
+    // #region Modal Copy Configuration
+    modalCopyConfigurationType: 'copy' | 'replace' | null
+    modalCopyConfigurationVisible: boolean
+    modalCopyConfigurationCaption: string
+    modalCopyConfigurationSet: (type: 'copy' | 'replace' | null, visible: boolean, caption: string) => void
+    // #endregion
 }
 // #endregion
 

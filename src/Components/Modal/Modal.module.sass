@@ -42,6 +42,9 @@
     max-width: 600px
     height: auto
 
+    &:has(input)
+        max-width: 700px
+
     @media (min-width: $sm)
         padding: 40px
 
@@ -69,12 +72,21 @@
     height: auto
 
 
+
+.header
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+    @media (min-width: $sm)
+
+
 .caption
     display: block
     position: relative
     width: 100%
     height: auto
-    margin: 0 0 10px 0
+    margin: 0
     padding: 0
     font-weight: 700
     font-size: 22px
@@ -85,7 +97,21 @@
 
     @media (min-width: $sm)
         font-size: 32px
-        margin-bottom: 20px
+
+
+.subcaption
+    position: relative
+    margin: 0
+    padding: 0
+    font-size: 14px
+    font-weight: 400
+    line-height: 19.2px
+    text-align: left
+    text-underline-position: from-font
+    text-decoration-skip-ink: none
+
+    @media (min-width: $sm)
+        font-size: 16px
 
 
 .wrap
