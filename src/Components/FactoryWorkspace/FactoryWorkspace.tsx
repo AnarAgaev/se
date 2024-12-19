@@ -11,7 +11,29 @@ type TProps = {
 }
 
 const FactoryWorkspace = ({ type, children }: TProps) => {
-    const filteredItems = useStore(state => state.getFilteredItems())
+
+    // #region Variables
+    const [
+        filteredItems,
+        activeCalcTab,
+        checkSelectedBorderFilters,
+        resetAllBorderFilters,
+        checkSelectedDeviceFilters,
+        resetAllDeviceFilters,
+    ] = useStore(state => [
+        state.getFilteredItems(),
+        state.activeCalcTab,
+        state.checkSelectedBorderFilters,
+        state.resetAllBorderFilters,
+        state.checkSelectedDeviceFilters,
+        state.resetAllDeviceFilters,
+    ])
+    // #endregion
+
+    const onReset = () => {
+        resetAllBorderFilters()
+        resetAllDeviceFilters()
+    }
 
     return (
         <div className={body}>
@@ -20,6 +42,22 @@ const FactoryWorkspace = ({ type, children }: TProps) => {
                 <div className={selectors}>
                     { children }
                 </div>
+
+                { activeCalcTab === 'borders' && checkSelectedBorderFilters() && (
+                    <button
+                        onClick={onReset}
+                        className='button button_block button_lite'>
+                        Сбросить все параметры
+                    </button>
+                )}
+
+                { activeCalcTab === 'devices' && checkSelectedDeviceFilters() && (
+                    <button
+                        onClick={onReset}
+                        className='button button_block button_lite'>
+                        Сбросить все параметры
+                    </button>
+                )}
             </div>
             <div className={list}>
                 <h2 className={title}>Варианты:</h2>

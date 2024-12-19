@@ -83,7 +83,7 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
     getFunctionsKinds: () => {
         const activeFunctionality = [...get().filtersDevices.functions].find(el => el.active)
 
-        if (activeFunctionality?.name === 'Все функции') activeFunctionality
+        if (activeFunctionality?.name === 'Все функции') return
 
         return [...get().functions.filter(
             fn => fn.name === activeFunctionality?.name
@@ -98,6 +98,42 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
         materials: [],
         activeFunction: '',
         functions: []
+    },
+
+    checkSelectedDeviceFilters: () => {
+        const { functions, ...withoutFilters } = get().filtersDevices
+
+        const values = Object.values(withoutFilters)
+
+        let isSomeSelected = false
+
+        for (const v of values) {
+            if (typeof v === 'string' && v) isSomeSelected = true
+            if (Array.isArray(v) && v.length !== 0) isSomeSelected = true
+        }
+
+        if (!functions[0].active) isSomeSelected = true // В нулевом элементе всегда лежит пункт Все функции (так добавляем при инициализации)
+
+        return isSomeSelected
+    },
+
+    resetAllDeviceFilters: () => {
+        const funcs = [...get().filtersDevices.functions]
+            .map((f, idx) => {
+                return {
+                    ...f,
+                    active: idx === 0, // В нулевом элементе всегда лежит пункт Все функции (так добавляем при инициализации)
+                    props: {}
+                }
+            })
+
+        set({ filtersDevices: {
+            brand: '',
+            collection: '',
+            colors: [],
+            materials: [],
+            functions: [...funcs],
+        }})
     },
 
     setSingleDevicesFilter: (prop, value) => {
@@ -172,25 +208,6 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
             .functions.find(fn => fn.name === groupName)?.props }
 
         return functionalityProps[propName] === value
-    },
-
-    checkSelectedFuncGroup: (groupName) => {
-        const props = Object.keys({
-            ...get().filtersDevices
-                .functions
-                .find(fn => fn.name === groupName)?.props
-        })
-
-        return !!props.length
-    },
-
-    resetSelectedFuncGroup: (groupName) => {
-        const newFilterDevices = {...get().filtersDevices}
-        const currentGroupIdx = newFilterDevices.functions.findIndex(fn => fn.name === groupName)
-
-        newFilterDevices.functions[currentGroupIdx].props = {}
-
-        set({filtersDevices: newFilterDevices})
     }
     // #endregion
 })

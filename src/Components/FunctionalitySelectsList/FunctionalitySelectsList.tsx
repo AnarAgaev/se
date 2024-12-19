@@ -28,16 +28,11 @@ const getFunctionalitiesList = (
 const FunctionsSelectsList = () => {
     const id = useId()
     const functions = useStore(state => state.getFunctionsKinds())
-    const checkGroup = useStore(state => state.checkSelectedFuncGroup)
-    const resetGroup = useStore(state => state.resetSelectedFuncGroup)
 
     const elements = useMemo(
         () => getFunctionalitiesList(functions, id),
         [functions, id]
     )
-
-    const isSelectedFiled = typeof functions?.name === 'string'
-        && checkGroup(functions?.name)
 
     return (
         elements.length === 0
@@ -46,13 +41,6 @@ const FunctionsSelectsList = () => {
                 <div className={list}>
                     { elements }
                 </div>
-                { isSelectedFiled &&
-                    <button
-                        onClick={() => resetGroup(functions?.name)}
-                        className='button button_block button_dark'>
-                        Очистить функции
-                    </button>
-                }
             </div>
     )
 }

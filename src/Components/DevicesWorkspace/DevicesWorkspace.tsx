@@ -314,7 +314,7 @@ const DevicesWorkspace = () => {
             <Select title="Коллекция" critical selectedValue={selectedCollection}>
                 {collectionsOptions}
             </Select>
-            <Select title="Материал устройства" selectedValue={selectedMaterials}>
+            <Select title="Материал механизма" selectedValue={selectedMaterials}>
                 {materialsOptions}
             </Select>
             <Select title="Тип функции" selectedValue={selectedFunction !== 'Все функции' ? selectedFunction : undefined}>
@@ -323,7 +323,7 @@ const DevicesWorkspace = () => {
             <FunctionalitySelectsList />
             {
                 colorsList && <ColorSelector
-                    caption="Цвет устройства"
+                    caption="Цвет механизма"
                     colors={colorsList}
                     setColorFn={setPluralDevicesFilter}
                     removeColorFn={removePluralDevicesFilter}

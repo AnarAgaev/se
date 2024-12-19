@@ -141,10 +141,14 @@ export type TBordersStore = {
     getCountOfPosts: TGetCountOfPosts
     getSiblingBorder: TGetSiblingBorder
     checkSiblingBorder: TCheckSiblingBorder
+    checkSelectedBorderFilters: TCheckSelectedBorderFilters
+    resetAllBorderFilters: TResetAllBorderFilters
 }
 export type TGetCountOfPosts = (border: TBorder) => number
 export type TGetSiblingBorder = (border: TBorder, numberOfPost: number) => TBorder | undefined
 export type TCheckSiblingBorder = (f: TBorder, s: TBorder) => boolean
+export type TCheckSelectedBorderFilters = () => boolean
+export type TResetAllBorderFilters = () => void
 // #endregion
 
 
@@ -176,8 +180,9 @@ export type TDevicesStore = {
 
     setFunctionProp: TSetFunctionProp
     checkSelectedFunction: TCheckSelectedFunction
-    checkSelectedFuncGroup: TCheckSelectedFuncGroup
-    resetSelectedFuncGroup: TResetSelectedFuncGroup
+
+    checkSelectedDeviceFilters: TCheckSelectedDeviceFilters
+    resetAllDeviceFilters: TResetAllDeviceFilters
 }
 // #endregion
 
@@ -219,8 +224,9 @@ export type TCheckPluralFilter = (prop: TFilterPropNames, value: string | number
 
 export type TSetFunctionProp = (groupName: string, propName: string, value: string | number) => void
 export type TCheckSelectedFunction = (groupName: string, propName: string, value: string | number) => boolean
-export type TCheckSelectedFuncGroup = (groupName: string) => boolean
-export type TResetSelectedFuncGroup = (groupName: string) => void
+
+export type TCheckSelectedDeviceFilters = () => boolean
+export type TResetAllDeviceFilters = () => void
 // #endregion
 
 

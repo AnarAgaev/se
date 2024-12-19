@@ -24,7 +24,7 @@ export const Element = z.object({
     name: z.string(),
     price: z.union([z.string(), z.number()]),
     image: z.string(),
-    color: z.string(),
+    conf_color: z.string(),
     preview: z.string(),
     vendor: z.string(),
     collection: z.string(),
@@ -41,7 +41,6 @@ export type TElementList = z.infer<typeof ElementList>
 
 // #region Borders
 export const Border = Element.extend({
-    conf_color: z.string().optional(),
     conf_orientation: z.string().optional(),
     number_of_posts: z.array(z.string()).optional()
 }).passthrough()

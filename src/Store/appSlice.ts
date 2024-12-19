@@ -773,10 +773,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
     resetConfigurationCountToStart: (projectId, roomId, configurationId) => {
 
-        console.log('resetConfigurationCountToStart');
-
         const newProjects = [...get().projects]
-
         const startCount = get().startValueConfigurationCount
 
         if (!startCount) return

@@ -41,6 +41,30 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
         materials: []
     },
 
+    checkSelectedBorderFilters: () => {
+        const filters = get().filtersBorders
+        const values = Object.values(filters)
+
+        let isSomeSelected = false
+
+        for (const v of values) {
+            if (typeof v === 'string' && v) isSomeSelected = true
+            if (Array.isArray(v) && v.length !== 0) isSomeSelected = true
+        }
+
+        return isSomeSelected
+    },
+
+    resetAllBorderFilters: () => {
+        set({
+            filtersBorders: {
+                brand: '',
+                collection: '',
+                colors: [],
+                materials: []
+        }})
+    },
+
     setSingleBordersFilter: (prop, value) => {
         const newFilters = {...get().filtersBorders}
 
@@ -108,30 +132,26 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
             })
         }
 
-        const [fVendor, fCollection, fColor, fConfColor, fMaterial] = getNoramalVars (
+        const [fVendor, fCollection, fConfColor, fMaterial] = getNoramalVars (
             f.vendor,
             f.collection,
-            f.color,
             f.conf_color,
             f.armature_material
         )
 
-        const [sVendor, sCollection, sColor, sConfColor, sMaterial] = getNoramalVars (
+        const [sVendor, sCollection, sConfColor, sMaterial] = getNoramalVars (
             s.vendor,
             s.collection,
-            s.color,
             s.conf_color,
             s.armature_material
         )
 
         const isSameVendor = fVendor === sVendor
         const isSameCollection = fCollection === sCollection
-        const isSameColor = fColor === sColor
-        // const isSameConfColor = fConfColor === sConfColor && fConfColor !== undefined && sConfColor !== undefined
         const isSameConfColor = fConfColor === sConfColor
         const isSameMaterial = fMaterial === sMaterial
 
-        return isSameVendor && isSameCollection && isSameColor && isSameConfColor && isSameMaterial
+        return isSameVendor && isSameCollection && isSameConfColor && isSameMaterial
     },
 
     getCountOfPosts: (border) => {
@@ -171,6 +191,8 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
             console.log('\x1b[31m%s\x1b[0m', `Функция поиска соседних рамок [getSiblingBorder] с количеством постов __${numberOfPost}__ вернула несколько результатов!`, borders)
             console.log('\x1b[31m%s\x1b[0m', '__Референс__', border)
         }
+
+        console.log('Полученные соседние рамки', borders);
 
         return borders[0]
     }

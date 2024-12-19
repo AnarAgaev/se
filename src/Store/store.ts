@@ -1,5 +1,6 @@
 import { create } from 'zustand'
-import { devtools, persist, createJSONStorage } from 'zustand/middleware'
+// import { devtools, persist, createJSONStorage } from 'zustand/middleware'
+import { devtools, createJSONStorage } from 'zustand/middleware'
 import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } from './'
 import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice } from '../types'
@@ -26,7 +27,7 @@ const zodErrorOptions: ErrorMessageOptions = {
 
 const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSketchStore & TAppStore & TStore>()(
     devtools(
-        persist(
+        // persist(
             (set, get, ...args) => ({
                 ...appSlice(set, get, ...args),
                 ...backgroundSlice(set, get, ...args),
@@ -36,65 +37,54 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
                 requestInitData: async () => {
 
-                    // This variable should be initialized on the page with the widget
-                    let initSourceDataLink = window.initSourceDataLink
-
-
-
-
-
-
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   Временно удалить перед деплоем
-                    const url = new URL(window.location.href)
-                    const apiValue = url.searchParams.get('api')
-
-                    if (apiValue) {
-                        initSourceDataLink = `https://${apiValue}?domain=fandeco`
-                        console.log('\x1b[31m%s\x1b[0m', `Запрос с использование API в GET`, initSourceDataLink)
-                    }
-
-
-
-
-
-
-                    set({ loading: true })
-
                     try {
-                        if (!initSourceDataLink) console.error(
-                            'There is no link window.initSourceDataLink on the page to request data.')
+
+                        const apiLink = window.initSourceDataLink
+
+                        if (!apiLink) {
+                            get().modalMessageSet(true, 'Ошибка запроса!')
+                            throw new Error(`На странице не указана ссылка на API Getting Init Data window.initSourceDataLink`)
+                        }
+
+                        set({ loading: true })
 
                         const body = new FormData()
                         body.append('domain', 'fandeco')
 
-                        const res = await fetch(
-                            initSourceDataLink,
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   Временно удалить перед деплоем
-                            apiValue
-                                ? { method: 'POST', body: body }
-                                : { method: 'GET' }
-                        )
+                        // const res = await fetch(apiLink, { method: 'POST', body: body })
+                        const res = await fetch(apiLink, { method: 'GET' })
 
-                        if (!res.ok) console.error('Failed to fetch json initial data! URL link is', initSourceDataLink)
+                        if (!res.ok) {
+                            get().modalMessageSet(true, 'Ошибка запроса!')
+                            throw new Error(`Ошибка fetch запроса Получить инит данные! Запрос к URL ${apiLink}`)
+                        }
+
+
+
+
+
 
     // const data = await res.json()
 
     // const borderSet = new Set()
     // data.borders.forEach(b => {
     //     // if (!b.conf_color) borderSet.add(b.id)
-    //     // console.log(b.conf_color)
-    //     borderSet.add(b.conf_color)
+    //     borderSet.add(b.vendor)
     // })
+    // console.log('Рамки')
+    // console.log(Array.from(borderSet).join(', '))
 
     // const devicesSet = new Set()
     // data.devices.forEach(d => {
-    //     devicesSet.add(d.conf_color)
+    //     if (d.conf_product_group) devicesSet.add(d.conf_product_group)
     // })
-
-    // console.log('Цвета рамок')
-    // console.log(Array.from(borderSet).join(', '))
-    // console.log('Цвета устройств')
+    // console.log('Устройства')
     // console.log(Array.from(devicesSet).join(', '))
+
+
+
+
+
 
                         const safeResponse = InitDataContract.passthrough().safeParse(await res.json())
 
@@ -102,8 +92,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             const errorMessage = generateErrorMessage(safeResponse.error.issues, zodErrorOptions)
                             console.log(errorMessage)
 
-                            set({ error: "Zod contract is invalid!", loading: false })
-
+                            set({ error: "Нарушен Zod контракт для Инит данных", loading: false })
                             return
                         }
 
@@ -123,7 +112,8 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         setTimeout(() => set({visible: true}), 1000)
 
                     } catch (error: Error | unknown) {
-                        set({ error: error, loading: false })
+                        console.error(error)
+                        set({ loading: false })
                     }
                 },
 
@@ -179,8 +169,6 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     if (brand && brand !== '') {
                         items = items.filter(i =>
                             i.vendor.toLocaleLowerCase() === brand.toLocaleLowerCase())
-
-                        // console.log('Brand', items);
                     }
                     // #endregion
 
@@ -188,8 +176,6 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     if (collection && collection !== '') {
                         items = items.filter(i =>
                             i.collection.toLocaleLowerCase() === collection.toLocaleLowerCase())
-
-                        // console.log('Collection', items);
                     }
                     // #endregion
 
@@ -197,7 +183,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     if (colors.length) {
                         items = items.filter(i => {
                             const idx = colors.findIndex(
-                                c => c.toLocaleLowerCase() === i.color.toLocaleLowerCase()
+                                c => c.toLocaleLowerCase() === i.conf_color.toLocaleLowerCase()
                             )
                             return idx !== -1
                         })
@@ -266,7 +252,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                 name: 'food-storage',
                 storage: createJSONStorage(() => sessionStorage),
             }
-        )
+        // )
     )
 )
 
