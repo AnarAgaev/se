@@ -25,6 +25,9 @@ export type TViewportTabs = 'configurator' | 'collections' | 'project' | 'hub'
 export type TFunctionOption = { name: string, active?: boolean }
 export type TFunctionOptionList = TFunctionOption[]
 
+export type TColorPalette = Record<string, string>
+export type TColorsType = Exclude<TCalcTabs, 'backgrounds'>
+
 export type TRequestAddConfiguration = {
     projectId: string | number
 	roomId: string | number
@@ -60,6 +63,7 @@ export type TRequestCopyReplaceConfiguration = {
 export type TStore = {
     requestInitData: () => void
     getFilteredItems: () => Array<TBorder> | Array<TDevice>
+    getColorPallette: (type: TColorsType) => TColorPalette
 }
 // #endregion
 

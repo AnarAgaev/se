@@ -224,6 +224,8 @@ const DevicesWorkspace = () => {
     const setModalSelect = useStore(state => state.setModalSelect)
 
     const resetSketch = useStore(state => state.resetSketch)
+
+    const colorPalette = useStore(state => state.getColorPallette('devices'))
     // #endregion
 
     const brandsOptions = useMemo(
@@ -328,6 +330,8 @@ const DevicesWorkspace = () => {
                     setColorFn={setPluralDevicesFilter}
                     removeColorFn={removePluralDevicesFilter}
                     checkColorFn={checkPluralDevicesFilter}
+                    colorPalette={colorPalette}
+                    type={'devices'}
                 />
             }
         </FactoryWorkspace>

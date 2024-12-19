@@ -203,6 +203,8 @@ const BordersWorkspace = () => {
     const setModalSelect = useStore(state => state.setModalSelect)
 
     const resetSketch = useStore(state => state.resetSketch)
+
+    const colorPalette = useStore(state => state.getColorPallette('borders'))
     // #endregion
 
     const brandsOptions = useMemo(
@@ -292,6 +294,8 @@ const BordersWorkspace = () => {
                     setColorFn={setPluralBordersFilter}
                     removeColorFn={removePluralBordersFilter}
                     checkColorFn={checkPluralBordersFilter}
+                    colorPalette={colorPalette}
+                    type={'borders'}
                 />
             }
         </FactoryWorkspace>

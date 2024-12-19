@@ -1,5 +1,5 @@
 import { useId } from 'react'
-import { TSetPluralFilter, TRemovePluralFilter, TCheckPluralFilter } from '../../types'
+import { TSetPluralFilter, TRemovePluralFilter, TCheckPluralFilter, TColorPalette, TColorsType } from '../../types'
 import style from './ColorSelector.module.sass'
 
 interface Props {
@@ -8,66 +8,20 @@ interface Props {
     setColorFn: TSetPluralFilter
     removeColorFn: TRemovePluralFilter
     checkColorFn: TCheckPluralFilter
+    colorPalette: TColorPalette
+    type: TColorsType
 }
 
-// #region Colors Dictionary and Variables
-const {
-    body,
-    title,
-    list,
-    item,
-    color,
-    color_gold,
-    color_gray,
-    color_white,
-    color_copper,
-    color_black,
-    color_silver,
-    color_brown,
-    color_green,
-    color_blue,
-    color_beige,
-    color_orange,
-    color_yellow,
-    color_lightblue,
-    color_transparent,
-    color_pink,
-    color_chromium,
-    color_red,
-    color_purple,
-    color_bronze
-} = style
-
-const colorClassDictionary: Record<string, string> = {
-    "Белый": color_white,
-    "Бежевый": color_beige,
-    "Серый": color_gray,
-    "Коричневый": color_brown,
-    "Зелёный": color_green,
-    "Чёрный": color_black,
-    "Синий": color_blue,
-    "Серебристый": color_silver,
-    "Золотистый": color_gold,
-    "Медный": color_copper,
-    "Оранжевый": color_orange,
-    "Жёлтый": color_yellow,
-    "Желтый": color_yellow,
-    "Голубой": color_lightblue,
-    "Прозрачный": color_transparent,
-    "Розовый": color_pink,
-    "Хром": color_chromium,
-    "Красный": color_red,
-    "Фиолетовый": color_purple,
-    "Бронза": color_bronze,
-}
-// #endregion
+const { body, title, wrap, list, item, label, color, color_borders, color_devices, sign, text } = style
 
 const getColorsList = (
     colors: Array<string>,
     setColorFn: TSetPluralFilter,
     removeColorFn: TRemovePluralFilter,
     checkColorFn: TCheckPluralFilter,
-    id: string
+    id: string,
+    colorPalette: TColorPalette,
+    type: TColorsType
 ): JSX.Element[] => {
 
     const list: (JSX.Element)[] = []
@@ -84,12 +38,19 @@ const getColorsList = (
     colors.forEach(c => {
         if (!c) return
 
-        const clazz = `${color} ${colorClassDictionary[c]}`
         const isChecked = checkColorFn('colors', c)
+        const colorImage = colorPalette[c]
+        const colorClazz = type === 'borders'
+            ? `${color} ${color_borders}`
+            : `${color} ${color_devices}`
 
         list.push(
-            <li key={`${id}-${c}`} className={item}>
-                <label className={clazz} title={c}>
+            <li key={`${id}-${c}`} className={item} title={c}>
+                <label className={label}>
+                    <span className={colorClazz}style={{backgroundImage: `url("${colorImage}")`}}></span>
+                    <p className={sign}>
+                        <span className={text}>{c}</span>
+                    </p>
                     <input
                         className="invisible"
                         type="checkbox"
@@ -104,17 +65,19 @@ const getColorsList = (
     return list
 }
 
-const ColorSelector = ({caption, colors, setColorFn, removeColorFn, checkColorFn}: Props) => {
+const ColorSelector = ({caption, colors, setColorFn, removeColorFn, checkColorFn, colorPalette, type}: Props) => {
     const id = useId()
 
-    const colorsList = getColorsList(colors, setColorFn, removeColorFn, checkColorFn, id)
+    const colorsList = getColorsList(colors, setColorFn, removeColorFn, checkColorFn, id, colorPalette, type)
 
     return (
         <div className={body}>
             <h3 className={title}>{caption}</h3>
-            <ul className={list}>
-                { colorsList }
-            </ul>
+            <div className={wrap}>
+                <ul className={list}>
+                    { colorsList }
+                </ul>
+            </div>
         </div>
     )
 }

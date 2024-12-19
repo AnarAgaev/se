@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import { devtools, createJSONStorage } from 'zustand/middleware'
 import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } from './'
-import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice } from '../types'
+import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette } from '../types'
 import { InitDataContract } from '../zod'
 
 const zodErrorOptions: ErrorMessageOptions = {
@@ -246,6 +246,21 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     // #endregion
 
                     return items
+                },
+
+                getColorPallette: (type) => {
+
+                    const pallette: TColorPalette = {}
+
+                    const items = type === 'borders'
+                        ? [...get().borders]
+                        : [...get().devices]
+
+                    for (const i of items) {
+                        pallette[`${i.conf_color}`] = i.image
+                    }
+
+                    return pallette
                 }
             }),
             {
