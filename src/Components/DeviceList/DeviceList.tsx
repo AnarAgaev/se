@@ -90,7 +90,6 @@ const DeviceList = ({ shouldUpdate, listRef } : TProps) => {
                 const countOfPosts = Object.keys(deviceList).length
 
                 setPadding((borderWidth - (deviceWidth * countOfPosts)) / (countOfPosts + 1))
-                setVisible(true)
             }
 
             timeoutId = setTimeout(calc, 300)

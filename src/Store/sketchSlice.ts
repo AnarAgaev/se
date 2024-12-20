@@ -37,14 +37,19 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
 
         const fixedDeviceList = get().fixDeviceList(numberOfPost as TNumberOfPosts)
 
-        set({
-            visible: false,
-            direction: newDirection,
-            border: border,
-            selectedPost: newSelectedPosts,
-            deviceList: fixedDeviceList,
-            postsCount: newSelectedPosts.length
-        })
+        set({visible: false})
+
+        setTimeout(() => {
+            set({
+                direction: newDirection,
+                border: border,
+                selectedPost: newSelectedPosts,
+                deviceList: fixedDeviceList,
+                postsCount: newSelectedPosts.length
+            })
+        }, 200)
+
+        setTimeout(() => set({ visible: true }), 700)
     },
 
     fixDeviceList: (numberOfPosts) => {

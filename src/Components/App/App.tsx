@@ -3,7 +3,7 @@ import useStore from '../../Store'
 import style from './App.module.sass'
 import '../../Sass/main.sass'
 
-import { Loading, Loader, Tabs, Factory, Viewport, ModalSelect,
+import { Loading, Loader, Tabs, Factory, Viewport, ModalResetBrandOrCollection,
 	ModalWarning, ModalMessage, ModalShare, ModalLoadProject,
 	ModalCopyConfiguration } from '../../Components'
 
@@ -59,7 +59,7 @@ const App = () => {
 
 				</>
 			}
-			<ModalSelect visible={modalSelectVisible} />
+			<ModalResetBrandOrCollection visible={modalSelectVisible} />
 			<ModalWarning visible={modalWarningVisible} />
 			<ModalMessage visible={modalMessageVisible} />
 			<ModalShare visible={modalShareVisible} />

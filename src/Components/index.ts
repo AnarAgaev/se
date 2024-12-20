@@ -36,7 +36,7 @@ import Locations from './Locations/Locations'
 import InputSelect from './InputSelect/InputSelect'
 import OptionLocation from './OptionLocation/OptionLocation'
 import InputAdd from './InputAdd/InputAdd'
-import ModalSelect from './ModalSelect/ModalSelect'
+import ModalResetBrandOrCollection from './ModalResetBrandOrCollection/ModalResetBrandOrCollection'
 import ModalWarning from './ModalWarning/ModalWarning'
 import ModalMessage from './ModalMessage/ModalMessage'
 import ModalShare from './ModalShare/ModalShare'
@@ -90,7 +90,7 @@ export {
     InputSelect,
     OptionLocation,
     InputAdd,
-    ModalSelect,
+    ModalResetBrandOrCollection,
     ModalWarning,
     ModalMessage,
     ModalShare,

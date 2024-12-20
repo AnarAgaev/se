@@ -1,6 +1,6 @@
 import { Modal } from '../../Components'
 import useStore from '../../Store'
-import style from './ModalSelect.module.sass'
+import style from './ModalResetBrandOrCollection.module.sass'
 
 const ModalResetBrandOrCollection = ({visible}: {visible: boolean}) => {
 

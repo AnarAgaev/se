@@ -101,12 +101,23 @@ const Sketch = () => {
     useEffect(
         () => {
             const updateMaxWidth = () => {
-                const target = direction === 'horizontal'
-                    ? sketchRef.current?.offsetWidth
-                    : sketchRef.current?.offsetHeight
+                if (!selectedBorder?.number_of_posts) {
+                    setMaxWidth('none')
+                    return
+                }
 
-                if (target) {
-                    setMaxWidth(target * 0.8 + 'px')
+                const calculatedHeight = selectedBorder?.number_of_posts[0] === '1'
+                    ? sketchRef.current?.offsetHeight
+                    : direction === 'horizontal'
+                        ? sketchRef.current?.offsetWidth
+                        : sketchRef.current?.offsetHeight
+
+                const ration: number | undefined = selectedBorder?.number_of_posts[0] === '1'
+                    ? 0.55
+                    : 0.8
+
+                if (calculatedHeight && ration) {
+                    setMaxWidth(calculatedHeight * ration + 'px')
                 }
             }
 
@@ -116,7 +127,7 @@ const Sketch = () => {
 
             return () => window.removeEventListener('resize', updateMaxWidth)
         },
-        [maxWidth, direction, selectedPost]
+        [maxWidth, direction, selectedBorder]
     )
 
     const onInc = () => { // +
@@ -261,10 +272,10 @@ const Sketch = () => {
                     <div style={{opacity: visible ? '1' : '0', transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`}}
                         className={container} >
                         { selectedBorder && <img
-                                ref={borderRef}
-                                onLoad={onLoad}
-                                style={{maxWidth: maxWidth}}
-                                src={selectedBorder.image} alt={selectedBorder.name} />
+                            ref={borderRef}
+                            onLoad={onLoad}
+                            style={{maxWidth: maxWidth}}
+                            src={selectedBorder.image} alt={selectedBorder.name} />
                         }
                         { selectedBorder && <DeviceList shouldUpdate={shouldUpdate} listRef={listRef}/> }
                     </div>
