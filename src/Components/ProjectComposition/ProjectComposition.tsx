@@ -1,6 +1,7 @@
 import { MouseEvent } from 'react'
-import { formatNumber, getPostWordDeclension } from '../../Helpers'
-import { TAppStore, TProject, TConfiguration, TConfigurationList, TDeviceList, TBorder } from '../../types'
+import { formatNumber, getPostWordDeclension, collapseDevices } from '../../Helpers'
+import { TAppStore, TProject, TConfiguration, TConfigurationList,
+    TDeviceList, TBorder } from '../../types'
 import useStore from '../../Store'
 import style from './ProjectComposition.module.sass'
 
@@ -58,12 +59,17 @@ const getBorder = (border: TBorder): JSX.Element => {
 
 const getDeviceList = (devices: TDeviceList): JSX.Element[] | null => {
 
-    if (!devices.length) return null
+    const deviceList = collapseDevices(devices)
 
-    const deviceList: JSX.Element[] = []
+    return deviceList.map(d => {
 
-    devices.forEach(d => {
-        deviceList.push(
+        const price = typeof d.price === 'string'
+            ? parseFloat(d.price)
+            : d.price
+
+        const cost = formatNumber(price * d.selectedCount)
+
+        return (
             <tr key={d.show_article}>
                 <td>
                     <div className={item}>
@@ -76,13 +82,11 @@ const getDeviceList = (devices: TDeviceList): JSX.Element[] | null => {
                         </span>
                     </div>
                 </td>
-                <td>1</td>
-                <td>{formatNumber(d.price)} р.</td>
+                <td>{d.selectedCount}</td>
+                <td>{cost} р.</td>
             </tr>
         )
     })
-
-    return deviceList
 }
 
 const getConfigurationList = (

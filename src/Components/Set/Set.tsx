@@ -1,5 +1,6 @@
 import { useId, useMemo } from 'react'
-import { TDevice, TSketchStore, TAppStore } from '../../types'
+import { TSketchStore, TAppStore, TDeviceList } from '../../types'
+import { collapseDevices } from '../../Helpers'
 import useEmblaCarousel from 'embla-carousel-react'
 import usePrevNextButtons from './CarouselArrowButtons'
 import useStore from '../../Store'
@@ -8,29 +9,6 @@ import style from './Set.module.sass'
 const { wrapper, set, list, item, pic, content, head, body,
     caption, close, data, price, count, add, nav, navButton,
     prev, next, navDisabled } = style
-
-const collapseDevices = (devices: TSketchStore['deviceList']): (TDevice & { selectedCount: number })[]  => {
-    const devicesMap = new Map()
-
-    for (const key in devices) {
-        const i = parseInt(key)
-
-        if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
-            const d = devices[i]
-
-            if (!d) continue
-
-            if (devicesMap.has(d.id)) {
-                const existingDevice = devicesMap.get(d.id)
-                existingDevice.selectedCount++
-            } else {
-                devicesMap.set(d.id, { ...d, selectedCount: 1 })
-            }
-        }
-    }
-
-    return Array.from(devicesMap.values())
-}
 
 const getBorder = (
     id: string,
@@ -63,7 +41,7 @@ const getBorder = (
 
 const getSetList = (
     id: string,
-    deviceList: TSketchStore['deviceList'],
+    deviceList: TDeviceList,
     countOfSets: TAppStore['countOfSets'],
     removeDevice: TSketchStore['removeDevice']
 ): JSX.Element[] => {
@@ -146,14 +124,15 @@ const Set = () => {
         [id, border, countOfSets, resetSketch]
     )
 
+    const devices = Object.values(deviceList).filter(Boolean) as TDeviceList
+
     const setList = useMemo(
-        () => getSetList(id, deviceList, countOfSets, removeDevice),
-        [id, deviceList, countOfSets, removeDevice]
+        () => getSetList(id, devices, countOfSets, removeDevice),
+        [id, devices, countOfSets, removeDevice]
     )
     // #endregion
 
     const prevBtnClazz = `button button_dark ${navButton} ${prev} ${prevBtnDisabled ? navDisabled : ''}`
-
     const nextBrnClazz = `button button_dark ${navButton} ${next} ${nextBtnDisabled ? navDisabled : ''}`
 
     return (
