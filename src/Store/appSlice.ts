@@ -436,7 +436,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             if (!res.ok) {
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса ${from.type === 'copy' ? "копировать" : "перенести"} конфигурацию! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса ${from.type === 'copy' ? "копировать" : "перенести"} комплект! Запрос к URL ${requestLink}`)
             }
 
             const data = await res.json()
@@ -446,14 +446,14 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 throw new Error(data.error)
             }
 
-            // 1. Получаем копию конфигурации
-            // 2. Создаем новую конфигурацию
+            // 1. Получаем копию комплекта
+            // 2. Создаем новый комплект
             // 3. Если тип запроса Перенести (replace), то удаляем референс
 
             const newConfigurationId: string | number = data.id
             const newProjects = [...get().projects]
 
-            // 1. Получаем копию конфигурации
+            // 1. Получаем копию комплекта
             let configurationCopy: TConfiguration = {} as TConfiguration
 
             for (const p of newProjects) {
@@ -478,7 +478,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }
 
 
-            // 2. Создаем новую конфигурацию
+            // 2. Создаем новый комплект
             const toProjectIdx = newProjects.findIndex(p => p.id === to.projectId)
             const rooms = newProjects[toProjectIdx].rooms
 
@@ -631,7 +631,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             const newRooms = newProjects[editProjectKey].rooms
 
-            // Если уже добавляли конфигурации
+            // Если уже добавляли комплект
             if (newRooms) {
                 const editRoomKey = newRooms.findIndex(r => r.id === roomId)
 
@@ -647,7 +647,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
                 newProjects[editProjectKey].rooms = [...newRooms]
             }
-            // Если еще не добавляли ни одной конфигурации
+            // Если еще не добавляли ни один комплект
             else {
                 newProjects[editProjectKey].rooms = [{
                     id: roomId,
@@ -746,7 +746,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             if (!res.ok) {
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Обновить Количество Конфигураций! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса Обновить Количество Комплектов! Запрос к URL ${requestLink}`)
             }
 
             const data = await res.json()
@@ -849,7 +849,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             set({
                 dataLoading: false,
                 modalMessageVisible: true,
-                modalMessageCaption: `Конфигурация удалена`,
+                modalMessageCaption: `Комплект удален`,
                 projects: [...newProjects]
             })
         }
@@ -878,7 +878,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             if (!res.ok) {
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Удалить Конфигурацию! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса Удалить Комплект! Запрос к URL ${requestLink}`)
             }
 
             const data = await res.json()

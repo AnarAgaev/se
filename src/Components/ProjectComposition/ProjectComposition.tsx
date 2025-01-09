@@ -150,24 +150,24 @@ const getConfigurationList = (
                             <td>
                                 <button  onClick={() => {}}
                                     className='button button_small button_dark'
-                                    title="Изменить конфигурацию">
+                                    title="Изменить комплект">
                                     <span>Изменить</span>
                                     <i className='icon icon_change'></i>
                                 </button>
                                 <button onClick={onReplace}
                                     className='button button_small button_dark'
-                                    title="Перенести конфигурацию в другой проект/помещение">
+                                    title="Перенести комплект в другой проект/помещение">
                                     <span>Перенести</span>
                                     <i className='icon icon_move'></i>
                                 </button>
                                 <button onClick={onCopy}
                                     className='button button_small button_dark'
-                                    title="Скопировать конфигурацию в другой проект/помещение">
+                                    title="Скопировать комплект в другой проект/помещение">
                                     <span>Скопировать</span>
                                     <i className='icon icon_copy'></i>
                                 </button>
                                 <button onClick={onRemove}
-                                    title="Удалить конфигурацию"
+                                    title="Удалить комплект"
                                     className='button button_small button_dark'>
                                     <span>Удалить</span>
                                     <i className='icon icon_basket'></i>
@@ -251,12 +251,12 @@ const ProjectComposition = ({ project }: { project: TProject }) => {
 
     if (project && !project.rooms?.length) return (
         <div className={composition}>
-            <h3 className={title}>В проекте нет конфигураций!</h3>
+            <h3 className={title}>В проект не добавлено ни одного комплекта!</h3>
             <ul className={help}>
                 <li>Перейдите на вкладку Конфигуратор;</li>
-                <li>Выберите Рамку и Устройство;</li>
+                <li>Добавьте Рамку и Устройство на холст;</li>
                 <li>Выберите Проект и Помещение;</li>
-                <li>Кликните Добавить в проект, чтобы добавить конфигурацию.</li>
+                <li>Кликните Добавить в проект, чтобы добавить комплект.</li>
             </ul>
         </div>
     )
