@@ -17,7 +17,7 @@ const ModalMessage = ({ visible }: {visible: boolean}) => {
         <Modal visible={visible} title={modalMessageCaption} onClose={() => modalMessageSet(false, '')}>
             <button onClick={() => modalMessageSet(false, '')}
                     className='button button_block button_dark'>
-                    Понятно
+                    Закрыть
             </button>
         </Modal>
     )

@@ -631,7 +631,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             const newRooms = newProjects[editProjectKey].rooms
 
-            // Если уже добавляли ни одной конфигурации
+            // Если уже добавляли конфигурации
             if (newRooms) {
                 const editRoomKey = newRooms.findIndex(r => r.id === roomId)
 
@@ -658,8 +658,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             setTimeout(() => set({
                 dataLoading: false,
-                modalMessageVisible: true,
-                modalMessageCaption: `Конфигурация добавлена`,
+                modalAddConfigurationVisible: true,
                 projects: newProjects
             }), 500)
 
@@ -994,7 +993,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // #endregion
 
 
-    // #region
+    // #region ModalMessage
+    modalAddConfigurationVisible: false,
+    modalAddConfigurationSet: (visible) => {
+        set({
+            loading: false,
+            dataLoading: false,
+            modalAddConfigurationVisible: visible,
+        })
+    },
+    // #endregion
+
+
+    // #region ModalCopyConfiguration
     modalCopyConfigurationType: null,
     modalCopyConfigurationVisible: false,
     modalCopyConfigurationCaption: '',

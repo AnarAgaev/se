@@ -5,7 +5,7 @@ import '../../Sass/main.sass'
 
 import { Loading, Loader, Tabs, Factory, Viewport, ModalResetBrandOrCollection,
 	ModalWarning, ModalMessage, ModalShare, ModalLoadProject,
-	ModalCopyConfiguration } from '../../Components'
+	ModalCopyConfiguration, ModalAddConfiguration } from '../../Components'
 
 const { app, caption, body } = style
 
@@ -22,6 +22,7 @@ const App = () => {
 		modalShareVisible,
 		modalLoadProjectVisible,
 		modalCopyConfigurationVisible,
+		modalAddConfigurationVisible
 	] = useStore(state => [
 		state.requestInitData,
 		state.loading,
@@ -31,7 +32,8 @@ const App = () => {
 		state.modalMessageVisible,
 		state.modalShareVisible,
 		state.modalLoadProjectVisible,
-		state.modalCopyConfigurationVisible
+		state.modalCopyConfigurationVisible,
+		state.modalAddConfigurationVisible
 	])
 	// #endregion
 
@@ -65,6 +67,7 @@ const App = () => {
 			<ModalShare visible={modalShareVisible} />
 			<ModalLoadProject visible={modalLoadProjectVisible} />
 			<ModalCopyConfiguration visible={modalCopyConfigurationVisible} />
+			<ModalAddConfiguration visible={modalAddConfigurationVisible} />
 			<Loading />
 		</section>
 	)

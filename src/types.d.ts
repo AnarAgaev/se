@@ -397,6 +397,12 @@ export type TAppStore = {
     // #endregion
 
 
+    // #region Modal Add Configuration
+    modalAddConfigurationVisible: boolean
+    modalAddConfigurationSet: (visible: boolean) => void
+    // #endregion
+
+
     // #region Modal Share
     modalShareVisible: boolean
     modalShareValue: string | null
