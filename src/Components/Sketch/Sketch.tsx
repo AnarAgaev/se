@@ -10,8 +10,8 @@ type TOnSetPostsCount = (
 ) => void
 
 const { sketch, construction, posts, directions, horizontal, vertical, save,
-    controllers, trashСan, minus, plus, disabled, set, wrap, placeholder, container,
-    postActive, directionActive, loader } = style
+    controllers, trashСan, minus, plus, disabled, set, wrap, placeholder,
+    container, deviceContainer, postActive, directionActive, loader } = style
 
 const createPosts = (
     id: string,
@@ -50,6 +50,7 @@ const Sketch = () => {
         fireError,
         resetSketch,
         deviceList,
+        checkDevices,
         direction,
         setDirection,
         visible,
@@ -70,6 +71,7 @@ const Sketch = () => {
         state.fireError,
         state.resetSketch,
         state.deviceList,
+        state.checkDevices,
         state.direction,
         state.setDirection,
         state.visible,
@@ -89,6 +91,8 @@ const Sketch = () => {
 
     const postsListRef = useRef<HTMLUListElement | null>(null)
     const directionsRef = useRef<HTMLUListElement | null>(null)
+
+    const isDeviceSelected = checkDevices()
 
     const transformStyle = {
         transform: `scale(${scale})`,
@@ -267,17 +271,20 @@ const Sketch = () => {
             {/* Image Border and Devices */}
             <div className={set}>
                 <div className={wrap} style={transformStyle}>
+                    {/* { !selectedBorder && !isDeviceSelected && visible && <span className={placeholder}></span> } */}
                     { !selectedBorder && visible && <span className={placeholder}></span> }
 
-                    <div style={{opacity: visible ? '1' : '0', transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`}}
-                        className={container} >
+                    <div style={{
+                            opacity: visible ? '1' : '0',
+                            transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`
+                        }} className={`${container} ${!selectedBorder && isDeviceSelected ? deviceContainer : ''}`} >
                         { selectedBorder && <img
                             ref={borderRef}
                             onLoad={onLoad}
                             style={{maxWidth: maxWidth}}
                             src={selectedBorder.image} alt={selectedBorder.name} />
                         }
-                        { selectedBorder && <DeviceList shouldUpdate={shouldUpdate} listRef={listRef}/> }
+                        { isDeviceSelected && <DeviceList shouldUpdate={shouldUpdate} listRef={listRef}/> }
                     </div>
                 </div>
             </div>

@@ -100,14 +100,18 @@ const ProjectWorkspace = () => {
 
             for (const c of configurations) {
 
-                let totalConfigurationsCost = typeof c.border.price === 'string'
-                    ? parseFloat(c.border.price)
-                    : c.border.price
+                let totalConfigurationsCost = !c.border
+                    ? 0
+                    : typeof c.border.price === 'string'
+                        ? parseFloat(c.border.price)
+                        : c.border.price
 
-                for (const d of c.devices) {
-                    totalConfigurationsCost += typeof d.price === 'string'
-                        ? parseFloat(d.price)
-                        : d.price
+                if (c.devices) {
+                    for (const d of c.devices) {
+                        totalConfigurationsCost += typeof d.price === 'string'
+                            ? parseFloat(d.price)
+                            : d.price
+                    }
                 }
 
                 total += (totalConfigurationsCost * c.count)

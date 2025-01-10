@@ -14,21 +14,19 @@ const Price = () => {
         setCountOfSets,
         border,
         devices,
+        checkDevices
     ] = useStore(state => [
         state.countOfSets,
         state.setCountOfSets,
         state.border,
-        state.deviceList
+        state.deviceList,
+        state.checkDevices
     ])
     // #endregion
 
     const totalPrice = useMemo(
         () => {
             let sum: number = 0
-
-            if (!border) {
-                return '0'
-            }
 
             const toNumber = (el: TBorder | TDevice): number => {
                 return typeof el.price === 'string'
@@ -54,16 +52,16 @@ const Price = () => {
         [ border, devices, count ])
 
     const onCalc = (direction: -1 | 1) => {
-        if (!border) return
-
         setCountOfSets(direction)
     }
+
+    const isDeviceSelected = checkDevices()
 
     return (
         <div className={wrap}>
             <span className={`${price} ${parseInt(totalPrice) === 0 ? priceDisabled : ''}`}>{totalPrice} ₽</span>
 
-            <div className={`${counter} ${!border ? counterDisabled : ''}`}>
+            <div className={`${counter} ${(!border && !isDeviceSelected) ? counterDisabled : ''}`}>
                 <button type="button"
                     onClick={() => onCalc(-1)}
                     className={`${controller} ${controller_dec}`}></button>

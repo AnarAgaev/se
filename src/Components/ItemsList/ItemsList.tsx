@@ -82,10 +82,10 @@ const getElementsList = (
 
         if (type === 'devices' && isDevice(item)) {
 
-            if (border === null) {
-                modalMessageSet(true, 'Вначале необходимо выбрать рамку')
-                return
-            }
+            // if (border === null) {
+            //     modalMessageSet(true, 'Вначале необходимо выбрать рамку')
+            //     return
+            // }
 
             if (!hasNull(deviceList)) {
                 const msg = `Все посты заполнены. ${!selectedPost[postsCount - 1] ? 'Выберите рамку с большим количеством постов или' : ''} ${!selectedPost[postsCount - 1] ? 'у' : 'У'}далите устройства.`

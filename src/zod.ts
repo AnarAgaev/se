@@ -97,8 +97,8 @@ export type TVendorList = z.infer<typeof VendorList>
 // #region Projects
 export const Configuration = z.object({
     id: z.union([z.number(), z.string()]),
-    border: Border,
-    devices: DeviceList,
+    border: Border.optional(),
+    devices: DeviceList.optional(),
     count: z.number(),
     background: z.union([z.number(), z.string()]).optional(),
     edit: z.boolean().optional()

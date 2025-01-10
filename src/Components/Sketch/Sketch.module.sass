@@ -84,7 +84,6 @@
         background: var(--color-opacity-back)
 
 
-
 .directions
     display: flex
     align-items: center
@@ -290,6 +289,14 @@
     left: 50%
     transform: translate(-50%, -50%)
     transition: opacity .05s linear
+
+
+.deviceContainer
+    height: 50%
+    aspect-ratio: 1 / 1
+
+    @media (min-width: $md)
+        height: 55%
 
 
 .loader

@@ -31,7 +31,7 @@ export type TColorsType = Exclude<TCalcTabs, 'backgrounds'>
 export type TRequestAddConfiguration = {
     projectId: string | number
 	roomId: string | number
-	border: TBorder
+	border: TBorder | null
 	devices: TDevice[]
     counts: number
 	backgroundId?: string | number

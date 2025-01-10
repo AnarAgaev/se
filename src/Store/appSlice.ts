@@ -14,6 +14,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         set({ error: error })
     },
 
+
     setCountTimeoutId: undefined,
     startValueConfigurationCount: null,
 
@@ -61,7 +62,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
 
     // #region Tabs and Pages
-    activeCalcTab: 'borders',
+    activeCalcTab: 'devices',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
     activeViewportTab: 'configurator',
@@ -577,8 +578,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
     addConfiguration: async (projectId, roomId, roomName, backgroundId, border, devices, counts) => {
 
-        if (border === null) return
-
         const configuration: TRequestAddConfiguration = {
             projectId: projectId,
             roomId: roomId,
@@ -622,10 +621,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             const configuration: TConfiguration = {
                 id: data.id,
-                border: border,
-                devices: [...devices],
+                // border: border,
+                // devices: [...devices],
                 count: get().countOfSets
             }
+
+            if (border !== null) {
+                configuration.border = border
+            }
+
+            if (devices.length) {
+                configuration.devices = [...devices]
+            }
+
 
             if (backgroundId) configuration.background = backgroundId
 

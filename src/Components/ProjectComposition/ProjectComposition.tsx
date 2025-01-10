@@ -17,26 +17,31 @@ const onShow: TOnShow = (e) => {
 }
 
 const getTotalPriceConfiguration = (conf: TConfiguration): string => {
+
     const count = conf.count
 
-    const borderPrice = typeof conf.border.price === 'string'
-        ? parseFloat(conf.border.price)
-        : conf.border.price
+    const borderPrice = !conf.border
+        ? 0
+        : typeof conf.border.price === 'string'
+            ? parseFloat(conf.border.price)
+            : conf.border.price
 
-    const devicesPrice: number = conf.devices.reduce((acc, device) => {
-        if (typeof device.price === 'string') {
-            return acc + parseFloat(device.price)
-        } else if (typeof device.price === 'number') {
-            return acc + device.price
-        } else {
-            return acc
-        }
-    }, 0)
+    const devicesPrice: number = !conf.devices
+        ? 0
+        : conf.devices.reduce((acc, device) => {
+            if (typeof device.price === 'string') {
+                return acc + parseFloat(device.price)
+            } else if (typeof device.price === 'number') {
+                return acc + device.price
+            } else {
+                return acc
+            }
+        }, 0)
 
     return formatNumber((borderPrice + devicesPrice) * count)
 }
 
-const getBorder = (border: TBorder): JSX.Element => {
+const getBorder = (border: TBorder, isDevices: boolean): JSX.Element => {
     return (
         <tr key={border.show_article}>
             <td>
@@ -47,7 +52,7 @@ const getBorder = (border: TBorder): JSX.Element => {
                     <span className={desc}>
                         <mark>{border.name}</mark>
                         <i>{border.show_article}</i>
-                        <button onClick={onShow} />
+                        { isDevices && <button onClick={onShow} /> }
                     </span>
                 </div>
             </td>
@@ -103,17 +108,23 @@ const getConfigurationList = (
 
     configurations.forEach((c, idx) => {
 
-        const vendor = c.border.vendor
+        const vendor = c.border
+            ? c.border.vendor
+            : c.devices
+                ? c.devices[0].vendor
+                : ''
 
-        const postsCount = !c.border.number_of_posts
-            ? null
-            : parseInt(c.border.number_of_posts[0])
+        const postsCount = !c.border
+            ? 1
+            : !c.border.number_of_posts
+                ? 1
+                : parseInt(c.border.number_of_posts[0])
 
         const posts = `, ${postsCount} ${postsCount ? getPostWordDeclension(postsCount) : ''}`
 
         const colorSet = new Set()
-        colorSet.add(c.border.color)
-        c.devices.forEach(d => colorSet.add(d.color))
+        if (c.border) colorSet.add(c.border.color)
+        if (c.devices) c.devices.forEach(d => colorSet.add(d.color))
         const color = Array.from(colorSet).join('/')
 
         const onChangeCount = (direction: -1 | 1) => setConfigurationCount(projectId, roomId, c.id, direction)
@@ -142,8 +153,8 @@ const getConfigurationList = (
                         </tr>
                     </thead>
                     <tbody>
-                        { getBorder(c.border) }
-                        { getDeviceList(c.devices) }
+                        { c.border && getBorder(c.border, c.devices ? true : false) }
+                        { c.devices && getDeviceList(c.devices) }
                     </tbody>
                     <tfoot>
                         <tr>

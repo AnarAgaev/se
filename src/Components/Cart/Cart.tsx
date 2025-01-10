@@ -41,13 +41,8 @@ const Cart = () => {
     const isRoomSelected = checkRoom()
 
     const addToProjectHandler = () => {
-        if (!isSelectedBorder) {
-            modalMessageSet(true, 'В начале необходимо выбрать рамку')
-            return
-        }
-
-        if (!isSelectedDevice) {
-            modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство')
+        if (!isSelectedBorder && !isSelectedDevice) {
+            modalMessageSet(true, 'Необходимо выбрать рамку или хотя бы одно устройство')
             return
         }
 
@@ -86,7 +81,7 @@ const Cart = () => {
         alert("Отправляем запрос на API --- Добавляем комплект в корзину")
     }
 
-    const addToProjectButtonClazz = `button button_block button_dark ${!isSelectedBorder || !isSelectedDevice || !isProjectSelected || !isRoomSelected ? 'clickedDisabled' : ''}`
+    const addToProjectButtonClazz = `button button_block button_dark ${(!isSelectedBorder && !isSelectedDevice) || !isProjectSelected || !isRoomSelected ? 'clickedDisabled' : ''}`
     const addToCartButtonClazz = `button button_block button_dark ${!isSelectedDevice ? 'clickedDisabled' : ''}`
 
     return (
@@ -100,7 +95,7 @@ const Cart = () => {
                     Добавить в проект
                 </button>
             </div>
-            { Boolean(selectedBorder) &&
+            { (isSelectedBorder || isSelectedDevice) &&
                 <div className={section}>
                     <h3 className={caption}>Состав комплекта</h3>
                     <Set />
