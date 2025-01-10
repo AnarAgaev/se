@@ -35,7 +35,23 @@ const getColorsList = (
         removeColorFn('colors', color)
     }
 
-    colors.forEach(c => {
+    const sortedColors = colors.sort((a, b) => {
+        // Функция для сравнения строк по Unicode кодам символов
+        const compareStrings = (str1: string, str2: string) => str1.localeCompare(str2, 'ru', { sensitivity: 'base' });
+
+        // Определяем, является ли строка кириллической
+        const isCyrillic = (str: string) => /[а-я]/i.test(str);
+
+        if (isCyrillic(a) && !isCyrillic(b)) {
+          return -1; // Если a - кириллическая, а b - латинская, то a идет раньше
+        } else if (!isCyrillic(a) && isCyrillic(b)) {
+          return 1; // Если a - латинская, а b - кириллическая, то b идет раньше
+        } else {
+          return compareStrings(a, b); // Иначе сравниваем строки как обычно
+        }
+    });
+
+    sortedColors.forEach(c => {
         if (!c) return
 
         const isChecked = checkColorFn('colors', c)
