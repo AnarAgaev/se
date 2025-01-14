@@ -4,6 +4,8 @@ import { TProjectList, TRoomList, TAppStore } from '../../types'
 import useStore from '../../Store'
 import style from './Locations.module.sass'
 
+const { locations, item, text, location, id } =style
+
 const getProjectsOptionsList = (
     key: string,
     projectsList: TProjectList,
@@ -56,14 +58,16 @@ const Locations = () => {
         rooms,
         addRoom,
         setProject,
-        setRoom
+        setRoom,
+        editConfiguration
     ] = useStore(state => [
         state.projects,
         state.addProject,
         state.rooms,
         state.addRoom,
         state.setProject,
-        state.setRoom
+        state.setRoom,
+        state.editConfiguration
     ])
     // #endregion
 
@@ -80,24 +84,61 @@ const Locations = () => {
     const selectedProject = projects.filter(p => p.selected)[0]
     const selectedRoom = rooms.filter(r => r.selected)[0]
 
+    const [currentProject, currentRoom] = (() => {
+        let project: string = ''
+        let room: string = ''
+
+        projects.forEach(p => {
+            if (p.id === editConfiguration?.projectId && !project) {
+                project = p.name
+
+                p.rooms?.forEach(r => {
+                    if (r.id === editConfiguration.roomId && !room) {
+                        room = r.name
+                    }
+                })
+            }
+        })
+
+        return [ project, room ]
+    })()
+
     return (
-        <div className={style.locations}>
-            <InputSelect
-                type={'project'}
-                cbf={addProject}
-                title={selectedProject ? 'Проект' : 'Выбрать проект'}
-                placeholder="Создать проект"
-                selectedValue={selectedProject && selectedProject.name} >
-                { projectsOptions }
-            </InputSelect>
-            <InputSelect
-                type={'room'}
-                cbf={addRoom}
-                title={selectedRoom ? 'Помещение' : 'Выбрать помещение'}
-                placeholder="Создать помещение"
-                selectedValue={selectedRoom && selectedRoom.name} >
-                { roomsOptions }
-            </InputSelect>
+        <div className={locations}>
+            { !editConfiguration
+                ? <>
+                    <InputSelect
+                        type={'project'}
+                        cbf={addProject}
+                        title={selectedProject ? 'Проект' : 'Выбрать проект'}
+                        placeholder="Создать проект"
+                        selectedValue={selectedProject && selectedProject.name} >
+                        { projectsOptions }
+                    </InputSelect>
+                    <InputSelect
+                        type={'room'}
+                        cbf={addRoom}
+                        title={selectedRoom ? 'Помещение' : 'Выбрать помещение'}
+                        placeholder="Создать помещение"
+                        selectedValue={selectedRoom && selectedRoom.name} >
+                        { roomsOptions }
+                    </InputSelect>
+                </>
+                : <>
+                    <div className={item}>
+                        <p className={text}>
+                            <span className={location}>{currentProject}</span>
+                            <span className={id}>Проект</span>
+                        </p>
+                    </div>
+                    <div className={item}>
+                        <p className={text}>
+                            <span className={location}>{currentRoom}</span>
+                            <span className={id}>Помещение</span>
+                        </p>
+                    </div>
+                </>
+            }
         </div>
     )
 }

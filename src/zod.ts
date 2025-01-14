@@ -95,13 +95,17 @@ export type TVendorList = z.infer<typeof VendorList>
 
 
 // #region Projects
+export const Directions = z.union([z.literal('horizontal'), z.literal('vertical')])
+export type TDirections = z.infer<typeof Directions>
+
 export const Configuration = z.object({
     id: z.union([z.number(), z.string()]),
     border: Border.optional(),
-    devices: DeviceList.optional(),
+    devices: z.array(z.union([Device, z.null()])).optional(),
     count: z.number(),
     background: z.union([z.number(), z.string()]).optional(),
-    edit: z.boolean().optional()
+    edit: z.boolean().optional(),
+    direction: Directions
 })
 export type TConfiguration = z.infer<typeof Configuration>
 

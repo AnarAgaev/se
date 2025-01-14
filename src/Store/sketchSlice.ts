@@ -1,5 +1,5 @@
 import { StateCreator  } from 'zustand'
-import { TSketchStore, TDefaultSketchProps, TSketchDeviceList, TNumberOfPosts } from '../types'
+import { TSketchStore, TDefaultSketchProps, TSketchDeviceList, TNumberOfPosts, TBorder, TDevice, TDirections } from '../types'
 
 const defaultSketchProps:TDefaultSketchProps = {
     border: null,
@@ -138,7 +138,56 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
         return false
     },
 
-    setVisible: (direction) => set({visible: direction})
+    setVisible: (direction) => set({visible: direction}),
+
+    setEditSketch: (border, numberOfPost, countOfPosts, devices, direction) => {
+
+        // const newDirection = numberOfPost === 1
+        //     ? 'horizontal'
+        //     : get().direction
+
+        type TSetObject = {
+            border?: TBorder
+            selectedPost: boolean[]
+            postsCount: number
+            deviceList?: TSketchDeviceList
+            direction: TDirections
+        }
+
+        const setObject: TSetObject = {
+            direction,
+            postsCount: 1,
+            selectedPost: []
+        }
+
+        if (border) setObject.border = border
+
+        if (countOfPosts) setObject.postsCount = countOfPosts
+
+        if (countOfPosts && numberOfPost) {
+            const selectedPosts = [...new Array(countOfPosts)]
+            .fill(false)
+            .map((_el, idx) => idx === numberOfPost - 1)
+
+            setObject.selectedPost = selectedPosts
+        }
+
+        if (devices) {
+            type deviceObj = {
+                [key: number]: TDevice | null
+            }
+
+            const deviceList: deviceObj = {}
+
+            devices.forEach((d, idx) => deviceList[idx + 1] = d)
+
+            setObject.deviceList = deviceList as TSketchDeviceList
+        }
+
+        set({visible: false})
+        setTimeout(() => set(setObject), 200)
+        setTimeout(() => set({ visible: true }), 700)
+    }
 })
 
 export default sketchSlice

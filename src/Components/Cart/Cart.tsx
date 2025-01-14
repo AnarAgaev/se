@@ -1,6 +1,5 @@
 import useStore from '../../Store'
 import { Price, Locations, Set } from '../../Components'
-import { TDevice } from '../../types'
 import style from './Cart.module.sass'
 
 const { cart, section, caption } = style
@@ -19,7 +18,9 @@ const Cart = () => {
         addConfiguration,
         getSelectedBackgroundId,
         deviceList,
-        countOfSets
+        countOfSets,
+        editConfiguration,
+        direction
     ] = useStore(state => [
         state.border,
         state.checkDevices,
@@ -31,7 +32,9 @@ const Cart = () => {
         state.addConfiguration,
         state.getSelectedBackgroundId,
         state.deviceList,
-        state.countOfSets
+        state.countOfSets,
+        state.editConfiguration,
+        state.direction
     ])
     // #endregion
 
@@ -59,7 +62,7 @@ const Cart = () => {
         const project = [...projects].filter(p => p.selected)[0]
         const room = [...rooms].filter(r => r.selected)[0]
         const backgroundId = getSelectedBackgroundId()
-        const devices = Object.values(deviceList).filter(d => !!d)
+        const devices = Object.values(deviceList)
 
         addConfiguration(
             project.id,
@@ -67,8 +70,9 @@ const Cart = () => {
             room.name,
             backgroundId,
             selectedBorder,
-            devices as TDevice[],
-            countOfSets
+            devices,
+            countOfSets,
+            direction
         )
     }
 
@@ -90,10 +94,17 @@ const Cart = () => {
                 <h3 className={caption}>Стоимость полного комплекта</h3>
                 <Price />
                 <Locations />
-                <button type="button" onClick={addToProjectHandler}
-                    className={addToProjectButtonClazz}>
-                    Добавить в проект
-                </button>
+                { !editConfiguration
+                    ? <button type="button" onClick={addToProjectHandler}
+                        className={addToProjectButtonClazz}>
+                        Добавить в проект
+                    </button>
+                    : <button type="button" onClick={() => alert('Show modal')}
+                        className='button button_block button_dark'>
+                        Сохранить комплект
+                    </button>
+                }
+
             </div>
             { (isSelectedBorder || isSelectedDevice) &&
                 <div className={section}>

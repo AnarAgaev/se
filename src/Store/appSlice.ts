@@ -62,7 +62,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
 
     // #region Tabs and Pages
-    activeCalcTab: 'devices',
+    activeCalcTab: 'borders',
     setActiveCalcTab: (tab) => set({activeCalcTab: tab}),
 
     activeViewportTab: 'configurator',
@@ -576,14 +576,15 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         }
     },
 
-    addConfiguration: async (projectId, roomId, roomName, backgroundId, border, devices, counts) => {
+    addConfiguration: async (projectId, roomId, roomName, backgroundId, border, devices, counts, direction) => {
 
         const configuration: TRequestAddConfiguration = {
-            projectId: projectId,
-            roomId: roomId,
-            border: border,
-            devices: [...devices],
-            counts: counts,
+            projectId,
+            roomId,
+            border,
+            devices,
+            counts,
+            direction
         }
 
         if (backgroundId) configuration.backgroundId = backgroundId
@@ -623,7 +624,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 id: data.id,
                 // border: border,
                 // devices: [...devices],
-                count: get().countOfSets
+                count: get().countOfSets,
+                direction: direction
             }
 
             if (border !== null) {
@@ -631,9 +633,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }
 
             if (devices.length) {
-                configuration.devices = [...devices]
+                configuration.devices = devices
             }
-
 
             if (backgroundId) configuration.background = backgroundId
 
@@ -649,7 +650,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                     newRooms.push({
                         id: roomId,
                         name: roomName,
-                        configurations: [configuration]
+                        configurations: [ configuration ]
                     })
                 }
 
@@ -660,7 +661,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 newProjects[editProjectKey].rooms = [{
                     id: roomId,
                     name: roomName,
-                    configurations: [configuration]
+                    configurations: [ configuration ]
                 }]
             }
 
@@ -904,6 +905,44 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         } catch (error) {
             console.error(error)
         }
+    },
+    // #endregion
+
+
+    // #region Edit Configuration
+    editConfiguration: null,
+
+    setEditConfiguration: (projectId, roomId, configurationId) => {
+        const projects = get().projects
+        let count: number = 1
+
+        projects.forEach(project => {
+            if (project.id === projectId) {
+                project.rooms?.forEach(room => {
+                    if (room.id === roomId) {
+                        room.configurations.forEach(conf => {
+                            if (conf.id === configurationId) count = conf.count
+                        })
+                    }
+                })
+            }
+        })
+
+
+        set({
+            editConfiguration: {
+                projectId, roomId, configurationId
+            },
+
+            countOfSets: count,
+
+            activeViewportTab: 'configurator',
+            activeCalcTab: 'borders'
+        })
+    },
+
+    resetEditConfiguration: () => {
+        set({editConfiguration: null})
     },
     // #endregion
 

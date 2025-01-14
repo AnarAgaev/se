@@ -108,9 +108,11 @@ const ProjectWorkspace = () => {
 
                 if (c.devices) {
                     for (const d of c.devices) {
-                        totalConfigurationsCost += typeof d.price === 'string'
-                            ? parseFloat(d.price)
-                            : d.price
+                        if (d) {
+                            totalConfigurationsCost += typeof d.price === 'string'
+                                ? parseFloat(d.price)
+                                : d.price
+                        }
                     }
                 }
 

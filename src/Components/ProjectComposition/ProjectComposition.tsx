@@ -1,7 +1,8 @@
 import { MouseEvent } from 'react'
 import { formatNumber, getPostWordDeclension, collapseDevices } from '../../Helpers'
 import { TAppStore, TProject, TConfiguration, TConfigurationList,
-    TDeviceList, TBorder } from '../../types'
+    TDeviceList, TBorder, TNumberOfPosts, TGetCountOfPosts, TSetSingleFilter,
+    TSetEditSketch, TDevice } from '../../types'
 import useStore from '../../Store'
 import style from './ProjectComposition.module.sass'
 
@@ -29,9 +30,9 @@ const getTotalPriceConfiguration = (conf: TConfiguration): string => {
     const devicesPrice: number = !conf.devices
         ? 0
         : conf.devices.reduce((acc, device) => {
-            if (typeof device.price === 'string') {
+            if (device && typeof device.price === 'string') {
                 return acc + parseFloat(device.price)
-            } else if (typeof device.price === 'number') {
+            } else if (device && typeof device.price === 'number') {
                 return acc + device.price
             } else {
                 return acc
@@ -62,7 +63,7 @@ const getBorder = (border: TBorder, isDevices: boolean): JSX.Element => {
     )
 }
 
-const getDeviceList = (devices: TDeviceList): JSX.Element[] | null => {
+const getDeviceList = (devices: (TDevice | null)[]): JSX.Element[] | null => {
 
     const deviceList = collapseDevices(devices)
 
@@ -101,7 +102,12 @@ const getConfigurationList = (
     setConfigurationCount: TAppStore['setConfigurationCount'],
     removeConfiguration: TAppStore['removeConfiguration'],
     modalCopyConfigurationSet: TAppStore['modalCopyConfigurationSet'],
-    setCurrentConfiguration: TAppStore['setCurrentConfiguration']
+    setCurrentConfiguration: TAppStore['setCurrentConfiguration'],
+    setEditConfiguration: TAppStore['setEditConfiguration'],
+    getCountOfPosts: TGetCountOfPosts,
+    setSingleBordersFilter: TSetSingleFilter,
+    setSingleDevicesFilter: TSetSingleFilter,
+    setEditSketch: TSetEditSketch
 ): JSX.Element[] | null => {
 
     const configurationList: JSX.Element[] = []
@@ -111,7 +117,9 @@ const getConfigurationList = (
         const vendor = c.border
             ? c.border.vendor
             : c.devices
-                ? c.devices[0].vendor
+                ? c.devices[0] !== null
+                    ? c.devices[0].vendor
+                    : ''
                 : ''
 
         const postsCount = !c.border
@@ -124,7 +132,7 @@ const getConfigurationList = (
 
         const colorSet = new Set()
         if (c.border) colorSet.add(c.border.color)
-        if (c.devices) c.devices.forEach(d => colorSet.add(d.color))
+        if (c.devices) c.devices.forEach(d => d && colorSet.add(d.color))
         const color = Array.from(colorSet).join('/')
 
         const onChangeCount = (direction: -1 | 1) => setConfigurationCount(projectId, roomId, c.id, direction)
@@ -141,6 +149,51 @@ const getConfigurationList = (
             modalCopyConfigurationSet('copy', true, 'Копировать комплект')
         }
 
+        const onEdit = () => {
+            setEditConfiguration(projectId, roomId, c.id)
+
+            let border: TBorder | null = null
+            let numberOfPosts: TNumberOfPosts | null = null
+            let countOfPosts: number | null = null
+            let devices: (TDevice | null)[] | null = null
+
+            if (c.border) {
+                border = c.border
+                countOfPosts = getCountOfPosts(c.border)
+
+                const posts: string[] | undefined = c.border.number_of_posts
+                numberOfPosts = !posts ? 1 : parseInt(posts[0]) as TNumberOfPosts
+            }
+
+            if (c.devices) {
+                devices = c.devices as (TDevice | null)[] | null
+            }
+
+            setEditSketch(border, numberOfPosts, countOfPosts, devices, c.direction)
+
+            // Выставляем фильтры
+            if (border || devices) {
+                const collection = border
+                    ? border.collection
+                    // devices не может быть пустым после проверки border
+                    // Иначе комплект не добавился бы в проект.
+                    // Для добавления комплекта в Проекта обязательно должно
+                    // быть выбрано что-то одно, либо рамка, либо устройство
+                    : (devices as TDeviceList)[0].collection
+
+                const brand = border
+                    ? border.vendor
+                    : (devices as TDeviceList)[0].vendor
+
+
+                setSingleBordersFilter('collection', collection)
+                setSingleBordersFilter('brand', brand)
+
+                setSingleDevicesFilter('collection', collection)
+                setSingleDevicesFilter('brand', brand)
+            }
+        }
+
         configurationList.push(
             <li className={set} key={`${c.id}-${idx}`}>
                 <p className={subtitle}>{`Комплект ${vendor}, ${color}${posts}`}</p>
@@ -154,12 +207,12 @@ const getConfigurationList = (
                     </thead>
                     <tbody>
                         { c.border && getBorder(c.border, c.devices ? true : false) }
-                        { c.devices && getDeviceList(c.devices) }
+                        { c.devices && getDeviceList(c.devices as (TDevice | null)[]) }
                     </tbody>
                     <tfoot>
                         <tr>
                             <td>
-                                <button  onClick={() => {}}
+                                <button  onClick={onEdit}
                                     className='button button_small button_dark'
                                     title="Изменить комплект">
                                     <span>Изменить</span>
@@ -207,7 +260,12 @@ const getRoomList = (
     setConfigurationCount: TAppStore['setConfigurationCount'],
     removeConfiguration: TAppStore['removeConfiguration'],
     modalCopyConfigurationSet: TAppStore['modalCopyConfigurationSet'],
-    setCurrentConfiguration: TAppStore['setCurrentConfiguration']
+    setCurrentConfiguration: TAppStore['setCurrentConfiguration'],
+    setEditConfiguration: TAppStore['setEditConfiguration'],
+    getCountOfPosts: TGetCountOfPosts,
+    setSingleBordersFilter: TSetSingleFilter,
+    setSingleDevicesFilter: TSetSingleFilter,
+    setEditSketch: TSetEditSketch
 ): JSX.Element[] | null => {
 
     const roomList: JSX.Element[] = []
@@ -225,7 +283,12 @@ const getRoomList = (
             setConfigurationCount,
             removeConfiguration,
             modalCopyConfigurationSet,
-            setCurrentConfiguration
+            setCurrentConfiguration,
+            setEditConfiguration,
+            getCountOfPosts,
+            setSingleBordersFilter,
+            setSingleDevicesFilter,
+            setEditSketch
         )
 
         roomList.push(
@@ -248,17 +311,29 @@ const ProjectComposition = ({ project }: { project: TProject }) => {
         setConfigurationCount,
         removeConfiguration,
         modalCopyConfigurationSet,
-        setCurrentConfiguration
+        setCurrentConfiguration,
+        setEditConfiguration,
+        getCountOfPosts,
+        setSingleBordersFilter,
+        setSingleDevicesFilter,
+        setEditSketch
     ] = useStore(state => [
         state.setConfigurationCount,
         state.removeConfiguration,
         state.modalCopyConfigurationSet,
-        state.setCurrentConfiguration
+        state.setCurrentConfiguration,
+        state.setEditConfiguration,
+        state.getCountOfPosts,
+        state.setSingleBordersFilter,
+        state.setSingleDevicesFilter,
+        state.setEditSketch
     ])
     // #endregion
 
     const roomList = getRoomList(project, setConfigurationCount, removeConfiguration,
-            modalCopyConfigurationSet, setCurrentConfiguration)
+            modalCopyConfigurationSet, setCurrentConfiguration, setEditConfiguration,
+            getCountOfPosts, setSingleBordersFilter, setSingleDevicesFilter,
+            setEditSketch)
 
     if (project && !project.rooms?.length) return (
         <div className={composition}>

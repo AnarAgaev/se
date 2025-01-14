@@ -15,7 +15,8 @@ import {
     TConfiguration,
     TConfigurationList,
     TRoomItem,
-    TRooms
+    TRooms,
+    TDirections
 } from "./zod"
 
 export type TCalcTabs = 'borders' | 'devices' | 'backgrounds'
@@ -32,9 +33,10 @@ export type TRequestAddConfiguration = {
     projectId: string | number
 	roomId: string | number
 	border: TBorder | null
-	devices: TDevice[]
+	devices: (TDevice | null)[] | null
     counts: number
 	backgroundId?: string | number
+    direction: TDirections
 }
 
 export type TRequestUpdateConfigurationCount = {
@@ -101,10 +103,12 @@ export type TSketchStore = {
     removeDevice: TRemoveDevice
     fixDeviceList: TFixDeviceList,
     checkDevices: TCheckDevices,
-    setVisible: TSetVisible
+    setVisible: TSetVisible,
+
+    setEditSketch: TSetEditSketch
 }
 
-export type TDirections = 'horizontal' | 'vertical'
+// export type TDirections = 'horizontal' | 'vertical'
 export type TResizeSketch = (direction: -1 | 1) => void
 export type TSetBorder = (border: TBorder, numberOfPost: TNumberOfPosts, countOfPosts?: number ) => void
 export type TResetSketch = () => void
@@ -118,9 +122,17 @@ export type TNumberOfPosts = 1 | 2 | 3 | 4 | 5
 export type TCheckDevices = () => boolean
 export type TSetVisible = (direction: boolean) => void
 
+export type TSetEditSketch = (
+    border: TBorder | null,
+    numberOfPost: TNumberOfPosts | null,
+    countOfPosts: number | null,
+    devices: (TDevice | null)[] | null,
+    direction: TDirections
+) => void
+
 export type TDefaultSketchProps = Omit<TSketchStore, 'resizeSketch' | 'setFirstBorder'
     | 'setBorder' | 'resetSketch' | 'setDirection' | 'setDevice' | 'fixDeviceList'
-    | 'removeDevice' | 'checkDevices' | 'setVisible' >
+    | 'removeDevice' | 'checkDevices' | 'setVisible' | 'setEditSketch' >
 
 // #endregion
 
@@ -324,8 +336,9 @@ export type TAppStore = {
         roomName: string,
         backgroundId: string | number | null,
         border: TBorder | null,
-        devices: TDevice[],
-        counts: number
+        devices: (TDevice | null)[],
+        counts: number,
+        direction: TDirections
     ) => void
 
     setConfigurationCount: (
@@ -355,6 +368,22 @@ export type TAppStore = {
     ) => void
     // #endregion
 
+
+    // #region Edit Configuration
+    editConfiguration: {
+        projectId: string | number,
+        roomId: string | number,
+        configurationId: string | number
+    } | null
+
+    setEditConfiguration: (
+        projectId: string | number,
+        roomId: string | number,
+        configurationId: string | number
+    ) => void
+
+    resetEditConfiguration: () => void
+    // #endregion
 
     // #region Dictionary
     dictionary: TDictionary
@@ -445,5 +474,6 @@ export {
     TConfiguration,
     TConfigurationList,
     TRoomItem,
-    TRooms
+    TRooms,
+    TDirections
 }

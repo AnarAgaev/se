@@ -1,9 +1,12 @@
-import { TDevice, TDeviceList } from '../types'
+import { TDevice } from '../types'
 
-export const collapseDevices = (devices: TDeviceList): (TDevice & { selectedCount: number })[]  => {
+export const collapseDevices = (devices: (TDevice | null)[]): (TDevice & { selectedCount: number })[]  => {
     const devicesMap = new Map()
 
     for (const d of devices) {
+
+        if (!d) continue
+
         if (devicesMap.has(d.id)) {
             const existingDevice = devicesMap.get(d.id)
             existingDevice.selectedCount++

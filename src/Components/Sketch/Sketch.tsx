@@ -59,7 +59,8 @@ const Sketch = () => {
         resetRoom,
         resetCountOfSets,
         removeSingleBordersFilter,
-        removeSingleDevicesFilter
+        removeSingleDevicesFilter,
+        resetEditConfiguration
     ] = useStore(state => [
         state.scale,
         state.postsCount,
@@ -80,7 +81,8 @@ const Sketch = () => {
         state.resetRoom,
         state.resetCountOfSets,
         state.removeSingleBordersFilter,
-        state.removeSingleDevicesFilter
+        state.removeSingleDevicesFilter,
+        state.resetEditConfiguration
     ])
     // #endregion
 
@@ -204,6 +206,9 @@ const Sketch = () => {
         removeSingleBordersFilter('collection')
         removeSingleDevicesFilter('brand')
         removeSingleDevicesFilter('collection')
+
+        // Reset Edited configuration help text
+        resetEditConfiguration()
     }
 
     return (
@@ -256,7 +261,7 @@ const Sketch = () => {
             </div>
 
 
-            {/* Cart, Inc, Dec  */}
+            {/* Delete, Inc, Dec  */}
             <ul className={
                     selectedPost.length || Object.keys(deviceList).length
                         ? controllers

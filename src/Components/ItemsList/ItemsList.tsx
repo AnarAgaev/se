@@ -37,7 +37,6 @@ const getElementsList = (
     setSingleDevicesFilter: TSetSingleFilter,
     selectedBrand: TFilters['brand'],
     selectedCollection: TFilters['collection'],
-    border: TSketchStore['border'],
     modalMessageSet: TAppStore['modalMessageSet'],
     postsCount: TSketchStore['postsCount'],
     selectedPost: TSketchStore['selectedPost'],
@@ -81,11 +80,6 @@ const getElementsList = (
         }
 
         if (type === 'devices' && isDevice(item)) {
-
-            // if (border === null) {
-            //     modalMessageSet(true, 'Вначале необходимо выбрать рамку')
-            //     return
-            // }
 
             if (!hasNull(deviceList)) {
                 const msg = `Все посты заполнены. ${!selectedPost[postsCount - 1] ? 'Выберите рамку с большим количеством постов или' : ''} ${!selectedPost[postsCount - 1] ? 'у' : 'У'}далите устройства.`
@@ -157,7 +151,6 @@ const ItemsList = ({itemList, type}: TProps) => {
 
     // #region Variables
     const [
-        border,
         setBorder,
         getCountOfPosts,
         setDevice,
@@ -171,7 +164,6 @@ const ItemsList = ({itemList, type}: TProps) => {
         selectedPost,
         getSiblingBorder,
     ] = useStore(state => [
-        state.border,
         state.setBorder,
         state.getCountOfPosts,
         state.setDevice,
@@ -195,7 +187,6 @@ const ItemsList = ({itemList, type}: TProps) => {
             setSingleDevicesFilter,
             selectedBrand,
             selectedCollection,
-            border,
             modalMessageSet,
             postsCount,
             selectedPost,
@@ -208,7 +199,6 @@ const ItemsList = ({itemList, type}: TProps) => {
             setSingleDevicesFilter,
             selectedBrand,
             selectedCollection,
-            border,
             modalMessageSet,
             postsCount,
             selectedPost,
