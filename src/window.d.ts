@@ -7,6 +7,7 @@ interface Window {
     loadProjectLink: string
     addRoomLink: string
     addConfigurationLink: string
+    saveConfigurationLink: string
     updateConfigurationCountLink: string
     removeConfigurationLink: string
     copyReplaceConfigurationLink: string

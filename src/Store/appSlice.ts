@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand'
-import { TAppStore, TRequestAddConfiguration, TRequestUpdateConfigurationCount,
+import { TAppStore, TRequestAddConfiguration, TRequestSaveConfiguration, TRequestUpdateConfigurationCount,
     TRequestRemoveConfiguration, TRequestCopyReplaceConfiguration, TConfiguration } from '../types'
 
 // let timeoutId: number | undefined
@@ -622,8 +622,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             const configuration: TConfiguration = {
                 id: data.id,
-                // border: border,
-                // devices: [...devices],
                 count: get().countOfSets,
                 direction: direction
             }
@@ -944,6 +942,105 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     resetEditConfiguration: () => {
         set({editConfiguration: null})
     },
+
+    saveConfiguration: async (backgroundId, selectedBorder, devices, direction) => {
+        const editedData = get().editConfiguration
+
+        if (!editedData) return
+
+        const projectId = editedData.projectId
+        const roomId = editedData.roomId
+        const configurationId = editedData.configurationId
+
+        const countOfSets = get().countOfSets
+
+
+        const fetchConfiguration: TRequestSaveConfiguration = {
+            projectId,
+            roomId,
+            configurationId,
+            border: selectedBorder,
+            devices,
+            counts: countOfSets,
+            direction
+        }
+
+        if (backgroundId) fetchConfiguration.backgroundId = backgroundId
+
+        const JSONRequestData = JSON.stringify(fetchConfiguration)
+        const apiLink = window.saveConfigurationLink
+
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Save Configuration window.saveConfigurationLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const requestLink = `${apiLink}?configuration=${JSONRequestData}`
+
+        try {
+            const res = await fetch(requestLink)
+
+            if (!res.ok) {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Ошибка fetch запроса Сохранить измененный проект! Запрос к URL ${requestLink}`)
+            }
+
+            const data = await res.json()
+
+            if (data.status === 'error') {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(data.error)
+            }
+
+            // Add configuration to selected project
+
+            // --- Configuration
+            const changedConfiguration: TConfiguration = {
+                id: fetchConfiguration.configurationId,
+                count: fetchConfiguration.counts,
+                direction: fetchConfiguration.direction,
+            }
+            if (fetchConfiguration.border !== null) {
+                changedConfiguration.border = fetchConfiguration.border
+            }
+            if (fetchConfiguration.devices) {
+                changedConfiguration.devices = fetchConfiguration.devices
+            }
+            if (backgroundId) changedConfiguration.background = fetchConfiguration.backgroundId
+
+
+            // --- Update configuration
+            const newProjects = [...get().projects]
+
+            newProjects.forEach(p => {
+                if (p.id === projectId) {
+                    p.rooms?.forEach(r => {
+                        if (r.id === roomId) {
+                            r.configurations.forEach((c, idx) => {
+                                if (c.id === configurationId) {
+                                    r.configurations[idx] = changedConfiguration
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+
+            setTimeout(() => set({
+                dataLoading: false,
+                modalSaveConfigurationVisible: true,
+                projects: newProjects
+            }), 500)
+
+        } catch (error) {
+            console.error(error)
+        }
+
+
+
+    },
     // #endregion
 
 
@@ -1040,13 +1137,25 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // #endregion
 
 
-    // #region ModalMessage
+    // #region ModalAddConfiguration
     modalAddConfigurationVisible: false,
     modalAddConfigurationSet: (visible) => {
         set({
             loading: false,
             dataLoading: false,
             modalAddConfigurationVisible: visible,
+        })
+    },
+    // #endregion
+
+
+    // #region ModalSaveConfiguration
+    modalSaveConfigurationVisible: false,
+    modalSaveConfigurationSet: (visible) => {
+        set({
+            loading: false,
+            dataLoading: false,
+            modalSaveConfigurationVisible: visible,
         })
     },
     // #endregion

@@ -43,6 +43,7 @@ import ModalShare from './ModalShare/ModalShare'
 import ModalLoadProject from './ModalLoadProject/ModalLoadProject'
 import ModalCopyConfiguration from './ModalCopyConfiguration/ModalCopyConfiguration'
 import ModalAddConfiguration from './ModalAddConfiguration/ModalAddConfiguration'
+import ModalSaveConfiguration from './ModalSaveConfiguration/ModalSaveConfiguration'
 import DeviceList from './DeviceList/DeviceList'
 import SketchSaver from './SketchSaver/SketchSaver'
 import Loading from './Loading/Loading'
@@ -98,6 +99,7 @@ export {
     ModalLoadProject,
     ModalCopyConfiguration,
     ModalAddConfiguration,
+    ModalSaveConfiguration,
     DeviceList,
     SketchSaver,
     Loading,

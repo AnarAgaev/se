@@ -20,7 +20,8 @@ const Cart = () => {
         deviceList,
         countOfSets,
         editConfiguration,
-        direction
+        direction,
+        saveConfiguration
     ] = useStore(state => [
         state.border,
         state.checkDevices,
@@ -34,7 +35,8 @@ const Cart = () => {
         state.deviceList,
         state.countOfSets,
         state.editConfiguration,
-        state.direction
+        state.direction,
+        state.saveConfiguration
     ])
     // #endregion
 
@@ -76,6 +78,23 @@ const Cart = () => {
         )
     }
 
+    const saveConfigurationHandler = () => {
+        if (!isSelectedDevice) {
+            modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство')
+            return
+        }
+
+        const backgroundId = getSelectedBackgroundId()
+        const devices = Object.values(deviceList)
+
+        saveConfiguration(
+            backgroundId,
+            selectedBorder,
+            devices,
+            direction
+        )
+    }
+
     const addToCartHandler = () => {
         if (!isSelectedDevice) {
             modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство')
@@ -86,6 +105,7 @@ const Cart = () => {
     }
 
     const addToProjectButtonClazz = `button button_block button_dark ${(!isSelectedBorder && !isSelectedDevice) || !isProjectSelected || !isRoomSelected ? 'clickedDisabled' : ''}`
+    const saveConfButtonClazz = `button button_block button_dark ${!isSelectedDevice ? 'clickedDisabled' : ''}`
     const addToCartButtonClazz = `button button_block button_dark ${!isSelectedDevice ? 'clickedDisabled' : ''}`
 
     return (
@@ -99,8 +119,8 @@ const Cart = () => {
                         className={addToProjectButtonClazz}>
                         Добавить в проект
                     </button>
-                    : <button type="button" onClick={() => alert('Show modal')}
-                        className='button button_block button_dark'>
+                    : <button type="button" onClick={saveConfigurationHandler}
+                        className={saveConfButtonClazz}>
                         Сохранить комплект
                     </button>
                 }

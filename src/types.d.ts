@@ -39,6 +39,17 @@ export type TRequestAddConfiguration = {
     direction: TDirections
 }
 
+export type TRequestSaveConfiguration = {
+    projectId: string | number
+	roomId: string | number
+	configurationId: string | number
+	border: TBorder | null
+	devices: (TDevice | null)[] | null
+    counts: number
+	backgroundId?: string | number
+    direction: TDirections
+}
+
 export type TRequestUpdateConfigurationCount = {
     projectId: string | number
     roomId: string | number
@@ -383,7 +394,19 @@ export type TAppStore = {
     ) => void
 
     resetEditConfiguration: () => void
+
+    saveConfiguration: (
+        // projectId: string | number,
+        // roomId: string | number,
+        // roomName: string,
+        backgroundId: string | number | null,
+        border: TBorder | null,
+        devices: (TDevice | null)[],
+        // counts: number,
+        direction: TDirections
+    ) => void
     // #endregion
+
 
     // #region Dictionary
     dictionary: TDictionary
@@ -429,6 +452,12 @@ export type TAppStore = {
     // #region Modal Add Configuration
     modalAddConfigurationVisible: boolean
     modalAddConfigurationSet: (visible: boolean) => void
+    // #endregion
+
+
+    // #region Modal Save Configuration
+    modalSaveConfigurationVisible: boolean
+    modalSaveConfigurationSet: (visible: boolean) => void
     // #endregion
 
 
