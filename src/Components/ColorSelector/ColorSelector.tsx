@@ -66,7 +66,7 @@ const getColorsList = (
                 <label className={label}>
                     <span className={colorClazz}style={{backgroundImage: `url("${colorImage}")`}}></span>
                     <p className={sign}>
-                        <span className={text}>{c}</span>
+                        <span lang="ru" className={text}>{c}</span>
                     </p>
                     <input
                         className="invisible"
