@@ -214,6 +214,7 @@ const DevicesWorkspace = () => {
     const removePluralDevicesFilter = useStore(state => state.removePluralDevicesFilter)
     const checkPluralDevicesFilter = useStore(state => state.checkPluralDevicesFilter)
 
+    const selectedColors = useStore(state => state.filtersDevices.colors)
     const selectedBrand = useStore(state => state.filtersDevices.brand)
     const selectedCollection = useStore(state => state.filtersDevices.collection)
     const selectedMaterials = useStore(state => state.filtersDevices.materials).sort().join(', ')
@@ -331,6 +332,7 @@ const DevicesWorkspace = () => {
                     removeColorFn={removePluralDevicesFilter}
                     checkColorFn={checkPluralDevicesFilter}
                     colorPalette={colorPalette}
+                    selectedColors={selectedColors}
                     type={'devices'}
                 />
             }

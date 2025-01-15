@@ -196,6 +196,7 @@ const BordersWorkspace = () => {
     const removePluralBordersFilter = useStore(state => state.removePluralBordersFilter)
     const checkPluralBordersFilter = useStore(state => state.checkPluralBordersFilter)
 
+    const selectedColors = useStore(state => state.filtersBorders.colors)
     const selectedBrand = useStore(state => state.filtersBorders.brand)
     const selectedCollection = useStore(state => state.filtersBorders.collection)
     const selectedMaterials = useStore(state => state.filtersBorders.materials).sort().join(', ')
@@ -295,6 +296,7 @@ const BordersWorkspace = () => {
                     removeColorFn={removePluralBordersFilter}
                     checkColorFn={checkPluralBordersFilter}
                     colorPalette={colorPalette}
+                    selectedColors={selectedColors}
                     type={'borders'}
                 />
             }

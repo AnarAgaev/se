@@ -9,6 +9,7 @@ interface Props {
     removeColorFn: TRemovePluralFilter
     checkColorFn: TCheckPluralFilter
     colorPalette: TColorPalette
+    selectedColors: string[]
     type: TColorsType
 }
 
@@ -81,14 +82,17 @@ const getColorsList = (
     return list
 }
 
-const ColorSelector = ({caption, colors, setColorFn, removeColorFn, checkColorFn, colorPalette, type}: Props) => {
+const ColorSelector = ({caption, colors, setColorFn, removeColorFn, checkColorFn, colorPalette, selectedColors, type}: Props) => {
     const id = useId()
 
     const colorsList = getColorsList(colors, setColorFn, removeColorFn, checkColorFn, id, colorPalette, type)
 
     return (
         <div className={body}>
-            <h3 className={title}>{caption}</h3>
+            <div className={title}>
+                <h3>{caption}</h3>
+                <span>{selectedColors.join(', ')}</span>
+            </div>
             <div className={wrap}>
                 <ul className={list}>
                     { colorsList }
