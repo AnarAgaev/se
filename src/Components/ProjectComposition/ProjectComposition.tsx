@@ -194,6 +194,10 @@ const getConfigurationList = (
             }
         }
 
+        const isAddedDevices = c.devices
+            ? c.devices.filter(Boolean).length > 0
+            : false
+
         configurationList.push(
             <li className={set} key={`${c.id}-${idx}`}>
                 <p className={subtitle}>{`Комплект ${vendor}, ${color}${posts}`}</p>
@@ -206,7 +210,7 @@ const getConfigurationList = (
                         </tr>
                     </thead>
                     <tbody>
-                        { c.border && getBorder(c.border, c.devices ? true : false) }
+                        { c.border && getBorder(c.border, isAddedDevices) }
                         { c.devices && getDeviceList(c.devices as (TDevice | null)[]) }
                     </tbody>
                     <tfoot>
