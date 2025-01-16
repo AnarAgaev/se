@@ -79,8 +79,8 @@ const Cart = () => {
     }
 
     const saveConfigurationHandler = () => {
-        if (!isSelectedDevice) {
-            modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство')
+        if (!isSelectedDevice && !isSelectedBorder) {
+            modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство или рамку')
             return
         }
 
@@ -105,7 +105,7 @@ const Cart = () => {
     }
 
     const addToProjectButtonClazz = `button button_block button_dark ${(!isSelectedBorder && !isSelectedDevice) || !isProjectSelected || !isRoomSelected ? 'clickedDisabled' : ''}`
-    const saveConfButtonClazz = `button button_block button_dark ${!isSelectedDevice ? 'clickedDisabled' : ''}`
+    const saveConfButtonClazz = `button button_block button_dark ${(!isSelectedBorder && !isSelectedDevice) ? 'clickedDisabled' : ''}`
     const addToCartButtonClazz = `button button_block button_dark ${!isSelectedDevice ? 'clickedDisabled' : ''}`
 
     return (
