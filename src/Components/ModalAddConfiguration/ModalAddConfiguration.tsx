@@ -8,11 +8,29 @@ const ModalAddConfiguration = ({ visible }: {visible: boolean}) => {
     const [
         modalAddConfigurationSet,
         editProject,
-        projects
+        projects,
+        resetSketch,
+        resetProject,
+        resetRoom,
+        resetCountOfSets,
+        // resetEditConfiguration,
+        resetBackground,
+        resetAllBorderFilters,
+        resetAllDeviceFilters,
+        setActiveCalcTab
     ] = useStore(state => [
         state.modalAddConfigurationSet,
         state.editProject,
-        state.projects
+        state.projects,
+        state.resetSketch,
+        state.resetProject,
+        state.resetRoom,
+        state.resetCountOfSets,
+        // state.resetEditConfiguration,
+        state.resetBackground,
+        state.resetAllBorderFilters,
+        state.resetAllDeviceFilters,
+        state.setActiveCalcTab
     ])
     // #endregion
 
@@ -26,6 +44,25 @@ const ModalAddConfiguration = ({ visible }: {visible: boolean}) => {
         }
 
         modalAddConfigurationSet(false)
+
+        // Сбрасываем текущую конфигурацию на холсте
+        resetSketch()
+        resetProject()
+        resetRoom()
+        resetCountOfSets()
+
+        // Сбрасываем выбранные фильтры
+        resetAllBorderFilters()
+        resetAllDeviceFilters()
+
+        // Сбрасываем редактируемую конфигурацию
+        // resetEditConfiguration()
+
+        // Сбрасываем выбранный фон
+        resetBackground()
+
+        // Сбрасываем активный таб конфигуратора в Рамки
+        setActiveCalcTab('borders')
     }
 
     return (

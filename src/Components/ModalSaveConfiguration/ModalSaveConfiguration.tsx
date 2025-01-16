@@ -8,9 +8,27 @@ const ModalSaveConfiguration = ({ visible }: {visible: boolean}) => {
     const [
         modalSaveConfigurationSet,
         setActiveViewportTab,
+        resetSketch,
+        resetProject,
+        resetRoom,
+        resetCountOfSets,
+        resetEditConfiguration,
+        resetBackground,
+        resetAllBorderFilters,
+        resetAllDeviceFilters,
+        setActiveCalcTab
     ] = useStore(state => [
         state.modalSaveConfigurationSet,
-        state.setActiveViewportTab
+        state.setActiveViewportTab,
+        state.resetSketch,
+        state.resetProject,
+        state.resetRoom,
+        state.resetCountOfSets,
+        state.resetEditConfiguration,
+        state.resetBackground,
+        state.resetAllBorderFilters,
+        state.resetAllDeviceFilters,
+        state.setActiveCalcTab
     ])
     // #endregion
 
@@ -19,6 +37,25 @@ const ModalSaveConfiguration = ({ visible }: {visible: boolean}) => {
     const onApprove = () => {
         setActiveViewportTab('project')
         modalSaveConfigurationSet(false)
+
+        // Сбрасываем текущую конфигурацию на холсте
+        resetSketch()
+        resetProject()
+        resetRoom()
+        resetCountOfSets()
+
+        // Сбрасываем выбранные фильтры
+        resetAllBorderFilters()
+        resetAllDeviceFilters()
+
+        // Сбрасываем редактируемую конфигурацию
+        resetEditConfiguration()
+
+        // Сбрасываем выбранный фон
+        resetBackground()
+
+        // Сбрасываем активный таб конфигуратора в Рамки
+        setActiveCalcTab('borders')
     }
 
     return (
