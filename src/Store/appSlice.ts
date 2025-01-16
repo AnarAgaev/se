@@ -1207,12 +1207,13 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     modalResetSketchCaption: '',
     modalResetSketchButtonApproveText: '',
     modalResetSketchButtonRejectText: '',
-    setModalResetSketch: ( visible, caption, approveText, rejectText ) => {
+    setModalResetSketch: ( visible, initializer, caption, approveText, rejectText ) => {
         set({
             modalResetSketchVisible: visible,
+            modalResetSketchInitializer: initializer,
             modalResetSketchCaption: caption,
             modalResetSketchButtonApproveText: approveText,
-            modalResetSketchButtonRejectText: rejectText,
+            modalResetSketchButtonRejectText: rejectText
         })
     }
     // #endregion

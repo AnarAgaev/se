@@ -490,14 +490,17 @@ export type TAppStore = {
     modalResetSketchCaption: string
     modalResetSketchButtonApproveText: string
     modalResetSketchButtonRejectText: string
+    modalResetSketchInitializer?: TResetSketchInitializerVariants,
     setModalResetSketch: (
         visible: boolean,
+        from: TResetSketchInitializerVariants,
         caption?: string,
         approveText?: string,
         rejectText?: string
     ) => void
     // #endregion
 }
+type TResetSketchInitializerVariants = 'removeBorder' | 'resetFilters' | null
 // #endregion
 
 
@@ -519,5 +522,6 @@ export {
     TConfigurationList,
     TRoomItem,
     TRooms,
-    TDirections
+    TDirections,
+    TResetSketchInitializerVariants
 }

@@ -20,6 +20,7 @@ const getBorder = (
     const removeHandler = () => {
         setModalResetSketch(
             true,
+            'removeBorder',
             'Удаление рамки приведет к удалению комплекта на холсте',
             'Удалить рамку',
             'Оставить рамку'

@@ -17,22 +17,25 @@ const FactoryWorkspace = ({ type, children }: TProps) => {
         filteredItems,
         activeCalcTab,
         checkSelectedBorderFilters,
-        resetAllBorderFilters,
         checkSelectedDeviceFilters,
-        resetAllDeviceFilters,
+        setModalResetSketch
     ] = useStore(state => [
         state.getFilteredItems(),
         state.activeCalcTab,
         state.checkSelectedBorderFilters,
-        state.resetAllBorderFilters,
         state.checkSelectedDeviceFilters,
-        state.resetAllDeviceFilters,
+        state.setModalResetSketch
     ])
     // #endregion
 
-    const onReset = () => {
-        resetAllBorderFilters()
-        resetAllDeviceFilters()
+    const onResetAllFilters = () => {
+        setModalResetSketch(
+            true,
+            'resetFilters',
+            'Сброс всех фильтров приведет к удалению комплекта на холсте',
+            'Сбросить все фильтры',
+            'Оставить фильтры'
+        )
     }
 
     return (
@@ -45,7 +48,7 @@ const FactoryWorkspace = ({ type, children }: TProps) => {
 
                 { activeCalcTab === 'borders' && checkSelectedBorderFilters() && (
                     <button
-                        onClick={onReset}
+                        onClick={onResetAllFilters}
                         className='button button_block button_lite'>
                         Сбросить все параметры
                     </button>
@@ -53,7 +56,7 @@ const FactoryWorkspace = ({ type, children }: TProps) => {
 
                 { activeCalcTab === 'devices' && checkSelectedDeviceFilters() && (
                     <button
-                        onClick={onReset}
+                        onClick={onResetAllFilters}
                         className='button button_block button_lite'>
                         Сбросить все параметры
                     </button>

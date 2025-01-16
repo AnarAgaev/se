@@ -6,27 +6,63 @@ const ModalResetSketch = ({visible}: {visible: boolean}) => {
 
     // #region Variables
     const [
+        initializer,
         modalResetSketchCaption,
         modalResetSketchButtonApproveText,
         modalResetSketchButtonRejectText,
         setModalResetSketch,
-        resetSketch
+
+        resetSketch,
+        resetAllBorderFilters,
+        resetAllDeviceFilters,
+        resetProject,
+        resetRoom,
+        resetCountOfSets,
+        resetEditConfiguration,
     ] = useStore(state => [
+        state.modalResetSketchInitializer,
         state.modalResetSketchCaption,
         state.modalResetSketchButtonApproveText,
         state.modalResetSketchButtonRejectText,
         state.setModalResetSketch,
-        state.resetSketch
+
+        state.resetSketch,
+        state.resetAllBorderFilters,
+        state.resetAllDeviceFilters,
+        state.resetProject,
+        state.resetRoom,
+        state.resetCountOfSets,
+        state.resetEditConfiguration,
     ])
     // #endregion
 
     const onApprove = () => {
+
+        // Сбрасываем выбранные фильтры
+        if (initializer === 'resetFilters') {
+            resetAllBorderFilters()
+            resetAllDeviceFilters()
+        }
+
+        // Скрываем модалку
+        setModalResetSketch(false, null)
+
+        // Сбрасываем текущую конфигурацию на холсте
         resetSketch()
-        setModalResetSketch(false)
+        resetProject()
+        resetRoom()
+        resetCountOfSets()
+
+        // Сбрасываем редактируемую конфигурацию
+        resetEditConfiguration()
+
+        // Сбрасываем выбранный фон
+        // resetBackground()
+
     }
 
     const onReject = () => {
-        setModalResetSketch(false)
+        setModalResetSketch(false, null)
     }
 
     return (
