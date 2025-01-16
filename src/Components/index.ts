@@ -44,6 +44,7 @@ import ModalLoadProject from './ModalLoadProject/ModalLoadProject'
 import ModalCopyConfiguration from './ModalCopyConfiguration/ModalCopyConfiguration'
 import ModalAddConfiguration from './ModalAddConfiguration/ModalAddConfiguration'
 import ModalSaveConfiguration from './ModalSaveConfiguration/ModalSaveConfiguration'
+import ModalResetSketch from './ModalResetSketch/ModalResetSketch'
 import DeviceList from './DeviceList/DeviceList'
 import SketchSaver from './SketchSaver/SketchSaver'
 import Loading from './Loading/Loading'
@@ -100,6 +101,7 @@ export {
     ModalCopyConfiguration,
     ModalAddConfiguration,
     ModalSaveConfiguration,
+    ModalResetSketch,
     DeviceList,
     SketchSaver,
     Loading,

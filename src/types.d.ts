@@ -484,6 +484,19 @@ export type TAppStore = {
     modalCopyConfigurationCaption: string
     modalCopyConfigurationSet: (type: 'copy' | 'replace' | null, visible: boolean, caption: string) => void
     // #endregion
+
+    // #region Modal Reset Sketch
+    modalResetSketchVisible: boolean
+    modalResetSketchCaption: string
+    modalResetSketchButtonApproveText: string
+    modalResetSketchButtonRejectText: string
+    setModalResetSketch: (
+        visible: boolean,
+        caption?: string,
+        approveText?: string,
+        rejectText?: string
+    ) => void
+    // #endregion
 }
 // #endregion
 

@@ -1,5 +1,5 @@
 import { useId, useMemo } from 'react'
-import { TSketchStore, TAppStore, TDeviceList } from '../../types'
+import { TSketchStore, TAppStore, TDeviceList, TDevice } from '../../types'
 import { collapseDevices } from '../../Helpers'
 import useEmblaCarousel from 'embla-carousel-react'
 import usePrevNextButtons from './CarouselArrowButtons'
@@ -14,30 +14,42 @@ const getBorder = (
     id: string,
     border: TSketchStore['border'],
     countOfSets: TAppStore['countOfSets'],
-    resetSketch: TSketchStore['resetSketch'],
-): JSX.Element => { return (
-    <li key={`${id}-border`} className={item} title={border?.name}>
-        <div className={pic}>
-            <img src={border?.preview} alt="" />
-        </div>
-        <div className={content}>
-            <div className={head}>
-                <span className={caption}>{border?.name}</span>
-                <button type="button" className={close} onClick={resetSketch}></button>
+    setModalResetSketch: TAppStore['setModalResetSketch']
+): JSX.Element => {
+
+    const removeHandler = () => {
+        setModalResetSketch(
+            true,
+            'Удаление рамки приведет к удалению комплекта на холсте',
+            'Удалить рамку',
+            'Оставить рамку'
+        )
+    }
+
+    return (
+        <li key={`${id}-border`} className={item} title={border?.name}>
+            <div className={pic}>
+                <img src={border?.preview} alt="" />
             </div>
-            <div className={body}>
-                <div className={data}>
-                    <span className={price}>{border?.price} ₽</span>
-                    <span className={count}>{countOfSets} шт.</span>
+            <div className={content}>
+                <div className={head}>
+                    <span className={caption}>{border?.name}</span>
+                    <button type="button" className={close} onClick={removeHandler}></button>
                 </div>
-                <button type="button" className={`button button_small button_dark button_cart ${add}`}>
-                    В корзину
-                    <i className='icon icon_cart'></i>
-                </button>
+                <div className={body}>
+                    <div className={data}>
+                        <span className={price}>{border?.price} ₽</span>
+                        <span className={count}>{countOfSets} шт.</span>
+                    </div>
+                    <button type="button" className={`button button_small button_dark button_cart ${add}`}>
+                        В корзину
+                        <i className='icon icon_cart'></i>
+                    </button>
+                </div>
             </div>
-        </div>
-    </li>
-)}
+        </li>
+    )
+}
 
 const getSetList = (
     id: string,
@@ -46,7 +58,7 @@ const getSetList = (
     removeDevice: TSketchStore['removeDevice']
 ): JSX.Element[] => {
 
-    const devices = collapseDevices(deviceList)
+    const devices = collapseDevices(deviceList as (TDevice | null)[])
 
     return devices.map((d, i) => {
 
@@ -92,14 +104,14 @@ const Set = () => {
         border,
         countOfSets,
         deviceList,
-        resetSketch,
-        removeDevice
+        removeDevice,
+        setModalResetSketch
     ] = useStore(state => [
         state.border,
         state.countOfSets,
         state.deviceList,
-        state.resetSketch,
-        state.removeDevice
+        state.removeDevice,
+        state.setModalResetSketch
     ])
     // #endregion
 
@@ -120,8 +132,8 @@ const Set = () => {
 
     // #region Getting JSX Elements
     const selectedBorder = useMemo(
-        () => getBorder(id, border, countOfSets, resetSketch),
-        [id, border, countOfSets, resetSketch]
+        () => getBorder(id, border, countOfSets, setModalResetSketch),
+        [id, border, countOfSets, setModalResetSketch]
     )
 
     const devices = Object.values(deviceList).filter(Boolean) as TDeviceList
