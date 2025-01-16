@@ -10,7 +10,7 @@ type TOnSetPostsCount = (
 ) => void
 
 const { sketch, construction, posts, directions, horizontal, vertical, save,
-    controllers, trashСan, minus, plus, disabled, set, wrap, placeholder,
+    controllers, trash, minus, plus, disabled, set, wrap, placeholder,
     container, deviceContainer, postActive, directionActive, loader } = style
 
 const createPosts = (
@@ -22,11 +22,19 @@ const createPosts = (
 
     const resultList: JSX.Element[] = []
 
+    const wordForm: Record<number, string> = {
+        1: 'пост',
+        2: 'поста',
+        3: 'поста',
+        4: 'поста',
+        5: 'постов',
+    }
+
     for (let i = 1; i <= (!selectedPost.length ? 5 : postsCount); i++) {
         const jsxEl = !selectedPost.length
             ? <li key={`post-${id}-${i}`}><span>{i}</span></li>
             : <li key={`post-${id}-${i}`} className={selectedPost[i - 1] ? postActive : ''}>
-                <span onClick={e => onSetPostsCount(e, i)}>{i}</span>
+                <span onClick={e => onSetPostsCount(e, i)} title={`Выбрать рамку на ${i} ${wordForm[i]}`}>{i}</span>
             </li>
 
         resultList.push(jsxEl)
@@ -60,7 +68,8 @@ const Sketch = () => {
         resetCountOfSets,
         removeSingleBordersFilter,
         removeSingleDevicesFilter,
-        resetEditConfiguration
+        resetEditConfiguration,
+        resetBackground
     ] = useStore(state => [
         state.scale,
         state.postsCount,
@@ -82,7 +91,8 @@ const Sketch = () => {
         state.resetCountOfSets,
         state.removeSingleBordersFilter,
         state.removeSingleDevicesFilter,
-        state.resetEditConfiguration
+        state.resetEditConfiguration,
+        state.resetBackground
     ])
     // #endregion
 
@@ -209,6 +219,9 @@ const Sketch = () => {
 
         // Reset Edited configuration help text
         resetEditConfiguration()
+
+        // Reset selected background
+        resetBackground()
     }
 
     return (
@@ -231,7 +244,8 @@ const Sketch = () => {
                             : `${directions} ${disabled}`
                         }>
 
-                    <li onClick={() => onSetDirection('horizontal')} className={
+                    <li title="Выбрать горизонтальное направление"
+                        onClick={() => onSetDirection('horizontal')} className={
                         direction === 'horizontal' && selectedPost.length > 2 && !selectedPost[0]
                             ? directionActive
                             : ''
@@ -239,7 +253,8 @@ const Sketch = () => {
                         <i className={horizontal}></i>
                     </li>
 
-                    <li onClick={() => onSetDirection('vertical')} className={
+                    <li title="Выбрать вертикальное направление"
+                        onClick={() => onSetDirection('vertical')} className={
                         direction === 'vertical' && selectedPost.length > 2 && !selectedPost[0]
                             ? directionActive
                             : ''
@@ -252,7 +267,8 @@ const Sketch = () => {
 
 
             {/* Save image */}
-            <div className={`${save} ${!selectedBorder ? disabled : ''}`}>
+            <div className={`${save} ${!selectedBorder ? disabled : ''}`}
+                title="Сохранить эскиз">
                 <SketchSaver
                     sketchRef={sketchRef}
                     backImgRef={backImgRef}
@@ -267,9 +283,9 @@ const Sketch = () => {
                         ? controllers
                         : `${controllers} ${disabled}`
                     }>
-                <li className={trashСan} onClick={onReset}></li>
-                <li className={scale <= 0.5 ? `${minus} ${disabled}` : minus} onClick={onDec}></li>
-                <li className={scale >= 1.5 ? `${plus} ${disabled}` : plus} onClick={onInc}></li>
+                <li className={trash} onClick={onReset} title="Очистить эскиз"></li>
+                <li className={scale <= 0.5 ? `${minus} ${disabled}` : minus} onClick={onDec} title="Уменьшить масштаб"></li>
+                <li className={scale >= 1.5 ? `${plus} ${disabled}` : plus} onClick={onInc} title="Увеличить масштаб"></li>
             </ul>
 
 

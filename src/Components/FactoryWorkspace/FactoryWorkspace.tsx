@@ -61,12 +61,11 @@ const FactoryWorkspace = ({ type, children }: TProps) => {
             </div>
             <div className={list}>
                 <h2 className={title}>Варианты:</h2>
-                {
-                    filteredItems.length
-                        ? <ItemsList itemList={filteredItems} type={type} />
-                        : <span className={empty}>
-                            К сожалению, нет элементов согласно выбранным параметрам!
-                        </span>
+                { filteredItems.length
+                    ? <ItemsList itemList={filteredItems} type={type} />
+                    : <span className={empty}>
+                        К сожалению, нет элементов согласно выбранным параметрам!
+                    </span>
                 }
             </div>
         </div>

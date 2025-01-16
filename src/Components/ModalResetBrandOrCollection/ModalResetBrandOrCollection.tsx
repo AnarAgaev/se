@@ -31,31 +31,32 @@ const ModalResetBrandOrCollection = ({visible}: {visible: boolean}) => {
     // #endregion
 
     const onApprove = () => {
+
+        /*
+         * Функция onApprove срабатывает только если пользователь
+         * 1. Пытается изменить бренд при выбранной ранее коллекции из другого бренда
+         * 2. Пытается изменить коллекцию и выбрал коллекцию не из выбранного ранее бренда
+        */
+
         const [ brand, collection ] = [ modalSelectPayload.brandName, modalSelectPayload.collectionName ]
 
         resetModalSelect()
         resetSketch()
 
-        // Если задаем вопрос, то значит, меняем бренд при выбранной ранее коллекции
+        // Не зависимо от того, меняет ли пользователь Бренд или Коллекцию - бренд меняется всегда
+        setSingleBordersFilter('brand', brand)
+        setSingleDevicesFilter('brand', brand)
+
+        // Если меням селектор Бренда, то сбрасываем коллекцию
         if (modalSelectPayload.from === 'brand') {
-            setSingleBordersFilter('brand', brand)
             removeSingleBordersFilter('collection')
-
-            setSingleDevicesFilter('brand', brand)
             removeSingleDevicesFilter('collection')
-
-            return
         }
 
-        // Если задаем вопрос, значит есть выбранный бренд, и меняем на коллекцию из другого бренда
+        // Если меняем селектор коллекции, то выставляем выбранную коллекцию
         if (modalSelectPayload.from === 'collection') {
             setSingleBordersFilter('collection', collection)
-            setSingleBordersFilter('brand', brand)
-
             setSingleDevicesFilter('collection', collection)
-            setSingleDevicesFilter('brand', brand)
-
-            return
         }
     }
 

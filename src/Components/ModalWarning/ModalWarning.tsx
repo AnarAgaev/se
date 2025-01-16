@@ -17,11 +17,11 @@ const ModalWarning = ({visible}: {visible: boolean}) => {
     return (
         <Modal visible={visible} title={modalWarningCaption} onClose={() => modalWarningSet(false, '', true)}>
             <div className={style.buttons}>
-                <button onClick={() => modalWarningSet(false, '', false)}
+                {/* <button onClick={() => modalWarningSet(false, '', false)}
                     className={`button button_block button_lite`}>
                     Больше не показывать
-                </button>
-                <button onClick={() => modalWarningSet(false, '', true)}
+                </button> */}
+                <button onClick={() => modalWarningSet(false, '', false)}
                     className={`button button_block button_dark`}>
                     Понятно
                 </button>

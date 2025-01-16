@@ -555,7 +555,8 @@
             "id": 33,
             "image": "https://aws.massive.ru/se-configurator/backgrounds/bg-01.jpg",
             "preview": "https://aws.massive.ru/se-configurator/backgrounds/preview/bg-01.jpg",
-            "selected": true
+            "selected": true,
+            "default": true
         },
         {
             "id": 34,

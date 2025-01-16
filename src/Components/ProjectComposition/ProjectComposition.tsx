@@ -2,7 +2,7 @@ import { MouseEvent } from 'react'
 import { formatNumber, getPostWordDeclension, collapseDevices } from '../../Helpers'
 import { TAppStore, TProject, TConfiguration, TConfigurationList,
     TDeviceList, TBorder, TNumberOfPosts, TGetCountOfPosts, TSetSingleFilter,
-    TSetEditSketch, TDevice } from '../../types'
+    TSetEditSketch, TDevice, TBackgroundsStore} from '../../types'
 import useStore from '../../Store'
 import style from './ProjectComposition.module.sass'
 
@@ -107,7 +107,8 @@ const getConfigurationList = (
     getCountOfPosts: TGetCountOfPosts,
     setSingleBordersFilter: TSetSingleFilter,
     setSingleDevicesFilter: TSetSingleFilter,
-    setEditSketch: TSetEditSketch
+    setEditSketch: TSetEditSketch,
+    setEditBackground: TBackgroundsStore['setEditBackground']
 ): JSX.Element[] | null => {
 
     const configurationList: JSX.Element[] = []
@@ -171,7 +172,7 @@ const getConfigurationList = (
 
             setEditSketch(border, numberOfPosts, countOfPosts, devices, c.direction)
 
-            // Выставляем фильтры
+            // Выставляем селекты Бренда и Коллекции
             if (border || devices) {
                 const collection = border
                     ? border.collection
@@ -192,6 +193,9 @@ const getConfigurationList = (
                 setSingleDevicesFilter('collection', collection)
                 setSingleDevicesFilter('brand', brand)
             }
+
+            // Выставляем выбранный пользователем фон для редактируемого комплекта
+            setEditBackground(c.background)
         }
 
         const isAddedDevices = c.devices
@@ -269,7 +273,8 @@ const getRoomList = (
     getCountOfPosts: TGetCountOfPosts,
     setSingleBordersFilter: TSetSingleFilter,
     setSingleDevicesFilter: TSetSingleFilter,
-    setEditSketch: TSetEditSketch
+    setEditSketch: TSetEditSketch,
+    setEditBackground: TBackgroundsStore['setEditBackground']
 ): JSX.Element[] | null => {
 
     const roomList: JSX.Element[] = []
@@ -292,7 +297,8 @@ const getRoomList = (
             getCountOfPosts,
             setSingleBordersFilter,
             setSingleDevicesFilter,
-            setEditSketch
+            setEditSketch,
+            setEditBackground
         )
 
         roomList.push(
@@ -320,7 +326,8 @@ const ProjectComposition = ({ project }: { project: TProject }) => {
         getCountOfPosts,
         setSingleBordersFilter,
         setSingleDevicesFilter,
-        setEditSketch
+        setEditSketch,
+        setEditBackground
     ] = useStore(state => [
         state.setConfigurationCount,
         state.removeConfiguration,
@@ -330,14 +337,15 @@ const ProjectComposition = ({ project }: { project: TProject }) => {
         state.getCountOfPosts,
         state.setSingleBordersFilter,
         state.setSingleDevicesFilter,
-        state.setEditSketch
+        state.setEditSketch,
+        state.setEditBackground
     ])
     // #endregion
 
     const roomList = getRoomList(project, setConfigurationCount, removeConfiguration,
             modalCopyConfigurationSet, setCurrentConfiguration, setEditConfiguration,
             getCountOfPosts, setSingleBordersFilter, setSingleDevicesFilter,
-            setEditSketch)
+            setEditSketch, setEditBackground)
 
     if (project && !project.rooms?.length) return (
         <div className={composition}>

@@ -89,6 +89,8 @@ export type TBackgroundsStore = {
     addUploadedBackground: (background: TBackground) => void
     setActiveBackground: (backgroundId: string | number) => void
     getSelectedBackgroundId: () => string | number | null
+    resetBackground: () => void
+    setEditBackground: (backgroundId: string | number | undefined) => void
 }
 // #endregion
 

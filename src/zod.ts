@@ -8,7 +8,8 @@ export const Background = z.object({
     id: z.union([z.string(), z.number()]),
     selected: z.boolean(),
     image: z.string(),
-    preview: z.string()
+    preview: z.string(),
+    default: z.boolean().optional()
 })
 export type TBackground = z.infer<typeof Background>
 
@@ -94,7 +95,7 @@ export type TVendorList = z.infer<typeof VendorList>
 
 
 
-// #region Projects
+// #region Projects & Configuration
 export const Directions = z.union([z.literal('horizontal'), z.literal('vertical')])
 export type TDirections = z.infer<typeof Directions>
 

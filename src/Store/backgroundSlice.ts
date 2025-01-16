@@ -23,7 +23,7 @@ const backgroundSlice: StateCreator<TBackgroundsStore> = (set, get) => ({
     setActiveBackground: (backgroundId) => {
         const backgrounds = [...get().backgrounds]
 
-        backgrounds.forEach(el => el.selected = el.id === backgroundId)
+        backgrounds.forEach(b => b.selected = b.id === backgroundId)
 
         set({ backgrounds: backgrounds })
     },
@@ -34,6 +34,28 @@ const backgroundSlice: StateCreator<TBackgroundsStore> = (set, get) => ({
         if (activeBackground) return activeBackground.id
 
         return null
+    },
+
+    resetBackground: () => {
+        const backgrounds = [...get().backgrounds]
+
+        backgrounds.forEach(b => b.selected = !!b.default)
+
+        set({ backgrounds: backgrounds })
+    },
+
+    setEditBackground: (bcgId) => {
+
+        if (!bcgId) {
+            get().resetBackground()
+            return
+        }
+
+        const backgrounds = [...get().backgrounds]
+
+        backgrounds.forEach(b => b.selected = b.id === bcgId)
+
+        set({ backgrounds: backgrounds })
     }
 })
 

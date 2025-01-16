@@ -25,6 +25,7 @@ const getBrandsOptionsList = (
     const elementsList: JSX.Element[] = []
 
     brandsList.forEach(brandName => {
+
         const vendor = getVendorByName(brandName)
 
         if (!vendor) return
@@ -33,22 +34,18 @@ const getBrandsOptionsList = (
 
         const eventHandler = () => {
 
-            const approveAction = () => {
-                setSingleBordersFilter('brand', vendor.name)
-                removeSingleBordersFilter('collection')
-
-                setSingleDevicesFilter('brand', vendor.name)
-                removeSingleDevicesFilter('collection')
-            }
-
+            // Если это текущий выбранный бренд, выходим
             if (isChecked) return
 
+            // Если коллекция не выбрана, просто меняем Бренд
             if (!selectedCollection) {
-                approveAction()
+                setSingleBordersFilter('brand', vendor.name)
+                setSingleDevicesFilter('brand', vendor.name)
                 return
             }
 
-            // Если пытаемся изменить бренд, но при этом ранее выбрали коллекцию, предупреждаем пользователя
+            // Если пытаемся изменить бренд, но при этом ранее
+            // выбрали коллекцию, предупреждаем пользователя
             setModalSelect(
                 'При выборе бренда, будет сброшена выбранная ранее коллекция',
                 'Оставить бренд',
