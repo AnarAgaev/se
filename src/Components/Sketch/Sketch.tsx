@@ -1,12 +1,13 @@
 import { useRef, useMemo, useCallback, useId, useState, useEffect } from 'react'
 import { SketchBackground, DeviceList, SketchSaver } from '../../Components'
-import { TDirections } from '../../types'
+import { TDirections, TBorder, TNumberOfPosts } from '../../types'
 import useStore from '../../Store'
 import style from './Sketch.module.sass'
 
 type TOnSetPostsCount = (
     evt: React.MouseEvent<HTMLSpanElement, MouseEvent>,
-    newPostNumber: number
+    newPostNumber: number,
+    direction: TDirections
 ) => void
 
 const { sketch, construction, posts, directions, horizontal, vertical, save,
@@ -18,6 +19,7 @@ const createPosts = (
     postsCount: number,
     selectedPost: boolean[],
     onSetPostsCount: TOnSetPostsCount,
+    direction: TDirections
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
@@ -34,7 +36,7 @@ const createPosts = (
         const jsxEl = !selectedPost.length
             ? <li key={`post-${id}-${i}`}><span>{i}</span></li>
             : <li key={`post-${id}-${i}`} className={selectedPost[i - 1] ? postActive : ''}>
-                <span onClick={e => onSetPostsCount(e, i)} title={`Выбрать рамку на ${i} ${wordForm[i]}`}>{i}</span>
+                <span onClick={e => onSetPostsCount(e, i, direction)} title={`Выбрать рамку на ${i} ${wordForm[i]}`}>{i}</span>
             </li>
 
         resultList.push(jsxEl)
@@ -156,28 +158,40 @@ const Sketch = () => {
         resizeSketch(-1)
     }
 
-    // const onSetDirection = useCallback((e: React.ChangeEvent<HTMLLIElement>) => {
     const onSetDirection = useCallback((d: TDirections) => {
+        // Если еще не выбирали ни одной рамки, то Дирекшн равно дизэйблед - выходим
         if (directionsRef.current?.classList.contains(disabled)) return
 
+        // Если полученное функцией ориентация равна текущей - выходим
         if (direction === d) return
 
-        setDirection(d)
-    }, [direction, setDirection])
+        // При изменении ориентации, проверяем есть ли для выбранной
+        // рамки соседняя, но в новой (выбранной) ориентации
 
-    const onSetPostsCount: TOnSetPostsCount = useCallback((evt, newPostNumber) => {
-        // If parent Ul is disabled, return
+        let currentPostNumber = selectedPost.findIndex(Boolean)
+        currentPostNumber = currentPostNumber === -1 ? 1 : currentPostNumber + 1
+
+        if (selectedBorder) {
+            const newBorder = getSiblingBorder(selectedBorder, currentPostNumber, d)
+
+            setBorder(newBorder as TBorder, currentPostNumber as TNumberOfPosts, postsCount, d )
+        }
+    }, [direction, selectedBorder, selectedPost, postsCount, getSiblingBorder, setBorder])
+
+    const onSetPostsCount: TOnSetPostsCount = useCallback((evt, newPostNumber, direction) => {
+        // Если у родителя есть класс disabled (еще не выбрали ни одной рамки), выходим
         if (postsListRef.current?.classList.contains(disabled)) return
 
         const span = evt.target as HTMLSpanElement
         const li = span.parentNode as HTMLLIElement
 
-        // If parent Li is active, return
+        // Если кликнули по активному количеству постов (у родителя есть класс postActive), выходим
         if (li.classList.contains(postActive)) return
 
-        // Sent a new active post with count of posts as newPostNumber
+        // Выставляем новое количество постов с учетом ориентации
         if (selectedBorder) {
-            const newBorder = getSiblingBorder(selectedBorder, newPostNumber)
+            // getSiblingBorder отдает пост с учетом ориентации
+            const newBorder = getSiblingBorder(selectedBorder, newPostNumber, direction)
 
             if (!newBorder) {
                 fireError(new Error(`Функция поиска соседних рамок [getSiblingBorder] с количеством постов ${newPostNumber} вернула пустой результат!`))
@@ -196,8 +210,8 @@ const Sketch = () => {
     }, [selectedBorder, setBorder, getSiblingBorder, fireError])
 
     const postList = useMemo(
-        () => createPosts(id, postsCount, selectedPost, onSetPostsCount),
-        [id, postsCount, selectedPost, onSetPostsCount]
+        () => createPosts(id, postsCount, selectedPost, onSetPostsCount, direction),
+        [id, postsCount, selectedPost, onSetPostsCount, direction]
     )
 
     const onLoad = () => {

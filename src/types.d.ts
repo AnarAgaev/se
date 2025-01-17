@@ -123,7 +123,7 @@ export type TSketchStore = {
 
 // export type TDirections = 'horizontal' | 'vertical'
 export type TResizeSketch = (direction: -1 | 1) => void
-export type TSetBorder = (border: TBorder, numberOfPost: TNumberOfPosts, countOfPosts?: number ) => void
+export type TSetBorder = (border: TBorder, numberOfPost: TNumberOfPosts, countOfPosts?: number, direction?: TDirections ) => void
 export type TResetSketch = () => void
 export type TSetDirection = (d: TDirections) => void
 export type TSketchDeviceItem = TDevice | null
@@ -174,7 +174,7 @@ export type TBordersStore = {
     resetAllBorderFilters: TResetAllBorderFilters
 }
 export type TGetCountOfPosts = (border: TBorder) => number
-export type TGetSiblingBorder = (border: TBorder, numberOfPost: number) => TBorder | undefined
+export type TGetSiblingBorder = (border: TBorder, numberOfPost: number, direction: TDirections) => TBorder | undefined
 export type TCheckSiblingBorder = (f: TBorder, s: TBorder) => boolean
 export type TCheckSelectedBorderFilters = () => boolean
 export type TResetAllBorderFilters = () => void

@@ -1,5 +1,5 @@
 import { StateCreator  } from 'zustand'
-import { TBordersStore } from '../types'
+import { TBorder, TBordersStore } from '../types'
 
 const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
     borders: [],
@@ -177,7 +177,8 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
         return defaultCount
     },
 
-    getSiblingBorder: (border, numberOfPost) => {
+    getSiblingBorder: (border, numberOfPost, direction) => {
+
         const borders = [...get().borders]
             .filter(el => get().checkSiblingBorder(border, el)
                 && el.number_of_posts
@@ -190,11 +191,28 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
         if (borders.length > 1) {
             console.log('\x1b[31m%s\x1b[0m', `Функция поиска соседних рамок [getSiblingBorder] с количеством постов __${numberOfPost}__ вернула несколько результатов!`, borders)
             console.log('\x1b[31m%s\x1b[0m', '__Референс__', border)
+            console.log('\x1b[34m%s\x1b[0m', 'Возможно это одинаковы рамки с разной ориентацией')
         }
 
         console.log('Полученные соседние рамки', borders);
 
-        return borders[0]
+
+        // Если выбрана Вертикальная (vertical) ориентация и она есть среди
+        // соседей, то отдаем ее иначе оставляем Горизонтальную (universal)
+
+        let resultBorder: TBorder | undefined
+
+        borders.forEach(b => {
+            if (!resultBorder && b.conf_orientation === 'universal') {
+                resultBorder = b
+            }
+
+            if (direction === 'vertical' && b.conf_orientation === 'vertical') {
+                resultBorder = b
+            }
+        })
+
+        return resultBorder
     }
     // #endregion
 })

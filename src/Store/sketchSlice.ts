@@ -23,11 +23,13 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
         })
     },
 
-    setBorder: (border, numberOfPost, countOfPosts) => {
+    setBorder: (border, numberOfPost, countOfPosts, directions) => {
 
-        const newDirection = numberOfPost === 1
-            ? 'horizontal'
-            : get().direction
+        const newDirection = directions
+            ? directions
+            : numberOfPost === 1
+                ? 'horizontal'
+                : get().direction
 
         let newSelectedPosts = countOfPosts !== undefined
             ? [...new Array(countOfPosts)].fill(false)

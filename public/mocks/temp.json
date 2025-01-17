@@ -794,9 +794,9 @@
         },
         {
             "id": 3,
-            "name": "Рамка на 3 поста Systeme Electric ATLAS DESIGN ATN000103",
-            "article": "ATN000103_SYSTEME_ELECTRIC",
-            "show_article": "ATN000103",
+            "name": "Рамка на 3 поста Systeme Electric ATLAS DESIGN ATN000103 - Горизонтальная",
+            "article": "ATN000103_SYSTEME_ELECTRIC_HORIZONTAL",
+            "show_article": "ATN000103_H",
             "vendor": "System Electric",
             "price": 160,
             "image": "https://aws.massive.ru/se-configurator/products/11/177511.png",
@@ -811,6 +811,26 @@
             ],
             "conf_color": "Белый",
             "conf_orientation": "universal"
+        },
+        {
+            "id": 373,
+            "name": "Рамка на 3 поста Systeme Electric ATLAS DESIGN ATN000103 - Вертикальная",
+            "article": "ATN000103_SYSTEME_ELECTRIC_VERTICAL",
+            "show_article": "ATN000103_V",
+            "vendor": "System Electric",
+            "price": 160,
+            "image": "https://aws.massive.ru/se-configurator/products/11/177511.png",
+            "preview": "https://aws.massive.ru/se-configurator/products/11/preview/177511.png",
+            "color": "Белый",
+            "collection": "ATLASDESIGN",
+            "number_of_posts": [
+                "3"
+            ],
+            "armature_material": [
+                "Пластик"
+            ],
+            "conf_color": "Белый",
+            "conf_orientation": "vertical"
         },
         {
             "id": 4,
@@ -7385,7 +7405,7 @@
                 "Полимер"
             ],
             "conf_color": "Белый",
-            "conf_orientation": "horizontal"
+            "conf_orientation": "universal"
         },
         {
             "id": 985,

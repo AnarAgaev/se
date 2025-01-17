@@ -4,7 +4,8 @@ import style from './ItemsList.module.sass'
 import { TBorder, TDevice, TElementList, TItemsType,
     TSetBorder, TGetCountOfPosts, TSetDevice,
     TSketchDeviceList, TSetSingleFilter, TFilters,
-    TSketchStore, TAppStore, TGetSiblingBorder, TNumberOfPosts } from '../../types'
+    TSketchStore, TAppStore, TGetSiblingBorder,
+    TNumberOfPosts, TDirections} from '../../types'
 
 const { wrap, list, item, pic, preview, content, name, price } = style
 
@@ -41,6 +42,7 @@ const getElementsList = (
     postsCount: TSketchStore['postsCount'],
     selectedPost: TSketchStore['selectedPost'],
     getSiblingBorder: TGetSiblingBorder,
+    direction: TDirections
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
@@ -55,18 +57,18 @@ const getElementsList = (
 
             const countOfPosts = getCountOfPosts(item)
 
-            // When add border first time
+            // Когда добавляем рамку в первый раз
             if (selectedPost.length === 0) {
 
                 setBorder(item, 1, countOfPosts)
 
-            } else {
+            } else { // Если уже ранее добавляли рамки
                 let numberOfPost
                 let newBorder
 
-                // Find maximum post count of the current border
+                // Ищем максимальное количество постов для текущей рамки
                 for (let i = selectedPost.findIndex(el => el) + 1; i > 0; i--) {
-                    const border = getSiblingBorder(item, i)
+                    const border = getSiblingBorder(item, i, direction)
 
                     if (border) {
                         numberOfPost = i
@@ -122,7 +124,9 @@ const getElementsList = (
                 onClick={() => {
                     addItemHandler(type, el)
 
-                    console.table(el) // Временно печатаем в консоль Item. Удалить перед деплоем!
+                    // Временно печатаем в консоль Item. Удалить перед деплоем!
+                    console.log("Временно печатаем в консоль Item")
+                    console.table(el)
                 }}
 
 
@@ -163,6 +167,7 @@ const ItemsList = ({itemList, type}: TProps) => {
         postsCount,
         selectedPost,
         getSiblingBorder,
+        direction
     ] = useStore(state => [
         state.setBorder,
         state.getCountOfPosts,
@@ -176,6 +181,7 @@ const ItemsList = ({itemList, type}: TProps) => {
         state.postsCount,
         state.selectedPost,
         state.getSiblingBorder,
+        state.direction
     ])
     // #endregion
 
@@ -191,6 +197,7 @@ const ItemsList = ({itemList, type}: TProps) => {
             postsCount,
             selectedPost,
             getSiblingBorder,
+            direction
         ),
         [
             id, itemList, type, setBorder,
@@ -203,6 +210,7 @@ const ItemsList = ({itemList, type}: TProps) => {
             postsCount,
             selectedPost,
             getSiblingBorder,
+            direction
         ]
     )
 
