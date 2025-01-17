@@ -275,7 +275,7 @@ export type TAppStore = {
     fireError: TFireError
 
 
-    setCountTimeoutId: number | undefined
+    setCountTimeoutId: Timer | undefined
     startValueConfigurationCount: number | null
 
     // #region Colors

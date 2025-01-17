@@ -77,7 +77,7 @@ const DeviceList = ({ shouldUpdate, listRef } : TProps) => {
     useEffect(
         () => {
 
-            let timeoutId: number
+            let timeoutId: Timer
 
             const calc = () => {
                 const list = listRef.current
