@@ -2,15 +2,14 @@
     display: none
     align-items: center
     justify-content: center
-    position: absolute
+    position: relative
     z-index: 15
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    width: 170px
-    height: auto
+    width: 150px
+    height: 50px
     aspect-ratio: 3 / 1
     border-radius: 999px
+    margin: 0 auto
+    transform: translateY(200%)
 
     &_visible
         display: flex
@@ -137,7 +136,7 @@
         box-shadow: 0 0 0 0 var(--color-button-disabled)
         opacity: 0
     50%
-        box-shadow: 0 0 0 25px var(--color-button-disabled)
+        box-shadow: 0 0 0 15px var(--color-button-disabled)
         opacity: 0.5
     100%
         box-shadow: 0 0 0 0 var(--color-button-disabled)
@@ -152,7 +151,7 @@
         box-shadow: 0 0 0 0 var(--color-button-disabled)
         opacity: 0
     60%
-        box-shadow: 0 0 0 50px var(--color-button-disabled)
+        box-shadow: 0 0 0 30px var(--color-button-disabled)
         opacity: 0.3
     100%
         box-shadow: 0 0 0 0 var(--color-button-disabled)

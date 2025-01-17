@@ -62,7 +62,6 @@ const App = () => {
 						<Factory />
 						<Viewport />
 					</div>
-
 				</>
 			}
 			<ModalResetBrandOrCollection visible={modalSelectVisible} />

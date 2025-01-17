@@ -1,8 +1,11 @@
-import { BordersWorkspace, DevicesWorkspace, BackgroundsWorkspace } from '../../Components'
+import { Suspense, lazy } from 'react'
+import { Loader } from '../../Components'
 import useStore from '../../Store'
 import style from './Factory.module.sass'
 
-const { factory } = style
+const BordersWorkspace = lazy(() => import('../BordersWorkspace/BordersWorkspace'))
+const DevicesWorkspace = lazy(() => import('../DevicesWorkspace/DevicesWorkspace'))
+const BackgroundsWorkspace = lazy(() => import('../BackgroundsWorkspace/BackgroundsWorkspace'))
 
 const Factory = () => {
     const activeViewportTab = useStore(state => state.activeViewportTab)
@@ -11,11 +14,13 @@ const Factory = () => {
     if (activeViewportTab !== 'configurator') return null
 
     return (
-        <div className={factory}>
-            { activeCalcTab === 'borders' && <BordersWorkspace /> }
-            { activeCalcTab === 'devices' && <DevicesWorkspace /> }
-            { activeCalcTab === 'backgrounds' && <BackgroundsWorkspace /> }
-        </div>
+        <Suspense fallback={<Loader />}>
+            <div className={style.factory}>
+                { activeCalcTab === 'borders' && <BordersWorkspace /> }
+                { activeCalcTab === 'devices' && <DevicesWorkspace /> }
+                { activeCalcTab === 'backgrounds' && <BackgroundsWorkspace /> }
+            </div>
+        </Suspense>
     )
 }
 
