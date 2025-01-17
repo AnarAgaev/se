@@ -2,9 +2,9 @@ import { useMemo, useId } from 'react'
 import useStore from '../../Store'
 
 import {
-    TBordersFilters, TCheckSingleFilter, TRemoveSingleFilter, TDevicesFilters,
-    TVendor, TGetBrandByCollection, TSetSingleFilter, TSetPluralFilter,
-    TRemovePluralFilter, TCheckPluralFilter, TSetModalSelect, TResetSketch } from '../../types'
+    TBordersFilters, TCheckSingleFilter, TVendor, TGetBrandByCollection,
+    TSetSingleFilter, TSetPluralFilter, TRemovePluralFilter,
+    TCheckPluralFilter, TSetModalSelect, TResetSketch } from '../../types'
 
 import { FactoryWorkspace, ColorSelector, Select,
     OptionBrand, OptionCollection, OptionMaterial } from '../../Components'
@@ -15,8 +15,6 @@ const getBrandsOptionsList = (
     setSingleBordersFilter: TSetSingleFilter,
     setSingleDevicesFilter: TSetSingleFilter,
     checkSingleBordersFilter: TCheckSingleFilter<keyof TBordersFilters>,
-    removeSingleBordersFilter: TRemoveSingleFilter<keyof TBordersFilters>,
-    removeSingleDevicesFilter: TRemoveSingleFilter<keyof TDevicesFilters>,
     selectedCollection: TBordersFilters['collection'],
     setModalSelect: TSetModalSelect,
     key: string,
@@ -186,8 +184,6 @@ const BordersWorkspace = () => {
     const setSingleBordersFilter = useStore(state => state.setSingleBordersFilter)
     const setSingleDevicesFilter = useStore(state => state.setSingleDevicesFilter)
     const checkSingleBordersFilter = useStore(state => state.checkSingleBordersFilter)
-    const removeSingleBordersFilter = useStore(state => state.removeSingleBordersFilter)
-    const removeSingleDevicesFilter = useStore(state => state.removeSingleDevicesFilter)
 
     const setPluralBordersFilter = useStore(state => state.setPluralBordersFilter)
     const removePluralBordersFilter = useStore(state => state.removePluralBordersFilter)
@@ -212,8 +208,6 @@ const BordersWorkspace = () => {
             setSingleBordersFilter,
             setSingleDevicesFilter,
             checkSingleBordersFilter,
-            removeSingleBordersFilter,
-            removeSingleDevicesFilter,
             selectedCollection,
             setModalSelect,
             key
@@ -224,8 +218,6 @@ const BordersWorkspace = () => {
             setSingleBordersFilter,
             setSingleDevicesFilter,
             checkSingleBordersFilter,
-            removeSingleBordersFilter,
-            removeSingleDevicesFilter,
             selectedCollection,
             setModalSelect,
             key
