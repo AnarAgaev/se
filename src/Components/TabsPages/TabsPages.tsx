@@ -1,6 +1,5 @@
 import useStore from '../../Store'
 import style from './TabsPages.module.sass'
-import { TViewportTabs } from '../../types'
 
 const { tabs, list, item,
     item_active, item_configurator, item_collections,
@@ -24,48 +23,36 @@ const TabsPages = () => {
     // #region Variables
     const [
         activeViewportTab,
-        setActiveTab,
-        setVisible,
-        selectedBorder
+        setActiveTab
     ] = useStore(state => [
         state.activeViewportTab,
-        state.setActiveViewportTab,
-        state.setVisible,
-        state.border
+        state.setActiveViewportTab
     ])
     // #endregion
-
-
-
-    const clickHandler = (page: TViewportTabs) => {
-        setActiveTab(page)
-
-        if (page === 'configurator' && selectedBorder) setVisible(false)
-    }
 
     return (
         <div className={tabs}>
             <ul className={list}>
                 <li className={getTabClassName('configurator', activeViewportTab)}
-                    onClick={() => clickHandler('configurator')}>
+                    onClick={() => setActiveTab('configurator')}>
                     <span>
                         Конфигуратор
                     </span>
                 </li>
                 <li className={getTabClassName('collections', activeViewportTab)}
-                    onClick={() => clickHandler('collections')}>
+                    onClick={() => setActiveTab('collections')}>
                     <span>
                         Гид по коллекциям
                     </span>
                 </li>
                 <li className={getTabClassName('project', activeViewportTab)}
-                    onClick={() => clickHandler('project')}>
+                    onClick={() => setActiveTab('project')}>
                     <span>
                         Состав проекта
                     </span>
                 </li>
                 <li className={getTabClassName('hub', activeViewportTab)}
-                    onClick={() => clickHandler('hub')}>
+                    onClick={() => setActiveTab('hub')}>
                     <span>
                         Мои проекты
                     </span>
