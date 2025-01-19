@@ -4,8 +4,6 @@ import { TBackgroundsStore } from '../types'
 const backgroundSlice: StateCreator<TBackgroundsStore> = (set, get) => ({
     backgrounds: [],
 
-    setInitBackgroundsData: (data) => set({ backgrounds: data }),
-
     addUploadedBackground: (background) => {
         const backgrounds = [...get().backgrounds]
 

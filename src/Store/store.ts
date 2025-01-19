@@ -96,18 +96,44 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             return
                         }
 
-                        // Pushing data to appropriate stores
-                        get().setInitBackgroundsData(safeResponse.data.backgrounds)
-                        get().setAppColors(safeResponse.data.colors)
-                        get().setInitBordersData(safeResponse.data.borders)
-                        get().setInitDevicesData(safeResponse.data.devices)
-                        get().setAppVendors(safeResponse.data.vendors)
-                        get().setAppProjects(safeResponse.data.projects)
-                        get().setAppRooms(safeResponse.data.rooms)
-                        get().setFunctions(safeResponse.data.functions)
-                        get().setDictionary(safeResponse.data.lang)
+                        const functions = [...safeResponse.data.functions]
 
-                        set({ error: null, loading: false, userId: safeResponse.data.user_id })
+                        // Получаем данные для фильтра функциональностей в Девайсах
+                        const filterFunctions = [
+                            {
+                                active: true,
+                                name: 'Все функции',
+                                props: {},
+                                default: true
+                            },
+                            ...functions.map(fn => ({
+                                active: false,
+                                name: fn.name,
+                                props: {}
+                            }))
+                        ]
+
+                        set({
+                            error: null,
+                            loading: false,
+                            userId: safeResponse.data.user_id,
+
+                            // Pushing data to appropriate stores
+                            backgrounds: safeResponse.data.backgrounds,
+                            colors: safeResponse.data.colors,
+                            borders: safeResponse.data.borders,
+                            devices: safeResponse.data.devices,
+                            vendors: safeResponse.data.vendors,
+                            projects: safeResponse.data.projects,
+                            rooms: safeResponse.data.rooms,
+                            dictionary: safeResponse.data.lang,
+
+                            functions: functions,
+                            filtersDevices: {
+                                ...get().filtersDevices,
+                                functions: filterFunctions
+                            }
+                        })
 
                     } catch (error: Error | unknown) {
                         console.error(error)

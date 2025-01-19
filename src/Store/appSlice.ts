@@ -2,8 +2,6 @@ import { StateCreator } from 'zustand'
 import { TAppStore, TRequestAddConfiguration, TRequestSaveConfiguration, TRequestUpdateConfigurationCount,
     TRequestRemoveConfiguration, TRequestCopyReplaceConfiguration, TConfiguration } from '../types'
 
-// let timeoutId: number | undefined
-
 const appSlice: StateCreator<TAppStore> = (set, get) => ({
     loading: true,
     dataLoading: false,
@@ -21,13 +19,11 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
     // #region Colors
     colors: undefined,
-    setAppColors: (colors) => set({ colors: colors }),
     // #endregion
 
 
     // #region Vendors
     vendors: [],
-    setAppVendors: (vendors) => set({vendors: vendors}),
     getVendorByName: (vendorName) => {
         const vendors = get().vendors || []
 
@@ -72,7 +68,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
     // #region Projects
     projects: [],
-    setAppProjects: (projects) => set({ projects: projects }),
     addProject: async (project) => {
 
         const apiLink = window.addProjectLink
@@ -286,7 +281,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
     // #region Rooms
     rooms: [],
-    setAppRooms: (rooms) => set({ rooms: rooms }),
     addRoom: async (room) => {
         const apiLink = window.addRoomLink
 
@@ -1047,9 +1041,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // #region Dictionary
     dictionary: {
         ru: {}
-    },
-    setDictionary: (dictionary) => {
-        set({ dictionary: dictionary})
     },
     // #endregion
 

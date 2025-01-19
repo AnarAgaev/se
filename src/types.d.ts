@@ -85,7 +85,6 @@ export type TStore = {
 // #region Backgrounds
 export type TBackgroundsStore = {
     backgrounds: TBackgroundList
-    setInitBackgroundsData: (payload: TBackgroundList) => void
     addUploadedBackground: (background: TBackground) => void
     setActiveBackground: (backgroundId: string | number) => void
     getSelectedBackgroundId: () => string | number | null
@@ -154,7 +153,6 @@ export type TDefaultSketchProps = Omit<TSketchStore, 'resizeSketch' | 'setFirstB
 // #region Borders
 export type TBordersStore = {
     borders: TBorderList
-    setInitBordersData: (payload: TBorderList) => void
     getBordersBrandsList: () => string[]
     getBordersCollectionsList: () => string[]
     getBordersMaterialList: () => string[]
@@ -185,7 +183,6 @@ export type TResetAllBorderFilters = () => void
 // #region Devices
 export type TDevicesStore = {
     devices: TDeviceList
-    setInitDevicesData: (payload: TDeviceList) => void
     getDevicesList: () => TDeviceList
     getDevicesBrandsList: () => string[]
     getDevicesCollectionsList: () => string[]
@@ -193,7 +190,6 @@ export type TDevicesStore = {
 
 
     functions: TFunctionList
-    setFunctions: (functions: TFunctionList) => void
     getFunctions: () => TFunctionOptionList
     updateActiveFunction: (functionName: string) => void
     getFunctionsKinds: () => TFunctionItem | undefined
@@ -280,7 +276,6 @@ export type TAppStore = {
 
     // #region Colors
     colors: TColorList | undefined
-    setAppColors: (colors: TColorList) => void
     // #endregion
 
 
@@ -295,7 +290,6 @@ export type TAppStore = {
 
     // #region Vendors
     vendors: TVendorList
-    setAppVendors: (vendors: TVendorList) => void
     getVendorByName: (brandName: string) => TVendor | undefined
     getBrandByCollection: TGetBrandByCollection
     // #endregion
@@ -303,7 +297,6 @@ export type TAppStore = {
 
     // #region Project
     projects: TProjectList
-    setAppProjects: (projects: TProjectList) => void
     addProject: (project: string) => void
     setProject: (id: TProject['id']) => void
     editProject: (id: TProject['id']) => void
@@ -317,7 +310,6 @@ export type TAppStore = {
 
     // #region Rooms
     rooms: TRoomList
-    setAppRooms: (rooms: TRoomList) => void
     addRoom: (room: string) => void
     setRoom: (id: TRoom['id']) => void
     checkRoom: () => boolean
@@ -412,7 +404,6 @@ export type TAppStore = {
 
     // #region Dictionary
     dictionary: TDictionary
-    setDictionary: (dictionary: TDictionary) => void
     // #endregion
 
 

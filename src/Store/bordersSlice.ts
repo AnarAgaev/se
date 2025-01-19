@@ -4,8 +4,6 @@ import { TBorder, TBordersStore } from '../types'
 const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
     borders: [],
 
-    setInitBordersData: (payload) => set({ borders: payload }),
-
     getBordersBrandsList: () => {
         const borders = [...get().borders]
         return [...new Set(borders.map(border => border.vendor))].sort()

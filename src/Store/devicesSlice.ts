@@ -4,8 +4,6 @@ import { TDevicesStore } from '../types'
 const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
     devices: [],
 
-    setInitDevicesData: (payload) => set({ devices: payload }),
-
     getDevicesList: () => {
         return [...get().devices]
     },
@@ -38,30 +36,6 @@ const devicesSlice: StateCreator<TDevicesStore> = (set, get) => ({
     },
 
     functions: [],
-
-    setFunctions: (functions) => {
-        const filterFunctions = [
-            {
-                active: true,
-                name: 'Все функции',
-                props: {},
-                default: true
-            },
-            ...functions.map(fn => ({
-                active: false,
-                name: fn.name,
-                props: {}
-            }))
-        ]
-
-        set({
-            functions: functions,
-            filtersDevices: {
-                ...get().filtersDevices,
-                functions: filterFunctions
-            }
-        })
-    },
 
     getFunctions: () => {
         return [...get().filtersDevices.functions].map(fn => ({
