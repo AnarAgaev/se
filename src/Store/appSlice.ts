@@ -708,7 +708,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         set({ projects: [...newProjects] });
 
         // Обновляем значение в БД с таймаутом в 500 мс.
-        (async () => {
+        (() => {
             clearTimeout(get().setCountTimeoutId)
 
             const timeoutId = setTimeout(() => {

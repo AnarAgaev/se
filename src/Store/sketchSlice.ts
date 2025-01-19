@@ -49,9 +49,9 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
                 deviceList: fixedDeviceList,
                 postsCount: newSelectedPosts.length
             })
-        }, 200)
+        }, 100)
 
-        setTimeout(() => set({ visible: true }), 700)
+        setTimeout(() => set({ visible: true }), 500)
     },
 
     fixDeviceList: (numberOfPosts) => {
@@ -79,9 +79,7 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
     },
 
     setDirection: (d) => {
-        set({ visible: false })
-        setTimeout(() => set({ direction: d }), 100)
-        setTimeout(() => set({ visible: true }), 600)
+        set({ direction: d })
     },
 
     setDevice: (d) => {
@@ -186,9 +184,7 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
             setObject.deviceList = deviceList as TSketchDeviceList
         }
 
-        set({visible: false})
-        setTimeout(() => set(setObject), 200)
-        setTimeout(() => set({ visible: true }), 700)
+        set({...setObject})
     }
 })
 
