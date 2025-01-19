@@ -277,18 +277,66 @@
 
     &::before
         width: 100%
+        border-radius: 8px
 
     &::after
         width: 70%
+        border-radius: 6px
 
 
 .container
-    display: block
+    display: flex
+    align-items: center
+    justify-content: center
     position: absolute
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
     transition: opacity .05s linear
+    width: 80%
+    height: auto
+
+.containerVertical
+    @media (min-width: $md)
+        max-width: 300px !important
+
+    @media (min-width: $lg)
+        max-width: 200px !important
+
+    @media (min-width: $xl)
+        max-width: 250px !important
+
+
+.post_1
+    max-width: 176px
+    aspect-ratio: 1 / 1
+
+.post_2
+    max-width: 200px
+    aspect-ratio: 300 / 160
+
+.post_3
+    max-width: 350px
+    aspect-ratio: 350 / 128
+
+.post_4
+    max-width: 450px
+    aspect-ratio: 500 / 139
+
+.post_5
+    max-width: 550px
+    aspect-ratio: 550 / 123
+
+
+.borderImg
+    display: block
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 100%
+    height: 100%
+    object-fit: cover
 
 
 .deviceContainer

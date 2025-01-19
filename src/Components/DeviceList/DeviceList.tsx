@@ -1,12 +1,12 @@
-import { useId, useMemo, useState, useEffect } from 'react'
+import { useId, useMemo } from 'react'
 import { TSketchDeviceList, TDirections, TRemoveDevice } from '../../types'
 import useStore from '../../Store'
 import style from './DeviceList.module.sass'
 
-const { list, item, close, image, rotated } = style
+const { list, item, close, image, rotated,
+    post_1, post_2, post_3, post_4, post_5 } = style
 
 type TProps = {
-    shouldUpdate: boolean,
     listRef: React.MutableRefObject<HTMLUListElement | null>
 }
 
@@ -48,9 +48,7 @@ const getDevicesList = (
     return elList
 }
 
-const DeviceList = ({ shouldUpdate, listRef } : TProps) => {
-
-    shouldUpdate;
+const DeviceList = ({ listRef } : TProps) => {
 
     // #region Variables
     const [
@@ -58,64 +56,38 @@ const DeviceList = ({ shouldUpdate, listRef } : TProps) => {
         direction,
         scale,
         removeDevice,
-        activeViewportTab,
-        setVisible
+        selectedPost
     ] = useStore(state => [
         state.deviceList,
         state.direction,
         state.scale,
         state.removeDevice,
-        state.activeViewportTab,
-        state.setVisible
+        state.selectedPost
     ])
     // #endregion
 
     const id = useId()
-
-    const [padding, setPadding] = useState(0)
-
-    useEffect(
-        () => {
-
-            let timeoutId: Timer
-
-            const calc = () => {
-                const list = listRef.current
-                const border = list?.parentElement
-
-                if (!border) return
-
-                const borderWidth = border.clientWidth
-                const deviceWidth = list.clientHeight
-                const countOfPosts = Object.keys(deviceList).length
-
-                setPadding((borderWidth - (deviceWidth * countOfPosts)) / (countOfPosts + 1))
-            }
-
-            timeoutId = setTimeout(calc, 300)
-
-            const onWindowResize = (() => {
-                timeoutId = setTimeout(calc, 300)
-            })
-
-            window.addEventListener('resize', onWindowResize)
-
-            return () => {
-                clearTimeout(timeoutId)
-                window.removeEventListener('resize', onWindowResize)
-            }
-        },
-
-        [deviceList, listRef, setVisible, direction, activeViewportTab]
-    )
 
     const devicesList = useMemo(
         () => getDevicesList(id, deviceList, direction, scale, removeDevice),
         [id, deviceList, direction, scale, removeDevice]
     )
 
+    const listClassMap: {
+        [key: number]: string
+    } = {
+        0: '',
+        1: post_1,
+        2: post_2,
+        3: post_3,
+        4: post_4,
+        5: post_5,
+    }
+    const countOfPost: number = selectedPost.findIndex(Boolean) + 1
+    const listClass = `${list}${countOfPost === 0 ? ` ${post_1}` : ` ${listClassMap[countOfPost]}`}`
+
     return (
-        <ul ref={listRef} className={list} style={{padding: `0 ${padding}px`}}>
+        <ul ref={listRef} className={listClass}>
             { devicesList }
         </ul>
     )

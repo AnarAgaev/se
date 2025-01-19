@@ -1,4 +1,4 @@
-import { useRef, useMemo, useCallback, useId, useState, useEffect } from 'react'
+import { useRef, useMemo, useCallback, useId } from 'react'
 import { SketchBackground, DeviceList, SketchSaver } from '../../Components'
 import { TDirections, TBorder, TNumberOfPosts } from '../../types'
 import useStore from '../../Store'
@@ -12,7 +12,8 @@ type TOnSetPostsCount = (
 
 const { sketch, construction, posts, directions, horizontal, vertical, save,
     controllers, trash, minus, plus, disabled, set, wrap, placeholder,
-    container, deviceContainer, postActive, directionActive, loader } = style
+    container, postActive, directionActive, loader, containerVertical,
+    post_1, post_2, post_3, post_4, post_5, borderImg } = style
 
 const createPosts = (
     id: string,
@@ -63,7 +64,6 @@ const Sketch = () => {
         checkDevices,
         direction,
         visible,
-        setVisible,
         resetProject,
         resetRoom,
         resetCountOfSets,
@@ -85,14 +85,13 @@ const Sketch = () => {
         state.checkDevices,
         state.direction,
         state.visible,
-        state.setVisible,
         state.resetProject,
         state.resetRoom,
         state.resetCountOfSets,
         state.removeSingleBordersFilter,
         state.removeSingleDevicesFilter,
         state.resetEditConfiguration,
-        state.resetBackground
+        state.resetBackground,
     ])
     // #endregion
 
@@ -103,48 +102,12 @@ const Sketch = () => {
 
     const postsListRef = useRef<HTMLUListElement | null>(null)
     const directionsRef = useRef<HTMLUListElement | null>(null)
-
     const isDeviceSelected = checkDevices()
 
     const transformStyle = {
         transform: `scale(${scale})`,
         transformOrigin: `${scale > 1 ? '0 0' : 'center'}`
     }
-
-    const [shouldUpdate, setShouldUpdate] = useState(false)
-    const [maxWidth, setMaxWidth] = useState('none')
-
-    useEffect(
-        () => {
-            const updateMaxWidth = () => {
-                if (!selectedBorder?.number_of_posts) {
-                    setMaxWidth('none')
-                    return
-                }
-
-                const calculatedHeight = selectedBorder?.number_of_posts[0] === '1'
-                    ? sketchRef.current?.offsetHeight
-                    : direction === 'horizontal'
-                        ? sketchRef.current?.offsetWidth
-                        : sketchRef.current?.offsetHeight
-
-                const ration: number | undefined = selectedBorder?.number_of_posts[0] === '1'
-                    ? 0.55
-                    : 0.8
-
-                if (calculatedHeight && ration) {
-                    setMaxWidth(calculatedHeight * ration + 'px')
-                }
-            }
-
-            updateMaxWidth()
-
-            window.addEventListener('resize', updateMaxWidth)
-
-            return () => window.removeEventListener('resize', updateMaxWidth)
-        },
-        [maxWidth, direction, selectedBorder]
-    )
 
     const onInc = () => { // +
         if (scale >= 1.5) return
@@ -157,7 +120,7 @@ const Sketch = () => {
     }
 
     const onSetDirection = useCallback((d: TDirections) => {
-        // Если еще не выбирали ни одной рамки, то Дирекшн равно дизэйблед - выходим
+        // Если еще не выбирали ни одной рамки, то direction равно disabled - выходим
         if (directionsRef.current?.classList.contains(disabled)) return
 
         // Если полученное функцией ориентация равна текущей - выходим
@@ -212,11 +175,6 @@ const Sketch = () => {
         [id, postsCount, selectedPost, onSetPostsCount, direction]
     )
 
-    const onLoad = () => {
-        setShouldUpdate(!shouldUpdate)
-        setTimeout(() => setVisible(true), 500)
-    }
-
     const onReset = () => {
         resetSketch()
         resetProject()
@@ -235,6 +193,19 @@ const Sketch = () => {
         // Reset selected background
         resetBackground()
     }
+
+    const containerClassMap: {
+        [key: number]: string
+    } = {
+        0: '',
+        1: post_1,
+        2: post_2,
+        3: post_3,
+        4: post_4,
+        5: post_5,
+    }
+    const countOfPost: number = selectedPost.findIndex(Boolean) + 1
+    const containerClass = `${container}${countOfPost === 0 ? ` ${post_1}` : ` ${containerClassMap[countOfPost]}`}${direction === 'horizontal' ? '' : ` ${containerVertical}`}`
 
     return (
         <div ref={sketchRef} className={sketch}>
@@ -304,20 +275,19 @@ const Sketch = () => {
             {/* Image Border and Devices */}
             <div className={set}>
                 <div className={wrap} style={transformStyle}>
-                    {/* { !selectedBorder && !isDeviceSelected && visible && <span className={placeholder}></span> } */}
                     { !selectedBorder && visible && <span className={placeholder}></span> }
 
-                    <div style={{
+                    <div className={containerClass}
+                        style={{
                             opacity: visible ? '1' : '0',
                             transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`
-                        }} className={`${container} ${!selectedBorder && isDeviceSelected ? deviceContainer : ''}`} >
+                        }}>
                         { selectedBorder && <img
+                            className={borderImg}
                             ref={borderRef}
-                            onLoad={onLoad}
-                            style={{maxWidth: maxWidth}}
                             src={selectedBorder.image} alt={selectedBorder.name} />
                         }
-                        { isDeviceSelected && <DeviceList shouldUpdate={shouldUpdate} listRef={listRef}/> }
+                        { isDeviceSelected && <DeviceList listRef={listRef}/> }
                     </div>
                 </div>
             </div>
