@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
-import { PDFDownloadLink } from '@react-pdf/renderer'
-import { PdfDocument, ProjectComposition } from '../../Components'
+import { ProjectComposition } from '../../Components'
 import { getFileName, formatNumber } from '../../Helpers'
 import { TAppStore, TProject } from '../../types'
 import useStore from '../../Store'
@@ -13,8 +12,10 @@ const getProjectActions = (
     project: TProject,
     shareProject: TAppStore['shareProject'],
     removeProject: TAppStore['removeProject'],
-    modalLoadProjectSet: TAppStore['modalLoadProjectSet']
+    modalLoadProjectSet: TAppStore['modalLoadProjectSet'],
+    setDownloadProject:  TAppStore['setDownloadProject']
 ): JSX.Element | null => {
+
     return !project
         ? null
         : <ul className={actions}>
@@ -29,15 +30,15 @@ const getProjectActions = (
         </li>
 
         <li>
-            <PDFDownloadLink
-                document={ <PdfDocument project={project} /> }
-                fileName={ getFileName(project.name, project.id) }>
-                <button
-                    className="button button_dark"
-                    title="Скачать проект">
-                    <i className="icon icon_down"></i>
-                </button>
-            </PDFDownloadLink>
+            <button
+                onClick={() => setDownloadProject({
+                    project,
+                    filename: getFileName(project.name, project.id)
+                })}
+                className="button button_dark"
+                title="Скачать проект как PDF файл">
+                <i className="icon icon_down"></i>
+            </button>
         </li>
 
         <li>
@@ -69,21 +70,32 @@ const ProjectWorkspace = () => {
         setActiveTab,
         removeProject,
         shareProject,
-        modalLoadProjectSet
+        modalLoadProjectSet,
+        setDownloadProject
     ] = useStore(state => [
         state.projects,
         state.setActiveViewportTab,
         state.removeProject,
         state.shareProject,
-        state.modalLoadProjectSet
+        state.modalLoadProjectSet,
+        state.setDownloadProject
     ])
     // #endregion
 
     const project = projects.filter(p => p.edit)[0]
 
-
-    const projectActions = useMemo(() => getProjectActions(project, shareProject, removeProject, modalLoadProjectSet), [
-        project, shareProject, removeProject, modalLoadProjectSet
+    const projectActions = useMemo(() => getProjectActions(
+        project,
+        shareProject,
+        removeProject,
+        modalLoadProjectSet,
+        setDownloadProject
+    ), [
+        project,
+        shareProject,
+        removeProject,
+        modalLoadProjectSet,
+        setDownloadProject
     ])
 
     const getTotalCost = () => {

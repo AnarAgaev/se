@@ -17,6 +17,31 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     startValueConfigurationCount: null,
 
 
+    downloadProjectAsPdf: null,
+    downloadProjectFilename: null,
+    downloadProjectBlobUrl: null,
+    setDownloadProjectBlobUrl: (blobUrl) => set({
+        downloadProjectBlobUrl: blobUrl
+    }),
+    setDownloadProject: (payload) => {
+
+        const blobUrl = get().downloadProjectBlobUrl
+
+        if (blobUrl) {
+            URL.revokeObjectURL(blobUrl)
+        }
+
+        set({
+            downloadProjectAsPdf: payload.project,
+            downloadProjectFilename: payload.filename,
+            downloadProjectBlobUrl: null
+        })
+    },
+    resetDownloadProject: () => set({
+        downloadProjectAsPdf: null
+    }),
+
+
     // #region Colors
     colors: undefined,
     // #endregion

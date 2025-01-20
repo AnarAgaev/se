@@ -2,12 +2,12 @@ import style from './Loader.module.sass'
 
 const { loader, loader_visible, body, message, process, point } = style
 
-const Loader = () => {
+const Loader = ({ text, styles}: {text?: string, styles?: React.CSSProperties}) => {
     return(
-        <div className={`${loader} ${loader_visible}`}>
+        <div className={`${loader} ${loader_visible}`} style={{...styles}}>
             <div className={body}>
                 <span className={message}>
-                    Загружаем
+                    {text ? text : 'Загружаем'}
                     <mark className={process}>
                         <i className={point}></i>
                         <i className={point}></i>

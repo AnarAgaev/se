@@ -261,6 +261,11 @@ type TFunc = () => void
 type TFireError = (error: Error) => void
 export type TSetModalSelect = (caption: string, approveText: string, rejectText: string, payload: Record<string>) => void
 
+type TPrintProject = {
+    project: TProject,
+    filename: string
+}
+
 export type TAppStore = {
     userId?: TUserId
 
@@ -273,6 +278,16 @@ export type TAppStore = {
 
     setCountTimeoutId: Timer | undefined
     startValueConfigurationCount: number | null
+
+
+    downloadProjectAsPdf: TProject | null
+    downloadProjectFilename: string | null
+    downloadProjectBlobUrl: string | null
+    setDownloadProjectBlobUrl: (blobUrl: string | null) => void
+    setDownloadProject: ({ project, filename }: TPrintProject) => void
+    resetDownloadProject: () => void
+
+
 
     // #region Colors
     colors: TColorList | undefined

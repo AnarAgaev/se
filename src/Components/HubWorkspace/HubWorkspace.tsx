@@ -1,6 +1,5 @@
 import { useId, useMemo } from 'react'
-import { PDFDownloadLink } from '@react-pdf/renderer'
-import { InputAdd, PdfDocument } from '../../Components'
+import { InputAdd } from '../../Components'
 import { TProjectList, TAppStore } from '../../types'
 import { getFileName } from '../../Helpers'
 import useStore from '../../Store'
@@ -14,57 +13,61 @@ const getProjectsElms = (
     projects: TProjectList,
     editProject: TAppStore['editProject'],
     shareProject: TAppStore['shareProject'],
-    removeProject: TAppStore['removeProject']
+    removeProject: TAppStore['removeProject'],
+    setDownloadProject:  TAppStore['setDownloadProject']
 ): JSX.Element[] => {
 
-    return projects.map(p => (
-        <li key={`${id}-${p.id}`} className={item}>
-            <span className={name}>
-                {p.name}
-                <i>#{p.id}</i>
-            </span>
-            <ul className={actions}>
-                <li>
-                    <button
-                        onClick={() => editProject(p.id)}
-                        className="button button_dark"
-                        title="Редактировать проект">
-                        <i className='icon icon_edit'></i>
-                    </button>
-                </li>
+    return projects.map(p => {
 
-                <li>
-                    <button
-                        onClick={() => shareProject(p.id)}
-                        className="button button_dark"
-                        title="Поделиться проектом">
-                        <i className='icon icon_share'></i>
-                    </button>
-                </li>
-
-                <li>
-                    <PDFDownloadLink
-                        document={ <PdfDocument project={p} /> }
-                        fileName={ getFileName(p.name, p.id) }>
+        return (
+            <li key={`${id}-${p.id}`} className={item}>
+                <span className={name}>
+                    {p.name}
+                    <i>#{p.id}</i>
+                </span>
+                <ul className={actions}>
+                    <li>
                         <button
+                            onClick={() => editProject(p.id)}
                             className="button button_dark"
-                            title="Скачать проект">
+                            title="Редактировать проект">
+                            <i className='icon icon_edit'></i>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            onClick={() => shareProject(p.id)}
+                            className="button button_dark"
+                            title="Поделиться проектом">
+                            <i className='icon icon_share'></i>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            onClick={() => setDownloadProject({
+                                project: p,
+                                filename: getFileName(p.name, p.id)
+                            })}
+                            className="button button_dark"
+                            title="Скачать проект как PDF файл">
                             <i className="icon icon_down"></i>
                         </button>
-                    </PDFDownloadLink>
-                </li>
+                    </li>
 
-                <li>
-                    <button
-                        onClick={() => removeProject(p.id, p.name)}
-                        className="button button_dark"
-                        title="Удалить проект">
-                        <i className="icon icon_basket"></i>
-                    </button>
-                </li>
-            </ul>
-        </li>
-    ))
+                    <li>
+                        <button
+                            onClick={() => removeProject(p.id, p.name)}
+                            className="button button_dark"
+                            title="Удалить проект">
+                            <i className="icon icon_basket"></i>
+                        </button>
+                    </li>
+                </ul>
+            </li>
+        )
+    })
 }
 
 const HubWorkspace = () => {
@@ -78,7 +81,8 @@ const HubWorkspace = () => {
         editProject,
         shareProject,
         removeProject,
-        modalLoadProjectSet
+        modalLoadProjectSet,
+        setDownloadProject,
     ] = useStore(state => [
         state.userId,
         state.projects,
@@ -86,13 +90,14 @@ const HubWorkspace = () => {
         state.editProject,
         state.shareProject,
         state.removeProject,
-        state.modalLoadProjectSet
+        state.modalLoadProjectSet,
+        state.setDownloadProject,
     ])
     // #endregion
 
     const projectList = useMemo(
-        () => getProjectsElms(id, projects, editProject, shareProject, removeProject),
-        [id, projects, editProject, shareProject, removeProject]
+        () => getProjectsElms(id, projects, editProject, shareProject, removeProject, setDownloadProject),
+        [id, projects, editProject, shareProject, removeProject, setDownloadProject]
     )
 
     return (

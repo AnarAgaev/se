@@ -1,11 +1,13 @@
-import { useEffect } from 'react'
+import { useEffect, Suspense, lazy } from 'react'
 import useStore from '../../Store'
 import style from './App.module.sass'
 import '../../Sass/main.sass'
 
 import { Loading, Loader, Tabs, Factory, Viewport, ModalResetBrandOrCollection,
 	ModalWarning, ModalMessage, ModalShare, ModalLoadProject, ModalCopyConfiguration,
-	ModalAddConfiguration, ModalSaveConfiguration, ModalResetSketch } from '../../Components'
+	ModalAddConfiguration, ModalSaveConfiguration, ModalResetSketch, ModalSavePDF } from '../../Components'
+
+const PdfDocument = lazy(() => import('../PdfDocument/PdfDocument'))
 
 const { app, caption, body } = style
 
@@ -24,7 +26,9 @@ const App = () => {
 		modalCopyConfigurationVisible,
 		modalAddConfigurationVisible,
 		modalSaveConfigurationVisible,
-		modalResetSketchVisible
+		modalResetSketchVisible,
+		downloadProjectAsPdf,
+		downloadProjectBlobUrl
 	] = useStore(state => [
 		state.requestInitData,
 		state.loading,
@@ -37,7 +41,9 @@ const App = () => {
 		state.modalCopyConfigurationVisible,
 		state.modalAddConfigurationVisible,
 		state.modalSaveConfigurationVisible,
-		state.modalResetSketchVisible
+		state.modalResetSketchVisible,
+		state.downloadProjectAsPdf,
+		state.downloadProjectBlobUrl
 	])
 	// #endregion
 
@@ -73,8 +79,23 @@ const App = () => {
 			<ModalAddConfiguration visible={modalAddConfigurationVisible} />
 			<ModalSaveConfiguration visible={modalSaveConfigurationVisible} />
 			<ModalResetSketch visible={modalResetSketchVisible} />
+			<ModalSavePDF visible={Boolean(downloadProjectAsPdf) && Boolean(downloadProjectBlobUrl)} />
+
 			<Loading />
-		</section>
+
+			<Suspense fallback={
+				<Loader text={'Загружаем библиотеку'}
+					styles={{
+						position: 'absolute',
+						top: '50%',
+						left: '50%',
+						transform: 'translate(-50%, -50%)',
+						width: '240px'
+					}} />
+				}>
+				{ downloadProjectAsPdf && !downloadProjectBlobUrl && <PdfDocument /> }
+			</Suspense>
+			</section>
 	)
 }
 

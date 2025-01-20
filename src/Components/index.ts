@@ -38,14 +38,12 @@ import ModalCopyConfiguration from './ModalCopyConfiguration/ModalCopyConfigurat
 import ModalAddConfiguration from './ModalAddConfiguration/ModalAddConfiguration'
 import ModalSaveConfiguration from './ModalSaveConfiguration/ModalSaveConfiguration'
 import ModalResetSketch from './ModalResetSketch/ModalResetSketch'
+import ModalSavePDF from './ModalSavePDF/ModalSavePDF'
 import DeviceList from './DeviceList/DeviceList'
 import SketchSaver from './SketchSaver/SketchSaver'
 import Loading from './Loading/Loading'
 import Modal from './Modal/Modal'
 import ProjectComposition from './ProjectComposition/ProjectComposition'
-
-
-import PdfDocument from './PdfDocument/PdfDocument'
 
 export {
     App,
@@ -88,10 +86,10 @@ export {
     ModalAddConfiguration,
     ModalSaveConfiguration,
     ModalResetSketch,
+    ModalSavePDF,
     DeviceList,
     SketchSaver,
     Loading,
     Modal,
     ProjectComposition,
-    PdfDocument
 }
