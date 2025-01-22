@@ -51,8 +51,8 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         const body = new FormData()
                         body.append('domain', 'fandeco')
 
-                        // const res = await fetch(apiLink, { method: 'POST', body: body })
-                        const res = await fetch(apiLink, { method: 'GET' })
+                        const res = await fetch(apiLink, { method: 'POST', body: body })
+                        // const res = await fetch(apiLink, { method: 'GET' })
 
                         if (!res.ok) {
                             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -63,25 +63,33 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
 
 
-
     // const data = await res.json()
 
-    // const borderSet = new Set()
+    // const borderSetBrand = new Set()
+    // const borderSetCollection = new Set()
     // data.borders.forEach(b => {
     //     // if (!b.conf_color) borderSet.add(b.id)
-    //     borderSet.add(b.vendor)
-    // })
-    // console.log('Рамки')
-    // console.log(Array.from(borderSet).join(', '))
+    //     borderSetBrand.add(b.vendor)
+    //     borderSetCollection.add(b.collection)
 
-    // const devicesSet = new Set()
+    //     // if (b.conf_orientation === 'horizontal') {
+    //     //     console.log(b.id);
+    //     // }
+    // })
+    // console.log('\x1b[34m%s\x1b[0m', 'Рамки')
+    // console.log('Бренды', Array.from(borderSetBrand).join(', '))
+    // console.log('Коллекции', Array.from(borderSetCollection).join(', '))
+
+    // const devicesSetBrand = new Set()
+    // const devicesSetCollection = new Set()
     // data.devices.forEach(d => {
-    //     if (d.conf_product_group) devicesSet.add(d.conf_product_group)
+    //     devicesSetBrand.add(d.vendor)
+    //     devicesSetCollection.add(d.collection)
+    //     // if (d.conf_product_group) devicesSet.add(d.conf_product_group)
     // })
-    // console.log('Устройства')
-    // console.log(Array.from(devicesSet).join(', '))
-
-
+    // console.log('\x1b[34m%s\x1b[0m', 'Устройства')
+    // console.log('Бренды', Array.from(devicesSetBrand).join(', '))
+    // console.log('Коллекции', Array.from(devicesSetCollection).join(', '))
 
 
 

@@ -13,8 +13,17 @@ const { body, body_block } = style
 const Viewport = () => {
     const activeViewportTab = useStore(state => state.activeViewportTab)
 
+    const loadingTextMap = {
+        'configurator': 'Загружаем холст',
+        'collections': 'Загружаем коллекции',
+        'project': 'Загружаем проект',
+        'hub': 'Загружаем список проектов',
+    }
+
+    const loadingText = loadingTextMap[activeViewportTab]
+
     return (
-        <Suspense fallback={<Loader/>}>
+        <Suspense fallback={<Loader text={loadingText} />}>
             <div className={activeViewportTab === 'configurator' ? body : `${body} ${body_block}`}>
                 { activeViewportTab === 'configurator' && <ConfiguratorWorkspace /> }
                 { activeViewportTab === 'collections' && <CollectionsWorkspace /> }

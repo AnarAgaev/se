@@ -4,9 +4,18 @@ import style from './ModalSavePDF.module.sass'
 
 const ModalSavePDF = ({ visible }: {visible: boolean}) => {
 
-    const resetDownloadProject = useStore(state => state.resetDownloadProject)
-    const filename = useStore(state => state.downloadProjectFilename)
-    const url = useStore(state => state.downloadProjectBlobUrl)
+    // #region Variables
+    const [
+        resetDownloadProject,
+        filename,
+        url
+    ] = useStore(state => [
+        state.resetDownloadProject,
+        state.downloadProjectFilename,
+        state.downloadProjectBlobUrl
+    ])
+    // #endregion
+
 
     const onClose = () => {
         resetDownloadProject()

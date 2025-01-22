@@ -4,15 +4,16 @@
     justify-content: center
     position: relative
     z-index: 15
-    width: 150px
+    min-width: 200px
     height: 50px
-    aspect-ratio: 3 / 1
     border-radius: 999px
     margin: 0 auto
+    padding: 17px 34px
     transform: translateY(200%)
+    white-space: nowrap
 
     &_visible
-        display: flex
+        display: block
 
     &::before
         content: ''
@@ -59,9 +60,10 @@
     gap: 5px
     position: relative
     z-index: 1
+    // padding: 0 100px
     font-size: 14px
     color: var(--color-prime)
-
+    // background: red
 
 .process
     display: flex

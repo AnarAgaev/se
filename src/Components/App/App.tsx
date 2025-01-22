@@ -58,7 +58,7 @@ const App = () => {
 	return (
 		<section className={`se-app ${app}`}>
 			{ loading
-				? <Loader />
+				? <Loader text='Загружаем конфигуратор' />
 				: <>
 					<h1 className={caption}>
 						Конфигуратор
@@ -90,12 +90,11 @@ const App = () => {
 						top: '50%',
 						left: '50%',
 						transform: 'translate(-50%, -50%)',
-						width: '240px'
 					}} />
 				}>
 				{ downloadProjectAsPdf && !downloadProjectBlobUrl && <PdfDocument /> }
 			</Suspense>
-			</section>
+		</section>
 	)
 }
 

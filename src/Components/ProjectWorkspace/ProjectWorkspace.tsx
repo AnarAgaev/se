@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { ProjectComposition } from '../../Components'
-import { getFileName, formatNumber } from '../../Helpers'
+import { getFileName, formatNumber, getTotalProjectCost } from '../../Helpers'
 import { TAppStore, TProject } from '../../types'
 import useStore from '../../Store'
 import style from './ProjectWorkspace.module.sass'
@@ -98,44 +98,7 @@ const ProjectWorkspace = () => {
         setDownloadProject
     ])
 
-    const getTotalCost = () => {
-        let total = 0
-
-        if (!project) return total
-
-        const rooms = project.rooms
-
-        if (!rooms) return null
-
-        for (const r of rooms) {
-            const configurations = r.configurations
-
-            for (const c of configurations) {
-
-                let totalConfigurationsCost = !c.border
-                    ? 0
-                    : typeof c.border.price === 'string'
-                        ? parseFloat(c.border.price)
-                        : c.border.price
-
-                if (c.devices) {
-                    for (const d of c.devices) {
-                        if (d) {
-                            totalConfigurationsCost += typeof d.price === 'string'
-                                ? parseFloat(d.price)
-                                : d.price
-                        }
-                    }
-                }
-
-                total += (totalConfigurationsCost * c.count)
-            }
-        }
-
-        return total
-    }
-
-    const totalProjectCost = getTotalCost()
+    const totalProjectCost = getTotalProjectCost(project)
 
     let addToCartButtonClassName = 'button button_dark button_block'
     if (project && !project.rooms?.length) addToCartButtonClassName += ' disabled'

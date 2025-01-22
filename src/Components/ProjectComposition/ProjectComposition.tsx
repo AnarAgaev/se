@@ -1,8 +1,8 @@
 import { MouseEvent } from 'react'
-import { formatNumber, getPostWordDeclension, collapseDevices } from '../../Helpers'
-import { TAppStore, TProject, TConfiguration, TConfigurationList,
-    TDeviceList, TBorder, TNumberOfPosts, TGetCountOfPosts, TSetSingleFilter,
-    TSetEditSketch, TDevice, TBackgroundsStore} from '../../types'
+import { formatNumber, getPostWordDeclension, collapseDevices, getTotalPriceConfiguration } from '../../Helpers'
+import { TAppStore, TProject, TConfigurationList, TDeviceList, TBorder,
+    TNumberOfPosts, TGetCountOfPosts, TSetSingleFilter, TSetEditSketch,
+    TDevice, TBackgroundsStore} from '../../types'
 import useStore from '../../Store'
 import style from './ProjectComposition.module.sass'
 
@@ -15,31 +15,6 @@ const onShow: TOnShow = (e) => {
     const button: HTMLButtonElement = e.target as HTMLButtonElement
     const table: HTMLElement | null = button.closest('table')
     if (table) table.classList.toggle(dropped)
-}
-
-const getTotalPriceConfiguration = (conf: TConfiguration): string => {
-
-    const count = conf.count
-
-    const borderPrice = !conf.border
-        ? 0
-        : typeof conf.border.price === 'string'
-            ? parseFloat(conf.border.price)
-            : conf.border.price
-
-    const devicesPrice: number = !conf.devices
-        ? 0
-        : conf.devices.reduce((acc, device) => {
-            if (device && typeof device.price === 'string') {
-                return acc + parseFloat(device.price)
-            } else if (device && typeof device.price === 'number') {
-                return acc + device.price
-            } else {
-                return acc
-            }
-        }, 0)
-
-    return formatNumber((borderPrice + devicesPrice) * count)
 }
 
 const getBorder = (border: TBorder, isDevices: boolean): JSX.Element => {
@@ -115,6 +90,7 @@ const getConfigurationList = (
 
     configurations.forEach((c, idx) => {
 
+        // #region Set title text
         const vendor = c.border
             ? c.border.vendor
             : c.devices
@@ -135,6 +111,7 @@ const getConfigurationList = (
         if (c.border) colorSet.add(c.border.color)
         if (c.devices) c.devices.forEach(d => d && colorSet.add(d.color))
         const color = Array.from(colorSet).join('/')
+        // #endregion
 
         const onChangeCount = (direction: -1 | 1) => setConfigurationCount(projectId, roomId, c.id, direction)
 

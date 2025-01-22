@@ -13,8 +13,16 @@ const Factory = () => {
 
     if (activeViewportTab !== 'configurator') return null
 
+    const loadingTextMap = {
+        'borders': 'Загружаем рамки',
+        'devices': 'Загружаем устройства',
+        'backgrounds': 'Загружаем обои'
+    }
+
+    const loadingText = loadingTextMap[activeCalcTab]
+
     return (
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={ <Loader text={loadingText} /> }>
             <div className={style.factory}>
                 { activeCalcTab === 'borders' && <BordersWorkspace /> }
                 { activeCalcTab === 'devices' && <DevicesWorkspace /> }
