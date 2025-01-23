@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     },
 
     logo: {
-        width: '100pt',
+        width: '75pt',
         height: 'auto'
     },
 
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     line: {
         width: '100%',
         height: '0.3pt',
-        backgroundColor: '#333',
+        backgroundColor: '#b7b7b7',
         marginTop: '50pt'
     },
 
@@ -286,7 +286,7 @@ const getConfigurationList = ( configurations: TConfigurationList ): JSX.Element
         const border = getBorder(c.border)
 
         configurationList.push(
-            <View style={styles.set} wrap={false}>
+            <View style={styles.set}>
                 <Text style={styles.roomTitle}>
                     <Text style={styles.bold}>
                         Комплект:
@@ -339,7 +339,7 @@ const getRoomList = (
         const configurations = getConfigurationList(r.configurations)
 
         roomList.push(
-            <View style={styles.room} wrap={false}>
+            <View style={styles.room} >
                 <Text style={styles.roomName}>{r.name}</Text>
                 <View style={styles.sets}>
                     { configurations }
@@ -437,7 +437,7 @@ const PdfDocument = () => {
                     return (
                         <Loader text={'Создаем PDF файл'}
                             styles={{
-                                position: 'absolute',
+                                position: 'fixed',
                                 top: '50%',
                                 left: '50%',
                                 transform: 'translate(-50%, -50%)',
