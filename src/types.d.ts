@@ -288,6 +288,8 @@ export type TAppStore = {
     resetDownloadProject: () => void
 
 
+    addProductsToCart: TAddProductsToCart
+
 
     // #region Colors
     colors: TColorList | undefined
@@ -509,7 +511,15 @@ export type TAppStore = {
 type TResetSketchInitializerVariants = 'removeBorder' | 'resetFilters' | null
 // #endregion
 
-
+// #region AddProductsToCart
+export type TAddProductsToCart = ( payload:
+    Array<{
+        type: 'border' | 'device'
+        article: string
+        count: number
+    }>
+) => void
+// #endregion
 
 export {
     TBackground, TBackgroundList,

@@ -11,4 +11,5 @@ interface Window {
     updateConfigurationCountLink: string
     removeConfigurationLink: string
     copyReplaceConfigurationLink: string
+    addProductsToCartLink: string
 }

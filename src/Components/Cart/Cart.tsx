@@ -1,5 +1,7 @@
 import useStore from '../../Store'
 import { Price, Locations, Set } from '../../Components'
+import { collapseDevices } from '../../Helpers'
+import { TAddProductsToCart } from '../../types'
 import style from './Cart.module.sass'
 
 const { cart, section, caption } = style
@@ -21,7 +23,8 @@ const Cart = () => {
         countOfSets,
         editConfiguration,
         direction,
-        saveConfiguration
+        saveConfiguration,
+        addProductsToCart
     ] = useStore(state => [
         state.border,
         state.checkDevices,
@@ -36,7 +39,8 @@ const Cart = () => {
         state.countOfSets,
         state.editConfiguration,
         state.direction,
-        state.saveConfiguration
+        state.saveConfiguration,
+        state.addProductsToCart
     ])
     // #endregion
 
@@ -96,12 +100,32 @@ const Cart = () => {
     }
 
     const addToCartHandler = () => {
-        if (!isSelectedDevice) {
-            modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство')
-            return
-        }
+        // if (!isSelectedDevice) {
+        //     modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство')
+        //     return
+        // }
 
-        alert("Отправляем запрос на API --- Добавляем комплект в корзину")
+        const selectedDevices = collapseDevices(Object.values(deviceList))
+
+        const requestArr: Parameters<TAddProductsToCart>[0] = []
+
+        if (selectedBorder) requestArr.push({
+            type: 'border',
+            article: selectedBorder.article,
+            count: countOfSets
+        })
+
+        selectedDevices.forEach(device => {
+            if (device) {
+                requestArr.push({
+                    type: 'device',
+                    article: device.article,
+                    count: device.selectedCount * countOfSets
+                })
+            }
+        })
+
+        addProductsToCart(requestArr)
     }
 
     const addToProjectButtonClazz = `button button_block button_dark ${(!isSelectedBorder && !isSelectedDevice) || !isProjectSelected || !isRoomSelected ? 'clickedDisabled' : ''}`
@@ -130,7 +154,8 @@ const Cart = () => {
                 <div className={section}>
                     <h3 className={caption}>Состав комплекта</h3>
                     <Set />
-                    <button type="button" onClick={addToCartHandler}
+                    <button type="button"
+                        onClick={addToCartHandler}
                         className={addToCartButtonClazz}>
                         Добавить комплект в корзину
                     </button>

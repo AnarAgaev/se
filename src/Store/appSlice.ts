@@ -1231,9 +1231,53 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             modalResetSketchButtonApproveText: approveText,
             modalResetSketchButtonRejectText: rejectText
         })
-    }
+    },
     // #endregion
 
+
+    // #region AddProductsToCart
+    addProductsToCart: async (payload) => {
+
+        const productsAsQueryString = payload.map(product => `${product.article}=${product.count}`).join('&');
+
+        const apiLink = window.addProductsToCartLink
+
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Добавить товар в корзину window.addProductsToCartLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const requestLink = `${apiLink}?${productsAsQueryString}`
+
+        try {
+            const res = await fetch(requestLink)
+
+            if (!res.ok) {
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Ошибка fetch запроса Добавить товар/товары в Корзину! Запрос к URL ${requestLink}`)
+            }
+
+            const data = await res.json()
+
+            if (!data.success) {
+                get().modalMessageSet(true, data.message)
+                throw new Error(data.message)
+            }
+
+            // Add project
+            setTimeout(() => set({
+                dataLoading: false,
+                modalMessageVisible: true,
+                modalMessageCaption: data.message,
+            }), 500)
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    // #endregion
 })
 
 export default appSlice

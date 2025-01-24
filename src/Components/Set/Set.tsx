@@ -14,7 +14,8 @@ const getBorder = (
     id: string,
     border: TSketchStore['border'],
     countOfSets: TAppStore['countOfSets'],
-    setModalResetSketch: TAppStore['setModalResetSketch']
+    setModalResetSketch: TAppStore['setModalResetSketch'],
+    addProductsToCart: TAppStore['addProductsToCart']
 ): JSX.Element => {
 
     const removeHandler = () => {
@@ -25,6 +26,16 @@ const getBorder = (
             'Удалить рамку',
             'Оставить рамку'
         )
+    }
+
+    const addToCardHandler = () => {
+        if (!border) return
+
+        addProductsToCart([{
+            type: 'border',
+            article: border.article,
+            count: countOfSets
+        }])
     }
 
     return (
@@ -42,7 +53,8 @@ const getBorder = (
                         <span className={price}>{border?.price} ₽</span>
                         <span className={count}>{countOfSets} шт.</span>
                     </div>
-                    <button type="button" className={`button button_small button_dark button_cart ${add}`}>
+                    <button type="button" onClick={addToCardHandler}
+                        className={`button button_small button_dark button_cart ${add}`}>
                         В корзину
                         <i className='icon icon_cart'></i>
                     </button>
@@ -56,7 +68,8 @@ const getSetList = (
     id: string,
     deviceList: TDeviceList,
     countOfSets: TAppStore['countOfSets'],
-    removeDevice: TSketchStore['removeDevice']
+    removeDevice: TSketchStore['removeDevice'],
+    addProductsToCart: TAppStore['addProductsToCart']
 ): JSX.Element[] => {
 
     const devices = collapseDevices(deviceList as (TDevice | null)[])
@@ -66,6 +79,14 @@ const getSetList = (
         const finalPrice = typeof d.price === 'string'
             ? parseFloat(d.price) * d.selectedCount * countOfSets
             : d.price * d.selectedCount * countOfSets
+
+        const addToCartHandler = () => {
+            addProductsToCart([{
+                type: 'device',
+                article: d.article,
+                count: d.selectedCount * countOfSets
+            }])
+        }
 
         return (
             <li key={`${id}-${i}`} className={item} title={d?.name}>
@@ -86,7 +107,8 @@ const getSetList = (
                             <i>({d.price} р. ед.)</i>
                         </span>
                     </div>
-                    <button type="button" className={`button button_small button_dark button_cart ${add}`}>
+                    <button type="button" onClick={addToCartHandler}
+                        className={`button button_small button_dark button_cart ${add}`}>
                         В корзину
                         <i className='icon icon_cart'></i>
                     </button>
@@ -106,13 +128,15 @@ const Set = () => {
         countOfSets,
         deviceList,
         removeDevice,
-        setModalResetSketch
+        setModalResetSketch,
+        addProductsToCart
     ] = useStore(state => [
         state.border,
         state.countOfSets,
         state.deviceList,
         state.removeDevice,
-        state.setModalResetSketch
+        state.setModalResetSketch,
+        state.addProductsToCart
     ])
     // #endregion
 
@@ -133,15 +157,15 @@ const Set = () => {
 
     // #region Getting JSX Elements
     const selectedBorder = useMemo(
-        () => getBorder(id, border, countOfSets, setModalResetSketch),
-        [id, border, countOfSets, setModalResetSketch]
+        () => getBorder(id, border, countOfSets, setModalResetSketch, addProductsToCart),
+        [id, border, countOfSets, setModalResetSketch, addProductsToCart]
     )
 
     const devices = Object.values(deviceList).filter(Boolean) as TDeviceList
 
     const setList = useMemo(
-        () => getSetList(id, devices, countOfSets, removeDevice),
-        [id, devices, countOfSets, removeDevice]
+        () => getSetList(id, devices, countOfSets, removeDevice, addProductsToCart),
+        [id, devices, countOfSets, removeDevice, addProductsToCart]
     )
     // #endregion
 

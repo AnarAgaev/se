@@ -1,7 +1,7 @@
-import { useMemo } from 'react'
 import { ProjectComposition } from '../../Components'
-import { getFileName, formatNumber, getTotalProjectCost } from '../../Helpers'
-import { TAppStore, TProject } from '../../types'
+import { TAppStore, TProject, TAddProductsToCart, TDevice } from '../../types'
+import { getFileName, formatNumber, getTotalProjectCost,
+        collapseDevices, collapseAddProjectToCartRequestArr } from '../../Helpers'
 import useStore from '../../Store'
 import style from './ProjectWorkspace.module.sass'
 
@@ -62,6 +62,41 @@ const getProjectActions = (
     </ul>
 }
 
+const getAddProjectToCartRequestArr = (project: TProject): Parameters<TAddProductsToCart>[0]  => {
+
+    const requestArr: Parameters<TAddProductsToCart>[0] = []
+
+    if (!project.rooms) return requestArr
+
+    project.rooms.forEach(room => {
+        room.configurations.forEach(configuration => {
+
+            const border = configuration.border
+            const devices = configuration.devices as (TDevice | null)[] | undefined
+
+            if (border) requestArr.push({
+                type: 'border',
+                article: border.article,
+                count: configuration.count
+            })
+
+            if (devices && devices.length) {
+                const selectedDevices = collapseDevices(devices)
+
+                selectedDevices.forEach(device => {
+                    requestArr.push({
+                        type: 'device',
+                        article: device.article,
+                        count: device.selectedCount * configuration.count
+                    })
+                })
+            }
+        })
+    })
+
+    return collapseAddProjectToCartRequestArr(requestArr)
+}
+
 const ProjectWorkspace = () => {
 
     // #region Variables
@@ -71,37 +106,36 @@ const ProjectWorkspace = () => {
         removeProject,
         shareProject,
         modalLoadProjectSet,
-        setDownloadProject
+        setDownloadProject,
+        addProductsToCart
     ] = useStore(state => [
         state.projects,
         state.setActiveViewportTab,
         state.removeProject,
         state.shareProject,
         state.modalLoadProjectSet,
-        state.setDownloadProject
+        state.setDownloadProject,
+        state.addProductsToCart
     ])
     // #endregion
 
     const project = projects.filter(p => p.edit)[0]
 
-    const projectActions = useMemo(() => getProjectActions(
-        project,
-        shareProject,
-        removeProject,
-        modalLoadProjectSet,
-        setDownloadProject
-    ), [
-        project,
-        shareProject,
-        removeProject,
-        modalLoadProjectSet,
-        setDownloadProject
-    ])
+    const projectActions = getProjectActions(
+        project, shareProject, removeProject,
+        modalLoadProjectSet, setDownloadProject
+    )
 
     const totalProjectCost = getTotalProjectCost(project)
 
     let addToCartButtonClassName = 'button button_dark button_block'
     if (project && !project.rooms?.length) addToCartButtonClassName += ' disabled'
+
+    const addToCartHandler = () => {
+        addProductsToCart(
+            getAddProjectToCartRequestArr(project)
+        )
+    }
 
     return !project
 
@@ -133,7 +167,10 @@ const ProjectWorkspace = () => {
                             <strong>{formatNumber(totalProjectCost)} р.</strong>
                         </p>
                     }
-                    <button className={addToCartButtonClassName}>Добавить в корзину</button>
+                    <button onClick={addToCartHandler}
+                        className={addToCartButtonClassName}>
+                        Добавить в корзину
+                    </button>
                 </div>
             </footer>
         </div>
