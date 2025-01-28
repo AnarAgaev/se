@@ -1,6 +1,6 @@
 import { create } from 'zustand'
-// import { devtools, persist, createJSONStorage } from 'zustand/middleware'
-import { devtools, createJSONStorage } from 'zustand/middleware'
+import { devtools, persist, createJSONStorage } from 'zustand/middleware'
+// import { devtools, createJSONStorage } from 'zustand/middleware'
 import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } from './'
 import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette } from '../types'
@@ -27,7 +27,7 @@ const zodErrorOptions: ErrorMessageOptions = {
 
 const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSketchStore & TAppStore & TStore>()(
     devtools(
-        // persist(
+        persist(
             (set, get, ...args) => ({
                 ...appSlice(set, get, ...args),
                 ...backgroundSlice(set, get, ...args),
@@ -299,7 +299,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                 name: 'food-storage',
                 storage: createJSONStorage(() => sessionStorage),
             }
-        // )
+        )
     )
 )
 
