@@ -104,24 +104,32 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?name=${project}`
+        // const requestLink = `${apiLink}?name=${project}`
+
+        const body = new FormData()
+        body.append('domain', 'fandeco')
+        body.append('name', project)
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                body
+            })
 
             if (!res.ok) {
+
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Добавить проект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса Добавить проект! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
 
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
-
-            // Add project
+            // Adding project
             const newProjects = [...get().projects]
 
             let addedProjectId = data.id
