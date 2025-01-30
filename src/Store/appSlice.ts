@@ -278,32 +278,45 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?remove=${id}`
+        // const requestLink = `${apiLink}?remove=${id}`
+
+        const body = new FormData()
+        body.append('domain', 'fandeco')
+        body.append('project_id', `${id}`)
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                body
+            })
 
             if (!res.ok) {
+
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Удалить проект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса Удалить проект! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
 
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
+            console.log('data', data);
+
+            if (data.success) {
+
+                // Remove project
+                const newProjects = [...get().projects].filter(p => p.id !== id)
+
+                setTimeout(() => set({
+                    dataLoading: false,
+                    modalMessageVisible: true,
+                    modalMessageCaption: `Проект #${id} ${name} удален`,
+                    projects: newProjects
+                }), 500)
             }
-
-            // Remove project
-            const newProjects = [...get().projects].filter(p => p.id !== id)
-
-            setTimeout(() => set({
-                dataLoading: false,
-                modalMessageVisible: true,
-                modalMessageCaption: `Проект #${id} ${name} удален`,
-                projects: newProjects
-            }), 500)
 
         } catch (error) {
             console.error(error)
