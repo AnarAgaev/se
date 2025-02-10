@@ -211,6 +211,11 @@ const bordersSlice: StateCreator<TBordersStore> = (set, get) => ({
         })
 
         return resultBorder
+    },
+
+    getFamilyBorders: (border) => {
+        const borders = [...get().borders].filter(el => get().checkSiblingBorder(border, el))
+        return borders
     }
     // #endregion
 })

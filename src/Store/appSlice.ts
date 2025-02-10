@@ -196,22 +196,30 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?share=${id}`
+        // const requestLink = `${apiLink}?share=${id}`
+
+        const body = new FormData()
+        body.append('domain', 'fandeco')
+        body.append('project_id', id.toString())
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                body
+            })
 
             if (!res.ok) {
+
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Поделиться проектом! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса Поделиться проектом! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
-
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
 
             setTimeout(() => set({
                 dataLoading: false,
@@ -223,7 +231,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             console.error(error)
         }
     },
-    loadProject: async (id) => {
+    loadProject: async (token) => {
 
         const apiLink = window.loadProjectLink
 
@@ -234,22 +242,32 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?load=${id}`
+        // const requestLink = `${apiLink}?load=${id}`
+
+        const body = new FormData()
+        body.append('domain', 'fandeco')
+        body.append('project_id', token)
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                body
+            })
 
             if (!res.ok) {
+
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Загрузить проект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса Загрузить проект! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
 
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
+            // Add project to configurator
 
             setTimeout(() => {
                 set({
@@ -257,6 +275,12 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 })
 
 
+                // Перед добавление проекта в конфигуратор, обязательно проверить,
+                // что его там нет. Чтобы пользователь не добавил себе уже
+                // существующий (собственный) проект в конфигураторе
+
+
+                console.log('Получили проект', data)
                 alert('Добавляем проект в конфигуратор. Добавить логику когда будет ясна сигнатура Проекта.')
 
 
@@ -337,22 +361,30 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?name=${room}`
+        // const requestLink = `${apiLink}?name=${room}`
+
+        const body = new FormData()
+        body.append('domain', 'fandeco')
+        body.append('name', room)
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                body
+            })
 
             if (!res.ok) {
+
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Добавить помещение! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса Добавить помещение! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
-
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
 
             // Add room
             const newRooms = [...get().rooms]

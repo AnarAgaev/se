@@ -1,3 +1,7 @@
+
+// https://fandeco.ru/configuratorse?share=8a71ea49-dfc2-4475-8364-a8576c987a5c
+
+
 import { useRef, useState } from 'react'
 import { Modal } from '../../Components'
 import useStore from '../../Store'
@@ -10,16 +14,19 @@ const removeProtocol = (url: string) => {
 }
 
 const checkInputText = (link: string): boolean => {
-    if (link === '') return false
 
-    const _VALID_DOMAIN = 'se-configurator.com'
+    return link !== ''
 
-    try {
-        const urlObj = new URL('https://' + removeProtocol(link))
-        return urlObj.hostname === _VALID_DOMAIN
-    } catch (error) {
-        return false
-    }
+    // if (link === '') return false
+
+    // const _VALID_DOMAIN = 'fandeco.ru'
+
+    // try {
+    //     const urlObj = new URL('https://' + removeProtocol(link))
+    //     return urlObj.hostname === _VALID_DOMAIN
+    // } catch (error) {
+    //     return false
+    // }
 }
 
 const getParamFromUrl = (link: string, param: string) => {
@@ -66,16 +73,16 @@ const ModalLoadProject = ({visible}: {visible: boolean}) => {
             return
         }
 
-        const projectId = getParamFromUrl(removeProtocol(controller.value), 'share')
+        const projectToken = getParamFromUrl(removeProtocol(controller.value), 'share')
 
-        if (!projectId) {
+        if (!projectToken) {
             setError(true)
             return
         }
 
         setError(false)
         modalLoadProjectSet(false, '')
-        loadProject(projectId)
+        loadProject(projectToken)
     }
 
     return (

@@ -51,7 +51,10 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         const body = new FormData()
                         body.append('domain', 'fandeco')
 
-                        const res = await fetch(apiLink, { method: 'POST', body: body })
+                        const res = await fetch(apiLink, {
+                            method: 'POST',
+                            body
+                        })
                         // const res = await fetch(apiLink, { method: 'GET' })
 
                         if (!res.ok) {
@@ -65,31 +68,34 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
     // const data = await res.json()
 
-    // const borderSetBrand = new Set()
-    // const borderSetCollection = new Set()
+    // const bordersSet = new Set()
+    // // const borderSetBrand = new Set()
+    // // const borderSetCollection = new Set()
     // data.borders.forEach(b => {
-    //     // if (!b.conf_color) borderSet.add(b.id)
-    //     borderSetBrand.add(b.vendor)
-    //     borderSetCollection.add(b.collection)
 
-    //     // if (b.conf_orientation === 'horizontal') {
-    //     //     console.log(b.id);
-    //     // }
+    //     b.number_of_posts.forEach(n => bordersSet.add(typeof n))
+
+    // //     // if (!b.conf_color) borderSet.add(b.id)
+    // //     borderSetBrand.add(b.vendor)
+    // //     borderSetCollection.add(b.collection)
+
+    // //     // if (b.conf_orientation === 'horizontal') {
+    // //     //     console.log(b.id);
+    // //     // }
     // })
-    // console.log('\x1b[34m%s\x1b[0m', 'Рамки')
-    // console.log('Бренды', Array.from(borderSetBrand).join(', '))
-    // console.log('Коллекции', Array.from(borderSetCollection).join(', '))
+    // // console.log('\x1b[34m%s\x1b[0m', 'Рамки')
+    // // console.log('Бренды', Array.from(borderSetBrand).join(', '))
+    // // console.log('Коллекции', Array.from(borderSetCollection).join(', '))
+    // console.log(Array.from(bordersSet))
 
-    // const devicesSetBrand = new Set()
-    // const devicesSetCollection = new Set()
+
+
+    // const devicesSet = new Set()
     // data.devices.forEach(d => {
-    //     devicesSetBrand.add(d.vendor)
-    //     devicesSetCollection.add(d.collection)
-    //     // if (d.conf_product_group) devicesSet.add(d.conf_product_group)
+    //     if (!d.ip_class) devicesSet.add(d.article)
     // })
     // console.log('\x1b[34m%s\x1b[0m', 'Устройства')
-    // console.log('Бренды', Array.from(devicesSetBrand).join(', '))
-    // console.log('Коллекции', Array.from(devicesSetCollection).join(', '))
+    // console.log(Array.from(devicesSet).join(', '))
 
 
 
@@ -264,7 +270,19 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         type FilterFunc<T> = (items: T[], property: string, value: string | number) => T[]
 
                         const filteringItemsByFunctionalityProp: FilterFunc<TDevice> = (items, property, value) => {
-                            return items.filter(i => i[property] === value)
+
+                            return items.filter(i => {
+
+                                const prop = i[property] as string | number | string[] | undefined
+
+                                if (prop === undefined) return false
+
+                                if (typeof prop === 'string' || typeof prop === 'number') {
+                                    return prop.toString().toLocaleLowerCase() === value.toString().toLocaleLowerCase()
+                                }
+
+                                return prop.includes(value.toString())
+                            })
                         }
 
                         for (const prop in filter.props) {

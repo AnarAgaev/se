@@ -1,6 +1,6 @@
 import { useRef, useMemo, useCallback, useId } from 'react'
 import { SketchBackground, DeviceList, SketchSaver } from '../../Components'
-import { TDirections, TBorder, TNumberOfPosts } from '../../types'
+import { TDirections, TBorder, TNumberOfPosts, TGetFamilyBorders } from '../../types'
 import useStore from '../../Store'
 import style from './Sketch.module.sass'
 
@@ -20,7 +20,9 @@ const createPosts = (
     postsCount: number,
     selectedPost: boolean[],
     onSetPostsCount: TOnSetPostsCount,
-    direction: TDirections
+    direction: TDirections,
+    selectedBorder: TBorder | null,
+    getFamilyBorders: TGetFamilyBorders
 ): JSX.Element[] => {
 
     const resultList: JSX.Element[] = []
@@ -33,14 +35,22 @@ const createPosts = (
         5: 'постов',
     }
 
-    for (let i = 1; i <= (!selectedPost.length ? 5 : postsCount); i++) {
+    const familyBordersSpots = selectedBorder
+        ? Array.from(new Set(getFamilyBorders(selectedBorder).flatMap(b => b.number_of_posts)))
+        : []
+
+    for (let i = 1; i <= (!selectedBorder ? 5 : postsCount); i++) {
         const jsxEl = !selectedPost.length
             ? <li key={`post-${id}-${i}`}><span>{i}</span></li>
             : <li key={`post-${id}-${i}`} className={selectedPost[i - 1] ? postActive : ''}>
                 <span onClick={e => onSetPostsCount(e, i, direction)} title={`Выбрать рамку на ${i} ${wordForm[i]}`}>{i}</span>
             </li>
 
-        resultList.push(jsxEl)
+        if (selectedBorder) {
+            if (familyBordersSpots.includes(i.toString())) resultList.push(jsxEl)
+        } else {
+            resultList.push(jsxEl)
+        }
     }
 
     return resultList
@@ -70,7 +80,8 @@ const Sketch = () => {
         removeSingleBordersFilter,
         removeSingleDevicesFilter,
         resetEditConfiguration,
-        resetBackground
+        resetBackground,
+        getFamilyBorders
     ] = useStore(state => [
         state.scale,
         state.postsCount,
@@ -92,6 +103,7 @@ const Sketch = () => {
         state.removeSingleDevicesFilter,
         state.resetEditConfiguration,
         state.resetBackground,
+        state.getFamilyBorders
     ])
     // #endregion
 
@@ -154,10 +166,12 @@ const Sketch = () => {
             // getSiblingBorder отдает пост с учетом ориентации
             const newBorder = getSiblingBorder(selectedBorder, newPostNumber, direction)
 
-            if (!newBorder) {
-                fireError(new Error(`Функция поиска соседних рамок [getSiblingBorder] с количеством постов ${newPostNumber} вернула пустой результат!`))
-                return
-            }
+            console.log('newBorder', newBorder)
+
+            // if (!newBorder) {
+            //     fireError(new Error(`Функция поиска соседних рамок [getSiblingBorder] с количеством постов ${newPostNumber} вернула пустой результат!`))
+            //     return
+            // }
 
             if (newPostNumber === 1
                     || newPostNumber === 2
@@ -170,9 +184,10 @@ const Sketch = () => {
         }
     }, [selectedBorder, setBorder, getSiblingBorder, fireError])
 
+
     const postList = useMemo(
-        () => createPosts(id, postsCount, selectedPost, onSetPostsCount, direction),
-        [id, postsCount, selectedPost, onSetPostsCount, direction]
+        () => createPosts(id, postsCount, selectedPost, onSetPostsCount, direction, selectedBorder, getFamilyBorders),
+        [id, postsCount, selectedPost, onSetPostsCount, direction, selectedBorder, getFamilyBorders]
     )
 
     const onReset = () => {

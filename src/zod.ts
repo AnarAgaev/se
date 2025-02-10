@@ -44,7 +44,7 @@ export type TElementList = z.infer<typeof ElementList>
 // #region Borders
 export const Border = Element.extend({
     conf_orientation: z.union([z.literal("universal"), z.literal("vertical")]).optional(),
-    number_of_posts: z.array(z.string()).optional()
+    number_of_posts: z.array(z.string())
 }).passthrough()
 export type TBorder = z.infer<typeof Border>
 
@@ -56,7 +56,8 @@ export type TBorderList = z.infer<typeof BorderList>
 
 // #region Devices
 export const Device = Element.extend({
-    conf_product_group: z.string().optional(), // У некоторых девайсов не указан тип!!!
+    conf_product_group: z.string().optional(),
+    conf_device_type: z.array(z.string()).optional()
 }).passthrough()
 export type TDevice = z.infer<typeof Device> & {
     [key: string]: string | number
