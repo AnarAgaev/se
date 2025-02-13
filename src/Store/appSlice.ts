@@ -657,21 +657,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             products[`${device.id}`] = device.selectedCount * count)
         // #endregion
 
-        const body = new FormData()
-        body.append('domain', 'fandeco')
-        body.append('project_id', `${projectId}`)
-        body.append('room_id', `${roomId}`)
-        body.append('direction', direction === 'horizontal' ? 'universal' : direction)
-        body.append('products', JSON.stringify(products))
-
-        if (backgroundId) {
-            body.append('file_id', `${backgroundId}`)
-        }
-
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                body
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'project_id': projectId,
+                    'room_id': roomId,
+                    'direction': direction === 'horizontal' ? 'universal' : direction,
+                    'file_id': backgroundId,
+                    'products': products,
+                })
             })
 
             if (!res.ok) {
@@ -1044,22 +1042,20 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             products[`${device.id}`] = device.selectedCount * countOfSets)
         // #endregion
 
-        const body = new FormData()
-        body.append('domain', 'fandeco')
-        body.append('project_id', `${projectId}`)
-        body.append('room_id', `${roomId}`)
-        body.append('configuration_id', `${configurationId}`)
-        body.append('direction', direction === 'horizontal' ? 'universal' : direction)
-        body.append('products', JSON.stringify(products))
-
-        if (backgroundId) {
-            body.append('file_id', `${backgroundId}`)
-        }
-
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                body
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'project_id': projectId,
+                    'room_id': roomId,
+                    'configuration_id': configurationId,
+                    'direction': direction === 'horizontal' ? 'universal' : direction,
+                    'products': products,
+                    'file_id': backgroundId,
+                })
             })
 
             if (!res.ok) {
@@ -1074,9 +1070,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             const data: {id: string | number, [key: string]: unknown} = await res.json()
 
-            if (!data.id) {
+            if (!data.success) {
                 throw new Error("Incorrect response data. There's no updated configuration Id!")
-                return
             }
 
             // Add configuration to selected project
@@ -1124,9 +1119,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         } catch (error) {
             console.error(error)
         }
-
-
-
     },
     // #endregion
 
