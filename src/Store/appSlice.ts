@@ -1,5 +1,6 @@
 import { StateCreator } from 'zustand'
-import { TAppStore, TRequestAddConfiguration, TRequestSaveConfiguration, TRequestUpdateConfigurationCount,
+import { collapseDevices } from '../Helpers'
+import { TAppStore , TRequestUpdateConfigurationCount,
     TRequestRemoveConfiguration, TRequestCopyReplaceConfiguration, TConfiguration } from '../types'
 
 const appSlice: StateCreator<TAppStore> = (set, get) => ({
@@ -104,8 +105,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        // const requestLink = `${apiLink}?name=${project}`
-
         const body = new FormData()
         body.append('domain', 'fandeco')
         body.append('name', project)
@@ -117,7 +116,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-
                 const errData = await res.json();
                 const errObj = JSON.parse(errData.errors.error[0])
                 console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
@@ -196,8 +194,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        // const requestLink = `${apiLink}?share=${id}`
-
         const body = new FormData()
         body.append('domain', 'fandeco')
         body.append('project_id', id.toString())
@@ -231,7 +227,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             console.error(error)
         }
     },
-    loadProject: async (token) => {
+    loadProject: async (link) => {
 
         const apiLink = window.loadProjectLink
 
@@ -242,11 +238,9 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        // const requestLink = `${apiLink}?load=${id}`
-
         const body = new FormData()
         body.append('domain', 'fandeco')
-        body.append('project_id', token)
+        body.append('link', link)
 
         try {
             const res = await fetch(apiLink, {
@@ -255,7 +249,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-
                 const errData = await res.json();
                 const errObj = JSON.parse(errData.errors.error[0])
                 console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
@@ -281,7 +274,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
 
                 console.log('Получили проект', data)
-                alert('Добавляем проект в конфигуратор. Добавить логику когда будет ясна сигнатура Проекта.')
+                alert('Добавляем проект в конфигуратор. Добавить логику когда будет ясна сигнатура Проекта. На данные момент приходит урезанный проект только с id и Именем!!!!')
 
 
 
@@ -302,8 +295,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        // const requestLink = `${apiLink}?remove=${id}`
-
         const body = new FormData()
         body.append('domain', 'fandeco')
         body.append('project_id', `${id}`)
@@ -315,7 +306,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-
                 const errData = await res.json();
                 const errObj = JSON.parse(errData.errors.error[0])
                 console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
@@ -326,8 +316,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }
 
             const data = await res.json()
-
-            console.log('data', data);
 
             if (data.success) {
 
@@ -360,8 +348,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         }
 
         set({ dataLoading: true })
-
-        // const requestLink = `${apiLink}?name=${room}`
 
         const body = new FormData()
         body.append('domain', 'fandeco')
@@ -648,20 +634,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         }
     },
 
-    addConfiguration: async (projectId, roomId, roomName, backgroundId, border, devices, counts, direction) => {
+    addConfiguration: async (projectId, roomId, roomName, backgroundId, border, devices, count, direction) => {
 
-        const configuration: TRequestAddConfiguration = {
-            projectId,
-            roomId,
-            border,
-            devices,
-            counts,
-            direction
-        }
-
-        if (backgroundId) configuration.backgroundId = backgroundId
-
-        const JSONRequestData = JSON.stringify(configuration)
         const apiLink = window.addConfigurationLink
 
         if (!apiLink) {
@@ -671,22 +645,46 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?configuration=${JSONRequestData}`
+        // #region Add products
+        const products: {
+            [key: string]: number
+        } = {}
+
+        if (border) products[`${border.id}`] = count
+
+        const collapsedDevices = collapseDevices(devices)
+        collapsedDevices.forEach(device =>
+            products[`${device.id}`] = device.selectedCount * count)
+        // #endregion
+
+        const body = new FormData()
+        body.append('domain', 'fandeco')
+        body.append('project_id', `${projectId}`)
+        body.append('room_id', `${roomId}`)
+        body.append('direction', direction === 'horizontal' ? 'universal' : direction)
+        body.append('products', JSON.stringify(products))
+
+        if (backgroundId) {
+            body.append('file_id', `${backgroundId}`)
+        }
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                body
+            })
 
             if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Добавить проект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса Добавить конфигурацию в проект! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
-
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
 
             // Add configuration to selected project
             const newProjects = [...get().projects]
@@ -710,7 +708,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             const newRooms = newProjects[editProjectKey].rooms
 
-            // Если уже добавляли комплект
+            // Если уже добавляли комплект и Rooms не пустые
             if (newRooms) {
                 const editRoomKey = newRooms.findIndex(r => r.id === roomId)
 
@@ -1023,23 +1021,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         const projectId = editedData.projectId
         const roomId = editedData.roomId
         const configurationId = editedData.configurationId
-
         const countOfSets = get().countOfSets
 
-
-        const fetchConfiguration: TRequestSaveConfiguration = {
-            projectId,
-            roomId,
-            configurationId,
-            border: selectedBorder,
-            devices,
-            counts: countOfSets,
-            direction
-        }
-
-        if (backgroundId) fetchConfiguration.backgroundId = backgroundId
-
-        const JSONRequestData = JSON.stringify(fetchConfiguration)
         const apiLink = window.saveConfigurationLink
 
         if (!apiLink) {
@@ -1049,38 +1032,70 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?configuration=${JSONRequestData}`
+        // #region Add products
+        const products: {
+            [key: string]: number
+        } = {}
+
+        if (selectedBorder) products[`${selectedBorder.id}`] = countOfSets
+
+        const collapsedDevices = collapseDevices(devices)
+        collapsedDevices.forEach(device =>
+            products[`${device.id}`] = device.selectedCount * countOfSets)
+        // #endregion
+
+        const body = new FormData()
+        body.append('domain', 'fandeco')
+        body.append('project_id', `${projectId}`)
+        body.append('room_id', `${roomId}`)
+        body.append('configuration_id', `${configurationId}`)
+        body.append('direction', direction === 'horizontal' ? 'universal' : direction)
+        body.append('products', JSON.stringify(products))
+
+        if (backgroundId) {
+            body.append('file_id', `${backgroundId}`)
+        }
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                body
+            })
 
             if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Сохранить измененный проект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка fetch запроса Сохранить измененный проект! Запрос к URL ${apiLink}`)
             }
 
-            const data = await res.json()
+            const data: {id: string | number, [key: string]: unknown} = await res.json()
 
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
+            if (!data.id) {
+                throw new Error("Incorrect response data. There's no updated configuration Id!")
+                return
             }
 
             // Add configuration to selected project
 
             // --- Configuration
             const changedConfiguration: TConfiguration = {
-                id: fetchConfiguration.configurationId,
-                count: fetchConfiguration.counts,
-                direction: fetchConfiguration.direction,
+                id: data.id,
+                count: countOfSets,
+                direction: direction,
             }
-            if (fetchConfiguration.border !== null) {
-                changedConfiguration.border = fetchConfiguration.border
+            if (selectedBorder !== null) {
+                changedConfiguration.border = selectedBorder
             }
-            if (fetchConfiguration.devices) {
-                changedConfiguration.devices = fetchConfiguration.devices
+            if (devices.length) {
+                changedConfiguration.devices = devices
             }
-            if (backgroundId) changedConfiguration.background = fetchConfiguration.backgroundId
+            if (backgroundId) {
+                changedConfiguration.background = backgroundId
+            }
 
 
             // --- Update configuration

@@ -1,6 +1,4 @@
 {
-	"status": "success",
-	"project": {
-		"id": "PROJECT_ID"
-    }
+	"id": 7,
+	"name": "PROJECT NAME"
 }

@@ -174,9 +174,9 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         : get().devices
 
                     // #region Type guards for Devices and Borders
-                    function isBorder(item: TBorder | TDevice): item is TBorder {
-                        return (item as TBorder).number_of_posts !== undefined
-                    }
+                    // function isBorder(item: TBorder | TDevice): item is TBorder {
+                    //     return (item as TBorder).number_of_posts !== undefined
+                    // }
 
                     function isDevice(item: TBorder | TDevice): item is TDevice {
                         return (item as TDevice).conf_product_group !== undefined
@@ -191,7 +191,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     if (activeTab === 'borders') {
                         items = items.filter(
                             i => {
-                                if (!isBorder(i)) return false
+                                // if (!isBorder(i)) return false
 
                                 const value = Array.isArray(i.number_of_posts)
                                     ? parseInt(i.number_of_posts[0])
@@ -253,6 +253,8 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         // Type
                         items = items.filter(
                             i => {
+
+                                if (!i) return false
 
                                 if (isDevice(i)) {
                                     return i['conf_product_group']?.toLocaleLowerCase() === filter.name.toLocaleLowerCase()

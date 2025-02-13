@@ -168,10 +168,10 @@ const Sketch = () => {
 
             console.log('newBorder', newBorder)
 
-            // if (!newBorder) {
-            //     fireError(new Error(`Функция поиска соседних рамок [getSiblingBorder] с количеством постов ${newPostNumber} вернула пустой результат!`))
-            //     return
-            // }
+            if (!newBorder) {
+                fireError(new Error(`Функция поиска соседних рамок [getSiblingBorder] с количеством постов ${newPostNumber} вернула пустой результат!`))
+                return
+            }
 
             if (newPostNumber === 1
                     || newPostNumber === 2

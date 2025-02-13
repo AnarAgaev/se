@@ -5,6 +5,9 @@ const backgroundSlice: StateCreator<TBackgroundsStore> = (set, get) => ({
     backgrounds: [],
 
     addUploadedBackground: (background) => {
+
+        console.log('background', background)
+
         const backgrounds = [...get().backgrounds]
 
         // Reset previously selected background

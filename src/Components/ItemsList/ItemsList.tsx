@@ -55,12 +55,14 @@ const getElementsList = (
 
         if (type === 'borders') {
 
-            const countOfPosts = getCountOfPosts(item)
+            const borderItem = item as TBorder
+
+            const countOfPosts = getCountOfPosts(borderItem)
 
             // Когда добавляем рамку в первый раз
             if (selectedPost.length === 0) {
 
-                setBorder(item, 1, countOfPosts)
+                setBorder(borderItem, 1, countOfPosts)
 
             } else { // Если уже ранее добавляли рамки
                 let numberOfPost
@@ -68,7 +70,7 @@ const getElementsList = (
 
                 // Ищем максимальное количество постов для текущей рамки
                 for (let i = selectedPost.findIndex(el => el) + 1; i > 0; i--) {
-                    const border = getSiblingBorder(item, i, direction)
+                    const border = getSiblingBorder(borderItem, i, direction)
 
                     if (border) {
                         numberOfPost = i

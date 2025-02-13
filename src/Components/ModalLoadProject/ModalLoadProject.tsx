@@ -82,7 +82,7 @@ const ModalLoadProject = ({visible}: {visible: boolean}) => {
 
         setError(false)
         modalLoadProjectSet(false, '')
-        loadProject(projectToken)
+        loadProject(controller.value)
     }
 
     return (
