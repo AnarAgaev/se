@@ -929,15 +929,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
         }
 
-        const requestData: TRequestRemoveConfiguration = {
-            projectId: projectId,
-            roomId: roomId,
-            configurationId: configurationId
-        }
-
-        const JSONRequestData = JSON.stringify(requestData)
         const apiLink = window.removeConfigurationLink
-
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -946,27 +938,30 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?data=${JSONRequestData}`
-
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'configuration_id': configurationId
+                })
+            })
 
             if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Удалить Комплект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка запроса Удалить Конфигурацию! Запрос к URL ${apiLink}, ИД проекта: ${projectId}, ИД комнаты: ${roomId}, ИД конфигурации: ${configurationId}`)
             }
 
             const data = await res.json()
-
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
-
-
-            // Если успешно удалил в БД, удаляем из Стора
-            setTimeout(removeConfiguration, 500)
-
+            if (data.success) setTimeout(removeConfiguration, 500)
+            else throw new Error(`Ошибка запроса Удалить Конфигурацию! Запрос к URL ${apiLink}, ИД проекта: ${projectId}, ИД комнаты: ${roomId}, ИД конфигурации: ${configurationId}`)
 
         } catch (error) {
             console.error(error)
@@ -1068,17 +1063,17 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 throw new Error(`Ошибка fetch запроса Сохранить измененный проект! Запрос к URL ${apiLink}`)
             }
 
-            const data: {id: string | number, [key: string]: unknown} = await res.json()
+            const data: { success: boolean } = await res.json()
 
             if (!data.success) {
-                throw new Error("Incorrect response data. There's no updated configuration Id!")
+                throw new Error(`Ошибка сохранения конфигурации с ИД: ${configurationId}!`)
             }
 
             // Add configuration to selected project
 
             // --- Configuration
             const changedConfiguration: TConfiguration = {
-                id: data.id,
+                id: configurationId,
                 count: countOfSets,
                 direction: direction,
             }
