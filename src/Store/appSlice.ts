@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand'
 import { collapseDevices } from '../Helpers'
-import { TAppStore, TRequestCopyReplaceConfiguration, TConfiguration, TBorder, TDevice } from '../types'
+import { TAppStore, TConfiguration, TBorder, TDevice } from '../types'
 
 const appSlice: StateCreator<TAppStore> = (set, get) => ({
     loading: true,
@@ -444,28 +444,13 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     copyReplaceConfiguration: async (projectId, roomId, roomName) => {
 
         const from = { ...get().currentConfiguration }
-        const to = { projectId: projectId, roomId: roomId, roomName: roomName}
+        const to = { projectId: projectId, roomId: roomId, roomName: roomName }
 
-        if ( from.projectId === null
-            || from.roomId === null
-            || from.configurationId === null
-            || from.type === null
-        ) return
+        // Type guards
+        if ( from.projectId === null || from.roomId === null ||
+                from.configurationId === null || from.type === null ) return
 
-        const data: TRequestCopyReplaceConfiguration = {
-            // from
-            projectIdFrom: from.projectId,
-            roomIdFrom: from.roomId,
-            configurationId: from.configurationId,
-            requestType: from.type,
-
-            // to
-            projectIdTo: to.projectId,
-            roomIdTo: to.roomId
-        }
-
-        const JSONRequestData = JSON.stringify(data)
-
+        // Скрываем и очищаем модальное окно Копирования/Переноса конфигурации
         set({
             modalCopyConfigurationType: null,
             modalCopyConfigurationVisible: false,
@@ -487,66 +472,95 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?data=${JSONRequestData}`
-
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'project_id': to.projectId,
+                    'room_id': to.roomId,
+                    'configuration_id': from.configurationId,
+                    'copy': from.type === 'copy'
+                })
+            })
 
             if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка запроса ${from.type === 'copy' ? "копировать" : "перенести"} комплект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка запроса ${from.type === 'copy' ? "копировать" : "перенести"} комплект! Запрос к URL ${apiLink}`)
             }
 
-            const data = await res.json()
+            const data: { id: number } = await res.json()
 
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
+            if (data.id) {
 
-            // 1. Получаем копию комплекта
-            // 2. Создаем новый комплект
-            // 3. Если тип запроса Перенести (replace), то удаляем референс
+                // 1. Получаем копию комплекта/конфигурации
+                // 2. Создаем новый комплект/конфигурацию
+                // 3. Если тип запроса Перенести (replace), то удаляем референс
 
-            const newConfigurationId: string | number = data.id
-            const newProjects = [...get().projects]
+                const newConfigurationId: string | number = data.id
+                const newProjects = [...get().projects]
 
-            // 1. Получаем копию комплекта
-            let configurationCopy: TConfiguration = {} as TConfiguration
+                // 1. Получаем копию комплекта/конфигурации
+                let configurationCopy: TConfiguration = {} as TConfiguration
 
-            for (const p of newProjects) {
+                const project = newProjects.find(p => p.id === from.projectId)
 
-                if (p.id === from.projectId && p.rooms) {
-                    for (const r of p.rooms) {
+                if (project && project.rooms) {
+                    const room = project.rooms.find(r => r.id === from.roomId)
 
-                        if (r.id === from.roomId) {
-                            for (const c of r.configurations) {
+                    if (room) {
+                        const configuration = room.configurations.find(c => c.id === from.configurationId)
 
-                                if (c.id === from.configurationId) {
-                                    configurationCopy = {
-                                        ...c,
-                                        id: newConfigurationId,
-                                        edit: false
-                                    }
-                                }
-                            }
+                        if (configuration) {
+                            configurationCopy = {
+                                ...configuration,
+                                id: newConfigurationId,
+                                edit: false
+                            };
                         }
                     }
                 }
-            }
 
+                // 2. Создаем новый комплект/конфигурацию
+                const toProjectIdx = newProjects.findIndex(p => p.id === to.projectId)
+                const rooms = newProjects[toProjectIdx].rooms
 
-            // 2. Создаем новый комплект
-            const toProjectIdx = newProjects.findIndex(p => p.id === to.projectId)
-            const rooms = newProjects[toProjectIdx].rooms
+                // Если в проекте уже есть добавленные комнаты
+                if (rooms) {
+                    const toRoomId = rooms.findIndex(r => r.id === to.roomId)
 
-            if (rooms) {
-                const toRoomId = rooms.findIndex(r => r.id === to.roomId)
+                    // Если такой комнаты нет
+                    if (toRoomId === -1) {
+                        newProjects[toProjectIdx].rooms = [
+                            ...rooms,
+                            {
+                                id: to.roomId,
+                                name: to.roomName,
+                                configurations: [
+                                    { ...configurationCopy }
+                                ]
+                            }
+                        ]
 
-                // Если такой комнаты нет
-                if (toRoomId === -1) {
+                    // Если такая комната в целевом проекте уже есть
+                    } else {
+                        const fromConfigurations = rooms[toRoomId].configurations
+                        rooms[toRoomId].configurations = [
+                            ...fromConfigurations,
+                            { ...configurationCopy }
+                        ]
+                    }
+
+                // Если в проекте еще нет добавленных комнат
+                } else {
                     newProjects[toProjectIdx].rooms = [
-                        ...rooms,
                         {
                             id: to.roomId,
                             name: to.roomName,
@@ -555,78 +569,54 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                             ]
                         }
                     ]
-                } else {
-                    const fromConfigurations = rooms[toRoomId].configurations
-                    rooms[toRoomId].configurations = [
-                        ...fromConfigurations,
-                        { ...configurationCopy }
-                    ]
                 }
 
-            } else {
-                newProjects[toProjectIdx].rooms = [
-                    {
-                        id: to.roomId,
-                        name: to.roomName,
-                        configurations: [
-                            { ...configurationCopy }
-                        ]
-                    }
-                ]
-            }
 
+                // 3. Если тип запроса Перенести (replace), то удаляем референс
+                if (from.type === 'replace') {
 
-            // 3. Если тип запроса Перенести (replace), то удаляем референс
-            if (from.type === 'replace') {
+                    // Находим проект
+                    const projectIndex = newProjects.findIndex(p => p.id === from.projectId)
 
-                // Projects
-                for (let pIdx = 0; pIdx < newProjects.length; pIdx++) {
+                    if (projectIndex !== -1) {
+                        const project = newProjects[projectIndex]
 
-                    const project = newProjects[pIdx]
+                        // Находим комнату
+                        const roomIndex = project.rooms?.findIndex(r => r.id === from.roomId) ?? -1;
 
-                    if (project.id === from.projectId) {
+                        if (project.rooms && roomIndex !== -1) {
+                            const room = project.rooms[roomIndex]
 
-                        const rooms = project.rooms
+                            // Находим конфигурацию
+                            const configIndex = room.configurations.findIndex(c => c.id === from.configurationId)
 
-                        if (rooms) {
+                            if (configIndex !== -1) {
 
-                            // Rooms
-                            for (let rIdx = 0; rIdx < rooms.length; rIdx++) {
+                                // Удаляем конфигурацию
+                                room.configurations.splice(configIndex, 1)
 
-                                const room = rooms[rIdx]
+                                // Если конфигураций больше нет, удаляем комнату
+                                if (room.configurations.length === 0) {
+                                    project.rooms.splice(roomIndex, 1)
 
-                                if (room.id === from.roomId) {
-
-                                    // Configurations
-                                    for (let cIdx = 0; cIdx < room.configurations.length; cIdx++) {
-
-                                        const configuration = room.configurations[cIdx]
-
-                                        if (configuration.id === from.configurationId) {
-                                            room.configurations.splice(cIdx, 1)
-                                        }
+                                    // Если комнат больше нет, удаляем rooms из проекта
+                                    if (project.rooms.length === 0) {
+                                        delete project.rooms
                                     }
-                                }
-
-                                if (rooms[rIdx].configurations.length === 0) {
-                                    rooms.splice(rIdx, 1)
                                 }
                             }
                         }
-
-                        if (rooms?.length === 0) {
-                            delete newProjects[pIdx].rooms
-                        }
                     }
                 }
-            }
 
-            setTimeout(() => set({
-                dataLoading: false,
-                modalMessageVisible: true,
-                modalMessageCaption: `Комплект ${from.type === 'copy' ? 'скопирован' : 'перенесен'}`,
-                projects: [...newProjects]
-            }), 500)
+                setTimeout(() => set({
+                    dataLoading: false,
+                    modalMessageVisible: true,
+                    modalMessageCaption: `Комплект ${from.type === 'copy' ? 'скопирован' : 'перенесен'}`,
+                    projects: [...newProjects]
+                }), 500)
+
+            } else throw new Error('В ответе на копирование/перенос конфигурации нет id!')
 
         } catch (error) {
             console.error(error)
