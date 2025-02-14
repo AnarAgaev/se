@@ -376,7 +376,7 @@ export type TAppStore = {
         projectId: string | number,
         roomId: string | number,
         configurationId: string | number,
-        count: number
+        newCount: number,
     ) => void
 
     resetConfigurationCountToStart: (
