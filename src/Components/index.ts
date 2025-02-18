@@ -44,6 +44,7 @@ import SketchSaver from './SketchSaver/SketchSaver'
 import Loading from './Loading/Loading'
 import Modal from './Modal/Modal'
 import ProjectComposition from './ProjectComposition/ProjectComposition'
+import Warning from './Warning/Warning'
 
 export {
     App,
@@ -92,4 +93,5 @@ export {
     Loading,
     Modal,
     ProjectComposition,
+    Warning
 }

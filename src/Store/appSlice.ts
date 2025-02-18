@@ -1,8 +1,13 @@
 import { StateCreator } from 'zustand'
 import { collapseDevices } from '../Helpers'
 import { TAppStore, TConfiguration, TBorder, TDevice } from '../types'
+import { Project, zodErrorOptions } from '../zod'
+import { generateErrorMessage } from 'zod-error'
 
 const appSlice: StateCreator<TAppStore> = (set, get) => ({
+    logWarningShown: false,
+    setLogWarningShown: () => set({ logWarningShown: true }),
+
     loading: true,
     dataLoading: false,
 
@@ -253,32 +258,67 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
                 console.error(errObj)
 
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка запроса Загрузить проект! Запрос к URL ${apiLink}`)
+                get().modalMessageSet(true, 'Ошибка запроса! Возможно проект был удален.')
+                throw new Error(`Ошибка запроса Загрузить проект по ссылке! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
+            // console.log(data);
+            // return
+
+            const safeResponse = Project.passthrough().safeParse(data)
+
+            if (!safeResponse.success) {
+                const errorMessage = generateErrorMessage(safeResponse.error.issues, zodErrorOptions)
+
+                console.log(errorMessage)
+
+                set({ error: `Нарушен Zod контракт для Загрузки проекта по ссылке! Ссылка на проект: ${link}`, loading: false })
+                return
+            }
 
             // Add project to configurator
 
-            setTimeout(() => {
-                set({
-                    dataLoading: false
-                })
+            const activeTab = get().activeViewportTab
+            const currentProjects = get().projects
+            const loadedProject = safeResponse.data
+            let isProjectInConfiguratorProjects = false
 
+            if (activeTab === 'project') {
+                loadedProject.edit = true
+            }
 
-                // Перед добавление проекта в конфигуратор, обязательно проверить,
-                // что его там нет. Чтобы пользователь не добавил себе уже
-                // существующий (собственный) проект в конфигураторе
+            // #region Проверяем есть ли проект в конфигураторе
+            currentProjects.forEach(p => {
+                if (p.id.toString() === loadedProject.id.toString()) {
+                    isProjectInConfiguratorProjects = true
+                    return
+                }
+            })
 
+            if (isProjectInConfiguratorProjects) {
+                setTimeout(() => set({
+                    dataLoading: false,
+                    modalMessageVisible: true,
+                    modalMessageCaption: `Проект #${loadedProject.id} уже есть в конфигураторе`,
+                }), 500)
+                return
+            }
+            // #endregion
 
-                console.log('Получили проект', data)
-                alert('Добавляем проект в конфигуратор. Добавить логику когда будет ясна сигнатура Проекта. На данные момент приходит урезанный проект только с id и Именем!!!!')
+            // #region Добавляем проект в Store
+            const newProjects = [
+                { ...loadedProject },
+                ...get().projects
+            ]
 
-
-
-
-            }, 500)
+            setTimeout(() => set({
+                dataLoading: false,
+                modalMessageVisible: true,
+                modalMessageCaption: `Проект #${loadedProject.id} ${loadedProject.name} добавлен`,
+                projects: newProjects
+            }), 500)
+            // #endregion
 
         } catch (error) {
             console.error(error)
@@ -639,11 +679,11 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             [key: string]: number
         } = {}
 
-        if (border) products[`${border.id}`] = count
+        if (border) products[`${border.id}`] = 1
 
         const collapsedDevices = collapseDevices(devices)
         collapsedDevices.forEach(device =>
-            products[`${device.id}`] = device.selectedCount * count)
+            products[`${device.id}`] = device.selectedCount)
         // #endregion
 
         try {
@@ -658,6 +698,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                     'direction': direction === 'horizontal' ? 'universal' : direction,
                     'file_id': backgroundId,
                     'products': products,
+                    'count': count
                 })
             })
 

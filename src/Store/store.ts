@@ -1,29 +1,10 @@
 import { create } from 'zustand'
 // import { devtools, persist, createJSONStorage } from 'zustand/middleware'
 import { devtools, createJSONStorage } from 'zustand/middleware'
-import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } from './'
 import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette } from '../types'
-import { InitDataContract } from '../zod'
-
-const zodErrorOptions: ErrorMessageOptions = {
-    delimiter: {
-        error: '\n',
-    },
-    path: {
-        enabled: true,
-        type: 'zodPathArray',
-        label: 'Zod Path: ',
-    },
-    code: {
-        enabled: true,
-    },
-    message: {
-        enabled: true,
-        label: '',
-    },
-    transform: ({ errorMessage, index }) => `🔥 \x1b[31m Zod Error #${index + 1}: \x1b[33m ${errorMessage}`,
-}
+import { InitDataContract, zodErrorOptions } from '../zod'
+import { generateErrorMessage } from 'zod-error'
 
 const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSketchStore & TAppStore & TStore>()(
     devtools(
@@ -55,6 +36,8 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             method: 'POST',
                             body
                         })
+
+                        // Для демонстрации на github pages (Gighub не позволяет POST запросы)
                         // const res = await fetch(apiLink, { method: 'GET' })
 
                         if (!res.ok) {
@@ -62,11 +45,9 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             throw new Error(`Ошибка fetch запроса Получить инит данные! Запрос к URL ${apiLink}`)
                         }
 
-
-
-
-
-    // const data = await res.json()
+                        const data = await res.json()
+                        console.log(data)
+                        // return
 
     // const bordersSet = new Set()
     // // const borderSetBrand = new Set()
@@ -100,13 +81,15 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
 
 
-                        const safeResponse = InitDataContract.passthrough().safeParse(await res.json())
+                        const safeResponse = InitDataContract.passthrough().safeParse(data)
 
                         if (!safeResponse.success) {
                             const errorMessage = generateErrorMessage(safeResponse.error.issues, zodErrorOptions)
+
                             console.log(errorMessage)
 
                             set({ error: "Нарушен Zod контракт для Инит данных", loading: false })
+
                             return
                         }
 
@@ -172,11 +155,6 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     let items = activeTab === 'borders'
                         ? get().borders
                         : get().devices
-
-                    // #region Type guards for Devices and Borders
-                    // function isBorder(item: TBorder | TDevice): item is TBorder {
-                    //     return (item as TBorder).number_of_posts !== undefined
-                    // }
 
                     function isDevice(item: TBorder | TDevice): item is TDevice {
                         return (item as TDevice).conf_product_group !== undefined

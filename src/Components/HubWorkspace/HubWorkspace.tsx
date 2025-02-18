@@ -30,7 +30,7 @@ const getProjectsElms = (
                         <button
                             onClick={() => editProject(p.id)}
                             className="button button_dark"
-                            title="Редактировать проект">
+                            title="Проект подробно">
                             <i className='icon icon_edit'></i>
                         </button>
                     </li>

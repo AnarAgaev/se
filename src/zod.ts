@@ -1,4 +1,6 @@
 import { z } from 'zod'
+import { ErrorMessageOptions } from 'zod-error'
+
 
 export const UserId = z.union([z.string(), z.number()]).optional()
 export type TUserId = z.infer<typeof UserId>
@@ -98,7 +100,7 @@ export type TVendorList = z.infer<typeof VendorList>
 
 
 // #region Projects & Configuration
-export const Directions = z.union([z.literal('horizontal'), z.literal('vertical')])
+export const Directions = z.union([z.literal('horizontal'), z.literal('vertical'), z.literal('universal')])
 export type TDirections = z.infer<typeof Directions>
 
 export const Configuration = z.object({
@@ -208,3 +210,22 @@ export const InitDataContract = z.object({
     lang: Dictionary
 })
 // #endregion
+
+export const zodErrorOptions: ErrorMessageOptions = {
+    delimiter: {
+        error: '\n',
+    },
+    path: {
+        enabled: true,
+        type: 'zodPathArray',
+        label: 'Zod Path: ',
+    },
+    code: {
+        enabled: true,
+    },
+    message: {
+        enabled: true,
+        label: '',
+    },
+    transform: ({ errorMessage, index }) => `🔥 \x1b[31m Zod Error #${index + 1}: \x1b[33m ${errorMessage}`,
+}

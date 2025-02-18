@@ -269,6 +269,9 @@ type TPrintProject = {
 }
 
 export type TAppStore = {
+    logWarningShown: boolean
+    setLogWarningShown: () => void
+
     userId?: TUserId
 
     loading: boolean

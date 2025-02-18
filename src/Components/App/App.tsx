@@ -5,7 +5,8 @@ import '../../Sass/main.sass'
 
 import { Loading, Loader, Tabs, Factory, Viewport, ModalResetBrandOrCollection,
 	ModalWarning, ModalMessage, ModalShare, ModalLoadProject, ModalCopyConfiguration,
-	ModalAddConfiguration, ModalSaveConfiguration, ModalResetSketch, ModalSavePDF } from '../../Components'
+	ModalAddConfiguration, ModalSaveConfiguration, ModalResetSketch, ModalSavePDF,
+	Warning } from '../../Components'
 
 const PdfDocument = lazy(() => import('../PdfDocument/PdfDocument'))
 
@@ -60,6 +61,7 @@ const App = () => {
 			{ loading
 				? <Loader text='Загружаем конфигуратор' />
 				: <>
+					<Warning />
 					<h1 className={caption}>
 						Конфигуратор
 					</h1>
