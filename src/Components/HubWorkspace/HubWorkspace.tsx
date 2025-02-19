@@ -5,8 +5,7 @@ import { getFileName } from '../../Helpers'
 import useStore from '../../Store'
 import style from './HubWorkspace.module.sass'
 
-const { hub, form, add, upload, blocks, title,
-    message, list, item, name, actions } = style
+const { hub, form, add, upload, blocks, title, list, item, name, actions } = style
 
 const getProjectsElms = (
     id: string,
@@ -75,7 +74,6 @@ const HubWorkspace = () => {
 
     // #region Variables
     const [
-        userId,
         projects,
         addProject,
         editProject,
@@ -84,7 +82,6 @@ const HubWorkspace = () => {
         modalLoadProjectSet,
         setDownloadProject,
     ] = useStore(state => [
-        state.userId,
         state.projects,
         state.addProject,
         state.editProject,
@@ -116,9 +113,6 @@ const HubWorkspace = () => {
                     </div>
                 </div>
                 <div className={blocks}>
-                    {!userId &&
-                        <h3 className={message}>Чтобы сохранить проект или работать с сохраненными проектами, войдите на сайт.</h3>
-                    }
                     <h3 className={title}>
                         { projects.length === 0
                                 ? 'У Вас пока нет проектов. Создайте новый проект или загрузите проект по ссылке.'

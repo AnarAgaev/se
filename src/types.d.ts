@@ -10,7 +10,6 @@ import {
     TFunction, TFunctionItem, TFunctionList,
     TColorList,
     TDictionary,
-    TUserId,
     InitDataContract,
     TConfiguration,
     TConfigurationList,
@@ -271,8 +270,6 @@ type TPrintProject = {
 export type TAppStore = {
     logWarningShown: boolean
     setLogWarningShown: () => void
-
-    userId?: TUserId
 
     loading: boolean
     dataLoading: boolean

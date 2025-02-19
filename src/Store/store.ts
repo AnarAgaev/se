@@ -121,7 +121,6 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         set({
                             error: null,
                             loading: false,
-                            userId: safeResponse.data.user_id,
 
                             // Pushing data to appropriate stores
                             backgrounds: backgrounds.length ? backgrounds : safeResponse.data.backgrounds,

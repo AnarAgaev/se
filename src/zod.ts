@@ -2,8 +2,6 @@ import { z } from 'zod'
 import { ErrorMessageOptions } from 'zod-error'
 
 
-export const UserId = z.union([z.string(), z.number()]).optional()
-export type TUserId = z.infer<typeof UserId>
 
 // #region Backgrounds
 export const Background = z.object({
@@ -199,7 +197,6 @@ export type TDictionary = z.infer<typeof Dictionary>
 
 // #region Initial data
 export const InitDataContract = z.object({
-    user_id: UserId,
     backgrounds: BackgroundList,
     borders: BorderList,
     devices: DeviceList,
