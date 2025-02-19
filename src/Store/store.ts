@@ -1,14 +1,14 @@
 import { create } from 'zustand'
-// import { devtools, persist, createJSONStorage } from 'zustand/middleware'
-import { devtools, createJSONStorage } from 'zustand/middleware'
+import { devtools, persist, createJSONStorage } from 'zustand/middleware'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } from './'
 import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette } from '../types'
 import { InitDataContract, zodErrorOptions } from '../zod'
 import { generateErrorMessage } from 'zod-error'
+import { defaultFetchHeaders } from '../Helpers'
 
 const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSketchStore & TAppStore & TStore>()(
     devtools(
-        // persist(
+        persist(
             (set, get, ...args) => ({
                 ...appSlice(set, get, ...args),
                 ...backgroundSlice(set, get, ...args),
@@ -21,6 +21,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     try {
 
                         const apiLink = window.initSourceDataLink
+                        const token = window.userToken
 
                         if (!apiLink) {
                             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -29,16 +30,16 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
                         set({ loading: true })
 
-                        const body = new FormData()
-                        body.append('domain', 'fandeco')
+                        const headers: HeadersInit = defaultFetchHeaders
+                        if (token) headers['Token'] = token
+
+                        const body = { domain: 'fandeco' }
 
                         const res = await fetch(apiLink, {
                             method: 'POST',
-                            body
+                            headers,
+                            body: JSON.stringify(body)
                         })
-
-                        // Для демонстрации на github pages (Gighub не позволяет POST запросы)
-                        // const res = await fetch(apiLink, { method: 'GET' })
 
                         if (!res.ok) {
                             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -80,7 +81,6 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
 
 
-
                         const safeResponse = InitDataContract.passthrough().safeParse(data)
 
                         if (!safeResponse.success) {
@@ -110,21 +110,36 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             }))
                         ]
 
+                        // Проверяем данные перед добавлением в Store, чтобы регидратация прошла корректно
+                        // Для корректной регидратации, здесь можно написать проекты
+                        const backgrounds = get().backgrounds
+                        const colors = get().colors
+                        const vendors = get().vendors
+                        const projects = get().projects
+                        const rooms = get().rooms
+
                         set({
                             error: null,
                             loading: false,
                             userId: safeResponse.data.user_id,
 
                             // Pushing data to appropriate stores
-                            backgrounds: safeResponse.data.backgrounds,
-                            colors: safeResponse.data.colors,
-                            borders: safeResponse.data.borders,
-                            devices: safeResponse.data.devices,
-                            vendors: safeResponse.data.vendors,
-                            projects: safeResponse.data.projects,
-                            rooms: safeResponse.data.rooms,
+                            backgrounds: backgrounds.length ? backgrounds : safeResponse.data.backgrounds,
+                            colors: colors ? colors : safeResponse.data.colors,
+                            vendors: vendors.length ? vendors : safeResponse.data.vendors,
+                            projects: projects.length ? projects : safeResponse.data.projects,
+                            rooms: rooms.length ? rooms : safeResponse.data.rooms,
+
+                            // Словарь всегда обновляем, так как он не должен уменьшаться.
+                            // Возможно появление новых слов, но не удаление старых.
                             dictionary: safeResponse.data.lang,
 
+                            // Рамки и устройства всегда обновляем
+                            borders: safeResponse.data.borders,
+                            devices: safeResponse.data.devices,
+
+                            // Функциональности также всегда перезаписываем, так они строятся
+                            // на текущих devices, а devices всегда перезаписываются
                             functions: functions,
                             filtersDevices: {
                                 ...get().filtersDevices,
@@ -294,10 +309,10 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                 }
             }),
             {
-                name: 'food-storage',
+                name: 'configurator-storage',
                 storage: createJSONStorage(() => sessionStorage),
             }
-        // )
+        )
     )
 )
 

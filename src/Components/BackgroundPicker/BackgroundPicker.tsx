@@ -54,10 +54,14 @@ const BackgroundPicker = () => {
 
         try {
             const uploadLink = window.uploadBackgroundLink
+            const token = window.userToken
 
             if (!uploadLink) {
-                console.error('There is no link window.uploadBackgroundLink on the page to upload backgrounds.')
+                console.error(`На странице не указана ссылка на Загрузку картинки для фона window.uploadBackgroundLink`)
             }
+
+            const headers: HeadersInit = {}
+            if (token) headers['Token'] = token
 
             const body = new FormData()
             body.append('domain', 'fandeco')
@@ -66,6 +70,7 @@ const BackgroundPicker = () => {
 
             const res = await fetch(uploadLink, {
                 method: 'POST',
+                headers,
                 body
             })
 

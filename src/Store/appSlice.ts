@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand'
-import { collapseDevices } from '../Helpers'
+import { collapseDevices, defaultFetchHeaders } from '../Helpers'
 import { TAppStore, TConfiguration, TBorder, TDevice } from '../types'
 import { Project, zodErrorOptions } from '../zod'
 import { generateErrorMessage } from 'zod-error'
@@ -101,6 +101,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     addProject: async (project) => {
 
         const apiLink = window.addProjectLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -109,14 +110,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const body = new FormData()
-        body.append('domain', 'fandeco')
-        body.append('name', project)
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            name: project
+        }
 
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                body
+                headers,
+                body: JSON.stringify(body)
             })
 
             if (!res.ok) {
@@ -190,6 +196,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     },
     shareProject: async (id) => {
         const apiLink = window.shareProjectLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -198,14 +205,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const body = new FormData()
-        body.append('domain', 'fandeco')
-        body.append('project_id', id.toString())
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            project_id: id.toString()
+        }
 
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                body
+                headers,
+                body: JSON.stringify(body)
             })
 
             if (!res.ok) {
@@ -234,6 +246,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     loadProject: async (link) => {
 
         const apiLink = window.loadProjectLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -242,14 +255,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const body = new FormData()
-        body.append('domain', 'fandeco')
-        body.append('link', link)
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            link: link
+        }
 
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                body
+                headers,
+                body: JSON.stringify(body)
             })
 
             if (!res.ok) {
@@ -326,6 +344,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     },
     removeProject: async (id, name) => {
         const apiLink = window.removeProjectLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -334,14 +353,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const body = new FormData()
-        body.append('domain', 'fandeco')
-        body.append('project_id', `${id}`)
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            project_id: id.toString()
+        }
 
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                body
+                headers,
+                body: JSON.stringify(body)
             })
 
             if (!res.ok) {
@@ -379,7 +403,9 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // #region Rooms
     rooms: [],
     addRoom: async (room) => {
+
         const apiLink = window.addRoomLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -388,14 +414,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const body = new FormData()
-        body.append('domain', 'fandeco')
-        body.append('name', room)
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            name: room
+        }
 
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                body
+                headers,
+                body: JSON.stringify(body)
             })
 
             if (!res.ok) {
@@ -504,6 +535,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         })
 
         const apiLink = window.copyReplaceConfigurationLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -512,18 +544,22 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            project_id: to.projectId,
+            room_id: to.roomId,
+            configuration_id: from.configurationId,
+            copy: from.type === 'copy'
+        }
+
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    'project_id': to.projectId,
-                    'room_id': to.roomId,
-                    'configuration_id': from.configurationId,
-                    'copy': from.type === 'copy'
-                })
+                headers,
+                body: JSON.stringify(body)
             })
 
             if (!res.ok) {
@@ -666,6 +702,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     addConfiguration: async (projectId, roomId, roomName, backgroundId, border, devices, count, direction) => {
 
         const apiLink = window.addConfigurationLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -673,6 +710,9 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         }
 
         set({ dataLoading: true })
+
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
 
         // #region Add products
         const products: {
@@ -686,20 +726,21 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             products[`${device.id}`] = device.selectedCount)
         // #endregion
 
+        const body = {
+            domain: 'fandeco',
+            project_id: projectId,
+            room_id: roomId,
+            direction: direction === 'horizontal' ? 'universal' : direction,
+            file_id: backgroundId,
+            count: count,
+            products: products
+        }
+
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    'project_id': projectId,
-                    'room_id': roomId,
-                    'direction': direction === 'horizontal' ? 'universal' : direction,
-                    'file_id': backgroundId,
-                    'products': products,
-                    'count': count
-                })
+                headers,
+                body: JSON.stringify(body)
             })
 
             if (!res.ok) {
@@ -843,6 +884,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         }
 
         const apiLink = window.updateConfigurationCountLink
+        const token = window.userToken
 
         if (!apiLink) {
             // В случае ошибки, сбрасываем счетчик в изначальное значение
@@ -853,6 +895,9 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         }
 
         set({ dataLoading: true })
+
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
 
         // #region Add products
         const products: {
@@ -868,18 +913,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         }
         // #endregion
 
+        const body = {
+            domain: 'fandeco',
+            'project_id': projectId,
+            'room_id': roomId,
+            'configuration_id': configurationId,
+            'products': products,
+        }
+
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    'project_id': projectId,
-                    'room_id': roomId,
-                    'configuration_id': configurationId,
-                    'products': products,
-                })
+                headers,
+                body: JSON.stringify(body)
             })
 
             if (!res.ok) {
@@ -997,6 +1043,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         }
 
         const apiLink = window.removeConfigurationLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -1005,15 +1052,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            configuration_id: configurationId
+        }
+
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    'configuration_id': configurationId
-                })
+                headers,
+                body: JSON.stringify(body)
             })
 
             if (!res.ok) {
@@ -1084,6 +1135,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         const countOfSets = get().countOfSets
 
         const apiLink = window.saveConfigurationLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -1091,6 +1143,9 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         }
 
         set({ dataLoading: true })
+
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
 
         // #region Add products
         const products: {
@@ -1104,20 +1159,21 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             products[`${device.id}`] = device.selectedCount * countOfSets)
         // #endregion
 
+        const body = {
+            domain: 'fandeco',
+            project_id: projectId,
+            room_id: roomId,
+            configuration_id: configurationId,
+            direction: direction === 'horizontal' ? 'universal' : direction,
+            products: products,
+            file_id: backgroundId,
+        }
+
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    'project_id': projectId,
-                    'room_id': roomId,
-                    'configuration_id': configurationId,
-                    'direction': direction === 'horizontal' ? 'universal' : direction,
-                    'products': products,
-                    'file_id': backgroundId,
-                })
+                headers,
+                body: JSON.stringify(body)
             })
 
             if (!res.ok) {
