@@ -302,7 +302,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             const loadedProject = safeResponse.data
             let isProjectInConfiguratorProjects = false
 
-            if (activeTab === 'project') {
+            if (activeTab !== 'hub') {
                 loadedProject.edit = true
             }
 
@@ -334,7 +334,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 dataLoading: false,
                 modalMessageVisible: true,
                 modalMessageCaption: `Проект #${loadedProject.id} ${loadedProject.name} добавлен`,
-                projects: newProjects
+                projects: newProjects,
+                activeViewportTab: activeTab === 'hub' ? 'hub' : 'project'
             }), 500)
             // #endregion
 

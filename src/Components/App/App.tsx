@@ -1,4 +1,5 @@
 import { useEffect, Suspense, lazy } from 'react'
+import { getParameterByNameFromUrlLink } from '../../Helpers'
 import useStore from '../../Store'
 import style from './App.module.sass'
 import '../../Sass/main.sass'
@@ -29,7 +30,8 @@ const App = () => {
 		modalSaveConfigurationVisible,
 		modalResetSketchVisible,
 		downloadProjectAsPdf,
-		downloadProjectBlobUrl
+		downloadProjectBlobUrl,
+		loadProject
 	] = useStore(state => [
 		state.requestInitData,
 		state.loading,
@@ -44,7 +46,8 @@ const App = () => {
 		state.modalSaveConfigurationVisible,
 		state.modalResetSketchVisible,
 		state.downloadProjectAsPdf,
-		state.downloadProjectBlobUrl
+		state.downloadProjectBlobUrl,
+		state.loadProject
 	])
 	// #endregion
 
@@ -54,7 +57,15 @@ const App = () => {
 
 	useEffect(() => {
 		requestInitData()
-	}, [requestInitData])
+
+		// Если в url есть токе проекта, сразу после инициализации загружаем проект
+		const projectToken = getParameterByNameFromUrlLink('share')
+
+		if (projectToken) {
+			loadProject(projectToken)
+		}
+
+	}, [requestInitData, loadProject])
 
 	return (
 		<section className={`se-app ${app}`}>
