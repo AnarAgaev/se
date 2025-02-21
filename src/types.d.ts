@@ -321,9 +321,11 @@ export type TAppStore = {
     editProject: (id: TProject['id']) => void
     shareProject: (id: TProject['id']) => void
     removeProject: (id: TProject['id'], name: TProject['name']) => void
+    removeLocalProject: (id: TProject['id'], name: TProject['name']) => void
     loadProject: (token: string) => void
     checkProject: () => boolean
     resetProject: () => void
+    copyProject: (id: TProject['id'], token: string | undefined) => void
     // #endregion
 
 

@@ -6,8 +6,11 @@ import { TAppStore, TProject, TConfigurationList, TDeviceList, TBorder,
 import useStore from '../../Store'
 import style from './ProjectComposition.module.sass'
 
+const userToken = window.userToken
+
 const { help, composition, room, title, subtitle, sets, set,
-    table, item, pic, desc, counter, disabled, inc, dec, dropped } = style
+    table, item, pic, desc, counter, disabled, inc, dec,
+    dropped, withoutBorder } = style
 
 type TOnShow = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void
 
@@ -83,7 +86,9 @@ const getConfigurationList = (
     setSingleBordersFilter: TSetSingleFilter,
     setSingleDevicesFilter: TSetSingleFilter,
     setEditSketch: TSetEditSketch,
-    setEditBackground: TBackgroundsStore['setEditBackground']
+    setEditBackground: TBackgroundsStore['setEditBackground'],
+    localProject: TProject['localProject'],
+    projectToken: TProject['token']
 ): JSX.Element[] | null => {
 
     const configurationList: JSX.Element[] = []
@@ -179,6 +184,8 @@ const getConfigurationList = (
             ? c.devices.filter(Boolean).length > 0
             : false
 
+        const canEditProject = localProject || (userToken !== undefined && userToken === projectToken)
+
         configurationList.push(
             <li className={set} key={`${c.id}-${idx}`}>
                 <p className={subtitle}>{`Комплект ${vendor}, ${color}${posts}`}</p>
@@ -197,12 +204,14 @@ const getConfigurationList = (
                     <tfoot>
                         <tr>
                             <td>
-                                <button  onClick={onEdit}
-                                    className='button button_small button_dark'
-                                    title="Изменить комплект">
-                                    <span>Изменить</span>
-                                    <i className='icon icon_change'></i>
-                                </button>
+                                { canEditProject &&
+                                    <button  onClick={onEdit}
+                                        className='button button_small button_dark'
+                                        title="Изменить комплект">
+                                        <span>Изменить</span>
+                                        <i className='icon icon_change'></i>
+                                    </button>
+                                }
                                 <button onClick={onReplace}
                                     className='button button_small button_dark'
                                     title="Перенести комплект в другой проект/помещение">
@@ -215,18 +224,20 @@ const getConfigurationList = (
                                     <span>Скопировать</span>
                                     <i className='icon icon_copy'></i>
                                 </button>
-                                <button onClick={onRemove}
-                                    title="Удалить комплект"
-                                    className='button button_small button_dark'>
-                                    <span>Удалить</span>
-                                    <i className='icon icon_basket'></i>
-                                </button>
+                                { canEditProject &&
+                                    <button onClick={onRemove}
+                                        title="Удалить комплект"
+                                        className='button button_small button_dark'>
+                                        <span>Удалить</span>
+                                        <i className='icon icon_basket'></i>
+                                    </button>
+                                }
                             </td>
                             <td>
                                 <div className={counter}>
-                                    <button className={c.count === 1 ? `${dec} ${disabled}` : dec} onClick={() => onChangeCount(-1)}/>
-                                    <input type="text" value={c.count} readOnly />
-                                    <button className={inc} onClick={() => onChangeCount(1)}/>
+                                    { canEditProject && <button className={c.count === 1 ? `${dec} ${disabled}` : dec} onClick={() => onChangeCount(-1)}/> }
+                                    <input className={!canEditProject ? withoutBorder : ''} type="text" value={c.count} readOnly />
+                                    { canEditProject && <button className={inc} onClick={() => onChangeCount(1)}/> }
                                 </div>
                             </td>
                             <td>{getTotalPriceConfiguration(c)} р.</td>
@@ -275,7 +286,9 @@ const getRoomList = (
             setSingleBordersFilter,
             setSingleDevicesFilter,
             setEditSketch,
-            setEditBackground
+            setEditBackground,
+            project.localProject,
+            project.token
         )
 
         roomList.push(

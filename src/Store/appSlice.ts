@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand'
 import { collapseDevices, defaultFetchHeaders } from '../Helpers'
-import { TAppStore, TConfiguration, TBorder, TDevice } from '../types'
+import { TAppStore, TConfiguration, TBorder, TDevice, TProject } from '../types'
 import { Project, zodErrorOptions } from '../zod'
 import { generateErrorMessage } from 'zod-error'
 
@@ -145,12 +145,20 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 ? addedProjectId
                 : addedProjectId.toString()
 
-            newProjects.unshift({
+            const addingProject: TProject = {
                 id: addedProjectId,
                 name: project,
                 selected: false,
                 edit: false
-            })
+            }
+
+            if (!token) {
+                addingProject.localProject = true
+            } else {
+                addingProject.token = token
+            }
+
+            newProjects.unshift(addingProject)
 
             setTimeout(() => set({
                 dataLoading: false,
@@ -160,6 +168,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -240,6 +249,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -289,7 +299,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             if (!safeResponse.success) {
                 const errorMessage = generateErrorMessage(safeResponse.error.issues, zodErrorOptions)
 
-                console.log(errorMessage)
+                console.log('Zod ошибки:', errorMessage)
 
                 set({ error: `Нарушен Zod контракт для Загрузки проекта по ссылке! Ссылка на проект: ${link}`, loading: false })
                 return
@@ -340,6 +350,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             // #endregion
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -395,8 +406,96 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
+    },
+    removeLocalProject: async (id, name) => {
+
+        set({ dataLoading: true })
+
+        const newProjects = [...get().projects].filter(p => p.id !== id)
+
+        setTimeout(() => set({
+            dataLoading: false,
+            modalMessageVisible: true,
+            modalMessageCaption: `Локальный проект #${id} ${name} удален`,
+            projects: newProjects
+        }), 500)
+    },
+    copyProject: async (id, token) => {
+
+        const apiLink = window.copyProjectLink
+
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Copy Project window.copyProjectLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            project_id: id
+        }
+
+        try {
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
+
+            if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Ошибка запроса Копировать проект! Запрос к URL ${apiLink}`)
+            }
+
+            const data: Pick<TProject, 'id'> = await res.json()
+
+            console.log(data)
+
+            const projectToCopy = get().projects.find(p => p.id === id)
+
+            if (projectToCopy) {
+                const newCopyProject: TProject = {
+                    ...projectToCopy,
+                    id: data.id
+                }
+
+                if (token) {
+                    newCopyProject.token = token
+                } else {
+                    delete newCopyProject.token
+                    newCopyProject.localProject = true
+                }
+
+                const updatedProjects = [
+                    newCopyProject,
+                    ...get().projects.filter(p => p.id !== id)
+                ];
+
+                setTimeout(() => set({
+                    dataLoading: false,
+                    modalMessageVisible: true,
+                    modalMessageCaption: `Проект ${newCopyProject.name} скопирован`,
+                    projects: updatedProjects
+                }), 500)
+            }
+
+        } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            console.error(error)
+        }
+
     },
     // #endregion
 
@@ -465,6 +564,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -696,6 +796,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             } else throw new Error('В ответе на копирование/перенос конфигурации нет id!')
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -810,6 +911,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -952,6 +1054,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+
             console.error(error)
 
             // В случае ошибки, сбрасываем счетчик в изначальное значение
@@ -1083,6 +1187,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             else throw new Error(`Ошибка запроса Удалить Конфигурацию! Запрос к URL ${apiLink}, ИД проекта: ${projectId}, ИД комнаты: ${roomId}, ИД конфигурации: ${configurationId}`)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -1236,6 +1341,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -1453,6 +1559,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     }

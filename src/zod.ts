@@ -131,7 +131,8 @@ export const Project = z.object({
     selected: z.boolean(),
     edit: z.boolean(),
     rooms: Rooms.optional(),
-    project_user_id: z.union([z.number(), z.null()]).optional()
+    token: z.union([z.string(), z.null()]).optional(),
+    localProject: z.boolean().optional()
 })
 export type TProject = z.infer<typeof Project>
 

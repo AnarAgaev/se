@@ -4,6 +4,7 @@ interface Window {
     shareProjectLink: string
     removeProjectLink: string
     addProjectLink: string
+    copyProjectLink: string
     loadProjectLink: string
     addRoomLink: string
     addConfigurationLink: string
