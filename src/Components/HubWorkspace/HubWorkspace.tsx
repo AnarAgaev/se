@@ -72,22 +72,15 @@ const getProjectsElms = (
                     }
 
                     {/* Remove project */}
-                    { p.localProject &&
+                    { (p.localProject || (p.token && p.token === userToken)) &&
                         <li>
                             <button
-                                onClick={() => removeLocalProject(p.id, p.name)}
+                                onClick={() => p.localProject
+                                    ? removeLocalProject(p.id, p.name)
+                                    : removeProject(p.id, p.name)
+                                }
                                 className="button button_dark"
-                                title="Удалить локальный проект">
-                                <i className="icon icon_basket"></i>
-                            </button>
-                        </li>
-                    }
-                    { p.token && p.token === userToken &&
-                        <li>
-                            <button
-                                onClick={() => removeProject(p.id, p.name)}
-                                className="button button_dark"
-                                title="Удалить проект">
+                                title={ p.localProject ? "Удалить локальный проект" : "Удалить проект" }>
                                 <i className="icon icon_basket"></i>
                             </button>
                         </li>

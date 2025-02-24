@@ -212,14 +212,16 @@ const getConfigurationList = (
                                         <i className='icon icon_change'></i>
                                     </button>
                                 }
-                                <button onClick={onReplace}
-                                    className='button button_small button_dark'
-                                    title="Перенести комплект в другой проект/помещение">
-                                    <span>Перенести</span>
-                                    <i className='icon icon_move'></i>
-                                </button>
+                                { canEditProject &&
+                                    <button onClick={onReplace}
+                                        className='button button_small button_dark'
+                                        title="Перенести комплект в другой проект/помещение">
+                                        <span>Перенести</span>
+                                        <i className='icon icon_move'></i>
+                                    </button>
+                                }
                                 <button onClick={onCopy}
-                                    className='button button_small button_dark'
+                                    className={`button button_small button_dark${!canEditProject ? ' single' : ''}`}
                                     title="Скопировать комплект в другой проект/помещение">
                                     <span>Скопировать</span>
                                     <i className='icon icon_copy'></i>

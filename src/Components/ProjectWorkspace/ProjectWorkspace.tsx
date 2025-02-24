@@ -67,27 +67,19 @@ const getProjectActions = (
         }
 
         {/* Remove project */}
-        { project.localProject &&
+        { (project.localProject || (project.token && project.token === userToken)) &&
             <li>
                 <button
-                    onClick={() => removeLocalProject(project.id, project.name)}
+                    onClick={() => project.localProject
+                        ? removeLocalProject(project.id, project.name)
+                        : removeProject(project.id, project.name)
+                    }
                     className="button button_dark"
-                    title="Удалить локальный проект">
+                    title={ project.localProject ? "Удалить локальный проект" : "Удалить проект" }>
                     <i className="icon icon_basket"></i>
                 </button>
             </li>
         }
-        { project.token && project.token === userToken &&
-            <li>
-                <button
-                    onClick={() => removeProject(project.id, project.name)}
-                    className="button button_dark"
-                    title="Удалить проект">
-                    <i className="icon icon_basket"></i>
-                </button>
-            </li>
-        }
-
     </ul>
 }
 
