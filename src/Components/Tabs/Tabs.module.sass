@@ -5,20 +5,9 @@
     display: flex
     flex-direction: column
     gap: 20px
-    position: relative
 
-    &::before
-        content: ''
-        display: block
-        position: absolute
-        bottom: 1px
-        left: 0
-        width: 100%
-        height: 1px
-        background: var(--color-border-prime)
-
-    // @media (min-width: $lg)
-    //     flex-direction: row-reverse
+    @media (min-width: $lg)
+        flex-direction: row-reverse
 
 
 .configurator

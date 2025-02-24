@@ -1,5 +1,5 @@
 import useStore from '../../Store'
-import { Price, Set } from '../../Components'
+import { Price, Locations, Set } from '../../Components'
 import { collapseDevices } from '../../Helpers'
 import { TAddProductsToCart } from '../../types'
 import style from './Cart.module.sass'
@@ -12,92 +12,92 @@ const Cart = () => {
     const [
         selectedBorder,
         checkDevices,
-        // modalMessageSet,
-        // checkProject,
-        // checkRoom,
-        // projects,
-        // rooms,
-        // addConfiguration,
-        // getSelectedBackgroundId,
+        modalMessageSet,
+        checkProject,
+        checkRoom,
+        projects,
+        rooms,
+        addConfiguration,
+        getSelectedBackgroundId,
         deviceList,
         countOfSets,
-        // editConfiguration,
-        // direction,
-        // saveConfiguration,
+        editConfiguration,
+        direction,
+        saveConfiguration,
         addProductsToCart
     ] = useStore(state => [
         state.border,
         state.checkDevices,
-        // state.modalMessageSet,
-        // state.checkProject,
-        // state.checkRoom,
-        // state.projects,
-        // state.rooms,
-        // state.addConfiguration,
-        // state.getSelectedBackgroundId,
+        state.modalMessageSet,
+        state.checkProject,
+        state.checkRoom,
+        state.projects,
+        state.rooms,
+        state.addConfiguration,
+        state.getSelectedBackgroundId,
         state.deviceList,
         state.countOfSets,
-        // state.editConfiguration,
-        // state.direction,
-        // state.saveConfiguration,
+        state.editConfiguration,
+        state.direction,
+        state.saveConfiguration,
         state.addProductsToCart
     ])
     // #endregion
 
     const isSelectedBorder = Boolean(selectedBorder)
     const isSelectedDevice = checkDevices()
-    // const isProjectSelected = checkProject()
-    // const isRoomSelected = checkRoom()
+    const isProjectSelected = checkProject()
+    const isRoomSelected = checkRoom()
 
-    // const addToProjectHandler = () => {
-    //     if (!isSelectedBorder && !isSelectedDevice) {
-    //         modalMessageSet(true, 'Необходимо выбрать рамку или хотя бы одно устройство')
-    //         return
-    //     }
+    const addToProjectHandler = () => {
+        if (!isSelectedBorder && !isSelectedDevice) {
+            modalMessageSet(true, 'Необходимо выбрать рамку или хотя бы одно устройство')
+            return
+        }
 
-    //     if (!isProjectSelected) {
-    //         modalMessageSet(true, `Необходимо ${projects.length ? 'выбрать' : 'добавить'} проект`)
-    //         return
-    //     }
+        if (!isProjectSelected) {
+            modalMessageSet(true, `Необходимо ${projects.length ? 'выбрать' : 'добавить'} проект`)
+            return
+        }
 
-    //     if (!isRoomSelected) {
-    //         modalMessageSet(true, `Необходимо ${rooms.length ? 'выбрать' : 'добавить'} помещение`)
-    //         return
-    //     }
+        if (!isRoomSelected) {
+            modalMessageSet(true, `Необходимо ${rooms.length ? 'выбрать' : 'добавить'} помещение`)
+            return
+        }
 
-    //     const project = [...projects].filter(p => p.selected)[0]
-    //     const room = [...rooms].filter(r => r.selected)[0]
-    //     const backgroundId = getSelectedBackgroundId()
-    //     const devices = Object.values(deviceList)
+        const project = [...projects].filter(p => p.selected)[0]
+        const room = [...rooms].filter(r => r.selected)[0]
+        const backgroundId = getSelectedBackgroundId()
+        const devices = Object.values(deviceList)
 
-    //     addConfiguration(
-    //         project.id,
-    //         room.id,
-    //         room.name,
-    //         backgroundId,
-    //         selectedBorder,
-    //         devices,
-    //         countOfSets,
-    //         direction
-    //     )
-    // }
+        addConfiguration(
+            project.id,
+            room.id,
+            room.name,
+            backgroundId,
+            selectedBorder,
+            devices,
+            countOfSets,
+            direction
+        )
+    }
 
-    // const saveConfigurationHandler = () => {
-    //     if (!isSelectedDevice && !isSelectedBorder) {
-    //         modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство или рамку')
-    //         return
-    //     }
+    const saveConfigurationHandler = () => {
+        if (!isSelectedDevice && !isSelectedBorder) {
+            modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство или рамку')
+            return
+        }
 
-    //     const backgroundId = getSelectedBackgroundId()
-    //     const devices = Object.values(deviceList)
+        const backgroundId = getSelectedBackgroundId()
+        const devices = Object.values(deviceList)
 
-    //     saveConfiguration(
-    //         backgroundId,
-    //         selectedBorder,
-    //         devices,
-    //         direction
-    //     )
-    // }
+        saveConfiguration(
+            backgroundId,
+            selectedBorder,
+            devices,
+            direction
+        )
+    }
 
     const addToCartHandler = () => {
 
@@ -129,8 +129,8 @@ const Cart = () => {
         addProductsToCart(requestArr)
     }
 
-    // const addToProjectButtonClazz = `button button_block button_dark ${(!isSelectedBorder && !isSelectedDevice) || !isProjectSelected || !isRoomSelected ? 'clickedDisabled' : ''}`
-    // const saveConfButtonClazz = `button button_block button_dark ${(!isSelectedBorder && !isSelectedDevice) ? 'clickedDisabled' : ''}`
+    const addToProjectButtonClazz = `button button_block button_dark ${(!isSelectedBorder && !isSelectedDevice) || !isProjectSelected || !isRoomSelected ? 'clickedDisabled' : ''}`
+    const saveConfButtonClazz = `button button_block button_dark ${(!isSelectedBorder && !isSelectedDevice) ? 'clickedDisabled' : ''}`
     const addToCartButtonClazz = `button button_block button_dark ${!isSelectedDevice ? 'clickedDisabled' : ''}`
 
     return (
@@ -138,8 +138,8 @@ const Cart = () => {
             <div className={section}>
                 <h3 className={caption}>Стоимость полного комплекта</h3>
                 <Price />
-                {/* <Locations /> */}
-                {/* { !editConfiguration
+                <Locations />
+                { !editConfiguration
                     ? <button type="button" onClick={addToProjectHandler}
                         className={addToProjectButtonClazz}>
                         Добавить в проект
@@ -148,7 +148,7 @@ const Cart = () => {
                         className={saveConfButtonClazz}>
                         Сохранить комплект
                     </button>
-                } */}
+                }
             </div>
             { (isSelectedBorder || isSelectedDevice) &&
                 <div className={section}>
