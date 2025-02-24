@@ -1,29 +1,10 @@
 import { create } from 'zustand'
 import { devtools, persist, createJSONStorage } from 'zustand/middleware'
-// import { devtools, createJSONStorage } from 'zustand/middleware'
-import { generateErrorMessage, ErrorMessageOptions } from 'zod-error'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } from './'
 import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette } from '../types'
-import { InitDataContract } from '../zod'
-
-const zodErrorOptions: ErrorMessageOptions = {
-    delimiter: {
-        error: '\n',
-    },
-    path: {
-        enabled: true,
-        type: 'zodPathArray',
-        label: 'Zod Path: ',
-    },
-    code: {
-        enabled: true,
-    },
-    message: {
-        enabled: true,
-        label: '',
-    },
-    transform: ({ errorMessage, index }) => `🔥 \x1b[31m Zod Error #${index + 1}: \x1b[33m ${errorMessage}`,
-}
+import { InitDataContract, zodErrorOptions } from '../zod'
+import { generateErrorMessage } from 'zod-error'
+import { defaultFetchHeaders } from '../Helpers'
 
 const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSketchStore & TAppStore & TStore>()(
     devtools(
@@ -40,6 +21,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     try {
 
                         const apiLink = window.initSourceDataLink
+                        const token = window.userToken
 
                         if (!apiLink) {
                             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -48,59 +30,66 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
                         set({ loading: true })
 
-                        const body = new FormData()
-                        body.append('domain', 'fandeco')
+                        const headers: HeadersInit = defaultFetchHeaders
+                        if (token) headers['Token'] = token
 
-                        const res = await fetch(apiLink, { method: 'POST', body: body })
-                        // const res = await fetch(apiLink, { method: 'GET' })
+                        const body = { domain: 'fandeco' }
+
+                        const res = await fetch(apiLink, {
+                            method: 'POST',
+                            headers,
+                            body: JSON.stringify(body)
+                        })
 
                         if (!res.ok) {
                             get().modalMessageSet(true, 'Ошибка запроса!')
                             throw new Error(`Ошибка fetch запроса Получить инит данные! Запрос к URL ${apiLink}`)
                         }
 
+                        const data = await res.json()
+                        console.log(data)
+                        // return
 
-
-
-
-    // const data = await res.json()
-
-    // const borderSetBrand = new Set()
-    // const borderSetCollection = new Set()
+    // const bordersSet = new Set()
+    // // const borderSetBrand = new Set()
+    // // const borderSetCollection = new Set()
     // data.borders.forEach(b => {
-    //     // if (!b.conf_color) borderSet.add(b.id)
-    //     borderSetBrand.add(b.vendor)
-    //     borderSetCollection.add(b.collection)
 
-    //     // if (b.conf_orientation === 'horizontal') {
-    //     //     console.log(b.id);
-    //     // }
+    //     b.number_of_posts.forEach(n => bordersSet.add(typeof n))
+
+    // //     // if (!b.conf_color) borderSet.add(b.id)
+    // //     borderSetBrand.add(b.vendor)
+    // //     borderSetCollection.add(b.collection)
+
+    // //     // if (b.conf_orientation === 'horizontal') {
+    // //     //     console.log(b.id);
+    // //     // }
     // })
-    // console.log('\x1b[34m%s\x1b[0m', 'Рамки')
-    // console.log('Бренды', Array.from(borderSetBrand).join(', '))
-    // console.log('Коллекции', Array.from(borderSetCollection).join(', '))
+    // // console.log('\x1b[34m%s\x1b[0m', 'Рамки')
+    // // console.log('Бренды', Array.from(borderSetBrand).join(', '))
+    // // console.log('Коллекции', Array.from(borderSetCollection).join(', '))
+    // console.log(Array.from(bordersSet))
 
-    // const devicesSetBrand = new Set()
-    // const devicesSetCollection = new Set()
+
+
+    // const devicesSet = new Set()
     // data.devices.forEach(d => {
-    //     devicesSetBrand.add(d.vendor)
-    //     devicesSetCollection.add(d.collection)
-    //     // if (d.conf_product_group) devicesSet.add(d.conf_product_group)
+    //     if (!d.ip_class) devicesSet.add(d.article)
     // })
     // console.log('\x1b[34m%s\x1b[0m', 'Устройства')
-    // console.log('Бренды', Array.from(devicesSetBrand).join(', '))
-    // console.log('Коллекции', Array.from(devicesSetCollection).join(', '))
+    // console.log(Array.from(devicesSet).join(', '))
 
 
 
-
-                        const safeResponse = InitDataContract.passthrough().safeParse(await res.json())
+                        const safeResponse = InitDataContract.passthrough().safeParse(data)
 
                         if (!safeResponse.success) {
                             const errorMessage = generateErrorMessage(safeResponse.error.issues, zodErrorOptions)
+
                             console.log(errorMessage)
 
                             set({ error: "Нарушен Zod контракт для Инит данных", loading: false })
+
                             return
                         }
 
@@ -121,21 +110,35 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             }))
                         ]
 
+                        // Проверяем данные перед добавлением в Store, чтобы регидратация прошла корректно
+                        // Для корректной регидратации, здесь можно написать проекты
+                        const backgrounds = get().backgrounds
+                        const colors = get().colors
+                        const vendors = get().vendors
+                        const projects = get().projects
+                        const rooms = get().rooms
+
                         set({
                             error: null,
                             loading: false,
-                            userId: safeResponse.data.user_id,
 
                             // Pushing data to appropriate stores
-                            backgrounds: safeResponse.data.backgrounds,
-                            colors: safeResponse.data.colors,
-                            borders: safeResponse.data.borders,
-                            devices: safeResponse.data.devices,
-                            vendors: safeResponse.data.vendors,
-                            projects: safeResponse.data.projects,
-                            rooms: safeResponse.data.rooms,
+                            backgrounds: backgrounds.length ? backgrounds : safeResponse.data.backgrounds,
+                            colors: colors ? colors : safeResponse.data.colors,
+                            vendors: vendors.length ? vendors : safeResponse.data.vendors,
+                            projects: projects.length ? projects : safeResponse.data.projects,
+                            rooms: rooms.length ? rooms : safeResponse.data.rooms,
+
+                            // Словарь всегда обновляем, так как он не должен уменьшаться.
+                            // Возможно появление новых слов, но не удаление старых.
                             dictionary: safeResponse.data.lang,
 
+                            // Рамки и устройства всегда обновляем
+                            borders: safeResponse.data.borders,
+                            devices: safeResponse.data.devices,
+
+                            // Функциональности также всегда перезаписываем, так они строятся
+                            // на текущих devices, а devices всегда перезаписываются
                             functions: functions,
                             filtersDevices: {
                                 ...get().filtersDevices,
@@ -167,11 +170,6 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         ? get().borders
                         : get().devices
 
-                    // #region Type guards for Devices and Borders
-                    function isBorder(item: TBorder | TDevice): item is TBorder {
-                        return (item as TBorder).number_of_posts !== undefined
-                    }
-
                     function isDevice(item: TBorder | TDevice): item is TDevice {
                         return (item as TDevice).conf_product_group !== undefined
                     }
@@ -185,7 +183,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     if (activeTab === 'borders') {
                         items = items.filter(
                             i => {
-                                if (!isBorder(i)) return false
+                                // if (!isBorder(i)) return false
 
                                 const value = Array.isArray(i.number_of_posts)
                                     ? parseInt(i.number_of_posts[0])
@@ -248,6 +246,8 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         items = items.filter(
                             i => {
 
+                                if (!i) return false
+
                                 if (isDevice(i)) {
                                     return i['conf_product_group']?.toLocaleLowerCase() === filter.name.toLocaleLowerCase()
                                 }
@@ -264,7 +264,19 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         type FilterFunc<T> = (items: T[], property: string, value: string | number) => T[]
 
                         const filteringItemsByFunctionalityProp: FilterFunc<TDevice> = (items, property, value) => {
-                            return items.filter(i => i[property] === value)
+
+                            return items.filter(i => {
+
+                                const prop = i[property] as string | number | string[] | undefined
+
+                                if (prop === undefined) return false
+
+                                if (typeof prop === 'string' || typeof prop === 'number') {
+                                    return prop.toString().toLocaleLowerCase() === value.toString().toLocaleLowerCase()
+                                }
+
+                                return prop.includes(value.toString())
+                            })
                         }
 
                         for (const prop in filter.props) {
@@ -296,7 +308,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                 }
             }),
             {
-                name: 'food-storage',
+                name: 'configurator-storage',
                 storage: createJSONStorage(() => sessionStorage),
             }
         )

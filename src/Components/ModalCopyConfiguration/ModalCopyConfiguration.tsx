@@ -6,25 +6,53 @@ import style from './ModalCopyConfiguration.module.sass'
 
 const { selectors, selector, error, disabled } = style
 
+const userToken = window.userToken
+
 type TSelectedElement = {
     id?: string | number
     name?: string | undefined
     error: boolean
 }
 
+const getProjectsOptionsList = (
+    key: string,
+    projectsList: TProjectList,
+    selectedProject: TSelectedElement,
+    setProject: React.Dispatch<React.SetStateAction<TSelectedElement>>
+): JSX.Element[] => {
+
+    const elementsList: JSX.Element[] = []
+
+    projectsList.forEach(project => {
+        // Пушим только проекты этого пользователя
+        if (project.localProject || (project.token && project.token === userToken)) {
+            elementsList.push(
+                <OptionLocation
+                    key={`${key}-${project.id}`}
+                    caption={project.name}
+                    isChecked={project.id === selectedProject.id}
+                    eventHandler={() => setProject({ id: project.id, name: project.name, error: false })}
+                />
+            )
+        }
+    })
+
+    return elementsList
+}
+
 const getOptionsList = (
     key: string,
-    projectsList: TProjectList |  TRoomList,
-    selectedEl: TSelectedElement,
-    setEl: React.Dispatch<React.SetStateAction<TSelectedElement>>
-): JSX.Element[] => {
-    return projectsList.map(el => <OptionLocation
-        key={`${key}-${el.id}`}
-        caption={el.name}
-        isChecked={el.id === selectedEl.id}
-        eventHandler={() => setEl({ id: el.id, name: el.name, error: false })}
-    />)
-}
+    roomList: TRoomList,
+    selectedRoom: TSelectedElement,
+    setRoom: React.Dispatch<React.SetStateAction<TSelectedElement>>
+): JSX.Element[] => roomList.map(room => (
+    <OptionLocation
+        key={`${key}-${room.id}`}
+        caption={room.name}
+        isChecked={room.id === selectedRoom.id}
+        eventHandler={() => setRoom({ id: room.id, name: room.name, error: false })}
+    />
+))
 
 const ModalCopyConfiguration = ({ visible }: {visible: boolean}) => {
 
@@ -57,7 +85,7 @@ const ModalCopyConfiguration = ({ visible }: {visible: boolean}) => {
     }, [visible])
 
     const projectsOptions = useMemo(
-        () => getOptionsList(key, projects, selectedProject, setProject),
+        () => getProjectsOptionsList(key, projects, selectedProject, setProject),
         [key, projects, selectedProject, setProject]
     )
 

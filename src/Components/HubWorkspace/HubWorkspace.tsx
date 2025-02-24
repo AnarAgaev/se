@@ -5,8 +5,9 @@ import { getFileName } from '../../Helpers'
 import useStore from '../../Store'
 import style from './HubWorkspace.module.sass'
 
-const { hub, form, add, upload, blocks, title,
-    message, list, item, name, actions } = style
+const { hub, form, add, upload, blocks, title, list, item, name, actions } = style
+
+const userToken = window.userToken
 
 const getProjectsElms = (
     id: string,
@@ -14,7 +15,9 @@ const getProjectsElms = (
     editProject: TAppStore['editProject'],
     shareProject: TAppStore['shareProject'],
     removeProject: TAppStore['removeProject'],
-    setDownloadProject:  TAppStore['setDownloadProject']
+    setDownloadProject:  TAppStore['setDownloadProject'],
+    removeLocalProject: TAppStore['removeLocalProject'],
+    copyProject: TAppStore['copyProject'],
 ): JSX.Element[] => {
 
     return projects.map(p => {
@@ -30,7 +33,7 @@ const getProjectsElms = (
                         <button
                             onClick={() => editProject(p.id)}
                             className="button button_dark"
-                            title="Редактировать проект">
+                            title="Проект подробно">
                             <i className='icon icon_edit'></i>
                         </button>
                     </li>
@@ -56,14 +59,32 @@ const getProjectsElms = (
                         </button>
                     </li>
 
-                    <li>
-                        <button
-                            onClick={() => removeProject(p.id, p.name)}
-                            className="button button_dark"
-                            title="Удалить проект">
-                            <i className="icon icon_basket"></i>
-                        </button>
-                    </li>
+                    {/* Copy project */}
+                    { ( p.token === null || p.token !== userToken) &&
+                        <li>
+                            <button
+                                onClick={() => copyProject(p.id, userToken)}
+                                className="button button_dark"
+                                title={`Скопировать проект себе${!userToken ? ' локально' : ''}`}>
+                                <i className="icon icon_copy"></i>
+                            </button>
+                        </li>
+                    }
+
+                    {/* Remove project */}
+                    { (p.localProject || (p.token && p.token === userToken)) &&
+                        <li>
+                            <button
+                                onClick={() => p.localProject
+                                    ? removeLocalProject(p.id, p.name)
+                                    : removeProject(p.id, p.name)
+                                }
+                                className="button button_dark"
+                                title={ p.localProject ? "Удалить локальный проект" : "Удалить проект" }>
+                                <i className="icon icon_basket"></i>
+                            </button>
+                        </li>
+                    }
                 </ul>
             </li>
         )
@@ -75,7 +96,6 @@ const HubWorkspace = () => {
 
     // #region Variables
     const [
-        userId,
         projects,
         addProject,
         editProject,
@@ -83,8 +103,9 @@ const HubWorkspace = () => {
         removeProject,
         modalLoadProjectSet,
         setDownloadProject,
+        removeLocalProject,
+        copyProject,
     ] = useStore(state => [
-        state.userId,
         state.projects,
         state.addProject,
         state.editProject,
@@ -92,12 +113,14 @@ const HubWorkspace = () => {
         state.removeProject,
         state.modalLoadProjectSet,
         state.setDownloadProject,
+        state.removeLocalProject,
+        state.copyProject,
     ])
     // #endregion
 
     const projectList = useMemo(
-        () => getProjectsElms(id, projects, editProject, shareProject, removeProject, setDownloadProject),
-        [id, projects, editProject, shareProject, removeProject, setDownloadProject]
+        () => getProjectsElms(id, projects, editProject, shareProject, removeProject, setDownloadProject, removeLocalProject, copyProject),
+        [id, projects, editProject, shareProject, removeProject, setDownloadProject, removeLocalProject, copyProject]
     )
 
     return (
@@ -116,9 +139,6 @@ const HubWorkspace = () => {
                     </div>
                 </div>
                 <div className={blocks}>
-                    {!userId &&
-                        <h3 className={message}>Чтобы сохранить проект или работать с сохраненными проектами, войдите на сайт.</h3>
-                    }
                     <h3 className={title}>
                         { projects.length === 0
                                 ? 'У Вас пока нет проектов. Создайте новый проект или загрузите проект по ссылке.'

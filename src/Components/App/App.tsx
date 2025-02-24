@@ -1,11 +1,13 @@
 import { useEffect, Suspense, lazy } from 'react'
+import { getParameterByNameFromUrlLink } from '../../Helpers'
 import useStore from '../../Store'
 import style from './App.module.sass'
 import '../../Sass/main.sass'
 
 import { Loading, Loader, Tabs, Factory, Viewport, ModalResetBrandOrCollection,
 	ModalWarning, ModalMessage, ModalShare, ModalLoadProject, ModalCopyConfiguration,
-	ModalAddConfiguration, ModalSaveConfiguration, ModalResetSketch, ModalSavePDF } from '../../Components'
+	ModalAddConfiguration, ModalSaveConfiguration, ModalResetSketch, ModalSavePDF,
+	Warning } from '../../Components'
 
 const PdfDocument = lazy(() => import('../PdfDocument/PdfDocument'))
 
@@ -28,7 +30,8 @@ const App = () => {
 		modalSaveConfigurationVisible,
 		modalResetSketchVisible,
 		downloadProjectAsPdf,
-		downloadProjectBlobUrl
+		downloadProjectBlobUrl,
+		loadProject
 	] = useStore(state => [
 		state.requestInitData,
 		state.loading,
@@ -43,7 +46,8 @@ const App = () => {
 		state.modalSaveConfigurationVisible,
 		state.modalResetSketchVisible,
 		state.downloadProjectAsPdf,
-		state.downloadProjectBlobUrl
+		state.downloadProjectBlobUrl,
+		state.loadProject
 	])
 	// #endregion
 
@@ -53,13 +57,22 @@ const App = () => {
 
 	useEffect(() => {
 		requestInitData()
-	}, [requestInitData])
+
+		// Если в url есть токе проекта, сразу после инициализации загружаем проект
+		const projectToken = getParameterByNameFromUrlLink('share')
+
+		if (projectToken) {
+			loadProject(projectToken)
+		}
+
+	}, [requestInitData, loadProject])
 
 	return (
 		<section className={`se-app ${app}`}>
 			{ loading
 				? <Loader text='Загружаем конфигуратор' />
 				: <>
+					<Warning />
 					<h1 className={caption}>
 						Конфигуратор
 					</h1>

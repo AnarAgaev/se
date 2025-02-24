@@ -4,7 +4,9 @@ import { TProjectList, TRoomList, TAppStore } from '../../types'
 import useStore from '../../Store'
 import style from './Locations.module.sass'
 
-const { locations, item, text, location, id } =style
+const { locations, item, text, location, id } = style
+
+const userToken = window.userToken
 
 const getProjectsOptionsList = (
     key: string,
@@ -15,13 +17,16 @@ const getProjectsOptionsList = (
     const elementsList: JSX.Element[] = []
 
     projectsList.forEach(project => {
-        elementsList.push(
-            <OptionLocation
-                key={`${key}-${project.id}`}
-                caption={project.name}
-                isChecked={project.selected}
-                eventHandler={() => setProject(project.id)} />
-        )
+        // Пушим только проекты этого пользователя
+        if (project.localProject || (project.token && project.token === userToken)) {
+            elementsList.push(
+                <OptionLocation
+                    key={`${key}-${project.id}`}
+                    caption={project.name}
+                    isChecked={project.selected}
+                    eventHandler={() => setProject(project.id)} />
+            )
+        }
     })
 
     return elementsList

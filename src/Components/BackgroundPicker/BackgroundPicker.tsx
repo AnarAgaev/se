@@ -54,22 +54,35 @@ const BackgroundPicker = () => {
 
         try {
             const uploadLink = window.uploadBackgroundLink
+            const token = window.userToken
 
-            if (!uploadLink) console.error(
-                'There is no link window.uploadBackgroundLink on the page to upload backgrounds.')
+            if (!uploadLink) {
+                console.error(`На странице не указана ссылка на Загрузку картинки для фона window.uploadBackgroundLink`)
+            }
 
-            const formData = new FormData()
-            formData.append('image', event.target.files[0])
-            formData.append('dir', 'backgrounds')
+            const headers: HeadersInit = {}
+            if (token) headers['Token'] = token
+
+            const body = new FormData()
+            body.append('domain', 'fandeco')
+            body.append('image', event.target.files[0])
+            body.append('dir', 'backgrounds')
 
             const res = await fetch(uploadLink, {
                 method: 'POST',
-                body: formData
+                headers,
+                body
             })
 
-            if (!res.ok) console.error('Failed to upload background image to', uploadLink)
+            if (!res.ok) {
+                console.error('Failed to upload background image to', uploadLink)
+            }
 
-            const safeResponse = Background.passthrough().safeParse(await res.json())
+            const data = await res.json()
+
+            console.log(data)
+
+            const safeResponse = Background.passthrough().safeParse(data)
             console.log('Uploading image response', safeResponse)
 
             if (!safeResponse.success) {

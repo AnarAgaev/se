@@ -6,34 +6,63 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>System Electrical widget</title>
 		<script>
+
+			// window.userToken = 'f7312e432485b278f4a2c564c8484845'
+			window.userToken = 'fdc473932fb28ca952664013b81a652e'
+
+
 			window.initSourceDataLink = "https://seconfigurator.prox.massive.ru/api/v1/products"
-			window.initSourceDataLink = "mocks/local.json"
+			// window.initSourceDataLink = "mocks/local.json"
+			// window.initSourceDataLink = "mocks/api.json"
+
 
 			window.uploadBackgroundLink = "https://seconfigurator.prox.massive.ru/api/v1/upload-image"
 
-			window.shareProjectLink = "mocks/share-project.json"
 
-			window.removeProjectLink = "mocks/remove-project.json"
+			window.shareProjectLink = "https://seconfigurator.prox.massive.ru/api/v1/project-share"
+			// window.shareProjectLink = "mocks/share-project.json"
 
-			// window.addProjectLink = "mocks/add-project.json"
+
+			window.removeProjectLink = "https://seconfigurator.prox.massive.ru/api/v1/project-delete"
+			// window.removeProjectLink = "mocks/remove-project.json"
+
+
 			window.addProjectLink = "https://seconfigurator.prox.massive.ru/api/v1/project-create"
+			// window.addProjectLink = "mocks/add-project.json"
 
-			window.loadProjectLink = "mocks/load-project.json"
 
-			window.addRoomLink = "mocks/add-room.json"
+			window.copyProjectLink = "https://seconfigurator.prox.massive.ru/api/v1/project-copy"
 
-			window.addConfigurationLink = "mocks/add-configuration.json"
 
-			window.saveConfigurationLink = "mocks/save-configuration.json"
+			window.loadProjectLink = "https://seconfigurator.prox.massive.ru/api/v1/project-get-from-link"
+			// window.loadProjectLink = "mocks/load-project.json"
 
-			window.updateConfigurationCountLink = "mocks/request-success.json"
 
-			window.removeConfigurationLink = "mocks/request-success.json"
+			window.addRoomLink = "https://seconfigurator.prox.massive.ru/api/v1/room-create"
+			// window.addRoomLink = "mocks/add-room.json"
 
-			window.copyReplaceConfigurationLink = "mocks/request-copy-replace.json"
-			// window.copyReplaceConfigurationLink = "mocks/request-error.json"
+			window.addConfigurationLink = "https://seconfigurator.prox.massive.ru/api/v1/configuration-create-with-products"
+			// window.addConfigurationLink = "mocks/add-configuration.json"
 
-			window.addProductsToCartLink = "https://2403-fandeco.massive.ru/rest/cart/addToCartMany"
+
+			window.saveConfigurationLink = "https://seconfigurator.prox.massive.ru/api/v1/configuration-update-with-products"
+			// window.saveConfigurationLink = "mocks/save-configuration.json"
+
+
+			window.updateConfigurationCountLink = "https://seconfigurator.prox.massive.ru/api/v1/configuration-update-with-products"
+			// window.updateConfigurationCountLink = "mocks/request-success.json"
+
+
+			window.removeConfigurationLink = "https://seconfigurator.prox.massive.ru/api/v1/configuration-delete"
+			// window.removeConfigurationLink = "mocks/request-success.json"
+
+
+			window.copyReplaceConfigurationLink = "https://seconfigurator.prox.massive.ru/api/v1/configuration-copy"
+			// window.copyReplaceConfigurationLink = "mocks/request-copy-replace.json"
+
+
+			window.addProductsToCartLink = "https://fandeco.ru/rest/cart/addToCartMany"
+
 
 		</script>
 		<style>

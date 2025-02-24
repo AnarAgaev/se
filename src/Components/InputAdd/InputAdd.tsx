@@ -11,29 +11,8 @@ const { add, add_valid, icon, input, button } = style
 
 const InputAdd = ({ placeholder, cbf }: Props) => {
 
-    // #region Variables
-    // const [
-    //     userId,
-    //     modalMessageSet
-    // ] = useStore(state => [
-    //     state.userId,
-    //     state.modalMessageSet
-    // ])
-    // #endregion
-
     const [inputVal, setInputVal] = useState('')
     const inputRef = useRef<HTMLInputElement | null>(null)
-
-    // const handleInputFocus = () => {
-    //     const msg = type === 'project'
-    //         ? 'Чтобы добавить новый проект, войдите на сайт'
-    //         : 'Чтобы добавить новое помещение, войдите на сайт'
-
-    //     if (!userId) {
-    //         modalMessageSet(true, msg)
-    //         inputRef.current?.blur()
-    //     }
-    // }
 
     const handleInputChange = (
         event: ChangeEvent<HTMLInputElement>

@@ -15,6 +15,7 @@
 
     --color-prime: #000
     --color-error: #ff0000
+    --color-back-err: #ff4d4d
 
     --color-border-prime: #999
 
@@ -204,6 +205,12 @@
             background: var(--color-button-disabled)
             border-color: var(--color-button-disabled)
             color: var(--color-button-font-disabled)
+
+        &.single
+            padding: 0 10px !important
+
+            & > span
+                display: block !important
 
         .icon
             display: block

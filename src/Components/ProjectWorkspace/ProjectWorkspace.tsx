@@ -8,12 +8,16 @@ import style from './ProjectWorkspace.module.sass'
 const { wrap, wrapCenter, caption, title, subtitle,
     body, footer, actions, total } = style
 
+const userToken = window.userToken
+
 const getProjectActions = (
     project: TProject,
     shareProject: TAppStore['shareProject'],
     removeProject: TAppStore['removeProject'],
     modalLoadProjectSet: TAppStore['modalLoadProjectSet'],
-    setDownloadProject:  TAppStore['setDownloadProject']
+    setDownloadProject: TAppStore['setDownloadProject'],
+    copyProject: TAppStore['copyProject'],
+    removeLocalProject: TAppStore['removeLocalProject']
 ): JSX.Element | null => {
 
     return !project
@@ -50,15 +54,32 @@ const getProjectActions = (
             </button>
         </li>
 
-        <li>
-            <button
-                onClick={() => removeProject(project.id, project.name)}
-                className="button button_dark"
-                title="Удалить проект">
-                <i className="icon icon_basket"></i>
-            </button>
-        </li>
+        {/* Copy project */}
+        { ( project.token === null || project.token !== userToken) &&
+            <li>
+                <button
+                    onClick={() => copyProject(project.id, userToken)}
+                    className="button button_dark"
+                    title={`Скопировать проект себе${!userToken ? ' локально' : ''}`}>
+                    <i className="icon icon_copy"></i>
+                </button>
+            </li>
+        }
 
+        {/* Remove project */}
+        { (project.localProject || (project.token && project.token === userToken)) &&
+            <li>
+                <button
+                    onClick={() => project.localProject
+                        ? removeLocalProject(project.id, project.name)
+                        : removeProject(project.id, project.name)
+                    }
+                    className="button button_dark"
+                    title={ project.localProject ? "Удалить локальный проект" : "Удалить проект" }>
+                    <i className="icon icon_basket"></i>
+                </button>
+            </li>
+        }
     </ul>
 }
 
@@ -107,7 +128,9 @@ const ProjectWorkspace = () => {
         shareProject,
         modalLoadProjectSet,
         setDownloadProject,
-        addProductsToCart
+        addProductsToCart,
+        copyProject,
+        removeLocalProject
     ] = useStore(state => [
         state.projects,
         state.setActiveViewportTab,
@@ -115,7 +138,9 @@ const ProjectWorkspace = () => {
         state.shareProject,
         state.modalLoadProjectSet,
         state.setDownloadProject,
-        state.addProductsToCart
+        state.addProductsToCart,
+        state.copyProject,
+        state.removeLocalProject
     ])
     // #endregion
 
@@ -123,7 +148,8 @@ const ProjectWorkspace = () => {
 
     const projectActions = getProjectActions(
         project, shareProject, removeProject,
-        modalLoadProjectSet, setDownloadProject
+        modalLoadProjectSet, setDownloadProject,
+        copyProject, removeLocalProject
     )
 
     const totalProjectCost = getTotalProjectCost(project)

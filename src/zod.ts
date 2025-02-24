@@ -1,7 +1,7 @@
 import { z } from 'zod'
+import { ErrorMessageOptions } from 'zod-error'
 
-export const UserId = z.union([z.string(), z.number()]).optional()
-export type TUserId = z.infer<typeof UserId>
+
 
 // #region Backgrounds
 export const Background = z.object({
@@ -56,7 +56,8 @@ export type TBorderList = z.infer<typeof BorderList>
 
 // #region Devices
 export const Device = Element.extend({
-    conf_product_group: z.string().optional(), // У некоторых девайсов не указан тип!!!
+    conf_product_group: z.string().optional(),
+    conf_device_type: z.array(z.string()).optional()
 }).passthrough()
 export type TDevice = z.infer<typeof Device> & {
     [key: string]: string | number
@@ -97,7 +98,7 @@ export type TVendorList = z.infer<typeof VendorList>
 
 
 // #region Projects & Configuration
-export const Directions = z.union([z.literal('horizontal'), z.literal('vertical')])
+export const Directions = z.union([z.literal('horizontal'), z.literal('vertical'), z.literal('universal')])
 export type TDirections = z.infer<typeof Directions>
 
 export const Configuration = z.object({
@@ -129,7 +130,9 @@ export const Project = z.object({
     name: z.string(),
     selected: z.boolean(),
     edit: z.boolean(),
-    rooms: Rooms.optional()
+    rooms: Rooms.optional(),
+    token: z.union([z.string(), z.null()]).optional(),
+    localProject: z.boolean().optional()
 })
 export type TProject = z.infer<typeof Project>
 
@@ -195,7 +198,6 @@ export type TDictionary = z.infer<typeof Dictionary>
 
 // #region Initial data
 export const InitDataContract = z.object({
-    user_id: UserId,
     backgrounds: BackgroundList,
     borders: BorderList,
     devices: DeviceList,
@@ -207,3 +209,22 @@ export const InitDataContract = z.object({
     lang: Dictionary
 })
 // #endregion
+
+export const zodErrorOptions: ErrorMessageOptions = {
+    delimiter: {
+        error: '\n',
+    },
+    path: {
+        enabled: true,
+        type: 'zodPathArray',
+        label: 'Zod Path: ',
+    },
+    code: {
+        enabled: true,
+    },
+    message: {
+        enabled: true,
+        label: '',
+    },
+    transform: ({ errorMessage, index }) => `🔥 \x1b[31m Zod Error #${index + 1}: \x1b[33m ${errorMessage}`,
+}

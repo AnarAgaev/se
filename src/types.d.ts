@@ -10,7 +10,6 @@ import {
     TFunction, TFunctionItem, TFunctionList,
     TColorList,
     TDictionary,
-    TUserId,
     InitDataContract,
     TConfiguration,
     TConfigurationList,
@@ -167,12 +166,14 @@ export type TBordersStore = {
     checkPluralBordersFilter: TCheckPluralFilter
     getCountOfPosts: TGetCountOfPosts
     getSiblingBorder: TGetSiblingBorder
+    getFamilyBorders: TGetFamilyBorders
     checkSiblingBorder: TCheckSiblingBorder
     checkSelectedBorderFilters: TCheckSelectedBorderFilters
     resetAllBorderFilters: TResetAllBorderFilters
 }
 export type TGetCountOfPosts = (border: TBorder) => number
 export type TGetSiblingBorder = (border: TBorder, numberOfPost: number, direction: TDirections) => TBorder | undefined
+export type TGetFamilyBorders = (border: TBorder) => TBorderList
 export type TCheckSiblingBorder = (f: TBorder, s: TBorder) => boolean
 export type TCheckSelectedBorderFilters = () => boolean
 export type TResetAllBorderFilters = () => void
@@ -267,7 +268,8 @@ type TPrintProject = {
 }
 
 export type TAppStore = {
-    userId?: TUserId
+    logWarningShown: boolean
+    setLogWarningShown: () => void
 
     loading: boolean
     dataLoading: boolean
@@ -319,9 +321,11 @@ export type TAppStore = {
     editProject: (id: TProject['id']) => void
     shareProject: (id: TProject['id']) => void
     removeProject: (id: TProject['id'], name: TProject['name']) => void
-    loadProject: (id: TProject['id']) => void
+    removeLocalProject: (id: TProject['id'], name: TProject['name']) => void
+    loadProject: (token: string) => void
     checkProject: () => boolean
     resetProject: () => void
+    copyProject: (id: TProject['id'], token: string | undefined) => void
     // #endregion
 
 
@@ -374,7 +378,7 @@ export type TAppStore = {
         projectId: string | number,
         roomId: string | number,
         configurationId: string | number,
-        count: number
+        newCount: number,
     ) => void
 
     resetConfigurationCountToStart: (

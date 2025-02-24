@@ -1,8 +1,13 @@
 import { StateCreator } from 'zustand'
-import { TAppStore, TRequestAddConfiguration, TRequestSaveConfiguration, TRequestUpdateConfigurationCount,
-    TRequestRemoveConfiguration, TRequestCopyReplaceConfiguration, TConfiguration } from '../types'
+import { collapseDevices, defaultFetchHeaders } from '../Helpers'
+import { TAppStore, TConfiguration, TBorder, TDevice, TProject } from '../types'
+import { Project, zodErrorOptions } from '../zod'
+import { generateErrorMessage } from 'zod-error'
 
 const appSlice: StateCreator<TAppStore> = (set, get) => ({
+    logWarningShown: false,
+    setLogWarningShown: () => set({ logWarningShown: true }),
+
     loading: true,
     dataLoading: false,
 
@@ -96,6 +101,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     addProject: async (project) => {
 
         const apiLink = window.addProjectLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -104,27 +110,29 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        // const requestLink = `${apiLink}?name=${project}`
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
 
-        const body = new FormData()
-        body.append('domain', 'fandeco')
-        body.append('name', project)
+        const body = {
+            domain: 'fandeco',
+            name: project
+        }
 
         try {
             const res = await fetch(apiLink, {
                 method: 'POST',
-                body
+                headers,
+                body: JSON.stringify(body)
             })
 
             if (!res.ok) {
-
                 const errData = await res.json();
                 const errObj = JSON.parse(errData.errors.error[0])
                 console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
                 console.error(errObj)
 
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Добавить проект! Запрос к URL ${apiLink}`)
+                throw new Error(`Ошибка запроса Добавить проект! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
@@ -137,12 +145,20 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 ? addedProjectId
                 : addedProjectId.toString()
 
-            newProjects.unshift({
+            const addingProject: TProject = {
                 id: addedProjectId,
                 name: project,
                 selected: false,
                 edit: false
-            })
+            }
+
+            if (!token) {
+                addingProject.localProject = true
+            } else {
+                addingProject.token = token
+            }
+
+            newProjects.unshift(addingProject)
 
             setTimeout(() => set({
                 dataLoading: false,
@@ -152,6 +168,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -188,6 +205,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     },
     shareProject: async (id) => {
         const apiLink = window.shareProjectLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -196,22 +214,33 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?share=${id}`
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            project_id: id.toString()
+        }
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
 
             if (!res.ok) {
+
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Поделиться проектом! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка запроса Поделиться проектом! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
-
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
 
             setTimeout(() => set({
                 dataLoading: false,
@@ -220,12 +249,14 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
-    loadProject: async (id) => {
+    loadProject: async (link) => {
 
         const apiLink = window.loadProjectLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -234,42 +265,98 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?load=${id}`
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            link: link
+        }
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
 
             if (!res.ok) {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Загрузить проект! Запрос к URL ${requestLink}`)
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
+                get().modalMessageSet(true, 'Ошибка запроса! Возможно проект был удален.')
+                throw new Error(`Ошибка запроса Загрузить проект по ссылке! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
+            // console.log(data);
+            // return
 
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
+            const safeResponse = Project.passthrough().safeParse(data)
+
+            if (!safeResponse.success) {
+                const errorMessage = generateErrorMessage(safeResponse.error.issues, zodErrorOptions)
+
+                console.log('Zod ошибки:', errorMessage)
+
+                set({ error: `Нарушен Zod контракт для Загрузки проекта по ссылке! Ссылка на проект: ${link}`, loading: false })
+                return
             }
 
-            setTimeout(() => {
-                set({
-                    dataLoading: false
-                })
+            // Add project to configurator
 
+            const activeTab = get().activeViewportTab
+            const currentProjects = get().projects
+            const loadedProject = safeResponse.data
+            let isProjectInConfiguratorProjects = false
 
-                alert('Добавляем проект в конфигуратор. Добавить логику когда будет ясна сигнатура Проекта.')
+            if (activeTab !== 'hub') {
+                loadedProject.edit = true
+            }
 
+            // #region Проверяем есть ли проект в конфигураторе
+            currentProjects.forEach(p => {
+                if (p.id.toString() === loadedProject.id.toString()) {
+                    isProjectInConfiguratorProjects = true
+                    return
+                }
+            })
 
+            if (isProjectInConfiguratorProjects) {
+                setTimeout(() => set({
+                    dataLoading: false,
+                    modalMessageVisible: true,
+                    modalMessageCaption: `Проект #${loadedProject.id} уже есть в конфигураторе`,
+                }), 500)
+                return
+            }
+            // #endregion
 
+            // #region Добавляем проект в Store
+            const newProjects = [
+                { ...loadedProject },
+                ...get().projects
+            ]
 
-            }, 500)
+            setTimeout(() => set({
+                dataLoading: false,
+                modalMessageVisible: true,
+                modalMessageCaption: `Проект #${loadedProject.id} ${loadedProject.name} добавлен`,
+                projects: newProjects,
+                activeViewportTab: activeTab === 'hub' ? 'hub' : 'project'
+            }), 500)
+            // #endregion
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
     removeProject: async (id, name) => {
         const apiLink = window.removeProjectLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -278,36 +365,137 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?remove=${id}`
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            project_id: id.toString()
+        }
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
 
             if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Удалить проект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка запроса Удалить проект! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
 
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
+            if (data.success) {
+
+                // Remove project
+                const newProjects = [...get().projects].filter(p => p.id !== id)
+
+                setTimeout(() => set({
+                    dataLoading: false,
+                    modalMessageVisible: true,
+                    modalMessageCaption: `Проект #${id} ${name} удален`,
+                    projects: newProjects
+                }), 500)
             }
 
-            // Remove project
-            const newProjects = [...get().projects].filter(p => p.id !== id)
-
-            setTimeout(() => set({
-                dataLoading: false,
-                modalMessageVisible: true,
-                modalMessageCaption: `Проект #${id} ${name} удален`,
-                projects: newProjects
-            }), 500)
-
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
+    },
+    removeLocalProject: async (id, name) => {
+
+        set({ dataLoading: true })
+
+        const newProjects = [...get().projects].filter(p => p.id !== id)
+
+        setTimeout(() => set({
+            dataLoading: false,
+            modalMessageVisible: true,
+            modalMessageCaption: `Локальный проект #${id} ${name} удален`,
+            projects: newProjects
+        }), 500)
+    },
+    copyProject: async (id, token) => {
+
+        const apiLink = window.copyProjectLink
+
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Copy Project window.copyProjectLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            project_id: id
+        }
+
+        try {
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
+
+            if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
+                get().modalMessageSet(true, 'Ошибка запроса!')
+                throw new Error(`Ошибка запроса Копировать проект! Запрос к URL ${apiLink}`)
+            }
+
+            const data: Pick<TProject, 'id'> = await res.json()
+
+            console.log(data)
+
+            const projectToCopy = get().projects.find(p => p.id === id)
+
+            if (projectToCopy) {
+                const newCopyProject: TProject = {
+                    ...projectToCopy,
+                    id: data.id
+                }
+
+                if (token) {
+                    newCopyProject.token = token
+                } else {
+                    delete newCopyProject.token
+                    newCopyProject.localProject = true
+                }
+
+                const updatedProjects = [
+                    newCopyProject,
+                    ...get().projects.filter(p => p.id !== id)
+                ];
+
+                setTimeout(() => set({
+                    dataLoading: false,
+                    modalMessageVisible: true,
+                    modalMessageCaption: `Проект ${newCopyProject.name} скопирован`,
+                    projects: updatedProjects
+                }), 500)
+            }
+
+        } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            console.error(error)
+        }
+
     },
     // #endregion
 
@@ -315,7 +503,9 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     // #region Rooms
     rooms: [],
     addRoom: async (room) => {
+
         const apiLink = window.addRoomLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -324,22 +514,33 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?name=${room}`
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            name: room
+        }
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
 
             if (!res.ok) {
+
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Добавить помещение! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка запроса Добавить помещение! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
-
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
 
             // Add room
             const newRooms = [...get().rooms]
@@ -363,6 +564,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -414,28 +616,13 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     copyReplaceConfiguration: async (projectId, roomId, roomName) => {
 
         const from = { ...get().currentConfiguration }
-        const to = { projectId: projectId, roomId: roomId, roomName: roomName}
+        const to = { projectId: projectId, roomId: roomId, roomName: roomName }
 
-        if ( from.projectId === null
-            || from.roomId === null
-            || from.configurationId === null
-            || from.type === null
-        ) return
+        // Type guards
+        if ( from.projectId === null || from.roomId === null ||
+                from.configurationId === null || from.type === null ) return
 
-        const data: TRequestCopyReplaceConfiguration = {
-            // from
-            projectIdFrom: from.projectId,
-            roomIdFrom: from.roomId,
-            configurationId: from.configurationId,
-            requestType: from.type,
-
-            // to
-            projectIdTo: to.projectId,
-            roomIdTo: to.roomId
-        }
-
-        const JSONRequestData = JSON.stringify(data)
-
+        // Скрываем и очищаем модальное окно Копирования/Переноса конфигурации
         set({
             modalCopyConfigurationType: null,
             modalCopyConfigurationVisible: false,
@@ -449,6 +636,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         })
 
         const apiLink = window.copyReplaceConfigurationLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -457,66 +645,99 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?data=${JSONRequestData}`
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            project_id: to.projectId,
+            room_id: to.roomId,
+            configuration_id: from.configurationId,
+            copy: from.type === 'copy'
+        }
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
 
             if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса ${from.type === 'copy' ? "копировать" : "перенести"} комплект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка запроса ${from.type === 'copy' ? "копировать" : "перенести"} комплект! Запрос к URL ${apiLink}`)
             }
 
-            const data = await res.json()
+            const data: { id: number } = await res.json()
 
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
+            if (data.id) {
 
-            // 1. Получаем копию комплекта
-            // 2. Создаем новый комплект
-            // 3. Если тип запроса Перенести (replace), то удаляем референс
+                // 1. Получаем копию комплекта/конфигурации
+                // 2. Создаем новый комплект/конфигурацию
+                // 3. Если тип запроса Перенести (replace), то удаляем референс
 
-            const newConfigurationId: string | number = data.id
-            const newProjects = [...get().projects]
+                const newConfigurationId: string | number = data.id
+                const newProjects = [...get().projects]
 
-            // 1. Получаем копию комплекта
-            let configurationCopy: TConfiguration = {} as TConfiguration
+                // 1. Получаем копию комплекта/конфигурации
+                let configurationCopy: TConfiguration = {} as TConfiguration
 
-            for (const p of newProjects) {
+                const project = newProjects.find(p => p.id === from.projectId)
 
-                if (p.id === from.projectId && p.rooms) {
-                    for (const r of p.rooms) {
+                if (project && project.rooms) {
+                    const room = project.rooms.find(r => r.id === from.roomId)
 
-                        if (r.id === from.roomId) {
-                            for (const c of r.configurations) {
+                    if (room) {
+                        const configuration = room.configurations.find(c => c.id === from.configurationId)
 
-                                if (c.id === from.configurationId) {
-                                    configurationCopy = {
-                                        ...c,
-                                        id: newConfigurationId,
-                                        edit: false
-                                    }
-                                }
-                            }
+                        if (configuration) {
+                            configurationCopy = {
+                                ...configuration,
+                                id: newConfigurationId,
+                                edit: false
+                            };
                         }
                     }
                 }
-            }
 
+                // 2. Создаем новый комплект/конфигурацию
+                const toProjectIdx = newProjects.findIndex(p => p.id === to.projectId)
+                const rooms = newProjects[toProjectIdx].rooms
 
-            // 2. Создаем новый комплект
-            const toProjectIdx = newProjects.findIndex(p => p.id === to.projectId)
-            const rooms = newProjects[toProjectIdx].rooms
+                // Если в проекте уже есть добавленные комнаты
+                if (rooms) {
+                    const toRoomId = rooms.findIndex(r => r.id === to.roomId)
 
-            if (rooms) {
-                const toRoomId = rooms.findIndex(r => r.id === to.roomId)
+                    // Если такой комнаты нет
+                    if (toRoomId === -1) {
+                        newProjects[toProjectIdx].rooms = [
+                            ...rooms,
+                            {
+                                id: to.roomId,
+                                name: to.roomName,
+                                configurations: [
+                                    { ...configurationCopy }
+                                ]
+                            }
+                        ]
 
-                // Если такой комнаты нет
-                if (toRoomId === -1) {
+                    // Если такая комната в целевом проекте уже есть
+                    } else {
+                        const fromConfigurations = rooms[toRoomId].configurations
+                        rooms[toRoomId].configurations = [
+                            ...fromConfigurations,
+                            { ...configurationCopy }
+                        ]
+                    }
+
+                // Если в проекте еще нет добавленных комнат
+                } else {
                     newProjects[toProjectIdx].rooms = [
-                        ...rooms,
                         {
                             id: to.roomId,
                             name: to.roomName,
@@ -525,99 +746,65 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                             ]
                         }
                     ]
-                } else {
-                    const fromConfigurations = rooms[toRoomId].configurations
-                    rooms[toRoomId].configurations = [
-                        ...fromConfigurations,
-                        { ...configurationCopy }
-                    ]
                 }
 
-            } else {
-                newProjects[toProjectIdx].rooms = [
-                    {
-                        id: to.roomId,
-                        name: to.roomName,
-                        configurations: [
-                            { ...configurationCopy }
-                        ]
-                    }
-                ]
-            }
 
+                // 3. Если тип запроса Перенести (replace), то удаляем референс
+                if (from.type === 'replace') {
 
-            // 3. Если тип запроса Перенести (replace), то удаляем референс
-            if (from.type === 'replace') {
+                    // Находим проект
+                    const projectIndex = newProjects.findIndex(p => p.id === from.projectId)
 
-                // Projects
-                for (let pIdx = 0; pIdx < newProjects.length; pIdx++) {
+                    if (projectIndex !== -1) {
+                        const project = newProjects[projectIndex]
 
-                    const project = newProjects[pIdx]
+                        // Находим комнату
+                        const roomIndex = project.rooms?.findIndex(r => r.id === from.roomId) ?? -1;
 
-                    if (project.id === from.projectId) {
+                        if (project.rooms && roomIndex !== -1) {
+                            const room = project.rooms[roomIndex]
 
-                        const rooms = project.rooms
+                            // Находим конфигурацию
+                            const configIndex = room.configurations.findIndex(c => c.id === from.configurationId)
 
-                        if (rooms) {
+                            if (configIndex !== -1) {
 
-                            // Rooms
-                            for (let rIdx = 0; rIdx < rooms.length; rIdx++) {
+                                // Удаляем конфигурацию
+                                room.configurations.splice(configIndex, 1)
 
-                                const room = rooms[rIdx]
+                                // Если конфигураций больше нет, удаляем комнату
+                                if (room.configurations.length === 0) {
+                                    project.rooms.splice(roomIndex, 1)
 
-                                if (room.id === from.roomId) {
-
-                                    // Configurations
-                                    for (let cIdx = 0; cIdx < room.configurations.length; cIdx++) {
-
-                                        const configuration = room.configurations[cIdx]
-
-                                        if (configuration.id === from.configurationId) {
-                                            room.configurations.splice(cIdx, 1)
-                                        }
+                                    // Если комнат больше нет, удаляем rooms из проекта
+                                    if (project.rooms.length === 0) {
+                                        delete project.rooms
                                     }
-                                }
-
-                                if (rooms[rIdx].configurations.length === 0) {
-                                    rooms.splice(rIdx, 1)
                                 }
                             }
                         }
-
-                        if (rooms?.length === 0) {
-                            delete newProjects[pIdx].rooms
-                        }
                     }
                 }
-            }
 
-            setTimeout(() => set({
-                dataLoading: false,
-                modalMessageVisible: true,
-                modalMessageCaption: `Комплект ${from.type === 'copy' ? 'скопирован' : 'перенесен'}`,
-                projects: [...newProjects]
-            }), 500)
+                setTimeout(() => set({
+                    dataLoading: false,
+                    modalMessageVisible: true,
+                    modalMessageCaption: `Комплект ${from.type === 'copy' ? 'скопирован' : 'перенесен'}`,
+                    projects: [...newProjects]
+                }), 500)
+
+            } else throw new Error('В ответе на копирование/перенос конфигурации нет id!')
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
 
-    addConfiguration: async (projectId, roomId, roomName, backgroundId, border, devices, counts, direction) => {
+    addConfiguration: async (projectId, roomId, roomName, backgroundId, border, devices, count, direction) => {
 
-        const configuration: TRequestAddConfiguration = {
-            projectId,
-            roomId,
-            border,
-            devices,
-            counts,
-            direction
-        }
-
-        if (backgroundId) configuration.backgroundId = backgroundId
-
-        const JSONRequestData = JSON.stringify(configuration)
         const apiLink = window.addConfigurationLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -626,22 +813,49 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?configuration=${JSONRequestData}`
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        // #region Add products
+        const products: {
+            [key: string]: number
+        } = {}
+
+        if (border) products[`${border.id}`] = 1
+
+        const collapsedDevices = collapseDevices(devices)
+        collapsedDevices.forEach(device =>
+            products[`${device.id}`] = device.selectedCount)
+        // #endregion
+
+        const body = {
+            domain: 'fandeco',
+            project_id: projectId,
+            room_id: roomId,
+            direction: direction === 'horizontal' ? 'universal' : direction,
+            file_id: backgroundId,
+            count: count,
+            products: products
+        }
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
 
             if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Добавить проект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка запроса Добавить конфигурацию в проект! Запрос к URL ${apiLink}`)
             }
 
             const data = await res.json()
-
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
 
             // Add configuration to selected project
             const newProjects = [...get().projects]
@@ -665,7 +879,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             const newRooms = newProjects[editProjectKey].rooms
 
-            // Если уже добавляли комплект
+            // Если уже добавляли комплект и Rooms не пустые
             if (newRooms) {
                 const editRoomKey = newRooms.findIndex(r => r.id === roomId)
 
@@ -697,6 +911,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -751,17 +966,28 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         })()
     },
 
-    updateRemoteConfigurationCount: async (projectId, roomId, configurationId, count) => {
+    updateRemoteConfigurationCount: async (projectId, roomId, configurationId, newCount) => {
 
-        const requestData: TRequestUpdateConfigurationCount = {
-            projectId: projectId,
-            roomId: roomId,
-            configurationId: configurationId,
-            count: count,
+        let border: TBorder | undefined
+        let devices: (TDevice | null)[] | undefined
+
+        const project = get().projects.find(p => p.id === projectId)
+
+        if (project) {
+            const room = project.rooms?.find(r => r.id === roomId)
+
+            if (room) {
+                const configuration = room.configurations.find(c => c.id === configurationId)
+
+                if (configuration) {
+                    if (configuration.border) border = configuration.border
+                    if (configuration.devices) devices = configuration.devices as (TDevice | null)[]
+                }
+            }
         }
 
-        const JSONRequestData = JSON.stringify(requestData)
         const apiLink = window.updateConfigurationCountLink
+        const token = window.userToken
 
         if (!apiLink) {
             // В случае ошибки, сбрасываем счетчик в изначальное значение
@@ -773,21 +999,52 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?data=${JSONRequestData}`
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        // #region Add products
+        const products: {
+            [key: string]: number
+        } = {}
+
+        if (border) products[`${border.id}`] = newCount
+
+        if (devices) {
+            const collapsedDevices = collapseDevices(devices)
+            collapsedDevices.forEach(device =>
+                products[`${device.id}`] = device.selectedCount * newCount)
+        }
+        // #endregion
+
+        const body = {
+            domain: 'fandeco',
+            'project_id': projectId,
+            'room_id': roomId,
+            'configuration_id': configurationId,
+            'products': products,
+        }
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
 
             if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Обновить Количество Комплектов! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка запроса Обновить количество Конфигураций! Запрос к URL ${apiLink}`)
             }
 
-            const data = await res.json()
+            const data: { success: boolean } = await res.json()
 
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
+            if (!data.success) {
+                throw new Error(`Ошибка обновления количества конфигураций! ИД проекта: ${projectId}, ИД комнаты: ${roomId}, ИД конфигурации: ${configurationId}!`)
             }
 
             setTimeout(() => set({
@@ -797,6 +1054,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+
             console.error(error)
 
             // В случае ошибки, сбрасываем счетчик в изначальное значение
@@ -888,15 +1147,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
         }
 
-        const requestData: TRequestRemoveConfiguration = {
-            projectId: projectId,
-            roomId: roomId,
-            configurationId: configurationId
-        }
-
-        const JSONRequestData = JSON.stringify(requestData)
         const apiLink = window.removeConfigurationLink
-
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -905,29 +1157,37 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?data=${JSONRequestData}`
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            configuration_id: configurationId
+        }
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
 
             if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Удалить Комплект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка запроса Удалить Конфигурацию! Запрос к URL ${apiLink}, ИД проекта: ${projectId}, ИД комнаты: ${roomId}, ИД конфигурации: ${configurationId}`)
             }
 
             const data = await res.json()
-
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
-            }
-
-
-            // Если успешно удалил в БД, удаляем из Стора
-            setTimeout(removeConfiguration, 500)
-
+            if (data.success) setTimeout(removeConfiguration, 500)
+            else throw new Error(`Ошибка запроса Удалить Конфигурацию! Запрос к URL ${apiLink}, ИД проекта: ${projectId}, ИД комнаты: ${roomId}, ИД конфигурации: ${configurationId}`)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     },
@@ -978,24 +1238,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         const projectId = editedData.projectId
         const roomId = editedData.roomId
         const configurationId = editedData.configurationId
-
         const countOfSets = get().countOfSets
 
-
-        const fetchConfiguration: TRequestSaveConfiguration = {
-            projectId,
-            roomId,
-            configurationId,
-            border: selectedBorder,
-            devices,
-            counts: countOfSets,
-            direction
-        }
-
-        if (backgroundId) fetchConfiguration.backgroundId = backgroundId
-
-        const JSONRequestData = JSON.stringify(fetchConfiguration)
         const apiLink = window.saveConfigurationLink
+        const token = window.userToken
 
         if (!apiLink) {
             get().modalMessageSet(true, 'Ошибка запроса!')
@@ -1004,38 +1250,71 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ dataLoading: true })
 
-        const requestLink = `${apiLink}?configuration=${JSONRequestData}`
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        // #region Add products
+        const products: {
+            [key: string]: number
+        } = {}
+
+        if (selectedBorder) products[`${selectedBorder.id}`] = countOfSets
+
+        const collapsedDevices = collapseDevices(devices)
+        collapsedDevices.forEach(device =>
+            products[`${device.id}`] = device.selectedCount * countOfSets)
+        // #endregion
+
+        const body = {
+            domain: 'fandeco',
+            project_id: projectId,
+            room_id: roomId,
+            configuration_id: configurationId,
+            direction: direction === 'horizontal' ? 'universal' : direction,
+            products: products,
+            file_id: backgroundId,
+        }
 
         try {
-            const res = await fetch(requestLink)
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
 
             if (!res.ok) {
+                const errData = await res.json();
+                const errObj = JSON.parse(errData.errors.error[0])
+                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
+                console.error(errObj)
+
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Сохранить измененный проект! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка запроса Сохранить измененный проект! Запрос к URL ${apiLink}`)
             }
 
-            const data = await res.json()
+            const data: { success: boolean } = await res.json()
 
-            if (data.status === 'error') {
-                get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(data.error)
+            if (!data.success) {
+                throw new Error(`Ошибка сохранения конфигурации с ИД: ${configurationId}!`)
             }
 
             // Add configuration to selected project
 
             // --- Configuration
             const changedConfiguration: TConfiguration = {
-                id: fetchConfiguration.configurationId,
-                count: fetchConfiguration.counts,
-                direction: fetchConfiguration.direction,
+                id: configurationId,
+                count: countOfSets,
+                direction: direction,
             }
-            if (fetchConfiguration.border !== null) {
-                changedConfiguration.border = fetchConfiguration.border
+            if (selectedBorder !== null) {
+                changedConfiguration.border = selectedBorder
             }
-            if (fetchConfiguration.devices) {
-                changedConfiguration.devices = fetchConfiguration.devices
+            if (devices.length) {
+                changedConfiguration.devices = devices
             }
-            if (backgroundId) changedConfiguration.background = fetchConfiguration.backgroundId
+            if (backgroundId) {
+                changedConfiguration.background = backgroundId
+            }
 
 
             // --- Update configuration
@@ -1062,11 +1341,9 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
-
-
-
     },
     // #endregion
 
@@ -1264,7 +1541,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             if (!res.ok) {
                 get().modalMessageSet(true, 'Ошибка запроса!')
-                throw new Error(`Ошибка fetch запроса Добавить товар/товары в Корзину! Запрос к URL ${requestLink}`)
+                throw new Error(`Ошибка запроса Добавить товар/товары в Корзину! Запрос к URL ${requestLink}`)
             }
 
             const data = await res.json()
@@ -1282,6 +1559,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }), 500)
 
         } catch (error) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
     }
