@@ -309,7 +309,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
             }),
             {
                 name: 'configurator-storage',
-                storage: createJSONStorage(() => sessionStorage),
+                storage: createJSONStorage(() => localStorage),
             }
         )
     )
