@@ -48,28 +48,22 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
                         const data = await res.json()
                         console.log(data)
-                        // return
+
 
     // const bordersSet = new Set()
     // // const borderSetBrand = new Set()
     // // const borderSetCollection = new Set()
     // data.borders.forEach(b => {
 
-    //     b.number_of_posts.forEach(n => bordersSet.add(typeof n))
+    //     if (b.collection === "GLOSSA") bordersSet.add(b.number_of_posts[0])
 
-    // //     // if (!b.conf_color) borderSet.add(b.id)
-    // //     borderSetBrand.add(b.vendor)
-    // //     borderSetCollection.add(b.collection)
-
-    // //     // if (b.conf_orientation === 'horizontal') {
-    // //     //     console.log(b.id);
-    // //     // }
+    //     // borderSetBrand.add(b.vendor)
+    //     // borderSetCollection.add(b.collection)
     // })
-    // // console.log('\x1b[34m%s\x1b[0m', 'Рамки')
+    // console.log('\x1b[34m%s\x1b[0m', 'Рамки')
     // // console.log('Бренды', Array.from(borderSetBrand).join(', '))
     // // console.log('Коллекции', Array.from(borderSetCollection).join(', '))
-    // console.log(Array.from(bordersSet))
-
+    // console.log('Посты Glossa', Array.from(bordersSet).join(', '))
 
 
     // const devicesSet = new Set()
@@ -78,7 +72,6 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
     // })
     // console.log('\x1b[34m%s\x1b[0m', 'Устройства')
     // console.log(Array.from(devicesSet).join(', '))
-
 
 
                         const safeResponse = InitDataContract.passthrough().safeParse(data)
@@ -183,8 +176,6 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     if (activeTab === 'borders') {
                         items = items.filter(
                             i => {
-                                // if (!isBorder(i)) return false
-
                                 const value = Array.isArray(i.number_of_posts)
                                     ? parseInt(i.number_of_posts[0])
                                     : NaN
