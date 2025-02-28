@@ -33,25 +33,25 @@ const TabsPages = () => {
     return (
         <div className={tabs}>
             <ul className={list}>
-                <li className={getTabClassName('configurator', activeViewportTab)}
+                <li id='step_1' className={getTabClassName('configurator', activeViewportTab)}
                     onClick={() => setActiveTab('configurator')}>
                     <span>
                         Конфигуратор
                     </span>
                 </li>
-                <li className={getTabClassName('collections', activeViewportTab)}
+                <li id='step_2' className={getTabClassName('collections', activeViewportTab)}
                     onClick={() => setActiveTab('collections')}>
                     <span>
                         Гид по коллекциям
                     </span>
                 </li>
-                <li className={getTabClassName('project', activeViewportTab)}
+                <li id='step_4' className={getTabClassName('project', activeViewportTab)}
                     onClick={() => setActiveTab('project')}>
                     <span>
                         Состав проекта
                     </span>
                 </li>
-                <li className={getTabClassName('hub', activeViewportTab)}
+                <li id='step_3' className={getTabClassName('hub', activeViewportTab)}
                     onClick={() => setActiveTab('hub')}>
                     <span>
                         Мои проекты

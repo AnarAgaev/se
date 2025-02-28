@@ -497,6 +497,7 @@ export type TAppStore = {
     modalCopyConfigurationSet: (type: 'copy' | 'replace' | null, visible: boolean, caption: string) => void
     // #endregion
 
+
     // #region Modal Reset Sketch
     modalResetSketchVisible: boolean
     modalResetSketchCaption: string
@@ -511,9 +512,20 @@ export type TAppStore = {
         rejectText?: string
     ) => void
     // #endregion
+
+
+    // #region Learning
+    showLearning: boolean,
+    setShowLearning: (direction: boolean) => void,
+    isLearningShown: boolean,
+    setLearningShown: (direction: boolean) => void,
+    // #endregion
+
 }
 type TResetSketchInitializerVariants = 'removeBorder' | 'resetFilters' | null
 // #endregion
+
+
 
 // #region AddProductsToCart
 export type TAddProductsToCart = ( payload:
@@ -524,6 +536,8 @@ export type TAddProductsToCart = ( payload:
     }>
 ) => void
 // #endregion
+
+
 
 export {
     TBackground, TBackgroundList,

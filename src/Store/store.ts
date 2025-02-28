@@ -139,6 +139,20 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             }
                         })
 
+
+                        setTimeout(() => {
+                            const isLearningShown = get().isLearningShown
+
+                            if (!isLearningShown) {
+                                set({
+                                    showLearning: true,
+                                    isLearningShown: true
+                                })
+                            }
+
+                        }, 3000)
+
+
                     } catch (error: Error | unknown) {
                         console.error(error)
                         set({ loading: false })

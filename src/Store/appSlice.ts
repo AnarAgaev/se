@@ -1562,8 +1562,17 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             get().modalMessageSet(true, 'Ошибка запроса!')
             console.error(error)
         }
-    }
+    },
     // #endregion
+
+
+    // #region Learning
+    showLearning: false,
+    setShowLearning: (direction) => set({ showLearning: direction }),
+    isLearningShown: false,
+    setLearningShown: (direction) => set({ isLearningShown: direction }),
+    // #endregion
+
 })
 
 export default appSlice
