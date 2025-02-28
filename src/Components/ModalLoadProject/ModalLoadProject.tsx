@@ -95,7 +95,7 @@ const ModalLoadProject = ({visible}: {visible: boolean}) => {
                     type='text'
                     placeholder='Вставьте ссылку на проект'
                 />
-                <button type='button' className='button button_dark' onClick={onSend}>
+                <button type='button' className='button button_dark button_small' onClick={onSend}>
                     Примерить
                     <i className='icon  icon_check'></i>
                 </button>

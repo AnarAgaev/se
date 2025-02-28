@@ -64,11 +64,11 @@ const ModalResetBrandOrCollection = ({visible}: {visible: boolean}) => {
         <Modal visible={visible} title={modalSelectCaption} onClose={resetModalSelect}>
             <div className={style.buttons}>
                 <button onClick={onApprove}
-                    className='button button_block button_lite'>
+                    className='button button_block button_lite button_small'>
                     { modalSelectButtonRejectText }
                 </button>
                 <button onClick={resetModalSelect}
-                    className='button button_block button_dark'>
+                    className='button button_block button_dark button_small'>
                     { modalSelectButtonApproveText }
                 </button>
             </div>

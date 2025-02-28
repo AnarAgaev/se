@@ -25,6 +25,9 @@
     user-select: none
     background: var(--color-controllers-back)
 
+    @media (min-width: $md)
+        width: calc( 50% - 10px )
+
 
 .text
     display: flex
@@ -37,7 +40,6 @@
 
 
 .location
-    flex-shrink: 0
     display: inline-block
     position: relative
     color: var(--color-prime)
@@ -49,9 +51,14 @@
     text-overflow: ellipsis
     white-space: nowrap
     box-sizing: border-box
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    box-sizing: border-box
 
 
 .id
+    flex-shrink: 0
     display: inline-block
     position: relative
     margin: 0

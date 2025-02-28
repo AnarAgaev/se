@@ -69,11 +69,11 @@ const ModalResetSketch = ({visible}: {visible: boolean}) => {
         <Modal visible={visible} title={modalResetSketchCaption} onClose={onReject}>
             <div className={style.buttons}>
                 <button onClick={onApprove}
-                    className='button button_block button_lite'>
+                    className='button button_block button_lite button_small'>
                     { modalResetSketchButtonApproveText }
                 </button>
                 <button onClick={onReject}
-                    className='button button_block button_dark'>
+                    className='button button_block button_dark button_small'>
                     { modalResetSketchButtonRejectText }
                 </button>
             </div>

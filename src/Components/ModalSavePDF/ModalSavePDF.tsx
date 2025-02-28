@@ -50,13 +50,13 @@ const ModalSavePDF = ({ visible }: {visible: boolean}) => {
             <div className={style.buttons}>
                 <button
                     onClick={onNewWindow}
-                    className='button button_block button_lite'>
-                    Открыть в новом окне
+                    className='button button_block button_lite button_small'>
+                    Открыть
                 </button>
                 <button
                     onClick={onSave}
-                    className='button button_block button_dark'>
-                    Сохранить на устройство
+                    className='button button_block button_dark button_small'>
+                    Скачать
                 </button>
             </div>
         </Modal>

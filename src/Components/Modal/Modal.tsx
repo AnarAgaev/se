@@ -5,9 +5,9 @@ const {modal, body, close, content, header, caption, subcaption, wrap, show} = s
 type TProps = {
     title?: string
     subtitle?: string
-    onClose?: () => void
-    children: React.ReactNode
     visible: boolean
+    onClose?: () => void
+    children?: React.ReactNode
 }
 
 const Modal = ({title, subtitle, onClose, children, visible} : TProps) => {

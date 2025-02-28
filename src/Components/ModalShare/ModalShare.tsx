@@ -48,7 +48,7 @@ const ModalShare = ({visible}: {visible: boolean}) => {
             </label>
             <button ref={buttonRef} onClick={copyToClipboard}
                 style={{ pointerEvents: copied ? 'none' : 'all' }}
-                className='button button_block button_dark'>
+                className='button button_block button_dark button_small'>
                 { copied ? 'Ссылка скопирована' : 'Скопировать ссылку' }
                 { copied &&
                     <svg width="16" height="16" viewBox="0 0 16 16" className={progress}>

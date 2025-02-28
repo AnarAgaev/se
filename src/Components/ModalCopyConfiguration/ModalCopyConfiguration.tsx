@@ -112,7 +112,7 @@ const ModalCopyConfiguration = ({ visible }: {visible: boolean}) => {
         copyReplaceConfiguration(selectedProject.id, selectedRoom.id, selectedRoom.name)
     }
 
-    let sendButtonClazz = 'button button_block button_dark'
+    let sendButtonClazz = 'button button_block button_dark button_small'
     if (!selectedProject.id || !selectedRoom.id) sendButtonClazz += ` ${disabled}`
 
     return (
@@ -141,7 +141,7 @@ const ModalCopyConfiguration = ({ visible }: {visible: boolean}) => {
             </div>
 
             <button className={sendButtonClazz} onClick={onSend}>
-                {modalCopyConfigurationCaption}
+                { modalCopyConfigurationCaption }
             </button>
         </Modal>
     )

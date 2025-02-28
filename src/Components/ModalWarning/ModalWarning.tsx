@@ -22,8 +22,8 @@ const ModalWarning = ({visible}: {visible: boolean}) => {
                     Больше не показывать
                 </button> */}
                 <button onClick={() => modalWarningSet(false, '', false)}
-                    className={`button button_block button_dark`}>
-                    Понятно
+                    className={`button button_block button_dark button_small`}>
+                    Больше не показывать
                 </button>
             </div>
         </Modal>

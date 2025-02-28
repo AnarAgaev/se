@@ -62,11 +62,11 @@ const ModalSaveConfiguration = ({ visible }: {visible: boolean}) => {
         <Modal visible={visible} title='Комплект сохранён' onClose={onClose}>
             <div className={style.buttons}>
                 <button onClick={onClose}
-                    className='button button_block button_lite'>
+                    className='button button_block button_lite button_small'>
                     Продолжить
                 </button>
                 <button onClick={onApprove}
-                    className='button button_block button_dark'>
+                    className='button button_block button_dark button_small'>
                     Перейти в проект
                 </button>
             </div>
