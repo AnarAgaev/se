@@ -24,8 +24,11 @@
     @media (min-width: $lg)
         gap: 30px
 
+
 .caption
-    display: block
+    display: flex
+    align-items: center
+    justify-content: space-between
     margin: 0
     padding: 0
     color: var(--color-prime)
@@ -35,6 +38,18 @@
     @media (min-width: $lg)
         font-size: 32px
 
+
+.learning
+    display: block
+    position: relative
+    width: 40px !important
+    height: 40px !important
+    padding: 0 !important
+
+    &:hover
+        background-color: var(--color-button-hover)
+        border-color: var(--color-button-hover)
+        color: var(--color-button-font-lite)
 
 .body
     display: flex

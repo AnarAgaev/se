@@ -16,7 +16,7 @@ import { Loading, Loader, Tabs, Factory, Viewport, ModalResetBrandOrCollection,
 
 const PdfDocument = lazy(() => import('../PdfDocument/PdfDocument'))
 
-const { app, caption, body } = style
+const { app, caption, learning, body } = style
 
 const App = () => {
 
@@ -103,8 +103,11 @@ const App = () => {
 					: <>
 						<Warning />
 						<h1 className={caption}>
-							Конфигуратор
-							<button onClick={() => setShowLearning(true)}>Запустить обучалку</button>
+							<span>Конфигуратор</span>
+							<button onClick={() => setShowLearning(true)}
+								className={`button button_dark ${learning}`} title="Начать обучение">
+								<i className="icon icon_learn"></i>
+							</button>
 						</h1>
 						<Tabs />
 						<div className={body}>
