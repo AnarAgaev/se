@@ -273,6 +273,7 @@ export type TAppStore = {
 
     loading: boolean
     dataLoading: boolean
+    loadingMassage: string | null,
 
     error: Error | unknown
     fireError: TFireError

@@ -1,10 +1,10 @@
 import { create } from 'zustand'
 import { devtools, persist, createJSONStorage } from 'zustand/middleware'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } from './'
-import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette } from '../types'
+import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette, TProjectList } from '../types'
 import { InitDataContract, zodErrorOptions } from '../zod'
 import { generateErrorMessage } from 'zod-error'
-import { defaultFetchHeaders } from '../Helpers'
+import { defaultFetchHeaders, copyLocalProjectToAccount } from '../Helpers'
 
 const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSketchStore & TAppStore & TStore>()(
     devtools(
@@ -28,7 +28,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             throw new Error(`На странице не указана ссылка на API Getting Init Data window.initSourceDataLink`)
                         }
 
-                        set({ loading: true })
+                        set({ loading: true, loadingMassage: 'Загружаем конфигуратор' })
 
                         const headers: HeadersInit = defaultFetchHeaders
                         if (token) headers['Token'] = token
@@ -104,22 +104,73 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         ]
 
                         // Проверяем данные перед добавлением в Store, чтобы регидратация прошла корректно
-                        // Для корректной регидратации, здесь можно написать проекты
                         const backgrounds = get().backgrounds
                         const colors = get().colors
                         const vendors = get().vendors
-                        const projects = get().projects
                         const rooms = get().rooms
+
+                        // Копируем локальные проекты в аккаунт
+                        let projectsHydrated: TProjectList = []
+                        let projectsCopied: TProjectList = []
+
+                        const projectsCurrentInStore = get().projects
+                        const projectsLocal = projectsCurrentInStore.filter(p => p.localProject) // локальные проекта
+                        let projectsShared = get().projects.filter(p => p.shared) // проекты загруженные по ссылке
+                        projectsShared = projectsShared.filter(p => {
+                            if (!token) return p
+
+                            // исключаем саморасшаренные проекты. Когда пользователь будучи залогиненным в одном проекта,
+                            // загрузил себе Шаре проект из своего другого аккаунта, а потом перелогинился во второй.
+                            return p.token !== token
+                        })
+
+                        if (projectsLocal.length && token) {
+                            // Устанавливаем сообщение о загрузке
+                            set({ loadingMassage: 'Копируем проекты в аккаунт' });
+
+                            try {
+                                projectsCopied = await copyLocalProjectToAccount(
+                                    projectsLocal,
+                                    token,
+                                    get().modalMessageSet
+                                )
+
+                            } catch (error) {
+                                console.error('Ошибка:', error);
+                            }
+                        }
+
+                        if (projectsLocal.length && !token) {
+                            projectsCopied = [...projectsLocal]
+                        }
+
+                        projectsHydrated = [
+                            ...safeResponse.data.projects.filter(p => p.token && token && (p.token === token)), // проекты из аккаунта Проверяем token на случай если пользователь перелогинился из одного существующего аккаунта в другой
+                            ...projectsCopied, // скопированные в аккаунт локальные проекты
+                            ...projectsShared // чужие проекты (добавили по ссылке поделиться, но не скопировали себе в аккаунт)
+                        ]
+
+                        console.log('projectsHydrated', projectsHydrated)
+
+                        // по всем проектам сбрасываем выбранный, чтобы очистить Состав проекта при смене пользователя
+
+                        projectsHydrated = projectsHydrated.map(p => {
+                            const temp = p
+                            temp.selected = false
+                            temp.edit = false
+                            return temp
+                        })
 
                         set({
                             error: null,
                             loading: false,
+                            loadingMassage: null,
 
                             // Pushing data to appropriate stores
                             backgrounds: backgrounds.length ? backgrounds : safeResponse.data.backgrounds,
                             colors: colors ? colors : safeResponse.data.colors,
                             vendors: vendors.length ? vendors : safeResponse.data.vendors,
-                            projects: projects.length ? projects : safeResponse.data.projects,
+                            projects: projectsHydrated,
                             rooms: rooms.length ? rooms : safeResponse.data.rooms,
 
                             // Словарь всегда обновляем, так как он не должен уменьшаться.
@@ -140,6 +191,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         })
 
 
+                        // Запускаем обучалку
                         setTimeout(() => {
                             const isLearningShown = get().isLearningShown
 

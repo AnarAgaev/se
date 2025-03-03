@@ -24,6 +24,7 @@ const App = () => {
 	const [
 		requestInitData,
 		loading,
+		loadingMassage,
 		error,
 		modalSelectVisible,
 		modalWarningVisible,
@@ -42,6 +43,7 @@ const App = () => {
 	] = useStore(state => [
 		state.requestInitData,
 		state.loading,
+		state.loadingMassage,
 		state.error,
 		state.modalSelectVisible,
 		state.modalWarningVisible,
@@ -99,7 +101,7 @@ const App = () => {
 
 			<section className={`se-app ${app}`}>
 				{ loading
-					? <Loader text='Загружаем конфигуратор' />
+					? <Loader text={loadingMassage ? loadingMassage : "Загружаем данные" } />
 					: <>
 						<Warning />
 						<h1 className={caption}>

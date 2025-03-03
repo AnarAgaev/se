@@ -9,6 +9,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     setLogWarningShown: () => set({ logWarningShown: true }),
 
     loading: true,
+    loadingMassage: null,
     dataLoading: false,
 
 
@@ -291,8 +292,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }
 
             const data = await res.json()
-            // console.log(data);
-            // return
 
             const safeResponse = Project.passthrough().safeParse(data)
 
@@ -310,6 +309,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             const activeTab = get().activeViewportTab
             const currentProjects = get().projects
             const loadedProject = safeResponse.data
+            loadedProject.shared = true // помечаем загруженные проекты
             let isProjectInConfiguratorProjects = false
 
             if (activeTab !== 'hub') {
@@ -464,6 +464,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             console.log(data)
 
             const projectToCopy = get().projects.find(p => p.id === id)
+            delete projectToCopy?.shared // при копировании добавленного проекта, убираем метку что проект добавлен
 
             if (projectToCopy) {
                 const newCopyProject: TProject = {
