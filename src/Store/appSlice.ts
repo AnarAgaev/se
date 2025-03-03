@@ -1049,9 +1049,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             }
 
             setTimeout(() => set({
-                dataLoading: false,
-                modalMessageVisible: true,
-                modalMessageCaption: `Количество изменено`,
+                dataLoading: false
             }), 500)
 
         } catch (error) {
