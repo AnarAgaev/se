@@ -1,4 +1,3 @@
-import { MouseEvent } from 'react'
 import { formatNumber, getPostWordDeclension, collapseDevices, getTotalPriceConfiguration } from '../../Helpers'
 import { TAppStore, TProject, TConfigurationList, TDeviceList, TBorder,
     TNumberOfPosts, TGetCountOfPosts, TSetSingleFilter, TSetEditSketch,
@@ -12,15 +11,7 @@ const { help, composition, room, title, subtitle, sets, set,
     table, item, pic, desc, counter, disabled, inc, dec,
     dropped, withoutBorder } = style
 
-type TOnShow = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void
-
-const onShow: TOnShow = (e) => {
-    const button: HTMLButtonElement = e.target as HTMLButtonElement
-    const table: HTMLElement | null = button.closest('table')
-    if (table) table.classList.toggle(dropped)
-}
-
-const getBorder = (border: TBorder, isDevices: boolean): JSX.Element => {
+const getBorder = (border: TBorder): JSX.Element => {
     return (
         <tr key={border.show_article}>
             <td>
@@ -31,7 +22,6 @@ const getBorder = (border: TBorder, isDevices: boolean): JSX.Element => {
                     <span className={desc}>
                         <mark>{border.name}</mark>
                         <i>{border.show_article}</i>
-                        { isDevices && <button onClick={onShow} /> }
                     </span>
                 </div>
             </td>
@@ -180,16 +170,12 @@ const getConfigurationList = (
             setEditBackground(c.background)
         }
 
-        const isAddedDevices = c.devices
-            ? c.devices.filter(Boolean).length > 0
-            : false
-
         const canEditProject = localProject || (userToken !== undefined && userToken === projectToken)
 
         configurationList.push(
             <li className={set} key={`${c.id}-${idx}`}>
                 <p className={subtitle}>{`Комплект ${vendor}, ${color}${posts}`}</p>
-                <table className={table}>
+                <table className={`${table} ${dropped}`}>
                     <thead>
                         <tr>
                             <th>Состав комплектующих</th>
@@ -198,7 +184,7 @@ const getConfigurationList = (
                         </tr>
                     </thead>
                     <tbody>
-                        { c.border && getBorder(c.border, isAddedDevices) }
+                        { c.border && getBorder(c.border) }
                         { c.devices && getDeviceList(c.devices as (TDevice | null)[]) }
                     </tbody>
                     <tfoot>
