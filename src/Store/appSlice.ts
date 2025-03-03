@@ -1553,8 +1553,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             // Add project
             setTimeout(() => set({
                 dataLoading: false,
-                modalMessageVisible: true,
-                modalMessageCaption: data.message,
+                // modalMessageVisible: true,
+                // modalMessageCaption: data.message,
             }), 500)
 
         } catch (error) {
