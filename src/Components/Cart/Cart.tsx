@@ -101,11 +101,6 @@ const Cart = () => {
 
     const addToCartHandler = () => {
 
-        // if (!isSelectedDevice) {
-        //     modalMessageSet(true, 'Необходимо выбрать хотя бы одно устройство')
-        //     return
-        // }
-
         const selectedDevices = collapseDevices(Object.values(deviceList))
 
         const requestArr: Parameters<TAddProductsToCart>[0] = []
@@ -131,7 +126,6 @@ const Cart = () => {
 
     const addToProjectButtonClazz = `button button_block button_dark ${(!isSelectedBorder && !isSelectedDevice) || !isProjectSelected || !isRoomSelected ? 'clickedDisabled' : ''}`
     const saveConfButtonClazz = `button button_block button_dark ${(!isSelectedBorder && !isSelectedDevice) ? 'clickedDisabled' : ''}`
-    const addToCartButtonClazz = `button button_block button_dark ${!isSelectedDevice ? 'clickedDisabled' : ''}`
 
     return (
         <div className={cart}>
@@ -156,7 +150,7 @@ const Cart = () => {
                     <Set />
                     <button type="button"
                         onClick={addToCartHandler}
-                        className={addToCartButtonClazz}>
+                        className='button button_block button_dark'>
                         Добавить комплект в корзину
                     </button>
                 </div>

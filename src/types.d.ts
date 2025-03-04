@@ -460,7 +460,8 @@ export type TAppStore = {
     // #region Modal Message
     modalMessageVisible: boolean
     modalMessageCaption: string
-    modalMessageSet: (visible: boolean, caption: string) => void
+    modalMessageText?: string
+    modalMessageSet: (visible: boolean, caption: string, text?: string) => void
     // #endregion
 
 

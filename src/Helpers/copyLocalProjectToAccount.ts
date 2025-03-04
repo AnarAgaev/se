@@ -1,4 +1,4 @@
-import { defaultFetchHeaders } from '../Helpers'
+import { defaultFetchHeaders, getErrorFromErrorObject } from '../Helpers'
 import { TProjectList, TAppStore, TProject } from '../types'
 
 type TFuncCopyList = (
@@ -33,11 +33,11 @@ const copySingleProject: TFuncCopyItem = async (
         if (!res.ok) {
             const errData = await res.json()
             const errObj = JSON.parse(errData.errors.error[0])
+            console.log(`Ошибка запроса Копировать локальные проект в аккаунт! Запрос к URL ${apiLink}. Ошибка на проекте с ИД ${project.id}`)
             console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-            console.error(errObj)
+            console.error('Объект ошибки', errObj)
 
-            modalMessageSet(true, 'Ошибка запроса!')
-            throw new Error(`Ошибка запроса Копировать локальные проект в аккаунт! Запрос к URL ${apiLink}. Ошибка на проекте с ИД ${project.id}`)
+            throw new Error(getErrorFromErrorObject(errObj))
         }
 
         const data: Pick<TProject, 'id'> = await res.json()
@@ -55,10 +55,7 @@ const copySingleProject: TFuncCopyItem = async (
         return copiedProject
 
     } catch (error) {
-        console.error('Ошибка при копировании проекта:', error)
-
-        modalMessageSet(true, 'Ошибка запроса!')
-
+        modalMessageSet(true, 'Ошибка при копировании проекта!', (error as Error).message)
         throw error // Пробрасываем ошибку дальше
     }
 }
@@ -84,10 +81,7 @@ export const copyLocalProjectToAccount: TFuncCopyList = async (
 
         return results
     } catch (error) {
-        console.error('Ошибка при копировании локальных проектов:', error)
-
-        modalMessageSet(true, 'Ошибка запроса!')
-
+        modalMessageSet(true, 'Ошибка запроса копировании локальных проектов!', (error as Error).message)
         return []
     }
 }

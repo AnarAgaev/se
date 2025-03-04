@@ -10,15 +10,15 @@ type TProps = {
     children?: React.ReactNode
 }
 
-const Modal = ({title, subtitle, onClose, children, visible} : TProps) => {
+const Modal = ({ title, subtitle, onClose, children, visible } : TProps) => {
     return (
         <div className={visible ? `${modal} ${show}` : modal}>
             <div className={body}>
                 <button type='button' role='close' className={close} onClick={onClose}></button>
                 <div className={content}>
                     <div className={header}>
-                        {title && <h4 className={caption}>{title}</h4>}
-                        {subtitle && <p className={subcaption}>{subtitle}</p>}
+                        { title && <h4 className={caption}>{title}</h4> }
+                        { subtitle && <p className={subcaption}>{subtitle}</p> }
                     </div>
                     <div className={wrap}>
                         {children}

@@ -42,7 +42,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         })
 
                         if (!res.ok) {
-                            get().modalMessageSet(true, 'Ошибка запроса!')
+                            get().modalMessageSet(true, 'Ошибка запроса загрузки данных конфигуратора!')
                             throw new Error(`Ошибка fetch запроса Получить инит данные! Запрос к URL ${apiLink}`)
                         }
 

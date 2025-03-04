@@ -13,22 +13,6 @@ const removeProtocol = (url: string) => {
     return url.replace(/^https?:\/\//, '');
 }
 
-const checkInputText = (link: string): boolean => {
-
-    return link !== ''
-
-    // if (link === '') return false
-
-    // const _VALID_DOMAIN = 'fandeco.ru'
-
-    // try {
-    //     const urlObj = new URL('https://' + removeProtocol(link))
-    //     return urlObj.hostname === _VALID_DOMAIN
-    // } catch (error) {
-    //     return false
-    // }
-}
-
 const getParamFromUrl = (link: string, param: string) => {
     const url = new URL("http://" + link)
     return url.searchParams.get(param)
@@ -68,7 +52,7 @@ const ModalLoadProject = ({visible}: {visible: boolean}) => {
 
         if (!controller) return
 
-        if (!checkInputText(controller.value)) {
+        if (controller.value === '') {
             setError(true)
             return
         }
