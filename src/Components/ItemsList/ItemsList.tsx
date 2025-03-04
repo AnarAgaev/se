@@ -86,8 +86,8 @@ const getElementsList = (
         if (type === 'devices' && isDevice(item)) {
 
             if (!hasNull(deviceList)) {
-                const msg = `Все посты заполнены. ${!selectedPost[postsCount - 1] ? 'Выберите рамку с большим количеством постов или' : ''} ${!selectedPost[postsCount - 1] ? 'у' : 'У'}далите устройства.`
-                modalMessageSet(true, msg)
+                const text = `${!selectedPost[postsCount - 1] ? 'Выберите рамку с большим количеством постов или' : ''} ${!selectedPost[postsCount - 1] ? 'у' : 'У'}далите устройства.`
+                modalMessageSet(true,'Все посты заполнены', text)
                 return
             }
 
