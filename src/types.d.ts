@@ -76,6 +76,11 @@ export type TStore = {
     requestInitData: () => void
     getFilteredItems: () => Array<TBorder> | Array<TDevice>
     getColorPallette: (type: TColorsType) => TColorPalette
+    setLearningConfiguration: () => void
+    resetLearningConfiguration: () => void
+    useBorderForLearning: boolean
+    useDeviceForLearning: boolean
+    useProjectForLearning: boolean
 }
 // #endregion
 

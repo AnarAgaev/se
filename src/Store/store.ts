@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { devtools, persist, createJSONStorage } from 'zustand/middleware'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } from './'
-import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette, TProjectList } from '../types'
+import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette, TProjectList, TRooms } from '../types'
 import { InitDataContract, zodErrorOptions } from '../zod'
 import { generateErrorMessage } from 'zod-error'
 import { defaultFetchHeaders, copyLocalProjectToAccount } from '../Helpers'
@@ -191,19 +191,20 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         })
 
 
-                        // Запускаем обучалку
-                        setTimeout(() => {
-                            const isLearningShown = get().isLearningShown
+                        // #region Learning
+                        const isLearningShown = get().isLearningShown
 
-                            if (!isLearningShown) {
-                                set({
-                                    showLearning: true,
-                                    isLearningShown: true
-                                })
-                            }
+                        if (!isLearningShown) {
 
-                        }, 3000)
+                            // Выставляем дефолтные рамку и устройство для обучения
+                            setTimeout(() => get().setLearningConfiguration(), 1000)
 
+                            // Запускаем обучалку
+                            setTimeout(() => set({
+                                showLearning: true,
+                                isLearningShown: true
+                            }), 2000)
+                        }
 
                     } catch (error: Error | unknown) {
                         console.error(error)
@@ -362,7 +363,121 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     }
 
                     return pallette
-                }
+                },
+
+                useBorderForLearning: false,
+                useDeviceForLearning: false,
+                useProjectForLearning: false,
+
+                setLearningConfiguration: () => {
+
+                    const border = get().borders[0]
+                    if (!get().border && border) {
+                        set({
+                            border: border,
+                            useBorderForLearning: true
+                        })
+                    }
+
+                    const device = get().devices[0]
+                    if (!get().deviceList[1] && device) {
+                        set({
+                            deviceList: {
+                                '1': device as TDevice
+                            },
+                            useDeviceForLearning: true
+                        })
+                    }
+
+                    const rooms: TRooms = [
+                        {
+                            id: 'room-id',
+                            name: 'Гостиная',
+                            configurations: [
+                                {
+                                    id: 'configuration-id',
+                                    count: 1,
+                                    direction: 'universal',
+                                    background: get().backgrounds[0].id,
+                                    border: { ...border },
+                                    devices: [{ ...device }]
+                                }
+                            ]
+                        }
+                    ]
+
+                    if (!get().projects.length) {
+                        set({
+                            projects: [
+                                {
+                                    id: 'demo-project',
+                                    name: 'Демонстрационный проект',
+                                    selected: true,
+                                    edit: true,
+                                    localProject: true,
+                                    rooms: [...rooms]
+                                }
+                            ],
+                            useProjectForLearning: true
+                        })
+                    } else {
+                        if (!get().projects[0].rooms) {
+                            const newProjects = [...get().projects]
+                            newProjects[0].rooms = [...rooms]
+                            newProjects[0].edit = true
+
+                            set({
+                                projects: [...newProjects],
+                                useProjectForLearning: true
+                            })
+                        } else {
+                            const newProjects = [...get().projects]
+                            newProjects[0].edit = true
+                            set({ projects: [...newProjects] })
+                        }
+                    }
+                },
+
+                resetLearningConfiguration: () => {
+                    get().setActiveViewportTab('configurator')
+                    get().setActiveCalcTab('borders')
+
+                    if (get().useBorderForLearning) {
+                        set({
+                            border: null,
+                            useBorderForLearning: false
+                        })
+                    }
+
+                    if (get().useDeviceForLearning) {
+                        set({
+                            deviceList: {
+                                '1': null
+                            },
+                            useDeviceForLearning: false
+                        })
+                    }
+
+                    if (get().useProjectForLearning) {
+                        if (get().projects[0].id === 'demo-project') {
+                            set({
+                                projects: [],
+                                useProjectForLearning: false
+                            })
+
+                            return
+                        }
+
+                        const newProjects = [...get().projects]
+                        delete newProjects[0].rooms
+                        newProjects[0].edit = false
+                        set({
+                            projects: [...newProjects],
+                            useProjectForLearning: false
+                        })
+                    }
+                },
+
             }),
             {
                 name: 'configurator-storage',

@@ -223,7 +223,7 @@ const Sketch = () => {
     const containerClass = `${container}${countOfPost === 0 ? ` ${post_1}` : ` ${containerClassMap[countOfPost]}`}${direction === 'horizontal' ? '' : ` ${containerVertical}`}`
 
     return (
-        <div ref={sketchRef} className={sketch}>
+        <div id='step_5' ref={sketchRef} className={sketch}>
             <SketchBackground backImgRef={backImgRef}/>
             <span className={loader} style={{opacity: visible ? 0 : 1}}></span>
 

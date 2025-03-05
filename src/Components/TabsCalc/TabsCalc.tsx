@@ -14,18 +14,18 @@ const TabsCalc = () => {
     const setActiveTab = useStore(state => state.setActiveCalcTab)
 
     return (
-        <ul className={list}>
+        <ul id='tabs' className={list}>
             <li className={getTabClassName('borders', activeCalcTab)}
                 onClick={() => setActiveTab('borders')}>
-                    Рамки
+                    <span id='step_1'>Рамки</span>
             </li>
             <li className={getTabClassName('devices', activeCalcTab)}
                 onClick={() => setActiveTab('devices')}>
-                    Механизмы
+                    <span id='step_3'>Механизмы</span>
             </li>
             <li className={getTabClassName('backgrounds', activeCalcTab)}
                 onClick={() => setActiveTab('backgrounds')}>
-                    Фон
+                    <span id='step_4'>Фон</span>
             </li>
         </ul>
     )

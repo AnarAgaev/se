@@ -72,6 +72,32 @@
         font-style: normal
 
 
+
+    &.learning-in-process
+
+        #step_2
+            height: auto
+            overflow: hidden
+            aspect-ratio: 1 / 1
+
+        @media (max-width: $md - 1px)
+            #pages
+                flex-direction: column
+                gap: 0
+
+
+            #tabs
+                flex-direction: column
+                gap: 0
+
+                &::after
+                    display: none !important
+
+                li
+                    &::after
+                        display: none !important
+
+
     ul, li
         list-style: none
 

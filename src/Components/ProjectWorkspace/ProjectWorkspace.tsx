@@ -22,65 +22,65 @@ const getProjectActions = (
 
     return !project
         ? null
-        : <ul className={actions}>
+        : <ul id='step_19' className={actions}>
 
-        <li>
-            <button
-                onClick={() => shareProject(project.id)}
-                className="button button_dark"
-                title="Поделиться проектом">
-                <i className='icon icon_share'></i>
-            </button>
-        </li>
-
-        <li>
-            <button
-                onClick={() => setDownloadProject({
-                    project,
-                    filename: getFileName(project.name, project.id)
-                })}
-                className="button button_dark"
-                title="Скачать проект как PDF файл">
-                <i className="icon icon_down"></i>
-            </button>
-        </li>
-
-        <li>
-            <button
-                onClick={() => modalLoadProjectSet(true, '')}
-                className="button button_dark"
-                title="Загрузить проект по ссылке">
-                <i className="icon icon_upload"></i>
-            </button>
-        </li>
-
-        {/* Copy project */}
-        { ( project.token === null || project.token !== userToken) &&
             <li>
                 <button
-                    onClick={() => copyProject(project.id, userToken)}
+                    onClick={() => shareProject(project.id)}
                     className="button button_dark"
-                    title={`Скопировать проект себе${!userToken ? ' локально' : ''}`}>
-                    <i className="icon icon_copy"></i>
+                    title="Поделиться проектом">
+                    <i className='icon icon_share'></i>
                 </button>
             </li>
-        }
 
-        {/* Remove project */}
-        { (project.localProject || (project.token && project.token === userToken)) &&
             <li>
                 <button
-                    onClick={() => project.localProject
-                        ? removeLocalProject(project.id, project.name)
-                        : removeProject(project.id, project.name)
-                    }
+                    onClick={() => setDownloadProject({
+                        project,
+                        filename: getFileName(project.name, project.id)
+                    })}
                     className="button button_dark"
-                    title={ project.localProject ? "Удалить локальный проект" : "Удалить проект" }>
-                    <i className="icon icon_basket"></i>
+                    title="Скачать проект как PDF файл">
+                    <i className="icon icon_down"></i>
                 </button>
             </li>
-        }
-    </ul>
+
+            <li>
+                <button
+                    onClick={() => modalLoadProjectSet(true, '')}
+                    className="button button_dark"
+                    title="Загрузить проект по ссылке">
+                    <i className="icon icon_upload"></i>
+                </button>
+            </li>
+
+            {/* Copy project */}
+            { ( project.token === null || project.token !== userToken) &&
+                <li>
+                    <button
+                        onClick={() => copyProject(project.id, userToken)}
+                        className="button button_dark"
+                        title={`Скопировать проект себе${!userToken ? ' локально' : ''}`}>
+                        <i className="icon icon_copy"></i>
+                    </button>
+                </li>
+            }
+
+            {/* Remove project */}
+            { (project.localProject || (project.token && project.token === userToken)) &&
+                <li>
+                    <button
+                        onClick={() => project.localProject
+                            ? removeLocalProject(project.id, project.name)
+                            : removeProject(project.id, project.name)
+                        }
+                        className="button button_dark"
+                        title={ project.localProject ? "Удалить локальный проект" : "Удалить проект" }>
+                        <i className="icon icon_basket"></i>
+                    </button>
+                </li>
+            }
+        </ul>
 }
 
 const getAddProjectToCartRequestArr = (project: TProject): Parameters<TAddProductsToCart>[0]  => {
@@ -175,7 +175,9 @@ const ProjectWorkspace = () => {
         </div>
 
         : <div className={wrap}>
-            <h2 className={caption}>{project.name}</h2>
+            <h2 className={caption}>
+                <span id='step_17'>{project.name}</span>
+            </h2>
 
             <div className={body}>
                 <ProjectComposition project={project} />
@@ -186,7 +188,7 @@ const ProjectWorkspace = () => {
 
             <footer className={footer}>
                 { projectActions }
-                <div className={total}>
+                <div id='step_20' className={total}>
                     { project && project.rooms?.length && totalProjectCost &&
                         <p>
                             <span>Общая стоимость:</span>

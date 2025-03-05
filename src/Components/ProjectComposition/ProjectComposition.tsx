@@ -78,7 +78,8 @@ const getConfigurationList = (
     setEditSketch: TSetEditSketch,
     setEditBackground: TBackgroundsStore['setEditBackground'],
     localProject: TProject['localProject'],
-    projectToken: TProject['token']
+    projectToken: TProject['token'],
+    roomIdx: number
 ): JSX.Element[] | null => {
 
     const configurationList: JSX.Element[] = []
@@ -190,39 +191,41 @@ const getConfigurationList = (
                     <tfoot>
                         <tr>
                             <td>
-                                { canEditProject &&
-                                    <button  onClick={onEdit}
-                                        className='button button_small button_dark'
-                                        title="Изменить комплект">
-                                        <span>Изменить</span>
-                                        <i className='icon icon_change'></i>
+                                <div id={roomIdx === 0 && idx === 0 ? 'step_22' : undefined}>
+                                    { canEditProject &&
+                                        <button  onClick={onEdit}
+                                            className='button button_small button_dark'
+                                            title="Изменить комплект">
+                                            <span>Изменить</span>
+                                            <i className='icon icon_change'></i>
+                                        </button>
+                                    }
+                                    { canEditProject &&
+                                        <button onClick={onReplace}
+                                            className='button button_small button_dark'
+                                            title="Перенести комплект в другой проект/помещение">
+                                            <span>Перенести</span>
+                                            <i className='icon icon_move'></i>
+                                        </button>
+                                    }
+                                    <button onClick={onCopy}
+                                        className={`button button_small button_dark${!canEditProject ? ' single' : ''}`}
+                                        title="Скопировать комплект в другой проект/помещение">
+                                        <span>Скопировать</span>
+                                        <i className='icon icon_copy'></i>
                                     </button>
-                                }
-                                { canEditProject &&
-                                    <button onClick={onReplace}
-                                        className='button button_small button_dark'
-                                        title="Перенести комплект в другой проект/помещение">
-                                        <span>Перенести</span>
-                                        <i className='icon icon_move'></i>
-                                    </button>
-                                }
-                                <button onClick={onCopy}
-                                    className={`button button_small button_dark${!canEditProject ? ' single' : ''}`}
-                                    title="Скопировать комплект в другой проект/помещение">
-                                    <span>Скопировать</span>
-                                    <i className='icon icon_copy'></i>
-                                </button>
-                                { canEditProject &&
-                                    <button onClick={onRemove}
-                                        title="Удалить комплект"
-                                        className='button button_small button_dark'>
-                                        <span>Удалить</span>
-                                        <i className='icon icon_basket'></i>
-                                    </button>
-                                }
+                                    { canEditProject &&
+                                        <button onClick={onRemove}
+                                            title="Удалить комплект"
+                                            className='button button_small button_dark'>
+                                            <span>Удалить</span>
+                                            <i className='icon icon_basket'></i>
+                                        </button>
+                                    }
+                                </div>
                             </td>
                             <td>
-                                <div className={counter}>
+                                <div id={roomIdx === 0 && idx === 0 ? 'step_23' : undefined} className={counter}>
                                     { canEditProject && <button className={c.count === 1 ? `${dec} ${disabled}` : dec} onClick={() => onChangeCount(-1)}/> }
                                     <input className={!canEditProject ? withoutBorder : ''} type="text" value={c.count} readOnly />
                                     { canEditProject && <button className={inc} onClick={() => onChangeCount(1)}/> }
@@ -276,13 +279,16 @@ const getRoomList = (
             setEditSketch,
             setEditBackground,
             project.localProject,
-            project.token
+            project.token,
+            idx
         )
 
         roomList.push(
             <div key={`${r.id}-${idx}`} className={room}>
-                <h3 className={title}>{r.name}</h3>
-                <ul className={sets}>
+                <h3 className={title}>
+                    <span id={idx === 0 ? 'step_18' : undefined}>{r.name}</span>
+                </h3>
+                <ul id={idx === 0 && idx === 0 ? 'step_21' : undefined} className={sets}>
                     { configurations }
                 </ul>
             </div>

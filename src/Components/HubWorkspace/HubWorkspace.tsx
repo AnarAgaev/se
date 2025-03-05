@@ -20,16 +20,16 @@ const getProjectsElms = (
     copyProject: TAppStore['copyProject'],
 ): JSX.Element[] => {
 
-    return projects.map(p => {
+    return projects.map((p, idx) => {
 
         return (
-            <li key={`${id}-${p.id}`} className={item}>
+            <li id={`${idx === 0 ? 'step_9' : undefined}`} key={`${id}-${p.id}`} className={item}>
                 <span className={name}>
                     {p.name}
                     <i>#{p.id}</i>
                 </span>
                 <ul className={actions}>
-                    <li>
+                    <li id={`${idx === 0 ? 'step_10' : undefined}`}>
                         <button
                             onClick={() => editProject(p.id)}
                             className="button button_dark"
@@ -38,7 +38,7 @@ const getProjectsElms = (
                         </button>
                     </li>
 
-                    <li>
+                    <li id={`${idx === 0 ? 'step_11' : undefined}`}>
                         <button
                             onClick={() => shareProject(p.id)}
                             className="button button_dark"
@@ -47,7 +47,7 @@ const getProjectsElms = (
                         </button>
                     </li>
 
-                    <li>
+                    <li id={`${idx === 0 ? 'step_12' : undefined}`}>
                         <button
                             onClick={() => setDownloadProject({
                                 project: p,
@@ -73,7 +73,7 @@ const getProjectsElms = (
 
                     {/* Remove project */}
                     { (p.localProject || (p.token && p.token === userToken)) &&
-                        <li>
+                        <li id={`${idx === 0 ? 'step_13' : undefined}`}>
                             <button
                                 onClick={() => p.localProject
                                     ? removeLocalProject(p.id, p.name)
@@ -127,10 +127,10 @@ const HubWorkspace = () => {
         <>
             <div className={hub}>
                 <div className={form}>
-                    <div className={add}>
+                    <div id='step_14' className={add}>
                         <InputAdd placeholder="Создать новый проект" cbf={addProject} type='project' />
                     </div>
-                    <div className={upload}>
+                    <div id='step_15' className={upload}>
                         <button type="button" className='button button_block button_dark'
                             onClick={() => modalLoadProjectSet(true, '')}>
                             Загрузить по ссылке

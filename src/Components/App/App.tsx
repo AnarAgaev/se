@@ -1,5 +1,5 @@
-import { useEffect, Suspense, lazy } from 'react'
-import { getParameterByNameFromUrlLink } from '../../Helpers'
+import { useEffect, Suspense, lazy, useRef } from 'react'
+import { getParameterByNameFromUrlLink, onSteps } from '../../Helpers'
 import useStore from '../../Store'
 import style from './App.module.sass'
 import '../../Sass/main.sass'
@@ -40,6 +40,13 @@ const App = () => {
 		loadProject,
 		showLearning,
 		setShowLearning,
+
+		// For Steps
+		setLearningConfiguration,
+		resetLearningConfiguration,
+		setActiveViewportTab,
+		setActiveCalcTab,
+
 	] = useStore(state => [
 		state.requestInitData,
 		state.loading,
@@ -59,6 +66,13 @@ const App = () => {
 		state.loadProject,
 		state.showLearning,
 		state.setShowLearning,
+
+		// For Steps
+		state.setLearningConfiguration,
+		state.resetLearningConfiguration,
+		state.setActiveViewportTab,
+		state.setActiveCalcTab,
+
 	])
 	// #endregion
 
@@ -78,35 +92,66 @@ const App = () => {
 
 	}, [requestInitData, loadProject])
 
+	const stepsRef = useRef<Steps>(null)
+	const appRef = useRef<HTMLElement>(null)
+
 	return (
 		<>
 			<Steps
+				ref={stepsRef}
+
 				enabled={showLearning} // показываем обучалку или нет
 
 				steps={steps}
 
 				initialStep={0} // с какого шага начинаем
 
+				onStart={() => {
+					appRef.current?.classList.add('learning-in-process')
+				}}
+
 				onExit={() => { // коллбэк стреляет при завершении обучения
 					setShowLearning(false)
+					resetLearningConfiguration()
+					appRef.current?.classList.remove('learning-in-process')
+				}}
+
+				onBeforeChange={(stepNumber: number, htmlNode: HTMLElement) => {
+					onSteps({
+						stepNumber,
+						htmlNode,
+						setActiveViewportTab,
+						setActiveCalcTab,
+						updateStepElement: stepsRef.current?.updateStepElement,
+						introJs: stepsRef.current?.introJs
+					})
 				}}
 
 				options={{
 					prevLabel: 'Назад',
 					nextLabel: 'Вперед',
 					doneLabel: 'Закрыть',
+					stepNumbersOfLabel: 'из',
 					hidePrev: true,
+					exitOnOverlayClick: true,
+					showStepNumbers: true,
+					showBullets: false,
 				}}
 			/>
 
-			<section className={`se-app ${app}`}>
+			<section ref={appRef} className={`se-app ${app}`}>
 				{ loading
 					? <Loader text={loadingMassage ? loadingMassage : "Загружаем данные" } />
 					: <>
 						<Warning />
 						<h1 className={caption}>
 							<span>Конфигуратор</span>
-							<button onClick={() => setShowLearning(true)}
+							<button id='step_24' onClick={() => {
+								setLearningConfiguration()
+								setActiveViewportTab('configurator')
+								setActiveCalcTab('borders')
+								setTimeout(() => setShowLearning(true), 100)
+							}}
 								className={`button button_dark ${learning}`} title="Начать обучение">
 								<i className="icon icon_learn"></i>
 							</button>

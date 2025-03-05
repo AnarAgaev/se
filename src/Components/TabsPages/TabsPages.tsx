@@ -31,27 +31,27 @@ const TabsPages = () => {
     // #endregion
 
     return (
-        <div className={tabs}>
-            <ul className={list}>
-                <li id='step_1' className={getTabClassName('configurator', activeViewportTab)}
+        <div id='tabsPages' className={tabs}>
+            <ul id='pages' className={list}>
+                <li id='step_0' className={getTabClassName('configurator', activeViewportTab)}
                     onClick={() => setActiveTab('configurator')}>
                     <span>
                         Конфигуратор
                     </span>
                 </li>
-                <li id='step_2' className={getTabClassName('collections', activeViewportTab)}
+                <li className={getTabClassName('collections', activeViewportTab)}
                     onClick={() => setActiveTab('collections')}>
                     <span>
                         Гид по коллекциям
                     </span>
                 </li>
-                <li id='step_4' className={getTabClassName('project', activeViewportTab)}
+                <li id='step_16' className={getTabClassName('project', activeViewportTab)}
                     onClick={() => setActiveTab('project')}>
                     <span>
                         Состав проекта
                     </span>
                 </li>
-                <li id='step_3' className={getTabClassName('hub', activeViewportTab)}
+                <li id='step_8' className={getTabClassName('hub', activeViewportTab)}
                     onClick={() => setActiveTab('hub')}>
                     <span>
                         Мои проекты

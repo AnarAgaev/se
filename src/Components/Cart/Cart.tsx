@@ -129,7 +129,7 @@ const Cart = () => {
 
     return (
         <div className={cart}>
-            <div className={section}>
+            <div id='step_6' className={section}>
                 <h3 className={caption}>Стоимость полного комплекта</h3>
                 <Price />
                 <Locations />
@@ -145,7 +145,7 @@ const Cart = () => {
                 }
             </div>
             { (isSelectedBorder || isSelectedDevice) &&
-                <div className={section}>
+                <div id='step_7' className={section}>
                     <h3 className={caption}>Состав комплекта</h3>
                     <Set />
                     <button type="button"

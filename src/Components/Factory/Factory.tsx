@@ -23,7 +23,7 @@ const Factory = () => {
 
     return (
         <Suspense fallback={ <Loader text={loadingText} /> }>
-            <div className={style.factory}>
+            <div id='step_2' className={style.factory}>
                 { activeCalcTab === 'borders' && <BordersWorkspace /> }
                 { activeCalcTab === 'devices' && <DevicesWorkspace /> }
                 { activeCalcTab === 'backgrounds' && <BackgroundsWorkspace /> }
