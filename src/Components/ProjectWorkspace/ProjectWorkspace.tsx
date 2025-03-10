@@ -189,14 +189,14 @@ const ProjectWorkspace = () => {
             <footer className={footer}>
                 { projectActions }
                 <div id='step_20' className={total}>
-                    { project && project.rooms?.length && totalProjectCost &&
+                    { project && project.rooms?.length && totalProjectCost !== 0 &&
                         <p>
                             <span>Общая стоимость:</span>
                             <strong>{formatNumber(totalProjectCost)} р.</strong>
                         </p>
                     }
                     <button onClick={addToCartHandler}
-                        className={addToCartButtonClassName}>
+                        className={`${addToCartButtonClassName}${totalProjectCost === 0 ? ' disabled' : ''}`}>
                         Добавить в корзину
                     </button>
                 </div>

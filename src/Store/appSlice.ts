@@ -909,33 +909,38 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         }
     },
 
-    setConfigurationCount: (projectId, roomId, configurationId, direction) => {
+    setConfigurationCount: (projectId, roomId, configurationId, payload) => {
 
         const newProjects = [...get().projects]
 
         let count: number
 
-        for (const p of newProjects) {
+        const project = newProjects.find(p => p.id === projectId && p.rooms)
 
-            if (p.id === projectId && p.rooms) {
-                for (const r of p.rooms) {
+        if (project && project.rooms) {
 
-                    if (r.id === roomId) {
-                        for (const c of r.configurations) {
+            const room = project.rooms.find(r => r.id === roomId);
 
-                            if (c.id === configurationId) {
+            if (room) {
 
-                                if (!get().startValueConfigurationCount) {
-                                    set({startValueConfigurationCount: c.count})
-                                }
+                const configuration = room.configurations.find(c => c.id === configurationId);
 
-                                const newCount = c.count + direction
+                if (configuration) {
 
-                                c.count = newCount
-                                count = newCount
-                            }
-                        }
+                    if (!get().startValueConfigurationCount) {
+                        set({ startValueConfigurationCount: configuration.count });
                     }
+
+                    let newCount = payload.direction
+                        ? configuration.count + payload.direction
+                        : payload.value !== undefined
+                            ? payload.value
+                            : 0
+
+                    if (newCount === -1) newCount = 1
+
+                    configuration.count = newCount;
+                    count = newCount;
                 }
             }
         }
@@ -947,13 +952,18 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             clearTimeout(get().setCountTimeoutId)
 
             const timeoutId = setTimeout(() => {
-                get().updateRemoteConfigurationCount(
-                    projectId,
-                    roomId,
-                    configurationId,
-                    count
-                )
-            }, 500)
+
+                if (payload.value !== 0) {
+                    get().updateRemoteConfigurationCount(
+                        projectId,
+                        roomId,
+                        configurationId,
+                        count
+                    )
+                } else {
+                    clearTimeout(get().setCountTimeoutId)
+                }
+            }, 1000)
 
             set({setCountTimeoutId: timeoutId})
         })()

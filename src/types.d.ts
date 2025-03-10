@@ -377,7 +377,10 @@ export type TAppStore = {
         projectId: string | number,
         roomId: string | number,
         configurationId: string | number,
-        direction: -1 | 1
+        payload: {
+            direction?: -1 | 1,
+            value?: number
+        }
     ) => void
 
     updateRemoteConfigurationCount: (

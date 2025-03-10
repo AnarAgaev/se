@@ -109,7 +109,26 @@ const getConfigurationList = (
         const color = Array.from(colorSet).join('/')
         // #endregion
 
-        const onChangeCount = (direction: -1 | 1) => setConfigurationCount(projectId, roomId, c.id, direction)
+        const onChangeCount = (direction: -1 | 1) => setConfigurationCount(projectId, roomId, c.id, { direction })
+
+        const onChangeCountField = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+            let value = Math.abs(
+                parseInt(
+                    e.target.value.replace(/\D/g, '')
+                )
+            )
+
+            if (!value) value = 0
+
+            setConfigurationCount(projectId, roomId, c.id, { value })
+        }
+
+        const onBlurContField = (e: React.ChangeEvent<HTMLInputElement>) => {
+            if (e.target.value === '') {
+                setConfigurationCount(projectId, roomId, c.id, { value: 1 })
+            }
+        }
 
         const onRemove = () => removeConfiguration(projectId, roomId, c.id)
 
@@ -226,9 +245,17 @@ const getConfigurationList = (
                             </td>
                             <td>
                                 <div id={roomIdx === 0 && idx === 0 ? 'step_23' : undefined} className={counter}>
-                                    { canEditProject && <button className={c.count === 1 ? `${dec} ${disabled}` : dec} onClick={() => onChangeCount(-1)}/> }
-                                    <input className={!canEditProject ? withoutBorder : ''} type="text" value={c.count} readOnly />
-                                    { canEditProject && <button className={inc} onClick={() => onChangeCount(1)}/> }
+                                    { canEditProject && <button className={(c.count === 1 || c.count === 0) ? `${dec} ${disabled}` : dec} onClick={() => onChangeCount(-1)}/> }
+
+                                    <input
+                                        type="text"
+                                        className={!canEditProject ? withoutBorder : ''}
+                                        value={c.count === 0 ? '' : c.count}
+                                        onChange={onChangeCountField}
+                                        onBlur={onBlurContField}
+                                    />
+
+                                    { canEditProject && <button className={c.count === 0 ? `${inc} ${disabled}` : inc} onClick={() => onChangeCount(1)}/> }
                                 </div>
                             </td>
                             <td>{getTotalPriceConfiguration(c)} р.</td>
