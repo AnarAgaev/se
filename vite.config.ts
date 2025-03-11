@@ -3,10 +3,10 @@ import react from '@vitejs/plugin-react'
 import { analyzer } from 'vite-bundle-analyzer'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
-    analyzer()
+    analyzer(),
   ],
   build: {
     cssCodeSplit: false,
@@ -19,6 +19,9 @@ export default defineConfig({
         // Убираем hash из имен файлов для динамически загружаемых модулей (chunks)
         chunkFileNames: `assets/[name].js`,
       },
-    }
-  }
-})
+    },
+  },
+  base: mode === 'production'
+    ? 'https://aws.massive.ru/se-configurator/front/'
+    : '/', // Для development используем относительный путь
+}));

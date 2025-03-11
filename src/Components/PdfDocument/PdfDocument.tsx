@@ -231,7 +231,7 @@ const getDeviceList = (devices: (TDevice | null)[]): JSX.Element[] | null => {
             : device.price
 
         return (
-            <View style={styles.row}>
+            <View key={device.id} style={styles.row}>
                 <View style={{...styles.column, ...styles.column_1}}>
                     <View style={{...styles.item, ...styles.content}}>
                         <Image style={styles.image} src={device.preview} />
@@ -286,7 +286,7 @@ const getConfigurationList = ( configurations: TConfigurationList ): JSX.Element
         const border = getBorder(c.border)
 
         configurationList.push(
-            <View style={styles.set}>
+            <View key={c.id} style={styles.set}>
                 <Text style={styles.roomTitle}>
                     <Text style={styles.bold}>
                         Комплект:
@@ -339,7 +339,7 @@ const getRoomList = (
         const configurations = getConfigurationList(r.configurations)
 
         roomList.push(
-            <View style={styles.room} >
+            <View key={r.id} style={styles.room} >
                 <Text style={styles.roomName}>{r.name}</Text>
                 <View style={styles.sets}>
                     { configurations }
@@ -373,16 +373,16 @@ const PdfDocument = () => {
         family: 'Roboto',
         fonts: [
             {
-                src: 'fonts/Roboto/Roboto-Regular.ttf',
+                src: 'https://aws.massive.ru/se-configurator/front/fonts/Roboto/Roboto-Regular.ttf',
                 // font-style: normal,
                 // font-weight: normal
             },
             {
-                src: 'fonts/Roboto/Roboto-Medium.ttf',
+                src: 'https://aws.massive.ru/se-configurator/front/fonts/Roboto/Roboto-Medium.ttf',
                 fontWeight: 'medium'
             },
             {
-                src: 'fonts/Roboto/Roboto-Bold.ttf',
+                src: 'https://aws.massive.ru/se-configurator/front/fonts/Roboto/Roboto-Bold.ttf',
                 fontWeight: 'bold'
             },
         ]
