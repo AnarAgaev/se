@@ -13,7 +13,10 @@ type TOnSetPostsCount = (
 const { sketch, construction, posts, directions, horizontal, vertical, save,
     controllers, trash, minus, plus, disabled, set, wrap, placeholder,
     container, postActive, directionActive, loader, containerVertical,
-    post_1, post_2, post_3, post_4, post_5, borderImg } = style
+    imageVertical, borderImg,
+    post_1, post_2, post_3, post_4, post_5,
+    img_1, img_2, img_3, img_4, img_5,
+} = style
 
 const createPosts = (
     id: string,
@@ -209,18 +212,29 @@ const Sketch = () => {
         resetBackground()
     }
 
-    const containerClassMap: {
+    interface IMap {
         [key: number]: string
-    } = {
-        0: '',
-        1: post_1,
-        2: post_2,
-        3: post_3,
-        4: post_4,
-        5: post_5,
     }
-    const countOfPost: number = selectedPost.findIndex(Boolean) + 1
-    const containerClass = `${container}${countOfPost === 0 ? ` ${post_1}` : ` ${containerClassMap[countOfPost]}`}${direction === 'horizontal' ? '' : ` ${containerVertical}`}`
+
+    const containerImgClassMap: IMap = { 0: '', 1: img_1, 2: img_2, 3: img_3, 4: img_4, 5: img_5 }
+    const containerClassMap: IMap = { 0: '', 1: post_1, 2: post_2, 3: post_3, 4: post_4, 5: post_5 }
+    const countOfPost = selectedPost.findIndex(Boolean) + 1
+
+    const postsClass = direction === 'horizontal'
+        ? countOfPost === 0 ? post_1 : containerClassMap[countOfPost]
+        : selectedBorder?.conf_orientation === 'vertical'
+            ? countOfPost === 0 ? img_1 : containerImgClassMap[countOfPost]
+            : countOfPost === 0 ? post_1 : containerClassMap[countOfPost];
+
+    const directionClass = direction === 'horizontal'
+        ? ''
+        : selectedBorder?.conf_orientation === 'vertical'
+            ? ` ${imageVertical}`
+            : ` ${containerVertical}`;
+
+    const containerClass = `${container} ${postsClass} ${directionClass}`
+    const rotateInlineStyleValue = direction === 'horizontal' || selectedBorder?.conf_orientation === 'vertical' ? '0' : '90deg'
+    const transformInlineStyle = `translate(-50%, -50%) rotate(${rotateInlineStyleValue})`
 
     return (
         <div id='step_5' ref={sketchRef} className={sketch}>
@@ -295,7 +309,7 @@ const Sketch = () => {
                     <div className={containerClass}
                         style={{
                             opacity: visible ? '1' : '0',
-                            transform: `translate(-50%, -50%) rotate(${direction ==='horizontal' ? '0' : '90deg'})`
+                            transform: transformInlineStyle
                         }}>
                         { selectedBorder && <img
                             className={borderImg}

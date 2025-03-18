@@ -12,24 +12,46 @@
     margin: 0
     padding: 0
 
-    width: 100%
-    height: 72%
+    width: auto
+    height: 75%
+
+
+.listVertical
+    width: 75%
+    height: auto
+    flex-direction: column
 
 
 .post_1
-    width: calc(100% - calc(100% * 0.28))
+    width: calc(100% - calc(100% * 0.26))
 
 .post_2
-    width: calc(100% - calc(100% / 300 * 160 * 0.28))
+    width: calc(100% - calc(100% / 300 * 160 * 0.26))
 
 .post_3
-    width: calc(100% - calc(100% / 350 * 128 * 0.28))
+    width: calc(100% - calc(100% / 350 * 128 * 0.26))
 
 .post_4
-    width: calc(100% - calc(100% / 500 * 139 * 0.28))
+    width: calc(100% - calc(100% / 500 * 139 * 0.26))
 
 .post_5
-    width: calc(100% - calc(100% / 550 * 123 * 0.28))
+    width: calc(100% - calc(100% / 550 * 123 * 0.23))
+
+
+.img_1
+    height: calc(100% - calc(100% * 0.26))
+
+.img_2
+    height: calc(100% - calc(100% / 300 * 160 * 0.26))
+
+.img_3
+    height: calc(100% - calc(100% / 350 * 128 * 0.26))
+
+.img_4
+    height: calc(100% - calc(100% / 500 * 139 * 0.26))
+
+.img_5
+    height: calc(100% - calc(100% / 550 * 123 * 0.23))
 
 
 .item
@@ -48,6 +70,11 @@
         &:hover
             span
                 opacity: 1
+
+
+.itemVertical
+    width: 100%
+    height: auto
 
 
 .close
@@ -82,6 +109,11 @@
     transform: translate(-50%, -50%)
     width: 100%
     height: 100%
+    object-fit: contain
+
+
+.withRotate
+    transform: translate(-50%, -50%) rotate(90deg)
 
 
 .rotated

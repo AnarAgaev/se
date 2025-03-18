@@ -1,10 +1,10 @@
 import { create } from 'zustand'
 import { devtools, persist, createJSONStorage } from 'zustand/middleware'
 import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } from './'
-import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette, TProjectList, TRooms } from '../types'
+import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette, TProjectList, TRooms, TNumberOfPosts } from '../types'
 import { InitDataContract, zodErrorOptions } from '../zod'
 import { generateErrorMessage } from 'zod-error'
-import { defaultFetchHeaders, copyLocalProjectToAccount } from '../Helpers'
+import { defaultFetchHeaders, copyLocalProjectToAccount, getParameterByNameFromUrlLink } from '../Helpers'
 
 const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSketchStore & TAppStore & TStore>()(
     devtools(
@@ -191,6 +191,62 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         })
 
 
+                        // #region Set default item from URL GET param
+                        const urlArticle = getParameterByNameFromUrlLink('article')
+                        if (urlArticle) {
+
+                            const border = safeResponse.data.borders.find(border =>
+                                border.article.toLocaleUpperCase() === urlArticle.toLocaleUpperCase())
+
+                            const device = safeResponse.data.devices.find(device =>
+                                device.article.toLocaleUpperCase() === urlArticle.toLocaleUpperCase())
+
+                            let brand: string | undefined
+                            let collection: string | undefined
+
+                            if (border) {
+                                console.log('Border preset', border)
+
+                                const countOfPosts = get().getCountOfPosts(border)
+                                const numberOfPosts = border.number_of_posts ? parseInt(border.number_of_posts[0]) : 1
+                                const orientation = border.conf_orientation === 'vertical'
+                                    ? 'vertical'
+                                    : 'horizontal'
+
+                                if ([1, 2, 3, 4, 5].includes(numberOfPosts)) {
+                                    get().resetSketch()
+                                    get().setBorder(border, numberOfPosts as TNumberOfPosts, countOfPosts, orientation)
+                                }
+
+                                if (!brand) brand = border.vendor
+                                if (!collection) collection = border.collection
+                            }
+
+                            if (device) {
+                                console.log('Device preset', device)
+
+                                get().resetSketch()
+                                get().setDevice(device as TDevice)
+
+                                if (!brand) brand = device.vendor
+                                if (!collection) collection = device.collection
+                            }
+
+                            if ((border || device) && brand && collection) {
+                                get().setSingleBordersFilter('brand', brand)
+                                get().setSingleBordersFilter('collection', collection)
+
+                                get().setSingleDevicesFilter('brand', brand)
+                                get().setSingleDevicesFilter('collection', collection)
+                            }
+
+                            if (!border && !device && urlArticle) {
+                                console.log('\x1b[31m%s\x1b[0m', 'В данных конфигуратора не артикула из GET параметра', urlArticle)
+                            }
+                        }
+                        // #endregion
+
+
                         // #region Learning
                         const isLearningShown = get().isLearningShown
 
@@ -199,11 +255,11 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             // Выставляем дефолтные рамку и устройство для обучения
                             setTimeout(() => get().setLearningConfiguration(), 1000)
 
-                            // Запускаем обучалку
+                            // Запускаем обучение
                             setTimeout(() => set({
                                 showLearning: true,
                                 isLearningShown: true
-                            }), 2000)
+                            }), 3000)
                         }
 
                     } catch (error: Error | unknown) {
