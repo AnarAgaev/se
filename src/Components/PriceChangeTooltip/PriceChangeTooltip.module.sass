@@ -1,0 +1,68 @@
+@import '../../Sass/_variables'
+
+.text
+    position: relative
+    z-index: 1
+    color: var(--color-border-prime)
+    text-decoration: line-through
+    cursor: pointer
+
+    @media (hover: hover) and (pointer: fine)
+        &:hover
+            mark
+                opacity: 1
+                margin-bottom: 0
+
+.tooltip
+    display: block
+    position: absolute
+    width: 120px
+    height: auto
+    top: 50%
+    left: 0
+    transform: translate(calc( -100% - 20px ), -50%)
+    pointer-events: none
+    user-select: none
+    opacity: 0
+    margin-left: -5px
+    transition: var(--base-transition)
+
+    padding: 10px
+    text-align: center
+    background: var(--color-back-prime)
+    color: var(--color-button-font-lite)
+
+    font-weight: 400
+    font-size: 13px
+    white-space: normal
+    line-height: 1.2
+
+    @media (min-width: $xxl)
+        top: initial
+        bottom: 0
+        left: 50%
+        transform: translate(-50%, calc( 100% + 20px ))
+        margin-left: 0
+        margin-bottom: -5px
+
+    &::before
+        content: ''
+        display: block
+        position: absolute
+        top: 50%
+        right: 0
+        transform: translate(calc( 100% - 2px ), -50%)
+        border: 10px solid transparent
+        border-left: 15px solid var(--color-back-prime)
+
+        @media (min-width: $xxl)
+            top: 0
+            right: initial
+            left: 50%
+            transform: translate(-50%, calc( -100% + 1px ))
+            border: 10px solid transparent
+            border-bottom: 15px solid var(--color-back-prime)
+
+.show
+    opacity: 1 !important
+    margin-left: 0 !important

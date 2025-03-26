@@ -45,6 +45,7 @@ import Loading from './Loading/Loading'
 import Modal from './Modal/Modal'
 import ProjectComposition from './ProjectComposition/ProjectComposition'
 import Warning from './Warning/Warning'
+import PriceChangeTooltip from './PriceChangeTooltip/PriceChangeTooltip'
 
 export {
     App,
@@ -93,5 +94,6 @@ export {
     Loading,
     Modal,
     ProjectComposition,
-    Warning
+    Warning,
+    PriceChangeTooltip
 }

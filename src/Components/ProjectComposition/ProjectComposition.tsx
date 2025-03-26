@@ -2,6 +2,7 @@ import { formatNumber, getPostWordDeclension, collapseDevices, getTotalPriceConf
 import { TAppStore, TProject, TConfigurationList, TDeviceList, TBorder,
     TNumberOfPosts, TGetCountOfPosts, TSetSingleFilter, TSetEditSketch,
     TDevice, TBackgroundsStore} from '../../types'
+import { PriceChangeTooltip } from '../../Components'
 import useStore from '../../Store'
 import style from './ProjectComposition.module.sass'
 
@@ -9,9 +10,21 @@ const userToken = window.userToken
 
 const { help, composition, room, title, subtitle, sets, set,
     table, item, pic, desc, counter, disabled, inc, dec,
-    dropped, withoutBorder } = style
+    dropped, withoutBorder, prices } = style
 
 const getBorder = (border: TBorder): JSX.Element => {
+
+    console.log('border', border)
+
+    const price = typeof border.price === 'string'
+        ? parseFloat(border.price)
+        : border.price
+
+    const startPrice = border.start_price ??
+        typeof border.start_price === 'string'
+            ? parseFloat(border.start_price as 'string')
+            : border.start_price
+
     return (
         <tr key={border.show_article}>
             <td>
@@ -26,7 +39,15 @@ const getBorder = (border: TBorder): JSX.Element => {
                 </div>
             </td>
             <td>1</td>
-            <td>{formatNumber(border.price)} р.</td>
+            <td>
+                <div className={prices}>
+                    <span>{formatNumber(price)} р.</span>
+                    {
+                        startPrice && startPrice !== price &&
+                        <PriceChangeTooltip price={formatNumber(startPrice)} />
+                    }
+                </div>
+            </td>
         </tr>
     )
 }
@@ -34,6 +55,7 @@ const getBorder = (border: TBorder): JSX.Element => {
 const getDeviceList = (devices: (TDevice | null)[]): JSX.Element[] | null => {
 
     const deviceList = collapseDevices(devices)
+    console.log('deviceList', deviceList)
 
     return deviceList.map(d => {
 
@@ -41,7 +63,10 @@ const getDeviceList = (devices: (TDevice | null)[]): JSX.Element[] | null => {
             ? parseFloat(d.price)
             : d.price
 
-        const cost = formatNumber(price * d.selectedCount)
+        const startPrice = d.start_price ??
+            typeof d.start_price === 'string'
+                ? parseFloat(d.start_price as 'string')
+                : d.start_price
 
         return (
             <tr key={d.show_article}>
@@ -57,7 +82,15 @@ const getDeviceList = (devices: (TDevice | null)[]): JSX.Element[] | null => {
                     </div>
                 </td>
                 <td>{d.selectedCount}</td>
-                <td>{cost} р.</td>
+                <td>
+                    <div className={prices}>
+                        <span>{formatNumber(price * d.selectedCount)} р.</span>
+                        {
+                            startPrice && startPrice !== price &&
+                            <PriceChangeTooltip price={formatNumber(startPrice * d.selectedCount)} />
+                        }
+                    </div>
+                </td>
             </tr>
         )
     })

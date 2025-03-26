@@ -36,7 +36,7 @@
     "vite-bundle-analyzer": "^0.16.0"
   },
   "engines": {
-    "node": "20.19.0"
+    "node": ">=20.19.0"
   },
   "module": "index.ts"
 }

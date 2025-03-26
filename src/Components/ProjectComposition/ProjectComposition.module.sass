@@ -89,6 +89,9 @@
         width: 0
         height: 0
 
+    @media (min-width: $xl)
+        overflow: visible
+
 
 .set
     display: flex
@@ -378,3 +381,12 @@
 .dec
     &::after
         display: none !important
+
+
+.prices
+    display: grid
+    justify-content: end
+    gap: 5px
+
+    @media (min-width: $xl)
+        gap: 10px

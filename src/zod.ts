@@ -23,7 +23,10 @@ export type TBackgroundList = z.infer<typeof BackgroundList>
 export const Element = z.object({
     id: z.union([z.string(), z.number()]),
     name: z.string(),
+    active: z.boolean().optional(),
+    available: z.boolean().optional(),
     price: z.union([z.string(), z.number()]),
+    start_price: z.union([z.string(), z.number()]).optional(),
     image: z.string(),
     conf_color: z.string(),
     preview: z.string(),
