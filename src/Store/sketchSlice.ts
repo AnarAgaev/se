@@ -142,9 +142,11 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
 
     setEditSketch: (border, numberOfPost, countOfPosts, devices, direction) => {
 
-        // const newDirection = numberOfPost === 1
-        //     ? 'horizontal'
-        //     : get().direction
+        const newDirection = numberOfPost === 1
+            ? 'horizontal'
+            : direction === 'vertical'
+                ? direction
+                : 'horizontal'
 
         type TSetObject = {
             border?: TBorder
@@ -155,7 +157,7 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
         }
 
         const setObject: TSetObject = {
-            direction,
+            direction: newDirection,
             postsCount: 1,
             selectedPost: []
         }
