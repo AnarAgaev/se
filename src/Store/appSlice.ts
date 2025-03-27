@@ -673,8 +673,9 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             if (data.id) {
 
                 // 1. Получаем копию комплекта/конфигурации
-                // 2. Создаем новый комплект/конфигурацию
-                // 3. Если тип запроса Перенести (replace), то удаляем референс
+                // 2. Очищаем копию от не валидных рамки и устройств
+                // 3. Создаем новый комплект/конфигурацию
+                // 4. Если тип запроса Перенести (replace), то удаляем референс
 
                 const newConfigurationId: string | number = data.id
                 const newProjects = [...get().projects]
@@ -700,7 +701,20 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                     }
                 }
 
-                // 2. Создаем новый комплект/конфигурацию
+                // 2. Очищаем копию конфигурации от не валидных рамки и устройств
+                if (!(configurationCopy.border?.active && configurationCopy.border.available)) {
+                    delete configurationCopy.border
+                }
+
+                const filteredDevices = configurationCopy.devices?.filter(d => d?.active && d.available)
+
+                if (filteredDevices?.length) {
+                    configurationCopy.devices = filteredDevices
+                } else {
+                    delete configurationCopy.devices
+                }
+
+                // 3. Создаем новый комплект/конфигурацию
                 const toProjectIdx = newProjects.findIndex(p => p.id === to.projectId)
                 const rooms = newProjects[toProjectIdx].rooms
 
@@ -744,7 +758,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 }
 
 
-                // 3. Если тип запроса Перенести (replace), то удаляем референс
+                // 4. Если тип запроса Перенести (replace), то удаляем референс
                 if (from.type === 'replace') {
 
                     // Находим проект

@@ -1,0 +1,67 @@
+@import '../../Sass/_variables'
+
+.text
+    display: inline-flex
+    align-items: center
+    gap: 2px
+    position: relative
+    z-index: 1
+    cursor: pointer
+
+    @media (hover: hover) and (pointer: fine)
+        &:hover
+            mark
+                opacity: 1
+                margin-bottom: 0
+
+    &::after
+        content: ''
+        display: inline-block
+        width: 20px
+        aspect-ratio: 1 / 1
+        background: transparent no-repeat center
+        background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgMzAgMzAiIHdpZHRoPSIzMHB4IiBoZWlnaHQ9IjMwcHgiIGZpbGw9IiNkNmQ2ZDYiPjxwYXRoIGQ9Ik0xNSwzQzguMzczLDMsMyw4LjM3MywzLDE1YzAsNi42MjcsNS4zNzMsMTIsMTIsMTJzMTItNS4zNzMsMTItMTJDMjcsOC4zNzMsMjEuNjI3LDMsMTUsM3ogTTE2LDIxaC0ydi03aDJWMjF6IE0xNSwxMS41IGMtMC44MjgsMC0xLjUtMC42NzItMS41LTEuNXMwLjY3Mi0xLjUsMS41LTEuNXMxLjUsMC42NzIsMS41LDEuNVMxNS44MjgsMTEuNSwxNSwxMS41eiIvPjwvc3ZnPg==")
+        background-size: cover
+
+
+.tooltip
+    display: block
+    position: absolute
+    width: 250px
+    height: auto
+    left: 50%
+    bottom: 0
+    transform: translate(-50%, calc( 100% + 20px ))
+    pointer-events: none
+    user-select: none
+    opacity: 0
+    margin-bottom: -5px
+    transition: var(--base-transition)
+
+    padding: 10px
+    text-align: center
+    background: var(--color-back-prime)
+    color: var(--color-button-font-lite)
+    text-wrap: balance
+    font-weight: 400
+    font-size: 13px
+    white-space: normal
+    line-height: 1.2
+
+    @media (min-width: $xl)
+        width: 200px
+
+    &::before
+        content: ''
+        display: block
+        position: absolute
+        top: 0
+        left: 50%
+        transform: translate(-50%, calc( -100% + 1px ))
+        border: 10px solid transparent
+        border-bottom: 15px solid var(--color-back-prime)
+
+
+.show
+    opacity: 1 !important
+    margin-left: 0 !important

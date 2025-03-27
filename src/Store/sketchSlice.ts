@@ -162,26 +162,43 @@ const sketchSlice: StateCreator<TSketchStore> = (set, get) => ({
             selectedPost: []
         }
 
-        if (border) setObject.border = border
+        if (border && border.active && border.available) setObject.border = border
 
-        if (countOfPosts) setObject.postsCount = countOfPosts
+        setObject.postsCount = border && border.active && border.available && countOfPosts
+            ? countOfPosts
+            : 1
 
-        if (countOfPosts && numberOfPost) {
+        if (border && border.active && border.available && countOfPosts && numberOfPost) {
             const selectedPosts = [...new Array(countOfPosts)]
-            .fill(false)
-            .map((_el, idx) => idx === numberOfPost - 1)
+                .fill(false)
+                .map((_el, idx) => idx === numberOfPost - 1)
 
             setObject.selectedPost = selectedPosts
+        } else {
+            setObject.selectedPost = []
         }
 
         if (devices) {
+
             type deviceObj = {
                 [key: number]: TDevice | null
             }
 
             const deviceList: deviceObj = {}
 
-            devices.forEach((d, idx) => deviceList[idx + 1] = d)
+            devices.forEach((d, idx) => {
+
+                if (border && border.active && border.available) {
+                    deviceList[idx + 1] = d?.active && d.available
+                        ? d
+                        : null
+                } else {
+                    if (Object.keys(deviceList).length === 0 && d?.active && d.available) {
+                        deviceList[1] = d
+                    }
+                }
+
+            })
 
             setObject.deviceList = deviceList as TSketchDeviceList
         }

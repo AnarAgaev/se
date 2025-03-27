@@ -47,7 +47,8 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         }
 
                         const data = await res.json()
-                        console.log(data)
+
+    // console.log('Init data', data)
 
 
     // const bordersSet = new Set()
@@ -150,7 +151,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             ...projectsShared // чужие проекты (добавили по ссылке поделиться, но не скопировали себе в аккаунт)
                         ]
 
-                        console.log('projectsHydrated', projectsHydrated)
+                        // console.log('projectsHydrated', projectsHydrated)
 
                         // по всем проектам сбрасываем выбранный, чтобы очистить Состав проекта при смене пользователя
 

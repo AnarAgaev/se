@@ -46,6 +46,7 @@ import Modal from './Modal/Modal'
 import ProjectComposition from './ProjectComposition/ProjectComposition'
 import Warning from './Warning/Warning'
 import PriceChangeTooltip from './PriceChangeTooltip/PriceChangeTooltip'
+import NotAvailableTooltip from './NotAvailableTooltip/NotAvailableTooltip'
 
 export {
     App,
@@ -95,5 +96,6 @@ export {
     Modal,
     ProjectComposition,
     Warning,
-    PriceChangeTooltip
+    PriceChangeTooltip,
+    NotAvailableTooltip
 }

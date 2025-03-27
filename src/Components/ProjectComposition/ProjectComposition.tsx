@@ -2,7 +2,7 @@ import { formatNumber, getPostWordDeclension, collapseDevices, getTotalPriceConf
 import { TAppStore, TProject, TConfigurationList, TDeviceList, TBorder,
     TNumberOfPosts, TGetCountOfPosts, TSetSingleFilter, TSetEditSketch,
     TDevice, TBackgroundsStore} from '../../types'
-import { PriceChangeTooltip } from '../../Components'
+import { PriceChangeTooltip, NotAvailableTooltip } from '../../Components'
 import useStore from '../../Store'
 import style from './ProjectComposition.module.sass'
 
@@ -13,8 +13,6 @@ const { help, composition, room, title, subtitle, sets, set,
     dropped, withoutBorder, prices } = style
 
 const getBorder = (border: TBorder): JSX.Element => {
-
-    console.log('border', border)
 
     const price = typeof border.price === 'string'
         ? parseFloat(border.price)
@@ -38,7 +36,12 @@ const getBorder = (border: TBorder): JSX.Element => {
                     </span>
                 </div>
             </td>
-            <td>1</td>
+            <td>
+                { border.active && border.available
+                    ? 1
+                    : <NotAvailableTooltip />
+                }
+            </td>
             <td>
                 <div className={prices}>
                     <span>{formatNumber(price)} р.</span>
@@ -55,7 +58,6 @@ const getBorder = (border: TBorder): JSX.Element => {
 const getDeviceList = (devices: (TDevice | null)[]): JSX.Element[] | null => {
 
     const deviceList = collapseDevices(devices)
-    console.log('deviceList', deviceList)
 
     return deviceList.map(d => {
 
@@ -81,7 +83,12 @@ const getDeviceList = (devices: (TDevice | null)[]): JSX.Element[] | null => {
                         </span>
                     </div>
                 </td>
-                <td>{d.selectedCount}</td>
+                <td>
+                    { d.active && d.available
+                        ? d.selectedCount
+                        : <NotAvailableTooltip />
+                    }
+                </td>
                 <td>
                     <div className={prices}>
                         <span>{formatNumber(price * d.selectedCount)} р.</span>
@@ -225,6 +232,10 @@ const getConfigurationList = (
 
         const canEditProject = localProject || (userToken !== undefined && userToken === projectToken)
 
+        const isSomeDevicesAvailable = c.devices && c.devices.some(d => d?.active && d.available)
+
+        const isBorderOrSomeDevicesAvailable = (c.border?.active && c.border?.available) || isSomeDevicesAvailable
+
         configurationList.push(
             <li className={set} key={`${c.id}-${idx}`}>
                 <p className={subtitle}>{`Комплект ${vendor}, ${color}${posts}`}</p>
@@ -245,8 +256,8 @@ const getConfigurationList = (
                             <td>
                                 <div id={roomIdx === 0 && idx === 0 ? 'step_22' : undefined}>
                                     { canEditProject &&
-                                        <button  onClick={onEdit}
-                                            className='button button_small button_dark'
+                                        <button onClick={onEdit}
+                                            className={`button button_small button_dark ${isBorderOrSomeDevicesAvailable ? '' : 'disabled'}`}
                                             title="Изменить комплект">
                                             <span>Изменить</span>
                                             <i className='icon icon_change'></i>
@@ -254,14 +265,14 @@ const getConfigurationList = (
                                     }
                                     { canEditProject &&
                                         <button onClick={onReplace}
-                                            className='button button_small button_dark'
+                                            className={`button button_small button_dark ${isBorderOrSomeDevicesAvailable ? '' : 'disabled'}`}
                                             title="Перенести комплект в другой проект/помещение">
                                             <span>Перенести</span>
                                             <i className='icon icon_move'></i>
                                         </button>
                                     }
                                     <button onClick={onCopy}
-                                        className={`button button_small button_dark${!canEditProject ? ' single' : ''}`}
+                                        className={`button button_small button_dark ${!canEditProject ? 'single' : ''} ${isBorderOrSomeDevicesAvailable ? '' : 'disabled'}`}
                                         title="Скопировать комплект в другой проект/помещение">
                                         <span>Скопировать</span>
                                         <i className='icon icon_copy'></i>
