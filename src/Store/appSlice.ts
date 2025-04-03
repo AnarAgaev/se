@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand'
-import { combineBorderAndDevicesWithRank, collapseDevices, defaultFetchHeaders, getErrorFromErrorObject, ErrorType } from '../Helpers'
+import { combineBorderAndDevicesWithRank, collapseDevices, defaultFetchHeaders, getErrorFromErrorObject } from '../Helpers'
 import { TAppStore, TConfiguration, TBorder, TDevice, TProject } from '../types'
 import { Project, zodErrorOptions } from '../zod'
 import { generateErrorMessage } from 'zod-error'
@@ -127,13 +127,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-                const errData = await res.json();
-                const errObj = JSON.parse(errData.errors.error[0])
-                console.log(`Ошибка запроса Добавить проект! Запрос к URL ${apiLink}`)
-                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-                console.error('Объект ошибки', errObj)
-
-                throw new Error(getErrorFromErrorObject(errObj))
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', 'Ошибка запроса Добавить проект! URL:', apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
             }
 
             const data = await res.json()
@@ -170,6 +167,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         } catch (error) {
             get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
         }
     },
     setProject: (id) => {
@@ -230,14 +228,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-
-                const errData = await res.json();
-                const errObj = JSON.parse(errData.errors.error[0])
-                console.log(`Ошибка запроса Поделиться проектом! Запрос к URL ${apiLink}`)
-                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-                console.error(errObj)
-
-                throw new Error(getErrorFromErrorObject(errObj))
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', 'Ошибка запроса Поделиться проектом! URL:', apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
             }
 
             const data = await res.json()
@@ -250,6 +244,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         } catch (error) {
             get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
         }
     },
     loadProject: async (link) => {
@@ -280,13 +275,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-                const errData = await res.json();
-                const errObj = JSON.parse(errData.errors.error[0])
-                console.log(`Ошибка запроса Загрузить проект по ссылке! Запрос к URL ${apiLink}`)
-                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-                console.error(errObj)
-
-                throw new Error(getErrorFromErrorObject(errObj))
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', 'Ошибка запроса Загрузить проект по ссылке! URL:', apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
             }
 
             const data = await res.json()
@@ -349,6 +341,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         } catch (error) {
             get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
         }
     },
     removeProject: async (id, name) => {
@@ -378,13 +371,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-                const errData = await res.json();
-                const errObj = JSON.parse(errData.errors.error[0]) as ErrorType
-                console.log(`Ошибка запроса Удалить проект! Запрос к URL ${apiLink}`)
-                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-                console.error('Объект ошибки', errObj)
-
-                throw new Error(getErrorFromErrorObject(errObj))
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', 'Ошибка запроса Удалить проект! URL:', apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
             }
 
             const data = await res.json()
@@ -404,6 +394,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         } catch (error ) {
             get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
         }
     },
     removeLocalProject: async (id, name) => {
@@ -446,13 +437,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-                const errData = await res.json();
-                const errObj = JSON.parse(errData.errors.error[0])
-                console.log(`Ошибка запроса Копировать проект! Запрос к URL ${apiLink}`)
-                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-                console.error(errObj)
-
-                throw new Error(getErrorFromErrorObject(errObj))
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', 'Ошибка запроса Копировать проект! URL:', apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
             }
 
             const data: Pick<TProject, 'id'> = await res.json()
@@ -490,6 +478,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         } catch (error) {
             get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
         }
 
     },
@@ -526,14 +515,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-
-                const errData = await res.json();
-                const errObj = JSON.parse(errData.errors.error[0])
-                console.log(`Ошибка запроса Добавить помещение! Запрос к URL ${apiLink}`)
-                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-                console.error(errObj)
-
-                throw new Error(getErrorFromErrorObject(errObj))
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', 'Ошибка запроса Добавить помещение! URL:', apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
             }
 
             const data = await res.json()
@@ -561,6 +546,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         } catch (error) {
             get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
         }
     },
     setRoom: (id) => {
@@ -659,13 +645,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-                const errData = await res.json();
-                const errObj = JSON.parse(errData.errors.error[0])
-                console.log(`Ошибка запроса ${from.type === 'copy' ? "копировать" : "перенести"} комплект! Запрос к URL ${apiLink}`)
-                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-                console.error(errObj)
-
-                throw new Error(getErrorFromErrorObject(errObj))
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', `Ошибка запроса ${from.type === 'copy' ? "копировать" : "перенести"} комплект! URL:`, apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
             }
 
             const data: { id: number } = await res.json()
@@ -813,6 +796,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         } catch (error) {
             get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
         }
     },
 
@@ -849,13 +833,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-                const errData = await res.json();
-                const errObj = JSON.parse(errData.errors.error[0])
-                console.log(`Ошибка запроса Добавить конфигурацию в проект! Запрос к URL ${apiLink}`)
-                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-                console.error(errObj)
-
-                throw new Error(getErrorFromErrorObject(errObj))
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', 'Ошибка запроса Добавить конфигурацию в проект! URL:', apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
             }
 
             const data = await res.json()
@@ -915,6 +896,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         } catch (error) {
             get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
         }
     },
 
@@ -1030,10 +1012,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         const body = {
             domain: 'fandeco',
-            'project_id': projectId,
-            'room_id': roomId,
-            'configuration_id': configurationId,
-            'products': products,
+            project_id: projectId,
+            room_id: roomId,
+            configuration_id: configurationId,
+            products: products,
         }
 
         try {
@@ -1044,13 +1026,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-                const errData = await res.json();
-                const errObj = JSON.parse(errData.errors.error[0])
-                console.log(`Ошибка запроса Обновить количество Конфигураций! Запрос к URL ${apiLink}`)
-                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-                console.error(errObj)
-
-                throw new Error(getErrorFromErrorObject(errObj))
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', 'Ошибка запроса Обновить количество Конфигураций! URL:', apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
             }
 
             const data: { success: boolean } = await res.json()
@@ -1068,6 +1047,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
             // В случае ошибки, сбрасываем счетчик в изначальное значение
             get().resetConfigurationCountToStart(projectId, roomId, configurationId)
+
+            throw error
         }
     },
 
@@ -1181,21 +1162,19 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-                const errData = await res.json();
-                const errObj = JSON.parse(errData.errors.error[0])
-                console.log(`Ошибка запроса Удалить Конфигурацию! Запрос к URL ${apiLink}, ИД проекта: ${projectId}, ИД комнаты: ${roomId}, ИД конфигурации: ${configurationId}`)
-                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-                console.error(errObj)
-
-                throw new Error(getErrorFromErrorObject(errObj))
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', `Ошибка запроса Удалить Конфигурацию! ИД проекта: ${projectId}, ИД комнаты: ${roomId}, ИД конфигурации: ${configurationId}, URL:`, apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
             }
 
             const data = await res.json()
             if (data.success) setTimeout(removeConfiguration, 500)
-            else throw new Error(`Ошибка запроса Удалить Конфигурацию! Запрос к URL ${apiLink}, ИД проекта: ${projectId}, ИД комнаты: ${roomId}, ИД конфигурации: ${configurationId}`)
+            else throw new Error(`Ошибка запроса Удалить Конфигурацию! ИД проекта: ${projectId}, ИД комнаты: ${roomId}, ИД конфигурации: ${configurationId}, URL: ${apiLink}`)
 
         } catch (error) {
             get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
         }
     },
     // #endregion
@@ -1278,13 +1257,10 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             })
 
             if (!res.ok) {
-                const errData = await res.json();
-                const errObj = JSON.parse(errData.errors.error[0])
-                console.log(`Ошибка запроса Сохранить измененный проект! Запрос к URL ${apiLink}`)
-                console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-                console.error(errObj)
-
-                throw new Error(getErrorFromErrorObject(errObj))
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', 'Ошибка запроса Сохранить измененный проект! URL:', apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
             }
 
             const data: { success: boolean } = await res.json()
@@ -1337,6 +1313,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         } catch (error) {
             get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
         }
     },
     // #endregion

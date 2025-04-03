@@ -21,7 +21,11 @@ const copySingleProject: TFuncCopyItem = async (
     modalMessageSet
 ) => {
     const headers: HeadersInit = { ...defaultFetchHeaders, Token: userToken }
-    const body = { domain: 'fandeco', project_id: project.id }
+
+    const body = {
+        domain: 'fandeco',
+        project_id: project.id
+    }
 
     try {
         const res = await fetch(apiLink, {
@@ -32,12 +36,9 @@ const copySingleProject: TFuncCopyItem = async (
 
         if (!res.ok) {
             const errData = await res.json()
-            const errObj = JSON.parse(errData.errors.error[0])
-            console.log(`Ошибка запроса Копировать локальные проект в аккаунт! Запрос к URL ${apiLink}. Ошибка на проекте с ИД ${project.id}`)
-            console.log('\x1b[31m%s\x1b[0m', 'Error Object:')
-            console.error('Объект ошибки', errObj)
-
-            throw new Error(getErrorFromErrorObject(errObj))
+            console.log('\x1b[31m%s\x1b[0m', `Ошибка запроса Копировать локальные проект в аккаунт! Запрос к URL ${apiLink}. Ошибка на проекте с ИД ${project.id}`)
+            console.error(errData)
+            throw new Error(getErrorFromErrorObject(errData.errors[0]))
         }
 
         const data: Pick<TProject, 'id'> = await res.json()
@@ -56,7 +57,7 @@ const copySingleProject: TFuncCopyItem = async (
 
     } catch (error) {
         modalMessageSet(true, 'Ошибка при копировании проекта!', (error as Error).message)
-        throw error // Пробрасываем ошибку дальше
+        throw error
     }
 }
 

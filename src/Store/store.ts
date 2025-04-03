@@ -4,7 +4,7 @@ import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } fr
 import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette, TProjectList, TRooms, TNumberOfPosts } from '../types'
 import { InitDataContract, zodErrorOptions } from '../zod'
 import { generateErrorMessage } from 'zod-error'
-import { defaultFetchHeaders, copyLocalProjectToAccount, getParameterByNameFromUrlLink, normalizeDeviceList } from '../Helpers'
+import { defaultFetchHeaders, copyLocalProjectToAccount, getParameterByNameFromUrlLink, normalizeDeviceList, getErrorFromErrorObject } from '../Helpers'
 
 const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSketchStore & TAppStore & TStore>()(
     devtools(
@@ -42,8 +42,10 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         })
 
                         if (!res.ok) {
-                            get().modalMessageSet(true, 'Ошибка запроса загрузки данных конфигуратора!')
-                            throw new Error(`Ошибка fetch запроса Получить инит данные! Запрос к URL ${apiLink}`)
+                            const errData = await res.json()
+                            console.log('\x1b[31m%s\x1b[0m', 'Ошибка fetch запроса Получить инит данные! URL:', apiLink)
+                            console.error(errData)
+                            throw new Error(getErrorFromErrorObject(errData.errors[0]))
                         }
 
                         const data = await res.json()
@@ -207,7 +209,19 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             filtersDevices: {
                                 ...get().filtersDevices,
                                 functions: filterFunctions
-                            }
+                            },
+
+                            // Скрываем все модальные окна на случай перезагрузки
+                            // страницы (пользователь не нажал закрывать)
+                            modalSelectVisible: false,
+                            modalWarningVisible: false,
+                            modalMessageVisible: false,
+                            modalAddConfigurationVisible: false,
+                            modalSaveConfigurationVisible: false,
+                            modalCopyConfigurationVisible: false,
+                            modalShareVisible: false,
+                            modalLoadProjectVisible: false,
+                            modalResetSketchVisible: false,
                         })
 
 
@@ -283,8 +297,8 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         }
 
                     } catch (error: Error | unknown) {
-                        console.error(error)
-                        set({ loading: false })
+                        get().modalMessageSet(true, 'Ошибка запроса загрузки данных конфигуратора!', (error as Error).message)
+                        throw error
                     }
                 },
 

@@ -7,5 +7,5 @@ ReactDOM.createRoot(document.getElementById('seApp')!).render(
 		<ErrorBoundary>
 			<App />
 		</ErrorBoundary>
-	</React.StrictMode>,
+	</React.StrictMode>
 )
