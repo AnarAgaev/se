@@ -172,7 +172,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
                         console.log('projectsHydrated', projectsHydrated)
 
-                        // Исправляем массив устройств на всех проектов и удаляем свойство rank
+                        // Исправляем массив устройств для всех проектов и удаляем свойство rank
                         projectsHydrated.forEach(project => {
                             project.rooms?.forEach(room => {
                                 room.configurations.forEach(configuration => {
