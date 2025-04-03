@@ -26,7 +26,7 @@ export const Element = z.object({
     active: z.boolean().optional(),
     available: z.boolean().optional(),
     price: z.union([z.string(), z.number()]),
-    start_price: z.union([z.string(), z.number()]).optional(),
+    start_price: z.union([z.string(), z.number(), z.null()]).optional(),
     image: z.string(),
     conf_color: z.string(),
     preview: z.string(),
@@ -34,7 +34,8 @@ export const Element = z.object({
     collection: z.string(),
     article: z.string(),
     show_article: z.string(),
-    armature_material: z.array(z.string()).optional()
+    armature_material: z.array(z.string()).optional(),
+    rank: z.union([z.string(), z.null()]).optional()
 })
 export type TElement = z.infer<typeof Element>
 

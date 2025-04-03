@@ -4,7 +4,7 @@ import { appSlice, bordersSlice, devicesSlice, backgroundSlice, sketchSlice } fr
 import { TAppStore, TDevicesStore, TBordersStore, TBackgroundsStore, TSketchStore, TStore, TBorder, TDevice, TColorPalette, TProjectList, TRooms, TNumberOfPosts } from '../types'
 import { InitDataContract, zodErrorOptions } from '../zod'
 import { generateErrorMessage } from 'zod-error'
-import { defaultFetchHeaders, copyLocalProjectToAccount, getParameterByNameFromUrlLink } from '../Helpers'
+import { defaultFetchHeaders, copyLocalProjectToAccount, getParameterByNameFromUrlLink, normalizeDeviceList } from '../Helpers'
 
 const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSketchStore & TAppStore & TStore>()(
     devtools(
@@ -48,7 +48,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
                         const data = await res.json()
 
-    // console.log('Init data', data)
+    console.log('Init data', data)
 
 
     // const bordersSet = new Set()
@@ -120,8 +120,17 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                         projectsShared = projectsShared.filter(p => {
                             if (!token) return p
 
-                            // исключаем саморасшаренные проекты. Когда пользователь будучи залогиненным в одном проекта,
+                            // исключаем саморасшаренные проекты. Когда пользователь будучи залогиненным в одном проекте,
                             // загрузил себе Шаре проект из своего другого аккаунта, а потом перелогинился во второй.
+
+                            /**
+                             * Пользовательский сценарий: пользователь
+                             * 1. залогинился на работе
+                             * 2. создал Проект
+                             * 3. отправил себе ссылку на проект
+                             * 4. пришел домой и загрузил проект по ссылке
+                             * 5. через какое-то время залогинился дома
+                             */
                             return p.token !== token
                         })
 
@@ -151,15 +160,25 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                             ...projectsShared // чужие проекты (добавили по ссылке поделиться, но не скопировали себе в аккаунт)
                         ]
 
-                        // console.log('projectsHydrated', projectsHydrated)
-
                         // по всем проектам сбрасываем выбранный, чтобы очистить Состав проекта при смене пользователя
-
                         projectsHydrated = projectsHydrated.map(p => {
                             const temp = p
                             temp.selected = false
                             temp.edit = false
                             return temp
+                        })
+
+                        console.log('projectsHydrated', projectsHydrated)
+
+                        // Исправляем массив устройств на всех проектов и удаляем свойство rank
+                        projectsHydrated.forEach(project => {
+                            project.rooms?.forEach(room => {
+                                room.configurations.forEach(configuration => {
+                                    if (configuration.devices) {
+                                        configuration.devices = normalizeDeviceList(configuration.devices as Array<TDevice>)
+                                    }
+                                })
+                            })
                         })
 
                         set({

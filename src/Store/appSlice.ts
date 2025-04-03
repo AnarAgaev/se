@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand'
-import { collapseDevices, defaultFetchHeaders, getErrorFromErrorObject, ErrorType } from '../Helpers'
+import { combineBorderAndDevicesWithRank, collapseDevices, defaultFetchHeaders, getErrorFromErrorObject, ErrorType } from '../Helpers'
 import { TAppStore, TConfiguration, TBorder, TDevice, TProject } from '../types'
 import { Project, zodErrorOptions } from '../zod'
 import { generateErrorMessage } from 'zod-error'
@@ -673,7 +673,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             if (data.id) {
 
                 // 1. Получаем копию комплекта/конфигурации
-                // 2. Очищаем копию от не валидных рамки и устройств
+                // 2. Очищаем копию от не валидных рамки и устройств. Невалидные рамки заменяем на null
                 // 3. Создаем новый комплект/конфигурацию
                 // 4. Если тип запроса Перенести (replace), то удаляем референс
 
@@ -696,21 +696,28 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                                 ...configuration,
                                 id: newConfigurationId,
                                 edit: false
-                            };
+                            }
                         }
                     }
                 }
 
-                // 2. Очищаем копию конфигурации от не валидных рамки и устройств
+                // 2. Очищаем копию конфигурации от не валидных рамки и устройств Заменяя их на null (null = дырка в многопостовой рамке)
                 if (!(configurationCopy.border?.active && configurationCopy.border.available)) {
                     delete configurationCopy.border
                 }
 
-                const filteredDevices = configurationCopy.devices?.filter(d => d?.active && d.available)
+                if (configurationCopy.devices) {
+                    for (let i = 0; i < configurationCopy.devices.length; i++) {
+                        const device = configurationCopy.devices[i];
+                        if (device && (device.active !== true || device.available !== true)) {
+                            configurationCopy.devices[i] = null
+                        }
+                    }
+                }
 
-                if (filteredDevices?.length) {
-                    configurationCopy.devices = filteredDevices
-                } else {
+                // Если в многопостовой рамке не занято ни одно место, Девайсы вообще не нужны.
+                // Т.е. комплект будет состоять только из рамки.
+                if (configurationCopy.devices?.every(d => d === null)) {
                     delete configurationCopy.devices
                 }
 
@@ -824,18 +831,6 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         const headers: HeadersInit = defaultFetchHeaders
         if (token) headers['Token'] = token
 
-        // #region Add products
-        const products: {
-            [key: string]: number
-        } = {}
-
-        if (border) products[`${border.id}`] = 1
-
-        const collapsedDevices = collapseDevices(devices)
-        collapsedDevices.forEach(device =>
-            products[`${device.id}`] = device.selectedCount)
-        // #endregion
-
         const body = {
             domain: 'fandeco',
             project_id: projectId,
@@ -843,7 +838,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             direction: direction === 'horizontal' ? 'universal' : direction,
             file_id: backgroundId,
             count: count,
-            products: products
+            products: combineBorderAndDevicesWithRank({ border, devices })
         }
 
         try {
@@ -1265,26 +1260,14 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         const headers: HeadersInit = defaultFetchHeaders
         if (token) headers['Token'] = token
 
-        // #region Add products
-        const products: {
-            [key: string]: number
-        } = {}
-
-        if (selectedBorder) products[`${selectedBorder.id}`] = countOfSets
-
-        const collapsedDevices = collapseDevices(devices)
-        collapsedDevices.forEach(device =>
-            products[`${device.id}`] = device.selectedCount * countOfSets)
-        // #endregion
-
         const body = {
             domain: 'fandeco',
             project_id: projectId,
             room_id: roomId,
             configuration_id: configurationId,
             direction: direction === 'horizontal' ? 'universal' : direction,
-            products: products,
             file_id: backgroundId,
+            products: combineBorderAndDevicesWithRank({ border: selectedBorder, devices }),
         }
 
         try {
