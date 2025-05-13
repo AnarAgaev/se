@@ -50,7 +50,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
 
                         const data = await res.json()
 
-    console.log('Init data', data)
+    console.log('The server responded with Init data', data)
 
 
     // const bordersSet = new Set()
