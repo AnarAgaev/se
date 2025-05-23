@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand'
-import { combineBorderAndDevicesWithRank, collapseDevices, defaultFetchHeaders, getErrorFromErrorObject } from '../Helpers'
+import { combineBorderAndDevicesWithRank, defaultFetchHeaders, getErrorFromErrorObject } from '../Helpers'
 import { TAppStore, TConfiguration, TBorder, TDevice, TProject } from '../types'
 import { Project, zodErrorOptions } from '../zod'
 import { generateErrorMessage } from 'zod-error'
@@ -962,8 +962,8 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
     updateRemoteConfigurationCount: async (projectId, roomId, configurationId, newCount) => {
 
-        let border: TBorder | undefined
-        let devices: (TDevice | null)[] | undefined
+        let border: TBorder | null = null
+        let devices: (TDevice | null)[] | undefined = []
 
         const project = get().projects.find(p => p.id === projectId)
 
@@ -996,26 +996,13 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         const headers: HeadersInit = defaultFetchHeaders
         if (token) headers['Token'] = token
 
-        // #region Add products
-        const products: {
-            [key: string]: number
-        } = {}
-
-        if (border) products[`${border.id}`] = newCount
-
-        if (devices) {
-            const collapsedDevices = collapseDevices(devices)
-            collapsedDevices.forEach(device =>
-                products[`${device.id}`] = device.selectedCount * newCount)
-        }
-        // #endregion
-
         const body = {
             domain: 'fandeco',
             project_id: projectId,
             room_id: roomId,
             configuration_id: configurationId,
-            products: products,
+            products: combineBorderAndDevicesWithRank({ border, devices }),
+			count: newCount
         }
 
         try {
@@ -1247,6 +1234,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             direction: direction === 'horizontal' ? 'universal' : direction,
             file_id: backgroundId,
             products: combineBorderAndDevicesWithRank({ border: selectedBorder, devices }),
+			count: countOfSets
         }
 
         try {

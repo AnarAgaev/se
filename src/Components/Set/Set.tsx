@@ -76,9 +76,12 @@ const getSetList = (
 
     return devices.map((d, i) => {
 
-        const finalPrice = typeof d.price === 'string'
-            ? parseFloat(d.price) * d.selectedCount * countOfSets
-            : d.price * d.selectedCount * countOfSets
+        const finalPrice = Math.round(
+			(typeof d.price === 'string'
+				? parseFloat(d.price) * d.selectedCount * countOfSets
+				: d.price * d.selectedCount * countOfSets
+			) * 100
+		) / 100
 
         const addToCartHandler = () => {
             addProductsToCart([{

@@ -47,7 +47,9 @@ const Price = () => {
                 }
             }
 
-            return (sum * count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+            return (Math.round(sum * count * 100) / 100)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         },
         [ border, devices, count ])
 
