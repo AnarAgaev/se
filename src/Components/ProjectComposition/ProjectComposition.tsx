@@ -2,7 +2,7 @@ import { formatNumber, getPostWordDeclension, collapseDevices, getTotalPriceConf
 import { TAppStore, TProject, TConfigurationList, TDeviceList, TBorder,
     TNumberOfPosts, TGetCountOfPosts, TSetSingleFilter, TSetEditSketch,
     TDevice, TBackgroundsStore} from '../../types'
-import { PriceChangeTooltip, NotAvailableTooltip } from '../../Components'
+import { PriceChangeTooltip, NotAvailableTooltip, EditNameButton } from '../../Components'
 import useStore from '../../Store'
 import style from './ProjectComposition.module.sass'
 
@@ -358,6 +358,10 @@ const getRoomList = (
             <div key={`${r.id}-${idx}`} className={room}>
                 <h3 className={title}>
                     <span id={idx === 0 ? 'step_18' : undefined}>{r.name}</span>
+                    <EditNameButton
+                        cbf={() => alert('EditNameButton')}
+                        size='medium'
+                        title='Переименовать помещение' />
                 </h3>
                 <ul id={idx === 0 && idx === 0 ? 'step_21' : undefined} className={sets}>
                     { configurations }

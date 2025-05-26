@@ -136,7 +136,7 @@
 	"projects": [
 		{
 			"id": 35,
-			"name": "Задачи 44054, 44055, 46087",
+			"name": "Тестовый проект",
 			"token": "8357bd0b49ec09061f3d273a29d1340f",
 			"selected": false,
 			"edit": false,
@@ -233,27 +233,32 @@
 		{
 			"id": 1,
 			"name": "Гостиная",
-			"selected": false
+			"selected": false,
+			"default": true
 		},
 		{
 			"id": 3,
 			"name": "Детская",
-			"selected": false
+			"selected": false,
+			"default": true
 		},
 		{
 			"id": 4,
 			"name": "Кухня",
-			"selected": false
+			"selected": false,
+			"default": true
 		},
 		{
 			"id": 2,
 			"name": "Спальня",
-			"selected": false
+			"selected": false,
+			"default": true
 		},
 		{
 			"id": 5,
 			"name": "Столовая",
-			"selected": false
+			"selected": false,
+			"default": true
 		}
 	],
 	"lang": {

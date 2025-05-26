@@ -1,4 +1,4 @@
-import { ProjectComposition } from '../../Components'
+import { ProjectComposition, EditNameButton } from '../../Components'
 import { TAppStore, TProject, TAddProductsToCart, TDevice } from '../../types'
 import { getFileName, formatNumber, getTotalProjectCost,
         collapseDevices, collapseAddProjectToCartRequestArr } from '../../Helpers'
@@ -177,6 +177,10 @@ const ProjectWorkspace = () => {
         : <div className={wrap}>
             <h2 className={caption}>
                 <span id='step_17'>{project.name}</span>
+				<EditNameButton
+                    cbf={() => alert('EditNameButton')}
+                    size='medium'
+                    title='Переименовать проект' />
             </h2>
 
             <div className={body}>

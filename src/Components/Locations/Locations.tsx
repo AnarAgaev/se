@@ -24,7 +24,9 @@ const getProjectsOptionsList = (
                     key={`${key}-${project.id}`}
                     caption={project.name}
                     isChecked={project.selected}
-                    eventHandler={() => setProject(project.id)} />
+                    eventHandler={() => setProject(project.id)}
+                    locationType='project'
+                />
             )
         }
     })
@@ -40,13 +42,20 @@ const getRoomsOptionsList = (
 
     const elementsList: JSX.Element[] = []
 
+    roomsList.sort((a, b) => {
+        return (a.default === b.default) ? 0 : a.default ? 1 : -1;
+    })
+
     roomsList.forEach(room => {
         elementsList.push(
             <OptionLocation
                 key={`${key}-${room.id}`}
                 caption={room.name}
                 isChecked={room.selected}
-                eventHandler={() => setRoom(room.id)} />
+                eventHandler={() => setRoom(room.id)}
+                editable={room.default}
+                locationType='room'
+			/>
         )
     })
 

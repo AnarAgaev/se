@@ -21,6 +21,7 @@ const useStore = create<TDevicesStore & TBordersStore & TBackgroundsStore & TSke
                     try {
 
                         const apiLink = window.initSourceDataLink
+                        // const apiLink = 'http://localhost:5173/mocks/api.json'
                         const token = window.userToken
 
                         if (!apiLink) {

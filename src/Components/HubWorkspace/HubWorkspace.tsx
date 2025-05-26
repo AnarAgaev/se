@@ -1,5 +1,5 @@
 import { useId, useMemo } from 'react'
-import { InputAdd } from '../../Components'
+import { InputAdd, EditNameButton } from '../../Components'
 import { TProjectList, TAppStore } from '../../types'
 import { getFileName } from '../../Helpers'
 import useStore from '../../Store'
@@ -27,6 +27,10 @@ const getProjectsElms = (
                 <span className={name}>
                     {p.name}
                     <i>#{p.id}</i>
+					<EditNameButton
+						cbf={() => alert('EditNameButton')}
+						size='medium'
+						title='Переименовать проект' />
                 </span>
                 <ul className={actions}>
                     <li id={`${idx === 0 ? 'step_10' : undefined}`}>

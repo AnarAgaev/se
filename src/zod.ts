@@ -151,7 +151,8 @@ export type TProjectList = z.infer<typeof ProjectList>
 export const Room = z.object({
     id: z.union([z.number(), z.string()]),
     selected: z.boolean(),
-    name: z.string()
+    name: z.string(),
+	default: z.boolean()
 })
 export type TRoom = z.infer<typeof Room>
 

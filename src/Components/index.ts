@@ -47,6 +47,7 @@ import ProjectComposition from './ProjectComposition/ProjectComposition'
 import Warning from './Warning/Warning'
 import PriceChangeTooltip from './PriceChangeTooltip/PriceChangeTooltip'
 import NotAvailableTooltip from './NotAvailableTooltip/NotAvailableTooltip'
+import EditNameButton from './EditNameButton/EditNameButton'
 
 export {
     App,
@@ -97,5 +98,6 @@ export {
     ProjectComposition,
     Warning,
     PriceChangeTooltip,
-    NotAvailableTooltip
+    NotAvailableTooltip,
+	EditNameButton
 }
