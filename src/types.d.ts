@@ -508,6 +508,18 @@ export type TAppStore = {
     // #endregion
 
 
+    // #region Modal Rename Project or Room
+    modalRenameProjectRoomType: TProjectRoomType,
+    modalRenameProjectRoomVisible: boolean,
+    modalRenameProjectRoomCurrentName: string,
+    modalRenameProjectRoomSet: (
+        type: TProjectRoomType,
+        visible: boolean,
+        currentName: string
+    ) => void,
+    // #endregion
+
+
     // #region Modal Reset Sketch
     modalResetSketchVisible: boolean
     modalResetSketchCaption: string
@@ -547,7 +559,7 @@ export type TAddProductsToCart = ( payload:
 ) => void
 // #endregion
 
-
+export type TProjectRoomType = 'project' | 'room' | null
 
 export {
     TBackground, TBackgroundList,

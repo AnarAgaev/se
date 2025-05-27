@@ -18,6 +18,7 @@ const getProjectsElms = (
     setDownloadProject:  TAppStore['setDownloadProject'],
     removeLocalProject: TAppStore['removeLocalProject'],
     copyProject: TAppStore['copyProject'],
+	modalRenameProjectRoomSet: TAppStore['modalRenameProjectRoomSet']
 ): JSX.Element[] => {
 
     return projects.map((p, idx) => {
@@ -28,7 +29,11 @@ const getProjectsElms = (
                     {p.name}
                     <i>#{p.id}</i>
 					<EditNameButton
-						cbf={() => alert('EditNameButton')}
+						cbf={() => modalRenameProjectRoomSet(
+							'project',
+							true,
+							p.name
+						)}
 						size='medium'
 						title='Переименовать проект' />
                 </span>
@@ -109,6 +114,7 @@ const HubWorkspace = () => {
         setDownloadProject,
         removeLocalProject,
         copyProject,
+		modalRenameProjectRoomSet
     ] = useStore(state => [
         state.projects,
         state.addProject,
@@ -119,12 +125,13 @@ const HubWorkspace = () => {
         state.setDownloadProject,
         state.removeLocalProject,
         state.copyProject,
+		state.modalRenameProjectRoomSet
     ])
     // #endregion
 
     const projectList = useMemo(
-        () => getProjectsElms(id, projects, editProject, shareProject, removeProject, setDownloadProject, removeLocalProject, copyProject),
-        [id, projects, editProject, shareProject, removeProject, setDownloadProject, removeLocalProject, copyProject]
+        () => getProjectsElms(id, projects, editProject, shareProject, removeProject, setDownloadProject, removeLocalProject, copyProject, modalRenameProjectRoomSet),
+        [id, projects, editProject, shareProject, removeProject, setDownloadProject, removeLocalProject, copyProject, modalRenameProjectRoomSet]
     )
 
     return (

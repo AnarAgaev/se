@@ -35,6 +35,7 @@ import ModalMessage from './ModalMessage/ModalMessage'
 import ModalShare from './ModalShare/ModalShare'
 import ModalLoadProject from './ModalLoadProject/ModalLoadProject'
 import ModalCopyConfiguration from './ModalCopyConfiguration/ModalCopyConfiguration'
+import ModalRenameProjectRoom from './ModalRenameProjectRoom/ModalRenameProjectRoom'
 import ModalAddConfiguration from './ModalAddConfiguration/ModalAddConfiguration'
 import ModalSaveConfiguration from './ModalSaveConfiguration/ModalSaveConfiguration'
 import ModalResetSketch from './ModalResetSketch/ModalResetSketch'
@@ -87,6 +88,7 @@ export {
     ModalShare,
     ModalLoadProject,
     ModalCopyConfiguration,
+	ModalRenameProjectRoom,
     ModalAddConfiguration,
     ModalSaveConfiguration,
     ModalResetSketch,

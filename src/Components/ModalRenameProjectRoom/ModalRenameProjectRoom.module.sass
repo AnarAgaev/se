@@ -1,0 +1,47 @@
+@import '../../Sass/_variables'
+
+.controllers
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    gap: 20px
+
+    input
+        display: flex
+        align-items: center
+        width: 100%
+        height: 40px
+        padding: 0 10px
+
+        border: 1px solid var(--color-border-prime)
+        background: var(--color-back-init)
+
+        color: var(--font-prime)
+        font-size: 14px
+        font-weight: 400
+        line-height: 120% /* 19.2px */
+
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+        box-sizing: border-box
+
+
+        @media (min-width: $md)
+            font-size: 16px
+
+
+.error
+    display: block
+    position: relative
+    margin: -10px 0 0
+    padding: 0
+    color: var(--color-error)
+    font-size: 0.9em
+
+
+.disabled
+    cursor: no-drop !important
+    background: var(--color-button-disabled) !important
+    border-color: var(--color-button-disabled) !important
+    color: var(--color-button-font-disabled) !important

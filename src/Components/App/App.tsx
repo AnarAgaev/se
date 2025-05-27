@@ -12,7 +12,7 @@ import 'intro.js/introjs.css'
 import { Loading, Loader, Tabs, Factory, Viewport, ModalResetBrandOrCollection,
 	ModalWarning, ModalMessage, ModalShare, ModalLoadProject, ModalCopyConfiguration,
 	ModalAddConfiguration, ModalSaveConfiguration, ModalResetSketch, ModalSavePDF,
-	Warning } from '../../Components'
+	ModalRenameProjectRoom, Warning } from '../../Components'
 
 const PdfDocument = lazy(() => import('../PdfDocument/PdfDocument'))
 
@@ -32,6 +32,7 @@ const App = () => {
 		modalShareVisible,
 		modalLoadProjectVisible,
 		modalCopyConfigurationVisible,
+		modalRenameProjectRoomVisible,
 		modalAddConfigurationVisible,
 		modalSaveConfigurationVisible,
 		modalResetSketchVisible,
@@ -58,6 +59,7 @@ const App = () => {
 		state.modalShareVisible,
 		state.modalLoadProjectVisible,
 		state.modalCopyConfigurationVisible,
+		state.modalRenameProjectRoomVisible,
 		state.modalAddConfigurationVisible,
 		state.modalSaveConfigurationVisible,
 		state.modalResetSketchVisible,
@@ -173,6 +175,7 @@ const App = () => {
 				<ModalSaveConfiguration visible={modalSaveConfigurationVisible} />
 				<ModalResetSketch visible={modalResetSketchVisible} />
 				<ModalSavePDF visible={Boolean(downloadProjectAsPdf) && Boolean(downloadProjectBlobUrl)} />
+				<ModalRenameProjectRoom visible={modalRenameProjectRoomVisible} />
 
 				<Loading />
 

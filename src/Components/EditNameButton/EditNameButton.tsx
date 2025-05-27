@@ -21,7 +21,11 @@ const EditNameButton = ({ size, cbf, title }: Props) => {
             className={`button button_dark ${button} ${sizes[size]}`}
             type="button"
             title={title}
-            onClick={cbf}
+            onClick={e => {
+				e.preventDefault()
+				e.stopPropagation()
+				cbf()
+			}}
         >
             <i className="icon icon_edit"></i>
         </button>

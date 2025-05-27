@@ -130,7 +130,8 @@ const ProjectWorkspace = () => {
         setDownloadProject,
         addProductsToCart,
         copyProject,
-        removeLocalProject
+        removeLocalProject,
+        modalRenameProjectRoomSet
     ] = useStore(state => [
         state.projects,
         state.setActiveViewportTab,
@@ -140,7 +141,8 @@ const ProjectWorkspace = () => {
         state.setDownloadProject,
         state.addProductsToCart,
         state.copyProject,
-        state.removeLocalProject
+        state.removeLocalProject,
+        state.modalRenameProjectRoomSet
     ])
     // #endregion
 
@@ -178,7 +180,11 @@ const ProjectWorkspace = () => {
             <h2 className={caption}>
                 <span id='step_17'>{project.name}</span>
 				<EditNameButton
-                    cbf={() => alert('EditNameButton')}
+                    cbf={() => modalRenameProjectRoomSet(
+                        'project',
+                        true,
+                        project.name
+                    )}
                     size='medium'
                     title='Переименовать проект' />
             </h2>

@@ -535,6 +535,7 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
                 id: addedRoomId,
                 name: room,
                 selected: false,
+				default: false
             })
 
             setTimeout(() => set({
@@ -1434,6 +1435,20 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
             modalCopyConfigurationCaption: caption
         })
     },
+    // #endregion
+
+
+    // #region ModalCopyConfiguration
+    modalRenameProjectRoomType: null,
+    modalRenameProjectRoomVisible: false,
+    modalRenameProjectRoomCurrentName: '',
+    modalRenameProjectRoomSet: (type, visible, currentName) => {
+        set({
+			modalRenameProjectRoomType: type,
+			modalRenameProjectRoomVisible: visible,
+			modalRenameProjectRoomCurrentName: currentName,
+        })
+	},
     // #endregion
 
 

@@ -324,7 +324,8 @@ const getRoomList = (
     setSingleBordersFilter: TSetSingleFilter,
     setSingleDevicesFilter: TSetSingleFilter,
     setEditSketch: TSetEditSketch,
-    setEditBackground: TBackgroundsStore['setEditBackground']
+    setEditBackground: TBackgroundsStore['setEditBackground'],
+    modalRenameProjectRoomSet: TAppStore['modalRenameProjectRoomSet']
 ): JSX.Element[] | null => {
 
     const roomList: JSX.Element[] = []
@@ -359,7 +360,11 @@ const getRoomList = (
                 <h3 className={title}>
                     <span id={idx === 0 ? 'step_18' : undefined}>{r.name}</span>
                     <EditNameButton
-                        cbf={() => alert('EditNameButton')}
+                        cbf={() => modalRenameProjectRoomSet(
+                            'room',
+                            true,
+                            r.name
+                        )}
                         size='medium'
                         title='Переименовать помещение' />
                 </h3>
@@ -386,7 +391,8 @@ const ProjectComposition = ({ project }: { project: TProject }) => {
         setSingleBordersFilter,
         setSingleDevicesFilter,
         setEditSketch,
-        setEditBackground
+        setEditBackground,
+        modalRenameProjectRoomSet
     ] = useStore(state => [
         state.setConfigurationCount,
         state.removeConfiguration,
@@ -397,14 +403,15 @@ const ProjectComposition = ({ project }: { project: TProject }) => {
         state.setSingleBordersFilter,
         state.setSingleDevicesFilter,
         state.setEditSketch,
-        state.setEditBackground
+        state.setEditBackground,
+        state.modalRenameProjectRoomSet
     ])
     // #endregion
 
     const roomList = getRoomList(project, setConfigurationCount, removeConfiguration,
             modalCopyConfigurationSet, setCurrentConfiguration, setEditConfiguration,
             getCountOfPosts, setSingleBordersFilter, setSingleDevicesFilter,
-            setEditSketch, setEditBackground)
+            setEditSketch, setEditBackground, modalRenameProjectRoomSet)
 
     if (project && !project.rooms?.length) return (
         <div className={composition}>

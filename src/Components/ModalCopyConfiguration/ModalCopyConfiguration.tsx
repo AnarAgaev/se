@@ -32,6 +32,8 @@ const getProjectsOptionsList = (
                     caption={project.name}
                     isChecked={project.id === selectedProject.id}
                     eventHandler={() => setProject({ id: project.id, name: project.name, error: false })}
+					editable={true}
+					locationType='project'
                 />
             )
         }
@@ -51,6 +53,8 @@ const getOptionsList = (
         caption={room.name}
         isChecked={room.id === selectedRoom.id}
         eventHandler={() => setRoom({ id: room.id, name: room.name, error: false })}
+		editable={true}
+		locationType='room'
     />
 ))
 
