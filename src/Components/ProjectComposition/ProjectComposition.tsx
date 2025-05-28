@@ -1,7 +1,8 @@
-import { formatNumber, getPostWordDeclension, collapseDevices, getTotalPriceConfiguration } from '../../Helpers'
+import { formatNumber, getPostWordDeclension, collapseDevices,
+	getTotalPriceConfiguration, getRoomStatusById } from '../../Helpers'
 import { TAppStore, TProject, TConfigurationList, TDeviceList, TBorder,
     TNumberOfPosts, TGetCountOfPosts, TSetSingleFilter, TSetEditSketch,
-    TDevice, TBackgroundsStore} from '../../types'
+    TDevice, TBackgroundsStore, TRoomList} from '../../types'
 import { PriceChangeTooltip, NotAvailableTooltip, EditNameButton } from '../../Components'
 import useStore from '../../Store'
 import style from './ProjectComposition.module.sass'
@@ -325,7 +326,8 @@ const getRoomList = (
     setSingleDevicesFilter: TSetSingleFilter,
     setEditSketch: TSetEditSketch,
     setEditBackground: TBackgroundsStore['setEditBackground'],
-    modalRenameProjectRoomSet: TAppStore['modalRenameProjectRoomSet']
+    modalRenameProjectRoomSet: TAppStore['modalRenameProjectRoomSet'],
+	appRooms: TRoomList
 ): JSX.Element[] | null => {
 
     const roomList: JSX.Element[] = []
@@ -355,18 +357,24 @@ const getRoomList = (
             idx
         )
 
+		const roomStatus = getRoomStatusById({ rooms: appRooms, roomId: r.id })
+
         roomList.push(
             <div key={`${r.id}-${idx}`} className={room}>
                 <h3 className={title}>
                     <span id={idx === 0 ? 'step_18' : undefined}>{r.name}</span>
-                    <EditNameButton
-                        cbf={() => modalRenameProjectRoomSet(
-                            'room',
-                            true,
-                            r.name
-                        )}
-                        size='medium'
-                        title='Переименовать помещение' />
+					{ !roomStatus && // Show not only default status rooms as room status isn't true
+						<EditNameButton
+							cbf={() => modalRenameProjectRoomSet(
+								'room',
+								true,
+								r.name,
+								project.id,
+								r.id
+							)}
+							size='medium'
+							title='Переименовать помещение' />
+					}
                 </h3>
                 <ul id={idx === 0 && idx === 0 ? 'step_21' : undefined} className={sets}>
                     { configurations }
@@ -392,7 +400,8 @@ const ProjectComposition = ({ project }: { project: TProject }) => {
         setSingleDevicesFilter,
         setEditSketch,
         setEditBackground,
-        modalRenameProjectRoomSet
+        modalRenameProjectRoomSet,
+		appRooms
     ] = useStore(state => [
         state.setConfigurationCount,
         state.removeConfiguration,
@@ -404,14 +413,15 @@ const ProjectComposition = ({ project }: { project: TProject }) => {
         state.setSingleDevicesFilter,
         state.setEditSketch,
         state.setEditBackground,
-        state.modalRenameProjectRoomSet
+        state.modalRenameProjectRoomSet,
+		state.rooms
     ])
     // #endregion
 
     const roomList = getRoomList(project, setConfigurationCount, removeConfiguration,
             modalCopyConfigurationSet, setCurrentConfiguration, setEditConfiguration,
             getCountOfPosts, setSingleBordersFilter, setSingleDevicesFilter,
-            setEditSketch, setEditBackground, modalRenameProjectRoomSet)
+            setEditSketch, setEditBackground, modalRenameProjectRoomSet, appRooms)
 
     if (project && !project.rooms?.length) return (
         <div className={composition}>

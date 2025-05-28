@@ -32,7 +32,9 @@ const getProjectsElms = (
 						cbf={() => modalRenameProjectRoomSet(
 							'project',
 							true,
-							p.name
+							p.name,
+							p.id,
+							null
 						)}
 						size='medium'
 						title='Переименовать проект' />

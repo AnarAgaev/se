@@ -7,12 +7,14 @@ type TProps = {
     isChecked: boolean
     eventHandler: () => void
     locationType: 'project' | 'room'
-	editable?: boolean
+	editable?: boolean,
+	projectId: string | number | null,
+	roomId: string | number | null
 }
 
 const { option, text } = style
 
-const OptionLocation = ({ caption, isChecked, eventHandler, editable, locationType }: TProps) => {
+const OptionLocation = ({ caption, isChecked, eventHandler, editable, locationType, projectId, roomId }: TProps) => {
 
     // #region Variables
     const [
@@ -38,7 +40,9 @@ const OptionLocation = ({ caption, isChecked, eventHandler, editable, locationTy
                         cbf={() => modalRenameProjectRoomSet(
                             locationType,
                             true,
-                            caption
+                            caption,
+							projectId,
+							roomId
                         )}
                         size='small'
                         title={`Переименовать ${locationType === 'project' ? 'проект' : 'помещение'}`}

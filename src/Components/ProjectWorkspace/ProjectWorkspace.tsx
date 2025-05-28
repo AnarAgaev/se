@@ -183,7 +183,9 @@ const ProjectWorkspace = () => {
                     cbf={() => modalRenameProjectRoomSet(
                         'project',
                         true,
-                        project.name
+                        project.name,
+						project.id,
+						null
                     )}
                     size='medium'
                     title='Переименовать проект' />

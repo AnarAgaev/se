@@ -15,16 +15,24 @@ const ModalRenameProjectRoom = ({ visible }: { visible: boolean }) => {
 	const [
 		type,
 		currentName,
-		modalSet
+		modalSet,
+		projectId,
+		roomId,
+		updateProjectName,
+		updateRoomName
 	] = useStore((state) => [
 		state.modalRenameProjectRoomType,
 		state.modalRenameProjectRoomCurrentName,
-		state.modalRenameProjectRoomSet
+		state.modalRenameProjectRoomSet,
+		state.modalRenameProjectRoomProjectId,
+		state.modalRenameProjectRoomRoomId,
+		state.updateProjectName,
+		state.updateRoomName
 	])
 	// #endregion
 
 	const onClose = () => {
-        modalSet(null, false, '')
+        modalSet(null, false, '', null, null)
 		setNewName('')
         setError(false)
     }
@@ -47,11 +55,11 @@ const ModalRenameProjectRoom = ({ visible }: { visible: boolean }) => {
 
 		switch (type) {
 			case 'project':
-				console.log('Update project name')
+				projectId && updateProjectName(projectId, controller.value)
 				break;
 
 			case 'room':
-				console.log('Update room name')
+				roomId && updateRoomName(roomId, controller.value)
 				break;
 		}
 

@@ -482,6 +482,70 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
         }
 
     },
+	updateProjectName: async (id, newName) => {
+
+		const apiLink = window.updateProjectLink
+        const token = window.userToken
+
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Update Project window.updateProjectLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            project_id: id.toString(),
+			name: newName
+        }
+
+        try {
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
+
+            if (!res.ok) {
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', 'Ошибка запроса Обновить имя проекта! URL:', apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
+            }
+
+            const data = await res.json()
+
+            if (data.success) {
+
+				// Update project name
+				const newProjects = [...get().projects].map(project => {
+					if (project.id === id) {
+						return {
+							...project,
+							name: newName
+						}
+					}
+
+					return project
+				})
+
+                setTimeout(() => set({
+                    dataLoading: false,
+                    modalMessageVisible: true,
+                    modalMessageCaption: 'Имя проекта обновлено',
+                    projects: newProjects
+                }), 500)
+            }
+
+        } catch (error ) {
+            get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
+        }
+	},
     // #endregion
 
 
@@ -571,6 +635,89 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
 
         set({ rooms: newRooms })
     },
+	updateRoomName: async (id, newName) => {
+
+		const apiLink = window.updateRoomLink
+        const token = window.userToken
+
+        if (!apiLink) {
+            get().modalMessageSet(true, 'Ошибка запроса!')
+            throw new Error(`На странице не указана ссылка на API Update Room window.updateRoomLink`)
+        }
+
+        set({ dataLoading: true })
+
+        const headers: HeadersInit = defaultFetchHeaders
+        if (token) headers['Token'] = token
+
+        const body = {
+            domain: 'fandeco',
+            room_id: id.toString(),
+			name: newName
+        }
+
+        try {
+            const res = await fetch(apiLink, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            })
+
+            if (!res.ok) {
+                const errData = await res.json()
+                console.log('\x1b[31m%s\x1b[0m', 'Ошибка запроса Обновить имя помещения! URL:', apiLink)
+                console.error(errData)
+                throw new Error(getErrorFromErrorObject(errData.errors[0]))
+            }
+
+            const data = await res.json()
+
+            if (data.success) {
+
+				// Update room name at the app rooms
+				const newRooms = [...get().rooms].map(room => {
+					if (room.id === id) {
+						return {
+							...room,
+							name: newName
+						}
+					}
+
+					return room
+				})
+
+				// Update room name at the separated project room
+				const newProjects = [...get().projects].map(project => {
+					const rooms = project.rooms
+
+					if (!rooms) return project
+
+					rooms.forEach(room => {
+						if (room.id === id) {
+							room.name = newName
+						}
+					})
+
+					return {
+						...project,
+						rooms: [...rooms]
+					}
+				})
+
+                setTimeout(() => set({
+                    dataLoading: false,
+                    modalMessageVisible: true,
+                    modalMessageCaption: 'Имя помещения обновлено',
+					projects: newProjects,
+                    rooms: newRooms
+                }), 500)
+            }
+
+        } catch (error ) {
+            get().modalMessageSet(true, 'Ошибка запроса!', (error as Error).message)
+            throw error
+        }
+	},
     // #endregion
 
 
@@ -1442,11 +1589,15 @@ const appSlice: StateCreator<TAppStore> = (set, get) => ({
     modalRenameProjectRoomType: null,
     modalRenameProjectRoomVisible: false,
     modalRenameProjectRoomCurrentName: '',
-    modalRenameProjectRoomSet: (type, visible, currentName) => {
+	modalRenameProjectRoomProjectId: null,
+	modalRenameProjectRoomRoomId: null,
+    modalRenameProjectRoomSet: (type, visible, currentName, projectId, roomId) => {
         set({
 			modalRenameProjectRoomType: type,
 			modalRenameProjectRoomVisible: visible,
 			modalRenameProjectRoomCurrentName: currentName,
+			modalRenameProjectRoomProjectId: projectId,
+			modalRenameProjectRoomRoomId: roomId,
         })
 	},
     // #endregion

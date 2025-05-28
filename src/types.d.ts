@@ -332,6 +332,7 @@ export type TAppStore = {
     checkProject: () => boolean
     resetProject: () => void
     copyProject: (id: TProject['id'], token: string | undefined) => void
+	updateProjectName: (id: TProject['id'], name: TProject['name']) => void
     // #endregion
 
 
@@ -341,6 +342,7 @@ export type TAppStore = {
     setRoom: (id: TRoom['id']) => void
     checkRoom: () => boolean
     resetRoom: () => void
+	updateRoomName: (id: TRoom['id'], name: TRoom['name']) => void
     // #endregion
 
 
@@ -509,13 +511,17 @@ export type TAppStore = {
 
 
     // #region Modal Rename Project or Room
-    modalRenameProjectRoomType: TProjectRoomType,
-    modalRenameProjectRoomVisible: boolean,
-    modalRenameProjectRoomCurrentName: string,
+    modalRenameProjectRoomType: TProjectRoomType
+    modalRenameProjectRoomVisible: boolean
+    modalRenameProjectRoomCurrentName: string
+	modalRenameProjectRoomProjectId: string | number | null
+	modalRenameProjectRoomRoomId: string | number | null
     modalRenameProjectRoomSet: (
         type: TProjectRoomType,
         visible: boolean,
-        currentName: string
+        currentName: string,
+		projectId?: string | number | null,
+		roomId?: string | number | null
     ) => void,
     // #endregion
 

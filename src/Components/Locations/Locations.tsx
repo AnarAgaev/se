@@ -26,6 +26,8 @@ const getProjectsOptionsList = (
                     isChecked={project.selected}
                     eventHandler={() => setProject(project.id)}
                     locationType='project'
+					projectId={project.id}
+					roomId={null}
                 />
             )
         }
@@ -55,6 +57,8 @@ const getRoomsOptionsList = (
                 eventHandler={() => setRoom(room.id)}
                 editable={room.default}
                 locationType='room'
+				projectId={null}
+				roomId={room.id}
 			/>
         )
     })

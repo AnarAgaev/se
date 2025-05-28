@@ -13,5 +13,7 @@ interface Window {
     removeConfigurationLink: string
     copyReplaceConfigurationLink: string
     addProductsToCartLink: string
+	updateProjectLink: string
+	updateRoomLink: string
     userToken: string
 }
