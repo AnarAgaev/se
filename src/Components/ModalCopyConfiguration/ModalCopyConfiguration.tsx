@@ -34,6 +34,8 @@ const getProjectsOptionsList = (
                     eventHandler={() => setProject({ id: project.id, name: project.name, error: false })}
 					editable={true}
 					locationType='project'
+					projectId={null}
+					roomId={null}
                 />
             )
         }
@@ -55,6 +57,8 @@ const getOptionsList = (
         eventHandler={() => setRoom({ id: room.id, name: room.name, error: false })}
 		editable={true}
 		locationType='room'
+		projectId={null}
+		roomId={null}
     />
 ))
 
