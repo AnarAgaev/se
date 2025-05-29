@@ -179,16 +179,18 @@ const ProjectWorkspace = () => {
         : <div className={wrap}>
             <h2 className={caption}>
                 <span id='step_17'>{project.name}</span>
-				<EditNameButton
-                    cbf={() => modalRenameProjectRoomSet(
-                        'project',
-                        true,
-                        project.name,
-						project.id,
-						null
-                    )}
-                    size='medium'
-                    title='Переименовать проект' />
+				{ project.token === userToken &&
+					<EditNameButton
+						cbf={() => modalRenameProjectRoomSet(
+							'project',
+							true,
+							project.name,
+							project.id,
+							null
+						)}
+						size='medium'
+						title='Переименовать проект' />
+				}
             </h2>
 
             <div className={body}>

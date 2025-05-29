@@ -28,16 +28,18 @@ const getProjectsElms = (
                 <span className={name}>
                     {p.name}
                     <i>#{p.id}</i>
-					<EditNameButton
-						cbf={() => modalRenameProjectRoomSet(
-							'project',
-							true,
-							p.name,
-							p.id,
-							null
-						)}
-						size='medium'
-						title='Переименовать проект' />
+					{ p.token === userToken &&
+						<EditNameButton
+							cbf={() => modalRenameProjectRoomSet(
+								'project',
+								true,
+								p.name,
+								p.id,
+								null
+							)}
+							size='medium'
+							title='Переименовать проект' />
+					}
                 </span>
                 <ul className={actions}>
                     <li id={`${idx === 0 ? 'step_10' : undefined}`}>
