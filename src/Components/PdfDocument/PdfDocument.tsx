@@ -373,16 +373,16 @@ const PdfDocument = () => {
         family: 'Roboto',
         fonts: [
             {
-                src: 'https://aws.massive.ru/se-configurator/front/fonts/Roboto/Roboto-Regular.ttf',
+                src: 'https://storage.yandexcloud.net/shrunk/se-configurator/front/fonts/Roboto/Roboto-Regular.ttf',
                 // font-style: normal,
                 // font-weight: normal
             },
             {
-                src: 'https://aws.massive.ru/se-configurator/front/fonts/Roboto/Roboto-Medium.ttf',
+                src: 'https://storage.yandexcloud.net/shrunk/se-configurator/front/fonts/Roboto/Roboto-Medium.ttf',
                 fontWeight: 'medium'
             },
             {
-                src: 'https://aws.massive.ru/se-configurator/front/fonts/Roboto/Roboto-Bold.ttf',
+                src: 'https://storage.yandexcloud.net/shrunk/se-configurator/front/fonts/Roboto/Roboto-Bold.ttf',
                 fontWeight: 'bold'
             },
         ]
@@ -395,7 +395,7 @@ const PdfDocument = () => {
         <Document language="ru" pageLayout="singlePage">
             <Page size="A4" style={styles.page}>
                 <View style={styles.logoWrap}>
-                    <Image style={styles.logo} src="https://aws.massive.ru/se-configurator/logo.png" />
+                    <Image style={styles.logo} src="https://storage.yandexcloud.net/shrunk/se-configurator/logo.png" />
                 </View>
                 <View style={styles.section}>
                     <Text style={styles.projectName}>

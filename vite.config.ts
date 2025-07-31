@@ -16,12 +16,37 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: `assets/[name].js`,
         // Убираем hash из имен файлов для assets (CSS, изображения и т.д.)
         assetFileNames: `assets/[name].[ext]`,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // Убираем hash из имен файлов для динамически загружаемых модулей (chunks)
         chunkFileNames: `assets/[name].js`,
       },
     },
   },
   base: mode === 'production'
-    ? 'https://aws.massive.ru/se-configurator/front/'
+    ? 'https://storage.yandexcloud.net/shrunk/se-configurator/front/'
     : '/', // Для development используем относительный путь
 }));
